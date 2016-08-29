@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.info
+=======================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSObject.info

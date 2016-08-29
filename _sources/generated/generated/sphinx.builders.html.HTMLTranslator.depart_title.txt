@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_title
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_title

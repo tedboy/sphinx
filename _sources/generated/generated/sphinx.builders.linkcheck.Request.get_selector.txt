@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Request.get_selector
+==============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Request.get_selector

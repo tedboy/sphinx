@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.visit_tabular_col_spec
+=====================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.visit_tabular_col_spec

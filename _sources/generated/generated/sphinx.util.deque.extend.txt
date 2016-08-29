@@ -1,0 +1,6 @@
+sphinx.util.deque.extend
+========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.extend

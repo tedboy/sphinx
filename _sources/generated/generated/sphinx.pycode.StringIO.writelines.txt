@@ -1,0 +1,6 @@
+sphinx.pycode.StringIO.writelines
+=================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: StringIO.writelines

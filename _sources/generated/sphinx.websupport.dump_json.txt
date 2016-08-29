@@ -1,0 +1,6 @@
+sphinx.websupport.dump_json
+===========================
+
+.. currentmodule:: sphinx.websupport
+
+.. autofunction:: dump_json

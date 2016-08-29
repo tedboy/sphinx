@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.print_version
+================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.print_version

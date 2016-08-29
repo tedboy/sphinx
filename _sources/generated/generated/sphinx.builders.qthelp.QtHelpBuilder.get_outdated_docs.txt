@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.get_outdated_docs
+======================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.get_outdated_docs

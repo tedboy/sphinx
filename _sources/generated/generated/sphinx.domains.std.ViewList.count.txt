@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.count
+=================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.count

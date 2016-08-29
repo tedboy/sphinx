@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.StandaloneHTMLBuilder.init
+===================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. automethod:: StandaloneHTMLBuilder.init

@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.is_compactable
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.is_compactable

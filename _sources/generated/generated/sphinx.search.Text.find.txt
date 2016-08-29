@@ -1,0 +1,6 @@
+sphinx.search.Text.find
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.find

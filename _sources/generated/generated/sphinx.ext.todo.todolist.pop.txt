@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.pop
+============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.pop

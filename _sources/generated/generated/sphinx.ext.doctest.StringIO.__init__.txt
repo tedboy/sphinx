@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.__init__
+====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.__init__

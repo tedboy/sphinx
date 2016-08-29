@@ -1,0 +1,6 @@
+sphinx.builders.text.Builder.__init__
+=====================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: Builder.__init__

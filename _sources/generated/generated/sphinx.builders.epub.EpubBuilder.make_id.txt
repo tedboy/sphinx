@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.make_id
+========================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.make_id

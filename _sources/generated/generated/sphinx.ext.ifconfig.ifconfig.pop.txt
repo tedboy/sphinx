@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.pop
+================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.pop

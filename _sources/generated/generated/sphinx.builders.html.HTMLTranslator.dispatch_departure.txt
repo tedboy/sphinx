@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.dispatch_departure
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.dispatch_departure

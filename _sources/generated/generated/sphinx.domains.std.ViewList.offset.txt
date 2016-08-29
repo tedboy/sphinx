@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.offset
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.offset

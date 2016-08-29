@@ -1,0 +1,86 @@
+.. automodule:: sphinx.domains.python
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      iteritems
+      l_
+      make_refnode
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Directive
+      Domain
+      Field
+      GroupedField
+      Index
+      ObjType
+      ObjectDescription
+      PyClasslike
+      PyClassmember
+      PyCurrentModule
+      PyDecoratorFunction
+      PyDecoratorMethod
+      PyDecoratorMixin
+      PyField
+      PyModule
+      PyModulelevel
+      PyObject
+      PyTypedField
+      PyXRefRole
+      PyXrefMixin
+      PythonDomain
+      PythonModuleIndex
+      TypedField
+      XRefRole
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.domains.python.Directive
+       generated/sphinx.domains.python.Domain
+       generated/sphinx.domains.python.Field
+       generated/sphinx.domains.python.GroupedField
+       generated/sphinx.domains.python.Index
+       generated/sphinx.domains.python.ObjType
+       generated/sphinx.domains.python.ObjectDescription
+       generated/sphinx.domains.python.PyClasslike
+       generated/sphinx.domains.python.PyClassmember
+       generated/sphinx.domains.python.PyCurrentModule
+       generated/sphinx.domains.python.PyDecoratorFunction
+       generated/sphinx.domains.python.PyDecoratorMethod
+       generated/sphinx.domains.python.PyDecoratorMixin
+       generated/sphinx.domains.python.PyField
+       generated/sphinx.domains.python.PyModule
+       generated/sphinx.domains.python.PyModulelevel
+       generated/sphinx.domains.python.PyObject
+       generated/sphinx.domains.python.PyTypedField
+       generated/sphinx.domains.python.PyXRefRole
+       generated/sphinx.domains.python.PyXrefMixin
+       generated/sphinx.domains.python.PythonDomain
+       generated/sphinx.domains.python.PythonModuleIndex
+       generated/sphinx.domains.python.TypedField
+       generated/sphinx.domains.python.XRefRole
+
+   
+   
+
+   
+   
+   

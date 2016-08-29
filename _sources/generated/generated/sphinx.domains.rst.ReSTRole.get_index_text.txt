@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.get_index_text
+==========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.get_index_text

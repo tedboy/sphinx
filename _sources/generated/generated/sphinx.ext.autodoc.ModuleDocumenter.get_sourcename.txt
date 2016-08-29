@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleDocumenter.get_sourcename
+==================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleDocumenter.get_sourcename

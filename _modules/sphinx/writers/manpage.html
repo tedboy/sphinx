@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.writers.manpage &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.writers.manpage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.writers.manpage</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.writers.manpage</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Manual page writer, extended for Sphinx custom nodes.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span> <span class="nn">docutils.writers.manpage</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">MACRO_DEF</span><span class="p">,</span>
+    <span class="n">Writer</span><span class="p">,</span>
+    <span class="n">Translator</span> <span class="k">as</span> <span class="n">BaseTranslator</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">admonitionlabels</span><span class="p">,</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.osutil</span> <span class="kn">import</span> <span class="n">ustrftime</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.compat</span> <span class="kn">import</span> <span class="n">docutils_version</span>
+
+
+<div class="viewcode-block" id="ManualPageWriter"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.manpage.ManualPageWriter.html#sphinx.builders.manpage.ManualPageWriter">[docs]</a><span class="k">class</span> <span class="nc">ManualPageWriter</span><span class="p">(</span><span class="n">Writer</span><span class="p">):</span>
+<div class="viewcode-block" id="ManualPageWriter.__init__"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.manpage.ManualPageWriter.__init__.html#sphinx.builders.manpage.ManualPageWriter.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">):</span>
+        <span class="n">Writer</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">builder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translator_class</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">translator_class</span> <span class="ow">or</span> <span class="n">ManualPageTranslator</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ManualPageWriter.translate"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.manpage.ManualPageWriter.translate.html#sphinx.builders.manpage.ManualPageWriter.translate">[docs]</a>    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">NestedInlineTransform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">)</span>
+        <span class="n">transform</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+        <span class="n">visitor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">translator_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visitor</span> <span class="o">=</span> <span class="n">visitor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">walkabout</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">visitor</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">NestedInlineTransform</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Flatten nested inline nodes:</span>
+
+<span class="sd">    Before:</span>
+<span class="sd">        &lt;strong&gt;foo=&lt;emphasis&gt;1&lt;/emphasis&gt;</span>
+<span class="sd">        &amp;bar=&lt;emphasis&gt;2&lt;/emphasis&gt;&lt;/strong&gt;</span>
+<span class="sd">    After:</span>
+<span class="sd">        &lt;strong&gt;foo=&lt;/strong&gt;&lt;emphasis&gt;var&lt;/emphasis&gt;</span>
+<span class="sd">        &lt;strong&gt;&amp;bar=&lt;/strong&gt;&lt;emphasis&gt;2&lt;/emphasis&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="n">document</span>
+
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">is_inline</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">literal</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">emphasis</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">strong</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">is_inline</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">is_inline</span><span class="p">(</span><span class="n">subnode</span><span class="p">)</span> <span class="k">for</span> <span class="n">subnode</span> <span class="ow">in</span> <span class="n">node</span><span class="p">):</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">subnode</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">subnode</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">is_inline</span><span class="p">(</span><span class="n">subnode</span><span class="p">):</span>
+                        <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">subnode</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">newnode</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">subnode</span><span class="p">,</span> <span class="o">**</span><span class="n">node</span><span class="o">.</span><span class="n">attributes</span><span class="p">)</span>
+                        <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">newnode</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ManualPageTranslator</span><span class="p">(</span><span class="n">BaseTranslator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Custom translator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+        <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">builder</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_productionlist</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># first title is the manpage title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">section_level</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="c1"># docinfo set by man_pages config value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;subtitle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">subtitle</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">authors</span><span class="p">:</span>
+            <span class="c1"># don&#39;t set it if no author given</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">authors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;manual_section&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">section</span>
+
+        <span class="c1"># docinfo set by other config values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;title_upper&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">today</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">today</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ustrftime</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">today_fmt</span> <span class="ow">or</span>
+                                              <span class="n">_</span><span class="p">(</span><span class="s1">&#39;%B </span><span class="si">%d</span><span class="s1">, %Y&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;copyright&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">copyright</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span><span class="p">[</span><span class="s1">&#39;manual_group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">project</span>
+
+        <span class="c1"># In docutils &lt; 0.11 self.append_header() was never called</span>
+        <span class="k">if</span> <span class="n">docutils_version</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MACRO_DEF</span><span class="p">)</span>
+
+        <span class="c1"># Overwrite admonition label translations with our own</span>
+        <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">translation</span> <span class="ow">in</span> <span class="n">admonitionlabels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">language</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">deunicode</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span>
+
+    <span class="c1"># overwritten -- added quotes around all .TH arguments</span>
+    <span class="k">def</span> <span class="nf">header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tmpl</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;.TH </span><span class="se">\&quot;</span><span class="si">%(title_upper)s</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="si">%(manual_section)s</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+                <span class="s2">&quot; </span><span class="se">\&quot;</span><span class="si">%(date)s</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="si">%(version)s</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="si">%(manual_group)s</span><span class="se">\&quot;\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;.SH NAME</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="si">%(title)s</span><span class="s2"> \- </span><span class="si">%(subtitle)s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tmpl</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_docinfo</span>
+
+    <span class="k">def</span> <span class="nf">visit_start_of_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_start_of_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_definition_list</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_definition_list</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_definition_list_item</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_term</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_term</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_addname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_addname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; -&gt; &#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_parameterlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">first_param</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_parameterlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_param</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">first_param</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_optional</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_optional</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_annotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_annotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_desc_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_definition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_desc_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_definition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_versionmodified</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_paragraph</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_versionmodified</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_paragraph</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_termsep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="c1"># overwritten -- we don&#39;t want source comments to show up</span>
+    <span class="k">def</span> <span class="nf">visit_comment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="c1"># overwritten -- added ensure_eol()</span>
+    <span class="k">def</span> <span class="nf">visit_footnote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_eol</span><span class="p">()</span>
+        <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_footnote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+
+    <span class="c1"># overwritten -- handle footnotes rubric</span>
+    <span class="k">def</span> <span class="nf">visit_rubric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_eol</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">rubtitle</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">rubtitle</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Footnotes&#39;</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Footnotes&#39;</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.SH &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">deunicode</span><span class="p">(</span><span class="n">rubtitle</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span>
+                                 <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.sp</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_rubric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_seealso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;seealso&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_seealso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_productionlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_eol</span><span class="p">()</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_productionlist</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.sp</span><span class="se">\n</span><span class="s1">.nf</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">production</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">production</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">])</span>
+        <span class="n">maxlen</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">)</span>
+        <span class="n">lastname</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">production</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">production</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">]:</span>
+                <span class="n">lastname</span> <span class="o">=</span> <span class="n">production</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">maxlen</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defs</span><span class="p">[</span><span class="s1">&#39;strong&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deunicode</span><span class="p">(</span><span class="n">lastname</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defs</span><span class="p">[</span><span class="s1">&#39;strong&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; ::= &#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">lastname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">     &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">lastname</span><span class="p">)))</span>
+            <span class="n">production</span><span class="o">.</span><span class="n">walkabout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">.fi</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_productionlist</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_production</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_production</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># overwritten -- don&#39;t emit a warning for images</span>
+    <span class="k">def</span> <span class="nf">visit_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;alt&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">attributes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;[image: </span><span class="si">%s</span><span class="s1">]&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;[image]&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="c1"># overwritten -- don&#39;t visit inner marked up nodes</span>
+    <span class="k">def</span> <span class="nf">visit_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defs</span><span class="p">[</span><span class="s1">&#39;reference&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1"># avoid repeating escaping code... fine since</span>
+        <span class="c1"># visit_Text calls astext() and only works on that afterwards</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_Text</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defs</span><span class="p">[</span><span class="s1">&#39;reference&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">uri</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refuri&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">uri</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;mailto:&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">uri</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http:&#39;</span><span class="p">)</span> <span class="ow">or</span> \
+           <span class="n">uri</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;https:&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">uri</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;ftp:&#39;</span><span class="p">):</span>
+            <span class="c1"># if configured, put the URL after the link</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">man_show_urls</span> <span class="ow">and</span> \
+               <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span> <span class="o">!=</span> <span class="n">uri</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">uri</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;mailto:&#39;</span><span class="p">):</span>
+                    <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                    <span class="s1">&#39; &lt;&#39;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">defs</span><span class="p">[</span><span class="s1">&#39;strong&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">uri</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">defs</span><span class="p">[</span><span class="s1">&#39;strong&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="s1">&#39;&gt;&#39;</span><span class="p">])</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_number_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_Text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_centered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_eol</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.sp</span><span class="se">\n</span><span class="s1">.ce</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_centered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">.ce 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_compact_paragraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_compact_paragraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_highlightlang</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_highlightlang</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_download_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_download_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_toctree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_tabular_col_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_glossary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_glossary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_acks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_eol</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+                                   <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">children</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_hlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_bullet_list</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_hlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_bullet_list</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_hlistcol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_hlistcol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_literal_emphasis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">visit_emphasis</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_literal_emphasis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">depart_emphasis</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_literal_strong</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">visit_strong</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_literal_strong</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">depart_strong</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># overwritten: handle section titles better than in 0.6 release</span>
+    <span class="k">def</span> <span class="nf">visit_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">seealso</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.IP &quot;&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">section</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">section_level</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># skip the document title</span>
+                <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">section_level</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.SH </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">deunicode</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
+                <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+        <span class="k">return</span> <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depart_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">seealso</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">return</span> <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">depart_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">visit_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;manpage&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;format&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">())</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="k">def</span> <span class="nf">visit_inline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">depart_inline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">visit_math</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;using &quot;math&quot; markup without a Sphinx math extension &#39;</span>
+                          <span class="s1">&#39;active, please use one of the math extensions &#39;</span>
+                          <span class="s1">&#39;described at http://sphinx-doc.org/ext/math.html&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+    <span class="n">visit_math_block</span> <span class="o">=</span> <span class="n">visit_math</span>
+
+    <span class="k">def</span> <span class="nf">unknown_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Unknown node: &#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

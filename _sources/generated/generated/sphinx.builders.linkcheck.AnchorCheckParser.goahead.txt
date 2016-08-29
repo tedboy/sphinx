@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.goahead
+===================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.goahead

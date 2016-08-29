@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.init_templates
+=====================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.init_templates

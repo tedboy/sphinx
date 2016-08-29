@@ -1,0 +1,6 @@
+sphinx.pycode.sym.sliceop
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.sliceop

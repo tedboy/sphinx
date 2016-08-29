@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTrailingTypeSpecFundamental.describe_signature
+====================================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTrailingTypeSpecFundamental.describe_signature

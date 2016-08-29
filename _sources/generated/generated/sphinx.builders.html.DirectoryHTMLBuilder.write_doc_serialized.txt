@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.write_doc_serialized
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.write_doc_serialized

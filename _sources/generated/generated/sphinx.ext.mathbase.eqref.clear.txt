@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.clear
+===============================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.clear

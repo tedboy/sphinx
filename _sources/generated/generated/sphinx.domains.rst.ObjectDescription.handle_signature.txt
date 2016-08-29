@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.handle_signature
+=====================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.handle_signature

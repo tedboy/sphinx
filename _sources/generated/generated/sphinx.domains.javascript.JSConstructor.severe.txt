@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.severe
+==============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.severe

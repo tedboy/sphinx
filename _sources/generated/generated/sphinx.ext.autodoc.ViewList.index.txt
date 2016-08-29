@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.index
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.index

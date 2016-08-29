@@ -1,0 +1,6 @@
+sphinx.builders.html.compile_matchers
+=====================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: compile_matchers

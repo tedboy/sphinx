@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.StandaloneHTMLBuilder.build_all
+=======================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: StandaloneHTMLBuilder.build_all

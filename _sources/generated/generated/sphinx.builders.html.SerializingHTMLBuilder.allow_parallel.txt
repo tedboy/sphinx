@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.allow_parallel
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.allow_parallel

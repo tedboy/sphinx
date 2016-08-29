@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Request.header_items
+==============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Request.header_items

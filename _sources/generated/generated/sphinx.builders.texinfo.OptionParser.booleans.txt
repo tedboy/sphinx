@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.booleans
+=============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: OptionParser.booleans

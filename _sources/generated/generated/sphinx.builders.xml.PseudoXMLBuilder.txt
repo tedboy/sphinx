@@ -1,0 +1,54 @@
+sphinx.builders.xml.PseudoXMLBuilder
+====================================
+.. currentmodule:: sphinx.builders.xml
+.. autoclass:: PseudoXMLBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PseudoXMLBuilder.__init__
+   ~PseudoXMLBuilder.build
+   ~PseudoXMLBuilder.build_all
+   ~PseudoXMLBuilder.build_specific
+   ~PseudoXMLBuilder.build_update
+   ~PseudoXMLBuilder.cleanup
+   ~PseudoXMLBuilder.compile_all_catalogs
+   ~PseudoXMLBuilder.compile_catalogs
+   ~PseudoXMLBuilder.compile_specific_catalogs
+   ~PseudoXMLBuilder.compile_update_catalogs
+   ~PseudoXMLBuilder.create_template_bridge
+   ~PseudoXMLBuilder.finish
+   ~PseudoXMLBuilder.get_builder_config
+   ~PseudoXMLBuilder.get_outdated_docs
+   ~PseudoXMLBuilder.get_relative_uri
+   ~PseudoXMLBuilder.get_target_uri
+   ~PseudoXMLBuilder.init
+   ~PseudoXMLBuilder.post_process_images
+   ~PseudoXMLBuilder.prepare_writing
+   ~PseudoXMLBuilder.write
+   ~PseudoXMLBuilder.write_doc
+   ~PseudoXMLBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PseudoXMLBuilder.allow_parallel
+   ~PseudoXMLBuilder.format
+   ~PseudoXMLBuilder.name
+   ~PseudoXMLBuilder.out_suffix
+   ~PseudoXMLBuilder.supported_image_types
+   ~PseudoXMLBuilder.versioning_compare
+   ~PseudoXMLBuilder.versioning_method
+

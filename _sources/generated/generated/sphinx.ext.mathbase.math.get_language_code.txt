@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.get_language_code
+==========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: math.get_language_code

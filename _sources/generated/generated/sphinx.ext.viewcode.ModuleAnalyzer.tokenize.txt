@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.ModuleAnalyzer.tokenize
+===========================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: ModuleAnalyzer.tokenize

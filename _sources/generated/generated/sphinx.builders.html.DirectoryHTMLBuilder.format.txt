@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.format
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.format

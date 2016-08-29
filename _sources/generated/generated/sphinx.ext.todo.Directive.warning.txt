@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.warning
+=================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Directive.warning

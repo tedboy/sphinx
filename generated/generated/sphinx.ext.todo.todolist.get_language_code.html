@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.15.2.5.1.22. sphinx.ext.todo.todolist.get_language_code &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="3.15.2.5. sphinx.ext.todo.todolist" href="sphinx.ext.todo.todolist.html"/>
+        <link rel="next" title="3.15.2.5.1.23. sphinx.ext.todo.todolist.has_key" href="sphinx.ext.todo.todolist.has_key.html"/>
+        <link rel="prev" title="3.15.2.5.1.21. sphinx.ext.todo.todolist.get" href="sphinx.ext.todo.todolist.get.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.html">3.1. sphinx.ext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.autodoc.html">3.2. sphinx.ext.autodoc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.coverage.html">3.3. sphinx.ext.coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.doctest.html">3.4. sphinx.ext.doctest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.extlinks.html">3.5. sphinx.ext.extlinks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.graphviz.html">3.6. sphinx.ext.graphviz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.ifconfig.html">3.7. sphinx.ext.ifconfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.inheritance_diagram.html">3.8. sphinx.ext.inheritance_diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.intersphinx.html">3.9. sphinx.ext.intersphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.jsmath.html">3.10. sphinx.ext.jsmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.linkcode.html">3.11. sphinx.ext.linkcode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.mathbase.html">3.12. sphinx.ext.mathbase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.mathjax.html">3.13. sphinx.ext.mathjax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.pngmath.html">3.14. sphinx.ext.pngmath</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.ext.todo.html">3.15. sphinx.ext.todo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.ext.todo.html#functions">3.15.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.ext.todo.html#classes">3.15.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.todo.Directive.html">3.15.2.1. sphinx.ext.todo.Directive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.todo.Todo.html">3.15.2.2. sphinx.ext.todo.Todo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.todo.TodoList.html">3.15.2.3. sphinx.ext.todo.TodoList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.todo.todo_node.html">3.15.2.4. sphinx.ext.todo.todo_node</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="sphinx.ext.todo.todolist.html">3.15.2.5. sphinx.ext.todo.todolist</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.ext.todo.html#exceptions">3.15.3. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.ext.viewcode.html">3.16. sphinx.ext.viewcode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.ext.todo.html">3.15. sphinx.ext.todo</a> &raquo;</li>
+        
+          <li><a href="sphinx.ext.todo.todolist.html">3.15.2.5. sphinx.ext.todo.todolist</a> &raquo;</li>
+        
+      <li>3.15.2.5.1.22. sphinx.ext.todo.todolist.get_language_code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.ext.todo.todolist.get_language_code.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-ext-todo-todolist-get-language-code">
+<h1>3.15.2.5.1.22. sphinx.ext.todo.todolist.get_language_code<a class="headerlink" href="#sphinx-ext-todo-todolist-get-language-code" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="sphinx.ext.todo.todolist.get_language_code">
+<code class="descclassname">todolist.</code><code class="descname">get_language_code</code><span class="sig-paren">(</span><em>fallback=''</em><span class="sig-paren">)</span><a class="headerlink" href="#sphinx.ext.todo.todolist.get_language_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return node&#8217;s language tag.</p>
+<p>Look iteratively in self and parents for a class argument
+starting with <code class="docutils literal"><span class="pre">language-</span></code> and return the remainder of it
+(which should be a <cite>BCP49</cite> language tag) or the <cite>fallback</cite>.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.ext.todo.todolist.has_key.html" class="btn btn-neutral float-right" title="3.15.2.5.1.23. sphinx.ext.todo.todolist.has_key" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.ext.todo.todolist.get.html" class="btn btn-neutral" title="3.15.2.5.1.21. sphinx.ext.todo.todolist.get" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

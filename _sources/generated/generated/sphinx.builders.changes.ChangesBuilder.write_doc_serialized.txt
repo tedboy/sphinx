@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.write_doc_serialized
+===========================================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: ChangesBuilder.write_doc_serialized

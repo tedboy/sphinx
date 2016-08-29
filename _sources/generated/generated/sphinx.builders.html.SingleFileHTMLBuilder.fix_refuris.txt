@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.fix_refuris
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.fix_refuris

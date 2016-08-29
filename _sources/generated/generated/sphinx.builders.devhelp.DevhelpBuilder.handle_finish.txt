@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.handle_finish
+====================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.handle_finish

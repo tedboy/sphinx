@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPClassObject.before_content
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPClassObject.before_content

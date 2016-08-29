@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.FunctionDocumenter.priority
+==============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: FunctionDocumenter.priority

@@ -1,0 +1,6 @@
+sphinx.search.Text.children
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: Text.children

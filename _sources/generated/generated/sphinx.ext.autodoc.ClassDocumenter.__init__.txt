@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassDocumenter.__init__
+===========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassDocumenter.__init__

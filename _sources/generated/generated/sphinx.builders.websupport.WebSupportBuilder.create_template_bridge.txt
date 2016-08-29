@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.create_template_bridge
+===================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.create_template_bridge

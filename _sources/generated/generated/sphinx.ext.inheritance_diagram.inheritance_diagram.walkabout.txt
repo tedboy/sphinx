@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.inheritance_diagram.walkabout
+============================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: inheritance_diagram.walkabout

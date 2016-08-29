@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.InheritanceDiagram.add_name
+==========================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: InheritanceDiagram.add_name

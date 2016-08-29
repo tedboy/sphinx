@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.write
+====================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLBuilder.write

@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.doc_field_types
+=========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: EnvVar.doc_field_types

@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.parse_node
+===========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: GenericObject.parse_node

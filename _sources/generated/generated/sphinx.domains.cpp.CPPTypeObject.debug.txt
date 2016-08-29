@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.debug
+======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPTypeObject.debug

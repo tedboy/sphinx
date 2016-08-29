@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Directive.directive_error
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: Directive.directive_error

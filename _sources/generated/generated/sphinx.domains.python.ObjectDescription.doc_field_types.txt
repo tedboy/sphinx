@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.doc_field_types
+=======================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: ObjectDescription.doc_field_types

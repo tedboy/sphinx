@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.format
+========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: Builder.format

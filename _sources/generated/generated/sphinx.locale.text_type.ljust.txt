@@ -1,0 +1,6 @@
+sphinx.locale.text_type.ljust
+=============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.ljust

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.after_content
+====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.after_content

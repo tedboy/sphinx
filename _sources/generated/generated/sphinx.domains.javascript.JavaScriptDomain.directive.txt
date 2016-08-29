@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JavaScriptDomain.directive
+====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JavaScriptDomain.directive

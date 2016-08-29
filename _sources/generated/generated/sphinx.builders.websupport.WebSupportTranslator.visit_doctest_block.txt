@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_doctest_block
+===================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_doctest_block

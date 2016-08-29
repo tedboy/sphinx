@@ -1,0 +1,6 @@
+sphinx.search.title.setdefault
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.setdefault

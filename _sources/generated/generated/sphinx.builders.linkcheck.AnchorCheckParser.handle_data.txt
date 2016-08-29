@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.handle_data
+=======================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.handle_data

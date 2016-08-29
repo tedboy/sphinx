@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.get_target_uri
+==================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: CoverageBuilder.get_target_uri

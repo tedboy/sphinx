@@ -1,0 +1,6 @@
+sphinx.build_main
+=================
+
+.. currentmodule:: sphinx
+
+.. autofunction:: build_main

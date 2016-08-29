@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.flush
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.flush

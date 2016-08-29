@@ -1,0 +1,6 @@
+sphinx.pycode.iteritems
+=======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autofunction:: iteritems

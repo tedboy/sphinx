@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.second
+=======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.second

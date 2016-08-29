@@ -1,0 +1,87 @@
+sphinx.ext.todo.todolist
+========================
+.. currentmodule:: sphinx.ext.todo
+.. autoclass:: todolist
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~todolist.__init__
+   ~todolist.append
+   ~todolist.append_attr_list
+   ~todolist.asdom
+   ~todolist.astext
+   ~todolist.attlist
+   ~todolist.clear
+   ~todolist.coerce_append_attr_list
+   ~todolist.copy
+   ~todolist.copy_attr_coerce
+   ~todolist.copy_attr_concatenate
+   ~todolist.copy_attr_consistent
+   ~todolist.copy_attr_convert
+   ~todolist.deepcopy
+   ~todolist.delattr
+   ~todolist.emptytag
+   ~todolist.endtag
+   ~todolist.extend
+   ~todolist.first_child_matching_class
+   ~todolist.first_child_not_matching_class
+   ~todolist.get
+   ~todolist.get_language_code
+   ~todolist.has_key
+   ~todolist.hasattr
+   ~todolist.index
+   ~todolist.insert
+   ~todolist.is_not_default
+   ~todolist.is_not_known_attribute
+   ~todolist.is_not_list_attribute
+   ~todolist.next_node
+   ~todolist.non_default_attributes
+   ~todolist.note_referenced_by
+   ~todolist.pformat
+   ~todolist.pop
+   ~todolist.remove
+   ~todolist.replace
+   ~todolist.replace_attr
+   ~todolist.replace_self
+   ~todolist.set_class
+   ~todolist.setdefault
+   ~todolist.setup_child
+   ~todolist.shortrepr
+   ~todolist.starttag
+   ~todolist.traverse
+   ~todolist.update_all_atts
+   ~todolist.update_all_atts_coercion
+   ~todolist.update_all_atts_concatenating
+   ~todolist.update_all_atts_consistantly
+   ~todolist.update_all_atts_convert
+   ~todolist.update_basic_atts
+   ~todolist.walk
+   ~todolist.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~todolist.basic_attributes
+   ~todolist.child_text_separator
+   ~todolist.document
+   ~todolist.known_attributes
+   ~todolist.line
+   ~todolist.list_attributes
+   ~todolist.local_attributes
+   ~todolist.parent
+   ~todolist.source
+   ~todolist.tagname
+

@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_desc_addname
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_desc_addname

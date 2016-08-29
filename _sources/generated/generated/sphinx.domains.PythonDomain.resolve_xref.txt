@@ -1,0 +1,6 @@
+sphinx.domains.PythonDomain.resolve_xref
+========================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: PythonDomain.resolve_xref

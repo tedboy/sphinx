@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.visit_highlightlang
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.visit_highlightlang

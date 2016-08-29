@@ -1,0 +1,6 @@
+sphinx.pycode.sym.break_stmt
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.break_stmt

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTOperatorBuildIn.__init__
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTOperatorBuildIn.__init__

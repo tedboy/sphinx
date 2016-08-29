@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.InstanceAttributeDocumenter.process_doc
+==========================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: InstanceAttributeDocumenter.process_doc

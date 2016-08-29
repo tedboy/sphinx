@@ -1,0 +1,6 @@
+sphinx.pycode.sym.NT_OFFSET
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.NT_OFFSET

@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.util.inspect &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.util" href="../util.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../util.html">sphinx.util</a> &raquo;</li>
+        
+      <li>sphinx.util.inspect</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.util.inspect</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.util.inspect</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Helpers for inspecting Python modules.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">PY3</span><span class="p">,</span> <span class="n">binary_type</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">builtins</span>
+
+<span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">force_decode</span>
+
+<span class="c1"># this imports the standard library inspect module without resorting to</span>
+<span class="c1"># relatively import this module</span>
+<span class="n">inspect</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;inspect&#39;</span><span class="p">)</span>
+
+<span class="n">memory_address_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39; at 0x[0-9a-f]{8,16}(?=&gt;$)&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+    <span class="k">def</span> <span class="nf">getargspec</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Like inspect.getargspec but supports functools.partial as well.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__func__</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">is</span> <span class="n">partial</span><span class="p">:</span>
+            <span class="n">orig_func</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">func</span>
+            <span class="n">argspec</span> <span class="o">=</span> <span class="n">getargspec</span><span class="p">(</span><span class="n">orig_func</span><span class="p">)</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">argspec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">defaults</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">argspec</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="ow">or</span> <span class="p">())</span>
+            <span class="n">kwoargs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">argspec</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+            <span class="n">kwodefs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">argspec</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="ow">or</span> <span class="p">{})</span>
+            <span class="k">if</span> <span class="n">func</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">args</span><span class="p">):]</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">func</span><span class="o">.</span><span class="n">keywords</span> <span class="ow">or</span> <span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+                    <span class="k">del</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">del</span> <span class="n">defaults</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                        <span class="k">pass</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>   <span class="c1"># must be a kwonly arg</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="n">kwoargs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+                    <span class="k">del</span> <span class="n">kwoargs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="k">del</span> <span class="n">kwodefs</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">inspect</span><span class="o">.</span><span class="n">FullArgSpec</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">argspec</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">argspec</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                                       <span class="nb">tuple</span><span class="p">(</span><span class="n">defaults</span><span class="p">),</span> <span class="n">kwoargs</span><span class="p">,</span>
+                                       <span class="n">kwodefs</span><span class="p">,</span> <span class="n">argspec</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+        <span class="k">while</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;__wrapped__&#39;</span><span class="p">):</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__wrapped__</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1"> is not a Python function&#39;</span> <span class="o">%</span> <span class="n">func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>  <span class="c1"># 2.6, 2.7</span>
+    <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<div class="viewcode-block" id="getargspec"><a class="viewcode-back" href="../../../generated/sphinx.ext.autodoc.getargspec.html#sphinx.ext.autodoc.getargspec">[docs]</a>    <span class="k">def</span> <span class="nf">getargspec</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Like inspect.getargspec but supports functools.partial as well.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__func__</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="p">()</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">is</span> <span class="n">partial</span><span class="p">:</span>
+            <span class="n">keywords</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">keywords</span>
+            <span class="k">if</span> <span class="n">keywords</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">keywords</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">args</span><span class="p">),</span> <span class="n">keywords</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">func</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1"> is not a Python function&#39;</span> <span class="o">%</span> <span class="n">func</span><span class="p">)</span>
+        <span class="n">args</span><span class="p">,</span> <span class="n">varargs</span><span class="p">,</span> <span class="n">varkw</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargs</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">__code__</span><span class="p">)</span>
+        <span class="n">func_defaults</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__defaults__</span>
+        <span class="k">if</span> <span class="n">func_defaults</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">func_defaults</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func_defaults</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">func_defaults</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]:]</span>
+        <span class="k">if</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+                <span class="k">del</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="n">func_defaults</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ArgSpec</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">varargs</span><span class="p">,</span> <span class="n">varkw</span><span class="p">,</span> <span class="n">func_defaults</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="isdescriptor"><a class="viewcode-back" href="../../../generated/sphinx.ext.autodoc.isdescriptor.html#sphinx.ext.autodoc.isdescriptor">[docs]</a><span class="k">def</span> <span class="nf">isdescriptor</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if the object is some kind of descriptor.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="s1">&#39;__get__&#39;</span><span class="p">,</span> <span class="s1">&#39;__set__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delete__&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">safe_getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span> <span class="s1">&#39;__call__&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span></div>
+
+
+<div class="viewcode-block" id="safe_getattr"><a class="viewcode-back" href="../../../generated/sphinx.ext.coverage.safe_getattr.html#sphinx.ext.autodoc.safe_getattr">[docs]</a><span class="k">def</span> <span class="nf">safe_getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">defargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A getattr() that turns all exceptions into AttributeErrors.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">defargs</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="c1"># this is a catch-all for all the weird things that some modules do</span>
+        <span class="c1"># with attribute access</span>
+        <span class="k">if</span> <span class="n">defargs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">defargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="safe_getmembers"><a class="viewcode-back" href="../../../generated/sphinx.ext.autodoc.safe_getmembers.html#sphinx.ext.autodoc.safe_getmembers">[docs]</a><span class="k">def</span> <span class="nf">safe_getmembers</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">attr_getter</span><span class="o">=</span><span class="n">safe_getattr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A version of inspect.getmembers() that uses safe_getattr().&quot;&quot;&quot;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">attr_getter</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">predicate</span> <span class="ow">or</span> <span class="n">predicate</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">results</span></div>
+
+
+<div class="viewcode-block" id="object_description"><a class="viewcode-back" href="../../../generated/sphinx.ext.autodoc.object_description.html#sphinx.ext.autodoc.object_description">[docs]</a><span class="k">def</span> <span class="nf">object_description</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A repr() implementation that returns text safe to use in reST context.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">binary_type</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">force_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="c1"># Strip non-deterministic memory addresses such as</span>
+    <span class="c1"># ``&lt;__main__.A at 0x7f68cb685710&gt;``</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">memory_address_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="is_builtin_class_method"><a class="viewcode-back" href="../../../generated/sphinx.ext.autodoc.is_builtin_class_method.html#sphinx.ext.autodoc.is_builtin_class_method">[docs]</a><span class="k">def</span> <span class="nf">is_builtin_class_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;If attr_name is implemented at builtin class, return True.</span>
+
+<span class="sd">        &gt;&gt;&gt; is_builtin_class_method(int, &#39;__init__&#39;)</span>
+<span class="sd">        True</span>
+
+<span class="sd">    Why this function needed? CPython implements int.__init__ by Descriptor</span>
+<span class="sd">    but PyPy implements it by pure Python code.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmro</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">if</span> <span class="n">attr_name</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">__dict__</span><span class="p">]</span>
+    <span class="n">cls</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">classes</span> <span class="k">else</span> <span class="nb">object</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">builtins</span><span class="p">,</span> <span class="n">safe_getattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">builtins</span><span class="p">,</span> <span class="n">safe_getattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="ow">is</span> <span class="n">cls</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

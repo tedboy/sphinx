@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.get_content_charset
+=============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: get_content_charset

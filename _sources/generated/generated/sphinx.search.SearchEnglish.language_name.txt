@@ -1,0 +1,6 @@
+sphinx.search.SearchEnglish.language_name
+=========================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: SearchEnglish.language_name

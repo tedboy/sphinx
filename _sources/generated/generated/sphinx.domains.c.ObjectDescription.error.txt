@@ -1,0 +1,6 @@
+sphinx.domains.c.ObjectDescription.error
+========================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: ObjectDescription.error

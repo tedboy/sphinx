@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.severe
+====================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.severe

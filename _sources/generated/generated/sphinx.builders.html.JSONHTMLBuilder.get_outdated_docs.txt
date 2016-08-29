@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.get_outdated_docs
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.get_outdated_docs

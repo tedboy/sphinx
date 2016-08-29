@@ -1,0 +1,6 @@
+sphinx.builders.latex.FileOutput.__init__
+=========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: FileOutput.__init__

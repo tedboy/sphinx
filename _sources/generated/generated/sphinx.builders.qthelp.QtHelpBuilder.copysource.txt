@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.copysource
+===============================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.copysource

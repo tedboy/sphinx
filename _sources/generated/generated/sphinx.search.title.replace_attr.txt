@@ -1,0 +1,6 @@
+sphinx.search.title.replace_attr
+================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.replace_attr

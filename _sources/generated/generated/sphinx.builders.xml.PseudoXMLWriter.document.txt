@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLWriter.document
+============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLWriter.document

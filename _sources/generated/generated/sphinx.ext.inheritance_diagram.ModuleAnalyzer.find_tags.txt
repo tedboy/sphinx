@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.ModuleAnalyzer.find_tags
+=======================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: ModuleAnalyzer.find_tags

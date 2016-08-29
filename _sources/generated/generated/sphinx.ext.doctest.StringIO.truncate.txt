@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.truncate
+====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.truncate

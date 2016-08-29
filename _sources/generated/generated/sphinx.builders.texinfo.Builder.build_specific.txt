@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.Builder.build_specific
+==============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: Builder.build_specific

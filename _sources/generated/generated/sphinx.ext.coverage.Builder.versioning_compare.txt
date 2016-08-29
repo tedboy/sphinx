@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.versioning_compare
+==============================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autoattribute:: Builder.versioning_compare

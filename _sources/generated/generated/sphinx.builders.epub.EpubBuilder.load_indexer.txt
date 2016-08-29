@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.load_indexer
+=============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.load_indexer

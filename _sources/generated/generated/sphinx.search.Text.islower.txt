@@ -1,0 +1,6 @@
+sphinx.search.Text.islower
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.islower

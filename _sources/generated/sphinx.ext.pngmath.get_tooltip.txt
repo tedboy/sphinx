@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.get_tooltip
+==============================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: get_tooltip

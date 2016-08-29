@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.combine
+========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.combine

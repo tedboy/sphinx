@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.write_buildinfo
+======================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.write_buildinfo

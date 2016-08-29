@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.add_name
+================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: ObjectDescription.add_name

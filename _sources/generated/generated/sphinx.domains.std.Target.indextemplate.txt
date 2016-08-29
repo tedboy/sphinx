@@ -1,0 +1,6 @@
+sphinx.domains.std.Target.indextemplate
+=======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Target.indextemplate

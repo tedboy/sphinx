@@ -1,0 +1,6 @@
+sphinx.search.Text.asdom
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.asdom

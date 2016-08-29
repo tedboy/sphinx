@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSXRefRole.result_nodes
+=================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSXRefRole.result_nodes

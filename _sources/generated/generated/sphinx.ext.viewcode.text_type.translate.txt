@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.text_type.translate
+=======================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: text_type.translate

@@ -1,0 +1,49 @@
+sphinx.domains.python.PyClasslike
+=================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyClasslike
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyClasslike.__init__
+   ~PyClasslike.add_name
+   ~PyClasslike.add_target_and_index
+   ~PyClasslike.after_content
+   ~PyClasslike.assert_has_content
+   ~PyClasslike.before_content
+   ~PyClasslike.debug
+   ~PyClasslike.directive_error
+   ~PyClasslike.error
+   ~PyClasslike.get_index_text
+   ~PyClasslike.get_signature_prefix
+   ~PyClasslike.get_signatures
+   ~PyClasslike.handle_signature
+   ~PyClasslike.info
+   ~PyClasslike.needs_arglist
+   ~PyClasslike.run
+   ~PyClasslike.severe
+   ~PyClasslike.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PyClasslike.doc_field_types
+   ~PyClasslike.final_argument_whitespace
+   ~PyClasslike.has_content
+   ~PyClasslike.option_spec
+   ~PyClasslike.optional_arguments
+   ~PyClasslike.required_arguments
+

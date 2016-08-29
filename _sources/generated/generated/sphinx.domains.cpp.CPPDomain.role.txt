@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPDomain.role
+=================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPDomain.role

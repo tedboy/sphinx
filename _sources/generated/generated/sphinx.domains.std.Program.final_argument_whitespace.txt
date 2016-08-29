@@ -1,0 +1,6 @@
+sphinx.domains.std.Program.final_argument_whitespace
+====================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Program.final_argument_whitespace

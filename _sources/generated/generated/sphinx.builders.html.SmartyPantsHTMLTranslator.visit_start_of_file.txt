@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.visit_start_of_file
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.visit_start_of_file

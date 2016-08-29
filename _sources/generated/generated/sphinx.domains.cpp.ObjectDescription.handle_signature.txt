@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ObjectDescription.handle_signature
+=====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ObjectDescription.handle_signature

@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.additional_dump_args
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: WebHTMLBuilder.additional_dump_args

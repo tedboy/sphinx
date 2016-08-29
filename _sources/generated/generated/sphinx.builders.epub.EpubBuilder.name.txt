@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.name
+=====================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: EpubBuilder.name

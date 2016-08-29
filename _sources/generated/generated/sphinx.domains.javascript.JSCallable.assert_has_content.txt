@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.assert_has_content
+=======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.assert_has_content

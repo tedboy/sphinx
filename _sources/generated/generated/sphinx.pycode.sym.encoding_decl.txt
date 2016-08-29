@@ -1,0 +1,6 @@
+sphinx.pycode.sym.encoding_decl
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.encoding_decl

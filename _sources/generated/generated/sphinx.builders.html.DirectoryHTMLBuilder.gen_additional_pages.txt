@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.gen_additional_pages
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.gen_additional_pages

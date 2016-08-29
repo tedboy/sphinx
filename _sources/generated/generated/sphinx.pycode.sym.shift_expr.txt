@@ -1,0 +1,6 @@
+sphinx.pycode.sym.shift_expr
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.shift_expr

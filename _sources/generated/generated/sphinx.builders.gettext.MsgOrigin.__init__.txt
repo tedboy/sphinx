@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MsgOrigin.__init__
+==========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: MsgOrigin.__init__

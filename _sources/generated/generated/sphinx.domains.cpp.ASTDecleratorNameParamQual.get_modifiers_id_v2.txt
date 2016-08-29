@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDecleratorNameParamQual.get_modifiers_id_v2
+=================================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDecleratorNameParamQual.get_modifiers_id_v2

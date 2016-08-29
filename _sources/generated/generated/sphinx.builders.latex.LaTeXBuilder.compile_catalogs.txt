@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.compile_catalogs
+===================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXBuilder.compile_catalogs

@@ -1,0 +1,87 @@
+sphinx.ext.mathbase.math
+========================
+.. currentmodule:: sphinx.ext.mathbase
+.. autoclass:: math
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~math.__init__
+   ~math.append
+   ~math.append_attr_list
+   ~math.asdom
+   ~math.astext
+   ~math.attlist
+   ~math.clear
+   ~math.coerce_append_attr_list
+   ~math.copy
+   ~math.copy_attr_coerce
+   ~math.copy_attr_concatenate
+   ~math.copy_attr_consistent
+   ~math.copy_attr_convert
+   ~math.deepcopy
+   ~math.delattr
+   ~math.emptytag
+   ~math.endtag
+   ~math.extend
+   ~math.first_child_matching_class
+   ~math.first_child_not_matching_class
+   ~math.get
+   ~math.get_language_code
+   ~math.has_key
+   ~math.hasattr
+   ~math.index
+   ~math.insert
+   ~math.is_not_default
+   ~math.is_not_known_attribute
+   ~math.is_not_list_attribute
+   ~math.next_node
+   ~math.non_default_attributes
+   ~math.note_referenced_by
+   ~math.pformat
+   ~math.pop
+   ~math.remove
+   ~math.replace
+   ~math.replace_attr
+   ~math.replace_self
+   ~math.set_class
+   ~math.setdefault
+   ~math.setup_child
+   ~math.shortrepr
+   ~math.starttag
+   ~math.traverse
+   ~math.update_all_atts
+   ~math.update_all_atts_coercion
+   ~math.update_all_atts_concatenating
+   ~math.update_all_atts_consistantly
+   ~math.update_all_atts_convert
+   ~math.update_basic_atts
+   ~math.walk
+   ~math.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~math.basic_attributes
+   ~math.child_text_separator
+   ~math.document
+   ~math.known_attributes
+   ~math.line
+   ~math.list_attributes
+   ~math.local_attributes
+   ~math.parent
+   ~math.source
+   ~math.tagname
+

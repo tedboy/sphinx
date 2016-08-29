@@ -1,0 +1,6 @@
+sphinx.builders.text.StringOutput.default_transforms
+====================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: StringOutput.default_transforms

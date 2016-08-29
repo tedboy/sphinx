@@ -1,0 +1,6 @@
+sphinx.pycode.sym.raise_stmt
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.raise_stmt

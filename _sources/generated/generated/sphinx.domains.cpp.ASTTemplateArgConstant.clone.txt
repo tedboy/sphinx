@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTemplateArgConstant.clone
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTemplateArgConstant.clone

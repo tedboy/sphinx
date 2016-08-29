@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParamPack.get_name
+==================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorParamPack.get_name

@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.severe
+==============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: ObjectDescription.severe

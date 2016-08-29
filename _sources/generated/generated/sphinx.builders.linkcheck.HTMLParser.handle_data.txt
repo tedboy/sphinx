@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.handle_data
+================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.handle_data

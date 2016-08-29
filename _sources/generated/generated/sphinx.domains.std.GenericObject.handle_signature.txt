@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.handle_signature
+=================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: GenericObject.handle_signature

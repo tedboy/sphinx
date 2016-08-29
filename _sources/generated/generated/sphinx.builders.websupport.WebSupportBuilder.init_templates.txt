@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.init_templates
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.init_templates

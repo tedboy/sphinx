@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.copy_image_files
+===========================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.copy_image_files

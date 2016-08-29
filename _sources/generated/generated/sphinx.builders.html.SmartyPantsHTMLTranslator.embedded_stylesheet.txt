@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.embedded_stylesheet
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.embedded_stylesheet

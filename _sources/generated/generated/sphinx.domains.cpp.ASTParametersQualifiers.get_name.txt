@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTParametersQualifiers.get_name
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTParametersQualifiers.get_name

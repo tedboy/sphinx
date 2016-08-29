@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.add_name
+====================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.add_name

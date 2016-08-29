@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.inheritance_diagram.non_default_attributes
+=========================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: inheritance_diagram.non_default_attributes

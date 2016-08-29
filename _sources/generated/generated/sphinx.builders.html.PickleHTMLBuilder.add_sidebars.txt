@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.add_sidebars
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.add_sidebars

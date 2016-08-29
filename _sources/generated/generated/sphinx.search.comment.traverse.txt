@@ -1,0 +1,6 @@
+sphinx.search.comment.traverse
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.traverse

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPNamespaceObject.optional_arguments
+========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPNamespaceObject.optional_arguments

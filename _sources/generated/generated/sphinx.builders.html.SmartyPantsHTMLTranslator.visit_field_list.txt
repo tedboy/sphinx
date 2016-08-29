@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.visit_field_list
+===============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.visit_field_list

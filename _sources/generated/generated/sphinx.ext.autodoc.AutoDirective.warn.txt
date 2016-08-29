@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.warn
+=====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutoDirective.warn

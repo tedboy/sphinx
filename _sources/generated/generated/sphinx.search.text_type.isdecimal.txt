@@ -1,0 +1,6 @@
+sphinx.search.text_type.isdecimal
+=================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.isdecimal

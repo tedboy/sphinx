@@ -1,0 +1,6 @@
+sphinx.pycode.text_type.upper
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: text_type.upper

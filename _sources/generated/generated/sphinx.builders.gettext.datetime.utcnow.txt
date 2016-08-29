@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.utcnow
+=======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.utcnow

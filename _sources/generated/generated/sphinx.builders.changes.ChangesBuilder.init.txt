@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.init
+===========================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: ChangesBuilder.init

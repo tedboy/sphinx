@@ -1,0 +1,6 @@
+sphinx.search.title.traverse
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.traverse

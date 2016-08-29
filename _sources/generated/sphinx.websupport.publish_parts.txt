@@ -1,0 +1,6 @@
+sphinx.websupport.publish_parts
+===============================
+
+.. currentmodule:: sphinx.websupport
+
+.. autofunction:: publish_parts

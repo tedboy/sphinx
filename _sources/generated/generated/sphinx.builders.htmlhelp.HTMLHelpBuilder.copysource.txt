@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.HTMLHelpBuilder.copysource
+===================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. autoattribute:: HTMLHelpBuilder.copysource

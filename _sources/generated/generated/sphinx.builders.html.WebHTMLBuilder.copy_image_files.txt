@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.copy_image_files
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.copy_image_files

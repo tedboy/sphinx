@@ -1,0 +1,93 @@
+sphinx.builders.html.SerializingHTMLBuilder
+===========================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: SerializingHTMLBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~SerializingHTMLBuilder.__init__
+   ~SerializingHTMLBuilder.add_sidebars
+   ~SerializingHTMLBuilder.build
+   ~SerializingHTMLBuilder.build_all
+   ~SerializingHTMLBuilder.build_specific
+   ~SerializingHTMLBuilder.build_update
+   ~SerializingHTMLBuilder.cleanup
+   ~SerializingHTMLBuilder.compile_all_catalogs
+   ~SerializingHTMLBuilder.compile_catalogs
+   ~SerializingHTMLBuilder.compile_specific_catalogs
+   ~SerializingHTMLBuilder.compile_update_catalogs
+   ~SerializingHTMLBuilder.copy_download_files
+   ~SerializingHTMLBuilder.copy_extra_files
+   ~SerializingHTMLBuilder.copy_image_files
+   ~SerializingHTMLBuilder.copy_static_files
+   ~SerializingHTMLBuilder.create_template_bridge
+   ~SerializingHTMLBuilder.dump_context
+   ~SerializingHTMLBuilder.dump_inventory
+   ~SerializingHTMLBuilder.dump_search_index
+   ~SerializingHTMLBuilder.finish
+   ~SerializingHTMLBuilder.gen_additional_pages
+   ~SerializingHTMLBuilder.gen_indices
+   ~SerializingHTMLBuilder.get_builder_config
+   ~SerializingHTMLBuilder.get_doc_context
+   ~SerializingHTMLBuilder.get_outdated_docs
+   ~SerializingHTMLBuilder.get_outfilename
+   ~SerializingHTMLBuilder.get_relative_uri
+   ~SerializingHTMLBuilder.get_target_uri
+   ~SerializingHTMLBuilder.get_theme_config
+   ~SerializingHTMLBuilder.handle_finish
+   ~SerializingHTMLBuilder.handle_page
+   ~SerializingHTMLBuilder.index_page
+   ~SerializingHTMLBuilder.init
+   ~SerializingHTMLBuilder.init_highlighter
+   ~SerializingHTMLBuilder.init_templates
+   ~SerializingHTMLBuilder.init_translator_class
+   ~SerializingHTMLBuilder.load_indexer
+   ~SerializingHTMLBuilder.post_process_images
+   ~SerializingHTMLBuilder.prepare_writing
+   ~SerializingHTMLBuilder.render_partial
+   ~SerializingHTMLBuilder.write
+   ~SerializingHTMLBuilder.write_buildinfo
+   ~SerializingHTMLBuilder.write_doc
+   ~SerializingHTMLBuilder.write_doc_serialized
+   ~SerializingHTMLBuilder.write_domain_indices
+   ~SerializingHTMLBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~SerializingHTMLBuilder.add_permalinks
+   ~SerializingHTMLBuilder.additional_dump_args
+   ~SerializingHTMLBuilder.allow_parallel
+   ~SerializingHTMLBuilder.copysource
+   ~SerializingHTMLBuilder.css_files
+   ~SerializingHTMLBuilder.default_sidebars
+   ~SerializingHTMLBuilder.embedded
+   ~SerializingHTMLBuilder.format
+   ~SerializingHTMLBuilder.globalcontext_filename
+   ~SerializingHTMLBuilder.implementation
+   ~SerializingHTMLBuilder.implementation_dumps_unicode
+   ~SerializingHTMLBuilder.indexer_dumps_unicode
+   ~SerializingHTMLBuilder.indexer_format
+   ~SerializingHTMLBuilder.link_suffix
+   ~SerializingHTMLBuilder.name
+   ~SerializingHTMLBuilder.out_suffix
+   ~SerializingHTMLBuilder.script_files
+   ~SerializingHTMLBuilder.search
+   ~SerializingHTMLBuilder.searchindex_filename
+   ~SerializingHTMLBuilder.supported_image_types
+   ~SerializingHTMLBuilder.versioning_compare
+   ~SerializingHTMLBuilder.versioning_method
+

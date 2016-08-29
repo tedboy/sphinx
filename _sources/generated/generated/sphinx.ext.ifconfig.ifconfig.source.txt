@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.source
+===================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: ifconfig.source

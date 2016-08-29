@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.set_description
+====================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.set_description

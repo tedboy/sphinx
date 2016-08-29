@@ -1,0 +1,6 @@
+sphinx.pycode.sym.pass_stmt
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.pass_stmt

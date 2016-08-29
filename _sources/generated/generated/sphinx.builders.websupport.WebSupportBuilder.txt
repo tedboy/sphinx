@@ -1,0 +1,92 @@
+sphinx.builders.websupport.WebSupportBuilder
+============================================
+.. currentmodule:: sphinx.builders.websupport
+.. autoclass:: WebSupportBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~WebSupportBuilder.__init__
+   ~WebSupportBuilder.add_sidebars
+   ~WebSupportBuilder.build
+   ~WebSupportBuilder.build_all
+   ~WebSupportBuilder.build_specific
+   ~WebSupportBuilder.build_update
+   ~WebSupportBuilder.cleanup
+   ~WebSupportBuilder.compile_all_catalogs
+   ~WebSupportBuilder.compile_catalogs
+   ~WebSupportBuilder.compile_specific_catalogs
+   ~WebSupportBuilder.compile_update_catalogs
+   ~WebSupportBuilder.copy_download_files
+   ~WebSupportBuilder.copy_extra_files
+   ~WebSupportBuilder.copy_image_files
+   ~WebSupportBuilder.copy_static_files
+   ~WebSupportBuilder.create_template_bridge
+   ~WebSupportBuilder.dump_context
+   ~WebSupportBuilder.dump_inventory
+   ~WebSupportBuilder.dump_search_index
+   ~WebSupportBuilder.finish
+   ~WebSupportBuilder.gen_additional_pages
+   ~WebSupportBuilder.gen_indices
+   ~WebSupportBuilder.get_builder_config
+   ~WebSupportBuilder.get_doc_context
+   ~WebSupportBuilder.get_outdated_docs
+   ~WebSupportBuilder.get_outfilename
+   ~WebSupportBuilder.get_relative_uri
+   ~WebSupportBuilder.get_target_uri
+   ~WebSupportBuilder.get_theme_config
+   ~WebSupportBuilder.handle_finish
+   ~WebSupportBuilder.handle_page
+   ~WebSupportBuilder.index_page
+   ~WebSupportBuilder.init
+   ~WebSupportBuilder.init_highlighter
+   ~WebSupportBuilder.init_templates
+   ~WebSupportBuilder.init_translator_class
+   ~WebSupportBuilder.load_indexer
+   ~WebSupportBuilder.post_process_images
+   ~WebSupportBuilder.prepare_writing
+   ~WebSupportBuilder.render_partial
+   ~WebSupportBuilder.set_webinfo
+   ~WebSupportBuilder.write
+   ~WebSupportBuilder.write_buildinfo
+   ~WebSupportBuilder.write_doc
+   ~WebSupportBuilder.write_doc_serialized
+   ~WebSupportBuilder.write_domain_indices
+   ~WebSupportBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~WebSupportBuilder.add_permalinks
+   ~WebSupportBuilder.additional_dump_args
+   ~WebSupportBuilder.allow_parallel
+   ~WebSupportBuilder.copysource
+   ~WebSupportBuilder.css_files
+   ~WebSupportBuilder.default_sidebars
+   ~WebSupportBuilder.embedded
+   ~WebSupportBuilder.format
+   ~WebSupportBuilder.globalcontext_filename
+   ~WebSupportBuilder.implementation_dumps_unicode
+   ~WebSupportBuilder.indexer_dumps_unicode
+   ~WebSupportBuilder.link_suffix
+   ~WebSupportBuilder.name
+   ~WebSupportBuilder.out_suffix
+   ~WebSupportBuilder.script_files
+   ~WebSupportBuilder.search
+   ~WebSupportBuilder.searchindex_filename
+   ~WebSupportBuilder.supported_image_types
+   ~WebSupportBuilder.versioning_compare
+   ~WebSupportBuilder.versioning_method
+

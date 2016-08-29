@@ -1,0 +1,6 @@
+sphinx.util.get_full_modname
+============================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: get_full_modname

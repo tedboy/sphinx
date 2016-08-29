@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.embedded
+=====================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.embedded

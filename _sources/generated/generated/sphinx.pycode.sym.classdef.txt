@@ -1,0 +1,6 @@
+sphinx.pycode.sym.classdef
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.classdef

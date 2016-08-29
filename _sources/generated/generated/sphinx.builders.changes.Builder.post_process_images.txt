@@ -1,0 +1,6 @@
+sphinx.builders.changes.Builder.post_process_images
+===================================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: Builder.post_process_images

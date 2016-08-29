@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Options.update
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: Options.update

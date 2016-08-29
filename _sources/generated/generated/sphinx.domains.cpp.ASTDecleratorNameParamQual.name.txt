@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDecleratorNameParamQual.name
+==================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: ASTDecleratorNameParamQual.name

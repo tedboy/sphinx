@@ -1,0 +1,6 @@
+sphinx.locale.UserString.istitle
+================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.istitle

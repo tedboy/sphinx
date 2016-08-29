@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.cleanup_tempdir
+==================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: cleanup_tempdir

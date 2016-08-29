@@ -1,0 +1,40 @@
+sphinx.domains.std.ProductionList
+=================================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: ProductionList
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ProductionList.__init__
+   ~ProductionList.add_name
+   ~ProductionList.assert_has_content
+   ~ProductionList.debug
+   ~ProductionList.directive_error
+   ~ProductionList.error
+   ~ProductionList.info
+   ~ProductionList.run
+   ~ProductionList.severe
+   ~ProductionList.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ProductionList.final_argument_whitespace
+   ~ProductionList.has_content
+   ~ProductionList.option_spec
+   ~ProductionList.optional_arguments
+   ~ProductionList.required_arguments
+

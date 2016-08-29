@@ -1,0 +1,6 @@
+sphinx.pycode.sym.eval_input
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.eval_input

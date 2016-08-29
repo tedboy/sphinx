@@ -1,0 +1,6 @@
+sphinx.locale.text_type.count
+=============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.count

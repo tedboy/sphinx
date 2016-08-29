@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_acks
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_acks

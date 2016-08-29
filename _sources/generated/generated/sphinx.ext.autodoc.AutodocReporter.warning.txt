@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutodocReporter.warning
+==========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutodocReporter.warning

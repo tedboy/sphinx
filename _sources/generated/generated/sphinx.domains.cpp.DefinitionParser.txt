@@ -1,0 +1,46 @@
+sphinx.domains.cpp.DefinitionParser
+===================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: DefinitionParser
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DefinitionParser.__init__
+   ~DefinitionParser.assert_end
+   ~DefinitionParser.backout
+   ~DefinitionParser.fail
+   ~DefinitionParser.match
+   ~DefinitionParser.parse_class_object
+   ~DefinitionParser.parse_enum_object
+   ~DefinitionParser.parse_enumerator_object
+   ~DefinitionParser.parse_function_object
+   ~DefinitionParser.parse_member_object
+   ~DefinitionParser.parse_namespace_object
+   ~DefinitionParser.parse_type_object
+   ~DefinitionParser.parse_xref_object
+   ~DefinitionParser.read_rest
+   ~DefinitionParser.skip_string
+   ~DefinitionParser.skip_word
+   ~DefinitionParser.skip_word_and_ws
+   ~DefinitionParser.skip_ws
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~DefinitionParser.current_char
+   ~DefinitionParser.eof
+   ~DefinitionParser.matched_text
+

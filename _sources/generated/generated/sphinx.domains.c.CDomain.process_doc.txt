@@ -1,0 +1,6 @@
+sphinx.domains.c.CDomain.process_doc
+====================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CDomain.process_doc

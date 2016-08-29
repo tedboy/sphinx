@@ -1,0 +1,6 @@
+sphinx.builders.gettext.Builder.build_specific
+==============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: Builder.build_specific

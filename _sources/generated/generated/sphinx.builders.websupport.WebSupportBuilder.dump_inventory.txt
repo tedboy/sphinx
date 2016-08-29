@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.dump_inventory
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.dump_inventory

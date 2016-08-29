@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.run
+============================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.run

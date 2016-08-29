@@ -1,0 +1,31 @@
+sphinx.domains.cpp.Field
+========================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: Field
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Field.__init__
+   ~Field.make_entry
+   ~Field.make_field
+   ~Field.make_xref
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Field.is_grouped
+   ~Field.is_typed
+

@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.get_theme_config
+=============================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: StandaloneHTMLBuilder.get_theme_config

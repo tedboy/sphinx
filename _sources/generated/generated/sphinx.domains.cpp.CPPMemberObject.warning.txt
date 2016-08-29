@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPMemberObject.warning
+==========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPMemberObject.warning

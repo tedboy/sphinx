@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.severe
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.severe

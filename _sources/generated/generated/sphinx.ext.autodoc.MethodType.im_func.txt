@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.MethodType.im_func
+=====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: MethodType.im_func

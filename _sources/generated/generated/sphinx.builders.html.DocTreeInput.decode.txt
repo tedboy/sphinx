@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.decode
+========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DocTreeInput.decode

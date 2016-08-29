@@ -1,0 +1,6 @@
+sphinx.search.raw.deepcopy
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.deepcopy

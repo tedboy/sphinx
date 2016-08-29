@@ -1,0 +1,6 @@
+sphinx.builders.ParallelTasks.add_task
+======================================
+
+.. currentmodule:: sphinx.builders
+
+.. automethod:: ParallelTasks.add_task

@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.get_index_text
+=======================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.get_index_text

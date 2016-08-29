@@ -1,0 +1,6 @@
+sphinx.search.comment.hasattr
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.hasattr

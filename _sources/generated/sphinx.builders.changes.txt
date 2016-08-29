@@ -1,0 +1,47 @@
+.. automodule:: sphinx.builders.changes
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      bold
+      copy_static_entry
+      ensuredir
+      htmlescape
+      iteritems
+      os_path
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      ChangesBuilder
+      Theme
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.changes.Builder
+       generated/sphinx.builders.changes.ChangesBuilder
+       generated/sphinx.builders.changes.Theme
+
+   
+   
+
+   
+   
+   

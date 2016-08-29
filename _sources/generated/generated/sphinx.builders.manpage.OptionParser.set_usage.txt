@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.set_usage
+==============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.set_usage

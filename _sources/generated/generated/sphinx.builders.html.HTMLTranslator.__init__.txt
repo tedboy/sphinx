@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.__init__
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.__init__

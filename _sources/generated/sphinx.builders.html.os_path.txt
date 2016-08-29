@@ -1,0 +1,6 @@
+sphinx.builders.html.os_path
+============================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: os_path

@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcleanupDirective.has_content
+===================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: TestcleanupDirective.has_content

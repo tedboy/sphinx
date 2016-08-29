@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.setup_child
+========================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.setup_child

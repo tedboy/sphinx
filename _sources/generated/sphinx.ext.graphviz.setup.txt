@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.setup
+=========================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autofunction:: setup

@@ -1,0 +1,6 @@
+sphinx.search.comment.line
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: comment.line

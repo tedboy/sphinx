@@ -1,0 +1,6 @@
+sphinx.builders.changes.Theme.get_options
+=========================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: Theme.get_options

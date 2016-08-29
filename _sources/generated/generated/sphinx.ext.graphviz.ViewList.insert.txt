@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.insert
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.insert

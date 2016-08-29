@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParamPack.prefix_nested_name
+============================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorParamPack.prefix_nested_name

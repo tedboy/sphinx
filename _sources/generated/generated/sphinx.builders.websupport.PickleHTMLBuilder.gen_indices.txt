@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.gen_indices
+========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.gen_indices

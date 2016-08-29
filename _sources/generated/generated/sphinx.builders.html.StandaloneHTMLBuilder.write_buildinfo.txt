@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.write_buildinfo
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.write_buildinfo

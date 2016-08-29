@@ -1,0 +1,21 @@
+sphinx.domains.std.EnvVarXRefRole
+=================================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: EnvVarXRefRole
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~EnvVarXRefRole.__init__
+   ~EnvVarXRefRole.process_link
+   ~EnvVarXRefRole.result_nodes
+
+
+
+
+

@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.embedded
+=============================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.embedded

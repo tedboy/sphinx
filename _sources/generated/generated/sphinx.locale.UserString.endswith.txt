@@ -1,0 +1,6 @@
+sphinx.locale.UserString.endswith
+=================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.endswith

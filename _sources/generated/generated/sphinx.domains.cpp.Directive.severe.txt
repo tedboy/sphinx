@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Directive.severe
+===================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: Directive.severe

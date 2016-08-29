@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXWriter.config_section_dependencies
+=============================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: LaTeXWriter.config_section_dependencies

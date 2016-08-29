@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.search
+===================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.search

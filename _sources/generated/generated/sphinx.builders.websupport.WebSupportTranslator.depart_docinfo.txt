@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_docinfo
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_docinfo

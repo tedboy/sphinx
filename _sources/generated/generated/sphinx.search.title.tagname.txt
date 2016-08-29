@@ -1,0 +1,6 @@
+sphinx.search.title.tagname
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: title.tagname

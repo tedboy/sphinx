@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.words_and_spaces
+===============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.words_and_spaces

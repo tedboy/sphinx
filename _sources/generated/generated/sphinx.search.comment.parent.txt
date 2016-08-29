@@ -1,0 +1,6 @@
+sphinx.search.comment.parent
+============================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: comment.parent

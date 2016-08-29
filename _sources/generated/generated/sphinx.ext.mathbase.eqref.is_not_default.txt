@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.is_not_default
+========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.is_not_default

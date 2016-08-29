@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXWriter.get_transforms
+================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXWriter.get_transforms

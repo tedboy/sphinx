@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_desc_parameterlist
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_desc_parameterlist

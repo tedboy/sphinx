@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_note
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_note

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.object_description
+=====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: object_description

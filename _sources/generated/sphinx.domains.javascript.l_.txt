@@ -1,0 +1,6 @@
+sphinx.domains.javascript.l_
+============================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autofunction:: l_

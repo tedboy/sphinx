@@ -1,0 +1,23 @@
+sphinx.domains.cpp.ASTBase
+==========================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTBase
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTBase.clone
+   ~ASTBase.get_id_v1
+   ~ASTBase.get_id_v2
+   ~ASTBase.get_name
+   ~ASTBase.prefix_nested_name
+
+
+
+
+

@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.build_update
+===========================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLBuilder.build_update

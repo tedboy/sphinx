@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.stopwords
+==================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. autoattribute:: CObject.stopwords

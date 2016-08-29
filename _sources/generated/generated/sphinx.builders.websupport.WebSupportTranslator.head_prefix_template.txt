@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.head_prefix_template
+====================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.head_prefix_template

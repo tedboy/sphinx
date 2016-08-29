@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.child_text_separator
+=================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: graphviz.child_text_separator

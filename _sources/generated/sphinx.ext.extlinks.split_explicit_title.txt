@@ -1,0 +1,6 @@
+sphinx.ext.extlinks.split_explicit_title
+========================================
+
+.. currentmodule:: sphinx.ext.extlinks
+
+.. autofunction:: split_explicit_title

@@ -1,0 +1,6 @@
+sphinx.util.text_type.isalnum
+=============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: text_type.isalnum

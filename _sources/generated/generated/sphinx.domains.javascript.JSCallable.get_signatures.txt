@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.get_signatures
+===================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.get_signatures

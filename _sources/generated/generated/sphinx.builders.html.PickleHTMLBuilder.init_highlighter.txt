@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.init_highlighter
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.init_highlighter

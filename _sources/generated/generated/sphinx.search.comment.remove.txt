@@ -1,0 +1,6 @@
+sphinx.search.comment.remove
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.remove

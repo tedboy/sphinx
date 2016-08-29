@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.init_translator_class
+==================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.init_translator_class

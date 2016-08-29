@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.build_specific
+============================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: MessageCatalogBuilder.build_specific

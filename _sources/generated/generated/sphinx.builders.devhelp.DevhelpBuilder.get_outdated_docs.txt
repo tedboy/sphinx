@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.get_outdated_docs
+========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.get_outdated_docs

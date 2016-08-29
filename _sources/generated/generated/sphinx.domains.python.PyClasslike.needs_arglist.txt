@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.needs_arglist
+===============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.needs_arglist

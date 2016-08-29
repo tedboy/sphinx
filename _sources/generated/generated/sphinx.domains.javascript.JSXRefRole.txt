@@ -1,0 +1,21 @@
+sphinx.domains.javascript.JSXRefRole
+====================================
+.. currentmodule:: sphinx.domains.javascript
+.. autoclass:: JSXRefRole
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~JSXRefRole.__init__
+   ~JSXRefRole.process_link
+   ~JSXRefRole.result_nodes
+
+
+
+
+

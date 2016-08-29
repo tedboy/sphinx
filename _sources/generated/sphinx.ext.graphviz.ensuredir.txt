@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ensuredir
+=============================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autofunction:: ensuredir

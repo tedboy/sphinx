@@ -1,0 +1,45 @@
+sphinx.builders.text.TextWriter
+===============================
+.. currentmodule:: sphinx.builders.text
+.. autoclass:: TextWriter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TextWriter.__init__
+   ~TextWriter.assemble_parts
+   ~TextWriter.get_transforms
+   ~TextWriter.supports
+   ~TextWriter.translate
+   ~TextWriter.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TextWriter.component_type
+   ~TextWriter.config_section
+   ~TextWriter.config_section_dependencies
+   ~TextWriter.default_transforms
+   ~TextWriter.destination
+   ~TextWriter.document
+   ~TextWriter.language
+   ~TextWriter.output
+   ~TextWriter.relative_path_settings
+   ~TextWriter.settings_default_overrides
+   ~TextWriter.settings_defaults
+   ~TextWriter.settings_spec
+   ~TextWriter.supported
+   ~TextWriter.unknown_reference_resolvers
+

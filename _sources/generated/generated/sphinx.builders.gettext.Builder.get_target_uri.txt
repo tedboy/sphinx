@@ -1,0 +1,6 @@
+sphinx.builders.gettext.Builder.get_target_uri
+==============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: Builder.get_target_uri

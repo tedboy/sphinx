@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.add_name
+========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Directive.add_name

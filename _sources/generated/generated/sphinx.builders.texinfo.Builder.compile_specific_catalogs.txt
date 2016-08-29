@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.Builder.compile_specific_catalogs
+=========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: Builder.compile_specific_catalogs

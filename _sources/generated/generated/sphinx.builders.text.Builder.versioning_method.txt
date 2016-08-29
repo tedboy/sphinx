@@ -1,0 +1,6 @@
+sphinx.builders.text.Builder.versioning_method
+==============================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: Builder.versioning_method

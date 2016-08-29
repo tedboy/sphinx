@@ -1,0 +1,6 @@
+sphinx.domains.python.PyModule.add_name
+=======================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyModule.add_name

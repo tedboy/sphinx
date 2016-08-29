@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.visit_rubric
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.visit_rubric

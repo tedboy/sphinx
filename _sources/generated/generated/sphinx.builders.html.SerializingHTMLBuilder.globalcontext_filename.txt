@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.globalcontext_filename
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.globalcontext_filename

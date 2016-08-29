@@ -1,0 +1,6 @@
+sphinx.domains.rst.iteritems
+============================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autofunction:: iteritems

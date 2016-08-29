@@ -1,0 +1,6 @@
+sphinx.ext.doctest.binary_type.lower
+====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: binary_type.lower

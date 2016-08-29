@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.info
+==================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.info

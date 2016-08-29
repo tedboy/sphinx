@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleAnalyzer.cache
+=======================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ModuleAnalyzer.cache

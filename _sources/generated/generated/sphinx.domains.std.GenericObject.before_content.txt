@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.before_content
+===============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: GenericObject.before_content

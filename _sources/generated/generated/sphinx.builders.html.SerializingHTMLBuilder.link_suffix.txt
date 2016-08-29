@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.link_suffix
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.link_suffix

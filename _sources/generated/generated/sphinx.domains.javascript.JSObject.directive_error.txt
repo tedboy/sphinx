@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.directive_error
+==================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSObject.directive_error

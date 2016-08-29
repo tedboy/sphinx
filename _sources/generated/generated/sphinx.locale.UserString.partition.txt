@@ -1,0 +1,6 @@
+sphinx.locale.UserString.partition
+==================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.partition

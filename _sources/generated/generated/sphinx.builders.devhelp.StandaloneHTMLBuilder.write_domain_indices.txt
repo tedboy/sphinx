@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.StandaloneHTMLBuilder.write_domain_indices
+==================================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: StandaloneHTMLBuilder.write_domain_indices

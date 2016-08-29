@@ -1,0 +1,6 @@
+sphinx.builders.Builder.allow_parallel
+======================================
+
+.. currentmodule:: sphinx.builders
+
+.. autoattribute:: Builder.allow_parallel

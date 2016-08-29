@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.6.2.15. sphinx.builders.html.StandaloneHTMLBuilder &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="4.6. sphinx.builders.html" href="../sphinx.builders.html.html"/>
+        <link rel="next" title="4.6.2.15.1.1. sphinx.builders.html.StandaloneHTMLBuilder.__init__" href="sphinx.builders.html.StandaloneHTMLBuilder.__init__.html"/>
+        <link rel="prev" title="4.6.2.14.2.16. sphinx.builders.html.SmartyPantsHTMLTranslator.xml_declaration" href="sphinx.builders.html.SmartyPantsHTMLTranslator.xml_declaration.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.epub.html">4.4. sphinx.builders.epub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.builders.html.html">4.6. sphinx.builders.html</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.builders.html.html#functions">4.6.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.builders.html.html#classes">4.6.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.Builder.html">4.6.2.1. sphinx.builders.html.Builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.DirectoryHTMLBuilder.html">4.6.2.2. sphinx.builders.html.DirectoryHTMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.DocTreeInput.html">4.6.2.3. sphinx.builders.html.DocTreeInput</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.DoctreeReader.html">4.6.2.4. sphinx.builders.html.DoctreeReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.HTMLTranslator.html">4.6.2.5. sphinx.builders.html.HTMLTranslator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.HTMLWriter.html">4.6.2.6. sphinx.builders.html.HTMLWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.JSONHTMLBuilder.html">4.6.2.7. sphinx.builders.html.JSONHTMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.OptionParser.html">4.6.2.8. sphinx.builders.html.OptionParser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.PickleHTMLBuilder.html">4.6.2.9. sphinx.builders.html.PickleHTMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.Publisher.html">4.6.2.10. sphinx.builders.html.Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.PygmentsBridge.html">4.6.2.11. sphinx.builders.html.PygmentsBridge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.SerializingHTMLBuilder.html">4.6.2.12. sphinx.builders.html.SerializingHTMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.SingleFileHTMLBuilder.html">4.6.2.13. sphinx.builders.html.SingleFileHTMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.SmartyPantsHTMLTranslator.html">4.6.2.14. sphinx.builders.html.SmartyPantsHTMLTranslator</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">4.6.2.15. sphinx.builders.html.StandaloneHTMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.StringOutput.html">4.6.2.16. sphinx.builders.html.StringOutput</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.Theme.html">4.6.2.17. sphinx.builders.html.Theme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.WebHTMLBuilder.html">4.6.2.18. sphinx.builders.html.WebHTMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.html.text_type.html">4.6.2.19. sphinx.builders.html.text_type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.xml.html">4.15. sphinx.builders.xml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.builders.html.html">4.6. sphinx.builders.html</a> &raquo;</li>
+        
+      <li>4.6.2.15. sphinx.builders.html.StandaloneHTMLBuilder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.builders.html.StandaloneHTMLBuilder.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-builders-html-standalonehtmlbuilder">
+<h1>4.6.2.15. sphinx.builders.html.StandaloneHTMLBuilder<a class="headerlink" href="#sphinx-builders-html-standalonehtmlbuilder" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.builders.html.StandaloneHTMLBuilder">
+<em class="property">class </em><code class="descclassname">sphinx.builders.html.</code><code class="descname">StandaloneHTMLBuilder</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sphinx/builders/html.html#StandaloneHTMLBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.builders.html.StandaloneHTMLBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds standalone HTML docs.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>4.6.2.15.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.__init__.html#sphinx.builders.html.StandaloneHTMLBuilder.__init__" title="sphinx.builders.html.StandaloneHTMLBuilder.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(app)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.add_sidebars.html#sphinx.builders.html.StandaloneHTMLBuilder.add_sidebars" title="sphinx.builders.html.StandaloneHTMLBuilder.add_sidebars"><code class="xref py py-obj docutils literal"><span class="pre">add_sidebars</span></code></a>(pagename,&nbsp;ctx)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.build.html#sphinx.builders.html.StandaloneHTMLBuilder.build" title="sphinx.builders.html.StandaloneHTMLBuilder.build"><code class="xref py py-obj docutils literal"><span class="pre">build</span></code></a>(docnames[,&nbsp;summary,&nbsp;method])</td>
+<td>Main build method.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.build_all.html#sphinx.builders.html.StandaloneHTMLBuilder.build_all" title="sphinx.builders.html.StandaloneHTMLBuilder.build_all"><code class="xref py py-obj docutils literal"><span class="pre">build_all</span></code></a>()</td>
+<td>Build all source files.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.build_specific.html#sphinx.builders.html.StandaloneHTMLBuilder.build_specific" title="sphinx.builders.html.StandaloneHTMLBuilder.build_specific"><code class="xref py py-obj docutils literal"><span class="pre">build_specific</span></code></a>(filenames)</td>
+<td>Only rebuild as much as needed for changes in the <em>filenames</em>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.build_update.html#sphinx.builders.html.StandaloneHTMLBuilder.build_update" title="sphinx.builders.html.StandaloneHTMLBuilder.build_update"><code class="xref py py-obj docutils literal"><span class="pre">build_update</span></code></a>()</td>
+<td>Only rebuild what was changed or added since last build.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.cleanup.html#sphinx.builders.html.StandaloneHTMLBuilder.cleanup" title="sphinx.builders.html.StandaloneHTMLBuilder.cleanup"><code class="xref py py-obj docutils literal"><span class="pre">cleanup</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.compile_all_catalogs.html#sphinx.builders.html.StandaloneHTMLBuilder.compile_all_catalogs" title="sphinx.builders.html.StandaloneHTMLBuilder.compile_all_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_all_catalogs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.compile_catalogs.html#sphinx.builders.html.StandaloneHTMLBuilder.compile_catalogs" title="sphinx.builders.html.StandaloneHTMLBuilder.compile_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_catalogs</span></code></a>(catalogs,&nbsp;message)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.compile_specific_catalogs.html#sphinx.builders.html.StandaloneHTMLBuilder.compile_specific_catalogs" title="sphinx.builders.html.StandaloneHTMLBuilder.compile_specific_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_specific_catalogs</span></code></a>(specified_files)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.compile_update_catalogs.html#sphinx.builders.html.StandaloneHTMLBuilder.compile_update_catalogs" title="sphinx.builders.html.StandaloneHTMLBuilder.compile_update_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_update_catalogs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.copy_download_files.html#sphinx.builders.html.StandaloneHTMLBuilder.copy_download_files" title="sphinx.builders.html.StandaloneHTMLBuilder.copy_download_files"><code class="xref py py-obj docutils literal"><span class="pre">copy_download_files</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.copy_extra_files.html#sphinx.builders.html.StandaloneHTMLBuilder.copy_extra_files" title="sphinx.builders.html.StandaloneHTMLBuilder.copy_extra_files"><code class="xref py py-obj docutils literal"><span class="pre">copy_extra_files</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.copy_image_files.html#sphinx.builders.html.StandaloneHTMLBuilder.copy_image_files" title="sphinx.builders.html.StandaloneHTMLBuilder.copy_image_files"><code class="xref py py-obj docutils literal"><span class="pre">copy_image_files</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.copy_static_files.html#sphinx.builders.html.StandaloneHTMLBuilder.copy_static_files" title="sphinx.builders.html.StandaloneHTMLBuilder.copy_static_files"><code class="xref py py-obj docutils literal"><span class="pre">copy_static_files</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.create_template_bridge.html#sphinx.builders.html.StandaloneHTMLBuilder.create_template_bridge" title="sphinx.builders.html.StandaloneHTMLBuilder.create_template_bridge"><code class="xref py py-obj docutils literal"><span class="pre">create_template_bridge</span></code></a>()</td>
+<td>Return the template bridge configured.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.dump_inventory.html#sphinx.builders.html.StandaloneHTMLBuilder.dump_inventory" title="sphinx.builders.html.StandaloneHTMLBuilder.dump_inventory"><code class="xref py py-obj docutils literal"><span class="pre">dump_inventory</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.dump_search_index.html#sphinx.builders.html.StandaloneHTMLBuilder.dump_search_index" title="sphinx.builders.html.StandaloneHTMLBuilder.dump_search_index"><code class="xref py py-obj docutils literal"><span class="pre">dump_search_index</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.finish.html#sphinx.builders.html.StandaloneHTMLBuilder.finish" title="sphinx.builders.html.StandaloneHTMLBuilder.finish"><code class="xref py py-obj docutils literal"><span class="pre">finish</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.gen_additional_pages.html#sphinx.builders.html.StandaloneHTMLBuilder.gen_additional_pages" title="sphinx.builders.html.StandaloneHTMLBuilder.gen_additional_pages"><code class="xref py py-obj docutils literal"><span class="pre">gen_additional_pages</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.gen_indices.html#sphinx.builders.html.StandaloneHTMLBuilder.gen_indices" title="sphinx.builders.html.StandaloneHTMLBuilder.gen_indices"><code class="xref py py-obj docutils literal"><span class="pre">gen_indices</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.get_builder_config.html#sphinx.builders.html.StandaloneHTMLBuilder.get_builder_config" title="sphinx.builders.html.StandaloneHTMLBuilder.get_builder_config"><code class="xref py py-obj docutils literal"><span class="pre">get_builder_config</span></code></a>(option,&nbsp;default)</td>
+<td>Return a builder specific option.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.get_doc_context.html#sphinx.builders.html.StandaloneHTMLBuilder.get_doc_context" title="sphinx.builders.html.StandaloneHTMLBuilder.get_doc_context"><code class="xref py py-obj docutils literal"><span class="pre">get_doc_context</span></code></a>(docname,&nbsp;body,&nbsp;metatags)</td>
+<td>Collect items for the template context of a page.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.get_outdated_docs.html#sphinx.builders.html.StandaloneHTMLBuilder.get_outdated_docs" title="sphinx.builders.html.StandaloneHTMLBuilder.get_outdated_docs"><code class="xref py py-obj docutils literal"><span class="pre">get_outdated_docs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.get_outfilename.html#sphinx.builders.html.StandaloneHTMLBuilder.get_outfilename" title="sphinx.builders.html.StandaloneHTMLBuilder.get_outfilename"><code class="xref py py-obj docutils literal"><span class="pre">get_outfilename</span></code></a>(pagename)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.get_relative_uri.html#sphinx.builders.html.StandaloneHTMLBuilder.get_relative_uri" title="sphinx.builders.html.StandaloneHTMLBuilder.get_relative_uri"><code class="xref py py-obj docutils literal"><span class="pre">get_relative_uri</span></code></a>(<a href="#id1"><span class="problematic" id="id2">from_</span></a>,&nbsp;to[,&nbsp;typ])</td>
+<td>Return a relative URI between two source filenames.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.get_target_uri.html#sphinx.builders.html.StandaloneHTMLBuilder.get_target_uri" title="sphinx.builders.html.StandaloneHTMLBuilder.get_target_uri"><code class="xref py py-obj docutils literal"><span class="pre">get_target_uri</span></code></a>(docname[,&nbsp;typ])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.get_theme_config.html#sphinx.builders.html.StandaloneHTMLBuilder.get_theme_config" title="sphinx.builders.html.StandaloneHTMLBuilder.get_theme_config"><code class="xref py py-obj docutils literal"><span class="pre">get_theme_config</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.handle_finish.html#sphinx.builders.html.StandaloneHTMLBuilder.handle_finish" title="sphinx.builders.html.StandaloneHTMLBuilder.handle_finish"><code class="xref py py-obj docutils literal"><span class="pre">handle_finish</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.handle_page.html#sphinx.builders.html.StandaloneHTMLBuilder.handle_page" title="sphinx.builders.html.StandaloneHTMLBuilder.handle_page"><code class="xref py py-obj docutils literal"><span class="pre">handle_page</span></code></a>(pagename,&nbsp;addctx[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.index_page.html#sphinx.builders.html.StandaloneHTMLBuilder.index_page" title="sphinx.builders.html.StandaloneHTMLBuilder.index_page"><code class="xref py py-obj docutils literal"><span class="pre">index_page</span></code></a>(pagename,&nbsp;doctree,&nbsp;title)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.init.html#sphinx.builders.html.StandaloneHTMLBuilder.init" title="sphinx.builders.html.StandaloneHTMLBuilder.init"><code class="xref py py-obj docutils literal"><span class="pre">init</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.init_highlighter.html#sphinx.builders.html.StandaloneHTMLBuilder.init_highlighter" title="sphinx.builders.html.StandaloneHTMLBuilder.init_highlighter"><code class="xref py py-obj docutils literal"><span class="pre">init_highlighter</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.init_templates.html#sphinx.builders.html.StandaloneHTMLBuilder.init_templates" title="sphinx.builders.html.StandaloneHTMLBuilder.init_templates"><code class="xref py py-obj docutils literal"><span class="pre">init_templates</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.init_translator_class.html#sphinx.builders.html.StandaloneHTMLBuilder.init_translator_class" title="sphinx.builders.html.StandaloneHTMLBuilder.init_translator_class"><code class="xref py py-obj docutils literal"><span class="pre">init_translator_class</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.load_indexer.html#sphinx.builders.html.StandaloneHTMLBuilder.load_indexer" title="sphinx.builders.html.StandaloneHTMLBuilder.load_indexer"><code class="xref py py-obj docutils literal"><span class="pre">load_indexer</span></code></a>(docnames)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.post_process_images.html#sphinx.builders.html.StandaloneHTMLBuilder.post_process_images" title="sphinx.builders.html.StandaloneHTMLBuilder.post_process_images"><code class="xref py py-obj docutils literal"><span class="pre">post_process_images</span></code></a>(doctree)</td>
+<td>Pick the best candidate for an image and link down-scaled images to their high res version.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.prepare_writing.html#sphinx.builders.html.StandaloneHTMLBuilder.prepare_writing" title="sphinx.builders.html.StandaloneHTMLBuilder.prepare_writing"><code class="xref py py-obj docutils literal"><span class="pre">prepare_writing</span></code></a>(docnames)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.render_partial.html#sphinx.builders.html.StandaloneHTMLBuilder.render_partial" title="sphinx.builders.html.StandaloneHTMLBuilder.render_partial"><code class="xref py py-obj docutils literal"><span class="pre">render_partial</span></code></a>(node)</td>
+<td>Utility: Render a lone doctree node.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.write.html#sphinx.builders.html.StandaloneHTMLBuilder.write" title="sphinx.builders.html.StandaloneHTMLBuilder.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>(build_docnames,&nbsp;updated_docnames[,&nbsp;method])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.write_buildinfo.html#sphinx.builders.html.StandaloneHTMLBuilder.write_buildinfo" title="sphinx.builders.html.StandaloneHTMLBuilder.write_buildinfo"><code class="xref py py-obj docutils literal"><span class="pre">write_buildinfo</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.write_doc.html#sphinx.builders.html.StandaloneHTMLBuilder.write_doc" title="sphinx.builders.html.StandaloneHTMLBuilder.write_doc"><code class="xref py py-obj docutils literal"><span class="pre">write_doc</span></code></a>(docname,&nbsp;doctree)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.write_doc_serialized.html#sphinx.builders.html.StandaloneHTMLBuilder.write_doc_serialized" title="sphinx.builders.html.StandaloneHTMLBuilder.write_doc_serialized"><code class="xref py py-obj docutils literal"><span class="pre">write_doc_serialized</span></code></a>(docname,&nbsp;doctree)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.write_domain_indices.html#sphinx.builders.html.StandaloneHTMLBuilder.write_domain_indices" title="sphinx.builders.html.StandaloneHTMLBuilder.write_domain_indices"><code class="xref py py-obj docutils literal"><span class="pre">write_domain_indices</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.write_genindex.html#sphinx.builders.html.StandaloneHTMLBuilder.write_genindex" title="sphinx.builders.html.StandaloneHTMLBuilder.write_genindex"><code class="xref py py-obj docutils literal"><span class="pre">write_genindex</span></code></a>()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>4.6.2.15.2. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.add_permalinks.html#sphinx.builders.html.StandaloneHTMLBuilder.add_permalinks" title="sphinx.builders.html.StandaloneHTMLBuilder.add_permalinks"><code class="xref py py-obj docutils literal"><span class="pre">add_permalinks</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.allow_parallel.html#sphinx.builders.html.StandaloneHTMLBuilder.allow_parallel" title="sphinx.builders.html.StandaloneHTMLBuilder.allow_parallel"><code class="xref py py-obj docutils literal"><span class="pre">allow_parallel</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.copysource.html#sphinx.builders.html.StandaloneHTMLBuilder.copysource" title="sphinx.builders.html.StandaloneHTMLBuilder.copysource"><code class="xref py py-obj docutils literal"><span class="pre">copysource</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.css_files.html#sphinx.builders.html.StandaloneHTMLBuilder.css_files" title="sphinx.builders.html.StandaloneHTMLBuilder.css_files"><code class="xref py py-obj docutils literal"><span class="pre">css_files</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.default_sidebars.html#sphinx.builders.html.StandaloneHTMLBuilder.default_sidebars" title="sphinx.builders.html.StandaloneHTMLBuilder.default_sidebars"><code class="xref py py-obj docutils literal"><span class="pre">default_sidebars</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.embedded.html#sphinx.builders.html.StandaloneHTMLBuilder.embedded" title="sphinx.builders.html.StandaloneHTMLBuilder.embedded"><code class="xref py py-obj docutils literal"><span class="pre">embedded</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.format.html#sphinx.builders.html.StandaloneHTMLBuilder.format" title="sphinx.builders.html.StandaloneHTMLBuilder.format"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.indexer_dumps_unicode.html#sphinx.builders.html.StandaloneHTMLBuilder.indexer_dumps_unicode" title="sphinx.builders.html.StandaloneHTMLBuilder.indexer_dumps_unicode"><code class="xref py py-obj docutils literal"><span class="pre">indexer_dumps_unicode</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.indexer_format.html#sphinx.builders.html.StandaloneHTMLBuilder.indexer_format" title="sphinx.builders.html.StandaloneHTMLBuilder.indexer_format"><code class="xref py py-obj docutils literal"><span class="pre">indexer_format</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.link_suffix.html#sphinx.builders.html.StandaloneHTMLBuilder.link_suffix" title="sphinx.builders.html.StandaloneHTMLBuilder.link_suffix"><code class="xref py py-obj docutils literal"><span class="pre">link_suffix</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.name.html#sphinx.builders.html.StandaloneHTMLBuilder.name" title="sphinx.builders.html.StandaloneHTMLBuilder.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.out_suffix.html#sphinx.builders.html.StandaloneHTMLBuilder.out_suffix" title="sphinx.builders.html.StandaloneHTMLBuilder.out_suffix"><code class="xref py py-obj docutils literal"><span class="pre">out_suffix</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.script_files.html#sphinx.builders.html.StandaloneHTMLBuilder.script_files" title="sphinx.builders.html.StandaloneHTMLBuilder.script_files"><code class="xref py py-obj docutils literal"><span class="pre">script_files</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.search.html#sphinx.builders.html.StandaloneHTMLBuilder.search" title="sphinx.builders.html.StandaloneHTMLBuilder.search"><code class="xref py py-obj docutils literal"><span class="pre">search</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.searchindex_filename.html#sphinx.builders.html.StandaloneHTMLBuilder.searchindex_filename" title="sphinx.builders.html.StandaloneHTMLBuilder.searchindex_filename"><code class="xref py py-obj docutils literal"><span class="pre">searchindex_filename</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.supported_image_types.html#sphinx.builders.html.StandaloneHTMLBuilder.supported_image_types" title="sphinx.builders.html.StandaloneHTMLBuilder.supported_image_types"><code class="xref py py-obj docutils literal"><span class="pre">supported_image_types</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.versioning_compare.html#sphinx.builders.html.StandaloneHTMLBuilder.versioning_compare" title="sphinx.builders.html.StandaloneHTMLBuilder.versioning_compare"><code class="xref py py-obj docutils literal"><span class="pre">versioning_compare</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.html.StandaloneHTMLBuilder.versioning_method.html#sphinx.builders.html.StandaloneHTMLBuilder.versioning_method" title="sphinx.builders.html.StandaloneHTMLBuilder.versioning_method"><code class="xref py py-obj docutils literal"><span class="pre">versioning_method</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.builders.html.StandaloneHTMLBuilder.__init__.html" class="btn btn-neutral float-right" title="4.6.2.15.1.1. sphinx.builders.html.StandaloneHTMLBuilder.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.builders.html.SmartyPantsHTMLTranslator.xml_declaration.html" class="btn btn-neutral" title="4.6.2.14.2.16. sphinx.builders.html.SmartyPantsHTMLTranslator.xml_declaration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

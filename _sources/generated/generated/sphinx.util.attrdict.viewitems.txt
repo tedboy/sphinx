@@ -1,0 +1,6 @@
+sphinx.util.attrdict.viewitems
+==============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.viewitems

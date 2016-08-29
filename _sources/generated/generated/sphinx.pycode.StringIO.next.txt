@@ -1,0 +1,6 @@
+sphinx.pycode.StringIO.next
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: StringIO.next

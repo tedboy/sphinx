@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.toc_metadata
+=============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.toc_metadata

@@ -1,0 +1,49 @@
+sphinx.domains.cpp.CPPEnumObject
+================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPEnumObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPEnumObject.__init__
+   ~CPPEnumObject.add_name
+   ~CPPEnumObject.add_target_and_index
+   ~CPPEnumObject.after_content
+   ~CPPEnumObject.assert_has_content
+   ~CPPEnumObject.before_content
+   ~CPPEnumObject.debug
+   ~CPPEnumObject.describe_signature
+   ~CPPEnumObject.directive_error
+   ~CPPEnumObject.error
+   ~CPPEnumObject.get_index_text
+   ~CPPEnumObject.get_signatures
+   ~CPPEnumObject.handle_signature
+   ~CPPEnumObject.info
+   ~CPPEnumObject.parse_definition
+   ~CPPEnumObject.run
+   ~CPPEnumObject.severe
+   ~CPPEnumObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CPPEnumObject.doc_field_types
+   ~CPPEnumObject.final_argument_whitespace
+   ~CPPEnumObject.has_content
+   ~CPPEnumObject.option_spec
+   ~CPPEnumObject.optional_arguments
+   ~CPPEnumObject.required_arguments
+

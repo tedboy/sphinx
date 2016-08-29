@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.deepcopy
+=================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.deepcopy

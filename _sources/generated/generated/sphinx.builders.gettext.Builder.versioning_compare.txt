@@ -1,0 +1,6 @@
+sphinx.builders.gettext.Builder.versioning_compare
+==================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: Builder.versioning_compare

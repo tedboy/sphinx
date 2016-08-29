@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.is_not_default
+=======================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.is_not_default

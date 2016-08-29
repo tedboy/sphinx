@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTrailingTypeSpecFundamental.__init__
+==========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTrailingTypeSpecFundamental.__init__

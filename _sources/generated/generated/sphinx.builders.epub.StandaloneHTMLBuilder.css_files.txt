@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.css_files
+====================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.css_files

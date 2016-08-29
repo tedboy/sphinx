@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.skip
+===================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autofunction:: skip

@@ -1,0 +1,33 @@
+sphinx.builders.xml.StringOutput
+================================
+.. currentmodule:: sphinx.builders.xml
+.. autoclass:: StringOutput
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~StringOutput.__init__
+   ~StringOutput.encode
+   ~StringOutput.get_transforms
+   ~StringOutput.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~StringOutput.component_type
+   ~StringOutput.default_destination_path
+   ~StringOutput.default_transforms
+   ~StringOutput.unknown_reference_resolvers
+

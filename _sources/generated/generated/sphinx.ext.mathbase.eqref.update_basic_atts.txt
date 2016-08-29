@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.update_basic_atts
+===========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.update_basic_atts

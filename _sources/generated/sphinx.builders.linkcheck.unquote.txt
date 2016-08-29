@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.unquote
+=================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: unquote

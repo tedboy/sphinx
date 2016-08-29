@@ -1,0 +1,40 @@
+sphinx.ext.doctest.DoctestDirective
+===================================
+.. currentmodule:: sphinx.ext.doctest
+.. autoclass:: DoctestDirective
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DoctestDirective.__init__
+   ~DoctestDirective.add_name
+   ~DoctestDirective.assert_has_content
+   ~DoctestDirective.debug
+   ~DoctestDirective.directive_error
+   ~DoctestDirective.error
+   ~DoctestDirective.info
+   ~DoctestDirective.run
+   ~DoctestDirective.severe
+   ~DoctestDirective.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~DoctestDirective.final_argument_whitespace
+   ~DoctestDirective.has_content
+   ~DoctestDirective.option_spec
+   ~DoctestDirective.optional_arguments
+   ~DoctestDirective.required_arguments
+

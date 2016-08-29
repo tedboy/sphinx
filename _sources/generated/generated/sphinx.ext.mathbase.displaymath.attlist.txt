@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.attlist
+=======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.attlist

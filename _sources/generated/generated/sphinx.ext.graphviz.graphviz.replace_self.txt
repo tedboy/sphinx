@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.replace_self
+=========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.replace_self

@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.set_class
+==================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.set_class

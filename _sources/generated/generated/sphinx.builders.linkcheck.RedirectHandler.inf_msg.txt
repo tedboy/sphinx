@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.RedirectHandler.inf_msg
+=================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: RedirectHandler.inf_msg

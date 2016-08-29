@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.astext
+======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.astext

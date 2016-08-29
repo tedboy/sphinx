@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.ModuleAnalyzer.find_attr_docs
+=================================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: ModuleAnalyzer.find_attr_docs

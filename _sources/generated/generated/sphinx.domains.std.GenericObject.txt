@@ -1,0 +1,48 @@
+sphinx.domains.std.GenericObject
+================================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: GenericObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~GenericObject.__init__
+   ~GenericObject.add_name
+   ~GenericObject.add_target_and_index
+   ~GenericObject.after_content
+   ~GenericObject.assert_has_content
+   ~GenericObject.before_content
+   ~GenericObject.debug
+   ~GenericObject.directive_error
+   ~GenericObject.error
+   ~GenericObject.get_signatures
+   ~GenericObject.handle_signature
+   ~GenericObject.info
+   ~GenericObject.run
+   ~GenericObject.severe
+   ~GenericObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~GenericObject.doc_field_types
+   ~GenericObject.final_argument_whitespace
+   ~GenericObject.has_content
+   ~GenericObject.indextemplate
+   ~GenericObject.option_spec
+   ~GenericObject.optional_arguments
+   ~GenericObject.parse_node
+   ~GenericObject.required_arguments
+

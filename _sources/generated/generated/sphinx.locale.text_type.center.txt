@@ -1,0 +1,6 @@
+sphinx.locale.text_type.center
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.center

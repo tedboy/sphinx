@@ -1,0 +1,11 @@
+sphinx.ext.autodoc.testcls
+==========================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: testcls
+   :undoc-members:
+
+
+
+
+
+

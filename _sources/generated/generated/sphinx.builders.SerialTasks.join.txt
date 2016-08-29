@@ -1,0 +1,6 @@
+sphinx.builders.SerialTasks.join
+================================
+
+.. currentmodule:: sphinx.builders
+
+.. automethod:: SerialTasks.join

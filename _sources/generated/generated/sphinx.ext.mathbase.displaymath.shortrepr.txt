@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.shortrepr
+=========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.shortrepr

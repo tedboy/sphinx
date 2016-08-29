@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.format
+===================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.format

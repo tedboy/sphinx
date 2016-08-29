@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.searchindex_filename
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.searchindex_filename

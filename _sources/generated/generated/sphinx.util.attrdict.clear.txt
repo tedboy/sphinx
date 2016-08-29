@@ -1,0 +1,6 @@
+sphinx.util.attrdict.clear
+==========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.clear

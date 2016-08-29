@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageBuilder.get_relative_uri
+==========================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageBuilder.get_relative_uri

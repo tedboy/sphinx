@@ -1,0 +1,6 @@
+sphinx.builders.xml.StringOutput.__init__
+=========================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: StringOutput.__init__

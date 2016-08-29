@@ -1,0 +1,6 @@
+sphinx.util.text_type.rpartition
+================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: text_type.rpartition

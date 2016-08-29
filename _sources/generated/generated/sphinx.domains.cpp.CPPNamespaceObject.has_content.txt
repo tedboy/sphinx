@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPNamespaceObject.has_content
+=================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPNamespaceObject.has_content

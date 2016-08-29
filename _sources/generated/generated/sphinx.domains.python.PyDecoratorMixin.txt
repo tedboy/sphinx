@@ -1,0 +1,20 @@
+sphinx.domains.python.PyDecoratorMixin
+======================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyDecoratorMixin
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyDecoratorMixin.handle_signature
+   ~PyDecoratorMixin.needs_arglist
+
+
+
+
+

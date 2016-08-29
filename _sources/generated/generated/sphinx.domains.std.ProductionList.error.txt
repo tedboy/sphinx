@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.error
+=======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ProductionList.error

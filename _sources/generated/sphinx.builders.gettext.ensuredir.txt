@@ -1,0 +1,6 @@
+sphinx.builders.gettext.ensuredir
+=================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: ensuredir

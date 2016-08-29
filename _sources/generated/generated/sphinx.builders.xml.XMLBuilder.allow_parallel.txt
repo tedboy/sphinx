@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.allow_parallel
+=============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: XMLBuilder.allow_parallel

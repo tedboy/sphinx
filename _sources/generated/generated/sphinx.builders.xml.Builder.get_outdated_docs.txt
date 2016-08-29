@@ -1,0 +1,6 @@
+sphinx.builders.xml.Builder.get_outdated_docs
+=============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: Builder.get_outdated_docs

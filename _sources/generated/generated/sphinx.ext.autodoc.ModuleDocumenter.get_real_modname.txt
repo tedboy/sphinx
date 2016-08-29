@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleDocumenter.get_real_modname
+====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleDocumenter.get_real_modname

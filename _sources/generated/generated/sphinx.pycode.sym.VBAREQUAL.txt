@@ -1,0 +1,6 @@
+sphinx.pycode.sym.VBAREQUAL
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.VBAREQUAL

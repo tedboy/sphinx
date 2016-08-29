@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.indexer_dumps_unicode
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.indexer_dumps_unicode

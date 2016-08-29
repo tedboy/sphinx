@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.allow_parallel
+==================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autoattribute:: CoverageBuilder.allow_parallel

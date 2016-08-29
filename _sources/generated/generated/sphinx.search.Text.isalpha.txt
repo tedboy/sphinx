@@ -1,0 +1,6 @@
+sphinx.search.Text.isalpha
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.isalpha

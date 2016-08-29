@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ObjectDescription.option_spec
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: ObjectDescription.option_spec

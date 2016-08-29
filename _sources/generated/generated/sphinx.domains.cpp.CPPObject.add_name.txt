@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.add_name
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.add_name

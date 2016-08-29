@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClassmember.doc_field_types
+===================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyClassmember.doc_field_types

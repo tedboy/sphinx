@@ -1,0 +1,6 @@
+sphinx.util.docname_join
+========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: docname_join

@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.StandaloneHTMLBuilder.handle_page
+==========================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. automethod:: StandaloneHTMLBuilder.handle_page

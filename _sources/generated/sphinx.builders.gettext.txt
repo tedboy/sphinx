@@ -1,0 +1,69 @@
+.. automodule:: sphinx.builders.gettext
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      bold
+      darkgreen
+      ensuredir
+      extract_messages
+      find_catalog
+      iteritems
+      open
+      purple
+      safe_relpath
+      split_index_msg
+      time
+      traverse_translatable_index
+      uuid4
+      walk
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      Catalog
+      I18nBuilder
+      LocalTimeZone
+      MessageCatalogBuilder
+      MsgOrigin
+      datetime
+      defaultdict
+      timedelta
+      tzinfo
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.gettext.Builder
+       generated/sphinx.builders.gettext.Catalog
+       generated/sphinx.builders.gettext.I18nBuilder
+       generated/sphinx.builders.gettext.LocalTimeZone
+       generated/sphinx.builders.gettext.MessageCatalogBuilder
+       generated/sphinx.builders.gettext.MsgOrigin
+       generated/sphinx.builders.gettext.datetime
+       generated/sphinx.builders.gettext.defaultdict
+       generated/sphinx.builders.gettext.timedelta
+       generated/sphinx.builders.gettext.tzinfo
+
+   
+   
+
+   
+   
+   

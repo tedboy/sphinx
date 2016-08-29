@@ -1,0 +1,6 @@
+sphinx.search.comment.emptytag
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.emptytag

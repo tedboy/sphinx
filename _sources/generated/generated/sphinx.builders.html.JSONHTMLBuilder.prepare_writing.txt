@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.prepare_writing
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.prepare_writing

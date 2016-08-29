@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.gen_indices
+========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.gen_indices

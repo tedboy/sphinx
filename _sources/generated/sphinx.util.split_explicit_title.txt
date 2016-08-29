@@ -1,0 +1,6 @@
+sphinx.util.split_explicit_title
+================================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: split_explicit_title

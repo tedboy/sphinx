@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.error
+=============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.error

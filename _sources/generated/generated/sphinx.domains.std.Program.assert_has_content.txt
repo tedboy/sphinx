@@ -1,0 +1,6 @@
+sphinx.domains.std.Program.assert_has_content
+=============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Program.assert_has_content

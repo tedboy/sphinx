@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.config_section
+=================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: OptionParser.config_section

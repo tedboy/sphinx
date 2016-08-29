@@ -1,0 +1,6 @@
+sphinx.pycode.sym.RSQB
+======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.RSQB

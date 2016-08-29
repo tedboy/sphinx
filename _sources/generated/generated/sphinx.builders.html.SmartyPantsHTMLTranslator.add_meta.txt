@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.add_meta
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.add_meta

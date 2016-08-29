@@ -1,0 +1,6 @@
+sphinx.pycode.sym.EQUAL
+=======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.EQUAL

@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLWriter.unknown_reference_resolvers
+===============================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLWriter.unknown_reference_resolvers

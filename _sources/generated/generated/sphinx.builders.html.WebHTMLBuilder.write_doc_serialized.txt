@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.write_doc_serialized
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.write_doc_serialized

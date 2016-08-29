@@ -1,0 +1,6 @@
+sphinx.search.comment.non_default_attributes
+============================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.non_default_attributes

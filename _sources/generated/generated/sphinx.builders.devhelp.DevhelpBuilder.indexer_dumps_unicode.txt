@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.indexer_dumps_unicode
+============================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.indexer_dumps_unicode

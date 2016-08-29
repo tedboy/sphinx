@@ -1,0 +1,27 @@
+sphinx.ext.intersphinx.UTF8StreamReader
+=======================================
+.. currentmodule:: sphinx.ext.intersphinx
+.. autoclass:: UTF8StreamReader
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~UTF8StreamReader.__init__
+   ~UTF8StreamReader.decode
+   ~UTF8StreamReader.encode
+   ~UTF8StreamReader.next
+   ~UTF8StreamReader.read
+   ~UTF8StreamReader.readline
+   ~UTF8StreamReader.readlines
+   ~UTF8StreamReader.reset
+   ~UTF8StreamReader.seek
+
+
+
+
+

@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.StandaloneHTMLBuilder.prepare_writing
+=============================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: StandaloneHTMLBuilder.prepare_writing

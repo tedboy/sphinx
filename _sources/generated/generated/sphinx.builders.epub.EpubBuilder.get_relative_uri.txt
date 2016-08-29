@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.get_relative_uri
+=================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.get_relative_uri

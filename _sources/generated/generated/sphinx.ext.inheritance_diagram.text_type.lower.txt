@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.text_type.lower
+==============================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: text_type.lower

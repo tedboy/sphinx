@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTNestedNameElement.get_id_v1
+=================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTNestedNameElement.get_id_v1

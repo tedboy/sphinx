@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.texinfo_visit_graphviz
+==========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autofunction:: texinfo_visit_graphviz

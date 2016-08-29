@@ -1,0 +1,6 @@
+sphinx.search.title.local_attributes
+====================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: title.local_attributes

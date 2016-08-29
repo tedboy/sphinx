@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.additional_dump_args
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.additional_dump_args

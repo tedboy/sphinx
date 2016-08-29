@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.known_attributes
+=========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todolist.known_attributes

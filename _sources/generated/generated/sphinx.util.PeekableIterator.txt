@@ -1,0 +1,22 @@
+sphinx.util.PeekableIterator
+============================
+.. currentmodule:: sphinx.util
+.. autoclass:: PeekableIterator
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PeekableIterator.__init__
+   ~PeekableIterator.next
+   ~PeekableIterator.peek
+   ~PeekableIterator.push
+
+
+
+
+

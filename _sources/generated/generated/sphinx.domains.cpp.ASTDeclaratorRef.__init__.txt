@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorRef.__init__
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorRef.__init__

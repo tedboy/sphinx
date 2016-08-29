@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.doc_field_types
+================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: GenericObject.doc_field_types

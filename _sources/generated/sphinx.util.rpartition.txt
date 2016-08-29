@@ -1,0 +1,6 @@
+sphinx.util.rpartition
+======================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: rpartition

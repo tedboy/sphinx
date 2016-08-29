@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.line
+=============================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: math.line

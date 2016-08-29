@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.get_target_uri
+===========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: StandaloneHTMLBuilder.get_target_uri

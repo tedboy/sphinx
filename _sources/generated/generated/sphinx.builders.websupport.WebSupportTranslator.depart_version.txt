@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_version
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_version

@@ -1,0 +1,6 @@
+sphinx.builders.html.Theme.themes
+=================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: Theme.themes

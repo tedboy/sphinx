@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.minute
+=======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.minute

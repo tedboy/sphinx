@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLWriter.write
+=========================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: PseudoXMLWriter.write

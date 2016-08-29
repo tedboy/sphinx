@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.final_argument_whitespace
+============================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: GraphvizSimple.final_argument_whitespace

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.matched_text
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: DefinitionParser.matched_text

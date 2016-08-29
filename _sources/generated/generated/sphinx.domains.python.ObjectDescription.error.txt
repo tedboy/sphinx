@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.error
+=============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: ObjectDescription.error

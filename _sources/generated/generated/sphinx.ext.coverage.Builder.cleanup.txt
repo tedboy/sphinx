@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.cleanup
+===================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: Builder.cleanup

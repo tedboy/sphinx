@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.build_all
+======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.build_all

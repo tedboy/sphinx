@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.depart_row
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.depart_row

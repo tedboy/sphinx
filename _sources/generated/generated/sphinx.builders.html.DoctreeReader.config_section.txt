@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.config_section
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DoctreeReader.config_section

@@ -1,0 +1,19 @@
+sphinx.ext.doctest.TestCode
+===========================
+.. currentmodule:: sphinx.ext.doctest
+.. autoclass:: TestCode
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TestCode.__init__
+
+
+
+
+

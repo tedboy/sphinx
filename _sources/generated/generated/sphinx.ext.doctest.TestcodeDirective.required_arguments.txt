@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcodeDirective.required_arguments
+=======================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: TestcodeDirective.required_arguments

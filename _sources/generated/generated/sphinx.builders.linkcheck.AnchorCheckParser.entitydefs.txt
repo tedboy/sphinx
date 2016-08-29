@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.entitydefs
+======================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: AnchorCheckParser.entitydefs

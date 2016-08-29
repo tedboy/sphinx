@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.close
+==========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.close

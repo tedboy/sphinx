@@ -1,0 +1,32 @@
+.. automodule:: sphinx.websupport.search
+
+   
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      BaseSearch
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.websupport.search.BaseSearch
+       generated/sphinx.websupport.search.text_type
+
+   
+   
+
+   
+   
+   

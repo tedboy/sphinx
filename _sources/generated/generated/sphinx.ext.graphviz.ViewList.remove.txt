@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.remove
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.remove

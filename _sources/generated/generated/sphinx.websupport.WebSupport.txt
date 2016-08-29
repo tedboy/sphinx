@@ -1,0 +1,29 @@
+sphinx.websupport.WebSupport
+============================
+.. currentmodule:: sphinx.websupport
+.. autoclass:: WebSupport
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~WebSupport.__init__
+   ~WebSupport.accept_comment
+   ~WebSupport.add_comment
+   ~WebSupport.build
+   ~WebSupport.delete_comment
+   ~WebSupport.get_data
+   ~WebSupport.get_document
+   ~WebSupport.get_globalcontext
+   ~WebSupport.get_search_results
+   ~WebSupport.process_vote
+   ~WebSupport.update_username
+
+
+
+
+

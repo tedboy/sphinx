@@ -1,0 +1,52 @@
+sphinx.ext.autodoc.FunctionDocumenter
+=====================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: FunctionDocumenter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~FunctionDocumenter.__init__
+   ~FunctionDocumenter.add_content
+   ~FunctionDocumenter.add_directive_header
+   ~FunctionDocumenter.add_line
+   ~FunctionDocumenter.can_document_member
+   ~FunctionDocumenter.check_module
+   ~FunctionDocumenter.document_members
+   ~FunctionDocumenter.filter_members
+   ~FunctionDocumenter.format_args
+   ~FunctionDocumenter.format_name
+   ~FunctionDocumenter.format_signature
+   ~FunctionDocumenter.generate
+   ~FunctionDocumenter.get_attr
+   ~FunctionDocumenter.get_doc
+   ~FunctionDocumenter.get_object_members
+   ~FunctionDocumenter.get_real_modname
+   ~FunctionDocumenter.get_sourcename
+   ~FunctionDocumenter.import_object
+   ~FunctionDocumenter.parse_name
+   ~FunctionDocumenter.process_doc
+   ~FunctionDocumenter.resolve_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~FunctionDocumenter.content_indent
+   ~FunctionDocumenter.member_order
+   ~FunctionDocumenter.objtype
+   ~FunctionDocumenter.option_spec
+   ~FunctionDocumenter.priority
+   ~FunctionDocumenter.titles_allowed
+

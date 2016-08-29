@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AttributeDocumenter.__init__
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AttributeDocumenter.__init__

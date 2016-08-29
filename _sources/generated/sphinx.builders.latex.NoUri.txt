@@ -1,0 +1,6 @@
+sphinx.builders.latex.NoUri
+===========================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoexception:: NoUri

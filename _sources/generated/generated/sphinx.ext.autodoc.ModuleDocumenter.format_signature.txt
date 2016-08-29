@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleDocumenter.format_signature
+====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleDocumenter.format_signature

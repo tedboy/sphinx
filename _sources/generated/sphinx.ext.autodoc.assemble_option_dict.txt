@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.assemble_option_dict
+=======================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: assemble_option_dict

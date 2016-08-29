@@ -1,0 +1,6 @@
+sphinx.builders.manpage.Builder.create_template_bridge
+======================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: Builder.create_template_bridge

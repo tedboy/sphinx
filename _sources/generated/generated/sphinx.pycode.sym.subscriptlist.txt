@@ -1,0 +1,6 @@
+sphinx.pycode.sym.subscriptlist
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.subscriptlist

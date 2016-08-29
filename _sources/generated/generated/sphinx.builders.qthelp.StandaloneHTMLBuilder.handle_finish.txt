@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.handle_finish
+==========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: StandaloneHTMLBuilder.handle_finish

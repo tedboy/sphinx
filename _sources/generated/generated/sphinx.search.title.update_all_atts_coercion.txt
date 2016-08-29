@@ -1,0 +1,6 @@
+sphinx.search.title.update_all_atts_coercion
+============================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.update_all_atts_coercion

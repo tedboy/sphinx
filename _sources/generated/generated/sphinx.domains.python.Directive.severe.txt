@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.severe
+======================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Directive.severe

@@ -1,0 +1,36 @@
+sphinx.util.attrdict
+====================
+.. currentmodule:: sphinx.util
+.. autoclass:: attrdict
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~attrdict.clear
+   ~attrdict.copy
+   ~attrdict.fromkeys
+   ~attrdict.get
+   ~attrdict.has_key
+   ~attrdict.items
+   ~attrdict.iteritems
+   ~attrdict.iterkeys
+   ~attrdict.itervalues
+   ~attrdict.keys
+   ~attrdict.pop
+   ~attrdict.popitem
+   ~attrdict.setdefault
+   ~attrdict.update
+   ~attrdict.values
+   ~attrdict.viewitems
+   ~attrdict.viewkeys
+   ~attrdict.viewvalues
+
+
+
+
+

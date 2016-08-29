@@ -1,0 +1,6 @@
+sphinx.locale.lazy_gettext
+==========================
+
+.. currentmodule:: sphinx.locale
+
+.. autofunction:: lazy_gettext

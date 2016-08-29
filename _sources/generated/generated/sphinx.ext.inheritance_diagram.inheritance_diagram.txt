@@ -1,0 +1,87 @@
+sphinx.ext.inheritance_diagram.inheritance_diagram
+==================================================
+.. currentmodule:: sphinx.ext.inheritance_diagram
+.. autoclass:: inheritance_diagram
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~inheritance_diagram.__init__
+   ~inheritance_diagram.append
+   ~inheritance_diagram.append_attr_list
+   ~inheritance_diagram.asdom
+   ~inheritance_diagram.astext
+   ~inheritance_diagram.attlist
+   ~inheritance_diagram.clear
+   ~inheritance_diagram.coerce_append_attr_list
+   ~inheritance_diagram.copy
+   ~inheritance_diagram.copy_attr_coerce
+   ~inheritance_diagram.copy_attr_concatenate
+   ~inheritance_diagram.copy_attr_consistent
+   ~inheritance_diagram.copy_attr_convert
+   ~inheritance_diagram.deepcopy
+   ~inheritance_diagram.delattr
+   ~inheritance_diagram.emptytag
+   ~inheritance_diagram.endtag
+   ~inheritance_diagram.extend
+   ~inheritance_diagram.first_child_matching_class
+   ~inheritance_diagram.first_child_not_matching_class
+   ~inheritance_diagram.get
+   ~inheritance_diagram.get_language_code
+   ~inheritance_diagram.has_key
+   ~inheritance_diagram.hasattr
+   ~inheritance_diagram.index
+   ~inheritance_diagram.insert
+   ~inheritance_diagram.is_not_default
+   ~inheritance_diagram.is_not_known_attribute
+   ~inheritance_diagram.is_not_list_attribute
+   ~inheritance_diagram.next_node
+   ~inheritance_diagram.non_default_attributes
+   ~inheritance_diagram.note_referenced_by
+   ~inheritance_diagram.pformat
+   ~inheritance_diagram.pop
+   ~inheritance_diagram.remove
+   ~inheritance_diagram.replace
+   ~inheritance_diagram.replace_attr
+   ~inheritance_diagram.replace_self
+   ~inheritance_diagram.set_class
+   ~inheritance_diagram.setdefault
+   ~inheritance_diagram.setup_child
+   ~inheritance_diagram.shortrepr
+   ~inheritance_diagram.starttag
+   ~inheritance_diagram.traverse
+   ~inheritance_diagram.update_all_atts
+   ~inheritance_diagram.update_all_atts_coercion
+   ~inheritance_diagram.update_all_atts_concatenating
+   ~inheritance_diagram.update_all_atts_consistantly
+   ~inheritance_diagram.update_all_atts_convert
+   ~inheritance_diagram.update_basic_atts
+   ~inheritance_diagram.walk
+   ~inheritance_diagram.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~inheritance_diagram.basic_attributes
+   ~inheritance_diagram.child_text_separator
+   ~inheritance_diagram.document
+   ~inheritance_diagram.known_attributes
+   ~inheritance_diagram.line
+   ~inheritance_diagram.list_attributes
+   ~inheritance_diagram.local_attributes
+   ~inheritance_diagram.parent
+   ~inheritance_diagram.source
+   ~inheritance_diagram.tagname
+

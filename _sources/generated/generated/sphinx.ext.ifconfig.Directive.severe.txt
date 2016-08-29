@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.severe
+====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.severe

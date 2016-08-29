@@ -1,0 +1,6 @@
+sphinx.builders.manpage.NoUri
+=============================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoexception:: NoUri

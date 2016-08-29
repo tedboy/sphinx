@@ -1,0 +1,6 @@
+sphinx.domains.python.PyCurrentModule.severe
+============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyCurrentModule.severe

@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.StandaloneHTMLBuilder.supported_image_types
+===================================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: StandaloneHTMLBuilder.supported_image_types

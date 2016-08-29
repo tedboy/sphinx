@@ -1,0 +1,6 @@
+sphinx.builders.html.iteritems
+==============================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: iteritems

@@ -1,0 +1,6 @@
+sphinx.builders.html.get_stable_hash
+====================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: get_stable_hash

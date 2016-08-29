@@ -1,0 +1,6 @@
+sphinx.locale.text_type.startswith
+==================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.startswith

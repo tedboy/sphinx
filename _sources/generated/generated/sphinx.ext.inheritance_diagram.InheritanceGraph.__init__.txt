@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.InheritanceGraph.__init__
+========================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: InheritanceGraph.__init__

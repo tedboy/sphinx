@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclSpecsSimple.__init__
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclSpecsSimple.__init__

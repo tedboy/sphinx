@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.eof
+=======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: DefinitionParser.eof

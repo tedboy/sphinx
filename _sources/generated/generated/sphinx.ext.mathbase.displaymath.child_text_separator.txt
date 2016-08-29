@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.child_text_separator
+====================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: displaymath.child_text_separator

@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.directive_error
+========================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.directive_error

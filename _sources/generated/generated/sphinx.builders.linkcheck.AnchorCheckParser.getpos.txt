@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.getpos
+==================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.getpos

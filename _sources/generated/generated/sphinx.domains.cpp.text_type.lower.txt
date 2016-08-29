@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.lower
+==================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.lower

@@ -1,0 +1,6 @@
+sphinx.util.nested_parse_with_titles
+====================================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: nested_parse_with_titles

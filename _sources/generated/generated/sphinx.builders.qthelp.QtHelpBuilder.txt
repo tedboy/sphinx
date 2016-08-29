@@ -1,0 +1,93 @@
+sphinx.builders.qthelp.QtHelpBuilder
+====================================
+.. currentmodule:: sphinx.builders.qthelp
+.. autoclass:: QtHelpBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~QtHelpBuilder.__init__
+   ~QtHelpBuilder.add_sidebars
+   ~QtHelpBuilder.build
+   ~QtHelpBuilder.build_all
+   ~QtHelpBuilder.build_keywords
+   ~QtHelpBuilder.build_qhp
+   ~QtHelpBuilder.build_specific
+   ~QtHelpBuilder.build_update
+   ~QtHelpBuilder.cleanup
+   ~QtHelpBuilder.compile_all_catalogs
+   ~QtHelpBuilder.compile_catalogs
+   ~QtHelpBuilder.compile_specific_catalogs
+   ~QtHelpBuilder.compile_update_catalogs
+   ~QtHelpBuilder.copy_download_files
+   ~QtHelpBuilder.copy_extra_files
+   ~QtHelpBuilder.copy_image_files
+   ~QtHelpBuilder.copy_static_files
+   ~QtHelpBuilder.create_template_bridge
+   ~QtHelpBuilder.dump_inventory
+   ~QtHelpBuilder.dump_search_index
+   ~QtHelpBuilder.finish
+   ~QtHelpBuilder.gen_additional_pages
+   ~QtHelpBuilder.gen_indices
+   ~QtHelpBuilder.get_builder_config
+   ~QtHelpBuilder.get_doc_context
+   ~QtHelpBuilder.get_outdated_docs
+   ~QtHelpBuilder.get_outfilename
+   ~QtHelpBuilder.get_relative_uri
+   ~QtHelpBuilder.get_target_uri
+   ~QtHelpBuilder.get_theme_config
+   ~QtHelpBuilder.handle_finish
+   ~QtHelpBuilder.handle_page
+   ~QtHelpBuilder.index_page
+   ~QtHelpBuilder.init
+   ~QtHelpBuilder.init_highlighter
+   ~QtHelpBuilder.init_templates
+   ~QtHelpBuilder.init_translator_class
+   ~QtHelpBuilder.isdocnode
+   ~QtHelpBuilder.keyword_item
+   ~QtHelpBuilder.load_indexer
+   ~QtHelpBuilder.post_process_images
+   ~QtHelpBuilder.prepare_writing
+   ~QtHelpBuilder.render_partial
+   ~QtHelpBuilder.write
+   ~QtHelpBuilder.write_buildinfo
+   ~QtHelpBuilder.write_doc
+   ~QtHelpBuilder.write_doc_serialized
+   ~QtHelpBuilder.write_domain_indices
+   ~QtHelpBuilder.write_genindex
+   ~QtHelpBuilder.write_toc
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~QtHelpBuilder.add_permalinks
+   ~QtHelpBuilder.allow_parallel
+   ~QtHelpBuilder.copysource
+   ~QtHelpBuilder.css_files
+   ~QtHelpBuilder.default_sidebars
+   ~QtHelpBuilder.embedded
+   ~QtHelpBuilder.format
+   ~QtHelpBuilder.indexer_dumps_unicode
+   ~QtHelpBuilder.indexer_format
+   ~QtHelpBuilder.link_suffix
+   ~QtHelpBuilder.name
+   ~QtHelpBuilder.out_suffix
+   ~QtHelpBuilder.script_files
+   ~QtHelpBuilder.search
+   ~QtHelpBuilder.searchindex_filename
+   ~QtHelpBuilder.supported_image_types
+   ~QtHelpBuilder.versioning_compare
+   ~QtHelpBuilder.versioning_method
+

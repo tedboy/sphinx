@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.run
+=================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.run

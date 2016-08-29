@@ -1,0 +1,6 @@
+sphinx.search.comment.replace_attr
+==================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.replace_attr

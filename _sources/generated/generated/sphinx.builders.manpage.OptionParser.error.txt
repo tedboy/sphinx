@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.error
+==========================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.error

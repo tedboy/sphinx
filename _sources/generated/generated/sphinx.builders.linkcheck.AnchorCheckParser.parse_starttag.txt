@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.parse_starttag
+==========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.parse_starttag

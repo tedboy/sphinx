@@ -1,0 +1,25 @@
+sphinx.domains.cpp.ASTArray
+===========================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTArray
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTArray.__init__
+   ~ASTArray.clone
+   ~ASTArray.describe_signature
+   ~ASTArray.get_id_v1
+   ~ASTArray.get_id_v2
+   ~ASTArray.get_name
+   ~ASTArray.prefix_nested_name
+
+
+
+
+

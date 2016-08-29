@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_author
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_author

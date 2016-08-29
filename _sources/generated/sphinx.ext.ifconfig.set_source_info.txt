@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.set_source_info
+===================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autofunction:: set_source_info

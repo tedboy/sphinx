@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.render_partial
+===========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: StandaloneHTMLBuilder.render_partial

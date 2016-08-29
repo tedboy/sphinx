@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.extend
+================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.extend

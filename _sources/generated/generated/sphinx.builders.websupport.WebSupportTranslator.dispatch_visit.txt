@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.dispatch_visit
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.dispatch_visit

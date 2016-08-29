@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.get
+============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.get

@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXWriter.assemble_parts
+================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXWriter.assemble_parts

@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.compile_specific_catalogs
+======================================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: StandaloneHTMLBuilder.compile_specific_catalogs

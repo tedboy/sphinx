@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.add_name
+=========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.add_name

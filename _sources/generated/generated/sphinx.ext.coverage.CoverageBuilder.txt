@@ -1,0 +1,57 @@
+sphinx.ext.coverage.CoverageBuilder
+===================================
+.. currentmodule:: sphinx.ext.coverage
+.. autoclass:: CoverageBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CoverageBuilder.__init__
+   ~CoverageBuilder.build
+   ~CoverageBuilder.build_all
+   ~CoverageBuilder.build_c_coverage
+   ~CoverageBuilder.build_py_coverage
+   ~CoverageBuilder.build_specific
+   ~CoverageBuilder.build_update
+   ~CoverageBuilder.cleanup
+   ~CoverageBuilder.compile_all_catalogs
+   ~CoverageBuilder.compile_catalogs
+   ~CoverageBuilder.compile_specific_catalogs
+   ~CoverageBuilder.compile_update_catalogs
+   ~CoverageBuilder.create_template_bridge
+   ~CoverageBuilder.finish
+   ~CoverageBuilder.get_builder_config
+   ~CoverageBuilder.get_outdated_docs
+   ~CoverageBuilder.get_relative_uri
+   ~CoverageBuilder.get_target_uri
+   ~CoverageBuilder.init
+   ~CoverageBuilder.post_process_images
+   ~CoverageBuilder.prepare_writing
+   ~CoverageBuilder.write
+   ~CoverageBuilder.write_c_coverage
+   ~CoverageBuilder.write_doc
+   ~CoverageBuilder.write_doc_serialized
+   ~CoverageBuilder.write_py_coverage
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CoverageBuilder.allow_parallel
+   ~CoverageBuilder.format
+   ~CoverageBuilder.name
+   ~CoverageBuilder.supported_image_types
+   ~CoverageBuilder.versioning_compare
+   ~CoverageBuilder.versioning_method
+

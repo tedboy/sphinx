@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder.write_entry
+===============================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: CheckExternalLinksBuilder.write_entry

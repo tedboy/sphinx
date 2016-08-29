@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.setup
+============================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. autofunction:: setup

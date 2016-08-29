@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JavaScriptDomain.process_doc
+======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JavaScriptDomain.process_doc

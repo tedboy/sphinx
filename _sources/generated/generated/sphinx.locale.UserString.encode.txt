@@ -1,0 +1,6 @@
+sphinx.locale.UserString.encode
+===============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.encode

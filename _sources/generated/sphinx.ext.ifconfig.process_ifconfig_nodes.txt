@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.process_ifconfig_nodes
+==========================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autofunction:: process_ifconfig_nodes

@@ -1,0 +1,6 @@
+sphinx.search.title.pop
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.pop

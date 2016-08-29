@@ -1,0 +1,49 @@
+.. automodule:: sphinx.builders.websupport
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      copyfile
+      ensuredir
+      os_path
+      relative_uri
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      BuiltinTemplateLoader
+      PickleHTMLBuilder
+      StringOutput
+      WebSupportBuilder
+      WebSupportTranslator
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.websupport.BuiltinTemplateLoader
+       generated/sphinx.builders.websupport.PickleHTMLBuilder
+       generated/sphinx.builders.websupport.StringOutput
+       generated/sphinx.builders.websupport.WebSupportBuilder
+       generated/sphinx.builders.websupport.WebSupportTranslator
+
+   
+   
+
+   
+   
+   

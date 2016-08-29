@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.index
+=================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.index

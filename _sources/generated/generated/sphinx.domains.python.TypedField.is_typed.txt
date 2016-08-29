@@ -1,0 +1,6 @@
+sphinx.domains.python.TypedField.is_typed
+=========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: TypedField.is_typed

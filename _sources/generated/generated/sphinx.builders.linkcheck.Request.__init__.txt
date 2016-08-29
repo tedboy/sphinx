@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Request.__init__
+==========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Request.__init__

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.append
+======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.append

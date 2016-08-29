@@ -1,0 +1,92 @@
+sphinx.builders.htmlhelp.HTMLHelpBuilder
+========================================
+.. currentmodule:: sphinx.builders.htmlhelp
+.. autoclass:: HTMLHelpBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~HTMLHelpBuilder.__init__
+   ~HTMLHelpBuilder.add_sidebars
+   ~HTMLHelpBuilder.build
+   ~HTMLHelpBuilder.build_all
+   ~HTMLHelpBuilder.build_hhx
+   ~HTMLHelpBuilder.build_specific
+   ~HTMLHelpBuilder.build_update
+   ~HTMLHelpBuilder.cleanup
+   ~HTMLHelpBuilder.compile_all_catalogs
+   ~HTMLHelpBuilder.compile_catalogs
+   ~HTMLHelpBuilder.compile_specific_catalogs
+   ~HTMLHelpBuilder.compile_update_catalogs
+   ~HTMLHelpBuilder.copy_download_files
+   ~HTMLHelpBuilder.copy_extra_files
+   ~HTMLHelpBuilder.copy_image_files
+   ~HTMLHelpBuilder.copy_static_files
+   ~HTMLHelpBuilder.create_template_bridge
+   ~HTMLHelpBuilder.dump_inventory
+   ~HTMLHelpBuilder.dump_search_index
+   ~HTMLHelpBuilder.finish
+   ~HTMLHelpBuilder.gen_additional_pages
+   ~HTMLHelpBuilder.gen_indices
+   ~HTMLHelpBuilder.get_builder_config
+   ~HTMLHelpBuilder.get_doc_context
+   ~HTMLHelpBuilder.get_outdated_docs
+   ~HTMLHelpBuilder.get_outfilename
+   ~HTMLHelpBuilder.get_relative_uri
+   ~HTMLHelpBuilder.get_target_uri
+   ~HTMLHelpBuilder.get_theme_config
+   ~HTMLHelpBuilder.handle_finish
+   ~HTMLHelpBuilder.handle_page
+   ~HTMLHelpBuilder.index_page
+   ~HTMLHelpBuilder.init
+   ~HTMLHelpBuilder.init_highlighter
+   ~HTMLHelpBuilder.init_templates
+   ~HTMLHelpBuilder.init_translator_class
+   ~HTMLHelpBuilder.load_indexer
+   ~HTMLHelpBuilder.open_file
+   ~HTMLHelpBuilder.post_process_images
+   ~HTMLHelpBuilder.prepare_writing
+   ~HTMLHelpBuilder.render_partial
+   ~HTMLHelpBuilder.write
+   ~HTMLHelpBuilder.write_buildinfo
+   ~HTMLHelpBuilder.write_doc
+   ~HTMLHelpBuilder.write_doc_serialized
+   ~HTMLHelpBuilder.write_domain_indices
+   ~HTMLHelpBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~HTMLHelpBuilder.add_permalinks
+   ~HTMLHelpBuilder.allow_parallel
+   ~HTMLHelpBuilder.copysource
+   ~HTMLHelpBuilder.css_files
+   ~HTMLHelpBuilder.default_sidebars
+   ~HTMLHelpBuilder.embedded
+   ~HTMLHelpBuilder.encoding
+   ~HTMLHelpBuilder.format
+   ~HTMLHelpBuilder.indexer_dumps_unicode
+   ~HTMLHelpBuilder.indexer_format
+   ~HTMLHelpBuilder.lcid
+   ~HTMLHelpBuilder.link_suffix
+   ~HTMLHelpBuilder.name
+   ~HTMLHelpBuilder.out_suffix
+   ~HTMLHelpBuilder.script_files
+   ~HTMLHelpBuilder.search
+   ~HTMLHelpBuilder.searchindex_filename
+   ~HTMLHelpBuilder.supported_image_types
+   ~HTMLHelpBuilder.versioning_compare
+   ~HTMLHelpBuilder.versioning_method
+

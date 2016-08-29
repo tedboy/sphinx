@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.text_type.lower
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: text_type.lower

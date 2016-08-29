@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.link_suffix
+==================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.link_suffix

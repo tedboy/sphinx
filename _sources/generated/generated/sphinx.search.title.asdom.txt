@@ -1,0 +1,6 @@
+sphinx.search.title.asdom
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.asdom

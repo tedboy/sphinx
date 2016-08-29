@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.text_type.zfill
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: text_type.zfill

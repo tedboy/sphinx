@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.non_default_attributes
+===================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.non_default_attributes

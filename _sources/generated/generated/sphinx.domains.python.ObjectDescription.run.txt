@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.run
+===========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: ObjectDescription.run

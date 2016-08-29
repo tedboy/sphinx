@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.set_default
+=============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: OptionParser.set_default

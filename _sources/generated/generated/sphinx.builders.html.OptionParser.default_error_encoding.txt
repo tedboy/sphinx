@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.default_error_encoding
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: OptionParser.default_error_encoding

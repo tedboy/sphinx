@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_toctree
+=============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_toctree

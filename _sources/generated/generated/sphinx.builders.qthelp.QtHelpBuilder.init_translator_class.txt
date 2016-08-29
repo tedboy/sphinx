@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.init_translator_class
+==========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.init_translator_class

@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.language
+========================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextWriter.language

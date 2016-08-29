@@ -1,0 +1,6 @@
+sphinx.util.get_matching_docs
+=============================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: get_matching_docs

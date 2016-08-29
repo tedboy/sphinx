@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorFunction.needs_arglist
+=======================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorFunction.needs_arglist

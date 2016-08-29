@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.init_templates
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.init_templates

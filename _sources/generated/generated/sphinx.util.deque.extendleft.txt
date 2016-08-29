@@ -1,0 +1,6 @@
+sphinx.util.deque.extendleft
+============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.extendleft

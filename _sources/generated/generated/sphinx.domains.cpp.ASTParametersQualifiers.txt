@@ -1,0 +1,29 @@
+sphinx.domains.cpp.ASTParametersQualifiers
+==========================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTParametersQualifiers
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTParametersQualifiers.__init__
+   ~ASTParametersQualifiers.clone
+   ~ASTParametersQualifiers.describe_signature
+   ~ASTParametersQualifiers.get_id_v1
+   ~ASTParametersQualifiers.get_id_v2
+   ~ASTParametersQualifiers.get_modifiers_id_v1
+   ~ASTParametersQualifiers.get_modifiers_id_v2
+   ~ASTParametersQualifiers.get_name
+   ~ASTParametersQualifiers.get_param_id_v1
+   ~ASTParametersQualifiers.get_param_id_v2
+   ~ASTParametersQualifiers.prefix_nested_name
+
+
+
+
+

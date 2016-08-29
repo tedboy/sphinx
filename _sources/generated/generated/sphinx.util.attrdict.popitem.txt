@@ -1,0 +1,6 @@
+sphinx.util.attrdict.popitem
+============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.popitem

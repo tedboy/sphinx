@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTFunctinoParameter.describe_signature
+==========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTFunctinoParameter.describe_signature

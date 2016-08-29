@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.__init__
+=====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.__init__

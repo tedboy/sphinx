@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.optional_arguments
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPObject.optional_arguments

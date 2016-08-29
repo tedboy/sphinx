@@ -1,0 +1,6 @@
+sphinx.util.binary_type.expandtabs
+==================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: binary_type.expandtabs

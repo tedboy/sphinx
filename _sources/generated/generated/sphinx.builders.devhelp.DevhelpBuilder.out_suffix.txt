@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.out_suffix
+=================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.out_suffix

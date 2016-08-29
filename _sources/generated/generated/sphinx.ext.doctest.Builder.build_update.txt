@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.build_update
+=======================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: Builder.build_update

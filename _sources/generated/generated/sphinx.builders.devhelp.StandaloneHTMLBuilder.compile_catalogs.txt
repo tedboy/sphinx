@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.StandaloneHTMLBuilder.compile_catalogs
+==============================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: StandaloneHTMLBuilder.compile_catalogs

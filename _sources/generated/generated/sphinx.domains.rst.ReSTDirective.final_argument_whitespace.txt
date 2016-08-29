@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.final_argument_whitespace
+==========================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTDirective.final_argument_whitespace

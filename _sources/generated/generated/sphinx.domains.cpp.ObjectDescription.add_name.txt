@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ObjectDescription.add_name
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ObjectDescription.add_name

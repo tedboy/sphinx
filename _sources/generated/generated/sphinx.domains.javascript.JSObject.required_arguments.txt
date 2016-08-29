@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.required_arguments
+=====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSObject.required_arguments

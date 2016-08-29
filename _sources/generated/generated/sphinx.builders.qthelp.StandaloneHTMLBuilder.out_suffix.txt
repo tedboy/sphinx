@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.out_suffix
+=======================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: StandaloneHTMLBuilder.out_suffix

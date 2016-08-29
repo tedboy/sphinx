@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder.format
+==========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: CheckExternalLinksBuilder.format

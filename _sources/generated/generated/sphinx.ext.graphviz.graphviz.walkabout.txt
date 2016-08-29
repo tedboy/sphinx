@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.walkabout
+======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.walkabout

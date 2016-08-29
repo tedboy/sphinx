@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.read
+=======================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DoctreeReader.read

@@ -1,0 +1,91 @@
+sphinx.builders.html.PickleHTMLBuilder
+======================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: PickleHTMLBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PickleHTMLBuilder.__init__
+   ~PickleHTMLBuilder.add_sidebars
+   ~PickleHTMLBuilder.build
+   ~PickleHTMLBuilder.build_all
+   ~PickleHTMLBuilder.build_specific
+   ~PickleHTMLBuilder.build_update
+   ~PickleHTMLBuilder.cleanup
+   ~PickleHTMLBuilder.compile_all_catalogs
+   ~PickleHTMLBuilder.compile_catalogs
+   ~PickleHTMLBuilder.compile_specific_catalogs
+   ~PickleHTMLBuilder.compile_update_catalogs
+   ~PickleHTMLBuilder.copy_download_files
+   ~PickleHTMLBuilder.copy_extra_files
+   ~PickleHTMLBuilder.copy_image_files
+   ~PickleHTMLBuilder.copy_static_files
+   ~PickleHTMLBuilder.create_template_bridge
+   ~PickleHTMLBuilder.dump_context
+   ~PickleHTMLBuilder.dump_inventory
+   ~PickleHTMLBuilder.dump_search_index
+   ~PickleHTMLBuilder.finish
+   ~PickleHTMLBuilder.gen_additional_pages
+   ~PickleHTMLBuilder.gen_indices
+   ~PickleHTMLBuilder.get_builder_config
+   ~PickleHTMLBuilder.get_doc_context
+   ~PickleHTMLBuilder.get_outdated_docs
+   ~PickleHTMLBuilder.get_outfilename
+   ~PickleHTMLBuilder.get_relative_uri
+   ~PickleHTMLBuilder.get_target_uri
+   ~PickleHTMLBuilder.get_theme_config
+   ~PickleHTMLBuilder.handle_finish
+   ~PickleHTMLBuilder.handle_page
+   ~PickleHTMLBuilder.index_page
+   ~PickleHTMLBuilder.init
+   ~PickleHTMLBuilder.init_highlighter
+   ~PickleHTMLBuilder.init_templates
+   ~PickleHTMLBuilder.init_translator_class
+   ~PickleHTMLBuilder.load_indexer
+   ~PickleHTMLBuilder.post_process_images
+   ~PickleHTMLBuilder.prepare_writing
+   ~PickleHTMLBuilder.render_partial
+   ~PickleHTMLBuilder.write
+   ~PickleHTMLBuilder.write_buildinfo
+   ~PickleHTMLBuilder.write_doc
+   ~PickleHTMLBuilder.write_doc_serialized
+   ~PickleHTMLBuilder.write_domain_indices
+   ~PickleHTMLBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PickleHTMLBuilder.add_permalinks
+   ~PickleHTMLBuilder.additional_dump_args
+   ~PickleHTMLBuilder.allow_parallel
+   ~PickleHTMLBuilder.copysource
+   ~PickleHTMLBuilder.css_files
+   ~PickleHTMLBuilder.default_sidebars
+   ~PickleHTMLBuilder.embedded
+   ~PickleHTMLBuilder.format
+   ~PickleHTMLBuilder.globalcontext_filename
+   ~PickleHTMLBuilder.implementation_dumps_unicode
+   ~PickleHTMLBuilder.indexer_dumps_unicode
+   ~PickleHTMLBuilder.link_suffix
+   ~PickleHTMLBuilder.name
+   ~PickleHTMLBuilder.out_suffix
+   ~PickleHTMLBuilder.script_files
+   ~PickleHTMLBuilder.search
+   ~PickleHTMLBuilder.searchindex_filename
+   ~PickleHTMLBuilder.supported_image_types
+   ~PickleHTMLBuilder.versioning_compare
+   ~PickleHTMLBuilder.versioning_method
+

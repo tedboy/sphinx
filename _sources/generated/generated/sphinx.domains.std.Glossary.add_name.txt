@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.add_name
+====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Glossary.add_name

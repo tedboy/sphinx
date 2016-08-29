@@ -1,0 +1,52 @@
+sphinx.builders.html.HTMLWriter
+===============================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: HTMLWriter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~HTMLWriter.__init__
+   ~HTMLWriter.apply_template
+   ~HTMLWriter.assemble_parts
+   ~HTMLWriter.get_transforms
+   ~HTMLWriter.interpolation_dict
+   ~HTMLWriter.supports
+   ~HTMLWriter.translate
+   ~HTMLWriter.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~HTMLWriter.component_type
+   ~HTMLWriter.config_section
+   ~HTMLWriter.config_section_dependencies
+   ~HTMLWriter.default_stylesheet
+   ~HTMLWriter.default_stylesheet_dirs
+   ~HTMLWriter.default_template
+   ~HTMLWriter.default_template_path
+   ~HTMLWriter.default_transforms
+   ~HTMLWriter.destination
+   ~HTMLWriter.document
+   ~HTMLWriter.language
+   ~HTMLWriter.output
+   ~HTMLWriter.relative_path_settings
+   ~HTMLWriter.settings_default_overrides
+   ~HTMLWriter.settings_defaults
+   ~HTMLWriter.settings_spec
+   ~HTMLWriter.supported
+   ~HTMLWriter.unknown_reference_resolvers
+   ~HTMLWriter.visitor_attributes
+

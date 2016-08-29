@@ -1,0 +1,56 @@
+sphinx.ext.doctest.DocTestBuilder
+=================================
+.. currentmodule:: sphinx.ext.doctest
+.. autoclass:: DocTestBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DocTestBuilder.__init__
+   ~DocTestBuilder.build
+   ~DocTestBuilder.build_all
+   ~DocTestBuilder.build_specific
+   ~DocTestBuilder.build_update
+   ~DocTestBuilder.cleanup
+   ~DocTestBuilder.compile
+   ~DocTestBuilder.compile_all_catalogs
+   ~DocTestBuilder.compile_catalogs
+   ~DocTestBuilder.compile_specific_catalogs
+   ~DocTestBuilder.compile_update_catalogs
+   ~DocTestBuilder.create_template_bridge
+   ~DocTestBuilder.finish
+   ~DocTestBuilder.get_builder_config
+   ~DocTestBuilder.get_outdated_docs
+   ~DocTestBuilder.get_relative_uri
+   ~DocTestBuilder.get_target_uri
+   ~DocTestBuilder.init
+   ~DocTestBuilder.post_process_images
+   ~DocTestBuilder.prepare_writing
+   ~DocTestBuilder.test_doc
+   ~DocTestBuilder.test_group
+   ~DocTestBuilder.write
+   ~DocTestBuilder.write_doc
+   ~DocTestBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~DocTestBuilder.allow_parallel
+   ~DocTestBuilder.format
+   ~DocTestBuilder.name
+   ~DocTestBuilder.supported_image_types
+   ~DocTestBuilder.versioning_compare
+   ~DocTestBuilder.versioning_method
+

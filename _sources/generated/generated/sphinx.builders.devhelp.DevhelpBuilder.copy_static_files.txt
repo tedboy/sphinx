@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.copy_static_files
+========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.copy_static_files

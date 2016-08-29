@@ -1,0 +1,6 @@
+sphinx.search.title.walk
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.walk

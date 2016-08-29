@@ -1,0 +1,26 @@
+sphinx.ext.graphviz.Popen
+=========================
+.. currentmodule:: sphinx.ext.graphviz
+.. autoclass:: Popen
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Popen.__init__
+   ~Popen.communicate
+   ~Popen.kill
+   ~Popen.pipe_cloexec
+   ~Popen.poll
+   ~Popen.send_signal
+   ~Popen.terminate
+   ~Popen.wait
+
+
+
+
+

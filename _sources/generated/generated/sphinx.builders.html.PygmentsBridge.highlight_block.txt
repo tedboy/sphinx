@@ -1,0 +1,6 @@
+sphinx.builders.html.PygmentsBridge.highlight_block
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PygmentsBridge.highlight_block

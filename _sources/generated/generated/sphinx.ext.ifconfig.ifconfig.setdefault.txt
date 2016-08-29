@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.setdefault
+=======================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.setdefault

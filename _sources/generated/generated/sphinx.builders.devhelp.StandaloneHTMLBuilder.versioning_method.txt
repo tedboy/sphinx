@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.StandaloneHTMLBuilder.versioning_method
+===============================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: StandaloneHTMLBuilder.versioning_method

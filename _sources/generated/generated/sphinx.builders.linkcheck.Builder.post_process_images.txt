@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.post_process_images
+=====================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.post_process_images

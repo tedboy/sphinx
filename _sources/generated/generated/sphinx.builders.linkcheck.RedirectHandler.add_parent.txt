@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.RedirectHandler.add_parent
+====================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: RedirectHandler.add_parent

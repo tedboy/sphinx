@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.depart_version
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.depart_version

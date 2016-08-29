@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Directive.has_content
+=========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: Directive.has_content

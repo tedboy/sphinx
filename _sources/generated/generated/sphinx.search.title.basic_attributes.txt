@@ -1,0 +1,6 @@
+sphinx.search.title.basic_attributes
+====================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: title.basic_attributes

@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.unknown_visit
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.unknown_visit

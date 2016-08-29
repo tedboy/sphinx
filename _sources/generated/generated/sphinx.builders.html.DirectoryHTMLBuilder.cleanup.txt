@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.cleanup
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.cleanup

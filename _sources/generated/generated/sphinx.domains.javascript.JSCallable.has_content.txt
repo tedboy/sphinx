@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.has_content
+================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSCallable.has_content

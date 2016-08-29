@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.post_process_images
+=================================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: MessageCatalogBuilder.post_process_images

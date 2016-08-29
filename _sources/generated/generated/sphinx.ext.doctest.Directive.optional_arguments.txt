@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Directive.optional_arguments
+===============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: Directive.optional_arguments

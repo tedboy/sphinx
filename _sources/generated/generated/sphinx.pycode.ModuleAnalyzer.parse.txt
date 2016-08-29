@@ -1,0 +1,6 @@
+sphinx.pycode.ModuleAnalyzer.parse
+==================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: ModuleAnalyzer.parse

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTArray.prefix_nested_name
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTArray.prefix_nested_name

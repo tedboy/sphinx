@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.replace
+========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.replace

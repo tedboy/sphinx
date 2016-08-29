@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTOperatorBuildIn.prefix_nested_name
+========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTOperatorBuildIn.prefix_nested_name

@@ -1,0 +1,6 @@
+sphinx.ext.coverage.safe_getattr
+================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autofunction:: safe_getattr

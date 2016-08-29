@@ -1,0 +1,6 @@
+sphinx.builders.gettext.walk
+============================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: walk

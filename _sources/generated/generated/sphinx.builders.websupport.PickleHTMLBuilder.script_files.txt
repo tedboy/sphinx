@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.script_files
+=========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.script_files

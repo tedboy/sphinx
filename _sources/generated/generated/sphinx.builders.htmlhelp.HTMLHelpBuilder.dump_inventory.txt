@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.HTMLHelpBuilder.dump_inventory
+=======================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. automethod:: HTMLHelpBuilder.dump_inventory

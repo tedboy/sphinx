@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.ModuleAnalyzer.__init__
+======================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: ModuleAnalyzer.__init__

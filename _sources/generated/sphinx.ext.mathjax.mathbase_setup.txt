@@ -1,0 +1,6 @@
+sphinx.ext.mathjax.mathbase_setup
+=================================
+
+.. currentmodule:: sphinx.ext.mathjax
+
+.. autofunction:: mathbase_setup

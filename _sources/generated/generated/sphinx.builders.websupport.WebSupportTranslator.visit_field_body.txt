@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_field_body
+================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_field_body

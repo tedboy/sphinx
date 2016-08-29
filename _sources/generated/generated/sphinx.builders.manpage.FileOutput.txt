@@ -1,0 +1,36 @@
+sphinx.builders.manpage.FileOutput
+==================================
+.. currentmodule:: sphinx.builders.manpage
+.. autoclass:: FileOutput
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~FileOutput.__init__
+   ~FileOutput.close
+   ~FileOutput.encode
+   ~FileOutput.get_transforms
+   ~FileOutput.open
+   ~FileOutput.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~FileOutput.component_type
+   ~FileOutput.default_destination_path
+   ~FileOutput.default_transforms
+   ~FileOutput.mode
+   ~FileOutput.unknown_reference_resolvers
+

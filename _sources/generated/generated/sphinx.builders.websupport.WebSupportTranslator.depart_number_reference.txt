@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_number_reference
+=======================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_number_reference

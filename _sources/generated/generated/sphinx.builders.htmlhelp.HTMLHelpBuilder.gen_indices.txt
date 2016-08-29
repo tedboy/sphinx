@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.HTMLHelpBuilder.gen_indices
+====================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. automethod:: HTMLHelpBuilder.gen_indices

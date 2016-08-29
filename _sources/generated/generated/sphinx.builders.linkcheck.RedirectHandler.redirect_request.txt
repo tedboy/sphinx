@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.RedirectHandler.redirect_request
+==========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: RedirectHandler.redirect_request

@@ -1,0 +1,6 @@
+sphinx.websupport.FileSystemLoader.list_templates
+=================================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: FileSystemLoader.list_templates

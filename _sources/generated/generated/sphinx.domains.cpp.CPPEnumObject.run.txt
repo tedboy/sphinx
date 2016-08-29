@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.run
+====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumObject.run

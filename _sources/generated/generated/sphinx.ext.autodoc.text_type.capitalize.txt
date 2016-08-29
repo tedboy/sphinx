@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.text_type.capitalize
+=======================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: text_type.capitalize

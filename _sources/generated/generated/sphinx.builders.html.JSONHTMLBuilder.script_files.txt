@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.script_files
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.script_files

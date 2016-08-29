@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTArray.get_id_v1
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTArray.get_id_v1

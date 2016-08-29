@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.final_argument_whitespace
+=================================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: ObjectDescription.final_argument_whitespace

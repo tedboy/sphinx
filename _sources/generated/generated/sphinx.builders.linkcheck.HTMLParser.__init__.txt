@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.__init__
+=============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.__init__

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HeadRequest.get_header
+================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HeadRequest.get_header

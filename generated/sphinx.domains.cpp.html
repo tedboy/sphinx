@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.3. sphinx.domains.cpp &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../index.html"/>
+        <link rel="up" title="5. sphinx.domains" href="../sphinx.domains.html"/>
+        <link rel="next" title="5.3.1.1. sphinx.domains.cpp.deepcopy" href="sphinx.domains.cpp.deepcopy.html"/>
+        <link rel="prev" title="5.2.2.9.1.3. sphinx.domains.c.XRefRole.result_nodes" href="generated/sphinx.domains.c.XRefRole.result_nodes.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.html">5.1. sphinx.domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.c.html">5.2. sphinx.domains.c</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">5.3. sphinx.domains.cpp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">5.3.1. Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.deepcopy.html">5.3.1.1. sphinx.domains.cpp.deepcopy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.iteritems.html">5.3.1.2. sphinx.domains.cpp.iteritems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.l_.html">5.3.1.3. sphinx.domains.cpp.l</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.make_refnode.html">5.3.1.4. sphinx.domains.cpp.make_refnode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">5.3.2. Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTArray.html">5.3.2.1. sphinx.domains.cpp.ASTArray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTBase.html">5.3.2.2. sphinx.domains.cpp.ASTBase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTBaseClass.html">5.3.2.3. sphinx.domains.cpp.ASTBaseClass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTClass.html">5.3.2.4. sphinx.domains.cpp.ASTClass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclSpecs.html">5.3.2.5. sphinx.domains.cpp.ASTDeclSpecs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclSpecsSimple.html">5.3.2.6. sphinx.domains.cpp.ASTDeclSpecsSimple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclaratorParamPack.html">5.3.2.7. sphinx.domains.cpp.ASTDeclaratorParamPack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclaratorParen.html">5.3.2.8. sphinx.domains.cpp.ASTDeclaratorParen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclaratorPtr.html">5.3.2.9. sphinx.domains.cpp.ASTDeclaratorPtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclaratorRef.html">5.3.2.10. sphinx.domains.cpp.ASTDeclaratorRef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDecleratorNameParamQual.html">5.3.2.11. sphinx.domains.cpp.ASTDecleratorNameParamQual</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTEnum.html">5.3.2.12. sphinx.domains.cpp.ASTEnum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTEnumerator.html">5.3.2.13. sphinx.domains.cpp.ASTEnumerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTFunctinoParameter.html">5.3.2.14. sphinx.domains.cpp.ASTFunctinoParameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTInitializer.html">5.3.2.15. sphinx.domains.cpp.ASTInitializer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTNestedName.html">5.3.2.16. sphinx.domains.cpp.ASTNestedName</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTNestedNameElement.html">5.3.2.17. sphinx.domains.cpp.ASTNestedNameElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTNestedNameElementEmpty.html">5.3.2.18. sphinx.domains.cpp.ASTNestedNameElementEmpty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTOperatorBuildIn.html">5.3.2.19. sphinx.domains.cpp.ASTOperatorBuildIn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTOperatorType.html">5.3.2.20. sphinx.domains.cpp.ASTOperatorType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTParametersQualifiers.html">5.3.2.21. sphinx.domains.cpp.ASTParametersQualifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTTemplateArgConstant.html">5.3.2.22. sphinx.domains.cpp.ASTTemplateArgConstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTTrailingTypeSpecFundamental.html">5.3.2.23. sphinx.domains.cpp.ASTTrailingTypeSpecFundamental</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTTrailingTypeSpecName.html">5.3.2.24. sphinx.domains.cpp.ASTTrailingTypeSpecName</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTType.html">5.3.2.25. sphinx.domains.cpp.ASTType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ASTTypeWithInit.html">5.3.2.26. sphinx.domains.cpp.ASTTypeWithInit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPClassObject.html">5.3.2.27. sphinx.domains.cpp.CPPClassObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPDomain.html">5.3.2.28. sphinx.domains.cpp.CPPDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPEnumObject.html">5.3.2.29. sphinx.domains.cpp.CPPEnumObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPEnumeratorObject.html">5.3.2.30. sphinx.domains.cpp.CPPEnumeratorObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPFunctionObject.html">5.3.2.31. sphinx.domains.cpp.CPPFunctionObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPMemberObject.html">5.3.2.32. sphinx.domains.cpp.CPPMemberObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPNamespaceObject.html">5.3.2.33. sphinx.domains.cpp.CPPNamespaceObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPObject.html">5.3.2.34. sphinx.domains.cpp.CPPObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPTypeObject.html">5.3.2.35. sphinx.domains.cpp.CPPTypeObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.CPPXRefRole.html">5.3.2.36. sphinx.domains.cpp.CPPXRefRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.DefinitionParser.html">5.3.2.37. sphinx.domains.cpp.DefinitionParser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.Directive.html">5.3.2.38. sphinx.domains.cpp.Directive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.Domain.html">5.3.2.39. sphinx.domains.cpp.Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.Field.html">5.3.2.40. sphinx.domains.cpp.Field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.GroupedField.html">5.3.2.41. sphinx.domains.cpp.GroupedField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ObjType.html">5.3.2.42. sphinx.domains.cpp.ObjType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.ObjectDescription.html">5.3.2.43. sphinx.domains.cpp.ObjectDescription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.UnicodeMixin.html">5.3.2.44. sphinx.domains.cpp.UnicodeMixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.XRefRole.html">5.3.2.45. sphinx.domains.cpp.XRefRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.cpp.text_type.html">5.3.2.46. sphinx.domains.cpp.text_type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#exceptions">5.3.3. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.DefinitionError.html">5.3.3.1. sphinx.domains.cpp.DefinitionError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.NoOldIdError.html">5.3.3.2. sphinx.domains.cpp.NoOldIdError</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.javascript.html">5.4. sphinx.domains.javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.python.html">5.5. sphinx.domains.python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.html">5.1. sphinx.domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.std.html">5.6. sphinx.domains.std</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a> &raquo;</li>
+        
+      <li>5.3. sphinx.domains.cpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/sphinx.domains.cpp.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-sphinx.domains.cpp"></span><div class="section" id="sphinx-domains-cpp">
+<h1>5.3. sphinx.domains.cpp<a class="headerlink" href="#sphinx-domains-cpp" title="Permalink to this headline">¶</a></h1>
+<p>The C++ language domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Copyright 2007-2016 by the Sphinx team, see AUTHORS.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD, see LICENSE for details.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="functions">
+<h2>5.3.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.deepcopy.html#sphinx.domains.cpp.deepcopy" title="sphinx.domains.cpp.deepcopy"><code class="xref py py-obj docutils literal"><span class="pre">deepcopy</span></code></a>(x[,&nbsp;memo,&nbsp;_nil])</td>
+<td>Deep copy operation on arbitrary Python objects.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.iteritems.html#sphinx.domains.cpp.iteritems" title="sphinx.domains.cpp.iteritems"><code class="xref py py-obj docutils literal"><span class="pre">iteritems</span></code></a>(d,&nbsp;**kw)</td>
+<td>Return an iterator over the (key, value) pairs of a dictionary.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.l_.html#sphinx.domains.cpp.l_" title="sphinx.domains.cpp.l_"><code class="xref py py-obj docutils literal"><span class="pre">l_</span></code></a>(string)</td>
+<td>A lazy version of <cite>gettext</cite>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.make_refnode.html#sphinx.domains.cpp.make_refnode" title="sphinx.domains.cpp.make_refnode"><code class="xref py py-obj docutils literal"><span class="pre">make_refnode</span></code></a>(builder,&nbsp;fromdocname,&nbsp;...[,&nbsp;title])</td>
+<td>Shortcut to create a reference node.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="classes">
+<h2>5.3.2. Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTArray.html#sphinx.domains.cpp.ASTArray" title="sphinx.domains.cpp.ASTArray"><code class="xref py py-obj docutils literal"><span class="pre">ASTArray</span></code></a>(size)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTBase.html#sphinx.domains.cpp.ASTBase" title="sphinx.domains.cpp.ASTBase"><code class="xref py py-obj docutils literal"><span class="pre">ASTBase</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTBaseClass.html#sphinx.domains.cpp.ASTBaseClass" title="sphinx.domains.cpp.ASTBaseClass"><code class="xref py py-obj docutils literal"><span class="pre">ASTBaseClass</span></code></a>(name,&nbsp;visibility)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTClass.html#sphinx.domains.cpp.ASTClass" title="sphinx.domains.cpp.ASTClass"><code class="xref py py-obj docutils literal"><span class="pre">ASTClass</span></code></a>(name,&nbsp;visibility,&nbsp;bases)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclSpecs.html#sphinx.domains.cpp.ASTDeclSpecs" title="sphinx.domains.cpp.ASTDeclSpecs"><code class="xref py py-obj docutils literal"><span class="pre">ASTDeclSpecs</span></code></a>(outer,&nbsp;visibility,&nbsp;leftSpecs,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclSpecsSimple.html#sphinx.domains.cpp.ASTDeclSpecsSimple" title="sphinx.domains.cpp.ASTDeclSpecsSimple"><code class="xref py py-obj docutils literal"><span class="pre">ASTDeclSpecsSimple</span></code></a>(storage,&nbsp;inline,&nbsp;virtual,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclaratorParamPack.html#sphinx.domains.cpp.ASTDeclaratorParamPack" title="sphinx.domains.cpp.ASTDeclaratorParamPack"><code class="xref py py-obj docutils literal"><span class="pre">ASTDeclaratorParamPack</span></code></a>(next)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclaratorParen.html#sphinx.domains.cpp.ASTDeclaratorParen" title="sphinx.domains.cpp.ASTDeclaratorParen"><code class="xref py py-obj docutils literal"><span class="pre">ASTDeclaratorParen</span></code></a>(inner,&nbsp;next)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclaratorPtr.html#sphinx.domains.cpp.ASTDeclaratorPtr" title="sphinx.domains.cpp.ASTDeclaratorPtr"><code class="xref py py-obj docutils literal"><span class="pre">ASTDeclaratorPtr</span></code></a>(next,&nbsp;volatile,&nbsp;const)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDeclaratorRef.html#sphinx.domains.cpp.ASTDeclaratorRef" title="sphinx.domains.cpp.ASTDeclaratorRef"><code class="xref py py-obj docutils literal"><span class="pre">ASTDeclaratorRef</span></code></a>(next)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTDecleratorNameParamQual.html#sphinx.domains.cpp.ASTDecleratorNameParamQual" title="sphinx.domains.cpp.ASTDecleratorNameParamQual"><code class="xref py py-obj docutils literal"><span class="pre">ASTDecleratorNameParamQual</span></code></a>(declId,&nbsp;arrayOps,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTEnum.html#sphinx.domains.cpp.ASTEnum" title="sphinx.domains.cpp.ASTEnum"><code class="xref py py-obj docutils literal"><span class="pre">ASTEnum</span></code></a>(name,&nbsp;visibility,&nbsp;scoped,&nbsp;underlyingType)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTEnumerator.html#sphinx.domains.cpp.ASTEnumerator" title="sphinx.domains.cpp.ASTEnumerator"><code class="xref py py-obj docutils literal"><span class="pre">ASTEnumerator</span></code></a>(name,&nbsp;init)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTFunctinoParameter.html#sphinx.domains.cpp.ASTFunctinoParameter" title="sphinx.domains.cpp.ASTFunctinoParameter"><code class="xref py py-obj docutils literal"><span class="pre">ASTFunctinoParameter</span></code></a>(arg[,&nbsp;ellipsis])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTInitializer.html#sphinx.domains.cpp.ASTInitializer" title="sphinx.domains.cpp.ASTInitializer"><code class="xref py py-obj docutils literal"><span class="pre">ASTInitializer</span></code></a>(value)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTNestedName.html#sphinx.domains.cpp.ASTNestedName" title="sphinx.domains.cpp.ASTNestedName"><code class="xref py py-obj docutils literal"><span class="pre">ASTNestedName</span></code></a>(names)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTNestedNameElement.html#sphinx.domains.cpp.ASTNestedNameElement" title="sphinx.domains.cpp.ASTNestedNameElement"><code class="xref py py-obj docutils literal"><span class="pre">ASTNestedNameElement</span></code></a>(identifier,&nbsp;templateArgs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTNestedNameElementEmpty.html#sphinx.domains.cpp.ASTNestedNameElementEmpty" title="sphinx.domains.cpp.ASTNestedNameElementEmpty"><code class="xref py py-obj docutils literal"><span class="pre">ASTNestedNameElementEmpty</span></code></a></td>
+<td>Used if a nested name starts with</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTOperatorBuildIn.html#sphinx.domains.cpp.ASTOperatorBuildIn" title="sphinx.domains.cpp.ASTOperatorBuildIn"><code class="xref py py-obj docutils literal"><span class="pre">ASTOperatorBuildIn</span></code></a>(op)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTOperatorType.html#sphinx.domains.cpp.ASTOperatorType" title="sphinx.domains.cpp.ASTOperatorType"><code class="xref py py-obj docutils literal"><span class="pre">ASTOperatorType</span></code></a>(type)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTParametersQualifiers.html#sphinx.domains.cpp.ASTParametersQualifiers" title="sphinx.domains.cpp.ASTParametersQualifiers"><code class="xref py py-obj docutils literal"><span class="pre">ASTParametersQualifiers</span></code></a>(args,&nbsp;volatile,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTTemplateArgConstant.html#sphinx.domains.cpp.ASTTemplateArgConstant" title="sphinx.domains.cpp.ASTTemplateArgConstant"><code class="xref py py-obj docutils literal"><span class="pre">ASTTemplateArgConstant</span></code></a>(value)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTTrailingTypeSpecFundamental.html#sphinx.domains.cpp.ASTTrailingTypeSpecFundamental" title="sphinx.domains.cpp.ASTTrailingTypeSpecFundamental"><code class="xref py py-obj docutils literal"><span class="pre">ASTTrailingTypeSpecFundamental</span></code></a>(name)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTTrailingTypeSpecName.html#sphinx.domains.cpp.ASTTrailingTypeSpecName" title="sphinx.domains.cpp.ASTTrailingTypeSpecName"><code class="xref py py-obj docutils literal"><span class="pre">ASTTrailingTypeSpecName</span></code></a>(prefix,&nbsp;nestedName)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTType.html#sphinx.domains.cpp.ASTType" title="sphinx.domains.cpp.ASTType"><code class="xref py py-obj docutils literal"><span class="pre">ASTType</span></code></a>(declSpecs,&nbsp;decl)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ASTTypeWithInit.html#sphinx.domains.cpp.ASTTypeWithInit" title="sphinx.domains.cpp.ASTTypeWithInit"><code class="xref py py-obj docutils literal"><span class="pre">ASTTypeWithInit</span></code></a>(type,&nbsp;init)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPClassObject.html#sphinx.domains.cpp.CPPClassObject" title="sphinx.domains.cpp.CPPClassObject"><code class="xref py py-obj docutils literal"><span class="pre">CPPClassObject</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPDomain.html#sphinx.domains.cpp.CPPDomain" title="sphinx.domains.cpp.CPPDomain"><code class="xref py py-obj docutils literal"><span class="pre">CPPDomain</span></code></a>(env)</td>
+<td>C++ language domain.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPEnumObject.html#sphinx.domains.cpp.CPPEnumObject" title="sphinx.domains.cpp.CPPEnumObject"><code class="xref py py-obj docutils literal"><span class="pre">CPPEnumObject</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPEnumeratorObject.html#sphinx.domains.cpp.CPPEnumeratorObject" title="sphinx.domains.cpp.CPPEnumeratorObject"><code class="xref py py-obj docutils literal"><span class="pre">CPPEnumeratorObject</span></code></a>(name,&nbsp;arguments,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPFunctionObject.html#sphinx.domains.cpp.CPPFunctionObject" title="sphinx.domains.cpp.CPPFunctionObject"><code class="xref py py-obj docutils literal"><span class="pre">CPPFunctionObject</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPMemberObject.html#sphinx.domains.cpp.CPPMemberObject" title="sphinx.domains.cpp.CPPMemberObject"><code class="xref py py-obj docutils literal"><span class="pre">CPPMemberObject</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPNamespaceObject.html#sphinx.domains.cpp.CPPNamespaceObject" title="sphinx.domains.cpp.CPPNamespaceObject"><code class="xref py py-obj docutils literal"><span class="pre">CPPNamespaceObject</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>This directive is just to tell Sphinx that we&#8217;re documenting stuff in namespace foo.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPObject.html#sphinx.domains.cpp.CPPObject" title="sphinx.domains.cpp.CPPObject"><code class="xref py py-obj docutils literal"><span class="pre">CPPObject</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td>Description of a C++ language object.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPTypeObject.html#sphinx.domains.cpp.CPPTypeObject" title="sphinx.domains.cpp.CPPTypeObject"><code class="xref py py-obj docutils literal"><span class="pre">CPPTypeObject</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.CPPXRefRole.html#sphinx.domains.cpp.CPPXRefRole" title="sphinx.domains.cpp.CPPXRefRole"><code class="xref py py-obj docutils literal"><span class="pre">CPPXRefRole</span></code></a>([fix_parens,&nbsp;lowercase,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.DefinitionParser.html#sphinx.domains.cpp.DefinitionParser" title="sphinx.domains.cpp.DefinitionParser"><code class="xref py py-obj docutils literal"><span class="pre">DefinitionParser</span></code></a>(definition)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.Directive.html#sphinx.domains.cpp.Directive" title="sphinx.domains.cpp.Directive"><code class="xref py py-obj docutils literal"><span class="pre">Directive</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td>Base class for reStructuredText directives.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.Domain.html#sphinx.domains.cpp.Domain" title="sphinx.domains.cpp.Domain"><code class="xref py py-obj docutils literal"><span class="pre">Domain</span></code></a>(env)</td>
+<td>A Domain is meant to be a group of &#8220;object&#8221; description directives for objects of a similar nature, and corresponding roles to create references to them.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.Field.html#sphinx.domains.cpp.Field" title="sphinx.domains.cpp.Field"><code class="xref py py-obj docutils literal"><span class="pre">Field</span></code></a>(name[,&nbsp;names,&nbsp;label,&nbsp;has_arg,&nbsp;...])</td>
+<td>A doc field that is never grouped.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.GroupedField.html#sphinx.domains.cpp.GroupedField" title="sphinx.domains.cpp.GroupedField"><code class="xref py py-obj docutils literal"><span class="pre">GroupedField</span></code></a>(name[,&nbsp;names,&nbsp;label,&nbsp;rolename,&nbsp;...])</td>
+<td>A doc field that is grouped; i.e., all fields of that type will be transformed into one field with its body being a bulleted list.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ObjType.html#sphinx.domains.cpp.ObjType" title="sphinx.domains.cpp.ObjType"><code class="xref py py-obj docutils literal"><span class="pre">ObjType</span></code></a>(lname,&nbsp;*roles,&nbsp;**attrs)</td>
+<td>An ObjType is the description for a type of object that a domain can document.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.ObjectDescription.html#sphinx.domains.cpp.ObjectDescription" title="sphinx.domains.cpp.ObjectDescription"><code class="xref py py-obj docutils literal"><span class="pre">ObjectDescription</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>Directive to describe a class, function or similar object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.UnicodeMixin.html#sphinx.domains.cpp.UnicodeMixin" title="sphinx.domains.cpp.UnicodeMixin"><code class="xref py py-obj docutils literal"><span class="pre">UnicodeMixin</span></code></a></td>
+<td>Mixin class to handle defining the proper __str__/__unicode__ methods in Python 2 or 3.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.cpp.XRefRole.html#sphinx.domains.cpp.XRefRole" title="sphinx.domains.cpp.XRefRole"><code class="xref py py-obj docutils literal"><span class="pre">XRefRole</span></code></a>([fix_parens,&nbsp;lowercase,&nbsp;nodeclass,&nbsp;...])</td>
+<td>A generic cross-referencing role.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.cpp.text_type.html#sphinx.domains.cpp.text_type" title="sphinx.domains.cpp.text_type"><code class="xref py py-obj docutils literal"><span class="pre">text_type</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">unicode</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="exceptions">
+<h2>5.3.3. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.DefinitionError.html#sphinx.domains.cpp.DefinitionError" title="sphinx.domains.cpp.DefinitionError"><code class="xref py py-obj docutils literal"><span class="pre">DefinitionError</span></code></a>(description)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.NoOldIdError.html#sphinx.domains.cpp.NoOldIdError" title="sphinx.domains.cpp.NoOldIdError"><code class="xref py py-obj docutils literal"><span class="pre">NoOldIdError</span></code></a>([description])</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.domains.cpp.deepcopy.html" class="btn btn-neutral float-right" title="5.3.1.1. sphinx.domains.cpp.deepcopy" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/sphinx.domains.c.XRefRole.result_nodes.html" class="btn btn-neutral" title="5.2.2.9.1.3. sphinx.domains.c.XRefRole.result_nodes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

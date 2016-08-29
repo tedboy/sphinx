@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.searchindex_filename
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.searchindex_filename

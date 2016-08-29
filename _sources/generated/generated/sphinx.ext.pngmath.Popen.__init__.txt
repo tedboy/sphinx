@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.Popen.__init__
+=================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: Popen.__init__

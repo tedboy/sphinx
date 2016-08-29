@@ -1,0 +1,21 @@
+sphinx.util.Tee
+===============
+.. currentmodule:: sphinx.util
+.. autoclass:: Tee
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Tee.__init__
+   ~Tee.flush
+   ~Tee.write
+
+
+
+
+

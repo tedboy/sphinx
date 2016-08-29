@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.get_outfilename
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.get_outfilename

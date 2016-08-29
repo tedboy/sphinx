@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder.allow_parallel
+==================================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: CheckExternalLinksBuilder.allow_parallel

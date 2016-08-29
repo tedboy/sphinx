@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.gen_additional_pages
+=========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.gen_additional_pages

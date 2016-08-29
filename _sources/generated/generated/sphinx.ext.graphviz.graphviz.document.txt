@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.document
+=====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: graphviz.document

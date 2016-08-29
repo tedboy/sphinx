@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.astimezone
+===========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.astimezone

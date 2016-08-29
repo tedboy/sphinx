@@ -1,0 +1,6 @@
+sphinx.builders.latex.inline_all_toctrees
+=========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autofunction:: inline_all_toctrees

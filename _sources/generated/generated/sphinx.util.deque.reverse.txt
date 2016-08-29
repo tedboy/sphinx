@@ -1,0 +1,6 @@
+sphinx.util.deque.reverse
+=========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.reverse

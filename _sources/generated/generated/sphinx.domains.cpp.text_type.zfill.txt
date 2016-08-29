@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.zfill
+==================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.zfill

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.find_catalog
+====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: find_catalog

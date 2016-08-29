@@ -1,0 +1,6 @@
+sphinx.websupport.WebSupport.get_data
+=====================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: WebSupport.get_data

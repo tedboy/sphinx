@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.dump_inventory
+===============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.dump_inventory

@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.out_suffix
+===============================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.out_suffix

@@ -1,0 +1,6 @@
+sphinx.domains.CPPDomain.data_version
+=====================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CPPDomain.data_version

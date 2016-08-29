@@ -1,0 +1,6 @@
+sphinx.search.NodeVisitor.dispatch_departure
+============================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: NodeVisitor.dispatch_departure

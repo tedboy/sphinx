@@ -1,0 +1,45 @@
+sphinx.builders.manpage.ManualPageWriter
+========================================
+.. currentmodule:: sphinx.builders.manpage
+.. autoclass:: ManualPageWriter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ManualPageWriter.__init__
+   ~ManualPageWriter.assemble_parts
+   ~ManualPageWriter.get_transforms
+   ~ManualPageWriter.supports
+   ~ManualPageWriter.translate
+   ~ManualPageWriter.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ManualPageWriter.component_type
+   ~ManualPageWriter.config_section
+   ~ManualPageWriter.config_section_dependencies
+   ~ManualPageWriter.default_transforms
+   ~ManualPageWriter.destination
+   ~ManualPageWriter.document
+   ~ManualPageWriter.language
+   ~ManualPageWriter.output
+   ~ManualPageWriter.relative_path_settings
+   ~ManualPageWriter.settings_default_overrides
+   ~ManualPageWriter.settings_defaults
+   ~ManualPageWriter.settings_spec
+   ~ManualPageWriter.supported
+   ~ManualPageWriter.unknown_reference_resolvers
+

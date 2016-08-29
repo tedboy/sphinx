@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.supports
+=================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageWriter.supports

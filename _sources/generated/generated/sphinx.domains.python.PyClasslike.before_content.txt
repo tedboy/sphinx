@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.before_content
+================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.before_content

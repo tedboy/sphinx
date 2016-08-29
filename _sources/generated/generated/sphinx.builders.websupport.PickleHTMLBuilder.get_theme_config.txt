@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.get_theme_config
+=============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.get_theme_config

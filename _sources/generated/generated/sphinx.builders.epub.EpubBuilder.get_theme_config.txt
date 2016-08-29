@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.get_theme_config
+=================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.get_theme_config

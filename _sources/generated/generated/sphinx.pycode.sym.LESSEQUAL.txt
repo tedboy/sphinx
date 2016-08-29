@@ -1,0 +1,6 @@
+sphinx.pycode.sym.LESSEQUAL
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.LESSEQUAL

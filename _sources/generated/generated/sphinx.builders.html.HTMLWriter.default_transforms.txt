@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.default_transforms
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.default_transforms

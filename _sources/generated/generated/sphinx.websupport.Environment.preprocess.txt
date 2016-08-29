@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.preprocess
+========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.preprocess

@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.optional_arguments
+==============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Glossary.optional_arguments

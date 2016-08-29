@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.dump_context
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.dump_context

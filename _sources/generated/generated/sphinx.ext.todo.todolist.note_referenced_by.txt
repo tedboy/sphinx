@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.note_referenced_by
+===========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.note_referenced_by

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.relative_path_settings
+============================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.relative_path_settings

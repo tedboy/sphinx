@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.add_name
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPFunctionObject.add_name

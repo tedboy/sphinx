@@ -1,0 +1,6 @@
+sphinx.search.IndexBuilder.__init__
+===================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: IndexBuilder.__init__

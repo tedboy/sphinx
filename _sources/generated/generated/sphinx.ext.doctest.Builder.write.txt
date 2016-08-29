@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.write
+================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: Builder.write

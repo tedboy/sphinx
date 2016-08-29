@@ -1,0 +1,6 @@
+sphinx.search.comment.set_class
+===============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.set_class

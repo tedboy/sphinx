@@ -1,0 +1,6 @@
+sphinx.pycode.sym.PERCENT
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.PERCENT

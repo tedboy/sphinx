@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.get_index_text
+===============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.get_index_text

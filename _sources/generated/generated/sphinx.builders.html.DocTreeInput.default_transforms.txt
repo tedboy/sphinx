@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.default_transforms
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DocTreeInput.default_transforms

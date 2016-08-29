@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.assert_has_content
+====================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: MathDirective.assert_has_content

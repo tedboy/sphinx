@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.error
+==================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.error

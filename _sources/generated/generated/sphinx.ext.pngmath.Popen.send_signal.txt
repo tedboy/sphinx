@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.Popen.send_signal
+====================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: Popen.send_signal

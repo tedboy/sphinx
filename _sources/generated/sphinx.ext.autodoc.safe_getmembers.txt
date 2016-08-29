@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.safe_getmembers
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: safe_getmembers

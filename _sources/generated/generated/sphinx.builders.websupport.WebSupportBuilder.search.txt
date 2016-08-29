@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.search
+===================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.search

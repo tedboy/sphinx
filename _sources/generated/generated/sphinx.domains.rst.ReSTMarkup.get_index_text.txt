@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.get_index_text
+============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.get_index_text

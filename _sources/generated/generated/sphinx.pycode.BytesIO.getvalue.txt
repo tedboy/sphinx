@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.getvalue
+==============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.getvalue

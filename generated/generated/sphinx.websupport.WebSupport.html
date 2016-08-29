@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.1.2.6. sphinx.websupport.WebSupport &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="7.1. sphinx.websupport" href="../sphinx.websupport.html"/>
+        <link rel="next" title="7.1.2.6.1.1. sphinx.websupport.WebSupport.__init__" href="sphinx.websupport.WebSupport.__init__.html"/>
+        <link rel="prev" title="7.1.2.5.1.11. sphinx.websupport.StorageBackend.update_username" href="sphinx.websupport.StorageBackend.update_username.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.websupport.html">7.1. sphinx.websupport</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.websupport.html#functions">7.1.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.websupport.html#classes">7.1.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.BaseSearch.html">7.1.2.1. sphinx.websupport.BaseSearch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.Environment.html">7.1.2.2. sphinx.websupport.Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.FileSystemLoader.html">7.1.2.3. sphinx.websupport.FileSystemLoader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.Sphinx.html">7.1.2.4. sphinx.websupport.Sphinx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.StorageBackend.html">7.1.2.5. sphinx.websupport.StorageBackend</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">7.1.2.6. sphinx.websupport.WebSupport</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.websupport.search.html">7.2. sphinx.websupport.search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.websupport.storage.html">7.3. sphinx.websupport.storage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.websupport.html">7. sphinx.websupport</a> &raquo;</li>
+        
+          <li><a href="../sphinx.websupport.html">7.1. sphinx.websupport</a> &raquo;</li>
+        
+      <li>7.1.2.6. sphinx.websupport.WebSupport</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.websupport.WebSupport.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-websupport-websupport">
+<h1>7.1.2.6. sphinx.websupport.WebSupport<a class="headerlink" href="#sphinx-websupport-websupport" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.websupport.WebSupport">
+<em class="property">class </em><code class="descclassname">sphinx.websupport.</code><code class="descname">WebSupport</code><span class="sig-paren">(</span><em>srcdir=None</em>, <em>builddir=''</em>, <em>datadir=None</em>, <em>staticdir=None</em>, <em>doctreedir=None</em>, <em>search=None</em>, <em>storage=None</em>, <em>status=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w'&gt;</em>, <em>warning=&lt;open file '&lt;stderr&gt;'</em>, <em>mode 'w'&gt;</em>, <em>moderation_callback=None</em>, <em>allow_anonymous_comments=True</em>, <em>docroot=''</em>, <em>staticroot='static'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sphinx/websupport.html#WebSupport"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.websupport.WebSupport" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main API class for the web support package. All interactions
+with the web support package should occur through this class.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>7.1.2.6.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.WebSupport.__init__.html#sphinx.websupport.WebSupport.__init__" title="sphinx.websupport.WebSupport.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([srcdir,&nbsp;builddir,&nbsp;datadir,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.WebSupport.accept_comment.html#sphinx.websupport.WebSupport.accept_comment" title="sphinx.websupport.WebSupport.accept_comment"><code class="xref py py-obj docutils literal"><span class="pre">accept_comment</span></code></a>(comment_id[,&nbsp;moderator])</td>
+<td>Accept a comment that is pending moderation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.WebSupport.add_comment.html#sphinx.websupport.WebSupport.add_comment" title="sphinx.websupport.WebSupport.add_comment"><code class="xref py py-obj docutils literal"><span class="pre">add_comment</span></code></a>(text[,&nbsp;node_id,&nbsp;parent_id,&nbsp;...])</td>
+<td>Add a comment to a node or another comment.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.WebSupport.build.html#sphinx.websupport.WebSupport.build" title="sphinx.websupport.WebSupport.build"><code class="xref py py-obj docutils literal"><span class="pre">build</span></code></a>()</td>
+<td>Build the documentation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.WebSupport.delete_comment.html#sphinx.websupport.WebSupport.delete_comment" title="sphinx.websupport.WebSupport.delete_comment"><code class="xref py py-obj docutils literal"><span class="pre">delete_comment</span></code></a>(comment_id[,&nbsp;username,&nbsp;moderator])</td>
+<td>Delete a comment.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.WebSupport.get_data.html#sphinx.websupport.WebSupport.get_data" title="sphinx.websupport.WebSupport.get_data"><code class="xref py py-obj docutils literal"><span class="pre">get_data</span></code></a>(node_id[,&nbsp;username,&nbsp;moderator])</td>
+<td>Get the comments and source associated with <cite>node_id</cite>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.WebSupport.get_document.html#sphinx.websupport.WebSupport.get_document" title="sphinx.websupport.WebSupport.get_document"><code class="xref py py-obj docutils literal"><span class="pre">get_document</span></code></a>(docname[,&nbsp;username,&nbsp;moderator])</td>
+<td>Load and return a document from a pickle.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.WebSupport.get_globalcontext.html#sphinx.websupport.WebSupport.get_globalcontext" title="sphinx.websupport.WebSupport.get_globalcontext"><code class="xref py py-obj docutils literal"><span class="pre">get_globalcontext</span></code></a>()</td>
+<td>Load and return the &#8220;global context&#8221; pickle.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.WebSupport.get_search_results.html#sphinx.websupport.WebSupport.get_search_results" title="sphinx.websupport.WebSupport.get_search_results"><code class="xref py py-obj docutils literal"><span class="pre">get_search_results</span></code></a>(q)</td>
+<td>Perform a search for the query <cite>q</cite>, and create a set of search results.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.WebSupport.process_vote.html#sphinx.websupport.WebSupport.process_vote" title="sphinx.websupport.WebSupport.process_vote"><code class="xref py py-obj docutils literal"><span class="pre">process_vote</span></code></a>(comment_id,&nbsp;username,&nbsp;value)</td>
+<td>Process a user&#8217;s vote.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.WebSupport.update_username.html#sphinx.websupport.WebSupport.update_username" title="sphinx.websupport.WebSupport.update_username"><code class="xref py py-obj docutils literal"><span class="pre">update_username</span></code></a>(old_username,&nbsp;new_username)</td>
+<td>To remain decoupled from a webapp&#8217;s authentication system, the web support package stores a user&#8217;s username with each of their comments and votes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.websupport.WebSupport.__init__.html" class="btn btn-neutral float-right" title="7.1.2.6.1.1. sphinx.websupport.WebSupport.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.websupport.StorageBackend.update_username.html" class="btn btn-neutral" title="7.1.2.5.1.11. sphinx.websupport.StorageBackend.update_username" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

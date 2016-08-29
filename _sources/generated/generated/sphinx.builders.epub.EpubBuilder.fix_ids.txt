@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.fix_ids
+========================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.fix_ids

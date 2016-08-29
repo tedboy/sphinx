@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.add_target_and_index
+=========================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.add_target_and_index

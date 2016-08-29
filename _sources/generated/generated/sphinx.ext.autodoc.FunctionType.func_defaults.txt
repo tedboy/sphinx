@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.FunctionType.func_defaults
+=============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: FunctionType.func_defaults

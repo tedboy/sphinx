@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.man_visit_math
+==================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: man_visit_math

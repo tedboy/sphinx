@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.depart_definition_list
+=====================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.depart_definition_list

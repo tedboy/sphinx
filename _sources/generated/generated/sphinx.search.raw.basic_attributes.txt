@@ -1,0 +1,6 @@
+sphinx.search.raw.basic_attributes
+==================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: raw.basic_attributes

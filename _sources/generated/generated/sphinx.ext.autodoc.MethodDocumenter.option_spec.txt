@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.MethodDocumenter.option_spec
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: MethodDocumenter.option_spec

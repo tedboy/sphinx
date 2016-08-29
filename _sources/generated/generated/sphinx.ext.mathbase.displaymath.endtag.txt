@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.endtag
+======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.endtag

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTrailingTypeSpecName.get_name
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTrailingTypeSpecName.get_name

@@ -1,0 +1,6 @@
+sphinx.locale.UserString.ljust
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.ljust

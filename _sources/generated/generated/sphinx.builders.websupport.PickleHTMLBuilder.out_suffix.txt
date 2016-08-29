@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.out_suffix
+=======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.out_suffix

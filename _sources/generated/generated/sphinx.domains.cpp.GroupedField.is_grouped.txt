@@ -1,0 +1,6 @@
+sphinx.domains.cpp.GroupedField.is_grouped
+==========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: GroupedField.is_grouped

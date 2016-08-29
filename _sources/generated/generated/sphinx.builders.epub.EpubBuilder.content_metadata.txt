@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.content_metadata
+=================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.content_metadata

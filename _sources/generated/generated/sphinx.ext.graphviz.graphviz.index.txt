@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.index
+==================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.index

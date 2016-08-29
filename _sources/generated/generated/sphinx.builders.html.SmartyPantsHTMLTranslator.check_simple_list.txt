@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.check_simple_list
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.check_simple_list

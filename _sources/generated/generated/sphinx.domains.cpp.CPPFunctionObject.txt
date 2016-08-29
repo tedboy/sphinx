@@ -1,0 +1,49 @@
+sphinx.domains.cpp.CPPFunctionObject
+====================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPFunctionObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPFunctionObject.__init__
+   ~CPPFunctionObject.add_name
+   ~CPPFunctionObject.add_target_and_index
+   ~CPPFunctionObject.after_content
+   ~CPPFunctionObject.assert_has_content
+   ~CPPFunctionObject.before_content
+   ~CPPFunctionObject.debug
+   ~CPPFunctionObject.describe_signature
+   ~CPPFunctionObject.directive_error
+   ~CPPFunctionObject.error
+   ~CPPFunctionObject.get_index_text
+   ~CPPFunctionObject.get_signatures
+   ~CPPFunctionObject.handle_signature
+   ~CPPFunctionObject.info
+   ~CPPFunctionObject.parse_definition
+   ~CPPFunctionObject.run
+   ~CPPFunctionObject.severe
+   ~CPPFunctionObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CPPFunctionObject.doc_field_types
+   ~CPPFunctionObject.final_argument_whitespace
+   ~CPPFunctionObject.has_content
+   ~CPPFunctionObject.option_spec
+   ~CPPFunctionObject.optional_arguments
+   ~CPPFunctionObject.required_arguments
+

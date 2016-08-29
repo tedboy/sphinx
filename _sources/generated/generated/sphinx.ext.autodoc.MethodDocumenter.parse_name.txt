@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.MethodDocumenter.parse_name
+==============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: MethodDocumenter.parse_name

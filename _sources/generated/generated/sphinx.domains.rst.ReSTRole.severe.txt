@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.severe
+==================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.severe

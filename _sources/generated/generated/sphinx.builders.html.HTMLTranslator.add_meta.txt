@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.add_meta
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.add_meta

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.GroupedField.__init__
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: GroupedField.__init__

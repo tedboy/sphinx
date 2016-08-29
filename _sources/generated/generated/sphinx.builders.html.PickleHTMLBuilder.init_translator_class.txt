@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.init_translator_class
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.init_translator_class

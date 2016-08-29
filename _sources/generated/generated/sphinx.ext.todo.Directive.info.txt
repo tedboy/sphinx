@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.info
+==============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Directive.info

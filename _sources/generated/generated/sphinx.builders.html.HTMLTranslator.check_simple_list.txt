@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.check_simple_list
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.check_simple_list

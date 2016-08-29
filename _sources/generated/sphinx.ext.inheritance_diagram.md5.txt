@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.md5
+==================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autofunction:: md5

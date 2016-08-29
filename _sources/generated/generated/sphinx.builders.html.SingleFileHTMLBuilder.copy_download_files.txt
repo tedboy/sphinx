@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.copy_download_files
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.copy_download_files

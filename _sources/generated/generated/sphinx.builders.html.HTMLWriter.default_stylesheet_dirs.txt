@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.default_stylesheet_dirs
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.default_stylesheet_dirs

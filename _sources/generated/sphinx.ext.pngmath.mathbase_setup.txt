@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.mathbase_setup
+=================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: mathbase_setup

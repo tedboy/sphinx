@@ -1,0 +1,6 @@
+sphinx.pycode.sym.GREATER
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.GREATER

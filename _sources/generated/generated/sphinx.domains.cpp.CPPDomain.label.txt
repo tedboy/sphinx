@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPDomain.label
+==================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPDomain.label

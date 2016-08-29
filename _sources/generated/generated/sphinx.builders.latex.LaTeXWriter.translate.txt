@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXWriter.translate
+===========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXWriter.translate

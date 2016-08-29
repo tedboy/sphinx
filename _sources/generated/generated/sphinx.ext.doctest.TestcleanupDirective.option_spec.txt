@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcleanupDirective.option_spec
+===================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: TestcleanupDirective.option_spec

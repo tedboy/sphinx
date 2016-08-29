@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.get_relative_uri
+=======================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoBuilder.get_relative_uri

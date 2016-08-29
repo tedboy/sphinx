@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.create_template_bridge
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.create_template_bridge

@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.settings_default_overrides
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DoctreeReader.settings_default_overrides

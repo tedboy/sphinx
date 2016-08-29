@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.builders.websupport &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.builders" href="../builders.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../builders.html">sphinx.builders</a> &raquo;</li>
+        
+      <li>sphinx.builders.websupport</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.builders.websupport</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.builders.websupport</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Builder for the web support package.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">import</span> <span class="nn">posixpath</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="kn">from</span> <span class="nn">docutils.io</span> <span class="kn">import</span> <span class="n">StringOutput</span>
+
+<span class="kn">from</span> <span class="nn">sphinx.jinja2glue</span> <span class="kn">import</span> <span class="n">BuiltinTemplateLoader</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.osutil</span> <span class="kn">import</span> <span class="n">os_path</span><span class="p">,</span> <span class="n">relative_uri</span><span class="p">,</span> <span class="n">ensuredir</span><span class="p">,</span> <span class="n">copyfile</span>
+<span class="kn">from</span> <span class="nn">sphinx.builders.html</span> <span class="kn">import</span> <span class="n">PickleHTMLBuilder</span>
+<span class="kn">from</span> <span class="nn">sphinx.writers.websupport</span> <span class="kn">import</span> <span class="n">WebSupportTranslator</span>
+
+
+<div class="viewcode-block" id="WebSupportBuilder"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.html#sphinx.builders.websupport.WebSupportBuilder">[docs]</a><span class="k">class</span> <span class="nc">WebSupportBuilder</span><span class="p">(</span><span class="n">PickleHTMLBuilder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds documents for the web support package.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;websupport&#39;</span>
+    <span class="n">versioning_method</span> <span class="o">=</span> <span class="s1">&#39;commentable&#39;</span>
+    <span class="n">versioning_compare</span> <span class="o">=</span> <span class="bp">True</span>  <span class="c1"># for commentable node&#39;s uuid stability.</span>
+
+<div class="viewcode-block" id="WebSupportBuilder.init"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.init.html#sphinx.builders.websupport.WebSupportBuilder.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">PickleHTMLBuilder</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="c1"># templates are needed for this builder, but the serializing</span>
+        <span class="c1"># builder does not initialize them</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_templates</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">templates</span><span class="p">,</span> <span class="n">BuiltinTemplateLoader</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;websupport builder must be used with &#39;</span>
+                               <span class="s1">&#39;the builtin templates&#39;</span><span class="p">)</span>
+        <span class="c1"># add our custom JS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">script_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;_static/websupport.js&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WebSupportBuilder.set_webinfo"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.set_webinfo.html#sphinx.builders.websupport.WebSupportBuilder.set_webinfo">[docs]</a>    <span class="k">def</span> <span class="nf">set_webinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">staticdir</span><span class="p">,</span> <span class="n">virtual_staticdir</span><span class="p">,</span> <span class="n">search</span><span class="p">,</span> <span class="n">storage</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">staticdir</span> <span class="o">=</span> <span class="n">staticdir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">virtual_staticdir</span> <span class="o">=</span> <span class="n">virtual_staticdir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">search</span> <span class="o">=</span> <span class="n">search</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">storage</span></div>
+
+<div class="viewcode-block" id="WebSupportBuilder.init_translator_class"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.init_translator_class.html#sphinx.builders.websupport.WebSupportBuilder.init_translator_class">[docs]</a>    <span class="k">def</span> <span class="nf">init_translator_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">translator_class</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">translator_class</span> <span class="o">=</span> <span class="n">WebSupportTranslator</span></div>
+
+<div class="viewcode-block" id="WebSupportBuilder.prepare_writing"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.prepare_writing.html#sphinx.builders.websupport.WebSupportBuilder.prepare_writing">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_writing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docnames</span><span class="p">):</span>
+        <span class="n">PickleHTMLBuilder</span><span class="o">.</span><span class="n">prepare_writing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docnames</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">globalcontext</span><span class="p">[</span><span class="s1">&#39;no_search_suffix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span></div>
+
+<div class="viewcode-block" id="WebSupportBuilder.write_doc"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.write_doc.html#sphinx.builders.websupport.WebSupportBuilder.write_doc">[docs]</a>    <span class="k">def</span> <span class="nf">write_doc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+        <span class="n">destination</span> <span class="o">=</span> <span class="n">StringOutput</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="n">doctree</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">docsettings</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">secnumbers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">toc_secnumbers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fignumbers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">toc_fignumbers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imgpath</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">virtual_staticdir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imagedir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dlpath</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">virtual_staticdir</span><span class="p">,</span> <span class="s1">&#39;_downloads&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_docname</span> <span class="o">=</span> <span class="n">docname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">docwriter</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">doctree</span><span class="p">,</span> <span class="n">destination</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">docwriter</span><span class="o">.</span><span class="n">assemble_parts</span><span class="p">()</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">docwriter</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="s1">&#39;fragment&#39;</span><span class="p">]</span>
+        <span class="n">metatags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">docwriter</span><span class="o">.</span><span class="n">clean_meta</span>
+
+        <span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_doc_context</span><span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">metatags</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle_page</span><span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">event_arg</span><span class="o">=</span><span class="n">doctree</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WebSupportBuilder.write_doc_serialized"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.write_doc_serialized.html#sphinx.builders.websupport.WebSupportBuilder.write_doc_serialized">[docs]</a>    <span class="k">def</span> <span class="nf">write_doc_serialized</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imgpath</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">virtual_staticdir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imagedir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">post_process_images</span><span class="p">(</span><span class="n">doctree</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">longtitles</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">docname</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_partial</span><span class="p">(</span><span class="n">title</span><span class="p">)[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index_page</span><span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="n">doctree</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WebSupportBuilder.load_indexer"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.load_indexer.html#sphinx.builders.websupport.WebSupportBuilder.load_indexer">[docs]</a>    <span class="k">def</span> <span class="nf">load_indexer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docnames</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">init_indexing</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="n">docnames</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_render_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span> <span class="n">addctx</span><span class="p">,</span> <span class="n">templatename</span><span class="p">,</span> <span class="n">event_arg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="c1"># This is mostly copied from StandaloneHTMLBuilder. However, instead</span>
+        <span class="c1"># of rendering the template and saving the html, create a context</span>
+        <span class="c1"># dict and pickle it.</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalcontext</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;pagename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pagename</span>
+
+        <span class="k">def</span> <span class="nf">pathto</span><span class="p">(</span><span class="n">otheruri</span><span class="p">,</span> <span class="n">resource</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                   <span class="n">baseuri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_target_uri</span><span class="p">(</span><span class="n">pagename</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">resource</span> <span class="ow">and</span> <span class="s1">&#39;://&#39;</span> <span class="ow">in</span> <span class="n">otheruri</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">otheruri</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">resource</span><span class="p">:</span>
+                <span class="n">otheruri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_target_uri</span><span class="p">(</span><span class="n">otheruri</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">relative_uri</span><span class="p">(</span><span class="n">baseuri</span><span class="p">,</span> <span class="n">otheruri</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;#&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">virtual_staticdir</span><span class="p">,</span> <span class="n">otheruri</span><span class="p">)</span>
+        <span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;pathto&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pathto</span>
+        <span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;hasdoc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">name</span><span class="p">:</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">all_docs</span>
+        <span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">html_output_encoding</span>
+        <span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;toctree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">**</span><span class="n">kw</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_local_toctree</span><span class="p">(</span><span class="n">pagename</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_sidebars</span><span class="p">(</span><span class="n">pagename</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">addctx</span><span class="p">)</span>
+
+        <span class="n">newtmpl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">emit_firstresult</span><span class="p">(</span><span class="s1">&#39;html-page-context&#39;</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span>
+                                            <span class="n">templatename</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">event_arg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">newtmpl</span><span class="p">:</span>
+            <span class="n">templatename</span> <span class="o">=</span> <span class="n">newtmpl</span>
+
+        <span class="c1"># create a dict that will be pickled and used by webapps</span>
+        <span class="n">doc_ctx</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">ctx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">ctx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;css&#39;</span><span class="p">:</span> <span class="n">ctx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;css&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="n">ctx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">}</span>
+        <span class="c1"># partially render the html template to get at interesting macros</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">templates</span><span class="o">.</span><span class="n">environment</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">templatename</span><span class="p">)</span>
+        <span class="n">template_module</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">make_module</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;sidebar&#39;</span><span class="p">,</span> <span class="s1">&#39;relbar&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;css&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">template_module</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+                <span class="n">doc_ctx</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">template_module</span><span class="p">,</span> <span class="n">item</span><span class="p">)()</span>
+
+        <span class="k">return</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">doc_ctx</span>
+
+<div class="viewcode-block" id="WebSupportBuilder.handle_page"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.handle_page.html#sphinx.builders.websupport.WebSupportBuilder.handle_page">[docs]</a>    <span class="k">def</span> <span class="nf">handle_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span> <span class="n">addctx</span><span class="p">,</span> <span class="n">templatename</span><span class="o">=</span><span class="s1">&#39;page.html&#39;</span><span class="p">,</span>
+                    <span class="n">outfilename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">event_arg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">ctx</span><span class="p">,</span> <span class="n">doc_ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_page</span><span class="p">(</span><span class="n">pagename</span><span class="p">,</span> <span class="n">addctx</span><span class="p">,</span>
+                                         <span class="n">templatename</span><span class="p">,</span> <span class="n">event_arg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">outfilename</span><span class="p">:</span>
+            <span class="n">outfilename</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="s1">&#39;pickles&#39;</span><span class="p">,</span>
+                                    <span class="n">os_path</span><span class="p">(</span><span class="n">pagename</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_suffix</span><span class="p">)</span>
+        <span class="n">ensuredir</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">outfilename</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dump_context</span><span class="p">(</span><span class="n">doc_ctx</span><span class="p">,</span> <span class="n">outfilename</span><span class="p">)</span>
+
+        <span class="c1"># if there is a source file, copy the source file for the</span>
+        <span class="c1"># &quot;show source&quot; link</span>
+        <span class="k">if</span> <span class="n">ctx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sourcename&#39;</span><span class="p">):</span>
+            <span class="n">source_name</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">staticdir</span><span class="p">,</span>
+                                    <span class="s1">&#39;_sources&#39;</span><span class="p">,</span>  <span class="n">os_path</span><span class="p">(</span><span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;sourcename&#39;</span><span class="p">]))</span>
+            <span class="n">ensuredir</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">source_name</span><span class="p">))</span>
+            <span class="n">copyfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">pagename</span><span class="p">),</span> <span class="n">source_name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WebSupportBuilder.handle_finish"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.handle_finish.html#sphinx.builders.websupport.WebSupportBuilder.handle_finish">[docs]</a>    <span class="k">def</span> <span class="nf">handle_finish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># get global values for css and script files</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">doc_ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_page</span><span class="p">(</span><span class="s1">&#39;tmp&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;page.html&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">globalcontext</span><span class="p">[</span><span class="s1">&#39;css&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc_ctx</span><span class="p">[</span><span class="s1">&#39;css&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">globalcontext</span><span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc_ctx</span><span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">]</span>
+
+        <span class="n">PickleHTMLBuilder</span><span class="o">.</span><span class="n">handle_finish</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># move static stuff over to separate directory</span>
+        <span class="n">directories</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">imagedir</span><span class="p">,</span> <span class="s1">&#39;_static&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">directories</span><span class="p">:</span>
+            <span class="n">src</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+            <span class="n">dst</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">staticdir</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dst</span><span class="p">):</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WebSupportBuilder.dump_search_index"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.websupport.WebSupportBuilder.dump_search_index.html#sphinx.builders.websupport.WebSupportBuilder.dump_search_index">[docs]</a>    <span class="k">def</span> <span class="nf">dump_search_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">finish_indexing</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

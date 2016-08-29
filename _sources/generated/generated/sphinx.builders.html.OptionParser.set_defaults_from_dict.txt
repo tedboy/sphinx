@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.set_defaults_from_dict
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: OptionParser.set_defaults_from_dict

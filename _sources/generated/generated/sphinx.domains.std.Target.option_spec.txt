@@ -1,0 +1,6 @@
+sphinx.domains.std.Target.option_spec
+=====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Target.option_spec

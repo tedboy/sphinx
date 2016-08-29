@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.default_transforms
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DoctreeReader.default_transforms

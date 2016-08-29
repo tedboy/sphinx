@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.out_suffix
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.out_suffix

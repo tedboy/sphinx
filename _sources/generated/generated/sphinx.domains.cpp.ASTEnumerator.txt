@@ -1,0 +1,25 @@
+sphinx.domains.cpp.ASTEnumerator
+================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTEnumerator
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTEnumerator.__init__
+   ~ASTEnumerator.clone
+   ~ASTEnumerator.describe_signature
+   ~ASTEnumerator.get_id_v1
+   ~ASTEnumerator.get_id_v2
+   ~ASTEnumerator.get_name
+   ~ASTEnumerator.prefix_nested_name
+
+
+
+
+

@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.allow_parallel
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SingleFileHTMLBuilder.allow_parallel

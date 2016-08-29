@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.doc_field_types
+======================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPEnumeratorObject.doc_field_types

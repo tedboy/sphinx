@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.clear
+==================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.clear

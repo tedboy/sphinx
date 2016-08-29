@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.format
+=============================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.format

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.add_target_and_index
+==================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.add_target_and_index

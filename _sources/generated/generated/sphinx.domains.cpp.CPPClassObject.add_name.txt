@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPClassObject.add_name
+==========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPClassObject.add_name

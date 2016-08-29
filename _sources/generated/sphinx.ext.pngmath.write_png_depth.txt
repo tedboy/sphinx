@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.write_png_depth
+==================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: write_png_depth

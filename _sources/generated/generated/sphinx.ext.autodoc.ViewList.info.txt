@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.info
+================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.info

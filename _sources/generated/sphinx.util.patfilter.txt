@@ -1,0 +1,6 @@
+sphinx.util.patfilter
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: patfilter

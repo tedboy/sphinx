@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.starttag
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.starttag

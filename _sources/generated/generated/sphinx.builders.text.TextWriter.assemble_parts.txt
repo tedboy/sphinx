@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.assemble_parts
+==============================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: TextWriter.assemble_parts

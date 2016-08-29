@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.out_suffix
+=====================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.out_suffix

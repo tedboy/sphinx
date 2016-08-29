@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.link_suffix
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SingleFileHTMLBuilder.link_suffix

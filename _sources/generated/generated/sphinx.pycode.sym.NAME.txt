@@ -1,0 +1,6 @@
+sphinx.pycode.sym.NAME
+======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.NAME

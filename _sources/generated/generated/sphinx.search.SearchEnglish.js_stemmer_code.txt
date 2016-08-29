@@ -1,0 +1,6 @@
+sphinx.search.SearchEnglish.js_stemmer_code
+===========================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: SearchEnglish.js_stemmer_code

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.info
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPTypeObject.info

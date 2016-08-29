@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.first_child_not_matching_class
+=======================================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.first_child_not_matching_class

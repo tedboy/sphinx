@@ -1,0 +1,6 @@
+sphinx.websupport.search.BaseSearch.__init__
+============================================
+
+.. currentmodule:: sphinx.websupport.search
+
+.. automethod:: BaseSearch.__init__

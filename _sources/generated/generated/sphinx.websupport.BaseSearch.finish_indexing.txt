@@ -1,0 +1,6 @@
+sphinx.websupport.BaseSearch.finish_indexing
+============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: BaseSearch.finish_indexing

@@ -1,0 +1,6 @@
+sphinx.pycode.text_type.rindex
+==============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: text_type.rindex

@@ -1,0 +1,48 @@
+sphinx.domains.cpp.CPPObject
+============================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPObject.__init__
+   ~CPPObject.add_name
+   ~CPPObject.add_target_and_index
+   ~CPPObject.after_content
+   ~CPPObject.assert_has_content
+   ~CPPObject.before_content
+   ~CPPObject.debug
+   ~CPPObject.describe_signature
+   ~CPPObject.directive_error
+   ~CPPObject.error
+   ~CPPObject.get_signatures
+   ~CPPObject.handle_signature
+   ~CPPObject.info
+   ~CPPObject.parse_definition
+   ~CPPObject.run
+   ~CPPObject.severe
+   ~CPPObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CPPObject.doc_field_types
+   ~CPPObject.final_argument_whitespace
+   ~CPPObject.has_content
+   ~CPPObject.option_spec
+   ~CPPObject.optional_arguments
+   ~CPPObject.required_arguments
+

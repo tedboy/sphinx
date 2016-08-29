@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.get_relative_uri
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.get_relative_uri

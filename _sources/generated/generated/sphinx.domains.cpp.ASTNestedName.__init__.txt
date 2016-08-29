@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTNestedName.__init__
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTNestedName.__init__

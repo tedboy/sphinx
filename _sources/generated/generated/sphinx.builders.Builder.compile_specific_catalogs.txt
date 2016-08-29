@@ -1,0 +1,6 @@
+sphinx.builders.Builder.compile_specific_catalogs
+=================================================
+
+.. currentmodule:: sphinx.builders
+
+.. automethod:: Builder.compile_specific_catalogs

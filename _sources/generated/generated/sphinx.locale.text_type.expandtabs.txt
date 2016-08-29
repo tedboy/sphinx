@@ -1,0 +1,6 @@
+sphinx.locale.text_type.expandtabs
+==================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.expandtabs

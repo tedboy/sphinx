@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcleanupDirective.required_arguments
+==========================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: TestcleanupDirective.required_arguments

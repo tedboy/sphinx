@@ -1,0 +1,6 @@
+sphinx.websupport.search.BaseSearch.extract_context
+===================================================
+
+.. currentmodule:: sphinx.websupport.search
+
+.. automethod:: BaseSearch.extract_context

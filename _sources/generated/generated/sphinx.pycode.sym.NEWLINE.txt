@@ -1,0 +1,6 @@
+sphinx.pycode.sym.NEWLINE
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.NEWLINE

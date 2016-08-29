@@ -1,0 +1,28 @@
+sphinx.websupport.BaseSearch
+============================
+.. currentmodule:: sphinx.websupport
+.. autoclass:: BaseSearch
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~BaseSearch.__init__
+   ~BaseSearch.add_document
+   ~BaseSearch.context_for_searchtool
+   ~BaseSearch.extract_context
+   ~BaseSearch.feed
+   ~BaseSearch.finish_indexing
+   ~BaseSearch.get_js_stemmer_rawcode
+   ~BaseSearch.handle_query
+   ~BaseSearch.init_indexing
+   ~BaseSearch.query
+
+
+
+
+

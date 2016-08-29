@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.words_and_spaces
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.words_and_spaces

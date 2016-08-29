@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.usepackages
+==============================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: LaTeXBuilder.usepackages

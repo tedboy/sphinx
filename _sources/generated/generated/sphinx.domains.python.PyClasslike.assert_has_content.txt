@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.assert_has_content
+====================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.assert_has_content

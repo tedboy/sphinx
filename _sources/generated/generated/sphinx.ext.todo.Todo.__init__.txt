@@ -1,0 +1,6 @@
+sphinx.ext.todo.Todo.__init__
+=============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Todo.__init__

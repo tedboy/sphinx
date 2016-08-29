@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.get_target_uri
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.get_target_uri

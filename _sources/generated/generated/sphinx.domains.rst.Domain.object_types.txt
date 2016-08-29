@@ -1,0 +1,6 @@
+sphinx.domains.rst.Domain.object_types
+======================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: Domain.object_types

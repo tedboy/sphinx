@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.parent
+================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: eqref.parent

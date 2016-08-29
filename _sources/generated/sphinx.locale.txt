@@ -1,0 +1,43 @@
+.. automodule:: sphinx.locale
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      init
+      l_
+      lazy_gettext
+      mygettext
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      UserString
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.locale.UserString
+       generated/sphinx.locale.text_type
+
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.Directive.final_argument_whitespace
+==================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoattribute:: Directive.final_argument_whitespace

@@ -1,0 +1,6 @@
+sphinx.search.title.has_key
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.has_key

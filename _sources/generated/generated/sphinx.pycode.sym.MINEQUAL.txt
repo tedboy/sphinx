@@ -1,0 +1,6 @@
+sphinx.pycode.sym.MINEQUAL
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.MINEQUAL

@@ -1,0 +1,6 @@
+sphinx.util.movefile
+====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: movefile

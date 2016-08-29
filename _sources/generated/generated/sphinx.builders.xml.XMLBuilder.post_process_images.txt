@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.post_process_images
+==================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLBuilder.post_process_images

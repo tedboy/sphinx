@@ -1,0 +1,91 @@
+sphinx.builders.html.JSONHTMLBuilder
+====================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: JSONHTMLBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~JSONHTMLBuilder.__init__
+   ~JSONHTMLBuilder.add_sidebars
+   ~JSONHTMLBuilder.build
+   ~JSONHTMLBuilder.build_all
+   ~JSONHTMLBuilder.build_specific
+   ~JSONHTMLBuilder.build_update
+   ~JSONHTMLBuilder.cleanup
+   ~JSONHTMLBuilder.compile_all_catalogs
+   ~JSONHTMLBuilder.compile_catalogs
+   ~JSONHTMLBuilder.compile_specific_catalogs
+   ~JSONHTMLBuilder.compile_update_catalogs
+   ~JSONHTMLBuilder.copy_download_files
+   ~JSONHTMLBuilder.copy_extra_files
+   ~JSONHTMLBuilder.copy_image_files
+   ~JSONHTMLBuilder.copy_static_files
+   ~JSONHTMLBuilder.create_template_bridge
+   ~JSONHTMLBuilder.dump_context
+   ~JSONHTMLBuilder.dump_inventory
+   ~JSONHTMLBuilder.dump_search_index
+   ~JSONHTMLBuilder.finish
+   ~JSONHTMLBuilder.gen_additional_pages
+   ~JSONHTMLBuilder.gen_indices
+   ~JSONHTMLBuilder.get_builder_config
+   ~JSONHTMLBuilder.get_doc_context
+   ~JSONHTMLBuilder.get_outdated_docs
+   ~JSONHTMLBuilder.get_outfilename
+   ~JSONHTMLBuilder.get_relative_uri
+   ~JSONHTMLBuilder.get_target_uri
+   ~JSONHTMLBuilder.get_theme_config
+   ~JSONHTMLBuilder.handle_finish
+   ~JSONHTMLBuilder.handle_page
+   ~JSONHTMLBuilder.index_page
+   ~JSONHTMLBuilder.init
+   ~JSONHTMLBuilder.init_highlighter
+   ~JSONHTMLBuilder.init_templates
+   ~JSONHTMLBuilder.init_translator_class
+   ~JSONHTMLBuilder.load_indexer
+   ~JSONHTMLBuilder.post_process_images
+   ~JSONHTMLBuilder.prepare_writing
+   ~JSONHTMLBuilder.render_partial
+   ~JSONHTMLBuilder.write
+   ~JSONHTMLBuilder.write_buildinfo
+   ~JSONHTMLBuilder.write_doc
+   ~JSONHTMLBuilder.write_doc_serialized
+   ~JSONHTMLBuilder.write_domain_indices
+   ~JSONHTMLBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~JSONHTMLBuilder.add_permalinks
+   ~JSONHTMLBuilder.additional_dump_args
+   ~JSONHTMLBuilder.allow_parallel
+   ~JSONHTMLBuilder.copysource
+   ~JSONHTMLBuilder.css_files
+   ~JSONHTMLBuilder.default_sidebars
+   ~JSONHTMLBuilder.embedded
+   ~JSONHTMLBuilder.format
+   ~JSONHTMLBuilder.globalcontext_filename
+   ~JSONHTMLBuilder.implementation_dumps_unicode
+   ~JSONHTMLBuilder.indexer_dumps_unicode
+   ~JSONHTMLBuilder.link_suffix
+   ~JSONHTMLBuilder.name
+   ~JSONHTMLBuilder.out_suffix
+   ~JSONHTMLBuilder.script_files
+   ~JSONHTMLBuilder.search
+   ~JSONHTMLBuilder.searchindex_filename
+   ~JSONHTMLBuilder.supported_image_types
+   ~JSONHTMLBuilder.versioning_compare
+   ~JSONHTMLBuilder.versioning_method
+

@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.connect
+================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.connect

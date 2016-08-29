@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_autosummary_table
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_autosummary_table

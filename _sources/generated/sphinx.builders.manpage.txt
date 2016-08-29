@@ -1,0 +1,56 @@
+.. automodule:: sphinx.builders.manpage
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      bold
+      darkgreen
+      inline_all_toctrees
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      FileOutput
+      ManualPageBuilder
+      ManualPageWriter
+      OptionParser
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.manpage.Builder
+       generated/sphinx.builders.manpage.FileOutput
+       generated/sphinx.builders.manpage.ManualPageBuilder
+       generated/sphinx.builders.manpage.ManualPageWriter
+       generated/sphinx.builders.manpage.OptionParser
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      NoUri
+   
+   

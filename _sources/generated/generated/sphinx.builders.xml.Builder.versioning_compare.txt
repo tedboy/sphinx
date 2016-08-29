@@ -1,0 +1,6 @@
+sphinx.builders.xml.Builder.versioning_compare
+==============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: Builder.versioning_compare

@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.process_command_line
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.process_command_line

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.safe_relpath
+====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: safe_relpath

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParen.get_name
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorParen.get_name

@@ -1,0 +1,6 @@
+sphinx.search.title.pformat
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.pformat

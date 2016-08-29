@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.apply_template
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLWriter.apply_template

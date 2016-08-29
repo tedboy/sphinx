@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.clear
+================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.clear

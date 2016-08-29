@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.debug
+===================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.debug

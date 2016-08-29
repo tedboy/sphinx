@@ -1,0 +1,6 @@
+sphinx.domains.python.PyObject.add_target_and_index
+===================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyObject.add_target_and_index

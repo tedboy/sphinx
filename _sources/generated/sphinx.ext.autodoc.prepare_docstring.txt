@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.prepare_docstring
+====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: prepare_docstring

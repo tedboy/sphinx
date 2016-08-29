@@ -1,0 +1,6 @@
+sphinx.locale.text_type.swapcase
+================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.swapcase

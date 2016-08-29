@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorPtr.name
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: ASTDeclaratorPtr.name

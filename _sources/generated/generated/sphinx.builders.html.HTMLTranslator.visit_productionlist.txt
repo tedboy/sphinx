@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_productionlist
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_productionlist

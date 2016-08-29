@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.embedded
+===================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.embedded

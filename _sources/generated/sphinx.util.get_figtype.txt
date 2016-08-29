@@ -1,0 +1,6 @@
+sphinx.util.get_figtype
+=======================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: get_figtype

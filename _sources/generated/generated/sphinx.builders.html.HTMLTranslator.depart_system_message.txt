@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_system_message
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_system_message

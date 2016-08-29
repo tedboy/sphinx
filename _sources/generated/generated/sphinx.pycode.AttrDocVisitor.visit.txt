@@ -1,0 +1,6 @@
+sphinx.pycode.AttrDocVisitor.visit
+==================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: AttrDocVisitor.visit

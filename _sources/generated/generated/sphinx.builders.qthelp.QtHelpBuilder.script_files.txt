@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.script_files
+=================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.script_files

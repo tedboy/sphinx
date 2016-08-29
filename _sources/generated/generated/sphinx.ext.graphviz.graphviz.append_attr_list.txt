@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.append_attr_list
+=============================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.append_attr_list

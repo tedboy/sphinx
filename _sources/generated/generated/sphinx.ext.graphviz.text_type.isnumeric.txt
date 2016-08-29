@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.text_type.isnumeric
+=======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: text_type.isnumeric

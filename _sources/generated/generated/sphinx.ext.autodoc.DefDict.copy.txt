@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.copy
+===============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.copy

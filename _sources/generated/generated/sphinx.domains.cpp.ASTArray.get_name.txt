@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTArray.get_name
+====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTArray.get_name

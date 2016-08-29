@@ -1,0 +1,6 @@
+sphinx.search.Text.tagname
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: Text.tagname

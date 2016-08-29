@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.is_not_list_attribute
+=====================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.is_not_list_attribute

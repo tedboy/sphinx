@@ -1,0 +1,55 @@
+.. automodule:: sphinx.domains.c
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      l_
+      make_refnode
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      CDomain
+      CObject
+      CXRefRole
+      Domain
+      Field
+      ObjType
+      ObjectDescription
+      TypedField
+      XRefRole
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.domains.c.CDomain
+       generated/sphinx.domains.c.CObject
+       generated/sphinx.domains.c.CXRefRole
+       generated/sphinx.domains.c.Domain
+       generated/sphinx.domains.c.Field
+       generated/sphinx.domains.c.ObjType
+       generated/sphinx.domains.c.ObjectDescription
+       generated/sphinx.domains.c.TypedField
+       generated/sphinx.domains.c.XRefRole
+
+   
+   
+
+   
+   
+   

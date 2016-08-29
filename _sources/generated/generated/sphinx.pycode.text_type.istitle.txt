@@ -1,0 +1,6 @@
+sphinx.pycode.text_type.istitle
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: text_type.istitle

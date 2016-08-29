@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.depart_Text
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.depart_Text

@@ -1,0 +1,6 @@
+sphinx.domains.std.Directive.run
+================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Directive.run

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Request.has_data
+==========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Request.has_data

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.has_content
+================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ObjectDescription.has_content

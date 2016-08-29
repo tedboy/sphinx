@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Popen.__init__
+==================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Popen.__init__

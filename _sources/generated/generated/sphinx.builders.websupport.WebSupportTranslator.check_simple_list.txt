@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.check_simple_list
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.check_simple_list

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.add_content
+==================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.add_content

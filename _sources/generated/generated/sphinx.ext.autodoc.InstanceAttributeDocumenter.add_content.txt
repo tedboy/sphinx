@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.InstanceAttributeDocumenter.add_content
+==========================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: InstanceAttributeDocumenter.add_content

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.has_content
+=========================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: Directive.has_content

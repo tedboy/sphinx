@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.parent
+================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todo_node.parent

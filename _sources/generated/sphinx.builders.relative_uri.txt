@@ -1,0 +1,6 @@
+sphinx.builders.relative_uri
+============================
+
+.. currentmodule:: sphinx.builders
+
+.. autofunction:: relative_uri

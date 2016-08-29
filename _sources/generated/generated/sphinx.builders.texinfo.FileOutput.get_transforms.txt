@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.FileOutput.get_transforms
+=================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: FileOutput.get_transforms

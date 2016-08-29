@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.latex_visit_inheritance_diagram
+==============================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autofunction:: latex_visit_inheritance_diagram

@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.check_values
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: OptionParser.check_values

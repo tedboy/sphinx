@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.list_templates
+============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.list_templates

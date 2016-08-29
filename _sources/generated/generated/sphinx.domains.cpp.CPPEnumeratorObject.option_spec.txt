@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.option_spec
+==================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPEnumeratorObject.option_spec

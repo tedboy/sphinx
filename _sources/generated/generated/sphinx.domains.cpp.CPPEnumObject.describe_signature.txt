@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.describe_signature
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumObject.describe_signature

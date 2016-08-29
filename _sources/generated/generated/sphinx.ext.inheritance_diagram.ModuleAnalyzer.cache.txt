@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.ModuleAnalyzer.cache
+===================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoattribute:: ModuleAnalyzer.cache

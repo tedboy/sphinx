@@ -1,0 +1,6 @@
+sphinx.domains.python.PyCurrentModule.optional_arguments
+========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyCurrentModule.optional_arguments

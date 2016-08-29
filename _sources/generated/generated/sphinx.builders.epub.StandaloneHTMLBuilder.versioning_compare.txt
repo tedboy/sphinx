@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.versioning_compare
+=============================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.versioning_compare

@@ -1,0 +1,6 @@
+sphinx.builders.text.Builder.create_template_bridge
+===================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: Builder.create_template_bridge

@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.indexer_dumps_unicode
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StandaloneHTMLBuilder.indexer_dumps_unicode

@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.embedded
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StandaloneHTMLBuilder.embedded

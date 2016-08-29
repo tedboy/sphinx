@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.StandaloneHTMLBuilder.name
+==================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: StandaloneHTMLBuilder.name

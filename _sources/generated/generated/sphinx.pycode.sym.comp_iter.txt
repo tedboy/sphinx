@@ -1,0 +1,6 @@
+sphinx.pycode.sym.comp_iter
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.comp_iter

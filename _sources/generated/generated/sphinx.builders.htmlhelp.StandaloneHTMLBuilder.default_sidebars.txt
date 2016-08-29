@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.StandaloneHTMLBuilder.default_sidebars
+===============================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. autoattribute:: StandaloneHTMLBuilder.default_sidebars

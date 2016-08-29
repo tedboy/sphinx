@@ -1,0 +1,19 @@
+sphinx.builders.gettext.MsgOrigin
+=================================
+.. currentmodule:: sphinx.builders.gettext
+.. autoclass:: MsgOrigin
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~MsgOrigin.__init__
+
+
+
+
+

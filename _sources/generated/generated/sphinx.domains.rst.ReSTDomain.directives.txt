@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDomain.directives
+========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTDomain.directives

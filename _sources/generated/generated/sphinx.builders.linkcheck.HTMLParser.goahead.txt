@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.goahead
+============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.goahead

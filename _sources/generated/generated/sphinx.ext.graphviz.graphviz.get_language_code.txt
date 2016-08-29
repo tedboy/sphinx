@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.get_language_code
+==============================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.get_language_code

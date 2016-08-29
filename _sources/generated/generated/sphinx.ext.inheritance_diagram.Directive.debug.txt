@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.Directive.debug
+==============================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: Directive.debug

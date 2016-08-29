@@ -1,0 +1,6 @@
+sphinx.search.Text.rpartition
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.rpartition

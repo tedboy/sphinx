@@ -1,0 +1,6 @@
+sphinx.websupport.htmlescape
+============================
+
+.. currentmodule:: sphinx.websupport
+
+.. autofunction:: htmlescape

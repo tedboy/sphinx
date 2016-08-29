@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.between
+==========================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: between

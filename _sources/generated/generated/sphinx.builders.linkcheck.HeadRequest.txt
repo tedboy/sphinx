@@ -1,0 +1,36 @@
+sphinx.builders.linkcheck.HeadRequest
+=====================================
+.. currentmodule:: sphinx.builders.linkcheck
+.. autoclass:: HeadRequest
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~HeadRequest.__init__
+   ~HeadRequest.add_data
+   ~HeadRequest.add_header
+   ~HeadRequest.add_unredirected_header
+   ~HeadRequest.get_data
+   ~HeadRequest.get_full_url
+   ~HeadRequest.get_header
+   ~HeadRequest.get_host
+   ~HeadRequest.get_method
+   ~HeadRequest.get_origin_req_host
+   ~HeadRequest.get_selector
+   ~HeadRequest.get_type
+   ~HeadRequest.has_data
+   ~HeadRequest.has_header
+   ~HeadRequest.has_proxy
+   ~HeadRequest.header_items
+   ~HeadRequest.is_unverifiable
+   ~HeadRequest.set_proxy
+
+
+
+
+

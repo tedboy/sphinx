@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.Directive.__init__
+======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: Directive.__init__

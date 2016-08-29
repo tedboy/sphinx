@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleAnalyzer.tokenize
+==========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleAnalyzer.tokenize

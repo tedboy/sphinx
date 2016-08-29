@@ -1,0 +1,71 @@
+.. automodule:: sphinx.ext.doctest
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      bold
+      doctest_encode
+      force_decode
+      itervalues
+      set_source_info
+      setup
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      Directive
+      DocTestBuilder
+      DoctestDirective
+      SphinxDocTestRunner
+      StringIO
+      TestCode
+      TestDirective
+      TestGroup
+      TestcleanupDirective
+      TestcodeDirective
+      TestoutputDirective
+      TestsetupDirective
+      binary_type
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.doctest.Builder
+       generated/sphinx.ext.doctest.Directive
+       generated/sphinx.ext.doctest.DocTestBuilder
+       generated/sphinx.ext.doctest.DoctestDirective
+       generated/sphinx.ext.doctest.SphinxDocTestRunner
+       generated/sphinx.ext.doctest.StringIO
+       generated/sphinx.ext.doctest.TestCode
+       generated/sphinx.ext.doctest.TestDirective
+       generated/sphinx.ext.doctest.TestGroup
+       generated/sphinx.ext.doctest.TestcleanupDirective
+       generated/sphinx.ext.doctest.TestcodeDirective
+       generated/sphinx.ext.doctest.TestoutputDirective
+       generated/sphinx.ext.doctest.TestsetupDirective
+       generated/sphinx.ext.doctest.binary_type
+       generated/sphinx.ext.doctest.text_type
+
+   
+   
+
+   
+   
+   

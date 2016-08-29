@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.write_colspecs
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.write_colspecs

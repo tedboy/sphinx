@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.traverse
+=================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.traverse

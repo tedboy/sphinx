@@ -1,0 +1,6 @@
+sphinx.ext.doctest.bold
+=======================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autofunction:: bold

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.MethodDocumenter.titles_allowed
+==================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: MethodDocumenter.titles_allowed

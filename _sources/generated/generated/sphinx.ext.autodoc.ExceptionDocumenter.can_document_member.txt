@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.can_document_member
+==========================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.can_document_member

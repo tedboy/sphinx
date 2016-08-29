@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.new_document
+====================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autofunction:: new_document

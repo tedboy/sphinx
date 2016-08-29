@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.replace
+====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.replace

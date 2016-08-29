@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.footnote_backrefs
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.footnote_backrefs

@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.pprint
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.pprint

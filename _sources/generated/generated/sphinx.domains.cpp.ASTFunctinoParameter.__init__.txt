@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTFunctinoParameter.__init__
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTFunctinoParameter.__init__

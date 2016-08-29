@@ -1,0 +1,6 @@
+sphinx.domains.python.PyField.make_field
+========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyField.make_field

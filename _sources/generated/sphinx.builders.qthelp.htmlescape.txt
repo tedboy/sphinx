@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.htmlescape
+=================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autofunction:: htmlescape

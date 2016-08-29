@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.default_source_path
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DocTreeInput.default_source_path

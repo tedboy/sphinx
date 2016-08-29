@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.has_option
+=============================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.has_option

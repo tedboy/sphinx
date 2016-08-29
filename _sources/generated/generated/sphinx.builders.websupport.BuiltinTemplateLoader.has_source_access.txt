@@ -1,0 +1,6 @@
+sphinx.builders.websupport.BuiltinTemplateLoader.has_source_access
+==================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: BuiltinTemplateLoader.has_source_access

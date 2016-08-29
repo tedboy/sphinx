@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.lang_attribute
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.lang_attribute

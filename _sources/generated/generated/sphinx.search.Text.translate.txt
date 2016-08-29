@@ -1,0 +1,6 @@
+sphinx.search.Text.translate
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.translate

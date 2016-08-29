@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.render_partial
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.render_partial

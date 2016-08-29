@@ -1,0 +1,6 @@
+sphinx.domains.c.CDomain.role
+=============================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CDomain.role

@@ -1,0 +1,6 @@
+sphinx.domains.python.PyCurrentModule.option_spec
+=================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyCurrentModule.option_spec

@@ -1,0 +1,6 @@
+sphinx.search.rpartition
+========================
+
+.. currentmodule:: sphinx.search
+
+.. autofunction:: rpartition

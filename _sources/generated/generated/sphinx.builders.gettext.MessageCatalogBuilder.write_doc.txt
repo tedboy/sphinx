@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.write_doc
+=======================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: MessageCatalogBuilder.write_doc

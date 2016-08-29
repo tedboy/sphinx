@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.add_option_group
+===================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.add_option_group

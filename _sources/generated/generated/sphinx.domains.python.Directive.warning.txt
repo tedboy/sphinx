@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.warning
+=======================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Directive.warning

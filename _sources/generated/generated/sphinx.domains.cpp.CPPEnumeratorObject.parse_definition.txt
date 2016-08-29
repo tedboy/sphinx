@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.parse_definition
+=======================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.parse_definition

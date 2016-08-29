@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.settings_default_overrides
+===============================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: OptionParser.settings_default_overrides

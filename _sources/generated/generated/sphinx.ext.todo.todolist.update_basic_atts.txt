@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.update_basic_atts
+==========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.update_basic_atts

@@ -1,0 +1,6 @@
+sphinx.util.urlencode
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: urlencode

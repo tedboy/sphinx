@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXWriter.language
+==========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: LaTeXWriter.language

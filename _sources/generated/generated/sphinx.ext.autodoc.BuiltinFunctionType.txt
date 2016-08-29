@@ -1,0 +1,11 @@
+sphinx.ext.autodoc.BuiltinFunctionType
+======================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: BuiltinFunctionType
+   :undoc-members:
+
+
+
+
+
+

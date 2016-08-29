@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.print_help
+===============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.print_help

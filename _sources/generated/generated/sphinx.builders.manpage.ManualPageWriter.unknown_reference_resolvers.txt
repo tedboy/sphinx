@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.unknown_reference_resolvers
+====================================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.unknown_reference_resolvers

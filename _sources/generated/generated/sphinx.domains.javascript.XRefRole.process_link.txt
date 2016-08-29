@@ -1,0 +1,6 @@
+sphinx.domains.javascript.XRefRole.process_link
+===============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: XRefRole.process_link

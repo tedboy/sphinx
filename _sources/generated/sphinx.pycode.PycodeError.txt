@@ -1,0 +1,6 @@
+sphinx.pycode.PycodeError
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoexception:: PycodeError

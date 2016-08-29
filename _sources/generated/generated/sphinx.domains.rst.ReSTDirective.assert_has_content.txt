@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.assert_has_content
+===================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.assert_has_content

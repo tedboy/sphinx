@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.assert_end
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.assert_end

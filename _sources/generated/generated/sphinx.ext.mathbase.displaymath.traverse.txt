@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.traverse
+========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.traverse

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleAnalyzer.__init__
+==========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleAnalyzer.__init__

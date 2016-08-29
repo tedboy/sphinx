@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.emit
+=============================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.emit

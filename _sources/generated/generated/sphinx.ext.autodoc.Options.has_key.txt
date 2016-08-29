@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Options.has_key
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: Options.has_key

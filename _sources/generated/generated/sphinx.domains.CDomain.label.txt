@@ -1,0 +1,6 @@
+sphinx.domains.CDomain.label
+============================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CDomain.label

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.create_template_bridge
+====================================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: MessageCatalogBuilder.create_template_bridge

@@ -1,0 +1,42 @@
+sphinx.builders.html.DoctreeReader
+==================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: DoctreeReader
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DoctreeReader.__init__
+   ~DoctreeReader.get_transforms
+   ~DoctreeReader.new_document
+   ~DoctreeReader.parse
+   ~DoctreeReader.read
+   ~DoctreeReader.set_parser
+   ~DoctreeReader.supports
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~DoctreeReader.component_type
+   ~DoctreeReader.config_section
+   ~DoctreeReader.config_section_dependencies
+   ~DoctreeReader.default_transforms
+   ~DoctreeReader.relative_path_settings
+   ~DoctreeReader.settings_default_overrides
+   ~DoctreeReader.settings_defaults
+   ~DoctreeReader.settings_spec
+   ~DoctreeReader.supported
+   ~DoctreeReader.unknown_reference_resolvers
+

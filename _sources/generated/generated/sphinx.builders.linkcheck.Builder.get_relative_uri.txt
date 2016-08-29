@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.get_relative_uri
+==================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.get_relative_uri

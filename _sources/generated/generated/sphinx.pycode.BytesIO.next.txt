@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.next
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.next

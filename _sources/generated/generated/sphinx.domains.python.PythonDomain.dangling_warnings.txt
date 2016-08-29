@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.dangling_warnings
+====================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PythonDomain.dangling_warnings

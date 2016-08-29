@@ -1,0 +1,6 @@
+sphinx.search.SkipNode
+======================
+
+.. currentmodule:: sphinx.search
+
+.. autoexception:: SkipNode

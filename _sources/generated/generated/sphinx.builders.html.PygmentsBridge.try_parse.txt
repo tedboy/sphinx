@@ -1,0 +1,6 @@
+sphinx.builders.html.PygmentsBridge.try_parse
+=============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PygmentsBridge.try_parse

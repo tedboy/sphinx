@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.error
+=======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: MathDirective.error

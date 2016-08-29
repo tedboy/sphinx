@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.merge_domaindata
+===================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PythonDomain.merge_domaindata

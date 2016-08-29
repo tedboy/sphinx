@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.StandaloneHTMLBuilder.css_files
+========================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. autoattribute:: StandaloneHTMLBuilder.css_files

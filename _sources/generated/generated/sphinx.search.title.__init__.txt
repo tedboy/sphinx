@@ -1,0 +1,6 @@
+sphinx.search.title.__init__
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.__init__

@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.directive_error
+================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: GenericObject.directive_error

@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLWriter.config_section
+============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: XMLWriter.config_section

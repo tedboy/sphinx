@@ -1,0 +1,6 @@
+sphinx.ext.doctest.SphinxDocTestRunner.DIVIDER
+==============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: SphinxDocTestRunner.DIVIDER

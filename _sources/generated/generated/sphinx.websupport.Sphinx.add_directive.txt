@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.add_directive
+======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.add_directive

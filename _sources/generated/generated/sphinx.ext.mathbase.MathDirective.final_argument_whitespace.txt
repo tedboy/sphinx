@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.final_argument_whitespace
+===========================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: MathDirective.final_argument_whitespace

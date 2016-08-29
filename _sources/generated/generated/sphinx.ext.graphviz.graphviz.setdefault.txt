@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.setdefault
+=======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.setdefault

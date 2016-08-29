@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.versioning_compare
+=========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.versioning_compare

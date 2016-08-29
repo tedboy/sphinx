@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.severe
+========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: MathDirective.severe

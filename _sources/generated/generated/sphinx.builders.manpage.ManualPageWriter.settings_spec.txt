@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.settings_spec
+======================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.settings_spec

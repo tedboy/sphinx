@@ -1,0 +1,6 @@
+sphinx.websupport.BaseSearch.query
+==================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: BaseSearch.query

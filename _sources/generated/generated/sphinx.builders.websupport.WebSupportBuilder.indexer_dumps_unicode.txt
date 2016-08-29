@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.indexer_dumps_unicode
+==================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.indexer_dumps_unicode

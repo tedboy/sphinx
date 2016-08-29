@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.get_builder_config
+====================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DocTestBuilder.get_builder_config

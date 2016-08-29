@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.link_suffix
+========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: StandaloneHTMLBuilder.link_suffix

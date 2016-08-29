@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.settings_spec
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: OptionParser.settings_spec

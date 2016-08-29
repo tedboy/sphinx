@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.error
+==================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: IfConfig.error

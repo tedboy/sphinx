@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.microsecond
+============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.microsecond

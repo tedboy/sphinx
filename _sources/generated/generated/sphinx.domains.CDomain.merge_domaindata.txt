@@ -1,0 +1,6 @@
+sphinx.domains.CDomain.merge_domaindata
+=======================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: CDomain.merge_domaindata

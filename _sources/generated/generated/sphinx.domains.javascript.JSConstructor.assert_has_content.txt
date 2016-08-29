@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.assert_has_content
+==========================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.assert_has_content

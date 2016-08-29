@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.byte_order_marks
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DocTreeInput.byte_order_marks

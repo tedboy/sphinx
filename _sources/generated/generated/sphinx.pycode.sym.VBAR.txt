@@ -1,0 +1,6 @@
+sphinx.pycode.sym.VBAR
+======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.VBAR

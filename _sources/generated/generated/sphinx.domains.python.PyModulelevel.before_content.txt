@@ -1,0 +1,6 @@
+sphinx.domains.python.PyModulelevel.before_content
+==================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyModulelevel.before_content

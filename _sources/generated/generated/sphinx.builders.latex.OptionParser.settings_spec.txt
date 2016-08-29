@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.settings_spec
+================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: OptionParser.settings_spec

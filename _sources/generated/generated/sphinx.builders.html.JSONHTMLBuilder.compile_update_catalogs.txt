@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.compile_update_catalogs
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.compile_update_catalogs

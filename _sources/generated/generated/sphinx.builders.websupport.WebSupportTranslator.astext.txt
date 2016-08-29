@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.astext
+======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.astext

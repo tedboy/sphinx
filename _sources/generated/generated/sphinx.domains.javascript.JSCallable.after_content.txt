@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.after_content
+==================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.after_content

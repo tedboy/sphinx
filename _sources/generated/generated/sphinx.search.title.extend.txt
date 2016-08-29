@@ -1,0 +1,6 @@
+sphinx.search.title.extend
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.extend

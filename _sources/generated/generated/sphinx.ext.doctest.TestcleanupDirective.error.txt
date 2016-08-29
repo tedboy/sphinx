@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcleanupDirective.error
+=============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestcleanupDirective.error

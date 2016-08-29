@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.add_javascript
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.add_javascript

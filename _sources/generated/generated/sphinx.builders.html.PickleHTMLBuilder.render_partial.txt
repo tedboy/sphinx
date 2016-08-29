@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.render_partial
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.render_partial

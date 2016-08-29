@@ -1,0 +1,6 @@
+sphinx.search.comment.first_child_not_matching_class
+====================================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.first_child_not_matching_class

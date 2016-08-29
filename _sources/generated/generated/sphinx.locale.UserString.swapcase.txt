@@ -1,0 +1,6 @@
+sphinx.locale.UserString.swapcase
+=================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.swapcase

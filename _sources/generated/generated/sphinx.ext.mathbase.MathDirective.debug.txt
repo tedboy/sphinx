@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.debug
+=======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: MathDirective.debug

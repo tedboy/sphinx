@@ -1,0 +1,6 @@
+sphinx.builders.latex.SphinxError
+=================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoexception:: SphinxError

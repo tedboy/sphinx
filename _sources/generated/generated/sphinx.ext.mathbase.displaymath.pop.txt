@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.pop
+===================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.pop

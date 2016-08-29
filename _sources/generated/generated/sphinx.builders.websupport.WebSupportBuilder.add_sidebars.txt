@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.add_sidebars
+=========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.add_sidebars

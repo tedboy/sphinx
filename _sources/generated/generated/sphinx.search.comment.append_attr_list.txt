@@ -1,0 +1,6 @@
+sphinx.search.comment.append_attr_list
+======================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.append_attr_list

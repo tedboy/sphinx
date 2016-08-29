@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.select_template
+=============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.select_template

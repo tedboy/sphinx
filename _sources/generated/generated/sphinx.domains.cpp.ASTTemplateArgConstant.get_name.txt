@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTemplateArgConstant.get_name
+==================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTemplateArgConstant.get_name

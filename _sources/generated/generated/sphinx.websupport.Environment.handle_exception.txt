@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.handle_exception
+==============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.handle_exception

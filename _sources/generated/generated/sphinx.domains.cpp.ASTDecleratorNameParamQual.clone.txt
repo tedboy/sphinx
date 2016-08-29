@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDecleratorNameParamQual.clone
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDecleratorNameParamQual.clone

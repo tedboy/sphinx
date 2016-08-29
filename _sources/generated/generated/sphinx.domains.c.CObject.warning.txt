@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.warning
+================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.warning

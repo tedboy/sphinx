@@ -1,0 +1,6 @@
+sphinx.locale.text_type.replace
+===============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.replace

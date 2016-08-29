@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.add_sidebars
+===================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.add_sidebars

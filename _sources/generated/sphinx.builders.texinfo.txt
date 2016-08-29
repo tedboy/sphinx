@@ -1,0 +1,59 @@
+.. automodule:: sphinx.builders.texinfo
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      bold
+      copyfile
+      darkgreen
+      inline_all_toctrees
+      iteritems
+      new_document
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      FileOutput
+      OptionParser
+      TexinfoBuilder
+      TexinfoWriter
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.texinfo.Builder
+       generated/sphinx.builders.texinfo.FileOutput
+       generated/sphinx.builders.texinfo.OptionParser
+       generated/sphinx.builders.texinfo.TexinfoBuilder
+       generated/sphinx.builders.texinfo.TexinfoWriter
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      NoUri
+   
+   

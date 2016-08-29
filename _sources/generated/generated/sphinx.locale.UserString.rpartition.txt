@@ -1,0 +1,6 @@
+sphinx.locale.UserString.rpartition
+===================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.rpartition

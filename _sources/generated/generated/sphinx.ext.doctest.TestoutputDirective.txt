@@ -1,0 +1,40 @@
+sphinx.ext.doctest.TestoutputDirective
+======================================
+.. currentmodule:: sphinx.ext.doctest
+.. autoclass:: TestoutputDirective
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TestoutputDirective.__init__
+   ~TestoutputDirective.add_name
+   ~TestoutputDirective.assert_has_content
+   ~TestoutputDirective.debug
+   ~TestoutputDirective.directive_error
+   ~TestoutputDirective.error
+   ~TestoutputDirective.info
+   ~TestoutputDirective.run
+   ~TestoutputDirective.severe
+   ~TestoutputDirective.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TestoutputDirective.final_argument_whitespace
+   ~TestoutputDirective.has_content
+   ~TestoutputDirective.option_spec
+   ~TestoutputDirective.optional_arguments
+   ~TestoutputDirective.required_arguments
+

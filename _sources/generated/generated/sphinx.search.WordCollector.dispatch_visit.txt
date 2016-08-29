@@ -1,0 +1,6 @@
+sphinx.search.WordCollector.dispatch_visit
+==========================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: WordCollector.dispatch_visit

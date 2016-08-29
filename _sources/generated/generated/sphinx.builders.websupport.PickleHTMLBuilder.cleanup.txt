@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.cleanup
+====================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.cleanup

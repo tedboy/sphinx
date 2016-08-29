@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.supported_image_types
+==================================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: StandaloneHTMLBuilder.supported_image_types

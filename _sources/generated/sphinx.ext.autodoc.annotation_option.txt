@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.annotation_option
+====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: annotation_option

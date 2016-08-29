@@ -1,0 +1,52 @@
+sphinx.ext.autodoc.ExceptionDocumenter
+======================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: ExceptionDocumenter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ExceptionDocumenter.__init__
+   ~ExceptionDocumenter.add_content
+   ~ExceptionDocumenter.add_directive_header
+   ~ExceptionDocumenter.add_line
+   ~ExceptionDocumenter.can_document_member
+   ~ExceptionDocumenter.check_module
+   ~ExceptionDocumenter.document_members
+   ~ExceptionDocumenter.filter_members
+   ~ExceptionDocumenter.format_args
+   ~ExceptionDocumenter.format_name
+   ~ExceptionDocumenter.format_signature
+   ~ExceptionDocumenter.generate
+   ~ExceptionDocumenter.get_attr
+   ~ExceptionDocumenter.get_doc
+   ~ExceptionDocumenter.get_object_members
+   ~ExceptionDocumenter.get_real_modname
+   ~ExceptionDocumenter.get_sourcename
+   ~ExceptionDocumenter.import_object
+   ~ExceptionDocumenter.parse_name
+   ~ExceptionDocumenter.process_doc
+   ~ExceptionDocumenter.resolve_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ExceptionDocumenter.content_indent
+   ~ExceptionDocumenter.member_order
+   ~ExceptionDocumenter.objtype
+   ~ExceptionDocumenter.option_spec
+   ~ExceptionDocumenter.priority
+   ~ExceptionDocumenter.titles_allowed
+

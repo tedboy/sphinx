@@ -1,0 +1,6 @@
+sphinx.builders.xml.os_path
+===========================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autofunction:: os_path

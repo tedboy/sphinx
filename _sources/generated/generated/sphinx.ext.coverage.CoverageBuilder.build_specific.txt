@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.build_specific
+==================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: CoverageBuilder.build_specific

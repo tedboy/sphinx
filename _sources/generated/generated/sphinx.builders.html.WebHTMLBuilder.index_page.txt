@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.index_page
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.index_page

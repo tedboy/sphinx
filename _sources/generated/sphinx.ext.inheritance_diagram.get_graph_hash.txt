@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.get_graph_hash
+=============================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autofunction:: get_graph_hash

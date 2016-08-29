@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.next_node
+==================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.next_node

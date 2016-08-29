@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.gen_additional_pages
+===============================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.gen_additional_pages

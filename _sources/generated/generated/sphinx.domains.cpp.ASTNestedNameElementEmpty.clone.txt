@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTNestedNameElementEmpty.clone
+==================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTNestedNameElementEmpty.clone

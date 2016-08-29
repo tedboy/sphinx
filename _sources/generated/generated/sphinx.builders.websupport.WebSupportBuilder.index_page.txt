@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.index_page
+=======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.index_page

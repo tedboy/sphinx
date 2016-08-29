@@ -1,0 +1,6 @@
+sphinx.builders.ParallelTasks.join
+==================================
+
+.. currentmodule:: sphinx.builders
+
+.. automethod:: ParallelTasks.join

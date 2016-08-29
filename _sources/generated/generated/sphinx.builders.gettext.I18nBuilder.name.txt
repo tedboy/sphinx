@@ -1,0 +1,6 @@
+sphinx.builders.gettext.I18nBuilder.name
+========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: I18nBuilder.name

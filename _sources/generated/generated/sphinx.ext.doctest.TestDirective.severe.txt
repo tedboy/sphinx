@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestDirective.severe
+=======================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestDirective.severe

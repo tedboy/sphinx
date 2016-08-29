@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.wrap_displaymath
+====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: wrap_displaymath

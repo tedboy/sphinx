@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.get_language_code
+==========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.get_language_code

@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLWriter.config_section_dependencies
+===============================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLWriter.config_section_dependencies

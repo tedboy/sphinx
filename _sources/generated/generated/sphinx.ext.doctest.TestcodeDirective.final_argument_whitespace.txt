@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcodeDirective.final_argument_whitespace
+==============================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: TestcodeDirective.final_argument_whitespace

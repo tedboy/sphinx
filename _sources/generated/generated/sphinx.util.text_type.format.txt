@@ -1,0 +1,6 @@
+sphinx.util.text_type.format
+============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: text_type.format

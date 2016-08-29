@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.content_indent
+=====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ExceptionDocumenter.content_indent

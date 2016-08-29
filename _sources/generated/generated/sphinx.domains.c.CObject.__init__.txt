@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.__init__
+=================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.__init__

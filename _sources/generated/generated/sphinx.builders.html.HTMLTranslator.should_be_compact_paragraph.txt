@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.should_be_compact_paragraph
+===============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.should_be_compact_paragraph

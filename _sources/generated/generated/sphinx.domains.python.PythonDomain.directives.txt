@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.directives
+=============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PythonDomain.directives

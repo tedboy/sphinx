@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.name
+========================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autoattribute:: CoverageBuilder.name

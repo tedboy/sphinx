@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.required_arguments
+====================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: MathDirective.required_arguments

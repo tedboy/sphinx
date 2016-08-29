@@ -1,0 +1,6 @@
+sphinx.pycode.prepare_commentdoc
+================================
+
+.. currentmodule:: sphinx.pycode
+
+.. autofunction:: prepare_commentdoc

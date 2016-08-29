@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.describe_signature
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.describe_signature

@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.versioning_method
+========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.versioning_method

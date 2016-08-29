@@ -1,0 +1,6 @@
+sphinx.search.title.update_basic_atts
+=====================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.update_basic_atts

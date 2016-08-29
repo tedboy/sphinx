@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.add_permalinks
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StandaloneHTMLBuilder.add_permalinks

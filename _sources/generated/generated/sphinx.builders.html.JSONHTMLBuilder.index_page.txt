@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.index_page
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.index_page

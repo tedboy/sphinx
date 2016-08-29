@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.__init__
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.__init__

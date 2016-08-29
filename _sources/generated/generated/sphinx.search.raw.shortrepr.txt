@@ -1,0 +1,6 @@
+sphinx.search.raw.shortrepr
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.shortrepr

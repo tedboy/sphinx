@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.dump_inventory
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.dump_inventory

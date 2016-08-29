@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.bool_option
+==============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: bool_option

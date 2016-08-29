@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.Directive.error
+==============================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: Directive.error

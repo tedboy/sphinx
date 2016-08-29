@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.unimplemented_visit
+===================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.unimplemented_visit

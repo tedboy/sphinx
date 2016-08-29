@@ -1,0 +1,6 @@
+sphinx.builders.text.TextBuilder.allow_parallel
+===============================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextBuilder.allow_parallel

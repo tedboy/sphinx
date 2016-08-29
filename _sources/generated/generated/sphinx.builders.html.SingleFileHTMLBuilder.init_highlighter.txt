@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.init_highlighter
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.init_highlighter

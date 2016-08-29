@@ -1,0 +1,6 @@
+sphinx.pycode.sym.import_as_names
+=================================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.import_as_names

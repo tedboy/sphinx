@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.set_parser
+=============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DoctreeReader.set_parser

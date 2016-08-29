@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.FileOutput.__init__
+===========================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: FileOutput.__init__

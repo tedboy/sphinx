@@ -1,0 +1,6 @@
+sphinx.pycode.sym.NOTEQUAL
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.NOTEQUAL

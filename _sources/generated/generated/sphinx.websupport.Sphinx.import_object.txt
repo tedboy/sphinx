@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.import_object
+======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.import_object

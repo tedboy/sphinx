@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.settings_defaults
+=================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextWriter.settings_defaults

@@ -1,0 +1,6 @@
+sphinx.ext.todo.process_todo_nodes
+==================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autofunction:: process_todo_nodes

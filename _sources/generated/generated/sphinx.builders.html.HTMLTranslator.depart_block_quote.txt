@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_block_quote
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_block_quote

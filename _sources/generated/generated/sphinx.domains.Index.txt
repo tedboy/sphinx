@@ -1,0 +1,30 @@
+sphinx.domains.Index
+====================
+.. currentmodule:: sphinx.domains
+.. autoclass:: Index
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Index.__init__
+   ~Index.generate
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Index.localname
+   ~Index.name
+   ~Index.shortname
+

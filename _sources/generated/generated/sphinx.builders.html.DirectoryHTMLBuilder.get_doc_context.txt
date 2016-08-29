@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.get_doc_context
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.get_doc_context

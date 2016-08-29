@@ -1,0 +1,20 @@
+sphinx.builders.gettext.Catalog
+===============================
+.. currentmodule:: sphinx.builders.gettext
+.. autoclass:: Catalog
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Catalog.__init__
+   ~Catalog.add
+
+
+
+
+

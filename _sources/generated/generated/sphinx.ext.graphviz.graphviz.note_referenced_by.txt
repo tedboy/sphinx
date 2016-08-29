@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.note_referenced_by
+===============================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.note_referenced_by

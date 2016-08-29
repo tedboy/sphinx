@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.add_target_and_index
+=====================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: GenericObject.add_target_and_index

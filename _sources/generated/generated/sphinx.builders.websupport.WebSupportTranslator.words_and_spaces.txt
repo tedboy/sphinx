@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.words_and_spaces
+================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.words_and_spaces

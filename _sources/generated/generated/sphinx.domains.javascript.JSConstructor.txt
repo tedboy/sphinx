@@ -1,0 +1,49 @@
+sphinx.domains.javascript.JSConstructor
+=======================================
+.. currentmodule:: sphinx.domains.javascript
+.. autoclass:: JSConstructor
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~JSConstructor.__init__
+   ~JSConstructor.add_name
+   ~JSConstructor.add_target_and_index
+   ~JSConstructor.after_content
+   ~JSConstructor.assert_has_content
+   ~JSConstructor.before_content
+   ~JSConstructor.debug
+   ~JSConstructor.directive_error
+   ~JSConstructor.error
+   ~JSConstructor.get_index_text
+   ~JSConstructor.get_signatures
+   ~JSConstructor.handle_signature
+   ~JSConstructor.info
+   ~JSConstructor.run
+   ~JSConstructor.severe
+   ~JSConstructor.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~JSConstructor.display_prefix
+   ~JSConstructor.doc_field_types
+   ~JSConstructor.final_argument_whitespace
+   ~JSConstructor.has_arguments
+   ~JSConstructor.has_content
+   ~JSConstructor.option_spec
+   ~JSConstructor.optional_arguments
+   ~JSConstructor.required_arguments
+

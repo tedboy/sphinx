@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DoctestDirective.__init__
+============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DoctestDirective.__init__

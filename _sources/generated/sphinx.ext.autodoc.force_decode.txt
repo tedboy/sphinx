@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.force_decode
+===============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: force_decode

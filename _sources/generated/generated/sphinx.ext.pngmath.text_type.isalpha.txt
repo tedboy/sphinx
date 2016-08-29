@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.text_type.isalpha
+====================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: text_type.isalpha

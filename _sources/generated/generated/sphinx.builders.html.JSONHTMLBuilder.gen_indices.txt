@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.gen_indices
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.gen_indices

@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.overlayed
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. autoattribute:: Environment.overlayed

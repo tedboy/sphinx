@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.inheritance_diagram.note_referenced_by
+=====================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: inheritance_diagram.note_referenced_by

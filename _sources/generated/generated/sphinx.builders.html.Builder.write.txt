@@ -1,0 +1,6 @@
+sphinx.builders.html.Builder.write
+==================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Builder.write

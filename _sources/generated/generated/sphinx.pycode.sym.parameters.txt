@@ -1,0 +1,6 @@
+sphinx.pycode.sym.parameters
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.parameters

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.directive_error
+====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.directive_error

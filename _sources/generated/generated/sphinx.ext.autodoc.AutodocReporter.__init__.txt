@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutodocReporter.__init__
+===========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutodocReporter.__init__

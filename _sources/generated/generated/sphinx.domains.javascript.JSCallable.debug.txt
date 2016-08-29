@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.debug
+==========================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.debug

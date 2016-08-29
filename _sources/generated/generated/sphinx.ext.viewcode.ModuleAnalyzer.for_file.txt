@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.ModuleAnalyzer.for_file
+===========================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: ModuleAnalyzer.for_file

@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.init_translator_class
+======================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.init_translator_class

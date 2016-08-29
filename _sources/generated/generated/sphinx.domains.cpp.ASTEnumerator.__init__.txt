@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTEnumerator.__init__
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTEnumerator.__init__

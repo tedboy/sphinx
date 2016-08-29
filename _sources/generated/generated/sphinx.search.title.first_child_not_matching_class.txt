@@ -1,0 +1,6 @@
+sphinx.search.title.first_child_not_matching_class
+==================================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.first_child_not_matching_class

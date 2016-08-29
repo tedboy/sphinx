@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.copy_attr_coerce
+==========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.copy_attr_coerce

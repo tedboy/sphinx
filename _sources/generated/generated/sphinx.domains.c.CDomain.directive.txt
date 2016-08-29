@@ -1,0 +1,6 @@
+sphinx.domains.c.CDomain.directive
+==================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CDomain.directive

@@ -1,0 +1,6 @@
+sphinx.locale.UserString.isspace
+================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.isspace

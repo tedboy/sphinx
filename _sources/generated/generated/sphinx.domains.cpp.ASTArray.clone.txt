@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTArray.clone
+=================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTArray.clone

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.red
+=============================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: red

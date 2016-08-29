@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLWriter.get_transforms
+============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLWriter.get_transforms

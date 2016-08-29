@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.error
+=============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorMethod.error

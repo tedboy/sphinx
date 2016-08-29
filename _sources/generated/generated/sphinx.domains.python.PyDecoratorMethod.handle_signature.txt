@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.handle_signature
+========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorMethod.handle_signature

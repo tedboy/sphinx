@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.get_signatures
+===================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.get_signatures

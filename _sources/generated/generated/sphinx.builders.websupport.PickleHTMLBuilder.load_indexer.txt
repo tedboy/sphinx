@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.load_indexer
+=========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.load_indexer

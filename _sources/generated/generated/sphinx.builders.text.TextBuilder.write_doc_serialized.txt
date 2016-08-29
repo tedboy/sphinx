@@ -1,0 +1,6 @@
+sphinx.builders.text.TextBuilder.write_doc_serialized
+=====================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: TextBuilder.write_doc_serialized

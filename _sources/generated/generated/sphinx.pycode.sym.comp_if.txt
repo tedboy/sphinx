@@ -1,0 +1,6 @@
+sphinx.pycode.sym.comp_if
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.comp_if

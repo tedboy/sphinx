@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.gen_additional_pages
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.gen_additional_pages

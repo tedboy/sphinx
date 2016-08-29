@@ -1,0 +1,6 @@
+sphinx.ext.todo.TodoList.option_spec
+====================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: TodoList.option_spec

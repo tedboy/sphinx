@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClassmember.info
+========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClassmember.info

@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.search &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>sphinx.search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/sphinx.search.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-sphinx.search"></span><div class="section" id="sphinx-search">
+<h1>sphinx.search<a class="headerlink" href="#sphinx-search" title="Permalink to this headline">¶</a></h1>
+<p>Create a full-text search index for offline search.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Copyright 2007-2016 by the Sphinx team, see AUTHORS.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD, see LICENSE for details.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.iteritems.html#sphinx.search.iteritems" title="sphinx.search.iteritems"><code class="xref py py-obj docutils literal"><span class="pre">iteritems</span></code></a>(d,&nbsp;**kw)</td>
+<td>Return an iterator over the (key, value) pairs of a dictionary.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.itervalues.html#sphinx.search.itervalues" title="sphinx.search.itervalues"><code class="xref py py-obj docutils literal"><span class="pre">itervalues</span></code></a>(d,&nbsp;**kw)</td>
+<td>Return an iterator over the values of a dictionary.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.parse_stop_word.html#sphinx.search.parse_stop_word" title="sphinx.search.parse_stop_word"><code class="xref py py-obj docutils literal"><span class="pre">parse_stop_word</span></code></a>(source)</td>
+<td>parse snowball style word list like this:</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.rpartition.html#sphinx.search.rpartition" title="sphinx.search.rpartition"><code class="xref py py-obj docutils literal"><span class="pre">rpartition</span></code></a>(s,&nbsp;t)</td>
+<td>Similar to str.rpartition from 2.5, but doesn&#8217;t return the separator.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.search.IndexBuilder.html#sphinx.search.IndexBuilder" title="sphinx.search.IndexBuilder"><code class="xref py py-obj docutils literal"><span class="pre">IndexBuilder</span></code></a>(env,&nbsp;lang,&nbsp;options,&nbsp;scoring)</td>
+<td>Helper class that creates a searchindex based on the doctrees passed to the <cite>feed</cite> method.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.search.NodeVisitor.html#sphinx.search.NodeVisitor" title="sphinx.search.NodeVisitor"><code class="xref py py-obj docutils literal"><span class="pre">NodeVisitor</span></code></a>(document)</td>
+<td>&#8220;Visitor&#8221; pattern <a class="reference internal" href="generated/sphinx.search.NodeVisitor.html#gof95" id="id1">[GoF95]</a> abstract superclass implementation for</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.search.SearchEnglish.html#sphinx.search.SearchEnglish" title="sphinx.search.SearchEnglish"><code class="xref py py-obj docutils literal"><span class="pre">SearchEnglish</span></code></a>(options)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.search.SearchLanguage.html#sphinx.search.SearchLanguage" title="sphinx.search.SearchLanguage"><code class="xref py py-obj docutils literal"><span class="pre">SearchLanguage</span></code></a>(options)</td>
+<td>This class is the base class for search natural language preprocessors.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.search.Text.html#sphinx.search.Text" title="sphinx.search.Text"><code class="xref py py-obj docutils literal"><span class="pre">Text</span></code></a>(data[,&nbsp;rawsource])</td>
+<td>Instances are terminal nodes (leaves) containing text only; no child nodes or attributes.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.search.WordCollector.html#sphinx.search.WordCollector" title="sphinx.search.WordCollector"><code class="xref py py-obj docutils literal"><span class="pre">WordCollector</span></code></a>(document,&nbsp;lang)</td>
+<td>A special visitor that collects words for the <cite>IndexBuilder</cite>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.search.comment.html#sphinx.search.comment" title="sphinx.search.comment"><code class="xref py py-obj docutils literal"><span class="pre">comment</span></code></a>([rawsource,&nbsp;text])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.search.raw.html#sphinx.search.raw" title="sphinx.search.raw"><code class="xref py py-obj docutils literal"><span class="pre">raw</span></code></a>([rawsource,&nbsp;text])</td>
+<td>Raw data that is to be passed untouched to the Writer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.search.text_type.html#sphinx.search.text_type" title="sphinx.search.text_type"><code class="xref py py-obj docutils literal"><span class="pre">text_type</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">unicode</span></code></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.search.title.html#sphinx.search.title" title="sphinx.search.title"><code class="xref py py-obj docutils literal"><span class="pre">title</span></code></a>([rawsource,&nbsp;text])</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.SkipNode.html#sphinx.search.SkipNode" title="sphinx.search.SkipNode"><code class="xref py py-obj docutils literal"><span class="pre">SkipNode</span></code></a></td>
+<td>Do not visit the current node&#8217;s children, and do not call the current node&#8217;s <code class="docutils literal"><span class="pre">depart_...</span></code> method.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

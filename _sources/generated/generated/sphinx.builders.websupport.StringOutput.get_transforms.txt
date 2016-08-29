@@ -1,0 +1,6 @@
+sphinx.builders.websupport.StringOutput.get_transforms
+======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: StringOutput.get_transforms

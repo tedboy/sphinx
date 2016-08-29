@@ -1,0 +1,6 @@
+sphinx.locale.text_type.capitalize
+==================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.capitalize

@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.warn
+=============================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.warn

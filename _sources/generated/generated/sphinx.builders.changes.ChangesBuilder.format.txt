@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.format
+=============================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. autoattribute:: ChangesBuilder.format

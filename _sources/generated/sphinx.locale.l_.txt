@@ -1,0 +1,6 @@
+sphinx.locale.l_
+================
+
+.. currentmodule:: sphinx.locale
+
+.. autofunction:: l_

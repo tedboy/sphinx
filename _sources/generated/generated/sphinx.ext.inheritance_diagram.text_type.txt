@@ -1,0 +1,58 @@
+sphinx.ext.inheritance_diagram.text_type
+========================================
+.. currentmodule:: sphinx.ext.inheritance_diagram
+.. autoclass:: text_type
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~text_type.capitalize
+   ~text_type.center
+   ~text_type.count
+   ~text_type.decode
+   ~text_type.encode
+   ~text_type.endswith
+   ~text_type.expandtabs
+   ~text_type.find
+   ~text_type.format
+   ~text_type.index
+   ~text_type.isalnum
+   ~text_type.isalpha
+   ~text_type.isdecimal
+   ~text_type.isdigit
+   ~text_type.islower
+   ~text_type.isnumeric
+   ~text_type.isspace
+   ~text_type.istitle
+   ~text_type.isupper
+   ~text_type.join
+   ~text_type.ljust
+   ~text_type.lower
+   ~text_type.lstrip
+   ~text_type.partition
+   ~text_type.replace
+   ~text_type.rfind
+   ~text_type.rindex
+   ~text_type.rjust
+   ~text_type.rpartition
+   ~text_type.rsplit
+   ~text_type.rstrip
+   ~text_type.split
+   ~text_type.splitlines
+   ~text_type.startswith
+   ~text_type.strip
+   ~text_type.swapcase
+   ~text_type.title
+   ~text_type.translate
+   ~text_type.upper
+   ~text_type.zfill
+
+
+
+
+

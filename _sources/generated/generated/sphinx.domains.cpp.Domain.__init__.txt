@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Domain.__init__
+==================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: Domain.__init__

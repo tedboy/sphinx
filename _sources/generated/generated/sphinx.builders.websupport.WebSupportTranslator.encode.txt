@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.encode
+======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.encode

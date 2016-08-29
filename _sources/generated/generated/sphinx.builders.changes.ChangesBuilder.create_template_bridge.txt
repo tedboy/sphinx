@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.create_template_bridge
+=============================================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: ChangesBuilder.create_template_bridge

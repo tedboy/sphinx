@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Directive.has_content
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: Directive.has_content

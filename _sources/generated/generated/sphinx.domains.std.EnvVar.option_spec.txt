@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.option_spec
+=====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: EnvVar.option_spec

@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.write
+========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXBuilder.write

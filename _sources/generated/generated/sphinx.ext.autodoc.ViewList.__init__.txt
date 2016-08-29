@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.__init__
+====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.__init__

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.cleanup
+==============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoBuilder.cleanup

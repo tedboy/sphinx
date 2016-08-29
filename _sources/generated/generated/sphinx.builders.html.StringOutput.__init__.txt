@@ -1,0 +1,6 @@
+sphinx.builders.html.StringOutput.__init__
+==========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StringOutput.__init__

@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.indexer_format
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.indexer_format

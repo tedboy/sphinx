@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.load_indexer
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.load_indexer

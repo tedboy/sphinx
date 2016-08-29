@@ -1,0 +1,6 @@
+sphinx.search.Text.upper
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.upper

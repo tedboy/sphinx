@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.ext.extlinks &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.ext.extlinks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.ext.extlinks</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.ext.extlinks</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Extension to save typing and prevent hard-coding of base URLs in the reST</span>
+<span class="sd">    files.</span>
+
+<span class="sd">    This adds a new config value called ``extlinks`` that is created like this::</span>
+
+<span class="sd">       extlinks = {&#39;exmpl&#39;: (&#39;http://example.com/%s.html&#39;, prefix), ...}</span>
+
+<span class="sd">    Now you can use e.g. :exmpl:`foo` in your documents.  This will create a</span>
+<span class="sd">    link to ``http://example.com/foo.html``.  The link caption depends on the</span>
+<span class="sd">    *prefix* value given:</span>
+
+<span class="sd">    - If it is ``None``, the caption will be the full URL.</span>
+<span class="sd">    - If it is a string (empty or not), the caption will be the prefix prepended</span>
+<span class="sd">      to the role content.</span>
+
+<span class="sd">    You can also give an explicit caption, e.g. :exmpl:`Foo &lt;foo&gt;`.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">utils</span>
+
+<span class="kn">import</span> <span class="nn">sphinx</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.nodes</span> <span class="kn">import</span> <span class="n">split_explicit_title</span>
+
+
+<div class="viewcode-block" id="make_link_role"><a class="viewcode-back" href="../../../generated/sphinx.ext.extlinks.make_link_role.html#sphinx.ext.extlinks.make_link_role">[docs]</a><span class="k">def</span> <span class="nf">make_link_role</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">prefix</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">role</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">content</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">part</span> <span class="o">=</span> <span class="n">split_explicit_title</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">full_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">%</span> <span class="n">part</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">inliner</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s1">&#39;unable to expand </span><span class="si">%s</span><span class="s1"> extlink with base URL </span><span class="si">%r</span><span class="s1">, please make &#39;</span>
+                <span class="s1">&#39;sure the base contains </span><span class="se">\&#39;</span><span class="si">%%</span><span class="s1">s</span><span class="se">\&#39;</span><span class="s1"> exactly once&#39;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">base_url</span><span class="p">),</span> <span class="n">line</span><span class="o">=</span><span class="n">lineno</span><span class="p">)</span>
+            <span class="n">full_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">part</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_explicit_title</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">full_url</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">part</span>
+        <span class="n">pnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">internal</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">refuri</span><span class="o">=</span><span class="n">full_url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">pnode</span><span class="p">],</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">role</span></div>
+
+
+<div class="viewcode-block" id="setup_link_roles"><a class="viewcode-back" href="../../../generated/sphinx.ext.extlinks.setup_link_roles.html#sphinx.ext.extlinks.setup_link_roles">[docs]</a><span class="k">def</span> <span class="nf">setup_link_roles</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">prefix</span><span class="p">)</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">extlinks</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">add_role</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">make_link_role</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">prefix</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../../generated/sphinx.ext.extlinks.setup.html#sphinx.ext.extlinks.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;extlinks&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;env&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;builder-inited&#39;</span><span class="p">,</span> <span class="n">setup_link_roles</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">__display_version__</span><span class="p">,</span> <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

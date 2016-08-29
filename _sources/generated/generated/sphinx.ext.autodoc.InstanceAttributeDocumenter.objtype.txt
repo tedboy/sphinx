@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.InstanceAttributeDocumenter.objtype
+======================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: InstanceAttributeDocumenter.objtype

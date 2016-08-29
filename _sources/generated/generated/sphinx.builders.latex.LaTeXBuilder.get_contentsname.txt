@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.get_contentsname
+===================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXBuilder.get_contentsname

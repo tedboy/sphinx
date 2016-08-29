@@ -1,0 +1,44 @@
+.. automodule:: sphinx.ext.ifconfig
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      process_ifconfig_nodes
+      set_source_info
+      setup
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Directive
+      IfConfig
+      ifconfig
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.ifconfig.Directive
+       generated/sphinx.ext.ifconfig.IfConfig
+       generated/sphinx.ext.ifconfig.ifconfig
+
+   
+   
+
+   
+   
+   

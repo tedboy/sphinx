@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.supported_image_types
+===================================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: MessageCatalogBuilder.supported_image_types

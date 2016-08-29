@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.warning
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPTypeObject.warning

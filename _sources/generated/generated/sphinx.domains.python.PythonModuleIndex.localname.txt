@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonModuleIndex.localname
+=================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PythonModuleIndex.localname

@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.first_child_matching_class
+====================================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todo_node.first_child_matching_class

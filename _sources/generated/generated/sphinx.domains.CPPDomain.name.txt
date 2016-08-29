@@ -1,0 +1,6 @@
+sphinx.domains.CPPDomain.name
+=============================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CPPDomain.name

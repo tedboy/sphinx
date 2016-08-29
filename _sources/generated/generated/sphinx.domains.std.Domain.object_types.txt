@@ -1,0 +1,6 @@
+sphinx.domains.std.Domain.object_types
+======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Domain.object_types

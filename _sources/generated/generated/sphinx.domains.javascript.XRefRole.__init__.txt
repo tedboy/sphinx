@@ -1,0 +1,6 @@
+sphinx.domains.javascript.XRefRole.__init__
+===========================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: XRefRole.__init__

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.has_key
+====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.has_key

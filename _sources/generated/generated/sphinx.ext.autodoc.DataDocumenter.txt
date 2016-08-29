@@ -1,0 +1,52 @@
+sphinx.ext.autodoc.DataDocumenter
+=================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: DataDocumenter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DataDocumenter.__init__
+   ~DataDocumenter.add_content
+   ~DataDocumenter.add_directive_header
+   ~DataDocumenter.add_line
+   ~DataDocumenter.can_document_member
+   ~DataDocumenter.check_module
+   ~DataDocumenter.document_members
+   ~DataDocumenter.filter_members
+   ~DataDocumenter.format_args
+   ~DataDocumenter.format_name
+   ~DataDocumenter.format_signature
+   ~DataDocumenter.generate
+   ~DataDocumenter.get_attr
+   ~DataDocumenter.get_doc
+   ~DataDocumenter.get_object_members
+   ~DataDocumenter.get_real_modname
+   ~DataDocumenter.get_sourcename
+   ~DataDocumenter.import_object
+   ~DataDocumenter.parse_name
+   ~DataDocumenter.process_doc
+   ~DataDocumenter.resolve_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~DataDocumenter.content_indent
+   ~DataDocumenter.member_order
+   ~DataDocumenter.objtype
+   ~DataDocumenter.option_spec
+   ~DataDocumenter.priority
+   ~DataDocumenter.titles_allowed
+

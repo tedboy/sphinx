@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.add_line
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.add_line

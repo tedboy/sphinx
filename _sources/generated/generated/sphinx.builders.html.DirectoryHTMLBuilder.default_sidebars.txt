@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.default_sidebars
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.default_sidebars

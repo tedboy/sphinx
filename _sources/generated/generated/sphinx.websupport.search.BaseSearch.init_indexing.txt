@@ -1,0 +1,6 @@
+sphinx.websupport.search.BaseSearch.init_indexing
+=================================================
+
+.. currentmodule:: sphinx.websupport.search
+
+.. automethod:: BaseSearch.init_indexing

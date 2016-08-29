@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.index_page
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.index_page

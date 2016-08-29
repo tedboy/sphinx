@@ -1,0 +1,6 @@
+sphinx.domains.python.PyModulelevel.handle_signature
+====================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyModulelevel.handle_signature

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.relative_path_settings
+===========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: OptionParser.relative_path_settings

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.set_class
+======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.set_class

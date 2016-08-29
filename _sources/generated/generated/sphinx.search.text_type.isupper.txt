@@ -1,0 +1,6 @@
+sphinx.search.text_type.isupper
+===============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.isupper

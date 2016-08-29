@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.update
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.update

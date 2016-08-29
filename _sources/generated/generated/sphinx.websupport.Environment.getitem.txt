@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.getitem
+=====================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.getitem

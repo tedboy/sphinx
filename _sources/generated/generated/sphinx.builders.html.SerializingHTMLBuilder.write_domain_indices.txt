@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.write_domain_indices
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.write_domain_indices

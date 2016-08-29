@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTEnum.get_id_v2
+====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTEnum.get_id_v2

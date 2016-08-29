@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_tabular_col_spec
+======================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_tabular_col_spec

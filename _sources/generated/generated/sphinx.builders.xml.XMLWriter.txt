@@ -1,0 +1,45 @@
+sphinx.builders.xml.XMLWriter
+=============================
+.. currentmodule:: sphinx.builders.xml
+.. autoclass:: XMLWriter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~XMLWriter.__init__
+   ~XMLWriter.assemble_parts
+   ~XMLWriter.get_transforms
+   ~XMLWriter.supports
+   ~XMLWriter.translate
+   ~XMLWriter.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~XMLWriter.component_type
+   ~XMLWriter.config_section
+   ~XMLWriter.config_section_dependencies
+   ~XMLWriter.default_transforms
+   ~XMLWriter.destination
+   ~XMLWriter.document
+   ~XMLWriter.language
+   ~XMLWriter.output
+   ~XMLWriter.relative_path_settings
+   ~XMLWriter.settings_default_overrides
+   ~XMLWriter.settings_defaults
+   ~XMLWriter.settings_spec
+   ~XMLWriter.supported
+   ~XMLWriter.unknown_reference_resolvers
+

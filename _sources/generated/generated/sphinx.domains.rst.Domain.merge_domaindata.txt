@@ -1,0 +1,6 @@
+sphinx.domains.rst.Domain.merge_domaindata
+==========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: Domain.merge_domaindata

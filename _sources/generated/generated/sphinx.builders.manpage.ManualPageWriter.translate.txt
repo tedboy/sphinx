@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.translate
+==================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageWriter.translate

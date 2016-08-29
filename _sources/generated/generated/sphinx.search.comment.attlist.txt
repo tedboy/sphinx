@@ -1,0 +1,6 @@
+sphinx.search.comment.attlist
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.attlist

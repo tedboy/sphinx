@@ -1,0 +1,6 @@
+sphinx.search.text_type.index
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.index

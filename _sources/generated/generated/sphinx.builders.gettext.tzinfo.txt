@@ -1,0 +1,22 @@
+sphinx.builders.gettext.tzinfo
+==============================
+.. currentmodule:: sphinx.builders.gettext
+.. autoclass:: tzinfo
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~tzinfo.dst
+   ~tzinfo.fromutc
+   ~tzinfo.tzname
+   ~tzinfo.utcoffset
+
+
+
+
+

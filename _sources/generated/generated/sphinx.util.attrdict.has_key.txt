@@ -1,0 +1,6 @@
+sphinx.util.attrdict.has_key
+============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.has_key

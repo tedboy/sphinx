@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder.init
+========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: CheckExternalLinksBuilder.init

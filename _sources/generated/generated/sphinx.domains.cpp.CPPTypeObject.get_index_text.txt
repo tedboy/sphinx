@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.get_index_text
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPTypeObject.get_index_text

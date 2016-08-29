@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.handle_finish
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.handle_finish

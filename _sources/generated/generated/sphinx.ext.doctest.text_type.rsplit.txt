@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.rsplit
+===================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.rsplit

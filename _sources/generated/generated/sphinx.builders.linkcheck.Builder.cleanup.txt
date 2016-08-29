@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.cleanup
+=========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.cleanup

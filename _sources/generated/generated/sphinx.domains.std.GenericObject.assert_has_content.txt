@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.assert_has_content
+===================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: GenericObject.assert_has_content

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.destination
+=================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.destination

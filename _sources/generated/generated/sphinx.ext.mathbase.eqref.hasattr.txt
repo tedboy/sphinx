@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.hasattr
+=================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.hasattr

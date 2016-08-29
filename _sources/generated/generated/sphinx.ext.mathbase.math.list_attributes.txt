@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.list_attributes
+========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: math.list_attributes

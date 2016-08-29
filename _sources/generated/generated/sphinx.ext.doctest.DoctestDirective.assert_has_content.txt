@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DoctestDirective.assert_has_content
+======================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DoctestDirective.assert_has_content

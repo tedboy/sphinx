@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTInitializer.describe_signature
+====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTInitializer.describe_signature

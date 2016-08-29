@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.format
+=========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: LaTeXBuilder.format

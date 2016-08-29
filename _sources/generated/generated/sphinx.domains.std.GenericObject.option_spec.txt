@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.option_spec
+============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: GenericObject.option_spec

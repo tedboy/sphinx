@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.language
+========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.language

@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.gen_additional_pages
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.gen_additional_pages

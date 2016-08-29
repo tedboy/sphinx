@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.gen_indices
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.gen_indices

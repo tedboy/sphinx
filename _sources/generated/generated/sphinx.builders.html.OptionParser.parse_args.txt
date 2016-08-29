@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.parse_args
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: OptionParser.parse_args

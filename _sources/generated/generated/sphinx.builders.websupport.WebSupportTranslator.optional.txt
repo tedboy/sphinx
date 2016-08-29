@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.optional
+========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.optional

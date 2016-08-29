@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.before_content
+===========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.before_content

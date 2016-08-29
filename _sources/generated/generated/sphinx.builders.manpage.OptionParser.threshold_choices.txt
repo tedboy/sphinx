@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.threshold_choices
+======================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: OptionParser.threshold_choices

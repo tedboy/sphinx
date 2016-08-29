@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.directive_error
+============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Cmdoption.directive_error

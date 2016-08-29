@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.debug
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.debug

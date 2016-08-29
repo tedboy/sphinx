@@ -1,0 +1,6 @@
+sphinx.domains.std.StandardDomain.roles
+=======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: StandardDomain.roles

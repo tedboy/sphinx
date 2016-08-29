@@ -1,0 +1,6 @@
+sphinx.builders.changes.htmlescape
+==================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. autofunction:: htmlescape

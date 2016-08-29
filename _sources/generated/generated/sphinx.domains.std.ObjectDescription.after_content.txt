@@ -1,0 +1,6 @@
+sphinx.domains.std.ObjectDescription.after_content
+==================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ObjectDescription.after_content

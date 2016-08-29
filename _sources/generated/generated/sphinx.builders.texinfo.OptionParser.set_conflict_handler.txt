@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.set_conflict_handler
+=========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.set_conflict_handler

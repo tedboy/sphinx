@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.run
+=====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ProductionList.run

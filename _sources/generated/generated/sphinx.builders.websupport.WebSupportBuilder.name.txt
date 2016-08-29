@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.name
+=================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.name

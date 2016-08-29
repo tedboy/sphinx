@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.StandaloneHTMLBuilder.searchindex_filename
+===================================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. autoattribute:: StandaloneHTMLBuilder.searchindex_filename

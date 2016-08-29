@@ -1,0 +1,6 @@
+sphinx.ext.todo.merge_info
+==========================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autofunction:: merge_info

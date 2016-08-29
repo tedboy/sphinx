@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDecleratorNameParamQual.get_ptr_suffix_id_v1
+==================================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDecleratorNameParamQual.get_ptr_suffix_id_v1

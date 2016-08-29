@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.stylesheet_link
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.stylesheet_link

@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.load_indexer
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.load_indexer

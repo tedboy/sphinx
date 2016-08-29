@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleAnalyzer.parse
+=======================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleAnalyzer.parse

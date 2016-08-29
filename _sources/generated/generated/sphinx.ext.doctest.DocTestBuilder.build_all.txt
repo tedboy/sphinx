@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.build_all
+===========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DocTestBuilder.build_all

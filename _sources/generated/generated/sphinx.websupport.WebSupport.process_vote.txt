@@ -1,0 +1,6 @@
+sphinx.websupport.WebSupport.process_vote
+=========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: WebSupport.process_vote

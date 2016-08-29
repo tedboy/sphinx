@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.get_transforms
+==============================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: TextWriter.get_transforms

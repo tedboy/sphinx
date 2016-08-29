@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.doc_field_types
+===========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTRole.doc_field_types

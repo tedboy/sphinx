@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.astext
+===============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.astext

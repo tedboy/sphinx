@@ -1,0 +1,6 @@
+sphinx.search.comment.setdefault
+================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.setdefault

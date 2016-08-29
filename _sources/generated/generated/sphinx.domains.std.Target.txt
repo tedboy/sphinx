@@ -1,0 +1,41 @@
+sphinx.domains.std.Target
+=========================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: Target
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Target.__init__
+   ~Target.add_name
+   ~Target.assert_has_content
+   ~Target.debug
+   ~Target.directive_error
+   ~Target.error
+   ~Target.info
+   ~Target.run
+   ~Target.severe
+   ~Target.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Target.final_argument_whitespace
+   ~Target.has_content
+   ~Target.indextemplate
+   ~Target.option_spec
+   ~Target.optional_arguments
+   ~Target.required_arguments
+

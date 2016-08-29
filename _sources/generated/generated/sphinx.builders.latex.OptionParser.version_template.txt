@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.version_template
+===================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: OptionParser.version_template

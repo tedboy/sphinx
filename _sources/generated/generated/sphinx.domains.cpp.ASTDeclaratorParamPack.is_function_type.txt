@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParamPack.is_function_type
+==========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorParamPack.is_function_type

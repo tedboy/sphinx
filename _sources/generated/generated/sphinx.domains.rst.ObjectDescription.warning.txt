@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.warning
+============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.warning

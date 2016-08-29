@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.entitydefs
+===============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: HTMLParser.entitydefs

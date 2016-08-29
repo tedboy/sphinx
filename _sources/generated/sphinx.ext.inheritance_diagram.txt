@@ -1,0 +1,66 @@
+.. automodule:: sphinx.ext.inheritance_diagram
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      force_decode
+      get_graph_hash
+      html_visit_inheritance_diagram
+      latex_visit_inheritance_diagram
+      md5
+      render_dot_html
+      render_dot_latex
+      render_dot_texinfo
+      setup
+      skip
+      texinfo_visit_inheritance_diagram
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Directive
+      InheritanceDiagram
+      InheritanceGraph
+      ModuleAnalyzer
+      inheritance_diagram
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.inheritance_diagram.Directive
+       generated/sphinx.ext.inheritance_diagram.InheritanceDiagram
+       generated/sphinx.ext.inheritance_diagram.InheritanceGraph
+       generated/sphinx.ext.inheritance_diagram.ModuleAnalyzer
+       generated/sphinx.ext.inheritance_diagram.inheritance_diagram
+       generated/sphinx.ext.inheritance_diagram.text_type
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      InheritanceException
+   
+   

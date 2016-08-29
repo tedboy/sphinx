@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.final_argument_whitespace
+======================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Cmdoption.final_argument_whitespace

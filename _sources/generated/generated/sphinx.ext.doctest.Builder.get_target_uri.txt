@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.get_target_uri
+=========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: Builder.get_target_uri

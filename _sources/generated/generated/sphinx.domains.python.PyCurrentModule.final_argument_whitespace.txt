@@ -1,0 +1,6 @@
+sphinx.domains.python.PyCurrentModule.final_argument_whitespace
+===============================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyCurrentModule.final_argument_whitespace

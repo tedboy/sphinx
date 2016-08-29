@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLBuilder.versioning_method
+======================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLBuilder.versioning_method

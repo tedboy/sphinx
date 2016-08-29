@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.add_index_to_domain
+============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.add_index_to_domain

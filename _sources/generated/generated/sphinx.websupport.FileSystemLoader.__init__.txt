@@ -1,0 +1,6 @@
+sphinx.websupport.FileSystemLoader.__init__
+===========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: FileSystemLoader.__init__

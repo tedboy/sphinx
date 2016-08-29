@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.create_template_bridge
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.create_template_bridge

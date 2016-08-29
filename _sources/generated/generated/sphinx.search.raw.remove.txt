@@ -1,0 +1,6 @@
+sphinx.search.raw.remove
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.remove

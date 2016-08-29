@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.copy_attr_concatenate
+==============================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.copy_attr_concatenate

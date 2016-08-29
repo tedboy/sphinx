@@ -1,0 +1,32 @@
+sphinx.builders.gettext.timedelta
+=================================
+.. currentmodule:: sphinx.builders.gettext
+.. autoclass:: timedelta
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~timedelta.total_seconds
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~timedelta.days
+   ~timedelta.max
+   ~timedelta.microseconds
+   ~timedelta.min
+   ~timedelta.resolution
+   ~timedelta.seconds
+

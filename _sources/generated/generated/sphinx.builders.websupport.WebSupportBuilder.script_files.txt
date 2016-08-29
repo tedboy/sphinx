@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.script_files
+=========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.script_files

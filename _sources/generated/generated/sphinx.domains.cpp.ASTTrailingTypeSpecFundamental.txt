@@ -1,0 +1,25 @@
+sphinx.domains.cpp.ASTTrailingTypeSpecFundamental
+=================================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTTrailingTypeSpecFundamental
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTTrailingTypeSpecFundamental.__init__
+   ~ASTTrailingTypeSpecFundamental.clone
+   ~ASTTrailingTypeSpecFundamental.describe_signature
+   ~ASTTrailingTypeSpecFundamental.get_id_v1
+   ~ASTTrailingTypeSpecFundamental.get_id_v2
+   ~ASTTrailingTypeSpecFundamental.get_name
+   ~ASTTrailingTypeSpecFundamental.prefix_nested_name
+
+
+
+
+

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.__init__
+==========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.__init__

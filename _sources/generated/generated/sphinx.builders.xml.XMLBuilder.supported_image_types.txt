@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.supported_image_types
+====================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: XMLBuilder.supported_image_types

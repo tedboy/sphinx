@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.objtype
+==============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ExceptionDocumenter.objtype

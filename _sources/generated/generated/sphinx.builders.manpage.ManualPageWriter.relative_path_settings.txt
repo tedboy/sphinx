@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.relative_path_settings
+===============================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.relative_path_settings

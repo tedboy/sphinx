@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.default_sidebars
+=====================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.default_sidebars

@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.ModuleAnalyzer.__init__
+===========================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: ModuleAnalyzer.__init__

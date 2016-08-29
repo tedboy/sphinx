@@ -1,0 +1,6 @@
+sphinx.search.SearchEnglish.init
+================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: SearchEnglish.init

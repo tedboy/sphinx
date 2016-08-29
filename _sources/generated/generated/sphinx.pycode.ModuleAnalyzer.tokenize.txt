@@ -1,0 +1,6 @@
+sphinx.pycode.ModuleAnalyzer.tokenize
+=====================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: ModuleAnalyzer.tokenize

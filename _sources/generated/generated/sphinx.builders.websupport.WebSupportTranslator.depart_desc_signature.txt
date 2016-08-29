@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_desc_signature
+=====================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_desc_signature

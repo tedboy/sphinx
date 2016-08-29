@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPMemberObject.error
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPMemberObject.error

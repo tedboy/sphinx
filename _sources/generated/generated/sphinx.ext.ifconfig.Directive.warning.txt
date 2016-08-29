@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.warning
+=====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.warning

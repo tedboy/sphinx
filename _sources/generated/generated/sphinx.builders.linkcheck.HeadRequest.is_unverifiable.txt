@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HeadRequest.is_unverifiable
+=====================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HeadRequest.is_unverifiable

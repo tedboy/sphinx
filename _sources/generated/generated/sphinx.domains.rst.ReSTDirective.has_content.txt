@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.has_content
+============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTDirective.has_content

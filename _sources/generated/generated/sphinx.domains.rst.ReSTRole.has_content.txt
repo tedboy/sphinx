@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.has_content
+=======================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTRole.has_content

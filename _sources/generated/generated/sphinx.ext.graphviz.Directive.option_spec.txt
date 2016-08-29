@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Directive.option_spec
+=========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: Directive.option_spec

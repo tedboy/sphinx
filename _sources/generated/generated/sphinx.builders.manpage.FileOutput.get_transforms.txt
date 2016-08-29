@@ -1,0 +1,6 @@
+sphinx.builders.manpage.FileOutput.get_transforms
+=================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: FileOutput.get_transforms

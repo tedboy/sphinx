@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.info
+=====================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.info

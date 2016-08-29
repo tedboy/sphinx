@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.info
+=================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.info

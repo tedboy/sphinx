@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.assert_has_content
+===================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutoDirective.assert_has_content

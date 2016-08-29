@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.object_types
+===============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PythonDomain.object_types

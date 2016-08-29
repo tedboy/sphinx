@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClassmember.directive_error
+===================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClassmember.directive_error

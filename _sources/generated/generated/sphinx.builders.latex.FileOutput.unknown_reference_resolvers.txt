@@ -1,0 +1,6 @@
+sphinx.builders.latex.FileOutput.unknown_reference_resolvers
+============================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: FileOutput.unknown_reference_resolvers

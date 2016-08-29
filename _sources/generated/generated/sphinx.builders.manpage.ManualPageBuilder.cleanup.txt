@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageBuilder.cleanup
+=================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageBuilder.cleanup

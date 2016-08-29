@@ -1,0 +1,6 @@
+sphinx.domains.std.Domain.merge_domaindata
+==========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Domain.merge_domaindata

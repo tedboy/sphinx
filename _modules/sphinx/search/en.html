@@ -1,0 +1,476 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.search.en &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.search" href="../search.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../search.html">sphinx.search</a> &raquo;</li>
+        
+      <li>sphinx.search.en</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.search.en</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.search.en</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    English search language: includes the JS porter stemmer.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">sphinx.search</span> <span class="kn">import</span> <span class="n">SearchLanguage</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># http://bitbucket.org/methane/porterstemmer/</span>
+    <span class="kn">from</span> <span class="nn">porterstemmer</span> <span class="kn">import</span> <span class="n">Stemmer</span> <span class="k">as</span> <span class="n">CStemmer</span>
+    <span class="n">CSTEMMER</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">PYSTEMMER</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">CSTEMMER</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">Stemmer</span> <span class="kn">import</span> <span class="n">Stemmer</span> <span class="k">as</span> <span class="n">PyStemmer</span>
+        <span class="n">PYSTEMMER</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">sphinx.util.stemmer</span> <span class="kn">import</span> <span class="n">PorterStemmer</span>
+        <span class="n">PYSTEMMER</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="n">english_stopwords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">a  and  are  as  at</span>
+<span class="s2">be  but  by</span>
+<span class="s2">for</span>
+<span class="s2">if  in  into  is  it</span>
+<span class="s2">near  no  not</span>
+<span class="s2">of  on  or</span>
+<span class="s2">such</span>
+<span class="s2">that  the  their  then  there  these  they  this  to</span>
+<span class="s2">was  will  with</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+<span class="n">js_porter_stemmer</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">/**</span>
+<span class="s2"> * Porter Stemmer</span>
+<span class="s2"> */</span>
+<span class="s2">var Stemmer = function() {</span>
+
+<span class="s2">  var step2list = {</span>
+<span class="s2">    ational: &#39;ate&#39;,</span>
+<span class="s2">    tional: &#39;tion&#39;,</span>
+<span class="s2">    enci: &#39;ence&#39;,</span>
+<span class="s2">    anci: &#39;ance&#39;,</span>
+<span class="s2">    izer: &#39;ize&#39;,</span>
+<span class="s2">    bli: &#39;ble&#39;,</span>
+<span class="s2">    alli: &#39;al&#39;,</span>
+<span class="s2">    entli: &#39;ent&#39;,</span>
+<span class="s2">    eli: &#39;e&#39;,</span>
+<span class="s2">    ousli: &#39;ous&#39;,</span>
+<span class="s2">    ization: &#39;ize&#39;,</span>
+<span class="s2">    ation: &#39;ate&#39;,</span>
+<span class="s2">    ator: &#39;ate&#39;,</span>
+<span class="s2">    alism: &#39;al&#39;,</span>
+<span class="s2">    iveness: &#39;ive&#39;,</span>
+<span class="s2">    fulness: &#39;ful&#39;,</span>
+<span class="s2">    ousness: &#39;ous&#39;,</span>
+<span class="s2">    aliti: &#39;al&#39;,</span>
+<span class="s2">    iviti: &#39;ive&#39;,</span>
+<span class="s2">    biliti: &#39;ble&#39;,</span>
+<span class="s2">    logi: &#39;log&#39;</span>
+<span class="s2">  };</span>
+
+<span class="s2">  var step3list = {</span>
+<span class="s2">    icate: &#39;ic&#39;,</span>
+<span class="s2">    ative: &#39;&#39;,</span>
+<span class="s2">    alize: &#39;al&#39;,</span>
+<span class="s2">    iciti: &#39;ic&#39;,</span>
+<span class="s2">    ical: &#39;ic&#39;,</span>
+<span class="s2">    ful: &#39;&#39;,</span>
+<span class="s2">    ness: &#39;&#39;</span>
+<span class="s2">  };</span>
+
+<span class="s2">  var c = &quot;[^aeiou]&quot;;          // consonant</span>
+<span class="s2">  var v = &quot;[aeiouy]&quot;;          // vowel</span>
+<span class="s2">  var C = c + &quot;[^aeiouy]*&quot;;    // consonant sequence</span>
+<span class="s2">  var V = v + &quot;[aeiou]*&quot;;      // vowel sequence</span>
+
+<span class="s2">  var mgr0 = &quot;^(&quot; + C + &quot;)?&quot; + V + C;                      // [C]VC... is m&gt;0</span>
+<span class="s2">  var meq1 = &quot;^(&quot; + C + &quot;)?&quot; + V + C + &quot;(&quot; + V + &quot;)?$&quot;;    // [C]VC[V] is m=1</span>
+<span class="s2">  var mgr1 = &quot;^(&quot; + C + &quot;)?&quot; + V + C + V + C;              // [C]VCVC... is m&gt;1</span>
+<span class="s2">  var s_v   = &quot;^(&quot; + C + &quot;)?&quot; + v;                         // vowel in stem</span>
+
+<span class="s2">  this.stemWord = function (w) {</span>
+<span class="s2">    var stem;</span>
+<span class="s2">    var suffix;</span>
+<span class="s2">    var firstch;</span>
+<span class="s2">    var origword = w;</span>
+
+<span class="s2">    if (w.length &lt; 3)</span>
+<span class="s2">      return w;</span>
+
+<span class="s2">    var re;</span>
+<span class="s2">    var re2;</span>
+<span class="s2">    var re3;</span>
+<span class="s2">    var re4;</span>
+
+<span class="s2">    firstch = w.substr(0,1);</span>
+<span class="s2">    if (firstch == &quot;y&quot;)</span>
+<span class="s2">      w = firstch.toUpperCase() + w.substr(1);</span>
+
+<span class="s2">    // Step 1a</span>
+<span class="s2">    re = /^(.+?)(ss|i)es$/;</span>
+<span class="s2">    re2 = /^(.+?)([^s])s$/;</span>
+
+<span class="s2">    if (re.test(w))</span>
+<span class="s2">      w = w.replace(re,&quot;$1$2&quot;);</span>
+<span class="s2">    else if (re2.test(w))</span>
+<span class="s2">      w = w.replace(re2,&quot;$1$2&quot;);</span>
+
+<span class="s2">    // Step 1b</span>
+<span class="s2">    re = /^(.+?)eed$/;</span>
+<span class="s2">    re2 = /^(.+?)(ed|ing)$/;</span>
+<span class="s2">    if (re.test(w)) {</span>
+<span class="s2">      var fp = re.exec(w);</span>
+<span class="s2">      re = new RegExp(mgr0);</span>
+<span class="s2">      if (re.test(fp[1])) {</span>
+<span class="s2">        re = /.$/;</span>
+<span class="s2">        w = w.replace(re,&quot;&quot;);</span>
+<span class="s2">      }</span>
+<span class="s2">    }</span>
+<span class="s2">    else if (re2.test(w)) {</span>
+<span class="s2">      var fp = re2.exec(w);</span>
+<span class="s2">      stem = fp[1];</span>
+<span class="s2">      re2 = new RegExp(s_v);</span>
+<span class="s2">      if (re2.test(stem)) {</span>
+<span class="s2">        w = stem;</span>
+<span class="s2">        re2 = /(at|bl|iz)$/;</span>
+<span class="s2">        re3 = new RegExp(&quot;([^aeiouylsz])</span><span class="se">\\\\</span><span class="s2">1$&quot;);</span>
+<span class="s2">        re4 = new RegExp(&quot;^&quot; + C + v + &quot;[^aeiouwxy]$&quot;);</span>
+<span class="s2">        if (re2.test(w))</span>
+<span class="s2">          w = w + &quot;e&quot;;</span>
+<span class="s2">        else if (re3.test(w)) {</span>
+<span class="s2">          re = /.$/;</span>
+<span class="s2">          w = w.replace(re,&quot;&quot;);</span>
+<span class="s2">        }</span>
+<span class="s2">        else if (re4.test(w))</span>
+<span class="s2">          w = w + &quot;e&quot;;</span>
+<span class="s2">      }</span>
+<span class="s2">    }</span>
+
+<span class="s2">    // Step 1c</span>
+<span class="s2">    re = /^(.+?)y$/;</span>
+<span class="s2">    if (re.test(w)) {</span>
+<span class="s2">      var fp = re.exec(w);</span>
+<span class="s2">      stem = fp[1];</span>
+<span class="s2">      re = new RegExp(s_v);</span>
+<span class="s2">      if (re.test(stem))</span>
+<span class="s2">        w = stem + &quot;i&quot;;</span>
+<span class="s2">    }</span>
+
+<span class="s2">    // Step 2</span>
+<span class="s2">    re = /^(.+?)(ational|tional|enci|anci|izer|bli|alli|entli|eli|ousli|</span><span class="se">\</span>
+<span class="s2">ization|ation|ator|alism|iveness|fulness|ousness|aliti|iviti|biliti|logi)$/;</span>
+<span class="s2">    if (re.test(w)) {</span>
+<span class="s2">      var fp = re.exec(w);</span>
+<span class="s2">      stem = fp[1];</span>
+<span class="s2">      suffix = fp[2];</span>
+<span class="s2">      re = new RegExp(mgr0);</span>
+<span class="s2">      if (re.test(stem))</span>
+<span class="s2">        w = stem + step2list[suffix];</span>
+<span class="s2">    }</span>
+
+<span class="s2">    // Step 3</span>
+<span class="s2">    re = /^(.+?)(icate|ative|alize|iciti|ical|ful|ness)$/;</span>
+<span class="s2">    if (re.test(w)) {</span>
+<span class="s2">      var fp = re.exec(w);</span>
+<span class="s2">      stem = fp[1];</span>
+<span class="s2">      suffix = fp[2];</span>
+<span class="s2">      re = new RegExp(mgr0);</span>
+<span class="s2">      if (re.test(stem))</span>
+<span class="s2">        w = stem + step3list[suffix];</span>
+<span class="s2">    }</span>
+
+<span class="s2">    // Step 4</span>
+<span class="s2">    re = /^(.+?)(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ou|ism|ate|</span><span class="se">\</span>
+<span class="s2">iti|ous|ive|ize)$/;</span>
+<span class="s2">    re2 = /^(.+?)(s|t)(ion)$/;</span>
+<span class="s2">    if (re.test(w)) {</span>
+<span class="s2">      var fp = re.exec(w);</span>
+<span class="s2">      stem = fp[1];</span>
+<span class="s2">      re = new RegExp(mgr1);</span>
+<span class="s2">      if (re.test(stem))</span>
+<span class="s2">        w = stem;</span>
+<span class="s2">    }</span>
+<span class="s2">    else if (re2.test(w)) {</span>
+<span class="s2">      var fp = re2.exec(w);</span>
+<span class="s2">      stem = fp[1] + fp[2];</span>
+<span class="s2">      re2 = new RegExp(mgr1);</span>
+<span class="s2">      if (re2.test(stem))</span>
+<span class="s2">        w = stem;</span>
+<span class="s2">    }</span>
+
+<span class="s2">    // Step 5</span>
+<span class="s2">    re = /^(.+?)e$/;</span>
+<span class="s2">    if (re.test(w)) {</span>
+<span class="s2">      var fp = re.exec(w);</span>
+<span class="s2">      stem = fp[1];</span>
+<span class="s2">      re = new RegExp(mgr1);</span>
+<span class="s2">      re2 = new RegExp(meq1);</span>
+<span class="s2">      re3 = new RegExp(&quot;^&quot; + C + v + &quot;[^aeiouwxy]$&quot;);</span>
+<span class="s2">      if (re.test(stem) || (re2.test(stem) &amp;&amp; !(re3.test(stem))))</span>
+<span class="s2">        w = stem;</span>
+<span class="s2">    }</span>
+<span class="s2">    re = /ll$/;</span>
+<span class="s2">    re2 = new RegExp(mgr1);</span>
+<span class="s2">    if (re.test(w) &amp;&amp; re2.test(w)) {</span>
+<span class="s2">      re = /.$/;</span>
+<span class="s2">      w = w.replace(re,&quot;&quot;);</span>
+<span class="s2">    }</span>
+
+<span class="s2">    // and turn initial Y back to y</span>
+<span class="s2">    if (firstch == &quot;y&quot;)</span>
+<span class="s2">      w = firstch.toLowerCase() + w.substr(1);</span>
+<span class="s2">    return w;</span>
+<span class="s2">  }</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="SearchEnglish"><a class="viewcode-back" href="../../../generated/generated/sphinx.search.SearchEnglish.html#sphinx.search.SearchEnglish">[docs]</a><span class="k">class</span> <span class="nc">SearchEnglish</span><span class="p">(</span><span class="n">SearchLanguage</span><span class="p">):</span>
+    <span class="n">lang</span> <span class="o">=</span> <span class="s1">&#39;en&#39;</span>
+    <span class="n">language_name</span> <span class="o">=</span> <span class="s1">&#39;English&#39;</span>
+    <span class="n">js_stemmer_code</span> <span class="o">=</span> <span class="n">js_porter_stemmer</span>
+    <span class="n">stopwords</span> <span class="o">=</span> <span class="n">english_stopwords</span>
+
+<div class="viewcode-block" id="SearchEnglish.init"><a class="viewcode-back" href="../../../generated/generated/sphinx.search.SearchEnglish.init.html#sphinx.search.SearchEnglish.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">CSTEMMER</span><span class="p">:</span>
+            <span class="k">class</span> <span class="nc">Stemmer</span><span class="p">(</span><span class="n">CStemmer</span><span class="p">):</span>
+                <span class="k">def</span> <span class="nf">stem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="n">PYSTEMMER</span><span class="p">:</span>
+            <span class="k">class</span> <span class="nc">Stemmer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+                <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stemmer</span> <span class="o">=</span> <span class="n">PyStemmer</span><span class="p">(</span><span class="s1">&#39;porter&#39;</span><span class="p">)</span>
+
+                <span class="k">def</span> <span class="nf">stem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stemWord</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">class</span> <span class="nc">Stemmer</span><span class="p">(</span><span class="n">PorterStemmer</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;All those porter stemmer implementations look hideous;</span>
+<span class="sd">                make at least the stem method nicer.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="k">def</span> <span class="nf">stem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+                    <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                    <span class="k">return</span> <span class="n">PorterStemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">stemmer</span> <span class="o">=</span> <span class="n">Stemmer</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SearchEnglish.stem"><a class="viewcode-back" href="../../../generated/generated/sphinx.search.SearchEnglish.stem.html#sphinx.search.SearchEnglish.stem">[docs]</a>    <span class="k">def</span> <span class="nf">stem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

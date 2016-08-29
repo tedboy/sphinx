@@ -1,0 +1,6 @@
+sphinx.locale.UserString.join
+=============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.join

@@ -1,0 +1,6 @@
+sphinx.search.comment.note_referenced_by
+========================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.note_referenced_by

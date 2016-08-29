@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.clear
+=====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.clear

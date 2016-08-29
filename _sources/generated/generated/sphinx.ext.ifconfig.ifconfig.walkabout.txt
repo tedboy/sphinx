@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.walkabout
+======================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.walkabout

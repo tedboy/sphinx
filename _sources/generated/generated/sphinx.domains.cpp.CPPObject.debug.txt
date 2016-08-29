@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.debug
+==================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.debug

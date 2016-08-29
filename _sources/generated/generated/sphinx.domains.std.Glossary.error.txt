@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.error
+=================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Glossary.error

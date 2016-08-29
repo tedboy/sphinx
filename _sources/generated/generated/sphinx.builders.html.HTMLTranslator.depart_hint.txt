@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_hint
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_hint

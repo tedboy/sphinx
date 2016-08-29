@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.init_translator_class
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.init_translator_class

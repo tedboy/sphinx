@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.embedded_stylesheet
+===================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.embedded_stylesheet

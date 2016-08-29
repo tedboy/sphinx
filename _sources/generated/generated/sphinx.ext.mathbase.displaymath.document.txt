@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.document
+========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: displaymath.document

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassDocumenter.import_object
+================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassDocumenter.import_object

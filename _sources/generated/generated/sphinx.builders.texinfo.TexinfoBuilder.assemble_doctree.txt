@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.assemble_doctree
+=======================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoBuilder.assemble_doctree

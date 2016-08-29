@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.astext
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.astext

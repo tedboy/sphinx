@@ -1,0 +1,6 @@
+sphinx.locale.UserString.center
+===============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.center

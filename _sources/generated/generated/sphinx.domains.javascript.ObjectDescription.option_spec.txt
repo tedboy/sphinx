@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.option_spec
+=======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: ObjectDescription.option_spec

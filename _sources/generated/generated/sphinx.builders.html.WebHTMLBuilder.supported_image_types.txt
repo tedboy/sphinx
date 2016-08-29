@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.supported_image_types
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: WebHTMLBuilder.supported_image_types

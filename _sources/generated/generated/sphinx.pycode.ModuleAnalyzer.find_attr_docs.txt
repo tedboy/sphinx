@@ -1,0 +1,6 @@
+sphinx.pycode.ModuleAnalyzer.find_attr_docs
+===========================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: ModuleAnalyzer.find_attr_docs

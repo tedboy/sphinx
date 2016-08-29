@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.warning
+===============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorMethod.warning

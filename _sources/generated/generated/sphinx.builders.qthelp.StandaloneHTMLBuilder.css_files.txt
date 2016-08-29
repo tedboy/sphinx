@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.StandaloneHTMLBuilder.css_files
+======================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: StandaloneHTMLBuilder.css_files

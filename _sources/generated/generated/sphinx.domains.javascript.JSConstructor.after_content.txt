@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.after_content
+=====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.after_content

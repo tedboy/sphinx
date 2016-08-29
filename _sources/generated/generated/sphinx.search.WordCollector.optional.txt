@@ -1,0 +1,6 @@
+sphinx.search.WordCollector.optional
+====================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: WordCollector.optional

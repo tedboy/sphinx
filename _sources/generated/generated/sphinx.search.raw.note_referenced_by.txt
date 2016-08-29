@@ -1,0 +1,6 @@
+sphinx.search.raw.note_referenced_by
+====================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.note_referenced_by

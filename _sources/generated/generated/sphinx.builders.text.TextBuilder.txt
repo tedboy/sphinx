@@ -1,0 +1,54 @@
+sphinx.builders.text.TextBuilder
+================================
+.. currentmodule:: sphinx.builders.text
+.. autoclass:: TextBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TextBuilder.__init__
+   ~TextBuilder.build
+   ~TextBuilder.build_all
+   ~TextBuilder.build_specific
+   ~TextBuilder.build_update
+   ~TextBuilder.cleanup
+   ~TextBuilder.compile_all_catalogs
+   ~TextBuilder.compile_catalogs
+   ~TextBuilder.compile_specific_catalogs
+   ~TextBuilder.compile_update_catalogs
+   ~TextBuilder.create_template_bridge
+   ~TextBuilder.finish
+   ~TextBuilder.get_builder_config
+   ~TextBuilder.get_outdated_docs
+   ~TextBuilder.get_relative_uri
+   ~TextBuilder.get_target_uri
+   ~TextBuilder.init
+   ~TextBuilder.post_process_images
+   ~TextBuilder.prepare_writing
+   ~TextBuilder.write
+   ~TextBuilder.write_doc
+   ~TextBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TextBuilder.allow_parallel
+   ~TextBuilder.format
+   ~TextBuilder.name
+   ~TextBuilder.out_suffix
+   ~TextBuilder.supported_image_types
+   ~TextBuilder.versioning_compare
+   ~TextBuilder.versioning_method
+

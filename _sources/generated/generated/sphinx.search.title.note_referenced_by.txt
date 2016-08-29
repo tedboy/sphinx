@@ -1,0 +1,6 @@
+sphinx.search.title.note_referenced_by
+======================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.note_referenced_by

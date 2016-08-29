@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.write_doc
+======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.write_doc

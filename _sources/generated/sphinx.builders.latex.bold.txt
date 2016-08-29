@@ -1,0 +1,6 @@
+sphinx.builders.latex.bold
+==========================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autofunction:: bold

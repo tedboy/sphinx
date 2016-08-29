@@ -1,0 +1,140 @@
+.. automodule:: sphinx.domains.cpp
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      deepcopy
+      iteritems
+      l_
+      make_refnode
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      ASTArray
+      ASTBase
+      ASTBaseClass
+      ASTClass
+      ASTDeclSpecs
+      ASTDeclSpecsSimple
+      ASTDeclaratorParamPack
+      ASTDeclaratorParen
+      ASTDeclaratorPtr
+      ASTDeclaratorRef
+      ASTDecleratorNameParamQual
+      ASTEnum
+      ASTEnumerator
+      ASTFunctinoParameter
+      ASTInitializer
+      ASTNestedName
+      ASTNestedNameElement
+      ASTNestedNameElementEmpty
+      ASTOperatorBuildIn
+      ASTOperatorType
+      ASTParametersQualifiers
+      ASTTemplateArgConstant
+      ASTTrailingTypeSpecFundamental
+      ASTTrailingTypeSpecName
+      ASTType
+      ASTTypeWithInit
+      CPPClassObject
+      CPPDomain
+      CPPEnumObject
+      CPPEnumeratorObject
+      CPPFunctionObject
+      CPPMemberObject
+      CPPNamespaceObject
+      CPPObject
+      CPPTypeObject
+      CPPXRefRole
+      DefinitionParser
+      Directive
+      Domain
+      Field
+      GroupedField
+      ObjType
+      ObjectDescription
+      UnicodeMixin
+      XRefRole
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.domains.cpp.ASTArray
+       generated/sphinx.domains.cpp.ASTBase
+       generated/sphinx.domains.cpp.ASTBaseClass
+       generated/sphinx.domains.cpp.ASTClass
+       generated/sphinx.domains.cpp.ASTDeclSpecs
+       generated/sphinx.domains.cpp.ASTDeclSpecsSimple
+       generated/sphinx.domains.cpp.ASTDeclaratorParamPack
+       generated/sphinx.domains.cpp.ASTDeclaratorParen
+       generated/sphinx.domains.cpp.ASTDeclaratorPtr
+       generated/sphinx.domains.cpp.ASTDeclaratorRef
+       generated/sphinx.domains.cpp.ASTDecleratorNameParamQual
+       generated/sphinx.domains.cpp.ASTEnum
+       generated/sphinx.domains.cpp.ASTEnumerator
+       generated/sphinx.domains.cpp.ASTFunctinoParameter
+       generated/sphinx.domains.cpp.ASTInitializer
+       generated/sphinx.domains.cpp.ASTNestedName
+       generated/sphinx.domains.cpp.ASTNestedNameElement
+       generated/sphinx.domains.cpp.ASTNestedNameElementEmpty
+       generated/sphinx.domains.cpp.ASTOperatorBuildIn
+       generated/sphinx.domains.cpp.ASTOperatorType
+       generated/sphinx.domains.cpp.ASTParametersQualifiers
+       generated/sphinx.domains.cpp.ASTTemplateArgConstant
+       generated/sphinx.domains.cpp.ASTTrailingTypeSpecFundamental
+       generated/sphinx.domains.cpp.ASTTrailingTypeSpecName
+       generated/sphinx.domains.cpp.ASTType
+       generated/sphinx.domains.cpp.ASTTypeWithInit
+       generated/sphinx.domains.cpp.CPPClassObject
+       generated/sphinx.domains.cpp.CPPDomain
+       generated/sphinx.domains.cpp.CPPEnumObject
+       generated/sphinx.domains.cpp.CPPEnumeratorObject
+       generated/sphinx.domains.cpp.CPPFunctionObject
+       generated/sphinx.domains.cpp.CPPMemberObject
+       generated/sphinx.domains.cpp.CPPNamespaceObject
+       generated/sphinx.domains.cpp.CPPObject
+       generated/sphinx.domains.cpp.CPPTypeObject
+       generated/sphinx.domains.cpp.CPPXRefRole
+       generated/sphinx.domains.cpp.DefinitionParser
+       generated/sphinx.domains.cpp.Directive
+       generated/sphinx.domains.cpp.Domain
+       generated/sphinx.domains.cpp.Field
+       generated/sphinx.domains.cpp.GroupedField
+       generated/sphinx.domains.cpp.ObjType
+       generated/sphinx.domains.cpp.ObjectDescription
+       generated/sphinx.domains.cpp.UnicodeMixin
+       generated/sphinx.domains.cpp.XRefRole
+       generated/sphinx.domains.cpp.text_type
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      DefinitionError
+      NoOldIdError
+   
+   

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.language
+==============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.language

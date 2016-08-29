@@ -1,0 +1,40 @@
+sphinx.ext.todo.TodoList
+========================
+.. currentmodule:: sphinx.ext.todo
+.. autoclass:: TodoList
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TodoList.__init__
+   ~TodoList.add_name
+   ~TodoList.assert_has_content
+   ~TodoList.debug
+   ~TodoList.directive_error
+   ~TodoList.error
+   ~TodoList.info
+   ~TodoList.run
+   ~TodoList.severe
+   ~TodoList.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TodoList.final_argument_whitespace
+   ~TodoList.has_content
+   ~TodoList.option_spec
+   ~TodoList.optional_arguments
+   ~TodoList.required_arguments
+

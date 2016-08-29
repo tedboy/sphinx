@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.write_genindex
+=========================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.write_genindex

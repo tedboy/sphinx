@@ -1,0 +1,40 @@
+sphinx.ext.graphviz.Directive
+=============================
+.. currentmodule:: sphinx.ext.graphviz
+.. autoclass:: Directive
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Directive.__init__
+   ~Directive.add_name
+   ~Directive.assert_has_content
+   ~Directive.debug
+   ~Directive.directive_error
+   ~Directive.error
+   ~Directive.info
+   ~Directive.run
+   ~Directive.severe
+   ~Directive.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Directive.final_argument_whitespace
+   ~Directive.has_content
+   ~Directive.option_spec
+   ~Directive.optional_arguments
+   ~Directive.required_arguments
+

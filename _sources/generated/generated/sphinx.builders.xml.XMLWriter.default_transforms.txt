@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLWriter.default_transforms
+================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: XMLWriter.default_transforms

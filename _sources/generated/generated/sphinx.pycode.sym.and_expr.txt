@@ -1,0 +1,6 @@
+sphinx.pycode.sym.and_expr
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.and_expr

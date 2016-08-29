@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.supported_image_types
+=================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autoattribute:: Builder.supported_image_types

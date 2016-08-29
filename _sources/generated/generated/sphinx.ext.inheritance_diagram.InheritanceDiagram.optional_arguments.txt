@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.InheritanceDiagram.optional_arguments
+====================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoattribute:: InheritanceDiagram.optional_arguments

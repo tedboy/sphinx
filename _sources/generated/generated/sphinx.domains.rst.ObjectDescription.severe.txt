@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.severe
+===========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.severe

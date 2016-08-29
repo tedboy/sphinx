@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.text_type.zfill
+===================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: text_type.zfill

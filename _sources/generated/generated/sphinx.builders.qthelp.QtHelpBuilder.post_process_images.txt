@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.post_process_images
+========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.post_process_images

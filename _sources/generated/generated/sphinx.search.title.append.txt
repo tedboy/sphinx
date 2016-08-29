@@ -1,0 +1,6 @@
+sphinx.search.title.append
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.append

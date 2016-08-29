@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.RedirectHandler.max_repeats
+=====================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: RedirectHandler.max_repeats

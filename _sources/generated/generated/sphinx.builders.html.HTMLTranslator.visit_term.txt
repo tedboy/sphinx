@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_term
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_term

@@ -1,0 +1,6 @@
+sphinx.search.raw.has_key
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.has_key

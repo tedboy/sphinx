@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.write_domain_indices
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.write_domain_indices

@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.compile_all_catalogs
+===========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.compile_all_catalogs

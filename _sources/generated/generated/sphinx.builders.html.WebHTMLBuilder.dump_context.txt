@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.dump_context
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.dump_context

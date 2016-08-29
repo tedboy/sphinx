@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.severe
+===================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: IfConfig.severe

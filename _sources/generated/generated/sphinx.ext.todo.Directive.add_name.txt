@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.add_name
+==================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Directive.add_name

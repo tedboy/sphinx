@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.finish
+=================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: Builder.finish

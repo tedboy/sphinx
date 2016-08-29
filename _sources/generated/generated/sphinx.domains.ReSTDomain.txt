@@ -1,0 +1,44 @@
+sphinx.domains.ReSTDomain
+=========================
+.. currentmodule:: sphinx.domains
+.. autoclass:: ReSTDomain
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ReSTDomain.__init__
+   ~ReSTDomain.clear_doc
+   ~ReSTDomain.directive
+   ~ReSTDomain.get_objects
+   ~ReSTDomain.get_type_name
+   ~ReSTDomain.merge_domaindata
+   ~ReSTDomain.process_doc
+   ~ReSTDomain.resolve_any_xref
+   ~ReSTDomain.resolve_xref
+   ~ReSTDomain.role
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ReSTDomain.dangling_warnings
+   ~ReSTDomain.data_version
+   ~ReSTDomain.directives
+   ~ReSTDomain.indices
+   ~ReSTDomain.initial_data
+   ~ReSTDomain.label
+   ~ReSTDomain.name
+   ~ReSTDomain.object_types
+   ~ReSTDomain.roles
+

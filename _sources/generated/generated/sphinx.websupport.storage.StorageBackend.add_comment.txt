@@ -1,0 +1,6 @@
+sphinx.websupport.storage.StorageBackend.add_comment
+====================================================
+
+.. currentmodule:: sphinx.websupport.storage
+
+.. automethod:: StorageBackend.add_comment

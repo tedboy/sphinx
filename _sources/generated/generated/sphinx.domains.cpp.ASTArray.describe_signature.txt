@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTArray.describe_signature
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTArray.describe_signature

@@ -1,0 +1,6 @@
+sphinx.search.comment.starttag
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.starttag

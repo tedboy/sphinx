@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.add_sidebars
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.add_sidebars

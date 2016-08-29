@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.NoUri
+=============================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoexception:: NoUri

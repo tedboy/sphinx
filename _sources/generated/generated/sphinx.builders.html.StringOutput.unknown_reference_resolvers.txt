@@ -1,0 +1,6 @@
+sphinx.builders.html.StringOutput.unknown_reference_resolvers
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StringOutput.unknown_reference_resolvers

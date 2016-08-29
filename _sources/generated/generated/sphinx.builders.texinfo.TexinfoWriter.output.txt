@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.output
+============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.output

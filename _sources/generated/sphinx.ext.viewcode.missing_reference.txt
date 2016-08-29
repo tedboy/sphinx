@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.missing_reference
+=====================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. autofunction:: missing_reference

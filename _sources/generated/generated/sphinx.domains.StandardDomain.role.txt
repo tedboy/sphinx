@@ -1,0 +1,6 @@
+sphinx.domains.StandardDomain.role
+==================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: StandardDomain.role

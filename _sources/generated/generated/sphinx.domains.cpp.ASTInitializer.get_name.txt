@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTInitializer.get_name
+==========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTInitializer.get_name

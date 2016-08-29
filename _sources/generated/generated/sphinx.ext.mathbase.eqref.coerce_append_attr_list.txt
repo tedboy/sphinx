@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.coerce_append_attr_list
+=================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.coerce_append_attr_list

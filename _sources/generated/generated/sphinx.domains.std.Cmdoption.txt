@@ -1,0 +1,46 @@
+sphinx.domains.std.Cmdoption
+============================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: Cmdoption
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Cmdoption.__init__
+   ~Cmdoption.add_name
+   ~Cmdoption.add_target_and_index
+   ~Cmdoption.after_content
+   ~Cmdoption.assert_has_content
+   ~Cmdoption.before_content
+   ~Cmdoption.debug
+   ~Cmdoption.directive_error
+   ~Cmdoption.error
+   ~Cmdoption.get_signatures
+   ~Cmdoption.handle_signature
+   ~Cmdoption.info
+   ~Cmdoption.run
+   ~Cmdoption.severe
+   ~Cmdoption.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Cmdoption.doc_field_types
+   ~Cmdoption.final_argument_whitespace
+   ~Cmdoption.has_content
+   ~Cmdoption.option_spec
+   ~Cmdoption.optional_arguments
+   ~Cmdoption.required_arguments
+

@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.HTMLHelpBuilder.indexer_dumps_unicode
+==============================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. autoattribute:: HTMLHelpBuilder.indexer_dumps_unicode

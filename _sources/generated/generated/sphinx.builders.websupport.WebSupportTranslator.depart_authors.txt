@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_authors
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_authors

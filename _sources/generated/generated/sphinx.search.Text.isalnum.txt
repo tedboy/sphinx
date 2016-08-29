@@ -1,0 +1,6 @@
+sphinx.search.Text.isalnum
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.isalnum

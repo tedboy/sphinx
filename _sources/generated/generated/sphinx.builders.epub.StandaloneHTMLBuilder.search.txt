@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.search
+=================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.search

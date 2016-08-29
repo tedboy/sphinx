@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.add_name
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumObject.add_name

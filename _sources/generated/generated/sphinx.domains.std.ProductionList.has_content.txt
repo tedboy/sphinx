@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.has_content
+=============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: ProductionList.has_content

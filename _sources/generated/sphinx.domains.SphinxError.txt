@@ -1,0 +1,6 @@
+sphinx.domains.SphinxError
+==========================
+
+.. currentmodule:: sphinx.domains
+
+.. autoexception:: SphinxError

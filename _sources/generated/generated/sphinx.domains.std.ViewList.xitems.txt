@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.xitems
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.xitems

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPNamespaceObject.warning
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPNamespaceObject.warning

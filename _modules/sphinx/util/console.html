@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.util.console &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.util" href="../util.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../util.html">sphinx.util</a> &raquo;</li>
+        
+      <li>sphinx.util.console</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.util.console</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.util.console</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Format colored console output.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># check if colorama is installed to support color on Windows</span>
+    <span class="kn">import</span> <span class="nn">colorama</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">colorama</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">_ansi_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x1b\\</span><span class="s1">[(</span><span class="se">\\</span><span class="s1">d</span><span class="se">\\</span><span class="s1">d;){0,2}</span><span class="se">\\</span><span class="s1">d</span><span class="se">\\</span><span class="s1">dm&#39;</span><span class="p">)</span>
+<span class="n">codes</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="k">def</span> <span class="nf">get_terminal_width</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Borrowed from the py lib.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">termios</span>
+        <span class="kn">import</span> <span class="nn">fcntl</span>
+        <span class="kn">import</span> <span class="nn">struct</span>
+        <span class="n">call</span> <span class="o">=</span> <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TIOCGWINSZ</span><span class="p">,</span>
+                           <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;hhhh&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;hhhh&#39;</span><span class="p">,</span> <span class="n">call</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">terminal_width</span> <span class="o">=</span> <span class="n">width</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">SystemExit</span><span class="p">,</span> <span class="ne">KeyboardInterrupt</span><span class="p">):</span>
+        <span class="k">raise</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># FALLBACK</span>
+        <span class="n">terminal_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;COLUMNS&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">terminal_width</span>
+
+
+<span class="n">_tw</span> <span class="o">=</span> <span class="n">get_terminal_width</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">term_width_line</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">codes</span><span class="p">:</span>
+        <span class="c1"># if no coloring, don&#39;t output fancy backspaces</span>
+        <span class="k">return</span> <span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># codes are not displayed, this must be taken into account</span>
+        <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">_tw</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">_ansi_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">color_terminal</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span> <span class="ow">and</span> <span class="n">colorama</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">colorama</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="s1">&#39;isatty&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">isatty</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="s1">&#39;COLORTERM&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="n">term</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TERM&#39;</span><span class="p">,</span> <span class="s1">&#39;dumb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;xterm&#39;</span><span class="p">,</span> <span class="s1">&#39;linux&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;color&#39;</span> <span class="ow">in</span> <span class="n">term</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">nocolor</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span> <span class="ow">and</span> <span class="n">colorama</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">colorama</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+    <span class="n">codes</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">coloron</span><span class="p">():</span>
+    <span class="n">codes</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_orig_codes</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">colorize</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">codes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="n">codes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reset&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="strip_colors"><a class="viewcode-back" href="../../../generated/sphinx.util.strip_colors.html#sphinx.builders.strip_colors">[docs]</a><span class="k">def</span> <span class="nf">strip_colors</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">.*?m&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">create_color_func</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">colorize</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="nb">globals</span><span class="p">()[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">inner</span>
+
+<span class="n">_attrs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;reset&#39;</span><span class="p">:</span>     <span class="s1">&#39;39;49;00m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bold&#39;</span><span class="p">:</span>      <span class="s1">&#39;01m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;faint&#39;</span><span class="p">:</span>     <span class="s1">&#39;02m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;standout&#39;</span><span class="p">:</span>  <span class="s1">&#39;03m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;underline&#39;</span><span class="p">:</span> <span class="s1">&#39;04m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;blink&#39;</span><span class="p">:</span>     <span class="s1">&#39;05m&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">_name</span><span class="p">,</span> <span class="n">_value</span> <span class="ow">in</span> <span class="n">_attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">codes</span><span class="p">[</span><span class="n">_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[&#39;</span> <span class="o">+</span> <span class="n">_value</span>
+
+<span class="n">_colors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>     <span class="s1">&#39;darkgray&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;darkred&#39;</span><span class="p">,</span>   <span class="s1">&#39;red&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span>     <span class="s1">&#39;yellow&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;darkblue&#39;</span><span class="p">,</span>  <span class="s1">&#39;blue&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span>    <span class="s1">&#39;fuchsia&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="s1">&#39;teal&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">dark</span><span class="p">,</span> <span class="n">light</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">_colors</span><span class="p">):</span>
+    <span class="n">codes</span><span class="p">[</span><span class="n">dark</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[</span><span class="si">%i</span><span class="s1">m&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">codes</span><span class="p">[</span><span class="n">light</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[</span><span class="si">%i</span><span class="s1">;01m&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">_orig_codes</span> <span class="o">=</span> <span class="n">codes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">_name</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
+    <span class="n">create_color_func</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

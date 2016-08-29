@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.output
+======================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.output

@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.next
+================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.next

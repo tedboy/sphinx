@@ -1,0 +1,40 @@
+sphinx.domains.cpp.CPPNamespaceObject
+=====================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPNamespaceObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPNamespaceObject.__init__
+   ~CPPNamespaceObject.add_name
+   ~CPPNamespaceObject.assert_has_content
+   ~CPPNamespaceObject.debug
+   ~CPPNamespaceObject.directive_error
+   ~CPPNamespaceObject.error
+   ~CPPNamespaceObject.info
+   ~CPPNamespaceObject.run
+   ~CPPNamespaceObject.severe
+   ~CPPNamespaceObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CPPNamespaceObject.final_argument_whitespace
+   ~CPPNamespaceObject.has_content
+   ~CPPNamespaceObject.option_spec
+   ~CPPNamespaceObject.optional_arguments
+   ~CPPNamespaceObject.required_arguments
+

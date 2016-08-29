@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.copy_attr_convert
+==============================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.copy_attr_convert

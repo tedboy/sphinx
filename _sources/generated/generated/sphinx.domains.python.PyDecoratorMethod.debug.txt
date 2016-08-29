@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.debug
+=============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorMethod.debug

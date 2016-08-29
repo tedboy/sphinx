@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.handle_finish
+==========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.handle_finish

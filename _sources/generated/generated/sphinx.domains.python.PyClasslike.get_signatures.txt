@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.get_signatures
+================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.get_signatures

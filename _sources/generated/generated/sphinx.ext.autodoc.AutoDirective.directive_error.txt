@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.directive_error
+================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutoDirective.directive_error

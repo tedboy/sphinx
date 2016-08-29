@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.highlighting &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="sphinx" href="../sphinx.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.highlighting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.highlighting</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.highlighting</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Highlight code blocks using Pygments.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">textwrap</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">parser</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="c1"># parser is not available on Jython</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">PY2</span><span class="p">,</span> <span class="n">text_type</span>
+
+<span class="kn">from</span> <span class="nn">sphinx.util.pycompat</span> <span class="kn">import</span> <span class="n">htmlescape</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.texescape</span> <span class="kn">import</span> <span class="n">tex_hl_escape_map_new</span>
+<span class="kn">from</span> <span class="nn">sphinx.ext</span> <span class="kn">import</span> <span class="n">doctest</span>
+
+<span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">PythonLexer</span><span class="p">,</span> <span class="n">PythonConsoleLexer</span><span class="p">,</span> <span class="n">CLexer</span><span class="p">,</span> \
+    <span class="n">TextLexer</span><span class="p">,</span> <span class="n">RstLexer</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">get_lexer_by_name</span><span class="p">,</span> <span class="n">guess_lexer</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">HtmlFormatter</span><span class="p">,</span> <span class="n">LatexFormatter</span>
+<span class="kn">from</span> <span class="nn">pygments.filters</span> <span class="kn">import</span> <span class="n">ErrorToken</span>
+<span class="kn">from</span> <span class="nn">pygments.styles</span> <span class="kn">import</span> <span class="n">get_style_by_name</span>
+<span class="kn">from</span> <span class="nn">pygments.util</span> <span class="kn">import</span> <span class="n">ClassNotFound</span>
+<span class="kn">from</span> <span class="nn">sphinx.pygments_styles</span> <span class="kn">import</span> <span class="n">SphinxStyle</span><span class="p">,</span> <span class="n">NoneStyle</span>
+
+<span class="n">lexers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">none</span> <span class="o">=</span> <span class="n">TextLexer</span><span class="p">(</span><span class="n">stripnl</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+    <span class="n">python</span> <span class="o">=</span> <span class="n">PythonLexer</span><span class="p">(</span><span class="n">stripnl</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+    <span class="n">pycon</span> <span class="o">=</span> <span class="n">PythonConsoleLexer</span><span class="p">(</span><span class="n">stripnl</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+    <span class="n">pycon3</span> <span class="o">=</span> <span class="n">PythonConsoleLexer</span><span class="p">(</span><span class="n">python3</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">stripnl</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+    <span class="n">rest</span> <span class="o">=</span> <span class="n">RstLexer</span><span class="p">(</span><span class="n">stripnl</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">CLexer</span><span class="p">(</span><span class="n">stripnl</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">_lexer</span> <span class="ow">in</span> <span class="n">lexers</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">_lexer</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="s1">&#39;raiseonerror&#39;</span><span class="p">)</span>
+
+
+<span class="n">escape_hl_chars</span> <span class="o">=</span> <span class="p">{</span><span class="nb">ord</span><span class="p">(</span><span class="s1">u&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">):</span> <span class="s1">u&#39;</span><span class="se">\\</span><span class="s1">PYGZbs{}&#39;</span><span class="p">,</span>
+                   <span class="nb">ord</span><span class="p">(</span><span class="s1">u&#39;{&#39;</span><span class="p">):</span> <span class="s1">u&#39;</span><span class="se">\\</span><span class="s1">PYGZob{}&#39;</span><span class="p">,</span>
+                   <span class="nb">ord</span><span class="p">(</span><span class="s1">u&#39;}&#39;</span><span class="p">):</span> <span class="s1">u&#39;</span><span class="se">\\</span><span class="s1">PYGZcb{}&#39;</span><span class="p">}</span>
+
+<span class="c1"># used if Pygments is available</span>
+<span class="c1"># use textcomp quote to get a true single quote</span>
+<span class="n">_LATEX_ADD_STYLES</span> <span class="o">=</span> <span class="s1">r&#39;&#39;&#39;</span>
+<span class="s1">\renewcommand\PYGZsq{\textquotesingle}</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+
+<div class="viewcode-block" id="PygmentsBridge"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.PygmentsBridge.html#sphinx.builders.html.PygmentsBridge">[docs]</a><span class="k">class</span> <span class="nc">PygmentsBridge</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># Set these attributes if you want to have different Pygments formatters</span>
+    <span class="c1"># than the default ones.</span>
+    <span class="n">html_formatter</span> <span class="o">=</span> <span class="n">HtmlFormatter</span>
+    <span class="n">latex_formatter</span> <span class="o">=</span> <span class="n">LatexFormatter</span>
+
+<div class="viewcode-block" id="PygmentsBridge.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.PygmentsBridge.__init__.html#sphinx.builders.html.PygmentsBridge.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;html&#39;</span><span class="p">,</span> <span class="n">stylename</span><span class="o">=</span><span class="s1">&#39;sphinx&#39;</span><span class="p">,</span>
+                 <span class="n">trim_doctest_flags</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dest</span> <span class="o">=</span> <span class="n">dest</span>
+        <span class="k">if</span> <span class="n">stylename</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">stylename</span> <span class="o">==</span> <span class="s1">&#39;sphinx&#39;</span><span class="p">:</span>
+            <span class="n">style</span> <span class="o">=</span> <span class="n">SphinxStyle</span>
+        <span class="k">elif</span> <span class="n">stylename</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
+            <span class="n">style</span> <span class="o">=</span> <span class="n">NoneStyle</span>
+        <span class="k">elif</span> <span class="s1">&#39;.&#39;</span> <span class="ow">in</span> <span class="n">stylename</span><span class="p">:</span>
+            <span class="n">module</span><span class="p">,</span> <span class="n">stylename</span> <span class="o">=</span> <span class="n">stylename</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">style</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="nb">__import__</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;__name__&#39;</span><span class="p">]),</span>
+                            <span class="n">stylename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">style</span> <span class="o">=</span> <span class="n">get_style_by_name</span><span class="p">(</span><span class="n">stylename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trim_doctest_flags</span> <span class="o">=</span> <span class="n">trim_doctest_flags</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formatter_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="n">style</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">dest</span> <span class="o">==</span> <span class="s1">&#39;html&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">formatter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">html_formatter</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">formatter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latex_formatter</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">formatter_args</span><span class="p">[</span><span class="s1">&#39;commandprefix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PYG&#39;</span></div>
+
+<div class="viewcode-block" id="PygmentsBridge.get_formatter"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.PygmentsBridge.get_formatter.html#sphinx.builders.html.PygmentsBridge.get_formatter">[docs]</a>    <span class="k">def</span> <span class="nf">get_formatter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">formatter_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PygmentsBridge.unhighlighted"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.PygmentsBridge.unhighlighted.html#sphinx.builders.html.PygmentsBridge.unhighlighted">[docs]</a>    <span class="k">def</span> <span class="nf">unhighlighted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span> <span class="o">==</span> <span class="s1">&#39;html&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span> <span class="o">+</span> <span class="n">htmlescape</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/pre&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># first, escape highlighting characters like Pygments does</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">escape_hl_chars</span><span class="p">)</span>
+            <span class="c1"># then, escape all characters nonrepresentable in LaTeX</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">tex_hl_escape_map_new</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">begin{Verbatim}[commandchars=</span><span class="se">\\\\\\</span><span class="s1">{</span><span class="se">\\</span><span class="s1">}]</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+                   <span class="n">source</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">end{Verbatim}</span><span class="se">\n</span><span class="s1">&#39;</span></div>
+
+<div class="viewcode-block" id="PygmentsBridge.try_parse"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.PygmentsBridge.try_parse.html#sphinx.builders.html.PygmentsBridge.try_parse">[docs]</a>    <span class="k">def</span> <span class="nf">try_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">):</span>
+        <span class="c1"># Make sure it ends in a newline</span>
+        <span class="n">src</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+        <span class="c1"># Ignore consistent indentation.</span>
+        <span class="k">if</span> <span class="n">src</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
+            <span class="n">src</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+
+        <span class="c1"># Replace &quot;...&quot; by a mark which is also a valid python expression</span>
+        <span class="c1"># (Note, the highlighter gets the original source, this is only done</span>
+        <span class="c1">#  to allow &quot;...&quot; in code and still highlight it as Python code.)</span>
+        <span class="n">mark</span> <span class="o">=</span> <span class="s2">&quot;__highlighting__ellipsis__&quot;</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="n">mark</span><span class="p">)</span>
+
+        <span class="c1"># lines beginning with &quot;...&quot; are probably placeholders for suite</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;(?m)^(\s*)&quot;</span> <span class="o">+</span> <span class="n">mark</span> <span class="o">+</span> <span class="s2">&quot;(.)&quot;</span><span class="p">,</span> <span class="s2">r&quot;\1&quot;</span> <span class="o">+</span> <span class="n">mark</span> <span class="o">+</span> <span class="s2">r&quot;# \2&quot;</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">PY2</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+            <span class="c1"># Non-ASCII chars will only occur in string literals</span>
+            <span class="c1"># and comments.  If we wanted to give them to the parser</span>
+            <span class="c1"># correctly, we&#39;d have to find out the correct source</span>
+            <span class="c1"># encoding.  Since it may not even be given in a snippet,</span>
+            <span class="c1"># just replace all non-ASCII characters.</span>
+            <span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">parser</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">suite</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">SyntaxError</span><span class="p">,</span> <span class="ne">UnicodeEncodeError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span></div>
+
+<div class="viewcode-block" id="PygmentsBridge.highlight_block"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.PygmentsBridge.highlight_block.html#sphinx.builders.html.PygmentsBridge.highlight_block">[docs]</a>    <span class="k">def</span> <span class="nf">highlight_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">opts</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">warn</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+        <span class="c1"># find out which lexer to use</span>
+        <span class="k">if</span> <span class="n">lang</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;py&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt;&#39;</span><span class="p">):</span>
+                <span class="c1"># interactive session</span>
+                <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="s1">&#39;pycon&#39;</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">force</span><span class="p">:</span>
+                <span class="c1"># maybe Python -- try parsing it</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">try_parse</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+                    <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">lang</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;python3&#39;</span><span class="p">,</span> <span class="s1">&#39;py3&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">source</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt;&#39;</span><span class="p">):</span>
+            <span class="c1"># for py3, recognize interactive sessions, but do not try parsing...</span>
+            <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="s1">&#39;pycon3&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">lang</span> <span class="o">==</span> <span class="s1">&#39;guess&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">lexer</span> <span class="o">=</span> <span class="n">guess_lexer</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">lexers</span><span class="p">:</span>
+                <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="n">lang</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="n">lang</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_lexer_by_name</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span> <span class="ow">or</span> <span class="p">{})</span>
+                <span class="k">except</span> <span class="n">ClassNotFound</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">warn</span><span class="p">:</span>
+                        <span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Pygments lexer name </span><span class="si">%r</span><span class="s1"> is not known&#39;</span> <span class="o">%</span> <span class="n">lang</span><span class="p">)</span>
+                        <span class="n">lexer</span> <span class="o">=</span> <span class="n">lexers</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">lexer</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="s1">&#39;raiseonerror&#39;</span><span class="p">)</span>
+
+        <span class="c1"># trim doctest options if wanted</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lexer</span><span class="p">,</span> <span class="n">PythonConsoleLexer</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">trim_doctest_flags</span><span class="p">:</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">doctest</span><span class="o">.</span><span class="n">blankline_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">doctest</span><span class="o">.</span><span class="n">doctestopt_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+
+        <span class="c1"># highlight via Pygments</span>
+        <span class="n">formatter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_formatter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">hlsource</span> <span class="o">=</span> <span class="n">highlight</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">ErrorToken</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="c1"># this is most probably not the selected language,</span>
+            <span class="c1"># so let it pass unhighlighted</span>
+            <span class="k">if</span> <span class="n">warn</span><span class="p">:</span>
+                <span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Could not parse literal_block as &quot;</span><span class="si">%s</span><span class="s1">&quot;. highlighting skipped.&#39;</span> <span class="o">%</span> <span class="n">lang</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">exc</span>
+            <span class="n">hlsource</span> <span class="o">=</span> <span class="n">highlight</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">lexers</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">],</span> <span class="n">formatter</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span> <span class="o">==</span> <span class="s1">&#39;html&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">hlsource</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hlsource</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>  <span class="c1"># Py2 / Pygments &lt; 1.6</span>
+                <span class="n">hlsource</span> <span class="o">=</span> <span class="n">hlsource</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">hlsource</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">tex_hl_escape_map_new</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PygmentsBridge.get_stylesheet"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.PygmentsBridge.get_stylesheet.html#sphinx.builders.html.PygmentsBridge.get_stylesheet">[docs]</a>    <span class="k">def</span> <span class="nf">get_stylesheet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">formatter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_formatter</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span> <span class="o">==</span> <span class="s1">&#39;html&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">formatter</span><span class="o">.</span><span class="n">get_style_defs</span><span class="p">(</span><span class="s1">&#39;.highlight&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">formatter</span><span class="o">.</span><span class="n">get_style_defs</span><span class="p">()</span> <span class="o">+</span> <span class="n">_LATEX_ADD_STYLES</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.GroupedField.is_grouped
+=================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: GroupedField.is_grouped

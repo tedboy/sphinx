@@ -1,0 +1,6 @@
+sphinx.builders.manpage.FileOutput.component_type
+=================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: FileOutput.component_type

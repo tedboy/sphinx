@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.debug
+==============================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.debug

@@ -1,0 +1,6 @@
+sphinx.locale.UserString.index
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.index

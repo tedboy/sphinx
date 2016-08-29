@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.add_name
+==========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: MathDirective.add_name

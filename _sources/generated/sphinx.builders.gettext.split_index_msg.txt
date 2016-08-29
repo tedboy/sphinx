@@ -1,0 +1,6 @@
+sphinx.builders.gettext.split_index_msg
+=======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: split_index_msg

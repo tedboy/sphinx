@@ -1,0 +1,6 @@
+sphinx.pycode.StringIO.__init__
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: StringIO.__init__

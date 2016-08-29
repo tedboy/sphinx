@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.write
+=======================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.write

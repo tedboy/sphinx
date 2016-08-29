@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.replace_self
+======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.replace_self

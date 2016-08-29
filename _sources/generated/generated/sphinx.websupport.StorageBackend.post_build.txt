@@ -1,0 +1,6 @@
+sphinx.websupport.StorageBackend.post_build
+===========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: StorageBackend.post_build

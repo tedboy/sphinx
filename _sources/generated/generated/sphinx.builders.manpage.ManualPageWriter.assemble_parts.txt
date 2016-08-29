@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.assemble_parts
+=======================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageWriter.assemble_parts

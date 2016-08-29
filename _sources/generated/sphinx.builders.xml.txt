@@ -1,0 +1,49 @@
+.. automodule:: sphinx.builders.xml
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      ensuredir
+      os_path
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      PseudoXMLBuilder
+      PseudoXMLWriter
+      StringOutput
+      XMLBuilder
+      XMLWriter
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.xml.Builder
+       generated/sphinx.builders.xml.PseudoXMLBuilder
+       generated/sphinx.builders.xml.PseudoXMLWriter
+       generated/sphinx.builders.xml.StringOutput
+       generated/sphinx.builders.xml.XMLBuilder
+       generated/sphinx.builders.xml.XMLWriter
+
+   
+   
+
+   
+   
+   

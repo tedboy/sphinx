@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLWriter.assemble_parts
+============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLWriter.assemble_parts

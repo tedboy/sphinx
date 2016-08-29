@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.disconnect
+======================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.disconnect

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.optional_arguments
+==============================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: ObjectDescription.optional_arguments

@@ -1,0 +1,6 @@
+sphinx.search.comment.tagname
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: comment.tagname

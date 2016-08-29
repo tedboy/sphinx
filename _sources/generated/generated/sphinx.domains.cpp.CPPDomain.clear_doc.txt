@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPDomain.clear_doc
+======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPDomain.clear_doc

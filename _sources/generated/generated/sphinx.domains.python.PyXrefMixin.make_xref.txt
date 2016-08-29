@@ -1,0 +1,6 @@
+sphinx.domains.python.PyXrefMixin.make_xref
+===========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyXrefMixin.make_xref

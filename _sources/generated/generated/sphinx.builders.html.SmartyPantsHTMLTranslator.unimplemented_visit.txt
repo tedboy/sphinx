@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.unimplemented_visit
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.unimplemented_visit

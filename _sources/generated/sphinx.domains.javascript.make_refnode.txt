@@ -1,0 +1,6 @@
+sphinx.domains.javascript.make_refnode
+======================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autofunction:: make_refnode

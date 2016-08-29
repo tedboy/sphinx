@@ -1,0 +1,6 @@
+sphinx.search.Text.line
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: Text.line

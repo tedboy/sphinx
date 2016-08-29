@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.directive_error
+===========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.directive_error

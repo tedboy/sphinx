@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.default_sidebars
+===========================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.default_sidebars

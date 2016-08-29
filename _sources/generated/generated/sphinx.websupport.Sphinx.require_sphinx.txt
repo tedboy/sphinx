@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.require_sphinx
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.require_sphinx

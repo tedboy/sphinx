@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.parse_marked_section
+=========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.parse_marked_section

@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.supported_image_types
+============================================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. autoattribute:: ChangesBuilder.supported_image_types

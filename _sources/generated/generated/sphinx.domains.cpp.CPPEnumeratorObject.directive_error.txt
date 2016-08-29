@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.directive_error
+======================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.directive_error

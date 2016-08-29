@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.inheritance_diagram.tagname
+==========================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoattribute:: inheritance_diagram.tagname

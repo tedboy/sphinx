@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.seek
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.seek

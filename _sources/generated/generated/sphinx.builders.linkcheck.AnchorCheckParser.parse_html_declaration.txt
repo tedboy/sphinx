@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.parse_html_declaration
+==================================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.parse_html_declaration

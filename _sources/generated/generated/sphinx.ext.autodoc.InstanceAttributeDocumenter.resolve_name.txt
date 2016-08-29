@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.InstanceAttributeDocumenter.resolve_name
+===========================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: InstanceAttributeDocumenter.resolve_name

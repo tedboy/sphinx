@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder.versioning_method
+=====================================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: CheckExternalLinksBuilder.versioning_method

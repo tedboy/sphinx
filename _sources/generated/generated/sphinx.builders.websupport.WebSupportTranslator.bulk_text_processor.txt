@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.bulk_text_processor
+===================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.bulk_text_processor

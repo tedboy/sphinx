@@ -1,0 +1,48 @@
+sphinx.domains.c.CObject
+========================
+.. currentmodule:: sphinx.domains.c
+.. autoclass:: CObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CObject.__init__
+   ~CObject.add_name
+   ~CObject.add_target_and_index
+   ~CObject.after_content
+   ~CObject.assert_has_content
+   ~CObject.before_content
+   ~CObject.debug
+   ~CObject.directive_error
+   ~CObject.error
+   ~CObject.get_index_text
+   ~CObject.get_signatures
+   ~CObject.handle_signature
+   ~CObject.info
+   ~CObject.run
+   ~CObject.severe
+   ~CObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CObject.doc_field_types
+   ~CObject.final_argument_whitespace
+   ~CObject.has_content
+   ~CObject.option_spec
+   ~CObject.optional_arguments
+   ~CObject.required_arguments
+   ~CObject.stopwords
+

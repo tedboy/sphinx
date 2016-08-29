@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.component_type
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DocTreeInput.component_type

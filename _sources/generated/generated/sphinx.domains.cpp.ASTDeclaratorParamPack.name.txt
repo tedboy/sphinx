@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParamPack.name
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: ASTDeclaratorParamPack.name

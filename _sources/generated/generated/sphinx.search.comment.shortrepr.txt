@@ -1,0 +1,6 @@
+sphinx.search.comment.shortrepr
+===============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.shortrepr

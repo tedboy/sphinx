@@ -1,0 +1,6 @@
+sphinx.util.text_type.translate
+===============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: text_type.translate

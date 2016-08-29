@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExtensionError
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoexception:: ExtensionError

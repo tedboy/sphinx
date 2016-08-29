@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.prepare_writing
+===========================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: Builder.prepare_writing

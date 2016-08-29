@@ -1,0 +1,6 @@
+sphinx.domains.CDomain.data_version
+===================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CDomain.data_version

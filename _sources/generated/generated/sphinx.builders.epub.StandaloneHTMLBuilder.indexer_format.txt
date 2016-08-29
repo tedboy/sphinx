@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.indexer_format
+=========================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.indexer_format

@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.HTMLHelpBuilder.allow_parallel
+=======================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. autoattribute:: HTMLHelpBuilder.allow_parallel

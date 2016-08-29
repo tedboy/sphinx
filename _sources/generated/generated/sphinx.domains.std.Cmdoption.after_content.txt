@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.after_content
+==========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Cmdoption.after_content

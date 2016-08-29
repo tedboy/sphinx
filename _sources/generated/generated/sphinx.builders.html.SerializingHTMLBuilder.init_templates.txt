@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.init_templates
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.init_templates

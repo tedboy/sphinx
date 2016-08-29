@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.exit
+=========================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.exit

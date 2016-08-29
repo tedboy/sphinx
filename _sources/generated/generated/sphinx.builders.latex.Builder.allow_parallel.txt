@@ -1,0 +1,6 @@
+sphinx.builders.latex.Builder.allow_parallel
+============================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: Builder.allow_parallel

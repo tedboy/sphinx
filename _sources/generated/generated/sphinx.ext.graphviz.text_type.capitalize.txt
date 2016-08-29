@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.text_type.capitalize
+========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: text_type.capitalize

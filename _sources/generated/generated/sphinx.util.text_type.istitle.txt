@@ -1,0 +1,6 @@
+sphinx.util.text_type.istitle
+=============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: text_type.istitle

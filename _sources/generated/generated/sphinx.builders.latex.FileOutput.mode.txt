@@ -1,0 +1,6 @@
+sphinx.builders.latex.FileOutput.mode
+=====================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: FileOutput.mode

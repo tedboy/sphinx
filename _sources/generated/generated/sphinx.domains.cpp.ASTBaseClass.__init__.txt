@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTBaseClass.__init__
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTBaseClass.__init__

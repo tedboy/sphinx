@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.lang_attribute
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.lang_attribute

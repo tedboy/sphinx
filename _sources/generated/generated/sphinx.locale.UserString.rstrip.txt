@@ -1,0 +1,6 @@
+sphinx.locale.UserString.rstrip
+===============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.rstrip

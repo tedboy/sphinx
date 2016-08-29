@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.__init__
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.__init__

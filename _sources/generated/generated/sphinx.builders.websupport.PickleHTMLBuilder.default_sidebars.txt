@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.default_sidebars
+=============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.default_sidebars

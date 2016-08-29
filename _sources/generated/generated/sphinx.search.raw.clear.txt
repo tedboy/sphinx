@@ -1,0 +1,6 @@
+sphinx.search.raw.clear
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.clear

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_authors
+=============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_authors

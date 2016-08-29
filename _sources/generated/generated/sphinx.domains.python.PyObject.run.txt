@@ -1,0 +1,6 @@
+sphinx.domains.python.PyObject.run
+==================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyObject.run

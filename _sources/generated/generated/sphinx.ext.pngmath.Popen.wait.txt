@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.Popen.wait
+=============================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: Popen.wait

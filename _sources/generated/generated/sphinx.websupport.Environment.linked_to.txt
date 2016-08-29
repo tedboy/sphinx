@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.linked_to
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. autoattribute:: Environment.linked_to

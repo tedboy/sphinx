@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.handle_pi
+=====================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.handle_pi

@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_important
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_important

@@ -1,0 +1,6 @@
+sphinx.search.IndexBuilder.formats
+==================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: IndexBuilder.formats

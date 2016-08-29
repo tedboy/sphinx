@@ -1,0 +1,6 @@
+sphinx.util.attrdict.copy
+=========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.copy

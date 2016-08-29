@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.read
+================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.read

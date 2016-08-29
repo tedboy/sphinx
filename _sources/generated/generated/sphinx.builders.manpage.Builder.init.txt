@@ -1,0 +1,6 @@
+sphinx.builders.manpage.Builder.init
+====================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: Builder.init

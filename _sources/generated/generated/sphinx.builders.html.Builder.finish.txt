@@ -1,0 +1,6 @@
+sphinx.builders.html.Builder.finish
+===================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Builder.finish

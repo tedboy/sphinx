@@ -1,0 +1,6 @@
+sphinx.builders.gettext.defaultdict.pop
+=======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: defaultdict.pop

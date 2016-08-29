@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.has_key
+=================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todo_node.has_key

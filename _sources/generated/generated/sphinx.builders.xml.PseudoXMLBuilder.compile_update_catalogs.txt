@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLBuilder.compile_update_catalogs
+============================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: PseudoXMLBuilder.compile_update_catalogs

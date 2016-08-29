@@ -1,0 +1,6 @@
+sphinx.util.split_into
+======================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: split_into

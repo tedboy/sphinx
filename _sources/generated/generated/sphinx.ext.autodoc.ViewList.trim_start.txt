@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.trim_start
+======================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.trim_start

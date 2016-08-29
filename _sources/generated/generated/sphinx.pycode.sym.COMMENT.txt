@@ -1,0 +1,6 @@
+sphinx.pycode.sym.COMMENT
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.COMMENT

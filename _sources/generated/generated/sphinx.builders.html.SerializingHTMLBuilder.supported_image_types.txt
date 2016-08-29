@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.supported_image_types
+=================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.supported_image_types

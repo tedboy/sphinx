@@ -1,0 +1,6 @@
+sphinx.websupport.WebSupport.add_comment
+========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: WebSupport.add_comment

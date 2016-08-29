@@ -1,0 +1,6 @@
+sphinx.ext.todo.purge_todos
+===========================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autofunction:: purge_todos

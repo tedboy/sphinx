@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.non_default_attributes
+===================================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.non_default_attributes

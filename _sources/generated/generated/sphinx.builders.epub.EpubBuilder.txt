@@ -1,0 +1,109 @@
+sphinx.builders.epub.EpubBuilder
+================================
+.. currentmodule:: sphinx.builders.epub
+.. autoclass:: EpubBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~EpubBuilder.__init__
+   ~EpubBuilder.add_sidebars
+   ~EpubBuilder.add_visible_links
+   ~EpubBuilder.build
+   ~EpubBuilder.build_all
+   ~EpubBuilder.build_container
+   ~EpubBuilder.build_content
+   ~EpubBuilder.build_epub
+   ~EpubBuilder.build_mimetype
+   ~EpubBuilder.build_navpoints
+   ~EpubBuilder.build_specific
+   ~EpubBuilder.build_toc
+   ~EpubBuilder.build_update
+   ~EpubBuilder.cleanup
+   ~EpubBuilder.compile_all_catalogs
+   ~EpubBuilder.compile_catalogs
+   ~EpubBuilder.compile_specific_catalogs
+   ~EpubBuilder.compile_update_catalogs
+   ~EpubBuilder.content_metadata
+   ~EpubBuilder.copy_download_files
+   ~EpubBuilder.copy_extra_files
+   ~EpubBuilder.copy_image_files
+   ~EpubBuilder.copy_image_files_pil
+   ~EpubBuilder.copy_static_files
+   ~EpubBuilder.create_template_bridge
+   ~EpubBuilder.dump_inventory
+   ~EpubBuilder.dump_search_index
+   ~EpubBuilder.esc
+   ~EpubBuilder.finish
+   ~EpubBuilder.fix_fragment
+   ~EpubBuilder.fix_genindex
+   ~EpubBuilder.fix_ids
+   ~EpubBuilder.gen_additional_pages
+   ~EpubBuilder.gen_indices
+   ~EpubBuilder.get_builder_config
+   ~EpubBuilder.get_doc_context
+   ~EpubBuilder.get_outdated_docs
+   ~EpubBuilder.get_outfilename
+   ~EpubBuilder.get_refnodes
+   ~EpubBuilder.get_relative_uri
+   ~EpubBuilder.get_target_uri
+   ~EpubBuilder.get_theme_config
+   ~EpubBuilder.get_toc
+   ~EpubBuilder.handle_finish
+   ~EpubBuilder.handle_page
+   ~EpubBuilder.index_page
+   ~EpubBuilder.init
+   ~EpubBuilder.init_highlighter
+   ~EpubBuilder.init_templates
+   ~EpubBuilder.init_translator_class
+   ~EpubBuilder.insert_subnav
+   ~EpubBuilder.is_vector_graphics
+   ~EpubBuilder.load_indexer
+   ~EpubBuilder.make_id
+   ~EpubBuilder.new_navpoint
+   ~EpubBuilder.post_process_images
+   ~EpubBuilder.prepare_writing
+   ~EpubBuilder.render_partial
+   ~EpubBuilder.toc_add_files
+   ~EpubBuilder.toc_metadata
+   ~EpubBuilder.write
+   ~EpubBuilder.write_buildinfo
+   ~EpubBuilder.write_doc
+   ~EpubBuilder.write_doc_serialized
+   ~EpubBuilder.write_domain_indices
+   ~EpubBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~EpubBuilder.add_permalinks
+   ~EpubBuilder.allow_parallel
+   ~EpubBuilder.copysource
+   ~EpubBuilder.css_files
+   ~EpubBuilder.default_sidebars
+   ~EpubBuilder.embedded
+   ~EpubBuilder.format
+   ~EpubBuilder.indexer_dumps_unicode
+   ~EpubBuilder.indexer_format
+   ~EpubBuilder.link_suffix
+   ~EpubBuilder.name
+   ~EpubBuilder.out_suffix
+   ~EpubBuilder.script_files
+   ~EpubBuilder.search
+   ~EpubBuilder.searchindex_filename
+   ~EpubBuilder.supported_image_types
+   ~EpubBuilder.versioning_compare
+   ~EpubBuilder.versioning_method
+

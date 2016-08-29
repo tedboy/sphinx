@@ -1,0 +1,24 @@
+sphinx.builders.html.PygmentsBridge
+===================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: PygmentsBridge
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PygmentsBridge.__init__
+   ~PygmentsBridge.get_formatter
+   ~PygmentsBridge.get_stylesheet
+   ~PygmentsBridge.highlight_block
+   ~PygmentsBridge.try_parse
+   ~PygmentsBridge.unhighlighted
+
+
+
+
+

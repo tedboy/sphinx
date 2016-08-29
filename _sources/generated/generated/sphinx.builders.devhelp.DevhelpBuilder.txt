@@ -1,0 +1,89 @@
+sphinx.builders.devhelp.DevhelpBuilder
+======================================
+.. currentmodule:: sphinx.builders.devhelp
+.. autoclass:: DevhelpBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DevhelpBuilder.__init__
+   ~DevhelpBuilder.add_sidebars
+   ~DevhelpBuilder.build
+   ~DevhelpBuilder.build_all
+   ~DevhelpBuilder.build_devhelp
+   ~DevhelpBuilder.build_specific
+   ~DevhelpBuilder.build_update
+   ~DevhelpBuilder.cleanup
+   ~DevhelpBuilder.compile_all_catalogs
+   ~DevhelpBuilder.compile_catalogs
+   ~DevhelpBuilder.compile_specific_catalogs
+   ~DevhelpBuilder.compile_update_catalogs
+   ~DevhelpBuilder.copy_download_files
+   ~DevhelpBuilder.copy_extra_files
+   ~DevhelpBuilder.copy_image_files
+   ~DevhelpBuilder.copy_static_files
+   ~DevhelpBuilder.create_template_bridge
+   ~DevhelpBuilder.dump_inventory
+   ~DevhelpBuilder.dump_search_index
+   ~DevhelpBuilder.finish
+   ~DevhelpBuilder.gen_additional_pages
+   ~DevhelpBuilder.gen_indices
+   ~DevhelpBuilder.get_builder_config
+   ~DevhelpBuilder.get_doc_context
+   ~DevhelpBuilder.get_outdated_docs
+   ~DevhelpBuilder.get_outfilename
+   ~DevhelpBuilder.get_relative_uri
+   ~DevhelpBuilder.get_target_uri
+   ~DevhelpBuilder.get_theme_config
+   ~DevhelpBuilder.handle_finish
+   ~DevhelpBuilder.handle_page
+   ~DevhelpBuilder.index_page
+   ~DevhelpBuilder.init
+   ~DevhelpBuilder.init_highlighter
+   ~DevhelpBuilder.init_templates
+   ~DevhelpBuilder.init_translator_class
+   ~DevhelpBuilder.load_indexer
+   ~DevhelpBuilder.post_process_images
+   ~DevhelpBuilder.prepare_writing
+   ~DevhelpBuilder.render_partial
+   ~DevhelpBuilder.write
+   ~DevhelpBuilder.write_buildinfo
+   ~DevhelpBuilder.write_doc
+   ~DevhelpBuilder.write_doc_serialized
+   ~DevhelpBuilder.write_domain_indices
+   ~DevhelpBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~DevhelpBuilder.add_permalinks
+   ~DevhelpBuilder.allow_parallel
+   ~DevhelpBuilder.copysource
+   ~DevhelpBuilder.css_files
+   ~DevhelpBuilder.default_sidebars
+   ~DevhelpBuilder.embedded
+   ~DevhelpBuilder.format
+   ~DevhelpBuilder.indexer_dumps_unicode
+   ~DevhelpBuilder.indexer_format
+   ~DevhelpBuilder.link_suffix
+   ~DevhelpBuilder.name
+   ~DevhelpBuilder.out_suffix
+   ~DevhelpBuilder.script_files
+   ~DevhelpBuilder.search
+   ~DevhelpBuilder.searchindex_filename
+   ~DevhelpBuilder.supported_image_types
+   ~DevhelpBuilder.versioning_compare
+   ~DevhelpBuilder.versioning_method
+

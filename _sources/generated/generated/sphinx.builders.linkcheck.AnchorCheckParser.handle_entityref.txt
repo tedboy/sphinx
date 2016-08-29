@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.handle_entityref
+============================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.handle_entityref

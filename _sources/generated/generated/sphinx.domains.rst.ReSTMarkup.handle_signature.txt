@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.handle_signature
+==============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.handle_signature

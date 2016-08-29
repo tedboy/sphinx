@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DoctestDirective.info
+========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DoctestDirective.info

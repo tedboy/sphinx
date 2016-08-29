@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.directives &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="sphinx" href="../sphinx.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.directives</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.directives</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.directives</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Handlers for additional ReST directives.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">Directive</span><span class="p">,</span> <span class="n">directives</span><span class="p">,</span> <span class="n">roles</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.docfields</span> <span class="kn">import</span> <span class="n">DocFieldTransformer</span>
+
+<span class="c1"># import and register directives</span>
+<span class="kn">from</span> <span class="nn">sphinx.directives.code</span> <span class="kn">import</span> <span class="o">*</span>   <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">sphinx.directives.other</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># noqa</span>
+
+
+<span class="c1"># RE to strip backslash escapes</span>
+<span class="n">nl_escape_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;</span><span class="se">\\</span><span class="s1">\n&#39;</span><span class="p">)</span>
+<span class="n">strip_backslash_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;</span><span class="se">\\</span><span class="s1">(.)&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ObjectDescription"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.ObjectDescription.html#sphinx.domains.c.ObjectDescription">[docs]</a><span class="k">class</span> <span class="nc">ObjectDescription</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Directive to describe a class, function or similar object.  Not used</span>
+<span class="sd">    directly, but subclassed (in domain-specific directives) to add custom</span>
+<span class="sd">    behavior.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;noindex&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># types of doc fields that this directive handles, see sphinx.util.docfields</span>
+    <span class="n">doc_field_types</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="ObjectDescription.get_signatures"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.ObjectDescription.get_signatures.html#sphinx.domains.c.ObjectDescription.get_signatures">[docs]</a>    <span class="k">def</span> <span class="nf">get_signatures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the signatures to document from the directive arguments.  By</span>
+<span class="sd">        default, signatures are given as arguments, one per line.</span>
+
+<span class="sd">        Backslash-escaping of newlines is supported.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">nl_escape_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># remove backslashes to support (dummy) escapes; helps Vim highlighting</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">strip_backslash_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;\1&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="ObjectDescription.handle_signature"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.ObjectDescription.handle_signature.html#sphinx.domains.c.ObjectDescription.handle_signature">[docs]</a>    <span class="k">def</span> <span class="nf">handle_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parse the signature *sig* into individual nodes and append them to</span>
+<span class="sd">        *signode*. If ValueError is raised, parsing is aborted and the whole</span>
+<span class="sd">        *sig* is put into a single desc_name node.</span>
+
+<span class="sd">        The return value should be a value that identifies the object.  It is</span>
+<span class="sd">        passed to :meth:`add_target_and_index()` unchanged, and otherwise only</span>
+<span class="sd">        used to skip duplicates.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span></div>
+
+<div class="viewcode-block" id="ObjectDescription.add_target_and_index"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.ObjectDescription.add_target_and_index.html#sphinx.domains.c.ObjectDescription.add_target_and_index">[docs]</a>    <span class="k">def</span> <span class="nf">add_target_and_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add cross-reference IDs and entries to self.indexnode, if applicable.</span>
+
+<span class="sd">        *name* is whatever :meth:`handle_signature()` returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span>  <span class="c1"># do nothing by default</span></div>
+
+<div class="viewcode-block" id="ObjectDescription.before_content"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.ObjectDescription.before_content.html#sphinx.domains.c.ObjectDescription.before_content">[docs]</a>    <span class="k">def</span> <span class="nf">before_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called before parsing content. Used to set information about the current</span>
+<span class="sd">        directive context on the build environment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="ObjectDescription.after_content"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.ObjectDescription.after_content.html#sphinx.domains.c.ObjectDescription.after_content">[docs]</a>    <span class="k">def</span> <span class="nf">after_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called after parsing content. Used to reset information about the</span>
+<span class="sd">        current directive context on the build environment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="ObjectDescription.run"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.ObjectDescription.run.html#sphinx.domains.c.ObjectDescription.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Main directive entry function, called by docutils upon encountering the</span>
+<span class="sd">        directive.</span>
+
+<span class="sd">        This directive is meant to be quite easily subclassable, so it delegates</span>
+<span class="sd">        to several additional methods.  What it does:</span>
+
+<span class="sd">        * find out if called as a domain-specific directive, set self.domain</span>
+<span class="sd">        * create a `desc` node to fit all description inside</span>
+<span class="sd">        * parse standard options, currently `noindex`</span>
+<span class="sd">        * create an index node if needed as self.indexnode</span>
+<span class="sd">        * parse all given signatures (as returned by self.get_signatures())</span>
+<span class="sd">          using self.handle_signature(), which should either return a name</span>
+<span class="sd">          or raise ValueError</span>
+<span class="sd">        * add index entries using self.add_target_and_index()</span>
+<span class="sd">        * parse the content and handle doc fields in it</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">entries</span><span class="o">=</span><span class="p">[])</span>
+
+        <span class="n">node</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc</span><span class="p">()</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span>
+        <span class="n">node</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span>
+        <span class="c1"># &#39;desctype&#39; is a backwards compatible attribute</span>
+        <span class="n">node</span><span class="p">[</span><span class="s1">&#39;objtype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;desctype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span>
+        <span class="n">node</span><span class="p">[</span><span class="s1">&#39;noindex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">noindex</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;noindex&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">signatures</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_signatures</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">signatures</span><span class="p">):</span>
+            <span class="c1"># add a signature node for each signature in the current unit</span>
+            <span class="c1"># and add a reference target for it</span>
+            <span class="n">signode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signode</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># name can also be a tuple, e.g. (classname, objname);</span>
+                <span class="c1"># this is strictly domain-specific (i.e. no assumptions may</span>
+                <span class="c1"># be made in this base class)</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="c1"># signature parsing failed</span>
+                <span class="n">signode</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_name</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+                <span class="k">continue</span>  <span class="c1"># we don&#39;t want an index entry here</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">noindex</span><span class="p">:</span>
+                    <span class="c1"># only add target and index entry if this is the first</span>
+                    <span class="c1"># description of the object with this name in this desc block</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">add_target_and_index</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">)</span>
+
+        <span class="n">contentnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_content</span><span class="p">()</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contentnode</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+            <span class="c1"># needed for association of version{added,changed} directives</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">temp_data</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">before_content</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">nested_parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_offset</span><span class="p">,</span> <span class="n">contentnode</span><span class="p">)</span>
+        <span class="n">DocFieldTransformer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">transform_all</span><span class="p">(</span><span class="n">contentnode</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">temp_data</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">after_content</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">indexnode</span><span class="p">,</span> <span class="n">node</span><span class="p">]</span></div></div>
+
+<span class="c1"># backwards compatible old name</span>
+<span class="n">DescDirective</span> <span class="o">=</span> <span class="n">ObjectDescription</span>
+
+
+<span class="k">class</span> <span class="nc">DefaultRole</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the default interpreted text role.  Overridden from docutils.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;&#39;</span> <span class="ow">in</span> <span class="n">roles</span><span class="o">.</span><span class="n">_roles</span><span class="p">:</span>
+                <span class="c1"># restore the &quot;default&quot; default role</span>
+                <span class="k">del</span> <span class="n">roles</span><span class="o">.</span><span class="n">_roles</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">role_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">role</span><span class="p">,</span> <span class="n">messages</span> <span class="o">=</span> <span class="n">roles</span><span class="o">.</span><span class="n">role</span><span class="p">(</span><span class="n">role_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span><span class="o">.</span><span class="n">language</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">reporter</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">role</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s1">&#39;Unknown interpreted text role &quot;</span><span class="si">%s</span><span class="s1">&quot;.&#39;</span> <span class="o">%</span> <span class="n">role_name</span><span class="p">,</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">literal_block</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">block_text</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_text</span><span class="p">),</span>
+                <span class="n">line</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">messages</span> <span class="o">+</span> <span class="p">[</span><span class="n">error</span><span class="p">]</span>
+        <span class="n">roles</span><span class="o">.</span><span class="n">_roles</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">role</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">temp_data</span><span class="p">[</span><span class="s1">&#39;default_role&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">role_name</span>
+        <span class="k">return</span> <span class="n">messages</span>
+
+
+<span class="k">class</span> <span class="nc">DefaultDomain</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Directive to (re-)set the default domain for this source file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">domain_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="c1"># if domain_name not in env.domains:</span>
+        <span class="c1">#     # try searching by label</span>
+        <span class="c1">#     for domain in itervalues(env.domains):</span>
+        <span class="c1">#         if domain.label.lower() == domain_name:</span>
+        <span class="c1">#             domain_name = domain.name</span>
+        <span class="c1">#             break</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">temp_data</span><span class="p">[</span><span class="s1">&#39;default_domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">domains</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">domain_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+
+<span class="n">directives</span><span class="o">.</span><span class="n">register_directive</span><span class="p">(</span><span class="s1">&#39;default-role&#39;</span><span class="p">,</span> <span class="n">DefaultRole</span><span class="p">)</span>
+<span class="n">directives</span><span class="o">.</span><span class="n">register_directive</span><span class="p">(</span><span class="s1">&#39;default-domain&#39;</span><span class="p">,</span> <span class="n">DefaultDomain</span><span class="p">)</span>
+<span class="n">directives</span><span class="o">.</span><span class="n">register_directive</span><span class="p">(</span><span class="s1">&#39;describe&#39;</span><span class="p">,</span> <span class="n">ObjectDescription</span><span class="p">)</span>
+<span class="c1"># new, more consistent, name</span>
+<span class="n">directives</span><span class="o">.</span><span class="n">register_directive</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="n">ObjectDescription</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.CDATA_CONTENT_ELEMENTS
+==================================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: AnchorCheckParser.CDATA_CONTENT_ELEMENTS

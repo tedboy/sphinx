@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.emptytag
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.emptytag

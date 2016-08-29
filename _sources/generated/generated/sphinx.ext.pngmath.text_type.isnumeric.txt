@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.text_type.isnumeric
+======================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: text_type.isnumeric

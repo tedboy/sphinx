@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_citation_reference
+=========================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_citation_reference

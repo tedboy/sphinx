@@ -1,0 +1,6 @@
+sphinx.pycode.sym.test
+======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.test

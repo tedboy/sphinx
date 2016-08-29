@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.reverse
+===================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.reverse

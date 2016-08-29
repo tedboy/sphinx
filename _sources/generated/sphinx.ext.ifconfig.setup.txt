@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.setup
+=========================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autofunction:: setup

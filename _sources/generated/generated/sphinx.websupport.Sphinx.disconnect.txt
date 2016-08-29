@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.disconnect
+===================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.disconnect

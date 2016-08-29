@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.HTMLHelpBuilder.link_suffix
+====================================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. autoattribute:: HTMLHelpBuilder.link_suffix

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.filter_members
+=====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.filter_members

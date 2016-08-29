@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.stylesheet_link
+===============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.stylesheet_link

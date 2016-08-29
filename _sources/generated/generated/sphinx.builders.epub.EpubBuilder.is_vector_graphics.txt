@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.is_vector_graphics
+===================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.is_vector_graphics

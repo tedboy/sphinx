@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.roles &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="sphinx" href="../sphinx.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.roles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.roles</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.roles</span>
+<span class="sd">    ~~~~~~~~~~~~</span>
+
+<span class="sd">    Handlers for additional ReST roles.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">roles</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">sphinx.errors</span> <span class="kn">import</span> <span class="n">SphinxError</span>
+<span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">ws_re</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.nodes</span> <span class="kn">import</span> <span class="n">split_explicit_title</span><span class="p">,</span> <span class="n">process_index_entry</span><span class="p">,</span> \
+    <span class="n">set_role_source_info</span>
+
+
+<span class="n">generic_docroles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;command&#39;</span><span class="p">:</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_strong</span><span class="p">,</span>
+    <span class="s1">&#39;dfn&#39;</span><span class="p">:</span> <span class="n">nodes</span><span class="o">.</span><span class="n">emphasis</span><span class="p">,</span>
+    <span class="s1">&#39;kbd&#39;</span><span class="p">:</span> <span class="n">nodes</span><span class="o">.</span><span class="n">literal</span><span class="p">,</span>
+    <span class="s1">&#39;mailheader&#39;</span><span class="p">:</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_emphasis</span><span class="p">,</span>
+    <span class="s1">&#39;makevar&#39;</span><span class="p">:</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_strong</span><span class="p">,</span>
+    <span class="s1">&#39;manpage&#39;</span><span class="p">:</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_emphasis</span><span class="p">,</span>
+    <span class="s1">&#39;mimetype&#39;</span><span class="p">:</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_emphasis</span><span class="p">,</span>
+    <span class="s1">&#39;newsgroup&#39;</span><span class="p">:</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_emphasis</span><span class="p">,</span>
+    <span class="s1">&#39;program&#39;</span><span class="p">:</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_strong</span><span class="p">,</span>  <span class="c1"># XXX should be an x-ref</span>
+    <span class="s1">&#39;regexp&#39;</span><span class="p">:</span> <span class="n">nodes</span><span class="o">.</span><span class="n">literal</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">rolename</span><span class="p">,</span> <span class="n">nodeclass</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">generic_docroles</span><span class="p">):</span>
+    <span class="n">generic</span> <span class="o">=</span> <span class="n">roles</span><span class="o">.</span><span class="n">GenericRole</span><span class="p">(</span><span class="n">rolename</span><span class="p">,</span> <span class="n">nodeclass</span><span class="p">)</span>
+    <span class="n">role</span> <span class="o">=</span> <span class="n">roles</span><span class="o">.</span><span class="n">CustomRole</span><span class="p">(</span><span class="n">rolename</span><span class="p">,</span> <span class="n">generic</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;classes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">rolename</span><span class="p">]})</span>
+    <span class="n">roles</span><span class="o">.</span><span class="n">register_local_role</span><span class="p">(</span><span class="n">rolename</span><span class="p">,</span> <span class="n">role</span><span class="p">)</span>
+
+
+<span class="c1"># -- generic cross-reference role ----------------------------------------------</span>
+
+<div class="viewcode-block" id="XRefRole"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.XRefRole.html#sphinx.domains.c.XRefRole">[docs]</a><span class="k">class</span> <span class="nc">XRefRole</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A generic cross-referencing role.  To create a callable that can be used as</span>
+<span class="sd">    a role function, create an instance of this class.</span>
+
+<span class="sd">    The general features of this role are:</span>
+
+<span class="sd">    * Automatic creation of a reference and a content node.</span>
+<span class="sd">    * Optional separation of title and target with `title &lt;target&gt;`.</span>
+<span class="sd">    * The implementation is a class rather than a function to make</span>
+<span class="sd">      customization easier.</span>
+
+<span class="sd">    Customization can be done in two ways:</span>
+
+<span class="sd">    * Supplying constructor parameters:</span>
+<span class="sd">      * `fix_parens` to normalize parentheses (strip from target, and add to</span>
+<span class="sd">        title if configured)</span>
+<span class="sd">      * `lowercase` to lowercase the target</span>
+<span class="sd">      * `nodeclass` and `innernodeclass` select the node classes for</span>
+<span class="sd">        the reference and the content node</span>
+
+<span class="sd">    * Subclassing and overwriting `process_link()` and/or `result_nodes()`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">nodeclass</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">pending_xref</span>
+    <span class="n">innernodeclass</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">literal</span>
+
+<div class="viewcode-block" id="XRefRole.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.XRefRole.__init__.html#sphinx.domains.c.XRefRole.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fix_parens</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                 <span class="n">nodeclass</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">innernodeclass</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">warn_dangling</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fix_parens</span> <span class="o">=</span> <span class="n">fix_parens</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lowercase</span> <span class="o">=</span> <span class="n">lowercase</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warn_dangling</span> <span class="o">=</span> <span class="n">warn_dangling</span>
+        <span class="k">if</span> <span class="n">nodeclass</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nodeclass</span> <span class="o">=</span> <span class="n">nodeclass</span>
+        <span class="k">if</span> <span class="n">innernodeclass</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">innernodeclass</span> <span class="o">=</span> <span class="n">innernodeclass</span></div>
+
+    <span class="k">def</span> <span class="nf">_fix_parens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_explicit_title</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;()&#39;</span><span class="p">):</span>
+                <span class="c1"># remove parentheses</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_function_parentheses</span><span class="p">:</span>
+                <span class="c1"># add them back to all occurrences if configured</span>
+                <span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;()&#39;</span>
+        <span class="c1"># remove parentheses from the target too</span>
+        <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;()&#39;</span><span class="p">):</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">typ</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span>
+                 <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">content</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">typ</span><span class="p">:</span>
+            <span class="n">typ</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">temp_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;default_role&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">typ</span><span class="p">:</span>
+                <span class="n">typ</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">default_role</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">typ</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">SphinxError</span><span class="p">(</span><span class="s1">&#39;cannot determine default role!&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">typ</span> <span class="o">=</span> <span class="n">typ</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;:&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">typ</span><span class="p">:</span>
+            <span class="n">domain</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">typ</span>
+            <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;xref&#39;</span><span class="p">,</span> <span class="n">role</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">domain</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="n">typ</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;xref&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">role</span><span class="p">)]</span>
+        <span class="c1"># if the first character is a bang, don&#39;t cross-reference at all</span>
+        <span class="k">if</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;!&#39;</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">text</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fix_parens</span><span class="p">:</span>
+                <span class="n">text</span><span class="p">,</span> <span class="n">tgt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fix_parens</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">innernode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">innernodeclass</span><span class="p">(</span><span class="n">rawtext</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_nodes</span><span class="p">(</span><span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">innernode</span><span class="p">,</span>
+                                     <span class="n">is_ref</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="c1"># split title and target in role content</span>
+        <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">split_explicit_title</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="c1"># fix-up title and target</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lowercase</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fix_parens</span><span class="p">:</span>
+            <span class="n">title</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fix_parens</span><span class="p">(</span>
+                <span class="n">env</span><span class="p">,</span> <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="c1"># create the reference node</span>
+        <span class="n">refnode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeclass</span><span class="p">(</span><span class="n">rawtext</span><span class="p">,</span> <span class="n">reftype</span><span class="o">=</span><span class="n">role</span><span class="p">,</span> <span class="n">refdomain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span>
+                                 <span class="n">refexplicit</span><span class="o">=</span><span class="n">has_explicit_title</span><span class="p">)</span>
+        <span class="c1"># we may need the line number for warnings</span>
+        <span class="n">set_role_source_info</span><span class="p">(</span><span class="n">inliner</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">refnode</span><span class="p">)</span>
+        <span class="n">title</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_link</span><span class="p">(</span>
+            <span class="n">env</span><span class="p">,</span> <span class="n">refnode</span><span class="p">,</span> <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="c1"># now that the target and title are finally determined, set them</span>
+        <span class="n">refnode</span><span class="p">[</span><span class="s1">&#39;reftarget&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="n">refnode</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">innernodeclass</span><span class="p">(</span><span class="n">rawtext</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+        <span class="c1"># we also need the source document</span>
+        <span class="n">refnode</span><span class="p">[</span><span class="s1">&#39;refdoc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">docname</span>
+        <span class="n">refnode</span><span class="p">[</span><span class="s1">&#39;refwarn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">warn_dangling</span>
+        <span class="c1"># result_nodes allow further modification of return values</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_nodes</span><span class="p">(</span><span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">refnode</span><span class="p">,</span> <span class="n">is_ref</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c1"># methods that can be overwritten</span>
+
+<div class="viewcode-block" id="XRefRole.process_link"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.XRefRole.process_link.html#sphinx.domains.c.XRefRole.process_link">[docs]</a>    <span class="k">def</span> <span class="nf">process_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">refnode</span><span class="p">,</span> <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called after parsing title and target text, and creating the</span>
+<span class="sd">        reference node (given in *refnode*).  This method can alter the</span>
+<span class="sd">        reference node and must return a new (or the same) ``(title, target)``</span>
+<span class="sd">        tuple.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">title</span><span class="p">,</span> <span class="n">ws_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="XRefRole.result_nodes"><a class="viewcode-back" href="../../generated/generated/sphinx.domains.std.XRefRole.result_nodes.html#sphinx.domains.c.XRefRole.result_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">result_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">is_ref</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called before returning the finished nodes.  *node* is the reference</span>
+<span class="sd">        node if one was created (*is_ref* is then true), else the content node.</span>
+<span class="sd">        This method can add other nodes and must return a ``(nodes, messages)``</span>
+<span class="sd">        tuple (the usual return value of a role function).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="p">[]</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">AnyXRefRole</span><span class="p">(</span><span class="n">XRefRole</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">process_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">refnode</span><span class="p">,</span> <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">XRefRole</span><span class="o">.</span><span class="n">process_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">refnode</span><span class="p">,</span> <span class="n">has_explicit_title</span><span class="p">,</span>
+                                       <span class="n">title</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="c1"># add all possible context info (i.e. std:program, py:module etc.)</span>
+        <span class="n">refnode</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">indexmarkup_role</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span>
+                     <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">content</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Role for PEP/RFC references that generate an index entry.&quot;&quot;&quot;</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">typ</span><span class="p">:</span>
+        <span class="n">typ</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">default_role</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typ</span> <span class="o">=</span> <span class="n">typ</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">split_explicit_title</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">targetid</span> <span class="o">=</span> <span class="s1">&#39;index-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">env</span><span class="o">.</span><span class="n">new_serialno</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+    <span class="n">indexnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">index</span><span class="p">()</span>
+    <span class="n">targetnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">targetid</span><span class="p">])</span>
+    <span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">note_explicit_target</span><span class="p">(</span><span class="n">targetnode</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;pep&#39;</span><span class="p">:</span>
+        <span class="n">indexnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Python Enhancement Proposals; PEP </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">target</span><span class="p">,</span>
+             <span class="n">targetid</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span>
+        <span class="n">anchor</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">anchorindex</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">anchorindex</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">target</span><span class="p">,</span> <span class="n">anchor</span> <span class="o">=</span> <span class="n">target</span><span class="p">[:</span><span class="n">anchorindex</span><span class="p">],</span> <span class="n">target</span><span class="p">[</span><span class="n">anchorindex</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_explicit_title</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;PEP &quot;</span> <span class="o">+</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pepnum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;invalid PEP number </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">target</span><span class="p">,</span>
+                                         <span class="n">line</span><span class="o">=</span><span class="n">lineno</span><span class="p">)</span>
+            <span class="n">prb</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">problematic</span><span class="p">(</span><span class="n">rawtext</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">prb</span><span class="p">],</span> <span class="p">[</span><span class="n">msg</span><span class="p">]</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">pep_base_url</span> <span class="o">+</span> <span class="s1">&#39;pep-</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">pepnum</span>
+        <span class="n">sn</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+        <span class="n">rn</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">internal</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">refuri</span><span class="o">=</span><span class="n">ref</span><span class="o">+</span><span class="n">anchor</span><span class="p">,</span>
+                             <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="n">typ</span><span class="p">])</span>
+        <span class="n">rn</span> <span class="o">+=</span> <span class="n">sn</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">indexnode</span><span class="p">,</span> <span class="n">targetnode</span><span class="p">,</span> <span class="n">rn</span><span class="p">],</span> <span class="p">[]</span>
+    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;rfc&#39;</span><span class="p">:</span>
+        <span class="n">indexnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="s1">&#39;RFC; RFC </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">target</span><span class="p">,</span> <span class="n">targetid</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span>
+        <span class="n">anchor</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">anchorindex</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">anchorindex</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">target</span><span class="p">,</span> <span class="n">anchor</span> <span class="o">=</span> <span class="n">target</span><span class="p">[:</span><span class="n">anchorindex</span><span class="p">],</span> <span class="n">target</span><span class="p">[</span><span class="n">anchorindex</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_explicit_title</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;RFC &quot;</span> <span class="o">+</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rfcnum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;invalid RFC number </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">target</span><span class="p">,</span>
+                                         <span class="n">line</span><span class="o">=</span><span class="n">lineno</span><span class="p">)</span>
+            <span class="n">prb</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">problematic</span><span class="p">(</span><span class="n">rawtext</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">prb</span><span class="p">],</span> <span class="p">[</span><span class="n">msg</span><span class="p">]</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">rfc_base_url</span> <span class="o">+</span> <span class="n">inliner</span><span class="o">.</span><span class="n">rfc_url</span> <span class="o">%</span> <span class="n">rfcnum</span>
+        <span class="n">sn</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+        <span class="n">rn</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">internal</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">refuri</span><span class="o">=</span><span class="n">ref</span><span class="o">+</span><span class="n">anchor</span><span class="p">,</span>
+                             <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="n">typ</span><span class="p">])</span>
+        <span class="n">rn</span> <span class="o">+=</span> <span class="n">sn</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">indexnode</span><span class="p">,</span> <span class="n">targetnode</span><span class="p">,</span> <span class="n">rn</span><span class="p">],</span> <span class="p">[]</span>
+
+
+<span class="n">_amp_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;(?&lt;!&amp;)&amp;(?![&amp;\s])&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">menusel_role</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">content</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;menuselection&#39;</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;--&gt;&#39;</span><span class="p">,</span> <span class="s1">u&#39;</span><span class="se">\N{TRIANGULAR BULLET}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">spans</span> <span class="o">=</span> <span class="n">_amp_re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">node</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">inline</span><span class="p">(</span><span class="n">rawtext</span><span class="o">=</span><span class="n">rawtext</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">span</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">spans</span><span class="p">):</span>
+        <span class="n">span</span> <span class="o">=</span> <span class="n">span</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&amp;&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">span</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">textnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
+                <span class="n">node</span> <span class="o">+=</span> <span class="n">textnode</span>
+            <span class="k">continue</span>
+        <span class="n">accel_node</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">inline</span><span class="p">()</span>
+        <span class="n">letter_node</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">span</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">accel_node</span> <span class="o">+=</span> <span class="n">letter_node</span>
+        <span class="n">accel_node</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;accelerator&#39;</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">+=</span> <span class="n">accel_node</span>
+        <span class="n">textnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">span</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="n">node</span> <span class="o">+=</span> <span class="n">textnode</span>
+
+    <span class="n">node</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">typ</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="p">[]</span>
+
+
+<span class="n">_litvar_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;{([^}]+)}&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">emph_literal_role</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span>
+                      <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">content</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">retnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">literal</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="n">typ</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="n">typ</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">_litvar_re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="n">txt</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="n">pos</span><span class="p">:</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">()]</span>
+            <span class="n">retnode</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+        <span class="n">retnode</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">emphasis</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="n">retnode</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">pos</span><span class="p">:],</span> <span class="n">text</span><span class="p">[</span><span class="n">pos</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">retnode</span><span class="p">],</span> <span class="p">[]</span>
+
+
+<span class="n">_abbr_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\((.*)\)$&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">abbr_role</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">content</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">_abbr_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">addnodes</span><span class="o">.</span><span class="n">abbreviation</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)],</span> <span class="p">[]</span>
+    <span class="n">abbr</span> <span class="o">=</span> <span class="n">text</span><span class="p">[:</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">()]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">expl</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">options</span><span class="p">[</span><span class="s1">&#39;explanation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expl</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">addnodes</span><span class="o">.</span><span class="n">abbreviation</span><span class="p">(</span><span class="n">abbr</span><span class="p">,</span> <span class="n">abbr</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)],</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">index_role</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">content</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="c1"># create new reference target</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+    <span class="n">targetid</span> <span class="o">=</span> <span class="s1">&#39;index-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">env</span><span class="o">.</span><span class="n">new_serialno</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+    <span class="n">targetnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">targetid</span><span class="p">])</span>
+    <span class="c1"># split text and target in role content</span>
+    <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">split_explicit_title</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="c1"># if an explicit target is given, we can process it as a full entry</span>
+    <span class="k">if</span> <span class="n">has_explicit_title</span><span class="p">:</span>
+        <span class="n">entries</span> <span class="o">=</span> <span class="n">process_index_entry</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">targetid</span><span class="p">)</span>
+    <span class="c1"># otherwise we just create a &quot;single&quot; entry</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># but allow giving main entry</span>
+        <span class="n">main</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">):</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">main</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span>
+        <span class="n">entries</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">targetid</span><span class="p">,</span> <span class="n">main</span><span class="p">)]</span>
+    <span class="n">indexnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">index</span><span class="p">()</span>
+    <span class="n">indexnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">entries</span>
+    <span class="n">set_role_source_info</span><span class="p">(</span><span class="n">inliner</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">indexnode</span><span class="p">)</span>
+    <span class="n">textnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">indexnode</span><span class="p">,</span> <span class="n">targetnode</span><span class="p">,</span> <span class="n">textnode</span><span class="p">],</span> <span class="p">[]</span>
+
+
+<span class="n">specific_docroles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># links to download references</span>
+    <span class="s1">&#39;download&#39;</span><span class="p">:</span> <span class="n">XRefRole</span><span class="p">(</span><span class="n">nodeclass</span><span class="o">=</span><span class="n">addnodes</span><span class="o">.</span><span class="n">download_reference</span><span class="p">),</span>
+    <span class="c1"># links to documents</span>
+    <span class="s1">&#39;doc&#39;</span><span class="p">:</span> <span class="n">XRefRole</span><span class="p">(</span><span class="n">warn_dangling</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="c1"># links to anything</span>
+    <span class="s1">&#39;any&#39;</span><span class="p">:</span> <span class="n">AnyXRefRole</span><span class="p">(</span><span class="n">warn_dangling</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+
+    <span class="s1">&#39;pep&#39;</span><span class="p">:</span> <span class="n">indexmarkup_role</span><span class="p">,</span>
+    <span class="s1">&#39;rfc&#39;</span><span class="p">:</span> <span class="n">indexmarkup_role</span><span class="p">,</span>
+    <span class="s1">&#39;guilabel&#39;</span><span class="p">:</span> <span class="n">menusel_role</span><span class="p">,</span>
+    <span class="s1">&#39;menuselection&#39;</span><span class="p">:</span> <span class="n">menusel_role</span><span class="p">,</span>
+    <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="n">emph_literal_role</span><span class="p">,</span>
+    <span class="s1">&#39;samp&#39;</span><span class="p">:</span> <span class="n">emph_literal_role</span><span class="p">,</span>
+    <span class="s1">&#39;abbr&#39;</span><span class="p">:</span> <span class="n">abbr_role</span><span class="p">,</span>
+    <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="n">index_role</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">rolename</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">specific_docroles</span><span class="p">):</span>
+    <span class="n">roles</span><span class="o">.</span><span class="n">register_local_role</span><span class="p">(</span><span class="n">rolename</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

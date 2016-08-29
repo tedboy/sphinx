@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassLevelDocumenter.get_attr
+================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassLevelDocumenter.get_attr

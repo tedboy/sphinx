@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.add_name
+=====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Cmdoption.add_name

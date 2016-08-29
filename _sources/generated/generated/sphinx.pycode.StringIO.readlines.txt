@@ -1,0 +1,6 @@
+sphinx.pycode.StringIO.readlines
+================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: StringIO.readlines

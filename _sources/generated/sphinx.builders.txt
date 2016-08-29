@@ -1,0 +1,47 @@
+.. automodule:: sphinx.builders
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      bold
+      darkgreen
+      find_catalog
+      make_chunks
+      path_stabilize
+      relative_uri
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      ParallelTasks
+      SerialTasks
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.Builder
+       generated/sphinx.builders.ParallelTasks
+       generated/sphinx.builders.SerialTasks
+
+   
+   
+
+   
+   
+   

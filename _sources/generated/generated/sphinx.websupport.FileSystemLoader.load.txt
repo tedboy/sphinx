@@ -1,0 +1,6 @@
+sphinx.websupport.FileSystemLoader.load
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: FileSystemLoader.load

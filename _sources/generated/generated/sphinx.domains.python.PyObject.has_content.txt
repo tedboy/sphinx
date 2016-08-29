@@ -1,0 +1,6 @@
+sphinx.domains.python.PyObject.has_content
+==========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyObject.has_content

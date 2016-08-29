@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.read_inventory_v2
+========================================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. autofunction:: read_inventory_v2

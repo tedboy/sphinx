@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.versioning_method
+============================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.versioning_method

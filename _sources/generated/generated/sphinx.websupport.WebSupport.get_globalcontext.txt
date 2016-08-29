@@ -1,0 +1,6 @@
+sphinx.websupport.WebSupport.get_globalcontext
+==============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: WebSupport.get_globalcontext

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTInitializer.__init__
+==========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTInitializer.__init__

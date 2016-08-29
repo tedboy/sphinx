@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.reset
+=================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.reset

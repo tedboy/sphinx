@@ -1,0 +1,6 @@
+sphinx.search.title.parent
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: title.parent

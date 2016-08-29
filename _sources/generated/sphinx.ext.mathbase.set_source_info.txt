@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.set_source_info
+===================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: set_source_info

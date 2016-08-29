@@ -1,0 +1,6 @@
+sphinx.util.deque.clear
+=======================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.clear

@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.add_name
+=========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: GenericObject.add_name

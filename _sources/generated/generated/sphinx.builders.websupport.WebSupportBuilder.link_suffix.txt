@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.link_suffix
+========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.link_suffix

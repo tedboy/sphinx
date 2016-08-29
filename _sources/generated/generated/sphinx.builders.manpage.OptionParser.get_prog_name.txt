@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.get_prog_name
+==================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.get_prog_name

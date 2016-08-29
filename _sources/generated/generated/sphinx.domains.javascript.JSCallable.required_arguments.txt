@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.required_arguments
+=======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSCallable.required_arguments

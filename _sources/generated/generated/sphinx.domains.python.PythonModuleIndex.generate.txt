@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonModuleIndex.generate
+================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PythonModuleIndex.generate

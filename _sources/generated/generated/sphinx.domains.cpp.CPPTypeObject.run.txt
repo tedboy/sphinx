@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.run
+====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPTypeObject.run

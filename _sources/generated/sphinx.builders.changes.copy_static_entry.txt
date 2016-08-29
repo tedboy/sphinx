@@ -1,0 +1,6 @@
+sphinx.builders.changes.copy_static_entry
+=========================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. autofunction:: copy_static_entry

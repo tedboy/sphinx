@@ -1,0 +1,6 @@
+sphinx.ext.coverage.compile_regex_list
+======================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autofunction:: compile_regex_list

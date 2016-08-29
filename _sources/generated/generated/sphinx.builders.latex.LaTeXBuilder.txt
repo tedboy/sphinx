@@ -1,0 +1,57 @@
+sphinx.builders.latex.LaTeXBuilder
+==================================
+.. currentmodule:: sphinx.builders.latex
+.. autoclass:: LaTeXBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~LaTeXBuilder.__init__
+   ~LaTeXBuilder.assemble_doctree
+   ~LaTeXBuilder.build
+   ~LaTeXBuilder.build_all
+   ~LaTeXBuilder.build_specific
+   ~LaTeXBuilder.build_update
+   ~LaTeXBuilder.cleanup
+   ~LaTeXBuilder.compile_all_catalogs
+   ~LaTeXBuilder.compile_catalogs
+   ~LaTeXBuilder.compile_specific_catalogs
+   ~LaTeXBuilder.compile_update_catalogs
+   ~LaTeXBuilder.create_template_bridge
+   ~LaTeXBuilder.finish
+   ~LaTeXBuilder.get_builder_config
+   ~LaTeXBuilder.get_contentsname
+   ~LaTeXBuilder.get_outdated_docs
+   ~LaTeXBuilder.get_relative_uri
+   ~LaTeXBuilder.get_target_uri
+   ~LaTeXBuilder.init
+   ~LaTeXBuilder.init_document_data
+   ~LaTeXBuilder.post_process_images
+   ~LaTeXBuilder.prepare_writing
+   ~LaTeXBuilder.write
+   ~LaTeXBuilder.write_doc
+   ~LaTeXBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~LaTeXBuilder.allow_parallel
+   ~LaTeXBuilder.format
+   ~LaTeXBuilder.name
+   ~LaTeXBuilder.supported_image_types
+   ~LaTeXBuilder.usepackages
+   ~LaTeXBuilder.versioning_compare
+   ~LaTeXBuilder.versioning_method
+

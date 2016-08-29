@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.add_lexer
+==================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.add_lexer

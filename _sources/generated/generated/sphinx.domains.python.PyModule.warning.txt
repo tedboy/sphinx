@@ -1,0 +1,6 @@
+sphinx.domains.python.PyModule.warning
+======================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyModule.warning

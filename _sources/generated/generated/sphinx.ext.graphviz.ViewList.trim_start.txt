@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.trim_start
+=======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.trim_start

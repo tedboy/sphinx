@@ -1,0 +1,6 @@
+sphinx.util.deque.pop
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.pop

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.Domain.get_type_name
+==============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: Domain.get_type_name

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.add_target_and_index
+=======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSObject.add_target_and_index

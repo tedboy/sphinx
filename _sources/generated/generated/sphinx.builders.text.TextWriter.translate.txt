@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.translate
+=========================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: TextWriter.translate

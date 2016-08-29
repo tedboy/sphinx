@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.final_argument_whitespace
+=======================================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: Directive.final_argument_whitespace

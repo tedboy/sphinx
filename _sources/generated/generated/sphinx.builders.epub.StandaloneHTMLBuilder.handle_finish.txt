@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.handle_finish
+========================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.handle_finish

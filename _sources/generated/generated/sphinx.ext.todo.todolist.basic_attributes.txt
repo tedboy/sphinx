@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.basic_attributes
+=========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todolist.basic_attributes

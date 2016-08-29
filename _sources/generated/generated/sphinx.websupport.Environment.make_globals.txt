@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.make_globals
+==========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.make_globals

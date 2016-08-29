@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.globalcontext_filename
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: WebHTMLBuilder.globalcontext_filename

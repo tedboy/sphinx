@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclSpecs.name
+====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: ASTDeclSpecs.name

@@ -1,0 +1,6 @@
+sphinx.ext.todo.depart_todo_node
+================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autofunction:: depart_todo_node

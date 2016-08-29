@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.add_secnumber
+=============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.add_secnumber

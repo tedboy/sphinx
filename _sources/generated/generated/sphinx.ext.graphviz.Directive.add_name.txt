@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Directive.add_name
+======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Directive.add_name

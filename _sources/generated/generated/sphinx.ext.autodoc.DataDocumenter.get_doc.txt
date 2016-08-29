@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DataDocumenter.get_doc
+=========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DataDocumenter.get_doc

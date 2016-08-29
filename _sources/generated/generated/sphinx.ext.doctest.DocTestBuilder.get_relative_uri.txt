@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.get_relative_uri
+==================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DocTestBuilder.get_relative_uri

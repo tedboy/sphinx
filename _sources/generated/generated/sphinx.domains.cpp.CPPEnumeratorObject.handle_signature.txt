@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.handle_signature
+=======================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.handle_signature

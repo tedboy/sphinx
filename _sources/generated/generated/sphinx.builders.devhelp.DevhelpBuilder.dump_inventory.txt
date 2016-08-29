@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.dump_inventory
+=====================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.dump_inventory

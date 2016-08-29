@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.swapcase
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.swapcase

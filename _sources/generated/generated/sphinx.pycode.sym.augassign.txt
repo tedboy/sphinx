@@ -1,0 +1,6 @@
+sphinx.pycode.sym.augassign
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.augassign

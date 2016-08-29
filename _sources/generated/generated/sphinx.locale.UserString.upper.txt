@@ -1,0 +1,6 @@
+sphinx.locale.UserString.upper
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.upper

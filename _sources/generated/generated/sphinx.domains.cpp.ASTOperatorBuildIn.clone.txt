@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTOperatorBuildIn.clone
+===========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTOperatorBuildIn.clone

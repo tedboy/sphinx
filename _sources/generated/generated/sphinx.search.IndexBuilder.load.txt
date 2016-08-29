@@ -1,0 +1,6 @@
+sphinx.search.IndexBuilder.load
+===============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: IndexBuilder.load

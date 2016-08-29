@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.viewvalues
+=====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.viewvalues

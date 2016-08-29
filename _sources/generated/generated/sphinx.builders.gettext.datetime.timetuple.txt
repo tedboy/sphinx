@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.timetuple
+==========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.timetuple

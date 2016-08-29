@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.parse_name
+=================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.parse_name

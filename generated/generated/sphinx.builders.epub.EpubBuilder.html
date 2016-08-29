@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.4.2.1. sphinx.builders.epub.EpubBuilder &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="4.4. sphinx.builders.epub" href="../sphinx.builders.epub.html"/>
+        <link rel="next" title="4.4.2.1.1.1. sphinx.builders.epub.EpubBuilder.__init__" href="sphinx.builders.epub.EpubBuilder.__init__.html"/>
+        <link rel="prev" title="4.4.1.4. sphinx.builders.epub.ssp" href="../sphinx.builders.epub.ssp.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.builders.epub.html">4.4. sphinx.builders.epub</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.builders.epub.html#functions">4.4.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.builders.epub.html#classes">4.4.2. Classes</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="">4.4.2.1. sphinx.builders.epub.EpubBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.epub.StandaloneHTMLBuilder.html">4.4.2.2. sphinx.builders.epub.StandaloneHTMLBuilder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html.html">4.6. sphinx.builders.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.xml.html">4.15. sphinx.builders.xml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.builders.epub.html">4.4. sphinx.builders.epub</a> &raquo;</li>
+        
+      <li>4.4.2.1. sphinx.builders.epub.EpubBuilder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.builders.epub.EpubBuilder.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-builders-epub-epubbuilder">
+<h1>4.4.2.1. sphinx.builders.epub.EpubBuilder<a class="headerlink" href="#sphinx-builders-epub-epubbuilder" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.builders.epub.EpubBuilder">
+<em class="property">class </em><code class="descclassname">sphinx.builders.epub.</code><code class="descname">EpubBuilder</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sphinx/builders/epub.html#EpubBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.builders.epub.EpubBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builder that outputs epub files.</p>
+<p>It creates the metainfo files container.opf, toc.ncx, mimetype, and
+META-INF/container.xml.  Afterwards, all necessary files are zipped to an
+epub file.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>4.4.2.1.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.__init__.html#sphinx.builders.epub.EpubBuilder.__init__" title="sphinx.builders.epub.EpubBuilder.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(app)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.add_sidebars.html#sphinx.builders.epub.EpubBuilder.add_sidebars" title="sphinx.builders.epub.EpubBuilder.add_sidebars"><code class="xref py py-obj docutils literal"><span class="pre">add_sidebars</span></code></a>(pagename,&nbsp;ctx)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.add_visible_links.html#sphinx.builders.epub.EpubBuilder.add_visible_links" title="sphinx.builders.epub.EpubBuilder.add_visible_links"><code class="xref py py-obj docutils literal"><span class="pre">add_visible_links</span></code></a>(tree[,&nbsp;show_urls])</td>
+<td>Add visible link targets for external links</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build.html#sphinx.builders.epub.EpubBuilder.build" title="sphinx.builders.epub.EpubBuilder.build"><code class="xref py py-obj docutils literal"><span class="pre">build</span></code></a>(docnames[,&nbsp;summary,&nbsp;method])</td>
+<td>Main build method.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_all.html#sphinx.builders.epub.EpubBuilder.build_all" title="sphinx.builders.epub.EpubBuilder.build_all"><code class="xref py py-obj docutils literal"><span class="pre">build_all</span></code></a>()</td>
+<td>Build all source files.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_container.html#sphinx.builders.epub.EpubBuilder.build_container" title="sphinx.builders.epub.EpubBuilder.build_container"><code class="xref py py-obj docutils literal"><span class="pre">build_container</span></code></a>(outdir,&nbsp;outname)</td>
+<td>Write the metainfo file META-INF/cointainer.xml.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_content.html#sphinx.builders.epub.EpubBuilder.build_content" title="sphinx.builders.epub.EpubBuilder.build_content"><code class="xref py py-obj docutils literal"><span class="pre">build_content</span></code></a>(outdir,&nbsp;outname)</td>
+<td>Write the metainfo file content.opf It contains bibliographic data, a file list and the spine (the reading order).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_epub.html#sphinx.builders.epub.EpubBuilder.build_epub" title="sphinx.builders.epub.EpubBuilder.build_epub"><code class="xref py py-obj docutils literal"><span class="pre">build_epub</span></code></a>(outdir,&nbsp;outname)</td>
+<td>Write the epub file.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_mimetype.html#sphinx.builders.epub.EpubBuilder.build_mimetype" title="sphinx.builders.epub.EpubBuilder.build_mimetype"><code class="xref py py-obj docutils literal"><span class="pre">build_mimetype</span></code></a>(outdir,&nbsp;outname)</td>
+<td>Write the metainfo file mimetype.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_navpoints.html#sphinx.builders.epub.EpubBuilder.build_navpoints" title="sphinx.builders.epub.EpubBuilder.build_navpoints"><code class="xref py py-obj docutils literal"><span class="pre">build_navpoints</span></code></a>(nodes)</td>
+<td>Create the toc navigation structure.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_specific.html#sphinx.builders.epub.EpubBuilder.build_specific" title="sphinx.builders.epub.EpubBuilder.build_specific"><code class="xref py py-obj docutils literal"><span class="pre">build_specific</span></code></a>(filenames)</td>
+<td>Only rebuild as much as needed for changes in the <em>filenames</em>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_toc.html#sphinx.builders.epub.EpubBuilder.build_toc" title="sphinx.builders.epub.EpubBuilder.build_toc"><code class="xref py py-obj docutils literal"><span class="pre">build_toc</span></code></a>(outdir,&nbsp;outname)</td>
+<td>Write the metainfo file toc.ncx.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.build_update.html#sphinx.builders.epub.EpubBuilder.build_update" title="sphinx.builders.epub.EpubBuilder.build_update"><code class="xref py py-obj docutils literal"><span class="pre">build_update</span></code></a>()</td>
+<td>Only rebuild what was changed or added since last build.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.cleanup.html#sphinx.builders.epub.EpubBuilder.cleanup" title="sphinx.builders.epub.EpubBuilder.cleanup"><code class="xref py py-obj docutils literal"><span class="pre">cleanup</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.compile_all_catalogs.html#sphinx.builders.epub.EpubBuilder.compile_all_catalogs" title="sphinx.builders.epub.EpubBuilder.compile_all_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_all_catalogs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.compile_catalogs.html#sphinx.builders.epub.EpubBuilder.compile_catalogs" title="sphinx.builders.epub.EpubBuilder.compile_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_catalogs</span></code></a>(catalogs,&nbsp;message)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.compile_specific_catalogs.html#sphinx.builders.epub.EpubBuilder.compile_specific_catalogs" title="sphinx.builders.epub.EpubBuilder.compile_specific_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_specific_catalogs</span></code></a>(specified_files)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.compile_update_catalogs.html#sphinx.builders.epub.EpubBuilder.compile_update_catalogs" title="sphinx.builders.epub.EpubBuilder.compile_update_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_update_catalogs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.content_metadata.html#sphinx.builders.epub.EpubBuilder.content_metadata" title="sphinx.builders.epub.EpubBuilder.content_metadata"><code class="xref py py-obj docutils literal"><span class="pre">content_metadata</span></code></a>(files,&nbsp;spine,&nbsp;guide)</td>
+<td>Create a dictionary with all metadata for the content.opf file properly escaped.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.copy_download_files.html#sphinx.builders.epub.EpubBuilder.copy_download_files" title="sphinx.builders.epub.EpubBuilder.copy_download_files"><code class="xref py py-obj docutils literal"><span class="pre">copy_download_files</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.copy_extra_files.html#sphinx.builders.epub.EpubBuilder.copy_extra_files" title="sphinx.builders.epub.EpubBuilder.copy_extra_files"><code class="xref py py-obj docutils literal"><span class="pre">copy_extra_files</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.copy_image_files.html#sphinx.builders.epub.EpubBuilder.copy_image_files" title="sphinx.builders.epub.EpubBuilder.copy_image_files"><code class="xref py py-obj docutils literal"><span class="pre">copy_image_files</span></code></a>()</td>
+<td>Copy image files to destination directory.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.copy_image_files_pil.html#sphinx.builders.epub.EpubBuilder.copy_image_files_pil" title="sphinx.builders.epub.EpubBuilder.copy_image_files_pil"><code class="xref py py-obj docutils literal"><span class="pre">copy_image_files_pil</span></code></a>()</td>
+<td>Copy images using the PIL.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.copy_static_files.html#sphinx.builders.epub.EpubBuilder.copy_static_files" title="sphinx.builders.epub.EpubBuilder.copy_static_files"><code class="xref py py-obj docutils literal"><span class="pre">copy_static_files</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.create_template_bridge.html#sphinx.builders.epub.EpubBuilder.create_template_bridge" title="sphinx.builders.epub.EpubBuilder.create_template_bridge"><code class="xref py py-obj docutils literal"><span class="pre">create_template_bridge</span></code></a>()</td>
+<td>Return the template bridge configured.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.dump_inventory.html#sphinx.builders.epub.EpubBuilder.dump_inventory" title="sphinx.builders.epub.EpubBuilder.dump_inventory"><code class="xref py py-obj docutils literal"><span class="pre">dump_inventory</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.dump_search_index.html#sphinx.builders.epub.EpubBuilder.dump_search_index" title="sphinx.builders.epub.EpubBuilder.dump_search_index"><code class="xref py py-obj docutils literal"><span class="pre">dump_search_index</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.esc.html#sphinx.builders.epub.EpubBuilder.esc" title="sphinx.builders.epub.EpubBuilder.esc"><code class="xref py py-obj docutils literal"><span class="pre">esc</span></code></a>(name)</td>
+<td>Replace all characters not allowed in text an attribute values.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.finish.html#sphinx.builders.epub.EpubBuilder.finish" title="sphinx.builders.epub.EpubBuilder.finish"><code class="xref py py-obj docutils literal"><span class="pre">finish</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.fix_fragment.html#sphinx.builders.epub.EpubBuilder.fix_fragment" title="sphinx.builders.epub.EpubBuilder.fix_fragment"><code class="xref py py-obj docutils literal"><span class="pre">fix_fragment</span></code></a>(prefix,&nbsp;fragment)</td>
+<td>Return a href/id attribute with colons replaced by hyphens.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.fix_genindex.html#sphinx.builders.epub.EpubBuilder.fix_genindex" title="sphinx.builders.epub.EpubBuilder.fix_genindex"><code class="xref py py-obj docutils literal"><span class="pre">fix_genindex</span></code></a>(tree)</td>
+<td>Fix href attributes for genindex pages.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.fix_ids.html#sphinx.builders.epub.EpubBuilder.fix_ids" title="sphinx.builders.epub.EpubBuilder.fix_ids"><code class="xref py py-obj docutils literal"><span class="pre">fix_ids</span></code></a>(tree)</td>
+<td>Replace colons with hyphens in href and id attributes.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.gen_additional_pages.html#sphinx.builders.epub.EpubBuilder.gen_additional_pages" title="sphinx.builders.epub.EpubBuilder.gen_additional_pages"><code class="xref py py-obj docutils literal"><span class="pre">gen_additional_pages</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.gen_indices.html#sphinx.builders.epub.EpubBuilder.gen_indices" title="sphinx.builders.epub.EpubBuilder.gen_indices"><code class="xref py py-obj docutils literal"><span class="pre">gen_indices</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_builder_config.html#sphinx.builders.epub.EpubBuilder.get_builder_config" title="sphinx.builders.epub.EpubBuilder.get_builder_config"><code class="xref py py-obj docutils literal"><span class="pre">get_builder_config</span></code></a>(option,&nbsp;default)</td>
+<td>Return a builder specific option.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_doc_context.html#sphinx.builders.epub.EpubBuilder.get_doc_context" title="sphinx.builders.epub.EpubBuilder.get_doc_context"><code class="xref py py-obj docutils literal"><span class="pre">get_doc_context</span></code></a>(docname,&nbsp;body,&nbsp;metatags)</td>
+<td>Collect items for the template context of a page.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_outdated_docs.html#sphinx.builders.epub.EpubBuilder.get_outdated_docs" title="sphinx.builders.epub.EpubBuilder.get_outdated_docs"><code class="xref py py-obj docutils literal"><span class="pre">get_outdated_docs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_outfilename.html#sphinx.builders.epub.EpubBuilder.get_outfilename" title="sphinx.builders.epub.EpubBuilder.get_outfilename"><code class="xref py py-obj docutils literal"><span class="pre">get_outfilename</span></code></a>(pagename)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_refnodes.html#sphinx.builders.epub.EpubBuilder.get_refnodes" title="sphinx.builders.epub.EpubBuilder.get_refnodes"><code class="xref py py-obj docutils literal"><span class="pre">get_refnodes</span></code></a>(doctree,&nbsp;result)</td>
+<td>Collect section titles, their depth in the toc and the refuri.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_relative_uri.html#sphinx.builders.epub.EpubBuilder.get_relative_uri" title="sphinx.builders.epub.EpubBuilder.get_relative_uri"><code class="xref py py-obj docutils literal"><span class="pre">get_relative_uri</span></code></a>(<a href="#id1"><span class="problematic" id="id2">from_</span></a>,&nbsp;to[,&nbsp;typ])</td>
+<td>Return a relative URI between two source filenames.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_target_uri.html#sphinx.builders.epub.EpubBuilder.get_target_uri" title="sphinx.builders.epub.EpubBuilder.get_target_uri"><code class="xref py py-obj docutils literal"><span class="pre">get_target_uri</span></code></a>(docname[,&nbsp;typ])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_theme_config.html#sphinx.builders.epub.EpubBuilder.get_theme_config" title="sphinx.builders.epub.EpubBuilder.get_theme_config"><code class="xref py py-obj docutils literal"><span class="pre">get_theme_config</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.get_toc.html#sphinx.builders.epub.EpubBuilder.get_toc" title="sphinx.builders.epub.EpubBuilder.get_toc"><code class="xref py py-obj docutils literal"><span class="pre">get_toc</span></code></a>()</td>
+<td>Get the total table of contents, containing the master_doc and pre and post files not managed by sphinx.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.handle_finish.html#sphinx.builders.epub.EpubBuilder.handle_finish" title="sphinx.builders.epub.EpubBuilder.handle_finish"><code class="xref py py-obj docutils literal"><span class="pre">handle_finish</span></code></a>()</td>
+<td>Create the metainfo files and finally the epub.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.handle_page.html#sphinx.builders.epub.EpubBuilder.handle_page" title="sphinx.builders.epub.EpubBuilder.handle_page"><code class="xref py py-obj docutils literal"><span class="pre">handle_page</span></code></a>(pagename,&nbsp;addctx[,&nbsp;...])</td>
+<td>Create a rendered page.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.index_page.html#sphinx.builders.epub.EpubBuilder.index_page" title="sphinx.builders.epub.EpubBuilder.index_page"><code class="xref py py-obj docutils literal"><span class="pre">index_page</span></code></a>(pagename,&nbsp;doctree,&nbsp;title)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.init.html#sphinx.builders.epub.EpubBuilder.init" title="sphinx.builders.epub.EpubBuilder.init"><code class="xref py py-obj docutils literal"><span class="pre">init</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.init_highlighter.html#sphinx.builders.epub.EpubBuilder.init_highlighter" title="sphinx.builders.epub.EpubBuilder.init_highlighter"><code class="xref py py-obj docutils literal"><span class="pre">init_highlighter</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.init_templates.html#sphinx.builders.epub.EpubBuilder.init_templates" title="sphinx.builders.epub.EpubBuilder.init_templates"><code class="xref py py-obj docutils literal"><span class="pre">init_templates</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.init_translator_class.html#sphinx.builders.epub.EpubBuilder.init_translator_class" title="sphinx.builders.epub.EpubBuilder.init_translator_class"><code class="xref py py-obj docutils literal"><span class="pre">init_translator_class</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.insert_subnav.html#sphinx.builders.epub.EpubBuilder.insert_subnav" title="sphinx.builders.epub.EpubBuilder.insert_subnav"><code class="xref py py-obj docutils literal"><span class="pre">insert_subnav</span></code></a>(node,&nbsp;subnav)</td>
+<td>Insert nested navpoints for given node.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.is_vector_graphics.html#sphinx.builders.epub.EpubBuilder.is_vector_graphics" title="sphinx.builders.epub.EpubBuilder.is_vector_graphics"><code class="xref py py-obj docutils literal"><span class="pre">is_vector_graphics</span></code></a>(filename)</td>
+<td>Does the filename extension indicate a vector graphic format?</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.load_indexer.html#sphinx.builders.epub.EpubBuilder.load_indexer" title="sphinx.builders.epub.EpubBuilder.load_indexer"><code class="xref py py-obj docutils literal"><span class="pre">load_indexer</span></code></a>(docnames)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.make_id.html#sphinx.builders.epub.EpubBuilder.make_id" title="sphinx.builders.epub.EpubBuilder.make_id"><code class="xref py py-obj docutils literal"><span class="pre">make_id</span></code></a>(name[,&nbsp;id_cache])</td>
+<td>Return a unique id for name.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.new_navpoint.html#sphinx.builders.epub.EpubBuilder.new_navpoint" title="sphinx.builders.epub.EpubBuilder.new_navpoint"><code class="xref py py-obj docutils literal"><span class="pre">new_navpoint</span></code></a>(node,&nbsp;level[,&nbsp;incr])</td>
+<td>Create a new entry in the toc from the node at given level.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.post_process_images.html#sphinx.builders.epub.EpubBuilder.post_process_images" title="sphinx.builders.epub.EpubBuilder.post_process_images"><code class="xref py py-obj docutils literal"><span class="pre">post_process_images</span></code></a>(doctree)</td>
+<td>Pick the best candidate for an image and link down-scaled images to their high res version.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.prepare_writing.html#sphinx.builders.epub.EpubBuilder.prepare_writing" title="sphinx.builders.epub.EpubBuilder.prepare_writing"><code class="xref py py-obj docutils literal"><span class="pre">prepare_writing</span></code></a>(docnames)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.render_partial.html#sphinx.builders.epub.EpubBuilder.render_partial" title="sphinx.builders.epub.EpubBuilder.render_partial"><code class="xref py py-obj docutils literal"><span class="pre">render_partial</span></code></a>(node)</td>
+<td>Utility: Render a lone doctree node.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.toc_add_files.html#sphinx.builders.epub.EpubBuilder.toc_add_files" title="sphinx.builders.epub.EpubBuilder.toc_add_files"><code class="xref py py-obj docutils literal"><span class="pre">toc_add_files</span></code></a>(refnodes)</td>
+<td>Add the master_doc, pre and post files to a list of refnodes.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.toc_metadata.html#sphinx.builders.epub.EpubBuilder.toc_metadata" title="sphinx.builders.epub.EpubBuilder.toc_metadata"><code class="xref py py-obj docutils literal"><span class="pre">toc_metadata</span></code></a>(level,&nbsp;navpoints)</td>
+<td>Create a dictionary with all metadata for the toc.ncx file properly escaped.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.write.html#sphinx.builders.epub.EpubBuilder.write" title="sphinx.builders.epub.EpubBuilder.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>(build_docnames,&nbsp;updated_docnames[,&nbsp;method])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.write_buildinfo.html#sphinx.builders.epub.EpubBuilder.write_buildinfo" title="sphinx.builders.epub.EpubBuilder.write_buildinfo"><code class="xref py py-obj docutils literal"><span class="pre">write_buildinfo</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.write_doc.html#sphinx.builders.epub.EpubBuilder.write_doc" title="sphinx.builders.epub.EpubBuilder.write_doc"><code class="xref py py-obj docutils literal"><span class="pre">write_doc</span></code></a>(docname,&nbsp;doctree)</td>
+<td>Write one document file.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.write_doc_serialized.html#sphinx.builders.epub.EpubBuilder.write_doc_serialized" title="sphinx.builders.epub.EpubBuilder.write_doc_serialized"><code class="xref py py-obj docutils literal"><span class="pre">write_doc_serialized</span></code></a>(docname,&nbsp;doctree)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.write_domain_indices.html#sphinx.builders.epub.EpubBuilder.write_domain_indices" title="sphinx.builders.epub.EpubBuilder.write_domain_indices"><code class="xref py py-obj docutils literal"><span class="pre">write_domain_indices</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.write_genindex.html#sphinx.builders.epub.EpubBuilder.write_genindex" title="sphinx.builders.epub.EpubBuilder.write_genindex"><code class="xref py py-obj docutils literal"><span class="pre">write_genindex</span></code></a>()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>4.4.2.1.2. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.add_permalinks.html#sphinx.builders.epub.EpubBuilder.add_permalinks" title="sphinx.builders.epub.EpubBuilder.add_permalinks"><code class="xref py py-obj docutils literal"><span class="pre">add_permalinks</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.allow_parallel.html#sphinx.builders.epub.EpubBuilder.allow_parallel" title="sphinx.builders.epub.EpubBuilder.allow_parallel"><code class="xref py py-obj docutils literal"><span class="pre">allow_parallel</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.copysource.html#sphinx.builders.epub.EpubBuilder.copysource" title="sphinx.builders.epub.EpubBuilder.copysource"><code class="xref py py-obj docutils literal"><span class="pre">copysource</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.css_files.html#sphinx.builders.epub.EpubBuilder.css_files" title="sphinx.builders.epub.EpubBuilder.css_files"><code class="xref py py-obj docutils literal"><span class="pre">css_files</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.default_sidebars.html#sphinx.builders.epub.EpubBuilder.default_sidebars" title="sphinx.builders.epub.EpubBuilder.default_sidebars"><code class="xref py py-obj docutils literal"><span class="pre">default_sidebars</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.embedded.html#sphinx.builders.epub.EpubBuilder.embedded" title="sphinx.builders.epub.EpubBuilder.embedded"><code class="xref py py-obj docutils literal"><span class="pre">embedded</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.format.html#sphinx.builders.epub.EpubBuilder.format" title="sphinx.builders.epub.EpubBuilder.format"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.indexer_dumps_unicode.html#sphinx.builders.epub.EpubBuilder.indexer_dumps_unicode" title="sphinx.builders.epub.EpubBuilder.indexer_dumps_unicode"><code class="xref py py-obj docutils literal"><span class="pre">indexer_dumps_unicode</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.indexer_format.html#sphinx.builders.epub.EpubBuilder.indexer_format" title="sphinx.builders.epub.EpubBuilder.indexer_format"><code class="xref py py-obj docutils literal"><span class="pre">indexer_format</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.link_suffix.html#sphinx.builders.epub.EpubBuilder.link_suffix" title="sphinx.builders.epub.EpubBuilder.link_suffix"><code class="xref py py-obj docutils literal"><span class="pre">link_suffix</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.name.html#sphinx.builders.epub.EpubBuilder.name" title="sphinx.builders.epub.EpubBuilder.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.out_suffix.html#sphinx.builders.epub.EpubBuilder.out_suffix" title="sphinx.builders.epub.EpubBuilder.out_suffix"><code class="xref py py-obj docutils literal"><span class="pre">out_suffix</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.script_files.html#sphinx.builders.epub.EpubBuilder.script_files" title="sphinx.builders.epub.EpubBuilder.script_files"><code class="xref py py-obj docutils literal"><span class="pre">script_files</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.search.html#sphinx.builders.epub.EpubBuilder.search" title="sphinx.builders.epub.EpubBuilder.search"><code class="xref py py-obj docutils literal"><span class="pre">search</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.searchindex_filename.html#sphinx.builders.epub.EpubBuilder.searchindex_filename" title="sphinx.builders.epub.EpubBuilder.searchindex_filename"><code class="xref py py-obj docutils literal"><span class="pre">searchindex_filename</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.supported_image_types.html#sphinx.builders.epub.EpubBuilder.supported_image_types" title="sphinx.builders.epub.EpubBuilder.supported_image_types"><code class="xref py py-obj docutils literal"><span class="pre">supported_image_types</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.versioning_compare.html#sphinx.builders.epub.EpubBuilder.versioning_compare" title="sphinx.builders.epub.EpubBuilder.versioning_compare"><code class="xref py py-obj docutils literal"><span class="pre">versioning_compare</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.epub.EpubBuilder.versioning_method.html#sphinx.builders.epub.EpubBuilder.versioning_method" title="sphinx.builders.epub.EpubBuilder.versioning_method"><code class="xref py py-obj docutils literal"><span class="pre">versioning_method</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.builders.epub.EpubBuilder.__init__.html" class="btn btn-neutral float-right" title="4.4.2.1.1.1. sphinx.builders.epub.EpubBuilder.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../sphinx.builders.epub.ssp.html" class="btn btn-neutral" title="4.4.1.4. sphinx.builders.epub.ssp" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

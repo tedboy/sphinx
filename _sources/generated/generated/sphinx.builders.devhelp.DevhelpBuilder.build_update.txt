@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.build_update
+===================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.build_update

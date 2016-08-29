@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.required_arguments
+=========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPEnumeratorObject.required_arguments

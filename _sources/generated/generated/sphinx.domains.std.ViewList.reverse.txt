@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.reverse
+===================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.reverse

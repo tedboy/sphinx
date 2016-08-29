@@ -1,0 +1,40 @@
+sphinx.ext.mathbase.MathDirective
+=================================
+.. currentmodule:: sphinx.ext.mathbase
+.. autoclass:: MathDirective
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~MathDirective.__init__
+   ~MathDirective.add_name
+   ~MathDirective.assert_has_content
+   ~MathDirective.debug
+   ~MathDirective.directive_error
+   ~MathDirective.error
+   ~MathDirective.info
+   ~MathDirective.run
+   ~MathDirective.severe
+   ~MathDirective.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~MathDirective.final_argument_whitespace
+   ~MathDirective.has_content
+   ~MathDirective.option_spec
+   ~MathDirective.optional_arguments
+   ~MathDirective.required_arguments
+

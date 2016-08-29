@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.write_genindex
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.write_genindex

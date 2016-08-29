@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.title
+==================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.title

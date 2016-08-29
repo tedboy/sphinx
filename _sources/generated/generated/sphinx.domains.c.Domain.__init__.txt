@@ -1,0 +1,6 @@
+sphinx.domains.c.Domain.__init__
+================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: Domain.__init__

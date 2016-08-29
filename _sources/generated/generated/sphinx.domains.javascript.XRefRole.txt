@@ -1,0 +1,21 @@
+sphinx.domains.javascript.XRefRole
+==================================
+.. currentmodule:: sphinx.domains.javascript
+.. autoclass:: XRefRole
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~XRefRole.__init__
+   ~XRefRole.process_link
+   ~XRefRole.result_nodes
+
+
+
+
+

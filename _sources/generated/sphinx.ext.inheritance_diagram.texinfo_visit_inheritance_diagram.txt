@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.texinfo_visit_inheritance_diagram
+================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autofunction:: texinfo_visit_inheritance_diagram

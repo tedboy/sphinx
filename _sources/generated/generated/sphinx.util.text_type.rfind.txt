@@ -1,0 +1,6 @@
+sphinx.util.text_type.rfind
+===========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: text_type.rfind

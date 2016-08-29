@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.add_target_and_index
+=========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPFunctionObject.add_target_and_index

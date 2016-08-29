@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.indexer_dumps_unicode
+==========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.indexer_dumps_unicode

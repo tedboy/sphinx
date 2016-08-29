@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.severe
+=======================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.severe

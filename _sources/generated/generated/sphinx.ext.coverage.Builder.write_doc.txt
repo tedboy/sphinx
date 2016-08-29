@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.write_doc
+=====================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: Builder.write_doc

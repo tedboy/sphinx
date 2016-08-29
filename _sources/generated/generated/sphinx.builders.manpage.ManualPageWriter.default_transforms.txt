@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.default_transforms
+===========================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.default_transforms

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.Directive.warning
+=====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: Directive.warning

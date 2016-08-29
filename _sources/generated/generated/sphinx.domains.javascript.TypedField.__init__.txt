@@ -1,0 +1,6 @@
+sphinx.domains.javascript.TypedField.__init__
+=============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: TypedField.__init__

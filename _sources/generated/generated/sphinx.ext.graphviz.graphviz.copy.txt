@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.copy
+=================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.copy

@@ -1,0 +1,72 @@
+.. automodule:: sphinx.builders.linkcheck
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      TextIOWrapper
+      build_opener
+      check_anchor
+      darkgray
+      darkgreen
+      darkred
+      encode_uri
+      get_content_charset
+      purple
+      red
+      turquoise
+      unquote
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      AnchorCheckParser
+      Builder
+      CheckExternalLinksBuilder
+      HTMLParser
+      HTTPRedirectHandler
+      HeadRequest
+      RedirectHandler
+      Request
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.linkcheck.AnchorCheckParser
+       generated/sphinx.builders.linkcheck.Builder
+       generated/sphinx.builders.linkcheck.CheckExternalLinksBuilder
+       generated/sphinx.builders.linkcheck.HTMLParser
+       generated/sphinx.builders.linkcheck.HTTPRedirectHandler
+       generated/sphinx.builders.linkcheck.HeadRequest
+       generated/sphinx.builders.linkcheck.RedirectHandler
+       generated/sphinx.builders.linkcheck.Request
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      HTMLParseError
+      HTTPError
+   
+   

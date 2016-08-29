@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageBuilder.name
+==============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageBuilder.name

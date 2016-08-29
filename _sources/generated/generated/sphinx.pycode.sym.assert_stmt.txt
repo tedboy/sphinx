@@ -1,0 +1,6 @@
+sphinx.pycode.sym.assert_stmt
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.assert_stmt

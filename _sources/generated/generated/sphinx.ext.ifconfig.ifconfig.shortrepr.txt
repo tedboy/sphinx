@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.shortrepr
+======================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.shortrepr

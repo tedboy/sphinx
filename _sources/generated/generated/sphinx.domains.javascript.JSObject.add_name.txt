@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.add_name
+===========================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSObject.add_name

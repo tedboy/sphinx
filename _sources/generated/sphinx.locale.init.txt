@@ -1,0 +1,6 @@
+sphinx.locale.init
+==================
+
+.. currentmodule:: sphinx.locale
+
+.. autofunction:: init

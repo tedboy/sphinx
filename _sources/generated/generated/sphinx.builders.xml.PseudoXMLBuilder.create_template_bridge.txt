@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLBuilder.create_template_bridge
+===========================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: PseudoXMLBuilder.create_template_bridge

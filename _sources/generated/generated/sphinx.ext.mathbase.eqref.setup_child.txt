@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.setup_child
+=====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.setup_child

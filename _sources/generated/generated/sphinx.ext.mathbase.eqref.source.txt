@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.source
+================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: eqref.source

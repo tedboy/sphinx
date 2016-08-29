@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.supported_image_types
+==================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.supported_image_types

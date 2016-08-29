@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.expand_prog_name
+===================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.expand_prog_name

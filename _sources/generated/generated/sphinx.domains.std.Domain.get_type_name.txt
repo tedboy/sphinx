@@ -1,0 +1,6 @@
+sphinx.domains.std.Domain.get_type_name
+=======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Domain.get_type_name

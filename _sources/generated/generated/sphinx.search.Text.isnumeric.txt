@@ -1,0 +1,6 @@
+sphinx.search.Text.isnumeric
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.isnumeric

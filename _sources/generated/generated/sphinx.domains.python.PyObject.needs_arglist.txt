@@ -1,0 +1,6 @@
+sphinx.domains.python.PyObject.needs_arglist
+============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyObject.needs_arglist

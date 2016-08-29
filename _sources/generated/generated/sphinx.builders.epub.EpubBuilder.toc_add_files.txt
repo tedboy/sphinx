@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.toc_add_files
+==============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.toc_add_files

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.document
+=====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: ifconfig.document

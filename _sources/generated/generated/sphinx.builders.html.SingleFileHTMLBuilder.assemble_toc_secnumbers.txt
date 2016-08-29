@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.assemble_toc_secnumbers
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.assemble_toc_secnumbers

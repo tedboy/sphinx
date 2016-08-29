@@ -1,0 +1,6 @@
+sphinx.locale.UserString.isdigit
+================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.isdigit

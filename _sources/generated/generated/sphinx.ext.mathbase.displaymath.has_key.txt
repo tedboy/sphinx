@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.has_key
+=======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.has_key

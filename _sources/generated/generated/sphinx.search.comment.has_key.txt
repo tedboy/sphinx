@@ -1,0 +1,6 @@
+sphinx.search.comment.has_key
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.has_key

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.versioning_compare
+====================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: Builder.versioning_compare

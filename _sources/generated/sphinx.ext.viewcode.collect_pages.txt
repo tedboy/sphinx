@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.collect_pages
+=================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. autofunction:: collect_pages

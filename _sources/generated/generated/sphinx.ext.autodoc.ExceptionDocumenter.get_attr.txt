@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.get_attr
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.get_attr

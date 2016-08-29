@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.copy_download_files
+================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.copy_download_files

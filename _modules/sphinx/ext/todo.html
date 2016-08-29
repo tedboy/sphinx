@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.ext.todo &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.ext.todo</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.ext.todo</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.ext.todo</span>
+<span class="sd">    ~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Allow todos to be inserted into your documentation.  Inclusion of todos can</span>
+<span class="sd">    be switched of by a configuration variable.  The todolist directive collects</span>
+<span class="sd">    all todos of your project and lists them along with a backlink to the</span>
+<span class="sd">    original location.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">directives</span>
+
+<span class="kn">import</span> <span class="nn">sphinx</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">sphinx.environment</span> <span class="kn">import</span> <span class="n">NoUri</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.nodes</span> <span class="kn">import</span> <span class="n">set_source_info</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.compat</span> <span class="kn">import</span> <span class="n">Directive</span><span class="p">,</span> <span class="n">make_admonition</span>
+
+
+<div class="viewcode-block" id="todo_node"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.todo.todo_node.html#sphinx.builders.html.todo_node">[docs]</a><span class="k">class</span> <span class="nc">todo_node</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Admonition</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="todolist"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.todo.todolist.html#sphinx.builders.html.todolist">[docs]</a><span class="k">class</span> <span class="nc">todolist</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">General</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Todo"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.todo.Todo.html#sphinx.builders.html.Todo">[docs]</a><span class="k">class</span> <span class="nc">Todo</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A todo entry, displayed (if configured) in the form of an admonition.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">class_option</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="Todo.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.todo.Todo.run.html#sphinx.builders.html.Todo.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">targetid</span> <span class="o">=</span> <span class="s1">&#39;index-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">env</span><span class="o">.</span><span class="n">new_serialno</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+        <span class="n">targetnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">targetid</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;admonition-todo&#39;</span><span class="p">]</span>
+
+        <span class="n">ad</span> <span class="o">=</span> <span class="n">make_admonition</span><span class="p">(</span><span class="n">todo_node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">[</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Todo&#39;</span><span class="p">)],</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_offset</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">block_text</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span><span class="p">)</span>
+        <span class="n">set_source_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ad</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">targetnode</span><span class="p">]</span> <span class="o">+</span> <span class="n">ad</span></div></div>
+
+
+<div class="viewcode-block" id="process_todos"><a class="viewcode-back" href="../../../generated/sphinx.ext.todo.process_todos.html#sphinx.builders.html.process_todos">[docs]</a><span class="k">def</span> <span class="nf">process_todos</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+    <span class="c1"># collect all todos in the environment</span>
+    <span class="c1"># this is not done in the directive itself because it some transformations</span>
+    <span class="c1"># must have already been run, e.g. substitutions</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">todo_node</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">targetnode</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">targetnode</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="n">targetnode</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">newnode</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span>
+        <span class="k">del</span> <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;docname&#39;</span><span class="p">:</span> <span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span>
+            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">source</span> <span class="ow">or</span> <span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">),</span>
+            <span class="s1">&#39;lineno&#39;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">line</span><span class="p">,</span>
+            <span class="s1">&#39;todo&#39;</span><span class="p">:</span> <span class="n">newnode</span><span class="p">,</span>
+            <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="n">targetnode</span><span class="p">,</span>
+        <span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="TodoList"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.todo.TodoList.html#sphinx.builders.html.TodoList">[docs]</a><span class="k">class</span> <span class="nc">TodoList</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A list of all todo entries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="TodoList.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.todo.TodoList.run.html#sphinx.builders.html.TodoList.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Simply insert an empty todolist node which will be replaced later</span>
+        <span class="c1"># when process_todo_nodes is called</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">todolist</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)]</span></div></div>
+
+
+<div class="viewcode-block" id="process_todo_nodes"><a class="viewcode-back" href="../../../generated/sphinx.ext.todo.process_todo_nodes.html#sphinx.builders.html.process_todo_nodes">[docs]</a><span class="k">def</span> <span class="nf">process_todo_nodes</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">doctree</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;todo_include_todos&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">todo_node</span><span class="p">):</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="c1"># Replace all todolist nodes with a list of the collected todos.</span>
+    <span class="c1"># Augment each todo with a backlink to the original location.</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">todolist</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;todo_include_todos&#39;</span><span class="p">]:</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">replace_self</span><span class="p">([])</span>
+            <span class="k">continue</span>
+
+        <span class="n">content</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">todo_info</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="p">:</span>
+            <span class="n">para</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;todo-source&#39;</span><span class="p">])</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;(The &lt;&lt;original entry&gt;&gt; is located in &#39;</span>
+                            <span class="s1">&#39; </span><span class="si">%s</span><span class="s1">, line </span><span class="si">%d</span><span class="s1">.)&#39;</span><span class="p">)</span> <span class="o">%</span> \
+                <span class="p">(</span><span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">],</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;lineno&#39;</span><span class="p">])</span>
+            <span class="n">desc1</span> <span class="o">=</span> <span class="n">description</span><span class="p">[:</span><span class="n">description</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;&lt;&lt;&#39;</span><span class="p">)]</span>
+            <span class="n">desc2</span> <span class="o">=</span> <span class="n">description</span><span class="p">[</span><span class="n">description</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">:]</span>
+            <span class="n">para</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc1</span><span class="p">)</span>
+
+            <span class="c1"># Create a reference</span>
+            <span class="n">newnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">internal</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">innernode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">emphasis</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;original entry&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;original entry&#39;</span><span class="p">))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_relative_uri</span><span class="p">(</span>
+                    <span class="n">fromdocname</span><span class="p">,</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">])</span>
+                <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">][</span><span class="s1">&#39;refid&#39;</span><span class="p">]</span>
+            <span class="k">except</span> <span class="n">NoUri</span><span class="p">:</span>
+                <span class="c1"># ignore if no URI can be determined, e.g. for LaTeX output</span>
+                <span class="k">pass</span>
+            <span class="n">newnode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">innernode</span><span class="p">)</span>
+            <span class="n">para</span> <span class="o">+=</span> <span class="n">newnode</span>
+            <span class="n">para</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="n">desc2</span><span class="p">)</span>
+
+            <span class="c1"># (Recursively) resolve references in the todo content</span>
+            <span class="n">todo_entry</span> <span class="o">=</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;todo&#39;</span><span class="p">]</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">resolve_references</span><span class="p">(</span><span class="n">todo_entry</span><span class="p">,</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">],</span>
+                                   <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="p">)</span>
+
+            <span class="c1"># Insert into the todolist</span>
+            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">todo_entry</span><span class="p">)</span>
+            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">para</span><span class="p">)</span>
+
+        <span class="n">node</span><span class="o">.</span><span class="n">replace_self</span><span class="p">(</span><span class="n">content</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="purge_todos"><a class="viewcode-back" href="../../../generated/sphinx.ext.todo.purge_todos.html#sphinx.builders.html.purge_todos">[docs]</a><span class="k">def</span> <span class="nf">purge_todos</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">docname</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[</span><span class="n">todo</span> <span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span>
+                          <span class="k">if</span> <span class="n">todo</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">docname</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="merge_info"><a class="viewcode-back" href="../../../generated/sphinx.ext.todo.merge_info.html#sphinx.builders.html.merge_info">[docs]</a><span class="k">def</span> <span class="nf">merge_info</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">docnames</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="visit_todo_node"><a class="viewcode-back" href="../../../generated/sphinx.ext.todo.visit_todo_node.html#sphinx.builders.html.visit_todo_node">[docs]</a><span class="k">def</span> <span class="nf">visit_todo_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+    <span class="c1"># self.visit_admonition(node, &#39;todo&#39;)</span>
+
+
+<div class="viewcode-block" id="depart_todo_node"><a class="viewcode-back" href="../../../generated/sphinx.ext.todo.depart_todo_node.html#sphinx.builders.html.depart_todo_node">[docs]</a><span class="k">def</span> <span class="nf">depart_todo_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../../generated/sphinx.ext.todo.setup.html#sphinx.builders.html.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;todo_include_todos&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">todolist</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">todo_node</span><span class="p">,</span>
+                 <span class="n">html</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">),</span>
+                 <span class="n">latex</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">),</span>
+                 <span class="n">text</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">),</span>
+                 <span class="n">man</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">),</span>
+                 <span class="n">texinfo</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">))</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s1">&#39;todo&#39;</span><span class="p">,</span> <span class="n">Todo</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s1">&#39;todolist&#39;</span><span class="p">,</span> <span class="n">TodoList</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;doctree-read&#39;</span><span class="p">,</span> <span class="n">process_todos</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;doctree-resolved&#39;</span><span class="p">,</span> <span class="n">process_todo_nodes</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;env-purge-doc&#39;</span><span class="p">,</span> <span class="n">purge_todos</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;env-merge-info&#39;</span><span class="p">,</span> <span class="n">merge_info</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">__display_version__</span><span class="p">,</span> <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

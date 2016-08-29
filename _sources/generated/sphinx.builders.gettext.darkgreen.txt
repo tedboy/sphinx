@@ -1,0 +1,6 @@
+sphinx.builders.gettext.darkgreen
+=================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: darkgreen

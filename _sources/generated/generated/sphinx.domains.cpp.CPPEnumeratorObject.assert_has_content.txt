@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.assert_has_content
+=========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.assert_has_content

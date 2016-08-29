@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_title_reference
+=====================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_title_reference

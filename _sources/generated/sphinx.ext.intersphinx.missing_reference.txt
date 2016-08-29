@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.missing_reference
+========================================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. autofunction:: missing_reference

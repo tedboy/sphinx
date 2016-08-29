@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.5. sphinx.domains.python &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../index.html"/>
+        <link rel="up" title="5. sphinx.domains" href="../sphinx.domains.html"/>
+        <link rel="next" title="5.5.1.1. sphinx.domains.python.iteritems" href="sphinx.domains.python.iteritems.html"/>
+        <link rel="prev" title="5.4.2.12.1.3. sphinx.domains.javascript.XRefRole.result_nodes" href="generated/sphinx.domains.javascript.XRefRole.result_nodes.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.html">5.1. sphinx.domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.c.html">5.2. sphinx.domains.c</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.cpp.html">5.3. sphinx.domains.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.javascript.html">5.4. sphinx.domains.javascript</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">5.5. sphinx.domains.python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">5.5.1. Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.iteritems.html">5.5.1.1. sphinx.domains.python.iteritems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.l_.html">5.5.1.2. sphinx.domains.python.l</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.make_refnode.html">5.5.1.3. sphinx.domains.python.make_refnode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">5.5.2. Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.Directive.html">5.5.2.1. sphinx.domains.python.Directive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.Domain.html">5.5.2.2. sphinx.domains.python.Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.Field.html">5.5.2.3. sphinx.domains.python.Field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.GroupedField.html">5.5.2.4. sphinx.domains.python.GroupedField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.Index.html">5.5.2.5. sphinx.domains.python.Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.ObjType.html">5.5.2.6. sphinx.domains.python.ObjType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.ObjectDescription.html">5.5.2.7. sphinx.domains.python.ObjectDescription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyClasslike.html">5.5.2.8. sphinx.domains.python.PyClasslike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyClassmember.html">5.5.2.9. sphinx.domains.python.PyClassmember</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyCurrentModule.html">5.5.2.10. sphinx.domains.python.PyCurrentModule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyDecoratorFunction.html">5.5.2.11. sphinx.domains.python.PyDecoratorFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyDecoratorMethod.html">5.5.2.12. sphinx.domains.python.PyDecoratorMethod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyDecoratorMixin.html">5.5.2.13. sphinx.domains.python.PyDecoratorMixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyField.html">5.5.2.14. sphinx.domains.python.PyField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyModule.html">5.5.2.15. sphinx.domains.python.PyModule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyModulelevel.html">5.5.2.16. sphinx.domains.python.PyModulelevel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyObject.html">5.5.2.17. sphinx.domains.python.PyObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyTypedField.html">5.5.2.18. sphinx.domains.python.PyTypedField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyXRefRole.html">5.5.2.19. sphinx.domains.python.PyXRefRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PyXrefMixin.html">5.5.2.20. sphinx.domains.python.PyXrefMixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PythonDomain.html">5.5.2.21. sphinx.domains.python.PythonDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.PythonModuleIndex.html">5.5.2.22. sphinx.domains.python.PythonModuleIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.TypedField.html">5.5.2.23. sphinx.domains.python.TypedField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.domains.python.XRefRole.html">5.5.2.24. sphinx.domains.python.XRefRole</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.html">5.1. sphinx.domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.domains.std.html">5.6. sphinx.domains.std</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a> &raquo;</li>
+        
+      <li>5.5. sphinx.domains.python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/sphinx.domains.python.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-sphinx.domains.python"></span><div class="section" id="sphinx-domains-python">
+<h1>5.5. sphinx.domains.python<a class="headerlink" href="#sphinx-domains-python" title="Permalink to this headline">¶</a></h1>
+<p>The Python domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Copyright 2007-2016 by the Sphinx team, see AUTHORS.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD, see LICENSE for details.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="functions">
+<h2>5.5.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.python.iteritems.html#sphinx.domains.python.iteritems" title="sphinx.domains.python.iteritems"><code class="xref py py-obj docutils literal"><span class="pre">iteritems</span></code></a>(d,&nbsp;**kw)</td>
+<td>Return an iterator over the (key, value) pairs of a dictionary.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.python.l_.html#sphinx.domains.python.l_" title="sphinx.domains.python.l_"><code class="xref py py-obj docutils literal"><span class="pre">l_</span></code></a>(string)</td>
+<td>A lazy version of <cite>gettext</cite>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.python.make_refnode.html#sphinx.domains.python.make_refnode" title="sphinx.domains.python.make_refnode"><code class="xref py py-obj docutils literal"><span class="pre">make_refnode</span></code></a>(builder,&nbsp;fromdocname,&nbsp;...[,&nbsp;title])</td>
+<td>Shortcut to create a reference node.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="classes">
+<h2>5.5.2. Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.Directive.html#sphinx.domains.python.Directive" title="sphinx.domains.python.Directive"><code class="xref py py-obj docutils literal"><span class="pre">Directive</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td>Base class for reStructuredText directives.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.Domain.html#sphinx.domains.python.Domain" title="sphinx.domains.python.Domain"><code class="xref py py-obj docutils literal"><span class="pre">Domain</span></code></a>(env)</td>
+<td>A Domain is meant to be a group of &#8220;object&#8221; description directives for objects of a similar nature, and corresponding roles to create references to them.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.Field.html#sphinx.domains.python.Field" title="sphinx.domains.python.Field"><code class="xref py py-obj docutils literal"><span class="pre">Field</span></code></a>(name[,&nbsp;names,&nbsp;label,&nbsp;has_arg,&nbsp;...])</td>
+<td>A doc field that is never grouped.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.GroupedField.html#sphinx.domains.python.GroupedField" title="sphinx.domains.python.GroupedField"><code class="xref py py-obj docutils literal"><span class="pre">GroupedField</span></code></a>(name[,&nbsp;names,&nbsp;label,&nbsp;rolename,&nbsp;...])</td>
+<td>A doc field that is grouped; i.e., all fields of that type will be transformed into one field with its body being a bulleted list.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.Index.html#sphinx.domains.python.Index" title="sphinx.domains.python.Index"><code class="xref py py-obj docutils literal"><span class="pre">Index</span></code></a>(domain)</td>
+<td>An Index is the description for a domain-specific index.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.ObjType.html#sphinx.domains.python.ObjType" title="sphinx.domains.python.ObjType"><code class="xref py py-obj docutils literal"><span class="pre">ObjType</span></code></a>(lname,&nbsp;*roles,&nbsp;**attrs)</td>
+<td>An ObjType is the description for a type of object that a domain can document.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.ObjectDescription.html#sphinx.domains.python.ObjectDescription" title="sphinx.domains.python.ObjectDescription"><code class="xref py py-obj docutils literal"><span class="pre">ObjectDescription</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>Directive to describe a class, function or similar object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.PyClasslike.html#sphinx.domains.python.PyClasslike" title="sphinx.domains.python.PyClasslike"><code class="xref py py-obj docutils literal"><span class="pre">PyClasslike</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>Description of a class-like object (classes, interfaces, exceptions).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.PyClassmember.html#sphinx.domains.python.PyClassmember" title="sphinx.domains.python.PyClassmember"><code class="xref py py-obj docutils literal"><span class="pre">PyClassmember</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>Description of a class member (methods, attributes).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.PyCurrentModule.html#sphinx.domains.python.PyCurrentModule" title="sphinx.domains.python.PyCurrentModule"><code class="xref py py-obj docutils literal"><span class="pre">PyCurrentModule</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>This directive is just to tell Sphinx that we&#8217;re documenting stuff in module foo, but links to module foo won&#8217;t lead here.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.PyDecoratorFunction.html#sphinx.domains.python.PyDecoratorFunction" title="sphinx.domains.python.PyDecoratorFunction"><code class="xref py py-obj docutils literal"><span class="pre">PyDecoratorFunction</span></code></a>(name,&nbsp;arguments,&nbsp;...)</td>
+<td>Directive to mark functions meant to be used as decorators.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.PyDecoratorMethod.html#sphinx.domains.python.PyDecoratorMethod" title="sphinx.domains.python.PyDecoratorMethod"><code class="xref py py-obj docutils literal"><span class="pre">PyDecoratorMethod</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>Directive to mark methods meant to be used as decorators.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.PyDecoratorMixin.html#sphinx.domains.python.PyDecoratorMixin" title="sphinx.domains.python.PyDecoratorMixin"><code class="xref py py-obj docutils literal"><span class="pre">PyDecoratorMixin</span></code></a></td>
+<td>Mixin for decorator directives.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.PyField.html#sphinx.domains.python.PyField" title="sphinx.domains.python.PyField"><code class="xref py py-obj docutils literal"><span class="pre">PyField</span></code></a>(name[,&nbsp;names,&nbsp;label,&nbsp;has_arg,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.PyModule.html#sphinx.domains.python.PyModule" title="sphinx.domains.python.PyModule"><code class="xref py py-obj docutils literal"><span class="pre">PyModule</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td>Directive to mark description of a new module.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.PyModulelevel.html#sphinx.domains.python.PyModulelevel" title="sphinx.domains.python.PyModulelevel"><code class="xref py py-obj docutils literal"><span class="pre">PyModulelevel</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>Description of an object on module level (functions, data).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.PyObject.html#sphinx.domains.python.PyObject" title="sphinx.domains.python.PyObject"><code class="xref py py-obj docutils literal"><span class="pre">PyObject</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td>Description of a general Python object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.PyTypedField.html#sphinx.domains.python.PyTypedField" title="sphinx.domains.python.PyTypedField"><code class="xref py py-obj docutils literal"><span class="pre">PyTypedField</span></code></a>(name[,&nbsp;names,&nbsp;typenames,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.PyXRefRole.html#sphinx.domains.python.PyXRefRole" title="sphinx.domains.python.PyXRefRole"><code class="xref py py-obj docutils literal"><span class="pre">PyXRefRole</span></code></a>([fix_parens,&nbsp;lowercase,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.PyXrefMixin.html#sphinx.domains.python.PyXrefMixin" title="sphinx.domains.python.PyXrefMixin"><code class="xref py py-obj docutils literal"><span class="pre">PyXrefMixin</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.PythonDomain.html#sphinx.domains.python.PythonDomain" title="sphinx.domains.python.PythonDomain"><code class="xref py py-obj docutils literal"><span class="pre">PythonDomain</span></code></a>(env)</td>
+<td>Python language domain.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.PythonModuleIndex.html#sphinx.domains.python.PythonModuleIndex" title="sphinx.domains.python.PythonModuleIndex"><code class="xref py py-obj docutils literal"><span class="pre">PythonModuleIndex</span></code></a>(domain)</td>
+<td>Index subclass to provide the Python module index.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.domains.python.TypedField.html#sphinx.domains.python.TypedField" title="sphinx.domains.python.TypedField"><code class="xref py py-obj docutils literal"><span class="pre">TypedField</span></code></a>(name[,&nbsp;names,&nbsp;typenames,&nbsp;label,&nbsp;...])</td>
+<td>A doc field that is grouped and has type information for the arguments.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.domains.python.XRefRole.html#sphinx.domains.python.XRefRole" title="sphinx.domains.python.XRefRole"><code class="xref py py-obj docutils literal"><span class="pre">XRefRole</span></code></a>([fix_parens,&nbsp;lowercase,&nbsp;nodeclass,&nbsp;...])</td>
+<td>A generic cross-referencing role.</td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.domains.python.iteritems.html" class="btn btn-neutral float-right" title="5.5.1.1. sphinx.domains.python.iteritems" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/sphinx.domains.javascript.XRefRole.result_nodes.html" class="btn btn-neutral" title="5.4.2.12.1.3. sphinx.domains.javascript.XRefRole.result_nodes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

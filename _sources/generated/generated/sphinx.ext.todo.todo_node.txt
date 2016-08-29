@@ -1,0 +1,87 @@
+sphinx.ext.todo.todo_node
+=========================
+.. currentmodule:: sphinx.ext.todo
+.. autoclass:: todo_node
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~todo_node.__init__
+   ~todo_node.append
+   ~todo_node.append_attr_list
+   ~todo_node.asdom
+   ~todo_node.astext
+   ~todo_node.attlist
+   ~todo_node.clear
+   ~todo_node.coerce_append_attr_list
+   ~todo_node.copy
+   ~todo_node.copy_attr_coerce
+   ~todo_node.copy_attr_concatenate
+   ~todo_node.copy_attr_consistent
+   ~todo_node.copy_attr_convert
+   ~todo_node.deepcopy
+   ~todo_node.delattr
+   ~todo_node.emptytag
+   ~todo_node.endtag
+   ~todo_node.extend
+   ~todo_node.first_child_matching_class
+   ~todo_node.first_child_not_matching_class
+   ~todo_node.get
+   ~todo_node.get_language_code
+   ~todo_node.has_key
+   ~todo_node.hasattr
+   ~todo_node.index
+   ~todo_node.insert
+   ~todo_node.is_not_default
+   ~todo_node.is_not_known_attribute
+   ~todo_node.is_not_list_attribute
+   ~todo_node.next_node
+   ~todo_node.non_default_attributes
+   ~todo_node.note_referenced_by
+   ~todo_node.pformat
+   ~todo_node.pop
+   ~todo_node.remove
+   ~todo_node.replace
+   ~todo_node.replace_attr
+   ~todo_node.replace_self
+   ~todo_node.set_class
+   ~todo_node.setdefault
+   ~todo_node.setup_child
+   ~todo_node.shortrepr
+   ~todo_node.starttag
+   ~todo_node.traverse
+   ~todo_node.update_all_atts
+   ~todo_node.update_all_atts_coercion
+   ~todo_node.update_all_atts_concatenating
+   ~todo_node.update_all_atts_consistantly
+   ~todo_node.update_all_atts_convert
+   ~todo_node.update_basic_atts
+   ~todo_node.walk
+   ~todo_node.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~todo_node.basic_attributes
+   ~todo_node.child_text_separator
+   ~todo_node.document
+   ~todo_node.known_attributes
+   ~todo_node.line
+   ~todo_node.list_attributes
+   ~todo_node.local_attributes
+   ~todo_node.parent
+   ~todo_node.source
+   ~todo_node.tagname
+

@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.InheritanceGraph.default_edge_attrs
+==================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoattribute:: InheritanceGraph.default_edge_attrs

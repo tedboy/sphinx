@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.booleans
+=============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: OptionParser.booleans

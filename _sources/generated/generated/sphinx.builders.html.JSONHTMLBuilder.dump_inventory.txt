@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.dump_inventory
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.dump_inventory

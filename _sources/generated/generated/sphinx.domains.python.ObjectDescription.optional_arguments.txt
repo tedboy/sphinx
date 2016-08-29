@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.optional_arguments
+==========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: ObjectDescription.optional_arguments

@@ -1,0 +1,6 @@
+sphinx.domains.CPPDomain.initial_data
+=====================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CPPDomain.initial_data

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.append
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.append

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclSpecsSimple.prefix_nested_name
+========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclSpecsSimple.prefix_nested_name

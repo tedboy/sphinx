@@ -1,0 +1,6 @@
+sphinx.domains.python.Domain.get_type_name
+==========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Domain.get_type_name

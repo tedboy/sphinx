@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.write_colspecs
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.write_colspecs

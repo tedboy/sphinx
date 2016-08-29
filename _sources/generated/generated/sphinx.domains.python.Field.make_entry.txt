@@ -1,0 +1,6 @@
+sphinx.domains.python.Field.make_entry
+======================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Field.make_entry

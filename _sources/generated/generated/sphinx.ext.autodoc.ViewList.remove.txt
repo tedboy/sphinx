@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.remove
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.remove

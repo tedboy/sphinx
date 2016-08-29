@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.shortrepr
+==================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.shortrepr

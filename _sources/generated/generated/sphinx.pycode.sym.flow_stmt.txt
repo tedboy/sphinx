@@ -1,0 +1,6 @@
+sphinx.pycode.sym.flow_stmt
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.flow_stmt

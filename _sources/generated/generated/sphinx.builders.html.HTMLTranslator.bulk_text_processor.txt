@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.bulk_text_processor
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.bulk_text_processor

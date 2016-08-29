@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.get_builder_config
+======================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: CoverageBuilder.get_builder_config

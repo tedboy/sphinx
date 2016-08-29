@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClassmember.debug
+=========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClassmember.debug

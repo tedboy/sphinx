@@ -1,0 +1,6 @@
+sphinx.search.SearchLanguage.stopwords
+======================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: SearchLanguage.stopwords

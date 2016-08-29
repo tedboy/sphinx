@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleAnalyzer.find_tags
+===========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleAnalyzer.find_tags

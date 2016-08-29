@@ -1,0 +1,6 @@
+sphinx.domains.std.Program.add_name
+===================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Program.add_name

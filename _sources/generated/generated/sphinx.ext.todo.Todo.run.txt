@@ -1,0 +1,6 @@
+sphinx.ext.todo.Todo.run
+========================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Todo.run

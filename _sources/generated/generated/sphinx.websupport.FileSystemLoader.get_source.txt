@@ -1,0 +1,6 @@
+sphinx.websupport.FileSystemLoader.get_source
+=============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: FileSystemLoader.get_source

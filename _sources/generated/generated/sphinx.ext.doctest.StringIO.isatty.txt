@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.isatty
+==================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.isatty

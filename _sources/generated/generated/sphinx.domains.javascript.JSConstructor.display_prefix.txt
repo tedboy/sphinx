@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.display_prefix
+======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSConstructor.display_prefix

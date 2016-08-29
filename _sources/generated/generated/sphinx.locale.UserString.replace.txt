@@ -1,0 +1,6 @@
+sphinx.locale.UserString.replace
+================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.replace

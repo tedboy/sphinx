@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.members_option
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: members_option

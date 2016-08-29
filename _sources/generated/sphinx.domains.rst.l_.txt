@@ -1,0 +1,6 @@
+sphinx.domains.rst.l_
+=====================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autofunction:: l_

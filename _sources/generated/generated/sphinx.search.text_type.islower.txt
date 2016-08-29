@@ -1,0 +1,6 @@
+sphinx.search.text_type.islower
+===============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.islower

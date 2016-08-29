@@ -1,0 +1,6 @@
+sphinx.locale.text_type.isdigit
+===============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.isdigit

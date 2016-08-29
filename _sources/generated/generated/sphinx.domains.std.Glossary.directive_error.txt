@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.directive_error
+===========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Glossary.directive_error

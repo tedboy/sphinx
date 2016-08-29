@@ -1,0 +1,6 @@
+sphinx.builders.text.TextBuilder.post_process_images
+====================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: TextBuilder.post_process_images

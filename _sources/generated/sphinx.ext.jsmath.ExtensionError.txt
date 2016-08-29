@@ -1,0 +1,6 @@
+sphinx.ext.jsmath.ExtensionError
+================================
+
+.. currentmodule:: sphinx.ext.jsmath
+
+.. autoexception:: ExtensionError

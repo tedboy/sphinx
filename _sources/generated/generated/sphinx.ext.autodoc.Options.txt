@@ -1,0 +1,36 @@
+sphinx.ext.autodoc.Options
+==========================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: Options
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Options.clear
+   ~Options.copy
+   ~Options.fromkeys
+   ~Options.get
+   ~Options.has_key
+   ~Options.items
+   ~Options.iteritems
+   ~Options.iterkeys
+   ~Options.itervalues
+   ~Options.keys
+   ~Options.pop
+   ~Options.popitem
+   ~Options.setdefault
+   ~Options.update
+   ~Options.values
+   ~Options.viewitems
+   ~Options.viewkeys
+   ~Options.viewvalues
+
+
+
+
+

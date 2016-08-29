@@ -1,0 +1,6 @@
+sphinx.search.title.index
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.index

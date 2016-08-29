@@ -1,0 +1,6 @@
+sphinx.locale.UserString.capitalize
+===================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.capitalize

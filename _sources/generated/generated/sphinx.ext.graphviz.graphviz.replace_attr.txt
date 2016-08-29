@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.replace_attr
+=========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.replace_attr

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.cleanup
+=====================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: MessageCatalogBuilder.cleanup

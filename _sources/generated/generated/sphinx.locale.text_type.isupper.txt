@@ -1,0 +1,6 @@
+sphinx.locale.text_type.isupper
+===============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.isupper

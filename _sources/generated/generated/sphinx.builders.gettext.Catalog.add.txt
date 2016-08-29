@@ -1,0 +1,6 @@
+sphinx.builders.gettext.Catalog.add
+===================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: Catalog.add

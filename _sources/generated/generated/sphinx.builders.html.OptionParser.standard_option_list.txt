@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.standard_option_list
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: OptionParser.standard_option_list

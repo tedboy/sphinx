@@ -1,0 +1,6 @@
+sphinx.util.Tee.write
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: Tee.write

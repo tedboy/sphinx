@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.destination
+===========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.destination

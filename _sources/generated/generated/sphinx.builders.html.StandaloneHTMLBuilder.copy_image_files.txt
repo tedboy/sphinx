@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.copy_image_files
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.copy_image_files

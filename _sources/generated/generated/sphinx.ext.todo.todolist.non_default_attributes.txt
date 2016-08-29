@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.non_default_attributes
+===============================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.non_default_attributes

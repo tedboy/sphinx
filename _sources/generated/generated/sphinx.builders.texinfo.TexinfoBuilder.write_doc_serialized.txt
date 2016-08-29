@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.write_doc_serialized
+===========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoBuilder.write_doc_serialized

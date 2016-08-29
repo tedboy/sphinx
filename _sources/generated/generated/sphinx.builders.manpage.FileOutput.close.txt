@@ -1,0 +1,6 @@
+sphinx.builders.manpage.FileOutput.close
+========================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: FileOutput.close

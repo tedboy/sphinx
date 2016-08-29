@@ -1,0 +1,6 @@
+sphinx.domains.c.ObjectDescription.directive_error
+==================================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: ObjectDescription.directive_error

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.check_for_whole_start_tag
+=====================================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.check_for_whole_start_tag

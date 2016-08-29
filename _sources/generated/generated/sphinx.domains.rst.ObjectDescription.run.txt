@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.run
+========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.run

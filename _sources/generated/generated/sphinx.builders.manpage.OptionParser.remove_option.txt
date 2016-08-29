@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.remove_option
+==================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.remove_option

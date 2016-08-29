@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math_role
+=============================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: math_role

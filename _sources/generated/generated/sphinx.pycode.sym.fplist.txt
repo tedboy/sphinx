@@ -1,0 +1,6 @@
+sphinx.pycode.sym.fplist
+========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.fplist

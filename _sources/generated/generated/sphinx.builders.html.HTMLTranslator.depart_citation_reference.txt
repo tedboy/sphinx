@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_citation_reference
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_citation_reference

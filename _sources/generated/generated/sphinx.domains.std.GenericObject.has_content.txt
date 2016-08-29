@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.has_content
+============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: GenericObject.has_content

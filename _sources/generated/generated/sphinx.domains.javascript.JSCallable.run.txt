@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.run
+========================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.run

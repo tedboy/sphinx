@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.read_rest
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.read_rest

@@ -1,0 +1,6 @@
+sphinx.ext.doctest.binary_type.isupper
+======================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: binary_type.isupper

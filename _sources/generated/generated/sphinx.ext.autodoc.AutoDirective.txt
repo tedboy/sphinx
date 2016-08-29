@@ -1,0 +1,41 @@
+sphinx.ext.autodoc.AutoDirective
+================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: AutoDirective
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~AutoDirective.__init__
+   ~AutoDirective.add_name
+   ~AutoDirective.assert_has_content
+   ~AutoDirective.debug
+   ~AutoDirective.directive_error
+   ~AutoDirective.error
+   ~AutoDirective.info
+   ~AutoDirective.run
+   ~AutoDirective.severe
+   ~AutoDirective.warn
+   ~AutoDirective.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~AutoDirective.final_argument_whitespace
+   ~AutoDirective.has_content
+   ~AutoDirective.option_spec
+   ~AutoDirective.optional_arguments
+   ~AutoDirective.required_arguments
+

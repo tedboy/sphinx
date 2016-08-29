@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.Builder.build_all
+=========================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: Builder.build_all

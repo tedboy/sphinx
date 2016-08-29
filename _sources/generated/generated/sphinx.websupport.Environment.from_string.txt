@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.from_string
+=========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.from_string

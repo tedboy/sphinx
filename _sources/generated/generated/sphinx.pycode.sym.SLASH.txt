@@ -1,0 +1,6 @@
+sphinx.pycode.sym.SLASH
+=======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.SLASH

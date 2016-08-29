@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.get
+=============================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.get

@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.load_indexer
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.load_indexer

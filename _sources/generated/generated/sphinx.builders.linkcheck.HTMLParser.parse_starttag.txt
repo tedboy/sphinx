@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.parse_starttag
+===================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.parse_starttag

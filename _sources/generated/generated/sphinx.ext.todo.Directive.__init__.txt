@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.__init__
+==================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Directive.__init__

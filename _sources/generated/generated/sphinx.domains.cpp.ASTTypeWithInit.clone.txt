@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTypeWithInit.clone
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTypeWithInit.clone

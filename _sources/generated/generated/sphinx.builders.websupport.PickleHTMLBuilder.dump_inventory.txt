@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.dump_inventory
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.dump_inventory

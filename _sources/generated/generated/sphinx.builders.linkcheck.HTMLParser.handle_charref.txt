@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.handle_charref
+===================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.handle_charref

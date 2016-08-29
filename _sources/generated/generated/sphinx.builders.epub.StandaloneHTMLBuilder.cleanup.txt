@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.cleanup
+==================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.cleanup

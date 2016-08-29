@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.thresholds
+===============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: OptionParser.thresholds

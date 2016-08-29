@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.finish
+========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.finish

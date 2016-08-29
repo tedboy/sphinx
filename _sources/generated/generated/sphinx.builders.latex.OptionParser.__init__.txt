@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.__init__
+===========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.__init__

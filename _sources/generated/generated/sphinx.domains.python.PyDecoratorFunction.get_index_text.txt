@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorFunction.get_index_text
+========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorFunction.get_index_text

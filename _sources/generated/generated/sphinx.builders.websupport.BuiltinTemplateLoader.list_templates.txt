@@ -1,0 +1,6 @@
+sphinx.builders.websupport.BuiltinTemplateLoader.list_templates
+===============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: BuiltinTemplateLoader.list_templates

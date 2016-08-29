@@ -1,0 +1,6 @@
+sphinx.domains.StandardDomain.initial_data
+==========================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: StandardDomain.initial_data

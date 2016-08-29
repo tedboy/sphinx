@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.__init__
+====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.__init__

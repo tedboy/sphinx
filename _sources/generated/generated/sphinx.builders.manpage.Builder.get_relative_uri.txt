@@ -1,0 +1,6 @@
+sphinx.builders.manpage.Builder.get_relative_uri
+================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: Builder.get_relative_uri

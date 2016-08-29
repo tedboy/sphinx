@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.create_template_bridge
+==========================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: CoverageBuilder.create_template_bridge

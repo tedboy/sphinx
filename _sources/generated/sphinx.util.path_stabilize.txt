@@ -1,0 +1,6 @@
+sphinx.util.path_stabilize
+==========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: path_stabilize

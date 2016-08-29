@@ -1,0 +1,6 @@
+sphinx.ext.todo.Todo.debug
+==========================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Todo.debug

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.embedded
+=====================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.embedded

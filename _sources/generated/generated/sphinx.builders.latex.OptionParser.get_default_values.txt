@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.get_default_values
+=====================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.get_default_values

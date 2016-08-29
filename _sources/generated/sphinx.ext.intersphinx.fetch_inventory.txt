@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.fetch_inventory
+======================================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. autofunction:: fetch_inventory

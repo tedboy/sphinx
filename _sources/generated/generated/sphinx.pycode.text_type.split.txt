@@ -1,0 +1,6 @@
+sphinx.pycode.text_type.split
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: text_type.split

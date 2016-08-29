@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.settings_default_overrides
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.settings_default_overrides

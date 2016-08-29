@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.gen_indices
+==================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.gen_indices

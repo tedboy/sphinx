@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.get_outfilename
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.get_outfilename

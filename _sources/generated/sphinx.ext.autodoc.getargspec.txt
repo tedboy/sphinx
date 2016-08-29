@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.getargspec
+=============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: getargspec

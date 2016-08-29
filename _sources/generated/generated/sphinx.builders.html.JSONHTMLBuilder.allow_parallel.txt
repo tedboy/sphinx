@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.allow_parallel
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.allow_parallel

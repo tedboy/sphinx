@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.add_name
+====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.add_name

@@ -1,0 +1,45 @@
+sphinx.domains.python.PythonDomain
+==================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PythonDomain
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PythonDomain.__init__
+   ~PythonDomain.clear_doc
+   ~PythonDomain.directive
+   ~PythonDomain.find_obj
+   ~PythonDomain.get_objects
+   ~PythonDomain.get_type_name
+   ~PythonDomain.merge_domaindata
+   ~PythonDomain.process_doc
+   ~PythonDomain.resolve_any_xref
+   ~PythonDomain.resolve_xref
+   ~PythonDomain.role
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PythonDomain.dangling_warnings
+   ~PythonDomain.data_version
+   ~PythonDomain.directives
+   ~PythonDomain.indices
+   ~PythonDomain.initial_data
+   ~PythonDomain.label
+   ~PythonDomain.name
+   ~PythonDomain.object_types
+   ~PythonDomain.roles
+

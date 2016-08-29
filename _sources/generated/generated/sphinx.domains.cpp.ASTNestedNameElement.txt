@@ -1,0 +1,26 @@
+sphinx.domains.cpp.ASTNestedNameElement
+=======================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTNestedNameElement
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTNestedNameElement.__init__
+   ~ASTNestedNameElement.clone
+   ~ASTNestedNameElement.describe_signature
+   ~ASTNestedNameElement.get_id_v1
+   ~ASTNestedNameElement.get_id_v2
+   ~ASTNestedNameElement.get_name
+   ~ASTNestedNameElement.get_name_no_template
+   ~ASTNestedNameElement.prefix_nested_name
+
+
+
+
+

@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.write_genindex
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.write_genindex

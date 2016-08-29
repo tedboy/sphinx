@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.parse_enum_object
+=====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.parse_enum_object

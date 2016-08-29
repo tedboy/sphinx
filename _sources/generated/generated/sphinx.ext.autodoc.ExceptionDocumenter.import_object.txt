@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.import_object
+====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.import_object

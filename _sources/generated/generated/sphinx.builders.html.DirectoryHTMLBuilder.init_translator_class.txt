@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.init_translator_class
+===============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.init_translator_class

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.create_template_bridge
+========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.create_template_bridge

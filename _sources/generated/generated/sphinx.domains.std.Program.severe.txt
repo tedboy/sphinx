@@ -1,0 +1,6 @@
+sphinx.domains.std.Program.severe
+=================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Program.severe

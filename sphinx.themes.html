@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. sphinx/themes &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="index.html"/>
+        <link rel="next" title="3. sphinx.ext" href="sphinx.ext.html"/>
+        <link rel="prev" title="1.1.3. sphinx.make_main" href="generated/sphinx.make_main.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>2. sphinx/themes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sphinx.themes.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-themes">
+<h1>2. sphinx/themes<a class="headerlink" href="#sphinx-themes" title="Permalink to this headline">¶</a></h1>
+<p>Contains this template html files (will be informative for me to study them)</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133</pre></div></td><td class="code"><div class="highlight"><pre><span></span>~/sphinx/themes $ tree
+.
+├── agogo
+│   ├── layout.html
+│   ├── static
+│   │   ├── agogo.css_t
+│   │   ├── bgfooter.png
+│   │   └── bgtop.png
+│   └── theme.conf
+├── basic
+│   ├── changes
+│   │   ├── frameset.html
+│   │   ├── rstsource.html
+│   │   └── versionchanges.html
+│   ├── defindex.html
+│   ├── domainindex.html
+│   ├── genindex.html
+│   ├── genindex-single.html
+│   ├── genindex-split.html
+│   ├── globaltoc.html
+│   ├── layout.html
+│   ├── localtoc.html
+│   ├── opensearch.xml
+│   ├── page.html
+│   ├── relations.html
+│   ├── searchbox.html
+│   ├── search.html
+│   ├── searchresults.html
+│   ├── sourcelink.html
+│   ├── static
+│   │   ├── ajax-loader.gif
+│   │   ├── basic.css_t
+│   │   ├── comment-bright.png
+│   │   ├── comment-close.png
+│   │   ├── comment.png
+│   │   ├── doctools.js
+│   │   ├── down.png
+│   │   ├── down-pressed.png
+│   │   ├── file.png
+│   │   ├── jquery-1.11.1.js
+│   │   ├── jquery.js
+│   │   ├── minus.png
+│   │   ├── plus.png
+│   │   ├── searchtools.js_t
+│   │   ├── underscore-1.3.1.js
+│   │   ├── underscore.js
+│   │   ├── up.png
+│   │   ├── up-pressed.png
+│   │   └── websupport.js
+│   └── theme.conf
+├── bizstyle
+│   ├── layout.html
+│   ├── static
+│   │   ├── background_b01.png
+│   │   ├── bizstyle.css_t
+│   │   ├── bizstyle.js_t
+│   │   ├── css3-mediaqueries.js
+│   │   └── css3-mediaqueries_src.js
+│   └── theme.conf
+├── classic
+│   ├── layout.html
+│   ├── static
+│   │   ├── classic.css_t
+│   │   └── sidebar.js_t
+│   └── theme.conf
+├── default
+│   ├── static
+│   │   └── default.css
+│   └── theme.conf
+├── epub
+│   ├── epub-cover.html
+│   ├── layout.html
+│   ├── static
+│   │   └── epub.css
+│   └── theme.conf
+├── haiku
+│   ├── layout.html
+│   ├── static
+│   │   ├── alert_info_32.png
+│   │   ├── alert_warning_32.png
+│   │   ├── bg-page.png
+│   │   ├── bullet_orange.png
+│   │   └── haiku.css_t
+│   └── theme.conf
+├── nature
+│   ├── static
+│   │   └── nature.css_t
+│   └── theme.conf
+├── pyramid
+│   ├── layout.html
+│   ├── static
+│   │   ├── dialog-note.png
+│   │   ├── dialog-seealso.png
+│   │   ├── dialog-todo.png
+│   │   ├── dialog-topic.png
+│   │   ├── dialog-warning.png
+│   │   ├── epub.css
+│   │   ├── footerbg.png
+│   │   ├── headerbg.png
+│   │   ├── ie6.css
+│   │   ├── middlebg.png
+│   │   ├── pyramid.css_t
+│   │   └── transparent.gif
+│   └── theme.conf
+├── scrolls
+│   ├── artwork
+│   │   └── logo.svg
+│   ├── layout.html
+│   ├── static
+│   │   ├── darkmetal.png
+│   │   ├── headerbg.png
+│   │   ├── logo.png
+│   │   ├── metal.png
+│   │   ├── navigation.png
+│   │   ├── print.css
+│   │   ├── scrolls.css_t
+│   │   ├── theme_extras.js
+│   │   ├── watermark_blur.png
+│   │   └── watermark.png
+│   └── theme.conf
+├── sphinxdoc
+│   ├── layout.html
+│   ├── static
+│   │   ├── contents.png
+│   │   ├── navigation.png
+│   │   └── sphinxdoc.css_t
+│   └── theme.conf
+└── traditional
+    ├── static
+    │   └── traditional.css_t
+    └── theme.conf
+
+<span class="m">26</span> directories, <span class="m">103</span> files
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.ext.html" class="btn btn-neutral float-right" title="3. sphinx.ext" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/sphinx.make_main.html" class="btn btn-neutral" title="1.1.3. sphinx.make_main" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

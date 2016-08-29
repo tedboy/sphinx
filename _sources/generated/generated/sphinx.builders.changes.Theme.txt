@@ -1,0 +1,34 @@
+sphinx.builders.changes.Theme
+=============================
+.. currentmodule:: sphinx.builders.changes
+.. autoclass:: Theme
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Theme.__init__
+   ~Theme.cleanup
+   ~Theme.get_confstr
+   ~Theme.get_dirchain
+   ~Theme.get_options
+   ~Theme.init_themes
+   ~Theme.load_extra_theme
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Theme.themepath
+   ~Theme.themes
+

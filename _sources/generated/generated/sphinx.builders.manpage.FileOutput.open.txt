@@ -1,0 +1,6 @@
+sphinx.builders.manpage.FileOutput.open
+=======================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: FileOutput.open

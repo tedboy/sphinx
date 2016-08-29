@@ -1,0 +1,6 @@
+sphinx.util.copytimes
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: copytimes

@@ -1,0 +1,6 @@
+sphinx.domains.std.Directive.final_argument_whitespace
+======================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Directive.final_argument_whitespace

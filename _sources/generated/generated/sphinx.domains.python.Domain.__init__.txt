@@ -1,0 +1,6 @@
+sphinx.domains.python.Domain.__init__
+=====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Domain.__init__

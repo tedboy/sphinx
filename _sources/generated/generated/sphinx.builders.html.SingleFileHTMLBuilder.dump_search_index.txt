@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.dump_search_index
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.dump_search_index

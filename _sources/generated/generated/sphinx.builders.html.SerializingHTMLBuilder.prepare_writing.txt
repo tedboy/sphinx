@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.prepare_writing
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.prepare_writing

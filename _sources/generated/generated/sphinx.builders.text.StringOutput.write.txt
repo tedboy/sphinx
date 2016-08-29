@@ -1,0 +1,6 @@
+sphinx.builders.text.StringOutput.write
+=======================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: StringOutput.write

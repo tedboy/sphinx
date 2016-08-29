@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.script_files
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.script_files

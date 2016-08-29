@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_table
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_table

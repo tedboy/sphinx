@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPMemberObject.run
+======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPMemberObject.run

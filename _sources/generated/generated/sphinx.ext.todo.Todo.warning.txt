@@ -1,0 +1,6 @@
+sphinx.ext.todo.Todo.warning
+============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Todo.warning

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassLevelDocumenter.option_spec
+===================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ClassLevelDocumenter.option_spec

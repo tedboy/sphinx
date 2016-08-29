@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.11.2.3. sphinx.builders.qthelp.text_type &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="4.11. sphinx.builders.qthelp" href="../sphinx.builders.qthelp.html"/>
+        <link rel="next" title="4.11.2.3.1.1. sphinx.builders.qthelp.text_type.capitalize" href="sphinx.builders.qthelp.text_type.capitalize.html"/>
+        <link rel="prev" title="4.11.2.2.2.18. sphinx.builders.qthelp.StandaloneHTMLBuilder.versioning_method" href="sphinx.builders.qthelp.StandaloneHTMLBuilder.versioning_method.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.epub.html">4.4. sphinx.builders.epub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html.html">4.6. sphinx.builders.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.builders.qthelp.html#functions">4.11.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.builders.qthelp.html#classes">4.11.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.qthelp.QtHelpBuilder.html">4.11.2.1. sphinx.builders.qthelp.QtHelpBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.qthelp.StandaloneHTMLBuilder.html">4.11.2.2. sphinx.builders.qthelp.StandaloneHTMLBuilder</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">4.11.2.3. sphinx.builders.qthelp.text_type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.xml.html">4.15. sphinx.builders.xml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a> &raquo;</li>
+        
+      <li>4.11.2.3. sphinx.builders.qthelp.text_type</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.builders.qthelp.text_type.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-builders-qthelp-text-type">
+<h1>4.11.2.3. sphinx.builders.qthelp.text_type<a class="headerlink" href="#sphinx-builders-qthelp-text-type" title="Permalink to this headline">¶</a></h1>
+<dl class="attribute">
+<dt id="sphinx.builders.qthelp.text_type">
+<code class="descclassname">sphinx.builders.qthelp.</code><code class="descname">text_type</code><a class="headerlink" href="#sphinx.builders.qthelp.text_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">unicode</span></code></p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>4.11.2.3.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.capitalize.html#sphinx.builders.qthelp.text_type.capitalize" title="sphinx.builders.qthelp.text_type.capitalize"><code class="xref py py-obj docutils literal"><span class="pre">capitalize</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a capitalized version of S, i.e.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.center.html#sphinx.builders.qthelp.text_type.center" title="sphinx.builders.qthelp.text_type.center"><code class="xref py py-obj docutils literal"><span class="pre">center</span></code></a>((width[,&nbsp;fillchar])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return S centered in a Unicode string of length width.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.count.html#sphinx.builders.qthelp.text_type.count" title="sphinx.builders.qthelp.text_type.count"><code class="xref py py-obj docutils literal"><span class="pre">count</span></code></a>((sub[,&nbsp;start[,&nbsp;end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Return the number of non-overlapping occurrences of substring sub in Unicode string S[start:end].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.decode.html#sphinx.builders.qthelp.text_type.decode" title="sphinx.builders.qthelp.text_type.decode"><code class="xref py py-obj docutils literal"><span class="pre">decode</span></code></a>(...)</td>
+<td>Decodes S using the codec registered for encoding.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.encode.html#sphinx.builders.qthelp.text_type.encode" title="sphinx.builders.qthelp.text_type.encode"><code class="xref py py-obj docutils literal"><span class="pre">encode</span></code></a>(...)</td>
+<td>Encodes S using the codec registered for encoding.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.endswith.html#sphinx.builders.qthelp.text_type.endswith" title="sphinx.builders.qthelp.text_type.endswith"><code class="xref py py-obj docutils literal"><span class="pre">endswith</span></code></a>((suffix[,&nbsp;start[,&nbsp;end]])&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if S ends with the specified suffix, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.expandtabs.html#sphinx.builders.qthelp.text_type.expandtabs" title="sphinx.builders.qthelp.text_type.expandtabs"><code class="xref py py-obj docutils literal"><span class="pre">expandtabs</span></code></a>(([tabsize])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of S where all tab characters are expanded using spaces.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.find.html#sphinx.builders.qthelp.text_type.find" title="sphinx.builders.qthelp.text_type.find"><code class="xref py py-obj docutils literal"><span class="pre">find</span></code></a>((sub&nbsp;[,start&nbsp;[,end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.format.html#sphinx.builders.qthelp.text_type.format" title="sphinx.builders.qthelp.text_type.format"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a>((*args,&nbsp;**kwargs)&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a formatted version of S, using substitutions from args and kwargs.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.index.html#sphinx.builders.qthelp.text_type.index" title="sphinx.builders.qthelp.text_type.index"><code class="xref py py-obj docutils literal"><span class="pre">index</span></code></a>((sub&nbsp;[,start&nbsp;[,end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Like S.find() but raise ValueError when the substring is not found.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.isalnum.html#sphinx.builders.qthelp.text_type.isalnum" title="sphinx.builders.qthelp.text_type.isalnum"><code class="xref py py-obj docutils literal"><span class="pre">isalnum</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all characters in S are alphanumeric and there is at least one character in S, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.isalpha.html#sphinx.builders.qthelp.text_type.isalpha" title="sphinx.builders.qthelp.text_type.isalpha"><code class="xref py py-obj docutils literal"><span class="pre">isalpha</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all characters in S are alphabetic and there is at least one character in S, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.isdecimal.html#sphinx.builders.qthelp.text_type.isdecimal" title="sphinx.builders.qthelp.text_type.isdecimal"><code class="xref py py-obj docutils literal"><span class="pre">isdecimal</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if there are only decimal characters in S, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.isdigit.html#sphinx.builders.qthelp.text_type.isdigit" title="sphinx.builders.qthelp.text_type.isdigit"><code class="xref py py-obj docutils literal"><span class="pre">isdigit</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all characters in S are digits and there is at least one character in S, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.islower.html#sphinx.builders.qthelp.text_type.islower" title="sphinx.builders.qthelp.text_type.islower"><code class="xref py py-obj docutils literal"><span class="pre">islower</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all cased characters in S are lowercase and there is at least one cased character in S, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.isnumeric.html#sphinx.builders.qthelp.text_type.isnumeric" title="sphinx.builders.qthelp.text_type.isnumeric"><code class="xref py py-obj docutils literal"><span class="pre">isnumeric</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if there are only numeric characters in S, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.isspace.html#sphinx.builders.qthelp.text_type.isspace" title="sphinx.builders.qthelp.text_type.isspace"><code class="xref py py-obj docutils literal"><span class="pre">isspace</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all characters in S are whitespace and there is at least one character in S, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.istitle.html#sphinx.builders.qthelp.text_type.istitle" title="sphinx.builders.qthelp.text_type.istitle"><code class="xref py py-obj docutils literal"><span class="pre">istitle</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if S is a titlecased string and there is at least one character in S, i.e.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.isupper.html#sphinx.builders.qthelp.text_type.isupper" title="sphinx.builders.qthelp.text_type.isupper"><code class="xref py py-obj docutils literal"><span class="pre">isupper</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all cased characters in S are uppercase and there is at least one cased character in S, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.join.html#sphinx.builders.qthelp.text_type.join" title="sphinx.builders.qthelp.text_type.join"><code class="xref py py-obj docutils literal"><span class="pre">join</span></code></a>((iterable)&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a string which is the concatenation of the strings in the iterable.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.ljust.html#sphinx.builders.qthelp.text_type.ljust" title="sphinx.builders.qthelp.text_type.ljust"><code class="xref py py-obj docutils literal"><span class="pre">ljust</span></code></a>((width[,&nbsp;fillchar])&nbsp;-&gt;&nbsp;int)</td>
+<td>Return S left-justified in a Unicode string of length width.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.lower.html#sphinx.builders.qthelp.text_type.lower" title="sphinx.builders.qthelp.text_type.lower"><code class="xref py py-obj docutils literal"><span class="pre">lower</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of the string S converted to lowercase.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.lstrip.html#sphinx.builders.qthelp.text_type.lstrip" title="sphinx.builders.qthelp.text_type.lstrip"><code class="xref py py-obj docutils literal"><span class="pre">lstrip</span></code></a>(([chars])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of the string S with leading whitespace removed.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.partition.html#sphinx.builders.qthelp.text_type.partition" title="sphinx.builders.qthelp.text_type.partition"><code class="xref py py-obj docutils literal"><span class="pre">partition</span></code></a>(sep)&nbsp;-&gt;&nbsp;(head,&nbsp;sep,&nbsp;tail)</td>
+<td>Search for the separator sep in S, and return the part before it, the separator itself, and the part after it.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.replace.html#sphinx.builders.qthelp.text_type.replace" title="sphinx.builders.qthelp.text_type.replace"><code class="xref py py-obj docutils literal"><span class="pre">replace</span></code></a>((old,&nbsp;new[,&nbsp;count])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of S with all occurrences of substring old replaced by new.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.rfind.html#sphinx.builders.qthelp.text_type.rfind" title="sphinx.builders.qthelp.text_type.rfind"><code class="xref py py-obj docutils literal"><span class="pre">rfind</span></code></a>((sub&nbsp;[,start&nbsp;[,end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.rindex.html#sphinx.builders.qthelp.text_type.rindex" title="sphinx.builders.qthelp.text_type.rindex"><code class="xref py py-obj docutils literal"><span class="pre">rindex</span></code></a>((sub&nbsp;[,start&nbsp;[,end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Like S.rfind() but raise ValueError when the substring is not found.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.rjust.html#sphinx.builders.qthelp.text_type.rjust" title="sphinx.builders.qthelp.text_type.rjust"><code class="xref py py-obj docutils literal"><span class="pre">rjust</span></code></a>((width[,&nbsp;fillchar])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return S right-justified in a Unicode string of length width.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.rpartition.html#sphinx.builders.qthelp.text_type.rpartition" title="sphinx.builders.qthelp.text_type.rpartition"><code class="xref py py-obj docutils literal"><span class="pre">rpartition</span></code></a>(sep)&nbsp;-&gt;&nbsp;(head,&nbsp;sep,&nbsp;tail)</td>
+<td>Search for the separator sep in S, starting at the end of S, and return the part before it, the separator itself, and the part after it.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.rsplit.html#sphinx.builders.qthelp.text_type.rsplit" title="sphinx.builders.qthelp.text_type.rsplit"><code class="xref py py-obj docutils literal"><span class="pre">rsplit</span></code></a>(([sep&nbsp;[,maxsplit]])&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;strings)</td>
+<td>Return a list of the words in S, using sep as the delimiter string, starting at the end of the string and working to the front.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.rstrip.html#sphinx.builders.qthelp.text_type.rstrip" title="sphinx.builders.qthelp.text_type.rstrip"><code class="xref py py-obj docutils literal"><span class="pre">rstrip</span></code></a>(([chars])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of the string S with trailing whitespace removed.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.split.html#sphinx.builders.qthelp.text_type.split" title="sphinx.builders.qthelp.text_type.split"><code class="xref py py-obj docutils literal"><span class="pre">split</span></code></a>(([sep&nbsp;[,maxsplit]])&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;strings)</td>
+<td>Return a list of the words in S, using sep as the delimiter string.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.splitlines.html#sphinx.builders.qthelp.text_type.splitlines" title="sphinx.builders.qthelp.text_type.splitlines"><code class="xref py py-obj docutils literal"><span class="pre">splitlines</span></code></a>((keepends=False)&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;strings)</td>
+<td>Return a list of the lines in S, breaking at line boundaries.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.startswith.html#sphinx.builders.qthelp.text_type.startswith" title="sphinx.builders.qthelp.text_type.startswith"><code class="xref py py-obj docutils literal"><span class="pre">startswith</span></code></a>((prefix[,&nbsp;start[,&nbsp;end]])&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if S starts with the specified prefix, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.strip.html#sphinx.builders.qthelp.text_type.strip" title="sphinx.builders.qthelp.text_type.strip"><code class="xref py py-obj docutils literal"><span class="pre">strip</span></code></a>(([chars])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of the string S with leading and trailing whitespace removed.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.swapcase.html#sphinx.builders.qthelp.text_type.swapcase" title="sphinx.builders.qthelp.text_type.swapcase"><code class="xref py py-obj docutils literal"><span class="pre">swapcase</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of S with uppercase characters converted to lowercase and vice versa.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.title.html#sphinx.builders.qthelp.text_type.title" title="sphinx.builders.qthelp.text_type.title"><code class="xref py py-obj docutils literal"><span class="pre">title</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a titlecased version of S, i.e.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.translate.html#sphinx.builders.qthelp.text_type.translate" title="sphinx.builders.qthelp.text_type.translate"><code class="xref py py-obj docutils literal"><span class="pre">translate</span></code></a>((table)&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of the string S, where all characters have been mapped through the given translation table, which must be a mapping of Unicode ordinals to Unicode ordinals, Unicode strings or None.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.upper.html#sphinx.builders.qthelp.text_type.upper" title="sphinx.builders.qthelp.text_type.upper"><code class="xref py py-obj docutils literal"><span class="pre">upper</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of S converted to uppercase.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.qthelp.text_type.zfill.html#sphinx.builders.qthelp.text_type.zfill" title="sphinx.builders.qthelp.text_type.zfill"><code class="xref py py-obj docutils literal"><span class="pre">zfill</span></code></a>((width)&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Pad a numeric string S with zeros on the left, to fill a field of the specified width.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.builders.qthelp.text_type.capitalize.html" class="btn btn-neutral float-right" title="4.11.2.3.1.1. sphinx.builders.qthelp.text_type.capitalize" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.builders.qthelp.StandaloneHTMLBuilder.versioning_method.html" class="btn btn-neutral" title="4.11.2.2.2.18. sphinx.builders.qthelp.StandaloneHTMLBuilder.versioning_method" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.replace_attr
+======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.replace_attr

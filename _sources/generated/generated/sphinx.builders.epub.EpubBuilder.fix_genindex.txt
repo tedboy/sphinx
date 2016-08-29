@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.fix_genindex
+=============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.fix_genindex

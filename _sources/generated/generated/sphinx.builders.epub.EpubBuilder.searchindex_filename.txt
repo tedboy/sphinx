@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.searchindex_filename
+=====================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: EpubBuilder.searchindex_filename

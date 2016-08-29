@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.get_transforms
+=======================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageWriter.get_transforms

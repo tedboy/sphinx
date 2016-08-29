@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.render_dot_texinfo
+=================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autofunction:: render_dot_texinfo

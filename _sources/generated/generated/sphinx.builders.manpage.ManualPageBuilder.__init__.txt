@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageBuilder.__init__
+==================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageBuilder.__init__

@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.severe
+===================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Cmdoption.severe

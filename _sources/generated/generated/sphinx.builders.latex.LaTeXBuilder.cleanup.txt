@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.cleanup
+==========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXBuilder.cleanup

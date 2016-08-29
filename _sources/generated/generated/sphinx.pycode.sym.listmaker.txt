@@ -1,0 +1,6 @@
+sphinx.pycode.sym.listmaker
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.listmaker

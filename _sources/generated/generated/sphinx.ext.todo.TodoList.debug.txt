@@ -1,0 +1,6 @@
+sphinx.ext.todo.TodoList.debug
+==============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: TodoList.debug

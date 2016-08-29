@@ -1,0 +1,6 @@
+sphinx.builders.html.patmatch
+=============================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: patmatch

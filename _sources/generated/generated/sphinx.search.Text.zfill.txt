@@ -1,0 +1,6 @@
+sphinx.search.Text.zfill
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.zfill

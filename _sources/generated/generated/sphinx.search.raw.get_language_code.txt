@@ -1,0 +1,6 @@
+sphinx.search.raw.get_language_code
+===================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.get_language_code

@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.versioning_compare
+=======================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.versioning_compare

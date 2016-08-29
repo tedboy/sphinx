@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.compile_catalogs
+=============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.compile_catalogs

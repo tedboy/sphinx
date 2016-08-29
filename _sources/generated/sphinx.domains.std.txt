@@ -1,0 +1,76 @@
+.. automodule:: sphinx.domains.std
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      clean_astext
+      fully_normalize_name
+      get_figtype
+      iteritems
+      l_
+      make_refnode
+      make_term_from_paragraph_node
+      make_termnodes_from_paragraph_node
+      token_xrefs
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Cmdoption
+      Directive
+      Domain
+      EnvVar
+      EnvVarXRefRole
+      GenericObject
+      Glossary
+      ObjType
+      ObjectDescription
+      OptionXRefRole
+      ProductionList
+      Program
+      StandardDomain
+      Target
+      ViewList
+      XRefRole
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.domains.std.Cmdoption
+       generated/sphinx.domains.std.Directive
+       generated/sphinx.domains.std.Domain
+       generated/sphinx.domains.std.EnvVar
+       generated/sphinx.domains.std.EnvVarXRefRole
+       generated/sphinx.domains.std.GenericObject
+       generated/sphinx.domains.std.Glossary
+       generated/sphinx.domains.std.ObjType
+       generated/sphinx.domains.std.ObjectDescription
+       generated/sphinx.domains.std.OptionXRefRole
+       generated/sphinx.domains.std.ProductionList
+       generated/sphinx.domains.std.Program
+       generated/sphinx.domains.std.StandardDomain
+       generated/sphinx.domains.std.Target
+       generated/sphinx.domains.std.ViewList
+       generated/sphinx.domains.std.XRefRole
+
+   
+   
+
+   
+   
+   

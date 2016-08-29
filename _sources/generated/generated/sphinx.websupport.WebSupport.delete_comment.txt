@@ -1,0 +1,6 @@
+sphinx.websupport.WebSupport.delete_comment
+===========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: WebSupport.delete_comment

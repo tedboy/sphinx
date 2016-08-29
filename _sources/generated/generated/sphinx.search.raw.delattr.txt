@@ -1,0 +1,6 @@
+sphinx.search.raw.delattr
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.delattr

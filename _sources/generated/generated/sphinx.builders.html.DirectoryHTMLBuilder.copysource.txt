@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.copysource
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.copysource

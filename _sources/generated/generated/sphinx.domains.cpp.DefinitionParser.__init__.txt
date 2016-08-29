@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.__init__
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.__init__

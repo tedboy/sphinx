@@ -1,0 +1,6 @@
+sphinx.search.WordCollector.unknown_departure
+=============================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: WordCollector.unknown_departure

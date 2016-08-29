@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParamPack.__init__
+==================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorParamPack.__init__

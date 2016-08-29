@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.supported_image_types
+===============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.supported_image_types

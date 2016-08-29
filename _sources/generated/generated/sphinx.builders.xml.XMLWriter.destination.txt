@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLWriter.destination
+=========================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: XMLWriter.destination

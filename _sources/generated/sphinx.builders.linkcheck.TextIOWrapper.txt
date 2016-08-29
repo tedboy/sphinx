@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.TextIOWrapper
+=======================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: TextIOWrapper

@@ -1,0 +1,52 @@
+sphinx.ext.autodoc.ModuleLevelDocumenter
+========================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: ModuleLevelDocumenter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ModuleLevelDocumenter.__init__
+   ~ModuleLevelDocumenter.add_content
+   ~ModuleLevelDocumenter.add_directive_header
+   ~ModuleLevelDocumenter.add_line
+   ~ModuleLevelDocumenter.can_document_member
+   ~ModuleLevelDocumenter.check_module
+   ~ModuleLevelDocumenter.document_members
+   ~ModuleLevelDocumenter.filter_members
+   ~ModuleLevelDocumenter.format_args
+   ~ModuleLevelDocumenter.format_name
+   ~ModuleLevelDocumenter.format_signature
+   ~ModuleLevelDocumenter.generate
+   ~ModuleLevelDocumenter.get_attr
+   ~ModuleLevelDocumenter.get_doc
+   ~ModuleLevelDocumenter.get_object_members
+   ~ModuleLevelDocumenter.get_real_modname
+   ~ModuleLevelDocumenter.get_sourcename
+   ~ModuleLevelDocumenter.import_object
+   ~ModuleLevelDocumenter.parse_name
+   ~ModuleLevelDocumenter.process_doc
+   ~ModuleLevelDocumenter.resolve_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ModuleLevelDocumenter.content_indent
+   ~ModuleLevelDocumenter.member_order
+   ~ModuleLevelDocumenter.objtype
+   ~ModuleLevelDocumenter.option_spec
+   ~ModuleLevelDocumenter.priority
+   ~ModuleLevelDocumenter.titles_allowed
+

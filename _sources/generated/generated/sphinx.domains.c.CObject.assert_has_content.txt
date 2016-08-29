@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.assert_has_content
+===========================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.assert_has_content

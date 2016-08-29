@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.optional
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.optional

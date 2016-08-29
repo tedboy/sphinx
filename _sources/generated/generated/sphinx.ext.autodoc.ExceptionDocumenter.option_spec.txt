@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.option_spec
+==================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ExceptionDocumenter.option_spec

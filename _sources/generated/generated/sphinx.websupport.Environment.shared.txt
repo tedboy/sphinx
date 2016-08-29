@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.shared
+====================================
+
+.. currentmodule:: sphinx.websupport
+
+.. autoattribute:: Environment.shared

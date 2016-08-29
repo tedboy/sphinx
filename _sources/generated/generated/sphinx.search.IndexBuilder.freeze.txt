@@ -1,0 +1,6 @@
+sphinx.search.IndexBuilder.freeze
+=================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: IndexBuilder.freeze

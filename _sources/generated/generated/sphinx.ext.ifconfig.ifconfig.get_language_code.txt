@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.get_language_code
+==============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.get_language_code

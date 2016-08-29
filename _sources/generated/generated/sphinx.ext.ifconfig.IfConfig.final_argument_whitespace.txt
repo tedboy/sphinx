@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.final_argument_whitespace
+======================================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: IfConfig.final_argument_whitespace

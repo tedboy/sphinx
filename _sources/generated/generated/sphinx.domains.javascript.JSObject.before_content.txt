@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.before_content
+=================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSObject.before_content

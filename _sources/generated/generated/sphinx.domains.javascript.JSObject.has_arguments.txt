@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.has_arguments
+================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSObject.has_arguments

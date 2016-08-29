@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.format
+==========================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autoattribute:: CoverageBuilder.format

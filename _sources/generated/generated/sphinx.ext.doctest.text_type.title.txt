@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.title
+==================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.title

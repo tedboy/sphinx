@@ -1,0 +1,6 @@
+sphinx.ext.todo.Todo.info
+=========================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Todo.info

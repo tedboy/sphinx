@@ -1,0 +1,45 @@
+.. automodule:: sphinx.ext.intersphinx
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      fetch_inventory
+      iteritems
+      load_mappings
+      missing_reference
+      read_inventory_v1
+      read_inventory_v2
+      relative_path
+      setup
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      UTF8StreamReader
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.intersphinx.UTF8StreamReader
+
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.attlist
+====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.attlist

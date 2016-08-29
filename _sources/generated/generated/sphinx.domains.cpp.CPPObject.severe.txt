@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.severe
+===================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.severe

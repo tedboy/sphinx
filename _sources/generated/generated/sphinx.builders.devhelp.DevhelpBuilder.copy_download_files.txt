@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.copy_download_files
+==========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.copy_download_files

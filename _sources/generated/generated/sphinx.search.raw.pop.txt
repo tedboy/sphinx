@@ -1,0 +1,6 @@
+sphinx.search.raw.pop
+=====================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.pop

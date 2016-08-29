@@ -1,0 +1,49 @@
+sphinx.domains.python.PyClassmember
+===================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyClassmember
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyClassmember.__init__
+   ~PyClassmember.add_name
+   ~PyClassmember.add_target_and_index
+   ~PyClassmember.after_content
+   ~PyClassmember.assert_has_content
+   ~PyClassmember.before_content
+   ~PyClassmember.debug
+   ~PyClassmember.directive_error
+   ~PyClassmember.error
+   ~PyClassmember.get_index_text
+   ~PyClassmember.get_signature_prefix
+   ~PyClassmember.get_signatures
+   ~PyClassmember.handle_signature
+   ~PyClassmember.info
+   ~PyClassmember.needs_arglist
+   ~PyClassmember.run
+   ~PyClassmember.severe
+   ~PyClassmember.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PyClassmember.doc_field_types
+   ~PyClassmember.final_argument_whitespace
+   ~PyClassmember.has_content
+   ~PyClassmember.option_spec
+   ~PyClassmember.optional_arguments
+   ~PyClassmember.required_arguments
+

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclSpecsSimple.mergeWith
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclSpecsSimple.mergeWith

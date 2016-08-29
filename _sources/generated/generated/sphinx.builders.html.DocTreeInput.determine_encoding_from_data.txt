@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.determine_encoding_from_data
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DocTreeInput.determine_encoding_from_data

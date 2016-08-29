@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.CDATA_CONTENT_ELEMENTS
+===========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: HTMLParser.CDATA_CONTENT_ELEMENTS

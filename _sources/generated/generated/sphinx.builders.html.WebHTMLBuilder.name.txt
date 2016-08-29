@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.name
+========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: WebHTMLBuilder.name

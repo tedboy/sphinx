@@ -1,0 +1,6 @@
+sphinx.search.iteritems
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. autofunction:: iteritems

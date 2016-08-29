@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.option_spec
+============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: AutoDirective.option_spec

@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.required_arguments
+============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: EnvVar.required_arguments

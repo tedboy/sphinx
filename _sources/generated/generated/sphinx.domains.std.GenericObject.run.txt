@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.run
+====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: GenericObject.run

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.add_permalinks
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.add_permalinks

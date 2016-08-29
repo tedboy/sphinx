@@ -1,0 +1,6 @@
+sphinx.search.comment.next_node
+===============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.next_node

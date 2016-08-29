@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.Directive.optional_arguments
+===========================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoattribute:: Directive.optional_arguments

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.document
+==================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: eqref.document

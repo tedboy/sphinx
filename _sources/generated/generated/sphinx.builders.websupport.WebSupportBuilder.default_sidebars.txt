@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.default_sidebars
+=============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.default_sidebars

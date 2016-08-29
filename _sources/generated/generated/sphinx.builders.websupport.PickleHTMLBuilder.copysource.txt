@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.copysource
+=======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.copysource

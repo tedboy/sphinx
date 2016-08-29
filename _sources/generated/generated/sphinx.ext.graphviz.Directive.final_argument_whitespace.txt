@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Directive.final_argument_whitespace
+=======================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: Directive.final_argument_whitespace

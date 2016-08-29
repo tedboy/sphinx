@@ -1,0 +1,11 @@
+sphinx.util.range
+=================
+.. currentmodule:: sphinx.util
+.. autoclass:: range
+   :undoc-members:
+
+
+
+
+
+

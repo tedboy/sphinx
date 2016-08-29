@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.count
+==================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.count

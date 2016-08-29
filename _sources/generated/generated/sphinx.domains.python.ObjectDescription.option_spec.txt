@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.option_spec
+===================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: ObjectDescription.option_spec

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.time
+============================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: time

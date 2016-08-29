@@ -1,0 +1,6 @@
+sphinx.search.text_type.translate
+=================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.translate

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.FileOutput.encode
+=========================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: FileOutput.encode

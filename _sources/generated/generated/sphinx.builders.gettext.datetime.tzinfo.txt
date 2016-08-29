@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.tzinfo
+=======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.tzinfo

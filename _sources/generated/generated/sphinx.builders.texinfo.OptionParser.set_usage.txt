@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.set_usage
+==============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.set_usage

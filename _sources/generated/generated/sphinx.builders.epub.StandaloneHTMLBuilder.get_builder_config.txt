@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.get_builder_config
+=============================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.get_builder_config

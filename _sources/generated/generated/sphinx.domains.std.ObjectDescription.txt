@@ -1,0 +1,46 @@
+sphinx.domains.std.ObjectDescription
+====================================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: ObjectDescription
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ObjectDescription.__init__
+   ~ObjectDescription.add_name
+   ~ObjectDescription.add_target_and_index
+   ~ObjectDescription.after_content
+   ~ObjectDescription.assert_has_content
+   ~ObjectDescription.before_content
+   ~ObjectDescription.debug
+   ~ObjectDescription.directive_error
+   ~ObjectDescription.error
+   ~ObjectDescription.get_signatures
+   ~ObjectDescription.handle_signature
+   ~ObjectDescription.info
+   ~ObjectDescription.run
+   ~ObjectDescription.severe
+   ~ObjectDescription.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ObjectDescription.doc_field_types
+   ~ObjectDescription.final_argument_whitespace
+   ~ObjectDescription.has_content
+   ~ObjectDescription.option_spec
+   ~ObjectDescription.optional_arguments
+   ~ObjectDescription.required_arguments
+

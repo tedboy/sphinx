@@ -1,0 +1,6 @@
+sphinx.ext.todo.setup
+=====================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autofunction:: setup

@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.Popen.kill
+=============================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: Popen.kill

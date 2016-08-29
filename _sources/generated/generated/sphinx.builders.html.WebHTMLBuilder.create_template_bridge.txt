@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.create_template_bridge
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.create_template_bridge

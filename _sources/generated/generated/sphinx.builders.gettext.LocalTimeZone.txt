@@ -1,0 +1,23 @@
+sphinx.builders.gettext.LocalTimeZone
+=====================================
+.. currentmodule:: sphinx.builders.gettext
+.. autoclass:: LocalTimeZone
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~LocalTimeZone.__init__
+   ~LocalTimeZone.dst
+   ~LocalTimeZone.fromutc
+   ~LocalTimeZone.tzname
+   ~LocalTimeZone.utcoffset
+
+
+
+
+

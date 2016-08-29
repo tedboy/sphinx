@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.InstanceAttributeDocumenter.import_object
+============================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: InstanceAttributeDocumenter.import_object

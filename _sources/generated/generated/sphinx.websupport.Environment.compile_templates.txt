@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.compile_templates
+===============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.compile_templates

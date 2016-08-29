@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.set_class
+======================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.set_class

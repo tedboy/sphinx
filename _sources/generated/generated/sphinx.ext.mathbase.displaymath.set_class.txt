@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.set_class
+=========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.set_class

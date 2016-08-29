@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPNamespaceObject.__init__
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPNamespaceObject.__init__

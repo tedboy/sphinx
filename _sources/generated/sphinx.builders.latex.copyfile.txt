@@ -1,0 +1,6 @@
+sphinx.builders.latex.copyfile
+==============================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autofunction:: copyfile

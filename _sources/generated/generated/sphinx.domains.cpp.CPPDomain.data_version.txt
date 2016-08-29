@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPDomain.data_version
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPDomain.data_version

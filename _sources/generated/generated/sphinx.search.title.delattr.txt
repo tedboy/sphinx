@@ -1,0 +1,6 @@
+sphinx.search.title.delattr
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.delattr

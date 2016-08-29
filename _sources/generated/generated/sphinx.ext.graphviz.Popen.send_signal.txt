@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Popen.send_signal
+=====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Popen.send_signal

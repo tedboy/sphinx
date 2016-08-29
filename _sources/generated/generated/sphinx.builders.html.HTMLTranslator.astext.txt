@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.astext
+==========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.astext

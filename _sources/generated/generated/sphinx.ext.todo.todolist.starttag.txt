@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.starttag
+=================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.starttag

@@ -1,0 +1,6 @@
+sphinx.websupport.search.text_type.isdigit
+==========================================
+
+.. currentmodule:: sphinx.websupport.search
+
+.. automethod:: text_type.isdigit

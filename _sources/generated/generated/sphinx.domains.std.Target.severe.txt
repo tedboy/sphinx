@@ -1,0 +1,6 @@
+sphinx.domains.std.Target.severe
+================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Target.severe

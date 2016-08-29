@@ -1,0 +1,6 @@
+sphinx.websupport.StorageBackend.accept_comment
+===============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: StorageBackend.accept_comment

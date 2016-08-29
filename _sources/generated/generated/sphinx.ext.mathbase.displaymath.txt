@@ -1,0 +1,87 @@
+sphinx.ext.mathbase.displaymath
+===============================
+.. currentmodule:: sphinx.ext.mathbase
+.. autoclass:: displaymath
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~displaymath.__init__
+   ~displaymath.append
+   ~displaymath.append_attr_list
+   ~displaymath.asdom
+   ~displaymath.astext
+   ~displaymath.attlist
+   ~displaymath.clear
+   ~displaymath.coerce_append_attr_list
+   ~displaymath.copy
+   ~displaymath.copy_attr_coerce
+   ~displaymath.copy_attr_concatenate
+   ~displaymath.copy_attr_consistent
+   ~displaymath.copy_attr_convert
+   ~displaymath.deepcopy
+   ~displaymath.delattr
+   ~displaymath.emptytag
+   ~displaymath.endtag
+   ~displaymath.extend
+   ~displaymath.first_child_matching_class
+   ~displaymath.first_child_not_matching_class
+   ~displaymath.get
+   ~displaymath.get_language_code
+   ~displaymath.has_key
+   ~displaymath.hasattr
+   ~displaymath.index
+   ~displaymath.insert
+   ~displaymath.is_not_default
+   ~displaymath.is_not_known_attribute
+   ~displaymath.is_not_list_attribute
+   ~displaymath.next_node
+   ~displaymath.non_default_attributes
+   ~displaymath.note_referenced_by
+   ~displaymath.pformat
+   ~displaymath.pop
+   ~displaymath.remove
+   ~displaymath.replace
+   ~displaymath.replace_attr
+   ~displaymath.replace_self
+   ~displaymath.set_class
+   ~displaymath.setdefault
+   ~displaymath.setup_child
+   ~displaymath.shortrepr
+   ~displaymath.starttag
+   ~displaymath.traverse
+   ~displaymath.update_all_atts
+   ~displaymath.update_all_atts_coercion
+   ~displaymath.update_all_atts_concatenating
+   ~displaymath.update_all_atts_consistantly
+   ~displaymath.update_all_atts_convert
+   ~displaymath.update_basic_atts
+   ~displaymath.walk
+   ~displaymath.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~displaymath.basic_attributes
+   ~displaymath.child_text_separator
+   ~displaymath.document
+   ~displaymath.known_attributes
+   ~displaymath.line
+   ~displaymath.list_attributes
+   ~displaymath.local_attributes
+   ~displaymath.parent
+   ~displaymath.source
+   ~displaymath.tagname
+

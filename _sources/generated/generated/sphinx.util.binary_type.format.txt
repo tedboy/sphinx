@@ -1,0 +1,6 @@
+sphinx.util.binary_type.format
+==============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: binary_type.format

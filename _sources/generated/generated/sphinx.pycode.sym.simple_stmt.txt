@@ -1,0 +1,6 @@
+sphinx.pycode.sym.simple_stmt
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.simple_stmt

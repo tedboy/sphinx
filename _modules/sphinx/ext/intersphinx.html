@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.ext.intersphinx &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.ext.intersphinx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.ext.intersphinx</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.ext.intersphinx</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Insert links to objects documented in remote Sphinx documentation.</span>
+
+<span class="sd">    This works as follows:</span>
+
+<span class="sd">    * Each Sphinx HTML build creates a file named &quot;objects.inv&quot; that contains a</span>
+<span class="sd">      mapping from object names to URIs relative to the HTML set&#39;s root.</span>
+
+<span class="sd">    * Projects using the Intersphinx extension can specify links to such mapping</span>
+<span class="sd">      files in the `intersphinx_mapping` config value.  The mapping will then be</span>
+<span class="sd">      used to resolve otherwise missing references to objects into links to the</span>
+<span class="sd">      other documentation.</span>
+
+<span class="sd">    * By default, the mapping file is assumed to be at the same location as the</span>
+<span class="sd">      rest of the documentation; however, the location of the mapping file can</span>
+<span class="sd">      also be specified individually, e.g. if the docs should be buildable</span>
+<span class="sd">      without Internet access.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">zlib</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">posixpath</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">six.moves.urllib</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span> <span class="nn">docutils.utils</span> <span class="kn">import</span> <span class="n">relative_path</span>
+
+<span class="kn">import</span> <span class="nn">sphinx</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">sphinx.builders.html</span> <span class="kn">import</span> <span class="n">INVENTORY_FILENAME</span>
+
+
+<span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">request</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">(),</span> <span class="n">request</span><span class="o">.</span><span class="n">HTTPRedirectHandler</span><span class="p">(),</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">HTTPHandler</span><span class="p">()]</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">handlers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">HTTPSHandler</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">request</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="o">*</span><span class="n">handlers</span><span class="p">))</span>
+
+<span class="n">UTF8StreamReader</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="read_inventory_v1"><a class="viewcode-back" href="../../../generated/sphinx.ext.intersphinx.read_inventory_v1.html#sphinx.ext.intersphinx.read_inventory_v1">[docs]</a><span class="k">def</span> <span class="nf">read_inventory_v1</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">join</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">UTF8StreamReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">invdata</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">projname</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()[</span><span class="mi">11</span><span class="p">:]</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()[</span><span class="mi">11</span><span class="p">:]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">location</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
+        <span class="c1"># version 1 did not add anchors to the location</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;mod&#39;</span><span class="p">:</span>
+            <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;py:module&#39;</span>
+            <span class="n">location</span> <span class="o">+=</span> <span class="s1">&#39;#module-&#39;</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;py:&#39;</span> <span class="o">+</span> <span class="nb">type</span>
+            <span class="n">location</span> <span class="o">+=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="n">invdata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="p">{})[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">projname</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">invdata</span></div>
+
+
+<div class="viewcode-block" id="read_inventory_v2"><a class="viewcode-back" href="../../../generated/sphinx.ext.intersphinx.read_inventory_v2.html#sphinx.ext.intersphinx.read_inventory_v2">[docs]</a><span class="k">def</span> <span class="nf">read_inventory_v2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">join</span><span class="p">,</span> <span class="n">bufsize</span><span class="o">=</span><span class="mi">16</span><span class="o">*</span><span class="mi">1024</span><span class="p">):</span>
+    <span class="n">invdata</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">projname</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()[</span><span class="mi">11</span><span class="p">:]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()[</span><span class="mi">11</span><span class="p">:]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;zlib&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span>
+
+    <span class="k">def</span> <span class="nf">read_chunks</span><span class="p">():</span>
+        <span class="n">decompressor</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompressobj</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">bufsize</span><span class="p">),</span> <span class="n">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">decompressor</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">decompressor</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">split_lines</span><span class="p">(</span><span class="nb">iter</span><span class="p">):</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">b</span><span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">:</span>
+            <span class="n">buf</span> <span class="o">+=</span> <span class="n">chunk</span>
+            <span class="n">lineend</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">lineend</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">buf</span><span class="p">[:</span><span class="n">lineend</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+                <span class="n">buf</span> <span class="o">=</span> <span class="n">buf</span><span class="p">[</span><span class="n">lineend</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+                <span class="n">lineend</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">buf</span>
+
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">split_lines</span><span class="p">(</span><span class="n">read_chunks</span><span class="p">()):</span>
+        <span class="c1"># be careful to handle names with embedded spaces correctly</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">r&#39;(?x)(.+?)\s+(\S*:\S*)\s+(\S+)\s+(\S+)\s+(.*)&#39;</span><span class="p">,</span>
+                     <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">prio</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">dispname</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;py:module&#39;</span> <span class="ow">and</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">invdata</span> <span class="ow">and</span> \
+                <span class="n">name</span> <span class="ow">in</span> <span class="n">invdata</span><span class="p">[</span><span class="nb">type</span><span class="p">]:</span>  <span class="c1"># due to a bug in 1.1 and below,</span>
+                                        <span class="c1"># two inventory entries are created</span>
+                                        <span class="c1"># for Python modules, and the first</span>
+                                        <span class="c1"># one is correct</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">location</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">u&#39;$&#39;</span><span class="p">):</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="n">location</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
+        <span class="n">invdata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="p">{})[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">projname</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span>
+                                              <span class="n">location</span><span class="p">,</span> <span class="n">dispname</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">invdata</span></div>
+
+
+<div class="viewcode-block" id="fetch_inventory"><a class="viewcode-back" href="../../../generated/sphinx.ext.intersphinx.fetch_inventory.html#sphinx.ext.intersphinx.fetch_inventory">[docs]</a><span class="k">def</span> <span class="nf">fetch_inventory</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">inv</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fetch, parse and return an intersphinx inventory file.&quot;&quot;&quot;</span>
+    <span class="c1"># both *uri* (base URI of the links to generate) and *inv* (actual</span>
+    <span class="c1"># location of the inventory file) can be local or remote URIs</span>
+    <span class="n">localuri</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;://&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">join</span> <span class="o">=</span> <span class="n">localuri</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="ow">or</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">inv</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;://&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">srcdir</span><span class="p">,</span> <span class="n">inv</span><span class="p">),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;intersphinx inventory </span><span class="si">%r</span><span class="s1"> not fetchable due to &#39;</span>
+                 <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+        <span class="k">return</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s1">&#39;# Sphinx inventory version 1&#39;</span><span class="p">:</span>
+                <span class="n">invdata</span> <span class="o">=</span> <span class="n">read_inventory_v1</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">join</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">line</span> <span class="o">==</span> <span class="s1">&#39;# Sphinx inventory version 2&#39;</span><span class="p">:</span>
+                <span class="n">invdata</span> <span class="o">=</span> <span class="n">read_inventory_v2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">join</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unknown or unsupported inventory version&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;intersphinx inventory </span><span class="si">%r</span><span class="s1"> not readable due to &#39;</span>
+                 <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">invdata</span></div>
+
+
+<div class="viewcode-block" id="load_mappings"><a class="viewcode-back" href="../../../generated/sphinx.ext.intersphinx.load_mappings.html#sphinx.ext.intersphinx.load_mappings">[docs]</a><span class="k">def</span> <span class="nf">load_mappings</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load all intersphinx mappings into the environment.&quot;&quot;&quot;</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+    <span class="n">cache_time</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">intersphinx_cache_limit</span> <span class="o">*</span> <span class="mi">86400</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;intersphinx_cache&#39;</span><span class="p">):</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_inventory</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_named_inventory</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_cache</span>
+    <span class="n">update</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">intersphinx_mapping</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="c1"># new format</span>
+            <span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">inv</span><span class="p">)</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;intersphinx identifier </span><span class="si">%r</span><span class="s1"> is not alphanumeric&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># old format, no name</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">inv</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span>
+        <span class="c1"># we can safely assume that the uri&lt;-&gt;inv mapping is not changed</span>
+        <span class="c1"># during partial rebuilds since a changed intersphinx_mapping</span>
+        <span class="c1"># setting will cause a full environment reread</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">invs</span> <span class="o">=</span> <span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">invs</span> <span class="o">=</span> <span class="n">inv</span>
+
+        <span class="k">for</span> <span class="n">inv</span> <span class="ow">in</span> <span class="n">invs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">inv</span><span class="p">:</span>
+                <span class="n">inv</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">INVENTORY_FILENAME</span><span class="p">)</span>
+            <span class="c1"># decide whether the inventory must be read: always read local</span>
+            <span class="c1"># files; remote ones only if the cache time is expired</span>
+            <span class="k">if</span> <span class="s1">&#39;://&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">inv</span> <span class="ow">or</span> <span class="n">uri</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cache</span> \
+                    <span class="ow">or</span> <span class="n">cache</span><span class="p">[</span><span class="n">uri</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">cache_time</span><span class="p">:</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;loading intersphinx inventory from </span><span class="si">%s</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">inv</span><span class="p">)</span>
+                <span class="n">invdata</span> <span class="o">=</span> <span class="n">fetch_inventory</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">inv</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">invdata</span><span class="p">:</span>
+                    <span class="n">cache</span><span class="p">[</span><span class="n">uri</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">now</span><span class="p">,</span> <span class="n">invdata</span><span class="p">)</span>
+                    <span class="n">update</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">update</span><span class="p">:</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_inventory</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_named_inventory</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># Duplicate values in different inventories will shadow each</span>
+        <span class="c1"># other; which one will override which can vary between builds</span>
+        <span class="c1"># since they are specified using an unordered dict.  To make</span>
+        <span class="c1"># it more consistent, we sort the named inventories and then</span>
+        <span class="c1"># add the unnamed inventories last.  This means that the</span>
+        <span class="c1"># unnamed inventories will shadow the named ones but the named</span>
+        <span class="c1"># ones can still be accessed when the name is specified.</span>
+        <span class="n">cached_vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cache</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">named_vals</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cached_vals</span> <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">unnamed_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cached_vals</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">_x</span><span class="p">,</span> <span class="n">invdata</span> <span class="ow">in</span> <span class="n">named_vals</span> <span class="o">+</span> <span class="n">unnamed_vals</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+                <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_named_inventory</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">invdata</span>
+            <span class="k">for</span> <span class="nb">type</span><span class="p">,</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">invdata</span><span class="p">):</span>
+                <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_inventory</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span>
+                    <span class="nb">type</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">objects</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="missing_reference"><a class="viewcode-back" href="../../../generated/sphinx.ext.intersphinx.missing_reference.html#sphinx.ext.intersphinx.missing_reference">[docs]</a><span class="k">def</span> <span class="nf">missing_reference</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">contnode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Attempt to resolve a missing reference via intersphinx references.&quot;&quot;&quot;</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftarget&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftype&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;any&#39;</span><span class="p">:</span>
+        <span class="c1"># we search anything!</span>
+        <span class="n">objtypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">objtype</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">domains</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">objtype</span> <span class="ow">in</span> <span class="n">domain</span><span class="o">.</span><span class="n">object_types</span><span class="p">]</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refdomain&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">domain</span><span class="p">:</span>
+            <span class="c1"># only objects in domains are in the inventory</span>
+            <span class="k">return</span>
+        <span class="n">objtypes</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">domains</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span><span class="o">.</span><span class="n">objtypes_for_role</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftype&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">objtypes</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">objtypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">objtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">objtype</span> <span class="ow">in</span> <span class="n">objtypes</span><span class="p">]</span>
+    <span class="n">to_try</span> <span class="o">=</span> <span class="p">[(</span><span class="n">env</span><span class="o">.</span><span class="n">intersphinx_inventory</span><span class="p">,</span> <span class="n">target</span><span class="p">)]</span>
+    <span class="n">in_set</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="n">target</span><span class="p">:</span>
+        <span class="c1"># first part may be the foreign doc set name</span>
+        <span class="n">setname</span><span class="p">,</span> <span class="n">newtarget</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">setname</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">intersphinx_named_inventory</span><span class="p">:</span>
+            <span class="n">in_set</span> <span class="o">=</span> <span class="n">setname</span>
+            <span class="n">to_try</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">env</span><span class="o">.</span><span class="n">intersphinx_named_inventory</span><span class="p">[</span><span class="n">setname</span><span class="p">],</span> <span class="n">newtarget</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">inventory</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">to_try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">objtype</span> <span class="ow">in</span> <span class="n">objtypes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">objtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">inventory</span> <span class="ow">or</span> <span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">inventory</span><span class="p">[</span><span class="n">objtype</span><span class="p">]:</span>
+                <span class="k">continue</span>
+            <span class="n">proj</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">dispname</span> <span class="o">=</span> <span class="n">inventory</span><span class="p">[</span><span class="n">objtype</span><span class="p">][</span><span class="n">target</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s1">&#39;://&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">uri</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refdoc&#39;</span><span class="p">):</span>
+                <span class="c1"># get correct path in case of subdirectories</span>
+                <span class="n">uri</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">relative_path</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;refdoc&#39;</span><span class="p">],</span> <span class="n">env</span><span class="o">.</span><span class="n">srcdir</span><span class="p">),</span> <span class="n">uri</span><span class="p">)</span>
+            <span class="n">newnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">internal</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">refuri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span>
+                                      <span class="n">reftitle</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;(in </span><span class="si">%s</span><span class="s1"> v</span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">proj</span><span class="p">,</span> <span class="n">version</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refexplicit&#39;</span><span class="p">):</span>
+                <span class="c1"># use whatever title was given</span>
+                <span class="n">newnode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contnode</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">dispname</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span> <span class="ow">or</span> \
+                    <span class="p">(</span><span class="n">domain</span> <span class="o">==</span> <span class="s1">&#39;std&#39;</span> <span class="ow">and</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftype&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;keyword&#39;</span><span class="p">):</span>
+                <span class="c1"># use whatever title was given, but strip prefix</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">contnode</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">in_set</span> <span class="ow">and</span> <span class="n">title</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">in_set</span><span class="o">+</span><span class="s1">&#39;:&#39;</span><span class="p">):</span>
+                    <span class="n">newnode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contnode</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="n">title</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">in_set</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:],</span>
+                                                      <span class="n">title</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">in_set</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">newnode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contnode</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># else use the given display name (used for :ref:)</span>
+                <span class="n">newnode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contnode</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="n">dispname</span><span class="p">,</span> <span class="n">dispname</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">newnode</span>
+    <span class="c1"># at least get rid of the &#39;:&#39; in the target if no explicit title given</span>
+    <span class="k">if</span> <span class="n">in_set</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refexplicit&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">contnode</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contnode</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+            <span class="n">contnode</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">newtarget</span><span class="p">,</span> <span class="n">contnode</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rawsource</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../../generated/sphinx.ext.intersphinx.setup.html#sphinx.ext.intersphinx.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;intersphinx_mapping&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="bp">True</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;intersphinx_cache_limit&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;missing-reference&#39;</span><span class="p">,</span> <span class="n">missing_reference</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;builder-inited&#39;</span><span class="p">,</span> <span class="n">load_mappings</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">__display_version__</span><span class="p">,</span> <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

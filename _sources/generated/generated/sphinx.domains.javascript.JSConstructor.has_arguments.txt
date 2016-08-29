@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.has_arguments
+=====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSConstructor.has_arguments

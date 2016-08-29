@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.get_theme_config
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.get_theme_config

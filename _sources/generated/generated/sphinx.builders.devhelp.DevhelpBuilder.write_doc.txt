@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.write_doc
+================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.write_doc

@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.get_target_uri
+===============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.get_target_uri

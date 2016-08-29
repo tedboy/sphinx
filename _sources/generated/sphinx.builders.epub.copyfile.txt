@@ -1,0 +1,6 @@
+sphinx.builders.epub.copyfile
+=============================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autofunction:: copyfile

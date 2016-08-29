@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.cleanup
+======================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLBuilder.cleanup

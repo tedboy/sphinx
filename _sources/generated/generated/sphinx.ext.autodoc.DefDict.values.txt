@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.values
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.values

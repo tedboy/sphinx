@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.InheritanceDiagram.option_spec
+=============================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoattribute:: InheritanceDiagram.option_spec

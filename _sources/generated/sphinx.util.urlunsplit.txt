@@ -1,0 +1,6 @@
+sphinx.util.urlunsplit
+======================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: urlunsplit

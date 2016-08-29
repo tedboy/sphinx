@@ -1,0 +1,6 @@
+sphinx.pycode.sym.dotted_name
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.dotted_name

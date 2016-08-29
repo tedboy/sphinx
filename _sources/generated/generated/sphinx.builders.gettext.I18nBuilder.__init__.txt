@@ -1,0 +1,6 @@
+sphinx.builders.gettext.I18nBuilder.__init__
+============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: I18nBuilder.__init__

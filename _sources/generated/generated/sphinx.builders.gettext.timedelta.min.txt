@@ -1,0 +1,6 @@
+sphinx.builders.gettext.timedelta.min
+=====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: timedelta.min

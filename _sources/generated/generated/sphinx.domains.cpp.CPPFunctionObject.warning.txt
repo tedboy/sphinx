@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.warning
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPFunctionObject.warning

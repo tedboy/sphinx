@@ -1,0 +1,44 @@
+sphinx.domains.cpp.CPPDomain
+============================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPDomain
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPDomain.__init__
+   ~CPPDomain.clear_doc
+   ~CPPDomain.directive
+   ~CPPDomain.get_objects
+   ~CPPDomain.get_type_name
+   ~CPPDomain.merge_domaindata
+   ~CPPDomain.process_doc
+   ~CPPDomain.resolve_any_xref
+   ~CPPDomain.resolve_xref
+   ~CPPDomain.role
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CPPDomain.dangling_warnings
+   ~CPPDomain.data_version
+   ~CPPDomain.directives
+   ~CPPDomain.indices
+   ~CPPDomain.initial_data
+   ~CPPDomain.label
+   ~CPPDomain.name
+   ~CPPDomain.object_types
+   ~CPPDomain.roles
+

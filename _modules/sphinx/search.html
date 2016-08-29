@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.search &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="sphinx" href="../sphinx.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.search</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.search</span>
+<span class="sd">    ~~~~~~~~~~~~~</span>
+
+<span class="sd">    Create a full-text search index for offline search.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span><span class="p">,</span> <span class="n">itervalues</span><span class="p">,</span> <span class="n">text_type</span><span class="p">,</span> <span class="n">string_types</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
+<span class="kn">from</span> <span class="nn">docutils.nodes</span> <span class="kn">import</span> <span class="n">raw</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">Text</span><span class="p">,</span> <span class="n">NodeVisitor</span><span class="p">,</span> <span class="n">SkipNode</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+
+<span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">jsdump</span><span class="p">,</span> <span class="n">rpartition</span>
+
+
+<div class="viewcode-block" id="SearchLanguage"><a class="viewcode-back" href="../../generated/generated/sphinx.search.SearchLanguage.html#sphinx.builders.devhelp.SearchLanguage">[docs]</a><span class="k">class</span> <span class="nc">SearchLanguage</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is the base class for search natural language preprocessors.  If</span>
+<span class="sd">    you want to add support for a new language, you should override the methods</span>
+<span class="sd">    of this class.</span>
+
+<span class="sd">    You should override `lang` class property too (e.g. &#39;en&#39;, &#39;fr&#39; and so on).</span>
+
+<span class="sd">    .. attribute:: stopwords</span>
+
+<span class="sd">       This is a set of stop words of the target language.  Default `stopwords`</span>
+<span class="sd">       is empty.  This word is used for building index and embedded in JS.</span>
+
+<span class="sd">    .. attribute:: js_stemmer_code</span>
+
+<span class="sd">       Return stemmer class of JavaScript version.  This class&#39; name should be</span>
+<span class="sd">       ``Stemmer`` and this class must have ``stemWord`` method.  This string is</span>
+<span class="sd">       embedded as-is in searchtools.js.</span>
+
+<span class="sd">       This class is used to preprocess search word which Sphinx HTML readers</span>
+<span class="sd">       type, before searching index. Default implementation does nothing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lang</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">language_name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">stopwords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">js_stemmer_rawcode</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">js_stemmer_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">/**</span>
+<span class="s2"> * Dummy stemmer for languages without stemming rules.</span>
+<span class="s2"> */</span>
+<span class="s2">var Stemmer = function() {</span>
+<span class="s2">  this.stemWord = function(w) {</span>
+<span class="s2">    return w;</span>
+<span class="s2">  }</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="n">_word_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;\w+(?u)&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SearchLanguage.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.search.SearchLanguage.__init__.html#sphinx.builders.devhelp.SearchLanguage.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">options</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SearchLanguage.init"><a class="viewcode-back" href="../../generated/generated/sphinx.search.SearchLanguage.init.html#sphinx.builders.devhelp.SearchLanguage.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the class with the options the user has given.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="SearchLanguage.split"><a class="viewcode-back" href="../../generated/generated/sphinx.search.SearchLanguage.split.html#sphinx.builders.devhelp.SearchLanguage.split">[docs]</a>    <span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method splits a sentence into words.  Default splitter splits input</span>
+<span class="sd">        at white spaces, which should be enough for most languages except CJK</span>
+<span class="sd">        languages.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_word_re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SearchLanguage.stem"><a class="viewcode-back" href="../../generated/generated/sphinx.search.SearchLanguage.stem.html#sphinx.builders.devhelp.SearchLanguage.stem">[docs]</a>    <span class="k">def</span> <span class="nf">stem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method implements stemming algorithm of the Python version.</span>
+
+<span class="sd">        Default implementation does nothing.  You should implement this if the</span>
+<span class="sd">        language has any stemming rules.</span>
+
+<span class="sd">        This class is used to preprocess search words before registering them in</span>
+<span class="sd">        the search index.  The stemming of the Python version and the JS version</span>
+<span class="sd">        (given in the js_stemmer_code attribute) must be compatible.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">word</span></div>
+
+<div class="viewcode-block" id="SearchLanguage.word_filter"><a class="viewcode-back" href="../../generated/generated/sphinx.search.SearchLanguage.word_filter.html#sphinx.builders.devhelp.SearchLanguage.word_filter">[docs]</a>    <span class="k">def</span> <span class="nf">word_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return true if the target word should be registered in the search index.</span>
+<span class="sd">        This method is called after stemming.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span>
+                <span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">12353</span> <span class="o">&lt;</span> <span class="nb">ord</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">12436</span><span class="p">))</span> <span class="ow">or</span>
+                <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">256</span> <span class="ow">and</span> <span class="p">(</span>
+                    <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopwords</span> <span class="ow">or</span> <span class="n">word</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+                <span class="p">))))</span></div></div>
+
+
+<span class="c1"># SearchEnglish imported after SearchLanguage is defined due to circular import</span>
+<span class="kn">from</span> <span class="nn">sphinx.search.en</span> <span class="kn">import</span> <span class="n">SearchEnglish</span>
+
+
+<div class="viewcode-block" id="parse_stop_word"><a class="viewcode-back" href="../../generated/sphinx.search.parse_stop_word.html#sphinx.builders.devhelp.parse_stop_word">[docs]</a><span class="k">def</span> <span class="nf">parse_stop_word</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    parse snowball style word list like this:</span>
+
+<span class="sd">    * http://snowball.tartarus.org/algorithms/finnish/stop.txt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">source</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># remove comment</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<span class="c1"># maps language name to module.class or directly a class</span>
+<span class="n">languages</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;da&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.da.SearchDanish&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;de&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.de.SearchGerman&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;en&#39;</span><span class="p">:</span> <span class="n">SearchEnglish</span><span class="p">,</span>
+    <span class="s1">&#39;es&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.es.SearchSpanish&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fi&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.fi.SearchFinnish&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fr&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.fr.SearchFrench&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;hu&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.hu.SearchHungarian&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;it&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.it.SearchItalian&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ja&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.ja.SearchJapanese&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nl&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.nl.SearchDutch&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;no&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.no.SearchNorwegian&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pt&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.pt.SearchPortuguese&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ro&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.ro.SearchRomanian&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ru&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.ru.SearchRussian&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sv&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.sv.SearchSwedish&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tr&#39;</span><span class="p">:</span> <span class="s1">&#39;sphinx.search.tr.SearchTurkish&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">_JavaScriptIndex</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The search index as javascript file that calls a function</span>
+<span class="sd">    on the documentation search object to register the index.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">PREFIX</span> <span class="o">=</span> <span class="s1">&#39;Search.setIndex(&#39;</span>
+    <span class="n">SUFFIX</span> <span class="o">=</span> <span class="s1">&#39;)&#39;</span>
+
+    <span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">PREFIX</span> <span class="o">+</span> <span class="n">jsdump</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUFFIX</span>
+
+    <span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PREFIX</span><span class="p">):</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SUFFIX</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PREFIX</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> \
+           <span class="n">s</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SUFFIX</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;invalid data&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jsdump</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+
+<span class="n">js_index</span> <span class="o">=</span> <span class="n">_JavaScriptIndex</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="WordCollector"><a class="viewcode-back" href="../../generated/generated/sphinx.search.WordCollector.html#sphinx.builders.devhelp.WordCollector">[docs]</a><span class="k">class</span> <span class="nc">WordCollector</span><span class="p">(</span><span class="n">NodeVisitor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A special visitor that collects words for the `IndexBuilder`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="WordCollector.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.search.WordCollector.__init__.html#sphinx.builders.devhelp.WordCollector.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">lang</span><span class="p">):</span>
+        <span class="n">NodeVisitor</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">found_words</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">found_title_words</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="o">=</span> <span class="n">lang</span></div>
+
+<div class="viewcode-block" id="WordCollector.dispatch_visit"><a class="viewcode-back" href="../../generated/generated/sphinx.search.WordCollector.dispatch_visit.html#sphinx.builders.devhelp.WordCollector.dispatch_visit">[docs]</a>    <span class="k">def</span> <span class="nf">dispatch_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">nodetype</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">nodetype</span><span class="p">,</span> <span class="n">comment</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SkipNode</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">nodetype</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
+            <span class="c1"># Some people might put content in raw HTML that should be searched,</span>
+            <span class="c1"># so we just amateurishly strip HTML tags and index the remaining</span>
+            <span class="c1"># content</span>
+            <span class="n">nodetext</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;(?is)&lt;style.*?&lt;/style&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">())</span>
+            <span class="n">nodetext</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;(?is)&lt;script.*?&lt;/script&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">nodetext</span><span class="p">)</span>
+            <span class="n">nodetext</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;&lt;[^&lt;]+?&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">nodetext</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">found_words</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">nodetext</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">SkipNode</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">nodetype</span><span class="p">,</span> <span class="n">Text</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">found_words</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()))</span>
+        <span class="k">elif</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">nodetype</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">found_title_words</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()))</span></div></div>
+
+
+<div class="viewcode-block" id="IndexBuilder"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.html#sphinx.builders.devhelp.IndexBuilder">[docs]</a><span class="k">class</span> <span class="nc">IndexBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper class that creates a searchindex based on the doctrees</span>
+<span class="sd">    passed to the `feed` method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">formats</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;jsdump&#39;</span><span class="p">:</span>   <span class="n">jsdump</span><span class="p">,</span>
+        <span class="s1">&#39;pickle&#39;</span><span class="p">:</span>   <span class="n">pickle</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="IndexBuilder.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.__init__.html#sphinx.builders.devhelp.IndexBuilder.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">scoring</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span>
+        <span class="c1"># filename -&gt; title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_titles</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># stemmed word -&gt; set(filenames)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mapping</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># stemmed words in titles -&gt; set(filenames)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_title_mapping</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># word -&gt; stemmed word</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stem_cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># objtype -&gt; index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_objtypes</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># objtype index -&gt; (domain, type, objname (localized))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_objnames</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># add language-specific SearchLanguage instance</span>
+        <span class="n">lang_class</span> <span class="o">=</span> <span class="n">languages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lang_class</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="o">=</span> <span class="n">SearchEnglish</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lang_class</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">module</span><span class="p">,</span> <span class="n">classname</span> <span class="o">=</span> <span class="n">lang_class</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">lang_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="nb">__import__</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="n">classname</span><span class="p">]),</span>
+                                 <span class="n">classname</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="o">=</span> <span class="n">lang_class</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># it&#39;s directly a class (e.g. added by app.add_search_language)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="o">=</span> <span class="n">lang_class</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">scoring</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">scoring</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">js_scorer_code</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">js_scorer_code</span> <span class="o">=</span> <span class="s1">u&#39;&#39;</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.load"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.load.html#sphinx.builders.devhelp.IndexBuilder.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">format</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reconstruct from frozen data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">formats</span><span class="p">[</span><span class="n">format</span><span class="p">]</span>
+        <span class="n">frozen</span> <span class="o">=</span> <span class="n">format</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+        <span class="c1"># if an old index is present, we treat it as not existing.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">frozen</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> \
+           <span class="n">frozen</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;envversion&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">version</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;old format&#39;</span><span class="p">)</span>
+        <span class="n">index2fn</span> <span class="o">=</span> <span class="n">frozen</span><span class="p">[</span><span class="s1">&#39;filenames&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_titles</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">index2fn</span><span class="p">,</span> <span class="n">frozen</span><span class="p">[</span><span class="s1">&#39;titles&#39;</span><span class="p">]))</span>
+
+        <span class="k">def</span> <span class="nf">load_terms</span><span class="p">(</span><span class="n">mapping</span><span class="p">):</span>
+            <span class="n">rv</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">mapping</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                    <span class="n">rv</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">index2fn</span><span class="p">[</span><span class="n">v</span><span class="p">]])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">rv</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">index2fn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">v</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">rv</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mapping</span> <span class="o">=</span> <span class="n">load_terms</span><span class="p">(</span><span class="n">frozen</span><span class="p">[</span><span class="s1">&#39;terms&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_title_mapping</span> <span class="o">=</span> <span class="n">load_terms</span><span class="p">(</span><span class="n">frozen</span><span class="p">[</span><span class="s1">&#39;titleterms&#39;</span><span class="p">])</span></div>
+        <span class="c1"># no need to load keywords/objtypes</span>
+
+<div class="viewcode-block" id="IndexBuilder.dump"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.dump.html#sphinx.builders.devhelp.IndexBuilder.dump">[docs]</a>    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">format</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dump the frozen index to a stream.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">formats</span><span class="p">[</span><span class="n">format</span><span class="p">]</span>
+        <span class="n">format</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freeze</span><span class="p">(),</span> <span class="n">stream</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.get_objects"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.get_objects.html#sphinx.builders.devhelp.IndexBuilder.get_objects">[docs]</a>    <span class="k">def</span> <span class="nf">get_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn2index</span><span class="p">):</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">otypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objtypes</span>
+        <span class="n">onames</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objnames</span>
+        <span class="k">for</span> <span class="n">domainname</span><span class="p">,</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">domains</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">dispname</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span> <span class="n">anchor</span><span class="p">,</span> <span class="n">prio</span> <span class="ow">in</span> \
+                    <span class="n">domain</span><span class="o">.</span><span class="n">get_objects</span><span class="p">():</span>
+                <span class="c1"># XXX use dispname?</span>
+                <span class="k">if</span> <span class="n">docname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fn2index</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">prio</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">prefix</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">rpartition</span><span class="p">(</span><span class="n">fullname</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+                <span class="n">pdict</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="p">{})</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">typeindex</span> <span class="o">=</span> <span class="n">otypes</span><span class="p">[</span><span class="n">domainname</span><span class="p">,</span> <span class="nb">type</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">typeindex</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">otypes</span><span class="p">)</span>
+                    <span class="n">otypes</span><span class="p">[</span><span class="n">domainname</span><span class="p">,</span> <span class="nb">type</span><span class="p">]</span> <span class="o">=</span> <span class="n">typeindex</span>
+                    <span class="n">otype</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">object_types</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">otype</span><span class="p">:</span>
+                        <span class="c1"># use unicode() to fire translation proxies</span>
+                        <span class="n">onames</span><span class="p">[</span><span class="n">typeindex</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">domainname</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span>
+                                             <span class="n">text_type</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">get_type_name</span><span class="p">(</span><span class="n">otype</span><span class="p">)))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">onames</span><span class="p">[</span><span class="n">typeindex</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">domainname</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">anchor</span> <span class="o">==</span> <span class="n">fullname</span><span class="p">:</span>
+                    <span class="n">shortanchor</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="k">elif</span> <span class="n">anchor</span> <span class="o">==</span> <span class="nb">type</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">fullname</span><span class="p">:</span>
+                    <span class="n">shortanchor</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">shortanchor</span> <span class="o">=</span> <span class="n">anchor</span>
+                <span class="n">pdict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">fn2index</span><span class="p">[</span><span class="n">docname</span><span class="p">],</span> <span class="n">typeindex</span><span class="p">,</span> <span class="n">prio</span><span class="p">,</span> <span class="n">shortanchor</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rv</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.get_terms"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.get_terms.html#sphinx.builders.devhelp.IndexBuilder.get_terms">[docs]</a>    <span class="k">def</span> <span class="nf">get_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn2index</span><span class="p">):</span>
+        <span class="n">rvs</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">rv</span><span class="p">,</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">rvs</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mapping</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_title_mapping</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">mapping</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">fn</span><span class="p">,</span> <span class="o">=</span> <span class="n">v</span>
+                    <span class="k">if</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fn2index</span><span class="p">:</span>
+                        <span class="n">rv</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">fn2index</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">rv</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">fn2index</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">v</span> <span class="k">if</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fn2index</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">rvs</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.freeze"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.freeze.html#sphinx.builders.devhelp.IndexBuilder.freeze">[docs]</a>    <span class="k">def</span> <span class="nf">freeze</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a usable data structure for serializing.&quot;&quot;&quot;</span>
+        <span class="n">filenames</span><span class="p">,</span> <span class="n">titles</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_titles</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+        <span class="n">fn2index</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">filenames</span><span class="p">))</span>
+        <span class="n">terms</span><span class="p">,</span> <span class="n">title_terms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_terms</span><span class="p">(</span><span class="n">fn2index</span><span class="p">)</span>
+
+        <span class="n">objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_objects</span><span class="p">(</span><span class="n">fn2index</span><span class="p">)</span>  <span class="c1"># populates _objtypes</span>
+        <span class="n">objtypes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                        <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_objtypes</span><span class="p">))</span>
+        <span class="n">objnames</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objnames</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">filenames</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="n">titles</span><span class="p">,</span> <span class="n">terms</span><span class="o">=</span><span class="n">terms</span><span class="p">,</span>
+                    <span class="n">objects</span><span class="o">=</span><span class="n">objects</span><span class="p">,</span> <span class="n">objtypes</span><span class="o">=</span><span class="n">objtypes</span><span class="p">,</span> <span class="n">objnames</span><span class="o">=</span><span class="n">objnames</span><span class="p">,</span>
+                    <span class="n">titleterms</span><span class="o">=</span><span class="n">title_terms</span><span class="p">,</span> <span class="n">envversion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">version</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.label"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.label.html#sphinx.builders.devhelp.IndexBuilder.label">[docs]</a>    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> (code: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">language_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.prune"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.prune.html#sphinx.builders.devhelp.IndexBuilder.prune">[docs]</a>    <span class="k">def</span> <span class="nf">prune</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove data for all filenames not in the list.&quot;&quot;&quot;</span>
+        <span class="n">new_titles</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_titles</span><span class="p">:</span>
+                <span class="n">new_titles</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_titles</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_titles</span> <span class="o">=</span> <span class="n">new_titles</span>
+        <span class="k">for</span> <span class="n">wordnames</span> <span class="ow">in</span> <span class="n">itervalues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mapping</span><span class="p">):</span>
+            <span class="n">wordnames</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">wordnames</span> <span class="ow">in</span> <span class="n">itervalues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_title_mapping</span><span class="p">):</span>
+            <span class="n">wordnames</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.feed"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.feed.html#sphinx.builders.devhelp.IndexBuilder.feed">[docs]</a>    <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Feed a doctree to the index.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_titles</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+
+        <span class="n">visitor</span> <span class="o">=</span> <span class="n">WordCollector</span><span class="p">(</span><span class="n">doctree</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
+        <span class="n">doctree</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
+
+        <span class="c1"># memoize self.lang.stem</span>
+        <span class="k">def</span> <span class="nf">stem</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stem_cache</span><span class="p">[</span><span class="n">word</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_stem_cache</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stem_cache</span><span class="p">[</span><span class="n">word</span><span class="p">]</span>
+        <span class="n">_filter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">word_filter</span>
+
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">visitor</span><span class="o">.</span><span class="n">found_title_words</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_filter</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_title_mapping</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">visitor</span><span class="o">.</span><span class="n">found_words</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_title_mapping</span> <span class="ow">and</span> <span class="n">_filter</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mapping</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.context_for_searchtool"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.context_for_searchtool.html#sphinx.builders.devhelp.IndexBuilder.context_for_searchtool">[docs]</a>    <span class="k">def</span> <span class="nf">context_for_searchtool</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">search_language_stemming_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">js_stemmer_code</span><span class="p">,</span>
+            <span class="n">search_language_stop_words</span> <span class="o">=</span> <span class="n">jsdump</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">stopwords</span><span class="p">)),</span>
+            <span class="n">search_scorer_tool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">js_scorer_code</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexBuilder.get_js_stemmer_rawcode"><a class="viewcode-back" href="../../generated/generated/sphinx.search.IndexBuilder.get_js_stemmer_rawcode.html#sphinx.builders.devhelp.IndexBuilder.get_js_stemmer_rawcode">[docs]</a>    <span class="k">def</span> <span class="nf">get_js_stemmer_rawcode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">js_stemmer_rawcode</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span>
+                <span class="s1">&#39;non-minified-js&#39;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">js_stemmer_rawcode</span>
+            <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

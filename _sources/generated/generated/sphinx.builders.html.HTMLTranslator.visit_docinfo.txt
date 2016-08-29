@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_docinfo
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_docinfo

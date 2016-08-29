@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.write_genindex
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.write_genindex

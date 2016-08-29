@@ -1,0 +1,6 @@
+sphinx.domains.StandardDomain.label
+===================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: StandardDomain.label

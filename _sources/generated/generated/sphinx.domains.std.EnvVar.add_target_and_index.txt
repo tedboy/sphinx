@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.add_target_and_index
+==============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.add_target_and_index

@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.get_option_by_dest
+=======================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.get_option_by_dest

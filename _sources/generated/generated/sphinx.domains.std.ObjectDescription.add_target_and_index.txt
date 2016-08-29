@@ -1,0 +1,6 @@
+sphinx.domains.std.ObjectDescription.add_target_and_index
+=========================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ObjectDescription.add_target_and_index

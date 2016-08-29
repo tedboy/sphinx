@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClassmember.get_index_text
+==================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClassmember.get_index_text

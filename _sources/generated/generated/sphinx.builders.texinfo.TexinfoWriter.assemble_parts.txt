@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.assemble_parts
+====================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoWriter.assemble_parts

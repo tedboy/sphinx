@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_field_list
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_field_list

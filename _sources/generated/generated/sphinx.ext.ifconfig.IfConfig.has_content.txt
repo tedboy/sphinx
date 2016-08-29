@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.has_content
+========================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: IfConfig.has_content

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.update_all_atts_consistantly
+============================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.update_all_atts_consistantly

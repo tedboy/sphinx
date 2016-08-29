@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.cleanup
+=========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DocTestBuilder.cleanup

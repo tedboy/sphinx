@@ -1,0 +1,6 @@
+sphinx.domains.JavaScriptDomain.get_objects
+===========================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: JavaScriptDomain.get_objects

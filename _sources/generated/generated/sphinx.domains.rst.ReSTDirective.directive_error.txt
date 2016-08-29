@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.directive_error
+================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.directive_error

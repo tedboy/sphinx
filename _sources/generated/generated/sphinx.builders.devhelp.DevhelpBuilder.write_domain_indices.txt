@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.write_domain_indices
+===========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.write_domain_indices

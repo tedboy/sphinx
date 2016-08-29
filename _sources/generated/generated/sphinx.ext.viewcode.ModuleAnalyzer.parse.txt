@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.ModuleAnalyzer.parse
+========================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: ModuleAnalyzer.parse

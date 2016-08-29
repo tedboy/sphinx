@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.write_genindex
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.write_genindex

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Request.get_origin_req_host
+=====================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Request.get_origin_req_host

@@ -1,0 +1,6 @@
+sphinx.builders.xml.Builder.build
+=================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: Builder.build

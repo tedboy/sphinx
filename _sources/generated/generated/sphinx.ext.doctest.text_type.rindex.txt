@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.rindex
+===================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.rindex

@@ -1,0 +1,6 @@
+sphinx.ext.doctest.setup
+========================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autofunction:: setup

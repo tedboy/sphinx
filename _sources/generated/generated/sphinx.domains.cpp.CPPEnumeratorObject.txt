@@ -1,0 +1,49 @@
+sphinx.domains.cpp.CPPEnumeratorObject
+======================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPEnumeratorObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPEnumeratorObject.__init__
+   ~CPPEnumeratorObject.add_name
+   ~CPPEnumeratorObject.add_target_and_index
+   ~CPPEnumeratorObject.after_content
+   ~CPPEnumeratorObject.assert_has_content
+   ~CPPEnumeratorObject.before_content
+   ~CPPEnumeratorObject.debug
+   ~CPPEnumeratorObject.describe_signature
+   ~CPPEnumeratorObject.directive_error
+   ~CPPEnumeratorObject.error
+   ~CPPEnumeratorObject.get_index_text
+   ~CPPEnumeratorObject.get_signatures
+   ~CPPEnumeratorObject.handle_signature
+   ~CPPEnumeratorObject.info
+   ~CPPEnumeratorObject.parse_definition
+   ~CPPEnumeratorObject.run
+   ~CPPEnumeratorObject.severe
+   ~CPPEnumeratorObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CPPEnumeratorObject.doc_field_types
+   ~CPPEnumeratorObject.final_argument_whitespace
+   ~CPPEnumeratorObject.has_content
+   ~CPPEnumeratorObject.option_spec
+   ~CPPEnumeratorObject.optional_arguments
+   ~CPPEnumeratorObject.required_arguments
+

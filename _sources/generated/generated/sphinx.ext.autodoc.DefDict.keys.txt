@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.keys
+===============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.keys

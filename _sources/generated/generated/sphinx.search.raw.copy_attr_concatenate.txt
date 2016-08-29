@@ -1,0 +1,6 @@
+sphinx.search.raw.copy_attr_concatenate
+=======================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.copy_attr_concatenate

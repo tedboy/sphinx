@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.note_referenced_by
+============================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.note_referenced_by

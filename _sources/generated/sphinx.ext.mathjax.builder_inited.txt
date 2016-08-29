@@ -1,0 +1,6 @@
+sphinx.ext.mathjax.builder_inited
+=================================
+
+.. currentmodule:: sphinx.ext.mathjax
+
+.. autofunction:: builder_inited

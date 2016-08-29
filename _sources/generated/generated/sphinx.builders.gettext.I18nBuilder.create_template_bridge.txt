@@ -1,0 +1,6 @@
+sphinx.builders.gettext.I18nBuilder.create_template_bridge
+==========================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: I18nBuilder.create_template_bridge

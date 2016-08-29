@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPNamespaceObject.assert_has_content
+========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPNamespaceObject.assert_has_content

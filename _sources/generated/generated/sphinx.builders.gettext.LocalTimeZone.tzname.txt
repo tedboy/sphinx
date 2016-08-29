@@ -1,0 +1,6 @@
+sphinx.builders.gettext.LocalTimeZone.tzname
+============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: LocalTimeZone.tzname

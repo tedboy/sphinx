@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.set_first_last
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.set_first_last

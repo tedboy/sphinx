@@ -1,0 +1,6 @@
+sphinx.domains.std.ObjectDescription.warning
+============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ObjectDescription.warning

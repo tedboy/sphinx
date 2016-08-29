@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.skip_string
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.skip_string

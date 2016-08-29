@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.search
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StandaloneHTMLBuilder.search

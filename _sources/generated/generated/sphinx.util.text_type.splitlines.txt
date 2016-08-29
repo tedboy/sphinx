@@ -1,0 +1,6 @@
+sphinx.util.text_type.splitlines
+================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: text_type.splitlines

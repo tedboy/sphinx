@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.load_mappings
+====================================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. autofunction:: load_mappings

@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.clear_doc
+============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PythonDomain.clear_doc

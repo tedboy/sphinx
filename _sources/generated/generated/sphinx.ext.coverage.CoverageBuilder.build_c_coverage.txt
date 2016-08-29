@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.build_c_coverage
+====================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: CoverageBuilder.build_c_coverage

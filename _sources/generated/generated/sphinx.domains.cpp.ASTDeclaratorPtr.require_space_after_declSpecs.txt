@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorPtr.require_space_after_declSpecs
+=================================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorPtr.require_space_after_declSpecs

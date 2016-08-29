@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.debug
+=================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Glossary.debug

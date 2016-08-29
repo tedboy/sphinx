@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.dispatch_visit
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.dispatch_visit

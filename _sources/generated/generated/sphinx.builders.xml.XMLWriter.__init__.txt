@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLWriter.__init__
+======================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLWriter.__init__

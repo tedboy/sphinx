@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.hasattr
+====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.hasattr

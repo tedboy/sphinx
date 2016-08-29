@@ -1,0 +1,6 @@
+sphinx.domains.cpp.make_refnode
+===============================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autofunction:: make_refnode

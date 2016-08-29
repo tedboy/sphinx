@@ -1,0 +1,6 @@
+sphinx.builders.html.text_type.strip
+====================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: text_type.strip

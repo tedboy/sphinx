@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.apply_transforms
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.apply_transforms

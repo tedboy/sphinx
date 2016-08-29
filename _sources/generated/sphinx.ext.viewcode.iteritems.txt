@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.iteritems
+=============================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. autofunction:: iteritems

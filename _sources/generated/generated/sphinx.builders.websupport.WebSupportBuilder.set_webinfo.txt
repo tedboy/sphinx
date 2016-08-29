@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.set_webinfo
+========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.set_webinfo

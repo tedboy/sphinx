@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.embedded
+=============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.embedded

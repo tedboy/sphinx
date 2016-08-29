@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.compile_specific_catalogs
+===========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.compile_specific_catalogs

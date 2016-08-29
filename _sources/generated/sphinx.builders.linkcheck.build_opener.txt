@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.build_opener
+======================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: build_opener

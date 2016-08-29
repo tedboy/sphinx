@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JavaScriptDomain.merge_domaindata
+===========================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JavaScriptDomain.merge_domaindata

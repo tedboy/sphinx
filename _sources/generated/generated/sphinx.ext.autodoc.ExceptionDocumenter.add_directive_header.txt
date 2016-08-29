@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.add_directive_header
+===========================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.add_directive_header

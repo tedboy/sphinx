@@ -1,0 +1,6 @@
+sphinx.builders.html.copyfile
+=============================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: copyfile

@@ -1,0 +1,6 @@
+sphinx.pycode.text_type.isdecimal
+=================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: text_type.isdecimal

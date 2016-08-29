@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorFunction.final_argument_whitespace
+===================================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyDecoratorFunction.final_argument_whitespace

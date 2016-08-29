@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.dump_search_index
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.dump_search_index

@@ -1,0 +1,68 @@
+.. automodule:: sphinx.ext.mathbase
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      eq_role
+      html_depart_eqref
+      html_visit_eqref
+      is_in_section_title
+      latex_visit_displaymath
+      latex_visit_eqref
+      latex_visit_math
+      man_depart_displaymath
+      man_visit_displaymath
+      man_visit_eqref
+      man_visit_math
+      math_role
+      number_equations
+      set_source_info
+      setup_math
+      texinfo_depart_displaymath
+      texinfo_visit_displaymath
+      texinfo_visit_eqref
+      texinfo_visit_math
+      text_visit_displaymath
+      text_visit_eqref
+      text_visit_math
+      wrap_displaymath
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Directive
+      MathDirective
+      displaymath
+      eqref
+      math
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.mathbase.Directive
+       generated/sphinx.ext.mathbase.MathDirective
+       generated/sphinx.ext.mathbase.displaymath
+       generated/sphinx.ext.mathbase.eqref
+       generated/sphinx.ext.mathbase.math
+
+   
+   
+
+   
+   
+   

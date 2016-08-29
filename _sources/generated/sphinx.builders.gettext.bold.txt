@@ -1,0 +1,6 @@
+sphinx.builders.gettext.bold
+============================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: bold

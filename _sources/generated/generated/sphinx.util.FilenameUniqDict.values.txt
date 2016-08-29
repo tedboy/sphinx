@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.values
+===================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.values

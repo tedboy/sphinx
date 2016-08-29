@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.copysource
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SingleFileHTMLBuilder.copysource

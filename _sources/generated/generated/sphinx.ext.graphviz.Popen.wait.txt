@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Popen.wait
+==============================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Popen.wait

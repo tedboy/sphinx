@@ -1,0 +1,6 @@
+sphinx.builders.gettext.defaultdict.viewkeys
+============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: defaultdict.viewkeys

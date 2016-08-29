@@ -1,0 +1,6 @@
+sphinx.ext.todo.NoUri
+=====================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoexception:: NoUri

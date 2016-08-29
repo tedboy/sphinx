@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.has_key
+====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.has_key

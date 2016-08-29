@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTEnum.get_name
+===================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTEnum.get_name

@@ -1,0 +1,55 @@
+sphinx.websupport.Environment
+=============================
+.. currentmodule:: sphinx.websupport
+.. autoclass:: Environment
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Environment.__init__
+   ~Environment.add_extension
+   ~Environment.call_filter
+   ~Environment.call_test
+   ~Environment.compile
+   ~Environment.compile_expression
+   ~Environment.compile_templates
+   ~Environment.extend
+   ~Environment.from_string
+   ~Environment.get_or_select_template
+   ~Environment.get_template
+   ~Environment.getattr
+   ~Environment.getitem
+   ~Environment.handle_exception
+   ~Environment.iter_extensions
+   ~Environment.join_path
+   ~Environment.lex
+   ~Environment.list_templates
+   ~Environment.make_globals
+   ~Environment.overlay
+   ~Environment.parse
+   ~Environment.preprocess
+   ~Environment.select_template
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Environment.exception_formatter
+   ~Environment.exception_handler
+   ~Environment.lexer
+   ~Environment.linked_to
+   ~Environment.overlayed
+   ~Environment.sandboxed
+   ~Environment.shared
+

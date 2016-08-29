@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.add_name
+================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.add_name

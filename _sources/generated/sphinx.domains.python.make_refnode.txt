@@ -1,0 +1,6 @@
+sphinx.domains.python.make_refnode
+==================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autofunction:: make_refnode

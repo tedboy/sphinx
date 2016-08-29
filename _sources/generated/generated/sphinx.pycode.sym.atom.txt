@@ -1,0 +1,6 @@
+sphinx.pycode.sym.atom
+======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.atom

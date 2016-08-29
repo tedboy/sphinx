@@ -1,0 +1,6 @@
+sphinx.search.Text.rindex
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.rindex

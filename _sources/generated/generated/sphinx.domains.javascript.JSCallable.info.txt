@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.info
+=========================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.info

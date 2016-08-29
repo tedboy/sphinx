@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.encode
+===================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.encode

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.required_arguments
+===============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: IfConfig.required_arguments

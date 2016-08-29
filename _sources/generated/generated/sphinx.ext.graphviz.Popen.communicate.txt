@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Popen.communicate
+=====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Popen.communicate

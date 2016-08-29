@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.add_permalink_ref
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.add_permalink_ref

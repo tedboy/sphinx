@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.non_default_attributes
+===============================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: math.non_default_attributes

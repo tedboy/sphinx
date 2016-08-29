@@ -1,0 +1,55 @@
+.. automodule:: sphinx.domains.rst
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      iteritems
+      l_
+      make_refnode
+      parse_directive
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Domain
+      ObjType
+      ObjectDescription
+      ReSTDirective
+      ReSTDomain
+      ReSTMarkup
+      ReSTRole
+      XRefRole
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.domains.rst.Domain
+       generated/sphinx.domains.rst.ObjType
+       generated/sphinx.domains.rst.ObjectDescription
+       generated/sphinx.domains.rst.ReSTDirective
+       generated/sphinx.domains.rst.ReSTDomain
+       generated/sphinx.domains.rst.ReSTMarkup
+       generated/sphinx.domains.rst.ReSTRole
+       generated/sphinx.domains.rst.XRefRole
+
+   
+   
+
+   
+   
+   

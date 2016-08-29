@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Domain.get_objects
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: Domain.get_objects

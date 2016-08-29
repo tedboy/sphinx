@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.init_document_data
+=========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoBuilder.init_document_data

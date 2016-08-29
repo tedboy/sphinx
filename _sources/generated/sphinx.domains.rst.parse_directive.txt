@@ -1,0 +1,6 @@
+sphinx.domains.rst.parse_directive
+==================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autofunction:: parse_directive

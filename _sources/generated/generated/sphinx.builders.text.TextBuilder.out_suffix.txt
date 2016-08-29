@@ -1,0 +1,6 @@
+sphinx.builders.text.TextBuilder.out_suffix
+===========================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextBuilder.out_suffix

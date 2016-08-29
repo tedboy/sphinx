@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.run
+====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutoDirective.run

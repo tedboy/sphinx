@@ -1,0 +1,31 @@
+sphinx.search.WordCollector
+===========================
+.. currentmodule:: sphinx.search
+.. autoclass:: WordCollector
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~WordCollector.__init__
+   ~WordCollector.dispatch_departure
+   ~WordCollector.dispatch_visit
+   ~WordCollector.unknown_departure
+   ~WordCollector.unknown_visit
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~WordCollector.optional
+

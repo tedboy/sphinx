@@ -1,0 +1,6 @@
+sphinx.pycode.sym.STAREQUAL
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.STAREQUAL

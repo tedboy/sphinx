@@ -1,0 +1,6 @@
+sphinx.pycode.sym.arith_expr
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.arith_expr

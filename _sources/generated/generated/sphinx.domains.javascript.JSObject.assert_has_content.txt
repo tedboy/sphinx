@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.assert_has_content
+=====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSObject.assert_has_content

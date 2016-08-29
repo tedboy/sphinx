@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.starttag
+==================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.starttag

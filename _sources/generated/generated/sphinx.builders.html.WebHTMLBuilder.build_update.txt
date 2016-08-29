@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.build_update
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.build_update

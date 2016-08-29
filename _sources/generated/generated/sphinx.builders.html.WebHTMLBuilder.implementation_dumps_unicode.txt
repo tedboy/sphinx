@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.implementation_dumps_unicode
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: WebHTMLBuilder.implementation_dumps_unicode

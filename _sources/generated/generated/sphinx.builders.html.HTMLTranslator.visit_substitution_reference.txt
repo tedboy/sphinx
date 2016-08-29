@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_substitution_reference
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_substitution_reference

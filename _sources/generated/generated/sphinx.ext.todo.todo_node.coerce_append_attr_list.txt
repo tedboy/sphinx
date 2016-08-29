@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.coerce_append_attr_list
+=================================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todo_node.coerce_append_attr_list

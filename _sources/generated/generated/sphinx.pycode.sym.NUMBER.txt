@@ -1,0 +1,6 @@
+sphinx.pycode.sym.NUMBER
+========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.NUMBER

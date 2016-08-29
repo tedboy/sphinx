@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.warning
+===================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.warning

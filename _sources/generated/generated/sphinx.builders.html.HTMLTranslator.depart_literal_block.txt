@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_literal_block
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_literal_block

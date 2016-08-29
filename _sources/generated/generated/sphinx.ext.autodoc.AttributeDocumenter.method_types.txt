@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AttributeDocumenter.method_types
+===================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: AttributeDocumenter.method_types

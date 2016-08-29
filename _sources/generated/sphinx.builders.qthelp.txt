@@ -1,0 +1,43 @@
+.. automodule:: sphinx.builders.qthelp
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      force_decode
+      htmlescape
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      QtHelpBuilder
+      StandaloneHTMLBuilder
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.qthelp.QtHelpBuilder
+       generated/sphinx.builders.qthelp.StandaloneHTMLBuilder
+       generated/sphinx.builders.qthelp.text_type
+
+   
+   
+
+   
+   
+   

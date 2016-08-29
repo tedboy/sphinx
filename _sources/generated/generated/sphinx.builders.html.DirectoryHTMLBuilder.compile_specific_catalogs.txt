@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.compile_specific_catalogs
+===================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.compile_specific_catalogs

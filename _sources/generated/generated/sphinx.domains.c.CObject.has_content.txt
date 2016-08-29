@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.has_content
+====================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. autoattribute:: CObject.has_content

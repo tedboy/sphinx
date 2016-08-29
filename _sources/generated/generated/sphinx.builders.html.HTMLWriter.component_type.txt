@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.component_type
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.component_type

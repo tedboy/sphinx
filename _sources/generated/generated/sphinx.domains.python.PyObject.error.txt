@@ -1,0 +1,6 @@
+sphinx.domains.python.PyObject.error
+====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyObject.error

@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.warning
+=========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.warning

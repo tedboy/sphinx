@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.timetz
+=======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.timetz

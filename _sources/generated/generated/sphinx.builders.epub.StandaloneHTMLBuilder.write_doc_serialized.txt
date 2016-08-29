@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.write_doc_serialized
+===============================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.write_doc_serialized

@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.stylesheet_call
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.stylesheet_call

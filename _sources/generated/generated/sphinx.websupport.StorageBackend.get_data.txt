@@ -1,0 +1,6 @@
+sphinx.websupport.StorageBackend.get_data
+=========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: StorageBackend.get_data

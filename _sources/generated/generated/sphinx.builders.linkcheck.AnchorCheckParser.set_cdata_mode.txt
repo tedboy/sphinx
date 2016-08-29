@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.set_cdata_mode
+==========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.set_cdata_mode

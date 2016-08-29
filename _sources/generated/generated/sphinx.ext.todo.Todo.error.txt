@@ -1,0 +1,6 @@
+sphinx.ext.todo.Todo.error
+==========================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Todo.error

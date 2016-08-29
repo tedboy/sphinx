@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.init
+===============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.init

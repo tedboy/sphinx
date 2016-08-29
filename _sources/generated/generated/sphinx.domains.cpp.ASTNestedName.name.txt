@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTNestedName.name
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: ASTNestedName.name

@@ -1,0 +1,6 @@
+sphinx.util.attrdict.pop
+========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.pop

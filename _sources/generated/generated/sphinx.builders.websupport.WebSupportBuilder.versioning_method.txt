@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.versioning_method
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.versioning_method

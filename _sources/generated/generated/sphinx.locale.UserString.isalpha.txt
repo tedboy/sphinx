@@ -1,0 +1,6 @@
+sphinx.locale.UserString.isalpha
+================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.isalpha

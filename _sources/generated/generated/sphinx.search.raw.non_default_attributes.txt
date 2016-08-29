@@ -1,0 +1,6 @@
+sphinx.search.raw.non_default_attributes
+========================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.non_default_attributes

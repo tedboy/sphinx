@@ -1,0 +1,6 @@
+sphinx.search.comment.list_attributes
+=====================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: comment.list_attributes

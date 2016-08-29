@@ -1,0 +1,6 @@
+sphinx.pycode.sym.try_stmt
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.try_stmt

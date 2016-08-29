@@ -1,0 +1,45 @@
+sphinx.domains.javascript.JavaScriptDomain
+==========================================
+.. currentmodule:: sphinx.domains.javascript
+.. autoclass:: JavaScriptDomain
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~JavaScriptDomain.__init__
+   ~JavaScriptDomain.clear_doc
+   ~JavaScriptDomain.directive
+   ~JavaScriptDomain.find_obj
+   ~JavaScriptDomain.get_objects
+   ~JavaScriptDomain.get_type_name
+   ~JavaScriptDomain.merge_domaindata
+   ~JavaScriptDomain.process_doc
+   ~JavaScriptDomain.resolve_any_xref
+   ~JavaScriptDomain.resolve_xref
+   ~JavaScriptDomain.role
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~JavaScriptDomain.dangling_warnings
+   ~JavaScriptDomain.data_version
+   ~JavaScriptDomain.directives
+   ~JavaScriptDomain.indices
+   ~JavaScriptDomain.initial_data
+   ~JavaScriptDomain.label
+   ~JavaScriptDomain.name
+   ~JavaScriptDomain.object_types
+   ~JavaScriptDomain.roles
+

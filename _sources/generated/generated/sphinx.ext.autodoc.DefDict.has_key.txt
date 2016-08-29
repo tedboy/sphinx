@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.has_key
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.has_key

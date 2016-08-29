@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.parent
+===================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: ifconfig.parent

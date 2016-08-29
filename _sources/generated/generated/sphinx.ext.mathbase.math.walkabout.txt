@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.walkabout
+==================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: math.walkabout

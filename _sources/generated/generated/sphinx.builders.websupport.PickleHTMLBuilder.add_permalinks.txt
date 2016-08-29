@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.add_permalinks
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.add_permalinks

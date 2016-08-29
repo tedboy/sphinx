@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.pprint
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.pprint

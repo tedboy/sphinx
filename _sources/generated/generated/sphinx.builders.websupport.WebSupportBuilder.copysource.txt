@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.copysource
+=======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.copysource

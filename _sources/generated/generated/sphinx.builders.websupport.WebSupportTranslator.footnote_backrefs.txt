@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.footnote_backrefs
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.footnote_backrefs

@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.should_be_compact_paragraph
+==========================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.should_be_compact_paragraph

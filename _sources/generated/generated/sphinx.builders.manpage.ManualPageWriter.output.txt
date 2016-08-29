@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.output
+===============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.output

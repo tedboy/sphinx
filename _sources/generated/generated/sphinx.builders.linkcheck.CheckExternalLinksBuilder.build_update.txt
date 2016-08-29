@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder.build_update
+================================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: CheckExternalLinksBuilder.build_update

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.run
+=================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.run

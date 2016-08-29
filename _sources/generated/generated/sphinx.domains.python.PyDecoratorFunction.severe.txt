@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorFunction.severe
+================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorFunction.severe

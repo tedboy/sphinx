@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.debug
+======================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutoDirective.debug

@@ -1,0 +1,6 @@
+sphinx.builders.latex.FileOutput.open
+=====================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: FileOutput.open

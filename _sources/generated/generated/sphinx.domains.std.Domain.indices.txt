@@ -1,0 +1,6 @@
+sphinx.domains.std.Domain.indices
+=================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Domain.indices

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.tzinfo.dst
+==================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: tzinfo.dst

@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.name
+=======================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PythonDomain.name

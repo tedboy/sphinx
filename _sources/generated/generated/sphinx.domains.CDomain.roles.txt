@@ -1,0 +1,6 @@
+sphinx.domains.CDomain.roles
+============================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CDomain.roles

@@ -1,0 +1,6 @@
+sphinx.search.title.attlist
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.attlist

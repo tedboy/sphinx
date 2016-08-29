@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Directive.warning
+====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: Directive.warning

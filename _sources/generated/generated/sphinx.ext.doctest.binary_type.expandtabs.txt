@@ -1,0 +1,6 @@
+sphinx.ext.doctest.binary_type.expandtabs
+=========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: binary_type.expandtabs

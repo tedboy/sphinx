@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.language
+=================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.language

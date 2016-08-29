@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.implementation_dumps_unicode
+=========================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.implementation_dumps_unicode

@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_literal_emphasis
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_literal_emphasis

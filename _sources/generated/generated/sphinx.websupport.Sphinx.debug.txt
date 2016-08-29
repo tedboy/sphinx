@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.debug
+==============================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.debug

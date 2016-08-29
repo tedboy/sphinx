@@ -1,0 +1,33 @@
+sphinx.domains.cpp.ASTType
+==========================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTType
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTType.__init__
+   ~ASTType.clone
+   ~ASTType.describe_signature
+   ~ASTType.get_id_v1
+   ~ASTType.get_id_v2
+   ~ASTType.get_name
+   ~ASTType.prefix_nested_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ASTType.name
+

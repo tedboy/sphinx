@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.getattr
+=====================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.getattr

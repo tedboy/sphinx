@@ -1,0 +1,963 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.domains.std &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.domains" href="../domains.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../domains.html">sphinx.domains</a> &raquo;</li>
+        
+      <li>sphinx.domains.std</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.domains.std</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.domains.std</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    The standard domain.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">unicodedata</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span> <span class="nn">docutils.nodes</span> <span class="kn">import</span> <span class="n">fully_normalize_name</span>
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">directives</span>
+<span class="kn">from</span> <span class="nn">docutils.statemachine</span> <span class="kn">import</span> <span class="n">ViewList</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.roles</span> <span class="kn">import</span> <span class="n">XRefRole</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">l_</span><span class="p">,</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">sphinx.domains</span> <span class="kn">import</span> <span class="n">Domain</span><span class="p">,</span> <span class="n">ObjType</span>
+<span class="kn">from</span> <span class="nn">sphinx.directives</span> <span class="kn">import</span> <span class="n">ObjectDescription</span>
+<span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">ws_re</span><span class="p">,</span> <span class="n">get_figtype</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.nodes</span> <span class="kn">import</span> <span class="n">clean_astext</span><span class="p">,</span> <span class="n">make_refnode</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.compat</span> <span class="kn">import</span> <span class="n">Directive</span>
+
+
+<span class="c1"># RE for option descriptions</span>
+<span class="n">option_desc_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;((?:/|--|-|\+)?[-?@#_a-zA-Z0-9]+)(=?\s*.*)&#39;</span><span class="p">)</span>
+<span class="c1"># RE for grammar tokens</span>
+<span class="n">token_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;`(\w+)`&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">U</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="GenericObject"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.GenericObject.html#sphinx.domains.GenericObject">[docs]</a><span class="k">class</span> <span class="nc">GenericObject</span><span class="p">(</span><span class="n">ObjectDescription</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A generic x-ref directive registered with Sphinx.add_object_type().</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">indextemplate</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">parse_node</span> <span class="o">=</span> <span class="bp">None</span>
+
+<div class="viewcode-block" id="GenericObject.handle_signature"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.GenericObject.handle_signature.html#sphinx.domains.GenericObject.handle_signature">[docs]</a>    <span class="k">def</span> <span class="nf">handle_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_node</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_node</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">signode</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_name</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+            <span class="c1"># normalize whitespace like XRefRole does</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">ws_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span></div>
+
+<div class="viewcode-block" id="GenericObject.add_target_and_index"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.GenericObject.add_target_and_index.html#sphinx.domains.GenericObject.add_target_and_index">[docs]</a>    <span class="k">def</span> <span class="nf">add_target_and_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="n">targetname</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">objtype</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">targetname</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">note_explicit_target</span><span class="p">(</span><span class="n">signode</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indextemplate</span><span class="p">:</span>
+            <span class="n">colon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indextemplate</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">colon</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">indextype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indextemplate</span><span class="p">[:</span><span class="n">colon</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">indexentry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indextemplate</span><span class="p">[</span><span class="n">colon</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">indextype</span> <span class="o">=</span> <span class="s1">&#39;single&#39;</span>
+                <span class="n">indexentry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indextemplate</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indexnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">indextype</span><span class="p">,</span> <span class="n">indexentry</span><span class="p">,</span>
+                                              <span class="n">targetname</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">][</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">objtype</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="n">targetname</span></div></div>
+
+
+<div class="viewcode-block" id="EnvVar"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.EnvVar.html#sphinx.domains.EnvVar">[docs]</a><span class="k">class</span> <span class="nc">EnvVar</span><span class="p">(</span><span class="n">GenericObject</span><span class="p">):</span>
+    <span class="n">indextemplate</span> <span class="o">=</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;environment variable; </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EnvVarXRefRole"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.EnvVarXRefRole.html#sphinx.domains.EnvVarXRefRole">[docs]</a><span class="k">class</span> <span class="nc">EnvVarXRefRole</span><span class="p">(</span><span class="n">XRefRole</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cross-referencing role for environment variables (adds an index entry).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="EnvVarXRefRole.result_nodes"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.EnvVarXRefRole.result_nodes.html#sphinx.domains.EnvVarXRefRole.result_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">result_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">is_ref</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ref</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="p">[]</span>
+        <span class="n">varname</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftarget&#39;</span><span class="p">]</span>
+        <span class="n">tgtid</span> <span class="o">=</span> <span class="s1">&#39;index-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">env</span><span class="o">.</span><span class="n">new_serialno</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+        <span class="n">indexnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">index</span><span class="p">()</span>
+        <span class="n">indexnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">tgtid</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;environment variable; </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">varname</span><span class="p">,</span> <span class="n">tgtid</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">targetnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">tgtid</span><span class="p">])</span>
+        <span class="n">document</span><span class="o">.</span><span class="n">note_explicit_target</span><span class="p">(</span><span class="n">targetnode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">indexnode</span><span class="p">,</span> <span class="n">targetnode</span><span class="p">,</span> <span class="n">node</span><span class="p">],</span> <span class="p">[]</span></div></div>
+
+
+<div class="viewcode-block" id="Target"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Target.html#sphinx.domains.Target">[docs]</a><span class="k">class</span> <span class="nc">Target</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generic target for user-defined cross-reference types.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">indextemplate</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="Target.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Target.run.html#sphinx.domains.Target.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="c1"># normalize whitespace in fullname like XRefRole does</span>
+        <span class="n">fullname</span> <span class="o">=</span> <span class="n">ws_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">targetname</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">fullname</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">targetname</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">note_explicit_target</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indextemplate</span><span class="p">:</span>
+            <span class="n">indexentry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indextemplate</span> <span class="o">%</span> <span class="p">(</span><span class="n">fullname</span><span class="p">,)</span>
+            <span class="n">indextype</span> <span class="o">=</span> <span class="s1">&#39;single&#39;</span>
+            <span class="n">colon</span> <span class="o">=</span> <span class="n">indexentry</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">colon</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">indextype</span> <span class="o">=</span> <span class="n">indexentry</span><span class="p">[:</span><span class="n">colon</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">indexentry</span> <span class="o">=</span> <span class="n">indexentry</span><span class="p">[</span><span class="n">colon</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">inode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">entries</span><span class="o">=</span><span class="p">[(</span><span class="n">indextype</span><span class="p">,</span> <span class="n">indexentry</span><span class="p">,</span>
+                                             <span class="n">targetname</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)])</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inode</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">if</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">][</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">,</span> <span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="n">targetname</span>
+        <span class="k">return</span> <span class="n">ret</span></div></div>
+
+
+<div class="viewcode-block" id="Cmdoption"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Cmdoption.html#sphinx.domains.Cmdoption">[docs]</a><span class="k">class</span> <span class="nc">Cmdoption</span><span class="p">(</span><span class="n">ObjectDescription</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description of a command-line option (.. option).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Cmdoption.handle_signature"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Cmdoption.handle_signature.html#sphinx.domains.Cmdoption.handle_signature">[docs]</a>    <span class="k">def</span> <span class="nf">handle_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Transform an option description into RST nodes.&quot;&quot;&quot;</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">firstname</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">potential_option</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">):</span>
+            <span class="n">potential_option</span> <span class="o">=</span> <span class="n">potential_option</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">option_desc_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">potential_option</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span>
+                    <span class="s1">&#39;Malformed option description </span><span class="si">%r</span><span class="s1">, should &#39;</span>
+                    <span class="s1">&#39;look like &quot;opt&quot;, &quot;-opt args&quot;, &quot;--opt args&quot;, &#39;</span>
+                    <span class="s1">&#39;&quot;/opt args&quot; or &quot;+opt args&quot;&#39;</span> <span class="o">%</span> <span class="n">potential_option</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">optname</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">count</span><span class="p">:</span>
+                <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_addname</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="p">)</span>
+            <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_name</span><span class="p">(</span><span class="n">optname</span><span class="p">,</span> <span class="n">optname</span><span class="p">)</span>
+            <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_addname</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">count</span><span class="p">:</span>
+                <span class="n">firstname</span> <span class="o">=</span> <span class="n">optname</span>
+                <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;allnames&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">optname</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;allnames&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">optname</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">firstname</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+        <span class="k">return</span> <span class="n">firstname</span></div>
+
+<div class="viewcode-block" id="Cmdoption.add_target_and_index"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Cmdoption.add_target_and_index.html#sphinx.domains.Cmdoption.add_target_and_index">[docs]</a>    <span class="k">def</span> <span class="nf">add_target_and_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">firstname</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="n">currprogram</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;std:program&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">optname</span> <span class="ow">in</span> <span class="n">signode</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;allnames&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">targetname</span> <span class="o">=</span> <span class="n">optname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">targetname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+                <span class="n">targetname</span> <span class="o">=</span> <span class="s1">&#39;-arg-&#39;</span> <span class="o">+</span> <span class="n">targetname</span>
+            <span class="k">if</span> <span class="n">currprogram</span><span class="p">:</span>
+                <span class="n">targetname</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">currprogram</span> <span class="o">+</span> <span class="n">targetname</span>
+            <span class="n">targetname</span> <span class="o">=</span> <span class="s1">&#39;cmdoption&#39;</span> <span class="o">+</span> <span class="n">targetname</span>
+            <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">targetname</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">note_explicit_target</span><span class="p">(</span><span class="n">signode</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">][</span><span class="s1">&#39;progoptions&#39;</span><span class="p">][</span><span class="n">currprogram</span><span class="p">,</span> <span class="n">optname</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="n">targetname</span>
+            <span class="c1"># create only one index entry for the whole option</span>
+            <span class="k">if</span> <span class="n">optname</span> <span class="o">==</span> <span class="n">firstname</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indexnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">(</span><span class="s1">&#39;pair&#39;</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">command line option; </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">%</span>
+                     <span class="p">((</span><span class="n">currprogram</span> <span class="ow">and</span> <span class="n">currprogram</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">sig</span><span class="p">),</span>
+                     <span class="n">targetname</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="Program"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Program.html#sphinx.domains.Program">[docs]</a><span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Directive to name the program for which options are documented.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="Program.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Program.run.html#sphinx.domains.Program.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">program</span> <span class="o">=</span> <span class="n">ws_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">program</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;std:program&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="p">[</span><span class="s1">&#39;std:program&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">program</span>
+        <span class="k">return</span> <span class="p">[]</span></div></div>
+
+
+<div class="viewcode-block" id="OptionXRefRole"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.OptionXRefRole.html#sphinx.domains.OptionXRefRole">[docs]</a><span class="k">class</span> <span class="nc">OptionXRefRole</span><span class="p">(</span><span class="n">XRefRole</span><span class="p">):</span>
+<div class="viewcode-block" id="OptionXRefRole.process_link"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.OptionXRefRole.process_link.html#sphinx.domains.OptionXRefRole.process_link">[docs]</a>    <span class="k">def</span> <span class="nf">process_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">refnode</span><span class="p">,</span> <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="n">refnode</span><span class="p">[</span><span class="s1">&#39;std:program&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;std:program&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span></div></div>
+
+
+<div class="viewcode-block" id="make_termnodes_from_paragraph_node"><a class="viewcode-back" href="../../../generated/sphinx.domains.std.make_termnodes_from_paragraph_node.html#sphinx.domains.make_termnodes_from_paragraph_node">[docs]</a><span class="k">def</span> <span class="nf">make_termnodes_from_paragraph_node</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">new_id</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">gloss_entries</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">temp_data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;gloss_entries&#39;</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span>
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">][</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span>
+
+    <span class="n">termtext</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">new_id</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">new_id</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">make_id</span><span class="p">(</span><span class="s1">&#39;term-&#39;</span> <span class="o">+</span> <span class="n">termtext</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">new_id</span> <span class="ow">in</span> <span class="n">gloss_entries</span><span class="p">:</span>
+        <span class="n">new_id</span> <span class="o">=</span> <span class="s1">&#39;term-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gloss_entries</span><span class="p">))</span>
+    <span class="n">gloss_entries</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_id</span><span class="p">)</span>
+    <span class="n">objects</span><span class="p">[</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="n">termtext</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="n">new_id</span>
+
+    <span class="c1"># add an index entry too</span>
+    <span class="n">indexnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">index</span><span class="p">()</span>
+    <span class="n">indexnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">termtext</span><span class="p">,</span> <span class="n">new_id</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">)]</span>
+    <span class="n">new_termnodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">new_termnodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indexnode</span><span class="p">)</span>
+    <span class="n">new_termnodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+    <span class="n">new_termnodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">addnodes</span><span class="o">.</span><span class="n">termsep</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">termnode</span> <span class="ow">in</span> <span class="n">new_termnodes</span><span class="p">:</span>
+        <span class="n">termnode</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">termnode</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">line</span>
+
+    <span class="k">return</span> <span class="n">new_id</span><span class="p">,</span> <span class="n">termtext</span><span class="p">,</span> <span class="n">new_termnodes</span></div>
+
+
+<div class="viewcode-block" id="make_term_from_paragraph_node"><a class="viewcode-back" href="../../../generated/sphinx.domains.std.make_term_from_paragraph_node.html#sphinx.domains.make_term_from_paragraph_node">[docs]</a><span class="k">def</span> <span class="nf">make_term_from_paragraph_node</span><span class="p">(</span><span class="n">termnodes</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+    <span class="c1"># make a single &quot;term&quot; node with all the terms, separated by termsep</span>
+    <span class="c1"># nodes (remove the dangling trailing separator)</span>
+    <span class="n">term</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">term</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">termnodes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">term</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">term</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">termnodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">termnodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">line</span>
+    <span class="n">term</span><span class="o">.</span><span class="n">rawsource</span> <span class="o">=</span> <span class="n">term</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+    <span class="n">term</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+    <span class="n">term</span><span class="p">[</span><span class="s1">&#39;names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">term</span></div>
+
+
+<div class="viewcode-block" id="Glossary"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Glossary.html#sphinx.domains.Glossary">[docs]</a><span class="k">class</span> <span class="nc">Glossary</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Directive to create a glossary with cross-reference targets for :term:</span>
+<span class="sd">    roles.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;sorted&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="Glossary.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.Glossary.run.html#sphinx.domains.Glossary.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">glossary</span><span class="p">()</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span>
+
+        <span class="c1"># This directive implements a custom format of the reST definition list</span>
+        <span class="c1"># that allows multiple lines of terms before the definition.  This is</span>
+        <span class="c1"># easy to parse since we know that the contents of the glossary *must</span>
+        <span class="c1"># be* a definition list.</span>
+
+        <span class="c1"># first, collect single entries</span>
+        <span class="n">entries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">in_definition</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">was_empty</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span><span class="p">,</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">lineno</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">items</span><span class="p">):</span>
+            <span class="c1"># empty line -&gt; add to last definition</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">in_definition</span> <span class="ow">and</span> <span class="n">entries</span><span class="p">:</span>
+                    <span class="n">entries</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">lineno</span><span class="p">)</span>
+                <span class="n">was_empty</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">continue</span>
+            <span class="c1"># unindented line -&gt; a term</span>
+            <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
+                <span class="c1"># enable comments</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.. &#39;</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="c1"># first term of definition</span>
+                <span class="k">if</span> <span class="n">in_definition</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">was_empty</span><span class="p">:</span>
+                        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span>
+                            <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;glossary term must be preceded by empty line&#39;</span><span class="p">,</span>
+                            <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">lineno</span><span class="p">))</span>
+                    <span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">(([(</span><span class="n">line</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">lineno</span><span class="p">)],</span> <span class="n">ViewList</span><span class="p">()))</span>
+                    <span class="n">in_definition</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="c1"># second term and following</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">was_empty</span><span class="p">:</span>
+                        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span>
+                            <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;glossary terms must not be separated by empty &#39;</span>
+                            <span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">lineno</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">entries</span><span class="p">:</span>
+                        <span class="n">entries</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">line</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">lineno</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span>
+                            <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;glossary seems to be misformatted, check &#39;</span>
+                            <span class="s1">&#39;indentation&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">lineno</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">in_definition</span><span class="p">:</span>
+                    <span class="c1"># first line of definition, determines indentation</span>
+                    <span class="n">in_definition</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="n">indent_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">lstrip</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">entries</span><span class="p">:</span>
+                    <span class="n">entries</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">indent_len</span><span class="p">:],</span> <span class="n">source</span><span class="p">,</span> <span class="n">lineno</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span>
+                        <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;glossary seems to be misformatted, check &#39;</span>
+                        <span class="s1">&#39;indentation&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="n">lineno</span><span class="p">))</span>
+            <span class="n">was_empty</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c1"># now, parse all the entries into a big definition list</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">terms</span><span class="p">,</span> <span class="n">definition</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">:</span>
+            <span class="n">termtexts</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">termnodes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">system_messages</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">line</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">lineno</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">:</span>
+                <span class="c1"># parse the term with inline markup</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">inline_text</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">lineno</span><span class="p">)</span>
+                <span class="n">system_messages</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+                <span class="c1"># get a text-only representation of the term and register it</span>
+                <span class="c1"># as a cross-reference target</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">tmp</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+                <span class="n">tmp</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">lineno</span>
+                <span class="n">new_id</span><span class="p">,</span> <span class="n">termtext</span><span class="p">,</span> <span class="n">new_termnodes</span> <span class="o">=</span> \
+                    <span class="n">make_termnodes_from_paragraph_node</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
+                <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_id</span><span class="p">)</span>
+                <span class="n">termtexts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">termtext</span><span class="p">)</span>
+                <span class="n">termnodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_termnodes</span><span class="p">)</span>
+
+            <span class="n">term</span> <span class="o">=</span> <span class="n">make_term_from_paragraph_node</span><span class="p">(</span><span class="n">termnodes</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
+            <span class="n">term</span> <span class="o">+=</span> <span class="n">system_messages</span>
+
+            <span class="n">defnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">definition</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">definition</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">nested_parse</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">definition</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+                                        <span class="n">defnode</span><span class="p">)</span>
+
+            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">termtexts</span><span class="p">,</span>
+                          <span class="n">nodes</span><span class="o">.</span><span class="n">definition_list_item</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">defnode</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="s1">&#39;sorted&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+            <span class="n">items</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span>
+                       <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s1">&#39;NFD&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span>
+
+        <span class="n">dlist</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">definition_list</span><span class="p">()</span>
+        <span class="n">dlist</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;glossary&#39;</span><span class="p">)</span>
+        <span class="n">dlist</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">+=</span> <span class="n">dlist</span>
+        <span class="k">return</span> <span class="n">messages</span> <span class="o">+</span> <span class="p">[</span><span class="n">node</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="token_xrefs"><a class="viewcode-back" href="../../../generated/sphinx.domains.std.token_xrefs.html#sphinx.domains.token_xrefs">[docs]</a><span class="k">def</span> <span class="nf">token_xrefs</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">retnodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">token_re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="n">txt</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="n">pos</span><span class="p">:</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">()]</span>
+            <span class="n">retnodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">txt</span><span class="p">))</span>
+        <span class="n">refnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">pending_xref</span><span class="p">(</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reftype</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="n">refdomain</span><span class="o">=</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">reftarget</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">refnode</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">literal</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;xref&#39;</span><span class="p">])</span>
+        <span class="n">retnodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">refnode</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="n">retnodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">pos</span><span class="p">:],</span> <span class="n">text</span><span class="p">[</span><span class="n">pos</span><span class="p">:]))</span>
+    <span class="k">return</span> <span class="n">retnodes</span></div>
+
+
+<div class="viewcode-block" id="ProductionList"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.ProductionList.html#sphinx.domains.ProductionList">[docs]</a><span class="k">class</span> <span class="nc">ProductionList</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Directive to list grammar productions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="ProductionList.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.ProductionList.run.html#sphinx.domains.ProductionList.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">objects</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">][</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">productionlist</span><span class="p">()</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="s1">&#39;:&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">rule</span><span class="p">:</span>
+                <span class="c1"># production group</span>
+                <span class="k">continue</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">name</span><span class="p">,</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">rule</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">subnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">production</span><span class="p">()</span>
+            <span class="n">subnode</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">subnode</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">]:</span>
+                <span class="n">idname</span> <span class="o">=</span> <span class="s1">&#39;grammar-token-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">subnode</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">idname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">ids</span><span class="p">:</span>
+                    <span class="n">subnode</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idname</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">note_implicit_target</span><span class="p">(</span><span class="n">subnode</span><span class="p">,</span> <span class="n">subnode</span><span class="p">)</span>
+                <span class="n">objects</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="n">subnode</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="n">idname</span>
+            <span class="n">subnode</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">token_xrefs</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subnode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">messages</span></div></div>
+
+
+<div class="viewcode-block" id="StandardDomain"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.html#sphinx.domains.StandardDomain">[docs]</a><span class="k">class</span> <span class="nc">StandardDomain</span><span class="p">(</span><span class="n">Domain</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Domain for all objects that don&#39;t fit into another domain or are added</span>
+<span class="sd">    via the application interface.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;std&#39;</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Default&#39;</span>
+
+    <span class="n">object_types</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;term&#39;</span><span class="p">:</span> <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;glossary term&#39;</span><span class="p">),</span> <span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="n">searchprio</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;grammar token&#39;</span><span class="p">),</span> <span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="n">searchprio</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;reference label&#39;</span><span class="p">),</span> <span class="s1">&#39;ref&#39;</span><span class="p">,</span> <span class="s1">&#39;keyword&#39;</span><span class="p">,</span>
+                         <span class="n">searchprio</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s1">&#39;envvar&#39;</span><span class="p">:</span> <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;environment variable&#39;</span><span class="p">),</span> <span class="s1">&#39;envvar&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;cmdoption&#39;</span><span class="p">:</span> <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;program option&#39;</span><span class="p">),</span> <span class="s1">&#39;option&#39;</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="n">directives</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;program&#39;</span><span class="p">:</span> <span class="n">Program</span><span class="p">,</span>
+        <span class="s1">&#39;cmdoption&#39;</span><span class="p">:</span> <span class="n">Cmdoption</span><span class="p">,</span>  <span class="c1"># old name for backwards compatibility</span>
+        <span class="s1">&#39;option&#39;</span><span class="p">:</span> <span class="n">Cmdoption</span><span class="p">,</span>
+        <span class="s1">&#39;envvar&#39;</span><span class="p">:</span> <span class="n">EnvVar</span><span class="p">,</span>
+        <span class="s1">&#39;glossary&#39;</span><span class="p">:</span> <span class="n">Glossary</span><span class="p">,</span>
+        <span class="s1">&#39;productionlist&#39;</span><span class="p">:</span> <span class="n">ProductionList</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">roles</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;option&#39;</span><span class="p">:</span>  <span class="n">OptionXRefRole</span><span class="p">(</span><span class="n">warn_dangling</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s1">&#39;envvar&#39;</span><span class="p">:</span>  <span class="n">EnvVarXRefRole</span><span class="p">(),</span>
+        <span class="c1"># links to tokens in grammar productions</span>
+        <span class="s1">&#39;token&#39;</span><span class="p">:</span>   <span class="n">XRefRole</span><span class="p">(),</span>
+        <span class="c1"># links to terms in glossary</span>
+        <span class="s1">&#39;term&#39;</span><span class="p">:</span>    <span class="n">XRefRole</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">innernodeclass</span><span class="o">=</span><span class="n">nodes</span><span class="o">.</span><span class="n">inline</span><span class="p">,</span>
+                            <span class="n">warn_dangling</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="c1"># links to headings or arbitrary labels</span>
+        <span class="s1">&#39;ref&#39;</span><span class="p">:</span>     <span class="n">XRefRole</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">innernodeclass</span><span class="o">=</span><span class="n">nodes</span><span class="o">.</span><span class="n">inline</span><span class="p">,</span>
+                            <span class="n">warn_dangling</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="c1"># links to labels of numbered figures, tables and code-blocks</span>
+        <span class="s1">&#39;numref&#39;</span><span class="p">:</span>  <span class="n">XRefRole</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                            <span class="n">warn_dangling</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="c1"># links to labels, without a different title</span>
+        <span class="s1">&#39;keyword&#39;</span><span class="p">:</span> <span class="n">XRefRole</span><span class="p">(</span><span class="n">warn_dangling</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="n">initial_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;progoptions&#39;</span><span class="p">:</span> <span class="p">{},</span>  <span class="c1"># (program, name) -&gt; docname, labelid</span>
+        <span class="s1">&#39;objects&#39;</span><span class="p">:</span> <span class="p">{},</span>      <span class="c1"># (type, name) -&gt; docname, labelid</span>
+        <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">{</span>         <span class="c1"># labelname -&gt; docname, labelid, sectionname</span>
+            <span class="s1">&#39;genindex&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;genindex&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Index&#39;</span><span class="p">)),</span>
+            <span class="s1">&#39;modindex&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;py-modindex&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Module Index&#39;</span><span class="p">)),</span>
+            <span class="s1">&#39;search&#39;</span><span class="p">:</span>   <span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Search Page&#39;</span><span class="p">)),</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;anonlabels&#39;</span><span class="p">:</span> <span class="p">{</span>     <span class="c1"># labelname -&gt; docname, labelid</span>
+            <span class="s1">&#39;genindex&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;genindex&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;modindex&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;py-modindex&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;search&#39;</span><span class="p">:</span>   <span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">dangling_warnings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;term&#39;</span><span class="p">:</span> <span class="s1">&#39;term not in glossary: </span><span class="si">%(target)s</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;ref&#39;</span><span class="p">:</span>  <span class="s1">&#39;undefined label: </span><span class="si">%(target)s</span><span class="s1"> (if the link has no caption &#39;</span>
+                <span class="s1">&#39;the label must precede a section header)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;numref&#39;</span><span class="p">:</span>  <span class="s1">&#39;undefined label: </span><span class="si">%(target)s</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;keyword&#39;</span><span class="p">:</span> <span class="s1">&#39;unknown keyword: </span><span class="si">%(target)s</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;option&#39;</span><span class="p">:</span> <span class="s1">&#39;unknown option: </span><span class="si">%(target)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="StandardDomain.clear_doc"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.clear_doc.html#sphinx.domains.StandardDomain.clear_doc">[docs]</a>    <span class="k">def</span> <span class="nf">clear_doc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docname</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">_l</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;progoptions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">fn</span> <span class="o">==</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;progoptions&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">_l</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">fn</span> <span class="o">==</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">_l</span><span class="p">,</span> <span class="n">_l</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">fn</span> <span class="o">==</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">_l</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;anonlabels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">fn</span> <span class="o">==</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;anonlabels&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="StandardDomain.merge_domaindata"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.merge_domaindata.html#sphinx.domains.StandardDomain.merge_domaindata">[docs]</a>    <span class="k">def</span> <span class="nf">merge_domaindata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docnames</span><span class="p">,</span> <span class="n">otherdata</span><span class="p">):</span>
+        <span class="c1"># XXX duplicates?</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">otherdata</span><span class="p">[</span><span class="s1">&#39;progoptions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">docnames</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;progoptions&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">otherdata</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">docnames</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">otherdata</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">docnames</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">otherdata</span><span class="p">[</span><span class="s1">&#39;anonlabels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">docnames</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;anonlabels&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="StandardDomain.process_doc"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.process_doc.html#sphinx.domains.StandardDomain.process_doc">[docs]</a>    <span class="k">def</span> <span class="nf">process_doc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="n">labels</span><span class="p">,</span> <span class="n">anonlabels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;anonlabels&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">explicit</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">nametypes</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">explicit</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">labelid</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">nameids</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">labelid</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">ids</span><span class="p">[</span><span class="n">labelid</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;refuri&#39;</span> <span class="ow">in</span> <span class="n">node</span> <span class="ow">or</span> \
+               <span class="n">node</span><span class="o">.</span><span class="n">tagname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;desc_&#39;</span><span class="p">):</span>
+                <span class="c1"># ignore footnote labels, labels automatically generated from a</span>
+                <span class="c1"># link and object descriptions</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+                <span class="n">env</span><span class="o">.</span><span class="n">warn_node</span><span class="p">(</span><span class="s1">&#39;duplicate label </span><span class="si">%s</span><span class="s1">, &#39;</span> <span class="o">%</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;other instance &#39;</span>
+                              <span class="s1">&#39;in &#39;</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="n">node</span><span class="p">)</span>
+            <span class="n">anonlabels</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;section&#39;</span><span class="p">:</span>
+                <span class="n">sectname</span> <span class="o">=</span> <span class="n">clean_astext</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># node[0] == title node</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;figure&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;caption&#39;</span><span class="p">:</span>
+                        <span class="n">sectname</span> <span class="o">=</span> <span class="n">clean_astext</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;image&#39;</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;figure&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;caption&#39;</span><span class="p">:</span>
+                        <span class="n">sectname</span> <span class="o">=</span> <span class="n">clean_astext</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;table&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span>
+                        <span class="n">sectname</span> <span class="o">=</span> <span class="n">clean_astext</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;container&#39;</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;literal_block&#39;</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;caption&#39;</span><span class="p">:</span>
+                        <span class="n">sectname</span> <span class="o">=</span> <span class="n">clean_astext</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">addnodes</span><span class="o">.</span><span class="n">toctree</span><span class="p">):</span>
+                <span class="n">n</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">addnodes</span><span class="o">.</span><span class="n">toctree</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;caption&#39;</span><span class="p">):</span>
+                    <span class="n">sectname</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="s1">&#39;caption&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># anonymous-only labels</span>
+                <span class="k">continue</span>
+            <span class="n">labels</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span><span class="p">,</span> <span class="n">sectname</span></div>
+
+<div class="viewcode-block" id="StandardDomain.build_reference_node"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.build_reference_node.html#sphinx.domains.StandardDomain.build_reference_node">[docs]</a>    <span class="k">def</span> <span class="nf">build_reference_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span>
+                             <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span><span class="p">,</span> <span class="n">sectname</span><span class="p">,</span>
+                             <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+        <span class="n">nodeclass</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;nodeclass&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span>
+        <span class="n">newnode</span> <span class="o">=</span> <span class="n">nodeclass</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">internal</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">innernode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">inline</span><span class="p">(</span><span class="n">sectname</span><span class="p">,</span> <span class="n">sectname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">docname</span> <span class="o">==</span> <span class="n">fromdocname</span><span class="p">:</span>
+            <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelid</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># set more info in contnode; in case the</span>
+            <span class="c1"># get_relative_uri call raises NoUri,</span>
+            <span class="c1"># the builder will then have to resolve these</span>
+            <span class="n">contnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">pending_xref</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">contnode</span><span class="p">[</span><span class="s1">&#39;refdocname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">docname</span>
+            <span class="n">contnode</span><span class="p">[</span><span class="s1">&#39;refsectname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sectname</span>
+            <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_relative_uri</span><span class="p">(</span>
+                <span class="n">fromdocname</span><span class="p">,</span> <span class="n">docname</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">labelid</span><span class="p">:</span>
+                <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">labelid</span>
+        <span class="n">newnode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">innernode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">newnode</span></div>
+
+<div class="viewcode-block" id="StandardDomain.resolve_xref"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.resolve_xref.html#sphinx.domains.StandardDomain.resolve_xref">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_xref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span>
+                     <span class="n">typ</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">contnode</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;refexplicit&#39;</span><span class="p">]:</span>
+                <span class="c1"># reference to anonymous label; the reference uses</span>
+                <span class="c1"># the supplied link caption</span>
+                <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;anonlabels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+                <span class="n">sectname</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># reference to named label; the final node will</span>
+                <span class="c1"># contain the section name after the label</span>
+                <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span><span class="p">,</span> <span class="n">sectname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">,</span>
+                                                                     <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_reference_node</span><span class="p">(</span><span class="n">fromdocname</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span>
+                                             <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span><span class="p">,</span> <span class="n">sectname</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;numref&#39;</span><span class="p">:</span>
+            <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;anonlabels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">numfig</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+                <span class="n">env</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">fromdocname</span><span class="p">,</span> <span class="s1">&#39;numfig is disabled. :numref: is ignored.&#39;</span><span class="p">,</span>
+                         <span class="n">lineno</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">contnode</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">target_node</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_doctree</span><span class="p">(</span><span class="n">docname</span><span class="p">)</span><span class="o">.</span><span class="n">ids</span><span class="p">[</span><span class="n">labelid</span><span class="p">]</span>
+                <span class="n">figtype</span> <span class="o">=</span> <span class="n">get_figtype</span><span class="p">(</span><span class="n">target_node</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">figure_id</span> <span class="o">=</span> <span class="n">target_node</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">fignumber</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">toc_fignumbers</span><span class="p">[</span><span class="n">docname</span><span class="p">][</span><span class="n">figtype</span><span class="p">][</span><span class="n">figure_id</span><span class="p">]</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+                <span class="c1"># target_node is found, but fignumber is not assigned.</span>
+                <span class="c1"># Maybe it is defined in orphaned document.</span>
+                <span class="n">env</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">fromdocname</span><span class="p">,</span> <span class="s2">&quot;no number is assigned for </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">figtype</span><span class="p">,</span> <span class="n">labelid</span><span class="p">),</span>
+                         <span class="n">lineno</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">contnode</span>
+
+            <span class="n">title</span> <span class="o">=</span> <span class="n">contnode</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="n">fully_normalize_name</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">numfig_format</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">figtype</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">newtitle</span> <span class="o">=</span> <span class="n">title</span> <span class="o">%</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fignumber</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="n">env</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">fromdocname</span><span class="p">,</span> <span class="s1">&#39;invalid numfig_format: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">title</span><span class="p">,</span>
+                         <span class="n">lineno</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_reference_node</span><span class="p">(</span><span class="n">fromdocname</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span>
+                                             <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span><span class="p">,</span> <span class="n">newtitle</span><span class="p">,</span>
+                                             <span class="n">nodeclass</span><span class="o">=</span><span class="n">addnodes</span><span class="o">.</span><span class="n">number_reference</span><span class="p">,</span>
+                                             <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;keyword&#39;</span><span class="p">:</span>
+            <span class="c1"># keywords are oddballs: they are referenced by named labels</span>
+            <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">make_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span>
+                                <span class="n">labelid</span><span class="p">,</span> <span class="n">contnode</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;option&#39;</span><span class="p">:</span>
+            <span class="n">progname</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;std:program&#39;</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;progoptions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">progname</span><span class="p">,</span> <span class="n">target</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="n">commands</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">while</span> <span class="n">ws_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
+                    <span class="n">subcommand</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">ws_re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subcommand</span><span class="p">)</span>
+                    <span class="n">progname</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">commands</span><span class="p">)</span>
+
+                    <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;progoptions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">progname</span><span class="p">,</span> <span class="n">target</span><span class="p">),</span>
+                                                                    <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">docname</span><span class="p">:</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="k">return</span> <span class="n">make_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span>
+                                <span class="n">labelid</span><span class="p">,</span> <span class="n">contnode</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">objtypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtypes_for_role</span><span class="p">(</span><span class="n">typ</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">objtype</span> <span class="ow">in</span> <span class="n">objtypes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">objtype</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]:</span>
+                    <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="n">objtype</span><span class="p">,</span> <span class="n">target</span><span class="p">]</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">make_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span>
+                                <span class="n">labelid</span><span class="p">,</span> <span class="n">contnode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StandardDomain.resolve_any_xref"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.resolve_any_xref.html#sphinx.domains.StandardDomain.resolve_any_xref">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_any_xref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
+                         <span class="n">node</span><span class="p">,</span> <span class="n">contnode</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ltarget</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1"># :ref: lowercases its target automatically</span>
+        <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;ref&#39;</span><span class="p">,</span> <span class="s1">&#39;option&#39;</span><span class="p">):</span>  <span class="c1"># do not try &quot;keyword&quot;</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_xref</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="n">role</span><span class="p">,</span>
+                                    <span class="n">ltarget</span> <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;ref&#39;</span> <span class="k">else</span> <span class="n">target</span><span class="p">,</span>
+                                    <span class="n">node</span><span class="p">,</span> <span class="n">contnode</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;std:&#39;</span> <span class="o">+</span> <span class="n">role</span><span class="p">,</span> <span class="n">res</span><span class="p">))</span>
+        <span class="c1"># all others</span>
+        <span class="k">for</span> <span class="n">objtype</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_types</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">objtype</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;term&#39;</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">objtype</span><span class="p">,</span> <span class="n">ltarget</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]:</span>
+                <span class="n">docname</span><span class="p">,</span> <span class="n">labelid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;std:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">role_for_objtype</span><span class="p">(</span><span class="n">objtype</span><span class="p">),</span>
+                                <span class="n">make_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span>
+                                             <span class="n">labelid</span><span class="p">,</span> <span class="n">contnode</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">results</span></div>
+
+<div class="viewcode-block" id="StandardDomain.get_objects"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.get_objects.html#sphinx.domains.StandardDomain.get_objects">[docs]</a>    <span class="k">def</span> <span class="nf">get_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">prog</span><span class="p">,</span> <span class="n">option</span><span class="p">),</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;progoptions&#39;</span><span class="p">]):</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="s1">&#39;option&#39;</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]):</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                   <span class="bp">self</span><span class="o">.</span><span class="n">object_types</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;searchprio&#39;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]):</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># add anonymous-only labels as well</span>
+        <span class="n">non_anon_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;anonlabels&#39;</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">non_anon_labels</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StandardDomain.get_type_name"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.std.StandardDomain.get_type_name.html#sphinx.domains.StandardDomain.get_type_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_type_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">primary</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="c1"># never prepend &quot;Default&quot;</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="n">lname</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

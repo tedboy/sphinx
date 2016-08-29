@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.set_writer
+=========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.set_writer

@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.set_first_last
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.set_first_last

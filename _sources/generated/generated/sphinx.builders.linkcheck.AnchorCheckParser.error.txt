@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.error
+=================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.error

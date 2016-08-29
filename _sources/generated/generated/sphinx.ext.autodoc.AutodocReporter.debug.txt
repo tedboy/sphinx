@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutodocReporter.debug
+========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutodocReporter.debug

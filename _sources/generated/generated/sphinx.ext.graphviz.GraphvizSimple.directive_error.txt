@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.directive_error
+==================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: GraphvizSimple.directive_error

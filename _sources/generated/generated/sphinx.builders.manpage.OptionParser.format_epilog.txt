@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.format_epilog
+==================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.format_epilog

@@ -1,0 +1,40 @@
+sphinx.ext.doctest.TestcleanupDirective
+=======================================
+.. currentmodule:: sphinx.ext.doctest
+.. autoclass:: TestcleanupDirective
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TestcleanupDirective.__init__
+   ~TestcleanupDirective.add_name
+   ~TestcleanupDirective.assert_has_content
+   ~TestcleanupDirective.debug
+   ~TestcleanupDirective.directive_error
+   ~TestcleanupDirective.error
+   ~TestcleanupDirective.info
+   ~TestcleanupDirective.run
+   ~TestcleanupDirective.severe
+   ~TestcleanupDirective.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TestcleanupDirective.final_argument_whitespace
+   ~TestcleanupDirective.has_content
+   ~TestcleanupDirective.option_spec
+   ~TestcleanupDirective.optional_arguments
+   ~TestcleanupDirective.required_arguments
+

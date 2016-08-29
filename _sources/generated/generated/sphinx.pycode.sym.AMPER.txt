@@ -1,0 +1,6 @@
+sphinx.pycode.sym.AMPER
+=======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.AMPER

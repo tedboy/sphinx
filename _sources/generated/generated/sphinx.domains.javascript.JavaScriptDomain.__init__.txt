@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JavaScriptDomain.__init__
+===================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JavaScriptDomain.__init__

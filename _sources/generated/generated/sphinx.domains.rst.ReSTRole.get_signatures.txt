@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.get_signatures
+==========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.get_signatures

@@ -1,0 +1,6 @@
+sphinx.ext.coverage.setup
+=========================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autofunction:: setup

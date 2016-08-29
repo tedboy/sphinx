@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.RedirectHandler.http_error_303
+========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: RedirectHandler.http_error_303

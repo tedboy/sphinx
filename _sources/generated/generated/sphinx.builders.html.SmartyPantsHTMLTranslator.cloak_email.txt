@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.cloak_email
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.cloak_email

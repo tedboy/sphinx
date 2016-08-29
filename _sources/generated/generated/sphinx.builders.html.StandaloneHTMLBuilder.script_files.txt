@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.script_files
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StandaloneHTMLBuilder.script_files

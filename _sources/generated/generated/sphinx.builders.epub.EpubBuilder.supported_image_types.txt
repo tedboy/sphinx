@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.supported_image_types
+======================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: EpubBuilder.supported_image_types

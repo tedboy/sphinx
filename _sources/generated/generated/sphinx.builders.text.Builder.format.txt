@@ -1,0 +1,6 @@
+sphinx.builders.text.Builder.format
+===================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: Builder.format

@@ -1,0 +1,58 @@
+sphinx.locale.UserString
+========================
+.. currentmodule:: sphinx.locale
+.. autoclass:: UserString
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~UserString.__init__
+   ~UserString.capitalize
+   ~UserString.center
+   ~UserString.count
+   ~UserString.decode
+   ~UserString.encode
+   ~UserString.endswith
+   ~UserString.expandtabs
+   ~UserString.find
+   ~UserString.index
+   ~UserString.isalnum
+   ~UserString.isalpha
+   ~UserString.isdecimal
+   ~UserString.isdigit
+   ~UserString.islower
+   ~UserString.isnumeric
+   ~UserString.isspace
+   ~UserString.istitle
+   ~UserString.isupper
+   ~UserString.join
+   ~UserString.ljust
+   ~UserString.lower
+   ~UserString.lstrip
+   ~UserString.partition
+   ~UserString.replace
+   ~UserString.rfind
+   ~UserString.rindex
+   ~UserString.rjust
+   ~UserString.rpartition
+   ~UserString.rsplit
+   ~UserString.rstrip
+   ~UserString.split
+   ~UserString.splitlines
+   ~UserString.startswith
+   ~UserString.strip
+   ~UserString.swapcase
+   ~UserString.title
+   ~UserString.translate
+   ~UserString.upper
+   ~UserString.zfill
+
+
+
+
+

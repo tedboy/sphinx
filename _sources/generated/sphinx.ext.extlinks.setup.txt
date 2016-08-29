@@ -1,0 +1,6 @@
+sphinx.ext.extlinks.setup
+=========================
+
+.. currentmodule:: sphinx.ext.extlinks
+
+.. autofunction:: setup

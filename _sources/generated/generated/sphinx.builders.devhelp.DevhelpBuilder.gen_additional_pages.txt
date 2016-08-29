@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.gen_additional_pages
+===========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.gen_additional_pages

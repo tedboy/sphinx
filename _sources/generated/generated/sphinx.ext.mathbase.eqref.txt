@@ -1,0 +1,87 @@
+sphinx.ext.mathbase.eqref
+=========================
+.. currentmodule:: sphinx.ext.mathbase
+.. autoclass:: eqref
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~eqref.__init__
+   ~eqref.append
+   ~eqref.append_attr_list
+   ~eqref.asdom
+   ~eqref.astext
+   ~eqref.attlist
+   ~eqref.clear
+   ~eqref.coerce_append_attr_list
+   ~eqref.copy
+   ~eqref.copy_attr_coerce
+   ~eqref.copy_attr_concatenate
+   ~eqref.copy_attr_consistent
+   ~eqref.copy_attr_convert
+   ~eqref.deepcopy
+   ~eqref.delattr
+   ~eqref.emptytag
+   ~eqref.endtag
+   ~eqref.extend
+   ~eqref.first_child_matching_class
+   ~eqref.first_child_not_matching_class
+   ~eqref.get
+   ~eqref.get_language_code
+   ~eqref.has_key
+   ~eqref.hasattr
+   ~eqref.index
+   ~eqref.insert
+   ~eqref.is_not_default
+   ~eqref.is_not_known_attribute
+   ~eqref.is_not_list_attribute
+   ~eqref.next_node
+   ~eqref.non_default_attributes
+   ~eqref.note_referenced_by
+   ~eqref.pformat
+   ~eqref.pop
+   ~eqref.remove
+   ~eqref.replace
+   ~eqref.replace_attr
+   ~eqref.replace_self
+   ~eqref.set_class
+   ~eqref.setdefault
+   ~eqref.setup_child
+   ~eqref.shortrepr
+   ~eqref.starttag
+   ~eqref.traverse
+   ~eqref.update_all_atts
+   ~eqref.update_all_atts_coercion
+   ~eqref.update_all_atts_concatenating
+   ~eqref.update_all_atts_consistantly
+   ~eqref.update_all_atts_convert
+   ~eqref.update_basic_atts
+   ~eqref.walk
+   ~eqref.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~eqref.basic_attributes
+   ~eqref.child_text_separator
+   ~eqref.document
+   ~eqref.known_attributes
+   ~eqref.line
+   ~eqref.list_attributes
+   ~eqref.local_attributes
+   ~eqref.parent
+   ~eqref.source
+   ~eqref.tagname
+

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleDocumenter.check_module
+================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleDocumenter.check_module

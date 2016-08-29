@@ -1,0 +1,6 @@
+sphinx.domains.std.Program.optional_arguments
+=============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Program.optional_arguments

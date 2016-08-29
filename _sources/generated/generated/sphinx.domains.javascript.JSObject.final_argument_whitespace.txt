@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.final_argument_whitespace
+============================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSObject.final_argument_whitespace

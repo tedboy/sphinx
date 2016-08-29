@@ -1,0 +1,6 @@
+sphinx.domains.PythonDomain.roles
+=================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: PythonDomain.roles

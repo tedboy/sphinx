@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.indexer_dumps_unicode
+=================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.indexer_dumps_unicode

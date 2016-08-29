@@ -1,0 +1,6 @@
+sphinx.search.Text.isspace
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.isspace

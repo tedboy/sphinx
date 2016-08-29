@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JavaScriptDomain.clear_doc
+====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JavaScriptDomain.clear_doc

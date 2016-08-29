@@ -1,0 +1,6 @@
+sphinx.builders.html.PygmentsBridge.__init__
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PygmentsBridge.__init__

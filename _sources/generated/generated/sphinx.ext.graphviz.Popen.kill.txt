@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Popen.kill
+==============================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Popen.kill

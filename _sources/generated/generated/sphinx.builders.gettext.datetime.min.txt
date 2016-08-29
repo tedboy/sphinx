@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.min
+====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.min

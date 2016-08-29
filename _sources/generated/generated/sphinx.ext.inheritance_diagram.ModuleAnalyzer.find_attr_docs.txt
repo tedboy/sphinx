@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.ModuleAnalyzer.find_attr_docs
+============================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: ModuleAnalyzer.find_attr_docs

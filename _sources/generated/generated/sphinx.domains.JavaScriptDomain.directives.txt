@@ -1,0 +1,6 @@
+sphinx.domains.JavaScriptDomain.directives
+==========================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: JavaScriptDomain.directives

@@ -1,0 +1,6 @@
+sphinx.domains.std.Target.final_argument_whitespace
+===================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Target.final_argument_whitespace

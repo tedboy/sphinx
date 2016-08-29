@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.config_section
+===================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: OptionParser.config_section

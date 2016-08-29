@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Request.get_method
+============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Request.get_method

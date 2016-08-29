@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.add_builder
+====================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.add_builder

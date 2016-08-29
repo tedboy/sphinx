@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.parse_bogus_comment
+===============================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.parse_bogus_comment

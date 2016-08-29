@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.delattr
+================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.delattr

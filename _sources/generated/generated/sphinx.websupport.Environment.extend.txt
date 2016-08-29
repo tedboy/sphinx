@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.extend
+====================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.extend

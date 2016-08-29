@@ -1,0 +1,6 @@
+sphinx.pycode.AttrDocVisitor.add_docstring
+==========================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: AttrDocVisitor.add_docstring

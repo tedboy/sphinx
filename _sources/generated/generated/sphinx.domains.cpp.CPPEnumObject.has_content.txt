@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.has_content
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPEnumObject.has_content

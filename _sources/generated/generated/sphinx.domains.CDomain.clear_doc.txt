@@ -1,0 +1,6 @@
+sphinx.domains.CDomain.clear_doc
+================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: CDomain.clear_doc

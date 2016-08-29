@@ -1,0 +1,6 @@
+sphinx.util.ensuredir
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: ensuredir

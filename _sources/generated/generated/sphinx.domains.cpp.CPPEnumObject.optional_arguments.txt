@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.optional_arguments
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPEnumObject.optional_arguments

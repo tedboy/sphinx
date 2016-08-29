@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.copysource
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.copysource

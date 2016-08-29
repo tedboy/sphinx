@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>docutils.io &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="docutils" href="../docutils.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../docutils.html">docutils</a> &raquo;</li>
+        
+      <li>docutils.io</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for docutils.io</h1><div class="highlight"><pre>
+<span></span><span class="c1"># $Id: io.py 7596 2013-01-25 13:42:17Z milde $</span>
+<span class="c1"># Author: David Goodger &lt;goodger@python.org&gt;</span>
+<span class="c1"># Copyright: This module has been placed in the public domain.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">I/O classes provide a uniform API for low-level input and output.  Subclasses</span>
+<span class="sd">exist for a variety of input/output mechanisms.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">__docformat__</span> <span class="o">=</span> <span class="s1">&#39;reStructuredText&#39;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">TransformSpec</span>
+<span class="kn">from</span> <span class="nn">docutils._compat</span> <span class="kn">import</span> <span class="n">b</span>
+<span class="kn">from</span> <span class="nn">docutils.utils.error_reporting</span> <span class="kn">import</span> <span class="n">locale_encoding</span><span class="p">,</span> <span class="n">ErrorString</span><span class="p">,</span> <span class="n">ErrorOutput</span>
+
+
+<span class="k">class</span> <span class="nc">InputError</span><span class="p">(</span><span class="ne">IOError</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">class</span> <span class="nc">OutputError</span><span class="p">(</span><span class="ne">IOError</span><span class="p">):</span> <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">check_encoding</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">encoding</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Test, whether the encoding of `stream` matches `encoding`.</span>
+
+<span class="sd">    Returns</span>
+
+<span class="sd">    :None:  if `encoding` or `stream.encoding` are not a valid encoding</span>
+<span class="sd">            argument (e.g. ``None``) or `stream.encoding is missing.</span>
+<span class="sd">    :True:  if the encoding argument resolves to the same value as `encoding`,</span>
+<span class="sd">    :False: if the encodings differ.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">codecs</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span> <span class="o">==</span> <span class="n">codecs</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">LookupError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+
+<span class="k">class</span> <span class="nc">Input</span><span class="p">(</span><span class="n">TransformSpec</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract base class for input wrappers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">component_type</span> <span class="o">=</span> <span class="s1">&#39;input&#39;</span>
+
+    <span class="n">default_source_path</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">error_handler</span><span class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="sd">&quot;&quot;&quot;Text encoding for the input source.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_handler</span> <span class="o">=</span> <span class="n">error_handler</span>
+        <span class="sd">&quot;&quot;&quot;Text decoding error handler.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="sd">&quot;&quot;&quot;The source of input data.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span> <span class="o">=</span> <span class="n">source_path</span>
+        <span class="sd">&quot;&quot;&quot;A text reference to the source.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">source_path</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_source_path</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">successful_encoding</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="sd">&quot;&quot;&quot;The encoding that successfully decoded the source data.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: source=</span><span class="si">%r</span><span class="s1">, source_path=</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span>
+                                                  <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode a string, `data`, heuristically.</span>
+<span class="sd">        Raise UnicodeError if unsuccessful.</span>
+
+<span class="sd">        The client application should call ``locale.setlocale`` at the</span>
+<span class="sd">        beginning of processing::</span>
+
+<span class="sd">            locale.setlocale(locale.LC_ALL, &#39;&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;unicode&#39;</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">),</span> <span class="p">(</span>
+                <span class="s1">&#39;input encoding is &quot;unicode&quot; &#39;</span>
+                <span class="s1">&#39;but input is not a unicode object&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">):</span>
+            <span class="c1"># Accept unicode even if self.encoding != &#39;unicode&#39;.</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">:</span>
+            <span class="c1"># We believe the user/application when the encoding is</span>
+            <span class="c1"># explicitly given.</span>
+            <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data_encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">determine_encoding_from_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">data_encoding</span><span class="p">:</span>
+                <span class="c1"># If the data declares its encoding (explicitly or via a BOM),</span>
+                <span class="c1"># we believe it.</span>
+                <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="n">data_encoding</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Apply heuristics only if no encoding is explicitly given and</span>
+                <span class="c1"># no BOM found.  Start with UTF-8, because that only matches</span>
+                <span class="c1"># data that *IS* UTF-8:</span>
+                <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">locale_encoding</span><span class="p">:</span>
+                    <span class="n">encodings</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">locale_encoding</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">enc</span> <span class="ow">in</span> <span class="n">encodings</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">decoded</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">enc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_handler</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">successful_encoding</span> <span class="o">=</span> <span class="n">enc</span>
+                <span class="c1"># Return decoded, removing BOMs.</span>
+                <span class="k">return</span> <span class="n">decoded</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">u&#39;</span><span class="se">\ufeff</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">u&#39;&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">UnicodeError</span><span class="p">,</span> <span class="ne">LookupError</span><span class="p">),</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="n">err</span> <span class="c1"># in Python 3, the &lt;exception instance&gt; is</span>
+                            <span class="c1"># local to the except clause</span>
+        <span class="k">raise</span> <span class="ne">UnicodeError</span><span class="p">(</span>
+            <span class="s1">&#39;Unable to decode input data.  Tried the following encodings: &#39;</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="se">\n</span><span class="s1">(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">repr</span><span class="p">(</span><span class="n">enc</span><span class="p">)</span> <span class="k">for</span> <span class="n">enc</span> <span class="ow">in</span> <span class="n">encodings</span><span class="p">]),</span>
+                         <span class="n">ErrorString</span><span class="p">(</span><span class="n">error</span><span class="p">)))</span>
+
+    <span class="n">coding_slug</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="s2">&quot;coding[:=]\s*([-\w.]+)&quot;</span><span class="p">))</span>
+    <span class="sd">&quot;&quot;&quot;Encoding declaration pattern.&quot;&quot;&quot;</span>
+
+    <span class="n">byte_order_marks</span> <span class="o">=</span> <span class="p">((</span><span class="n">codecs</span><span class="o">.</span><span class="n">BOM_UTF8</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="c1"># &#39;utf-8-sig&#39; new in v2.5</span>
+                        <span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">BOM_UTF16_BE</span><span class="p">,</span> <span class="s1">&#39;utf-16-be&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">BOM_UTF16_LE</span><span class="p">,</span> <span class="s1">&#39;utf-16-le&#39;</span><span class="p">),)</span>
+    <span class="sd">&quot;&quot;&quot;Sequence of (start_bytes, encoding) tuples for encoding detection.</span>
+<span class="sd">    The first bytes of input data are checked against the start_bytes strings.</span>
+<span class="sd">    A match indicates the given encoding.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">determine_encoding_from_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Try to determine the encoding of `data` by looking *in* `data`.</span>
+<span class="sd">        Check for a byte order mark (BOM) or an encoding declaration.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># check for a byte order mark:</span>
+        <span class="k">for</span> <span class="n">start_bytes</span><span class="p">,</span> <span class="n">encoding</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">byte_order_marks</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">start_bytes</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">encoding</span>
+        <span class="c1"># check for an encoding declaration pattern in first 2 lines of file:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coding_slug</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+
+<span class="k">class</span> <span class="nc">Output</span><span class="p">(</span><span class="n">TransformSpec</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract base class for output wrappers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">component_type</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
+
+    <span class="n">default_destination_path</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">encoding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">error_handler</span><span class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="sd">&quot;&quot;&quot;Text encoding for the output destination.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_handler</span> <span class="o">=</span> <span class="n">error_handler</span> <span class="ow">or</span> <span class="s1">&#39;strict&#39;</span>
+        <span class="sd">&quot;&quot;&quot;Text encoding error handler.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="n">destination</span>
+        <span class="sd">&quot;&quot;&quot;The destination for output data.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">destination_path</span> <span class="o">=</span> <span class="n">destination_path</span>
+        <span class="sd">&quot;&quot;&quot;A text reference to the destination.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">destination_path</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">destination_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_destination_path</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: destination=</span><span class="si">%r</span><span class="s1">, destination_path=</span><span class="si">%r</span><span class="s1">&#39;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination_path</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;`data` is a Unicode string, to be encoded by `self.encode`.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;unicode&#39;</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">),</span> <span class="p">(</span>
+                <span class="s1">&#39;the encoding given is &quot;unicode&quot; but the output is not &#39;</span>
+                <span class="s1">&#39;a Unicode string&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">):</span>
+            <span class="c1"># Non-unicode (e.g. bytes) output.</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_handler</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">FileInput</span><span class="p">(</span><span class="n">Input</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Input for single, simple file-like objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">encoding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">error_handler</span><span class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">,</span>
+                 <span class="n">autoclose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">handle_io_errors</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rU&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">            - `source`: either a file-like object (which is read directly), or</span>
+<span class="sd">              `None` (which implies `sys.stdin` if no `source_path` given).</span>
+<span class="sd">            - `source_path`: a path to a file, which is opened and then read.</span>
+<span class="sd">            - `encoding`: the expected text encoding of the input file.</span>
+<span class="sd">            - `error_handler`: the encoding error handler to use.</span>
+<span class="sd">            - `autoclose`: close automatically after read (except when</span>
+<span class="sd">              `sys.stdin` is the source).</span>
+<span class="sd">            - `handle_io_errors`: ignored, deprecated, will be removed.</span>
+<span class="sd">            - `mode`: how the file is to be opened (see standard function</span>
+<span class="sd">              `open`). The default &#39;rU&#39; provides universal newline support</span>
+<span class="sd">              for text files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Input</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">error_handler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">autoclose</span> <span class="o">=</span> <span class="n">autoclose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span> <span class="o">=</span> <span class="n">ErrorOutput</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">source_path</span><span class="p">:</span>
+                <span class="c1"># Specify encoding in Python 3</span>
+                <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+                    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;encoding&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+                              <span class="s1">&#39;errors&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_handler</span><span class="p">}</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">IOError</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">errno</span><span class="p">,</span> <span class="n">error</span><span class="o">.</span><span class="n">strerror</span><span class="p">,</span> <span class="n">source_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="n">check_encoding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">):</span>
+            <span class="c1"># TODO: re-open, warn or raise error?</span>
+            <span class="k">raise</span> <span class="ne">UnicodeError</span><span class="p">(</span><span class="s1">&#39;Encoding clash: encoding given is &quot;</span><span class="si">%s</span><span class="s1">&quot; &#39;</span>
+                               <span class="s1">&#39;but source is opened with encoding &quot;</span><span class="si">%s</span><span class="s1">&quot;.&#39;</span> <span class="o">%</span>
+                               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">encoding</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">source_path</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read and decode a single file and return the data (Unicode string).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span> <span class="c1"># In Python &lt; 2.5, try...except has to be nested in try...finally.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="ow">is</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+                    <span class="c1"># read as binary data to circumvent auto-decoding</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="c1"># normalize newlines</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">b</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span> <span class="o">+</span> <span class="n">b</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">UnicodeError</span><span class="p">,</span> <span class="ne">LookupError</span><span class="p">),</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># (in Py3k read() decodes)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span><span class="p">:</span>
+                    <span class="c1"># re-read in binary mode and decode with heuristics</span>
+                    <span class="n">b_source</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">b_source</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="n">b_source</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                    <span class="c1"># normalize newlines</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">b</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span> <span class="o">+</span> <span class="n">b</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">autoclose</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">readlines</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return lines of a single file as list of Unicode strings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="FileOutput"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.texinfo.FileOutput.html#sphinx.builders.html.FileOutput">[docs]</a><span class="k">class</span> <span class="nc">FileOutput</span><span class="p">(</span><span class="n">Output</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Output for single, simple file-like objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>
+    <span class="sd">&quot;&quot;&quot;The mode argument for `open()`.&quot;&quot;&quot;</span>
+    <span class="c1"># &#39;wb&#39; for binary (e.g. OpenOffice) files (see also `BinaryFileOutput`).</span>
+    <span class="c1"># (Do not use binary mode (&#39;wb&#39;) for text files, as this prevents the</span>
+    <span class="c1"># conversion of newlines to the system specific default.)</span>
+
+<div class="viewcode-block" id="FileOutput.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.texinfo.FileOutput.__init__.html#sphinx.builders.html.FileOutput.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">encoding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">error_handler</span><span class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                 <span class="n">handle_io_errors</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">            - `destination`: either a file-like object (which is written</span>
+<span class="sd">              directly) or `None` (which implies `sys.stdout` if no</span>
+<span class="sd">              `destination_path` given).</span>
+<span class="sd">            - `destination_path`: a path to a file, which is opened and then</span>
+<span class="sd">              written.</span>
+<span class="sd">            - `encoding`: the text encoding of the output file.</span>
+<span class="sd">            - `error_handler`: the encoding error handler to use.</span>
+<span class="sd">            - `autoclose`: close automatically after write (except when</span>
+<span class="sd">              `sys.stdout` or `sys.stderr` is the destination).</span>
+<span class="sd">            - `handle_io_errors`: ignored, deprecated, will be removed.</span>
+<span class="sd">            - `mode`: how the file is to be opened (see standard function</span>
+<span class="sd">              `open`). The default is &#39;w&#39;, providing universal newline</span>
+<span class="sd">              support for text files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Output</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span>
+                        <span class="n">encoding</span><span class="p">,</span> <span class="n">error_handler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">autoclose</span> <span class="o">=</span> <span class="n">autoclose</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span> <span class="o">=</span> <span class="n">ErrorOutput</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">destination</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">destination_path</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="c1"># destination is file-type object -&gt; check mode:</span>
+              <span class="n">mode</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">,</span> <span class="s1">&#39;mode&#39;</span><span class="p">)</span>
+              <span class="ow">and</span> <span class="n">mode</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">mode</span><span class="p">):</span>
+                <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;Warning: Destination mode &quot;</span><span class="si">%s</span><span class="s1">&quot; &#39;</span>
+                               <span class="s1">&#39;differs from specified mode &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span>
+                               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">destination_path</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">destination_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="FileOutput.open"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.texinfo.FileOutput.open.html#sphinx.builders.html.FileOutput.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Specify encoding in Python 3.</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;b&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;encoding&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+                      <span class="s1">&#39;errors&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_handler</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destination_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">IOError</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">OutputError</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">errno</span><span class="p">,</span> <span class="n">error</span><span class="o">.</span><span class="n">strerror</span><span class="p">,</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">destination_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">True</span></div>
+
+<div class="viewcode-block" id="FileOutput.write"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.texinfo.FileOutput.write.html#sphinx.builders.html.FileOutput.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Encode `data`, write it to a single file, and return it.</span>
+
+<span class="sd">        With Python 3 or binary output mode, `data` is returned unchanged,</span>
+<span class="sd">        except when specified encoding and output encoding differ.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">opened</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="n">check_encoding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+           <span class="p">):</span>
+            <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span> <span class="c1"># fix endings</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span> <span class="c1"># In Python &lt; 2.5, try...except has to be nested in try...finally.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">check_encoding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">,</span> 
+                                          <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Encoding of </span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1">) differs </span><span class="se">\n</span><span class="s1">&#39;</span>
+                                <span class="s1">&#39;  from specified encoding (</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span>
+                                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destination_path</span> <span class="ow">or</span> <span class="s1">&#39;destination&#39;</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="n">e</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">UnicodeError</span><span class="p">,</span> <span class="ne">LookupError</span><span class="p">),</span> <span class="n">err</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">UnicodeError</span><span class="p">(</span>
+                    <span class="s1">&#39;Unable to encode output data. output-encoding is: &#39;</span>
+                    <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="se">\n</span><span class="s1">(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="n">ErrorString</span><span class="p">(</span><span class="n">err</span><span class="p">)))</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">autoclose</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="FileOutput.close"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.texinfo.FileOutput.close.html#sphinx.builders.html.FileOutput.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">False</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">BinaryFileOutput</span><span class="p">(</span><span class="n">FileOutput</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A version of docutils.io.FileOutput which writes to a binary file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Used by core.publish_cmdline_to_binary() which in turn is used by</span>
+    <span class="c1"># rst2odt (OpenOffice writer)</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;wb&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">StringInput</span><span class="p">(</span><span class="n">Input</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Direct string input.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">default_source_path</span> <span class="o">=</span> <span class="s1">&#39;&lt;string&gt;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Decode and return the source string.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="StringOutput"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.xml.StringOutput.html#sphinx.builders.html.StringOutput">[docs]</a><span class="k">class</span> <span class="nc">StringOutput</span><span class="p">(</span><span class="n">Output</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Direct string output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">default_destination_path</span> <span class="o">=</span> <span class="s1">&#39;&lt;string&gt;&#39;</span>
+
+<div class="viewcode-block" id="StringOutput.write"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.xml.StringOutput.write.html#sphinx.builders.html.StringOutput.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Encode `data`, store it in `self.destination`, and return it.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">NullInput</span><span class="p">(</span><span class="n">Input</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Degenerate input: read nothing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">default_source_path</span> <span class="o">=</span> <span class="s1">&#39;null input&#39;</span>
+
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a null string.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">u&#39;&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">NullOutput</span><span class="p">(</span><span class="n">Output</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Degenerate output: write nothing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">default_destination_path</span> <span class="o">=</span> <span class="s1">&#39;null output&#39;</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Do nothing ([don&#39;t even] send data to the bit bucket).&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="DocTreeInput"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.DocTreeInput.html#sphinx.builders.html.DocTreeInput">[docs]</a><span class="k">class</span> <span class="nc">DocTreeInput</span><span class="p">(</span><span class="n">Input</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adapter for document tree input.</span>
+
+<span class="sd">    The document tree must be passed in the ``source`` parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">default_source_path</span> <span class="o">=</span> <span class="s1">&#39;doctree input&#39;</span>
+
+<div class="viewcode-block" id="DocTreeInput.read"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.DocTreeInput.read.html#sphinx.builders.html.DocTreeInput.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the document tree.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.info
+==================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.info

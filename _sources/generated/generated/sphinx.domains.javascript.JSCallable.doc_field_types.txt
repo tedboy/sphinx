@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.doc_field_types
+====================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSCallable.doc_field_types

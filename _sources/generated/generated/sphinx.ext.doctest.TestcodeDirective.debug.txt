@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcodeDirective.debug
+==========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestcodeDirective.debug

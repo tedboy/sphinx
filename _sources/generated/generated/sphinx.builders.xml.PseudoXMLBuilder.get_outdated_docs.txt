@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLBuilder.get_outdated_docs
+======================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: PseudoXMLBuilder.get_outdated_docs

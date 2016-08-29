@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.init_templates
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.init_templates

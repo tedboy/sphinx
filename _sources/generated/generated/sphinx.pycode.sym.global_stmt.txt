@@ -1,0 +1,6 @@
+sphinx.pycode.sym.global_stmt
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.global_stmt

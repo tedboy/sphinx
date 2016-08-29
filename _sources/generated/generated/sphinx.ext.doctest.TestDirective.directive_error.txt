@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestDirective.directive_error
+================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestDirective.directive_error

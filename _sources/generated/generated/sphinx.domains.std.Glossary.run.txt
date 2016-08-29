@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.run
+===============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Glossary.run

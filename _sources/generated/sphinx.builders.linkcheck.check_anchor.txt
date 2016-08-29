@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.check_anchor
+======================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: check_anchor

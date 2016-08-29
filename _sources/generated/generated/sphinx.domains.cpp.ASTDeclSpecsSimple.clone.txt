@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclSpecsSimple.clone
+===========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclSpecsSimple.clone

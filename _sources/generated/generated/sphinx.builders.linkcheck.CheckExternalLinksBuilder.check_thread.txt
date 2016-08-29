@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder.check_thread
+================================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: CheckExternalLinksBuilder.check_thread

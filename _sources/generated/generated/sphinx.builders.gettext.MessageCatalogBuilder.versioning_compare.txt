@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.versioning_compare
+================================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: MessageCatalogBuilder.versioning_compare

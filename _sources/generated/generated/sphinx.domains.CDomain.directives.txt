@@ -1,0 +1,6 @@
+sphinx.domains.CDomain.directives
+=================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CDomain.directives

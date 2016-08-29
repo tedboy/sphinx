@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.option_spec
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPTypeObject.option_spec

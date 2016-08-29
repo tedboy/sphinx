@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutodocReporter.info
+=======================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutodocReporter.info

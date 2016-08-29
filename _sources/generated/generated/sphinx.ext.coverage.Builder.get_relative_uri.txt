@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.get_relative_uri
+============================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: Builder.get_relative_uri

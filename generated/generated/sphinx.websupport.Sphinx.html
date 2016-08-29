@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.1.2.4. sphinx.websupport.Sphinx &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="7.1. sphinx.websupport" href="../sphinx.websupport.html"/>
+        <link rel="next" title="7.1.2.4.1.1. sphinx.websupport.Sphinx.__init__" href="sphinx.websupport.Sphinx.__init__.html"/>
+        <link rel="prev" title="7.1.2.3.2.1. sphinx.websupport.FileSystemLoader.has_source_access" href="sphinx.websupport.FileSystemLoader.has_source_access.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.websupport.html">7.1. sphinx.websupport</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.websupport.html#functions">7.1.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.websupport.html#classes">7.1.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.BaseSearch.html">7.1.2.1. sphinx.websupport.BaseSearch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.Environment.html">7.1.2.2. sphinx.websupport.Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.FileSystemLoader.html">7.1.2.3. sphinx.websupport.FileSystemLoader</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">7.1.2.4. sphinx.websupport.Sphinx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.StorageBackend.html">7.1.2.5. sphinx.websupport.StorageBackend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.WebSupport.html">7.1.2.6. sphinx.websupport.WebSupport</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.websupport.search.html">7.2. sphinx.websupport.search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.websupport.storage.html">7.3. sphinx.websupport.storage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.websupport.html">7. sphinx.websupport</a> &raquo;</li>
+        
+          <li><a href="../sphinx.websupport.html">7.1. sphinx.websupport</a> &raquo;</li>
+        
+      <li>7.1.2.4. sphinx.websupport.Sphinx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.websupport.Sphinx.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-websupport-sphinx">
+<h1>7.1.2.4. sphinx.websupport.Sphinx<a class="headerlink" href="#sphinx-websupport-sphinx" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.websupport.Sphinx">
+<em class="property">class </em><code class="descclassname">sphinx.websupport.</code><code class="descname">Sphinx</code><span class="sig-paren">(</span><em>srcdir</em>, <em>confdir</em>, <em>outdir</em>, <em>doctreedir</em>, <em>buildername</em>, <em>confoverrides=None</em>, <em>status=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w'&gt;</em>, <em>warning=&lt;open file '&lt;stderr&gt;'</em>, <em>mode 'w'&gt;</em>, <em>freshenv=False</em>, <em>warningiserror=False</em>, <em>tags=None</em>, <em>verbosity=0</em>, <em>parallel=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sphinx/application.html#Sphinx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.websupport.Sphinx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="methods">
+<h2>7.1.2.4.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.__init__.html#sphinx.websupport.Sphinx.__init__" title="sphinx.websupport.Sphinx.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(srcdir,&nbsp;confdir,&nbsp;outdir,&nbsp;...[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_autodoc_attrgetter.html#sphinx.websupport.Sphinx.add_autodoc_attrgetter" title="sphinx.websupport.Sphinx.add_autodoc_attrgetter"><code class="xref py py-obj docutils literal"><span class="pre">add_autodoc_attrgetter</span></code></a>(type,&nbsp;getter)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_autodocumenter.html#sphinx.websupport.Sphinx.add_autodocumenter" title="sphinx.websupport.Sphinx.add_autodocumenter"><code class="xref py py-obj docutils literal"><span class="pre">add_autodocumenter</span></code></a>(cls)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_builder.html#sphinx.websupport.Sphinx.add_builder" title="sphinx.websupport.Sphinx.add_builder"><code class="xref py py-obj docutils literal"><span class="pre">add_builder</span></code></a>(builder)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_config_value.html#sphinx.websupport.Sphinx.add_config_value" title="sphinx.websupport.Sphinx.add_config_value"><code class="xref py py-obj docutils literal"><span class="pre">add_config_value</span></code></a>(name,&nbsp;default,&nbsp;rebuild)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_crossref_type.html#sphinx.websupport.Sphinx.add_crossref_type" title="sphinx.websupport.Sphinx.add_crossref_type"><code class="xref py py-obj docutils literal"><span class="pre">add_crossref_type</span></code></a>(directivename,&nbsp;rolename[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_description_unit.html#sphinx.websupport.Sphinx.add_description_unit" title="sphinx.websupport.Sphinx.add_description_unit"><code class="xref py py-obj docutils literal"><span class="pre">add_description_unit</span></code></a>(directivename,&nbsp;rolename)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_directive.html#sphinx.websupport.Sphinx.add_directive" title="sphinx.websupport.Sphinx.add_directive"><code class="xref py py-obj docutils literal"><span class="pre">add_directive</span></code></a>(name,&nbsp;obj[,&nbsp;content,&nbsp;arguments])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_directive_to_domain.html#sphinx.websupport.Sphinx.add_directive_to_domain" title="sphinx.websupport.Sphinx.add_directive_to_domain"><code class="xref py py-obj docutils literal"><span class="pre">add_directive_to_domain</span></code></a>(domain,&nbsp;name,&nbsp;obj[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_domain.html#sphinx.websupport.Sphinx.add_domain" title="sphinx.websupport.Sphinx.add_domain"><code class="xref py py-obj docutils literal"><span class="pre">add_domain</span></code></a>(domain)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_event.html#sphinx.websupport.Sphinx.add_event" title="sphinx.websupport.Sphinx.add_event"><code class="xref py py-obj docutils literal"><span class="pre">add_event</span></code></a>(name)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_generic_role.html#sphinx.websupport.Sphinx.add_generic_role" title="sphinx.websupport.Sphinx.add_generic_role"><code class="xref py py-obj docutils literal"><span class="pre">add_generic_role</span></code></a>(name,&nbsp;nodeclass)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_index_to_domain.html#sphinx.websupport.Sphinx.add_index_to_domain" title="sphinx.websupport.Sphinx.add_index_to_domain"><code class="xref py py-obj docutils literal"><span class="pre">add_index_to_domain</span></code></a>(domain,&nbsp;index)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_javascript.html#sphinx.websupport.Sphinx.add_javascript" title="sphinx.websupport.Sphinx.add_javascript"><code class="xref py py-obj docutils literal"><span class="pre">add_javascript</span></code></a>(filename)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_latex_package.html#sphinx.websupport.Sphinx.add_latex_package" title="sphinx.websupport.Sphinx.add_latex_package"><code class="xref py py-obj docutils literal"><span class="pre">add_latex_package</span></code></a>(packagename[,&nbsp;options])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_lexer.html#sphinx.websupport.Sphinx.add_lexer" title="sphinx.websupport.Sphinx.add_lexer"><code class="xref py py-obj docutils literal"><span class="pre">add_lexer</span></code></a>(alias,&nbsp;lexer)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_node.html#sphinx.websupport.Sphinx.add_node" title="sphinx.websupport.Sphinx.add_node"><code class="xref py py-obj docutils literal"><span class="pre">add_node</span></code></a>(node,&nbsp;**kwds)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_object_type.html#sphinx.websupport.Sphinx.add_object_type" title="sphinx.websupport.Sphinx.add_object_type"><code class="xref py py-obj docutils literal"><span class="pre">add_object_type</span></code></a>(directivename,&nbsp;rolename[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_role.html#sphinx.websupport.Sphinx.add_role" title="sphinx.websupport.Sphinx.add_role"><code class="xref py py-obj docutils literal"><span class="pre">add_role</span></code></a>(name,&nbsp;role)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_role_to_domain.html#sphinx.websupport.Sphinx.add_role_to_domain" title="sphinx.websupport.Sphinx.add_role_to_domain"><code class="xref py py-obj docutils literal"><span class="pre">add_role_to_domain</span></code></a>(domain,&nbsp;name,&nbsp;role)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_search_language.html#sphinx.websupport.Sphinx.add_search_language" title="sphinx.websupport.Sphinx.add_search_language"><code class="xref py py-obj docutils literal"><span class="pre">add_search_language</span></code></a>(cls)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_stylesheet.html#sphinx.websupport.Sphinx.add_stylesheet" title="sphinx.websupport.Sphinx.add_stylesheet"><code class="xref py py-obj docutils literal"><span class="pre">add_stylesheet</span></code></a>(filename)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.add_transform.html#sphinx.websupport.Sphinx.add_transform" title="sphinx.websupport.Sphinx.add_transform"><code class="xref py py-obj docutils literal"><span class="pre">add_transform</span></code></a>(transform)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.build.html#sphinx.websupport.Sphinx.build" title="sphinx.websupport.Sphinx.build"><code class="xref py py-obj docutils literal"><span class="pre">build</span></code></a>([force_all,&nbsp;filenames])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.connect.html#sphinx.websupport.Sphinx.connect" title="sphinx.websupport.Sphinx.connect"><code class="xref py py-obj docutils literal"><span class="pre">connect</span></code></a>(event,&nbsp;callback)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.debug.html#sphinx.websupport.Sphinx.debug" title="sphinx.websupport.Sphinx.debug"><code class="xref py py-obj docutils literal"><span class="pre">debug</span></code></a>(message,&nbsp;*args,&nbsp;**kwargs)</td>
+<td>Emit a debug-level informational message.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.debug2.html#sphinx.websupport.Sphinx.debug2" title="sphinx.websupport.Sphinx.debug2"><code class="xref py py-obj docutils literal"><span class="pre">debug2</span></code></a>(message,&nbsp;*args,&nbsp;**kwargs)</td>
+<td>Emit a lowlevel debug-level informational message.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.disconnect.html#sphinx.websupport.Sphinx.disconnect" title="sphinx.websupport.Sphinx.disconnect"><code class="xref py py-obj docutils literal"><span class="pre">disconnect</span></code></a>(listener_id)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.emit.html#sphinx.websupport.Sphinx.emit" title="sphinx.websupport.Sphinx.emit"><code class="xref py py-obj docutils literal"><span class="pre">emit</span></code></a>(event,&nbsp;*args)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.emit_firstresult.html#sphinx.websupport.Sphinx.emit_firstresult" title="sphinx.websupport.Sphinx.emit_firstresult"><code class="xref py py-obj docutils literal"><span class="pre">emit_firstresult</span></code></a>(event,&nbsp;*args)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.import_object.html#sphinx.websupport.Sphinx.import_object" title="sphinx.websupport.Sphinx.import_object"><code class="xref py py-obj docutils literal"><span class="pre">import_object</span></code></a>(objname[,&nbsp;source])</td>
+<td>Import an object from a &#8216;module.name&#8217; string.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.info.html#sphinx.websupport.Sphinx.info" title="sphinx.websupport.Sphinx.info"><code class="xref py py-obj docutils literal"><span class="pre">info</span></code></a>([message,&nbsp;nonl])</td>
+<td>Emit an informational message.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.old_status_iterator.html#sphinx.websupport.Sphinx.old_status_iterator" title="sphinx.websupport.Sphinx.old_status_iterator"><code class="xref py py-obj docutils literal"><span class="pre">old_status_iterator</span></code></a>(iterable,&nbsp;summary[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.override_domain.html#sphinx.websupport.Sphinx.override_domain" title="sphinx.websupport.Sphinx.override_domain"><code class="xref py py-obj docutils literal"><span class="pre">override_domain</span></code></a>(domain)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.require_sphinx.html#sphinx.websupport.Sphinx.require_sphinx" title="sphinx.websupport.Sphinx.require_sphinx"><code class="xref py py-obj docutils literal"><span class="pre">require_sphinx</span></code></a>(version)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.set_translator.html#sphinx.websupport.Sphinx.set_translator" title="sphinx.websupport.Sphinx.set_translator"><code class="xref py py-obj docutils literal"><span class="pre">set_translator</span></code></a>(name,&nbsp;translator_class)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.setup_extension.html#sphinx.websupport.Sphinx.setup_extension" title="sphinx.websupport.Sphinx.setup_extension"><code class="xref py py-obj docutils literal"><span class="pre">setup_extension</span></code></a>(extension)</td>
+<td>Import and setup a Sphinx extension module.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.status_iterator.html#sphinx.websupport.Sphinx.status_iterator" title="sphinx.websupport.Sphinx.status_iterator"><code class="xref py py-obj docutils literal"><span class="pre">status_iterator</span></code></a>(iterable,&nbsp;summary[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Sphinx.verbose.html#sphinx.websupport.Sphinx.verbose" title="sphinx.websupport.Sphinx.verbose"><code class="xref py py-obj docutils literal"><span class="pre">verbose</span></code></a>(message,&nbsp;*args,&nbsp;**kwargs)</td>
+<td>Emit a verbose informational message.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Sphinx.warn.html#sphinx.websupport.Sphinx.warn" title="sphinx.websupport.Sphinx.warn"><code class="xref py py-obj docutils literal"><span class="pre">warn</span></code></a>(message[,&nbsp;location,&nbsp;prefix])</td>
+<td>Emit a warning.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.websupport.Sphinx.__init__.html" class="btn btn-neutral float-right" title="7.1.2.4.1.1. sphinx.websupport.Sphinx.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.websupport.FileSystemLoader.has_source_access.html" class="btn btn-neutral" title="7.1.2.3.2.1. sphinx.websupport.FileSystemLoader.has_source_access" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

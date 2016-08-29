@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.render_partial
+=====================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.render_partial

@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.get_signatures
+===========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Cmdoption.get_signatures

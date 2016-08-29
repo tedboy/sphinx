@@ -1,0 +1,6 @@
+sphinx.domains.python.GroupedField.make_xref
+============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: GroupedField.make_xref

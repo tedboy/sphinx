@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.compile_update_catalogs
+============================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.compile_update_catalogs

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.mock_import
+==============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: mock_import

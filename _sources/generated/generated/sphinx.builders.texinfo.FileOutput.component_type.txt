@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.FileOutput.component_type
+=================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: FileOutput.component_type

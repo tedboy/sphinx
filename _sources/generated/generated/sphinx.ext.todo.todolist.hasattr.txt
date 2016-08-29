@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.hasattr
+================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.hasattr

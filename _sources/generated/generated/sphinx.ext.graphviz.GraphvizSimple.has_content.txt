@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.has_content
+==============================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: GraphvizSimple.has_content

@@ -1,0 +1,6 @@
+sphinx.search.SearchLanguage.js_stemmer_rawcode
+===============================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: SearchLanguage.js_stemmer_rawcode

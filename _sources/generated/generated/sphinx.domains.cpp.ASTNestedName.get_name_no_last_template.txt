@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTNestedName.get_name_no_last_template
+==========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTNestedName.get_name_no_last_template

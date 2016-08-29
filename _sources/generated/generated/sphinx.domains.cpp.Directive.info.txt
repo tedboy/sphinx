@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Directive.info
+=================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: Directive.info

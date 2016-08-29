@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.Builder.init
+====================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: Builder.init

@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.setup_child
+====================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.setup_child

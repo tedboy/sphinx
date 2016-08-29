@@ -1,0 +1,6 @@
+sphinx.domains.ReSTDomain.get_objects
+=====================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: ReSTDomain.get_objects

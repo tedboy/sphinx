@@ -1,0 +1,6 @@
+sphinx.util.deque.popleft
+=========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.popleft

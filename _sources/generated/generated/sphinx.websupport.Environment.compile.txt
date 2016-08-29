@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.compile
+=====================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.compile

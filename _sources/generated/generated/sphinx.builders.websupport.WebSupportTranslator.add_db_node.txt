@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.add_db_node
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.add_db_node

@@ -1,0 +1,6 @@
+sphinx.ext.todo.visit_todo_node
+===============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autofunction:: visit_todo_node

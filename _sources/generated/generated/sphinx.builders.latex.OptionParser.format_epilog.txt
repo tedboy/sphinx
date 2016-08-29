@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.format_epilog
+================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.format_epilog

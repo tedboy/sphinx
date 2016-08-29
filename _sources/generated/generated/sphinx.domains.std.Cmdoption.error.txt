@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.error
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Cmdoption.error

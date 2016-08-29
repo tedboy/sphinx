@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclSpecs.get_id_v2
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclSpecs.get_id_v2

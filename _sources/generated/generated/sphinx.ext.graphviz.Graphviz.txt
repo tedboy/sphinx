@@ -1,0 +1,40 @@
+sphinx.ext.graphviz.Graphviz
+============================
+.. currentmodule:: sphinx.ext.graphviz
+.. autoclass:: Graphviz
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Graphviz.__init__
+   ~Graphviz.add_name
+   ~Graphviz.assert_has_content
+   ~Graphviz.debug
+   ~Graphviz.directive_error
+   ~Graphviz.error
+   ~Graphviz.info
+   ~Graphviz.run
+   ~Graphviz.severe
+   ~Graphviz.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Graphviz.final_argument_whitespace
+   ~Graphviz.has_content
+   ~Graphviz.option_spec
+   ~Graphviz.optional_arguments
+   ~Graphviz.required_arguments
+

@@ -1,0 +1,6 @@
+sphinx.search.comment.astext
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.astext

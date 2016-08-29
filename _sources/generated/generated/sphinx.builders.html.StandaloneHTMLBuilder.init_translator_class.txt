@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.init_translator_class
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.init_translator_class

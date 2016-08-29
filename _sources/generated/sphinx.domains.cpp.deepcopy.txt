@@ -1,0 +1,6 @@
+sphinx.domains.cpp.deepcopy
+===========================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autofunction:: deepcopy

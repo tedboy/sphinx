@@ -1,0 +1,6 @@
+sphinx.domains.std.iteritems
+============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autofunction:: iteritems

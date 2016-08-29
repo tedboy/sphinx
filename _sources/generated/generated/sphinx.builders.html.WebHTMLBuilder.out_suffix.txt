@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.out_suffix
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: WebHTMLBuilder.out_suffix

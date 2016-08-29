@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.text_type.index
+==============================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: text_type.index

@@ -1,0 +1,6 @@
+sphinx.ext.todo.Todo.add_name
+=============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Todo.add_name

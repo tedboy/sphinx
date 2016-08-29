@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Graphviz.add_name
+=====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Graphviz.add_name

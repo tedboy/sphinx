@@ -1,0 +1,6 @@
+sphinx.domains.CDomain.get_type_name
+====================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: CDomain.get_type_name

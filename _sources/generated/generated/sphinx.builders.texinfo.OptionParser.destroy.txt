@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.destroy
+============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.destroy

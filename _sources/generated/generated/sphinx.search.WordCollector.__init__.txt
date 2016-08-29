@@ -1,0 +1,6 @@
+sphinx.search.WordCollector.__init__
+====================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: WordCollector.__init__

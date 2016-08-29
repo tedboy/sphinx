@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.init_translator_class
+============================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.init_translator_class

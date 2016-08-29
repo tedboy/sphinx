@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.ext.pngmath &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.ext.pngmath</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.ext.pngmath</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.ext.pngmath</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Render math in HTML via dvipng.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">posixpath</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span>
+<span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha1</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">text_type</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+
+<span class="kn">import</span> <span class="nn">sphinx</span>
+<span class="kn">from</span> <span class="nn">sphinx.errors</span> <span class="kn">import</span> <span class="n">SphinxError</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.png</span> <span class="kn">import</span> <span class="n">read_png_depth</span><span class="p">,</span> <span class="n">write_png_depth</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.osutil</span> <span class="kn">import</span> <span class="n">ensuredir</span><span class="p">,</span> <span class="n">ENOENT</span><span class="p">,</span> <span class="n">cd</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.pycompat</span> <span class="kn">import</span> <span class="n">sys_encoding</span>
+<span class="kn">from</span> <span class="nn">sphinx.ext.mathbase</span> <span class="kn">import</span> <span class="n">setup_math</span> <span class="k">as</span> <span class="n">mathbase_setup</span><span class="p">,</span> <span class="n">wrap_displaymath</span>
+
+
+<div class="viewcode-block" id="MathExtError"><a class="viewcode-back" href="../../../generated/sphinx.ext.pngmath.MathExtError.html#sphinx.ext.pngmath.MathExtError">[docs]</a><span class="k">class</span> <span class="nc">MathExtError</span><span class="p">(</span><span class="n">SphinxError</span><span class="p">):</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;Math extension error&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">stderr</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[stderr]</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sys_encoding</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">stdout</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[stdout]</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sys_encoding</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+        <span class="n">SphinxError</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span></div>
+
+
+<span class="n">DOC_HEAD</span> <span class="o">=</span> <span class="s1">r&#39;&#39;&#39;</span>
+<span class="s1">\documentclass[12pt]{article}</span>
+<span class="s1">\usepackage[utf8x]{inputenc}</span>
+<span class="s1">\usepackage{amsmath}</span>
+<span class="s1">\usepackage{amsthm}</span>
+<span class="s1">\usepackage{amssymb}</span>
+<span class="s1">\usepackage{amsfonts}</span>
+<span class="s1">\usepackage{bm}</span>
+<span class="s1">\pagestyle{empty}</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">DOC_BODY</span> <span class="o">=</span> <span class="s1">r&#39;&#39;&#39;</span>
+<span class="s1">\begin{document}</span>
+<span class="si">%s</span><span class="s1"></span>
+<span class="s1">\end{document}</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">DOC_BODY_PREVIEW</span> <span class="o">=</span> <span class="s1">r&#39;&#39;&#39;</span>
+<span class="s1">\usepackage[active]{preview}</span>
+<span class="s1">\begin{document}</span>
+<span class="s1">\begin{preview}</span>
+<span class="si">%s</span><span class="s1"></span>
+<span class="s1">\end{preview}</span>
+<span class="s1">\end{document}</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">depth_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">br</span><span class="s1">&#39;\[\d+ depth=(-?\d+)\]&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="render_math"><a class="viewcode-back" href="../../../generated/sphinx.ext.pngmath.render_math.html#sphinx.ext.pngmath.render_math">[docs]</a><span class="k">def</span> <span class="nf">render_math</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">math</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Render the LaTeX math expression *math* using latex and dvipng.</span>
+
+<span class="sd">    Return the filename relative to the built document and the &quot;depth&quot;,</span>
+<span class="sd">    that is, the distance of image bottom and baseline in pixels, if the</span>
+<span class="sd">    option to use preview_latex is switched on.</span>
+
+<span class="sd">    Error handling may seem strange, but follows a pattern: if LaTeX or</span>
+<span class="sd">    dvipng aren&#39;t available, only a warning is generated (since that enables</span>
+<span class="sd">    people on machines without these programs to at least build the rest</span>
+<span class="sd">    of the docs successfully).  If the programs are there, however, they</span>
+<span class="sd">    may not fail since that indicates a problem in the math source.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">use_preview</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_use_preview</span>
+    <span class="n">latex</span> <span class="o">=</span> <span class="n">DOC_HEAD</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_latex_preamble</span>
+    <span class="n">latex</span> <span class="o">+=</span> <span class="p">(</span><span class="n">use_preview</span> <span class="ow">and</span> <span class="n">DOC_BODY_PREVIEW</span> <span class="ow">or</span> <span class="n">DOC_BODY</span><span class="p">)</span> <span class="o">%</span> <span class="n">math</span>
+
+    <span class="n">shasum</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.png&quot;</span> <span class="o">%</span> <span class="n">sha1</span><span class="p">(</span><span class="n">latex</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="n">relfn</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">imgpath</span><span class="p">,</span> <span class="s1">&#39;math&#39;</span><span class="p">,</span> <span class="n">shasum</span><span class="p">)</span>
+    <span class="n">outfn</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">imagedir</span><span class="p">,</span> <span class="s1">&#39;math&#39;</span><span class="p">,</span> <span class="n">shasum</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">outfn</span><span class="p">):</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="n">read_png_depth</span><span class="p">(</span><span class="n">outfn</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">relfn</span><span class="p">,</span> <span class="n">depth</span>
+
+    <span class="c1"># if latex or dvipng has failed once, don&#39;t bother to try again</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span> <span class="s1">&#39;_mathpng_warned_latex&#39;</span><span class="p">)</span> <span class="ow">or</span> \
+       <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span> <span class="s1">&#39;_mathpng_warned_dvipng&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+
+    <span class="c1"># use only one tempdir per build -- the use of a directory is cleaner</span>
+    <span class="c1"># than using temporary files, since we can clean up everything at once</span>
+    <span class="c1"># just removing the whole directory (see cleanup_tempdir)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span> <span class="s1">&#39;_mathpng_tempdir&#39;</span><span class="p">):</span>
+        <span class="n">tempdir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">_mathpng_tempdir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tempdir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">_mathpng_tempdir</span>
+
+    <span class="n">tf</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempdir</span><span class="p">,</span> <span class="s1">&#39;math.tex&#39;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">latex</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># build latex command; old versions of latex don&#39;t have the</span>
+    <span class="c1"># --output-directory option, so we have to manually chdir to the</span>
+    <span class="c1"># temp dir to run it.</span>
+    <span class="n">ltx_args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_latex</span><span class="p">,</span> <span class="s1">&#39;--interaction=nonstopmode&#39;</span><span class="p">]</span>
+    <span class="c1"># add custom args from the config file</span>
+    <span class="n">ltx_args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_latex_args</span><span class="p">)</span>
+    <span class="n">ltx_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;math.tex&#39;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="n">tempdir</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">ltx_args</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="o">!=</span> <span class="n">ENOENT</span><span class="p">:</span>   <span class="c1"># No such file or directory</span>
+                <span class="k">raise</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;LaTeX command </span><span class="si">%r</span><span class="s1"> cannot be run (needed for math &#39;</span>
+                              <span class="s1">&#39;display), check the pngmath_latex setting&#39;</span> <span class="o">%</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_latex</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">_mathpng_warned_latex</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+
+    <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">MathExtError</span><span class="p">(</span><span class="s1">&#39;latex exited with error&#39;</span><span class="p">,</span> <span class="n">stderr</span><span class="p">,</span> <span class="n">stdout</span><span class="p">)</span>
+
+    <span class="n">ensuredir</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">outfn</span><span class="p">))</span>
+    <span class="c1"># use some standard dvipng arguments</span>
+    <span class="n">dvipng_args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_dvipng</span><span class="p">]</span>
+    <span class="n">dvipng_args</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">outfn</span><span class="p">,</span> <span class="s1">&#39;-T&#39;</span><span class="p">,</span> <span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="s1">&#39;-z9&#39;</span><span class="p">]</span>
+    <span class="c1"># add custom ones from config value</span>
+    <span class="n">dvipng_args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_dvipng_args</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">use_preview</span><span class="p">:</span>
+        <span class="n">dvipng_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--depth&#39;</span><span class="p">)</span>
+    <span class="c1"># last, the input file name</span>
+    <span class="n">dvipng_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempdir</span><span class="p">,</span> <span class="s1">&#39;math.dvi&#39;</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">dvipng_args</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="o">!=</span> <span class="n">ENOENT</span><span class="p">:</span>   <span class="c1"># No such file or directory</span>
+            <span class="k">raise</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;dvipng command </span><span class="si">%r</span><span class="s1"> cannot be run (needed for math &#39;</span>
+                          <span class="s1">&#39;display), check the pngmath_dvipng setting&#39;</span> <span class="o">%</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_dvipng</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">_mathpng_warned_dvipng</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+    <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">MathExtError</span><span class="p">(</span><span class="s1">&#39;dvipng exited with error&#39;</span><span class="p">,</span> <span class="n">stderr</span><span class="p">,</span> <span class="n">stdout</span><span class="p">)</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">use_preview</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">stdout</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">depth_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                <span class="n">depth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">write_png_depth</span><span class="p">(</span><span class="n">outfn</span><span class="p">,</span> <span class="n">depth</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">relfn</span><span class="p">,</span> <span class="n">depth</span></div>
+
+
+<div class="viewcode-block" id="cleanup_tempdir"><a class="viewcode-back" href="../../../generated/sphinx.ext.pngmath.cleanup_tempdir.html#sphinx.ext.pngmath.cleanup_tempdir">[docs]</a><span class="k">def</span> <span class="nf">cleanup_tempdir</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exc</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span> <span class="s1">&#39;_mathpng_tempdir&#39;</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">_mathpng_tempdir</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="get_tooltip"><a class="viewcode-back" href="../../../generated/sphinx.ext.pngmath.get_tooltip.html#sphinx.ext.pngmath.get_tooltip">[docs]</a><span class="k">def</span> <span class="nf">get_tooltip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pngmath_add_tooltips</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39; alt=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
+
+
+<div class="viewcode-block" id="html_visit_math"><a class="viewcode-back" href="../../../generated/sphinx.ext.pngmath.html_visit_math.html#sphinx.ext.pngmath.html_visit_math">[docs]</a><span class="k">def</span> <span class="nf">html_visit_math</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fname</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">render_math</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="o">+</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;$&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">MathExtError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">text_type</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+        <span class="n">sm</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;WARNING&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                  <span class="n">backrefs</span><span class="o">=</span><span class="p">[],</span> <span class="n">source</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">])</span>
+        <span class="n">sm</span><span class="o">.</span><span class="n">walkabout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;display latex </span><span class="si">%r</span><span class="s1">: &#39;</span> <span class="o">%</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+    <span class="k">if</span> <span class="n">fname</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># something failed -- use text-only as a bad substitute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;math&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/span&gt;&#39;</span> <span class="o">%</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&lt;img class=&quot;math&quot; src=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span> <span class="o">+</span> <span class="n">get_tooltip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">depth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">+=</span> <span class="s1">&#39; style=&quot;vertical-align: </span><span class="si">%d</span><span class="s1">px&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="o">-</span><span class="n">depth</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;/&gt;&#39;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+
+<div class="viewcode-block" id="html_visit_displaymath"><a class="viewcode-back" href="../../../generated/sphinx.ext.pngmath.html_visit_displaymath.html#sphinx.ext.pngmath.html_visit_displaymath">[docs]</a><span class="k">def</span> <span class="nf">html_visit_displaymath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;nowrap&#39;</span><span class="p">]:</span>
+        <span class="n">latex</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">latex</span> <span class="o">=</span> <span class="n">wrap_displaymath</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">],</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fname</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">render_math</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latex</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">MathExtError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">sm</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;WARNING&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                  <span class="n">backrefs</span><span class="o">=</span><span class="p">[],</span> <span class="n">source</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">])</span>
+        <span class="n">sm</span><span class="o">.</span><span class="n">walkabout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;inline latex </span><span class="si">%r</span><span class="s1">: &#39;</span> <span class="o">%</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="s1">&#39;math&#39;</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;eqno&quot;&gt;(</span><span class="si">%s</span><span class="s1">)&lt;/span&gt;&#39;</span> <span class="o">%</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">fname</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># something failed -- use text-only as a bad substitute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;math&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s1">&lt;/div&gt;&#39;</span> <span class="o">%</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;&lt;img src=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span> <span class="o">+</span> <span class="n">get_tooltip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span> <span class="o">+</span>
+                         <span class="s1">&#39;/&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s1">&lt;/div&gt;&#39;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../../generated/sphinx.ext.pngmath.setup.html#sphinx.ext.pngmath.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">mathbase_setup</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="p">(</span><span class="n">html_visit_math</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span> <span class="p">(</span><span class="n">html_visit_displaymath</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;pngmath_dvipng&#39;</span><span class="p">,</span> <span class="s1">&#39;dvipng&#39;</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;pngmath_latex&#39;</span><span class="p">,</span> <span class="s1">&#39;latex&#39;</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;pngmath_use_preview&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;pngmath_dvipng_args&#39;</span><span class="p">,</span>
+                         <span class="p">[</span><span class="s1">&#39;-gamma&#39;</span><span class="p">,</span> <span class="s1">&#39;1.5&#39;</span><span class="p">,</span> <span class="s1">&#39;-D&#39;</span><span class="p">,</span> <span class="s1">&#39;110&#39;</span><span class="p">,</span> <span class="s1">&#39;-bg&#39;</span><span class="p">,</span> <span class="s1">&#39;Transparent&#39;</span><span class="p">],</span>
+                         <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;pngmath_latex_args&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;pngmath_latex_preamble&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;pngmath_add_tooltips&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;build-finished&#39;</span><span class="p">,</span> <span class="n">cleanup_tempdir</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">__display_version__</span><span class="p">,</span> <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

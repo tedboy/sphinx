@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.encode_uri
+====================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: encode_uri

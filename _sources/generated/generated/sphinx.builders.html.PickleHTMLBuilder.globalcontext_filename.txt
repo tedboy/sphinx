@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.globalcontext_filename
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: PickleHTMLBuilder.globalcontext_filename

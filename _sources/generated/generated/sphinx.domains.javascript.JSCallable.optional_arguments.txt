@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.optional_arguments
+=======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSCallable.optional_arguments

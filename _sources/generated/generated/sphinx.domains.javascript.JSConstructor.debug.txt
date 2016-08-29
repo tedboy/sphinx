@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.debug
+=============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.debug

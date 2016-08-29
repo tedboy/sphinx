@@ -1,0 +1,6 @@
+sphinx.search.Text.isdigit
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.isdigit

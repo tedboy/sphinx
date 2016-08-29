@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.unknown_departure
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.unknown_departure

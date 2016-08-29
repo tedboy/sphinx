@@ -1,0 +1,42 @@
+sphinx.domains.cpp.ASTDecleratorNameParamQual
+=============================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTDecleratorNameParamQual
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTDecleratorNameParamQual.__init__
+   ~ASTDecleratorNameParamQual.clone
+   ~ASTDecleratorNameParamQual.describe_signature
+   ~ASTDecleratorNameParamQual.get_id_v1
+   ~ASTDecleratorNameParamQual.get_id_v2
+   ~ASTDecleratorNameParamQual.get_modifiers_id_v1
+   ~ASTDecleratorNameParamQual.get_modifiers_id_v2
+   ~ASTDecleratorNameParamQual.get_name
+   ~ASTDecleratorNameParamQual.get_param_id_v1
+   ~ASTDecleratorNameParamQual.get_param_id_v2
+   ~ASTDecleratorNameParamQual.get_ptr_suffix_id_v1
+   ~ASTDecleratorNameParamQual.get_ptr_suffix_id_v2
+   ~ASTDecleratorNameParamQual.get_type_id_v2
+   ~ASTDecleratorNameParamQual.is_function_type
+   ~ASTDecleratorNameParamQual.prefix_nested_name
+   ~ASTDecleratorNameParamQual.require_space_after_declSpecs
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ASTDecleratorNameParamQual.name
+

@@ -1,0 +1,6 @@
+sphinx.search.text_type.isspace
+===============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.isspace

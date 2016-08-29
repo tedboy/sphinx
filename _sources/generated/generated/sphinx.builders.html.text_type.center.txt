@@ -1,0 +1,6 @@
+sphinx.builders.html.text_type.center
+=====================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: text_type.center

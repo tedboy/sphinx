@@ -1,0 +1,6 @@
+sphinx.domains.std.Domain.process_doc
+=====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Domain.process_doc

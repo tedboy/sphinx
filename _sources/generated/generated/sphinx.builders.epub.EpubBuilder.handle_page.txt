@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.handle_page
+============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.handle_page

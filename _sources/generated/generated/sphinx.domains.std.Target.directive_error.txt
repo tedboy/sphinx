@@ -1,0 +1,6 @@
+sphinx.domains.std.Target.directive_error
+=========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Target.directive_error

@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.2. sphinx.ext.autodoc &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../index.html"/>
+        <link rel="up" title="3. sphinx.ext" href="../sphinx.ext.html"/>
+        <link rel="next" title="3.2.1.1. sphinx.ext.autodoc.add_documenter" href="sphinx.ext.autodoc.add_documenter.html"/>
+        <link rel="prev" title="3.1. sphinx.ext" href="sphinx.ext.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.html">3.1. sphinx.ext</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">3.2. sphinx.ext.autodoc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">3.2.1. Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.add_documenter.html">3.2.1.1. sphinx.ext.autodoc.add_documenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.annotation_option.html">3.2.1.2. sphinx.ext.autodoc.annotation_option</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.assemble_option_dict.html">3.2.1.3. sphinx.ext.autodoc.assemble_option_dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.between.html">3.2.1.4. sphinx.ext.autodoc.between</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.bool_option.html">3.2.1.5. sphinx.ext.autodoc.bool_option</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.cut_lines.html">3.2.1.6. sphinx.ext.autodoc.cut_lines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.force_decode.html">3.2.1.7. sphinx.ext.autodoc.force_decode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.formatargspec.html">3.2.1.8. sphinx.ext.autodoc.formatargspec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.getargspec.html">3.2.1.9. sphinx.ext.autodoc.getargspec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.identity.html">3.2.1.10. sphinx.ext.autodoc.identity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.is_builtin_class_method.html">3.2.1.11. sphinx.ext.autodoc.is_builtin_class_method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.isdescriptor.html">3.2.1.12. sphinx.ext.autodoc.isdescriptor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.iteritems.html">3.2.1.13. sphinx.ext.autodoc.iteritems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.itervalues.html">3.2.1.14. sphinx.ext.autodoc.itervalues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.members_option.html">3.2.1.15. sphinx.ext.autodoc.members_option</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.members_set_option.html">3.2.1.16. sphinx.ext.autodoc.members_set_option</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.mock_import.html">3.2.1.17. sphinx.ext.autodoc.mock_import</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.nested_parse_with_titles.html">3.2.1.18. sphinx.ext.autodoc.nested_parse_with_titles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.object_description.html">3.2.1.19. sphinx.ext.autodoc.object_description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.prepare_docstring.html">3.2.1.20. sphinx.ext.autodoc.prepare_docstring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.rpartition.html">3.2.1.21. sphinx.ext.autodoc.rpartition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.safe_getattr.html">3.2.1.22. sphinx.ext.autodoc.safe_getattr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.safe_getmembers.html">3.2.1.23. sphinx.ext.autodoc.safe_getmembers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.setup.html">3.2.1.24. sphinx.ext.autodoc.setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">3.2.2. Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.AttributeDocumenter.html">3.2.2.1. sphinx.ext.autodoc.AttributeDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.AutoDirective.html">3.2.2.2. sphinx.ext.autodoc.AutoDirective</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.AutodocReporter.html">3.2.2.3. sphinx.ext.autodoc.AutodocReporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.BuiltinFunctionType.html">3.2.2.4. sphinx.ext.autodoc.BuiltinFunctionType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.ClassDocumenter.html">3.2.2.5. sphinx.ext.autodoc.ClassDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.ClassLevelDocumenter.html">3.2.2.6. sphinx.ext.autodoc.ClassLevelDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.DataDocumenter.html">3.2.2.7. sphinx.ext.autodoc.DataDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.DefDict.html">3.2.2.8. sphinx.ext.autodoc.DefDict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.Directive.html">3.2.2.9. sphinx.ext.autodoc.Directive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.DocstringSignatureMixin.html">3.2.2.10. sphinx.ext.autodoc.DocstringSignatureMixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.DocstringStripSignatureMixin.html">3.2.2.11. sphinx.ext.autodoc.DocstringStripSignatureMixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.Documenter.html">3.2.2.12. sphinx.ext.autodoc.Documenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.ExceptionDocumenter.html">3.2.2.13. sphinx.ext.autodoc.ExceptionDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.FunctionDocumenter.html">3.2.2.14. sphinx.ext.autodoc.FunctionDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.FunctionType.html">3.2.2.15. sphinx.ext.autodoc.FunctionType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.InstanceAttributeDocumenter.html">3.2.2.16. sphinx.ext.autodoc.InstanceAttributeDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.MethodDocumenter.html">3.2.2.17. sphinx.ext.autodoc.MethodDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.MethodType.html">3.2.2.18. sphinx.ext.autodoc.MethodType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.ModuleAnalyzer.html">3.2.2.19. sphinx.ext.autodoc.ModuleAnalyzer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.ModuleDocumenter.html">3.2.2.20. sphinx.ext.autodoc.ModuleDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.ModuleLevelDocumenter.html">3.2.2.21. sphinx.ext.autodoc.ModuleLevelDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.Options.html">3.2.2.22. sphinx.ext.autodoc.Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.ViewList.html">3.2.2.23. sphinx.ext.autodoc.ViewList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.testcls.html">3.2.2.24. sphinx.ext.autodoc.testcls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.autodoc.text_type.html">3.2.2.25. sphinx.ext.autodoc.text_type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#exceptions">3.2.3. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.ExtensionError.html">3.2.3.1. sphinx.ext.autodoc.ExtensionError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.autodoc.PycodeError.html">3.2.3.2. sphinx.ext.autodoc.PycodeError</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.coverage.html">3.3. sphinx.ext.coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.doctest.html">3.4. sphinx.ext.doctest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.extlinks.html">3.5. sphinx.ext.extlinks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.graphviz.html">3.6. sphinx.ext.graphviz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.ifconfig.html">3.7. sphinx.ext.ifconfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.inheritance_diagram.html">3.8. sphinx.ext.inheritance_diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.intersphinx.html">3.9. sphinx.ext.intersphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.jsmath.html">3.10. sphinx.ext.jsmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.linkcode.html">3.11. sphinx.ext.linkcode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.mathbase.html">3.12. sphinx.ext.mathbase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.mathjax.html">3.13. sphinx.ext.mathjax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.pngmath.html">3.14. sphinx.ext.pngmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.todo.html">3.15. sphinx.ext.todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.viewcode.html">3.16. sphinx.ext.viewcode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a> &raquo;</li>
+        
+      <li>3.2. sphinx.ext.autodoc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/sphinx.ext.autodoc.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-sphinx.ext.autodoc"></span><div class="section" id="sphinx-ext-autodoc">
+<h1>3.2. sphinx.ext.autodoc<a class="headerlink" href="#sphinx-ext-autodoc" title="Permalink to this headline">¶</a></h1>
+<p>Automatically insert docstrings for functions, classes or whole modules into
+the doctree, thus avoiding duplication between docstrings and documentation
+for those who like elaborate docstrings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Copyright 2007-2016 by the Sphinx team, see AUTHORS.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD, see LICENSE for details.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="functions">
+<h2>3.2.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.add_documenter.html#sphinx.ext.autodoc.add_documenter" title="sphinx.ext.autodoc.add_documenter"><code class="xref py py-obj docutils literal"><span class="pre">add_documenter</span></code></a>(cls)</td>
+<td>Register a new Documenter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.annotation_option.html#sphinx.ext.autodoc.annotation_option" title="sphinx.ext.autodoc.annotation_option"><code class="xref py py-obj docutils literal"><span class="pre">annotation_option</span></code></a>(arg)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.assemble_option_dict.html#sphinx.ext.autodoc.assemble_option_dict" title="sphinx.ext.autodoc.assemble_option_dict"><code class="xref py py-obj docutils literal"><span class="pre">assemble_option_dict</span></code></a>(option_list,&nbsp;options_spec)</td>
+<td>Return a mapping of option names to values.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.between.html#sphinx.ext.autodoc.between" title="sphinx.ext.autodoc.between"><code class="xref py py-obj docutils literal"><span class="pre">between</span></code></a>(marker[,&nbsp;what,&nbsp;keepempty,&nbsp;exclude])</td>
+<td>Return a listener that either keeps, or if <em>exclude</em> is True excludes, lines between lines that match the <em>marker</em> regular expression.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.bool_option.html#sphinx.ext.autodoc.bool_option" title="sphinx.ext.autodoc.bool_option"><code class="xref py py-obj docutils literal"><span class="pre">bool_option</span></code></a>(arg)</td>
+<td>Used to convert flag options to auto directives.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.cut_lines.html#sphinx.ext.autodoc.cut_lines" title="sphinx.ext.autodoc.cut_lines"><code class="xref py py-obj docutils literal"><span class="pre">cut_lines</span></code></a>(pre[,&nbsp;post,&nbsp;what])</td>
+<td>Return a listener that removes the first <em>pre</em> and last <em>post</em> lines of every docstring.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.force_decode.html#sphinx.ext.autodoc.force_decode" title="sphinx.ext.autodoc.force_decode"><code class="xref py py-obj docutils literal"><span class="pre">force_decode</span></code></a>(string,&nbsp;encoding)</td>
+<td>Forcibly get a unicode string out of a bytestring.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.formatargspec.html#sphinx.ext.autodoc.formatargspec" title="sphinx.ext.autodoc.formatargspec"><code class="xref py py-obj docutils literal"><span class="pre">formatargspec</span></code></a>(*argspec)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.getargspec.html#sphinx.ext.autodoc.getargspec" title="sphinx.ext.autodoc.getargspec"><code class="xref py py-obj docutils literal"><span class="pre">getargspec</span></code></a>(func)</td>
+<td>Like inspect.getargspec but supports functools.partial as well.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.identity.html#sphinx.ext.autodoc.identity" title="sphinx.ext.autodoc.identity"><code class="xref py py-obj docutils literal"><span class="pre">identity</span></code></a>(x)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.is_builtin_class_method.html#sphinx.ext.autodoc.is_builtin_class_method" title="sphinx.ext.autodoc.is_builtin_class_method"><code class="xref py py-obj docutils literal"><span class="pre">is_builtin_class_method</span></code></a>(obj,&nbsp;attr_name)</td>
+<td>If attr_name is implemented at builtin class, return True.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.isdescriptor.html#sphinx.ext.autodoc.isdescriptor" title="sphinx.ext.autodoc.isdescriptor"><code class="xref py py-obj docutils literal"><span class="pre">isdescriptor</span></code></a>(x)</td>
+<td>Check if the object is some kind of descriptor.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.iteritems.html#sphinx.ext.autodoc.iteritems" title="sphinx.ext.autodoc.iteritems"><code class="xref py py-obj docutils literal"><span class="pre">iteritems</span></code></a>(d,&nbsp;**kw)</td>
+<td>Return an iterator over the (key, value) pairs of a dictionary.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.itervalues.html#sphinx.ext.autodoc.itervalues" title="sphinx.ext.autodoc.itervalues"><code class="xref py py-obj docutils literal"><span class="pre">itervalues</span></code></a>(d,&nbsp;**kw)</td>
+<td>Return an iterator over the values of a dictionary.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.members_option.html#sphinx.ext.autodoc.members_option" title="sphinx.ext.autodoc.members_option"><code class="xref py py-obj docutils literal"><span class="pre">members_option</span></code></a>(arg)</td>
+<td>Used to convert the :members: option to auto directives.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.members_set_option.html#sphinx.ext.autodoc.members_set_option" title="sphinx.ext.autodoc.members_set_option"><code class="xref py py-obj docutils literal"><span class="pre">members_set_option</span></code></a>(arg)</td>
+<td>Used to convert the :members: option to auto directives.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.mock_import.html#sphinx.ext.autodoc.mock_import" title="sphinx.ext.autodoc.mock_import"><code class="xref py py-obj docutils literal"><span class="pre">mock_import</span></code></a>(modname)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.nested_parse_with_titles.html#sphinx.ext.autodoc.nested_parse_with_titles" title="sphinx.ext.autodoc.nested_parse_with_titles"><code class="xref py py-obj docutils literal"><span class="pre">nested_parse_with_titles</span></code></a>(state,&nbsp;content,&nbsp;node)</td>
+<td>Version of state.nested_parse() that allows titles and does not require titles to have the same decoration as the calling document.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.object_description.html#sphinx.ext.autodoc.object_description" title="sphinx.ext.autodoc.object_description"><code class="xref py py-obj docutils literal"><span class="pre">object_description</span></code></a>(object)</td>
+<td>A repr() implementation that returns text safe to use in reST context.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.prepare_docstring.html#sphinx.ext.autodoc.prepare_docstring" title="sphinx.ext.autodoc.prepare_docstring"><code class="xref py py-obj docutils literal"><span class="pre">prepare_docstring</span></code></a>(s[,&nbsp;ignore])</td>
+<td>Convert a docstring into lines of parseable reST.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.rpartition.html#sphinx.ext.autodoc.rpartition" title="sphinx.ext.autodoc.rpartition"><code class="xref py py-obj docutils literal"><span class="pre">rpartition</span></code></a>(s,&nbsp;t)</td>
+<td>Similar to str.rpartition from 2.5, but doesn&#8217;t return the separator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.safe_getattr.html#sphinx.ext.autodoc.safe_getattr" title="sphinx.ext.autodoc.safe_getattr"><code class="xref py py-obj docutils literal"><span class="pre">safe_getattr</span></code></a>(obj,&nbsp;name,&nbsp;*defargs)</td>
+<td>A getattr() that turns all exceptions into AttributeErrors.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.safe_getmembers.html#sphinx.ext.autodoc.safe_getmembers" title="sphinx.ext.autodoc.safe_getmembers"><code class="xref py py-obj docutils literal"><span class="pre">safe_getmembers</span></code></a>(object[,&nbsp;predicate,&nbsp;attr_getter])</td>
+<td>A version of inspect.getmembers() that uses safe_getattr().</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.setup.html#sphinx.ext.autodoc.setup" title="sphinx.ext.autodoc.setup"><code class="xref py py-obj docutils literal"><span class="pre">setup</span></code></a>(app)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="classes">
+<h2>3.2.2. Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.AttributeDocumenter.html#sphinx.ext.autodoc.AttributeDocumenter" title="sphinx.ext.autodoc.AttributeDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">AttributeDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized Documenter subclass for attributes.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.AutoDirective.html#sphinx.ext.autodoc.AutoDirective" title="sphinx.ext.autodoc.AutoDirective"><code class="xref py py-obj docutils literal"><span class="pre">AutoDirective</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>The AutoDirective class is used for all autodoc directives.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.AutodocReporter.html#sphinx.ext.autodoc.AutodocReporter" title="sphinx.ext.autodoc.AutodocReporter"><code class="xref py py-obj docutils literal"><span class="pre">AutodocReporter</span></code></a>(viewlist,&nbsp;reporter)</td>
+<td>A reporter replacement that assigns the correct source name and line number to a system message, as recorded in a ViewList.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.BuiltinFunctionType.html#sphinx.ext.autodoc.BuiltinFunctionType" title="sphinx.ext.autodoc.BuiltinFunctionType"><code class="xref py py-obj docutils literal"><span class="pre">BuiltinFunctionType</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">builtin_function_or_method</span></code></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.ClassDocumenter.html#sphinx.ext.autodoc.ClassDocumenter" title="sphinx.ext.autodoc.ClassDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">ClassDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized Documenter subclass for classes.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.ClassLevelDocumenter.html#sphinx.ext.autodoc.ClassLevelDocumenter" title="sphinx.ext.autodoc.ClassLevelDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">ClassLevelDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized Documenter subclass for objects on class level (methods, attributes).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.DataDocumenter.html#sphinx.ext.autodoc.DataDocumenter" title="sphinx.ext.autodoc.DataDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">DataDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized Documenter subclass for data items.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.DefDict.html#sphinx.ext.autodoc.DefDict" title="sphinx.ext.autodoc.DefDict"><code class="xref py py-obj docutils literal"><span class="pre">DefDict</span></code></a>(default)</td>
+<td>A dict that returns a default on nonexisting keys.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.Directive.html#sphinx.ext.autodoc.Directive" title="sphinx.ext.autodoc.Directive"><code class="xref py py-obj docutils literal"><span class="pre">Directive</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td>Base class for reStructuredText directives.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.DocstringSignatureMixin.html#sphinx.ext.autodoc.DocstringSignatureMixin" title="sphinx.ext.autodoc.DocstringSignatureMixin"><code class="xref py py-obj docutils literal"><span class="pre">DocstringSignatureMixin</span></code></a></td>
+<td>Mixin for FunctionDocumenter and MethodDocumenter to provide the feature of reading the signature from the docstring.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.DocstringStripSignatureMixin.html#sphinx.ext.autodoc.DocstringStripSignatureMixin" title="sphinx.ext.autodoc.DocstringStripSignatureMixin"><code class="xref py py-obj docutils literal"><span class="pre">DocstringStripSignatureMixin</span></code></a></td>
+<td>Mixin for AttributeDocumenter to provide the feature of stripping any function signature from the docstring.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.Documenter.html#sphinx.ext.autodoc.Documenter" title="sphinx.ext.autodoc.Documenter"><code class="xref py py-obj docutils literal"><span class="pre">Documenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>A Documenter knows how to autodocument a single object type.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.ExceptionDocumenter.html#sphinx.ext.autodoc.ExceptionDocumenter" title="sphinx.ext.autodoc.ExceptionDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">ExceptionDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized ClassDocumenter subclass for exceptions.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.FunctionDocumenter.html#sphinx.ext.autodoc.FunctionDocumenter" title="sphinx.ext.autodoc.FunctionDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">FunctionDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized Documenter subclass for functions.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.FunctionType.html#sphinx.ext.autodoc.FunctionType" title="sphinx.ext.autodoc.FunctionType"><code class="xref py py-obj docutils literal"><span class="pre">FunctionType</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">function</span></code></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.InstanceAttributeDocumenter.html#sphinx.ext.autodoc.InstanceAttributeDocumenter" title="sphinx.ext.autodoc.InstanceAttributeDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">InstanceAttributeDocumenter</span></code></a>(directive,&nbsp;name)</td>
+<td>Specialized Documenter subclass for attributes that cannot be imported because they are instance attributes (e.g.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.MethodDocumenter.html#sphinx.ext.autodoc.MethodDocumenter" title="sphinx.ext.autodoc.MethodDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">MethodDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized Documenter subclass for methods (normal, static and class).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.MethodType.html#sphinx.ext.autodoc.MethodType" title="sphinx.ext.autodoc.MethodType"><code class="xref py py-obj docutils literal"><span class="pre">MethodType</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">instancemethod</span></code></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.ModuleAnalyzer.html#sphinx.ext.autodoc.ModuleAnalyzer" title="sphinx.ext.autodoc.ModuleAnalyzer"><code class="xref py py-obj docutils literal"><span class="pre">ModuleAnalyzer</span></code></a>(source,&nbsp;modname,&nbsp;srcname[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.ModuleDocumenter.html#sphinx.ext.autodoc.ModuleDocumenter" title="sphinx.ext.autodoc.ModuleDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">ModuleDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized Documenter subclass for modules.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.ModuleLevelDocumenter.html#sphinx.ext.autodoc.ModuleLevelDocumenter" title="sphinx.ext.autodoc.ModuleLevelDocumenter"><code class="xref py py-obj docutils literal"><span class="pre">ModuleLevelDocumenter</span></code></a>(directive,&nbsp;name[,&nbsp;indent])</td>
+<td>Specialized Documenter subclass for objects on module level (functions, classes, data/constants).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.Options.html#sphinx.ext.autodoc.Options" title="sphinx.ext.autodoc.Options"><code class="xref py py-obj docutils literal"><span class="pre">Options</span></code></a></td>
+<td>A dict/attribute hybrid that returns None on nonexisting keys.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.ViewList.html#sphinx.ext.autodoc.ViewList" title="sphinx.ext.autodoc.ViewList"><code class="xref py py-obj docutils literal"><span class="pre">ViewList</span></code></a>([initlist,&nbsp;source,&nbsp;items,&nbsp;parent,&nbsp;...])</td>
+<td>List with extended functionality: slices of ViewList objects are child lists, linked to their parents.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.testcls.html#sphinx.ext.autodoc.testcls" title="sphinx.ext.autodoc.testcls"><code class="xref py py-obj docutils literal"><span class="pre">testcls</span></code></a></td>
+<td>test doc string</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.text_type.html#sphinx.ext.autodoc.text_type" title="sphinx.ext.autodoc.text_type"><code class="xref py py-obj docutils literal"><span class="pre">text_type</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">unicode</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="exceptions">
+<h2>3.2.3. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.autodoc.ExtensionError.html#sphinx.ext.autodoc.ExtensionError" title="sphinx.ext.autodoc.ExtensionError"><code class="xref py py-obj docutils literal"><span class="pre">ExtensionError</span></code></a>(message[,&nbsp;orig_exc])</td>
+<td>Raised if something&#8217;s wrong with the configuration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.autodoc.PycodeError.html#sphinx.ext.autodoc.PycodeError" title="sphinx.ext.autodoc.PycodeError"><code class="xref py py-obj docutils literal"><span class="pre">PycodeError</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.ext.autodoc.add_documenter.html" class="btn btn-neutral float-right" title="3.2.1.1. sphinx.ext.autodoc.add_documenter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.ext.html" class="btn btn-neutral" title="3.1. sphinx.ext" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

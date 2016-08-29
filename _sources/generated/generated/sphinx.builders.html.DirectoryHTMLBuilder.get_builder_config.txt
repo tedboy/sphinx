@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.get_builder_config
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.get_builder_config

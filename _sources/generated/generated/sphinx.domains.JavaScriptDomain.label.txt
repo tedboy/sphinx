@@ -1,0 +1,6 @@
+sphinx.domains.JavaScriptDomain.label
+=====================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: JavaScriptDomain.label

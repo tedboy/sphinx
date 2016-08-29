@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestsetupDirective.required_arguments
+========================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: TestsetupDirective.required_arguments

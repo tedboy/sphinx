@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.ensuredir
+============================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: ensuredir

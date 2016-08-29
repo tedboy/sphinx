@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.versioning_method
+=====================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autoattribute:: CoverageBuilder.versioning_method

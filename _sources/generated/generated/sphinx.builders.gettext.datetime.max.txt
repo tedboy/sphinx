@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.max
+====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.max

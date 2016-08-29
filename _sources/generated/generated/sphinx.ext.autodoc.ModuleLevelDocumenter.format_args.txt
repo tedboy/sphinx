@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleLevelDocumenter.format_args
+====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleLevelDocumenter.format_args

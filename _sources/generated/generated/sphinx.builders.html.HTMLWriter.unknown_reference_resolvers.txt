@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.unknown_reference_resolvers
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.unknown_reference_resolvers

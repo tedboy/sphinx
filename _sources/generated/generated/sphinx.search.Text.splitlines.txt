@@ -1,0 +1,6 @@
+sphinx.search.Text.splitlines
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.splitlines

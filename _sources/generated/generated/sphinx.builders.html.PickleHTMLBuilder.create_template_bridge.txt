@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.create_template_bridge
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.create_template_bridge

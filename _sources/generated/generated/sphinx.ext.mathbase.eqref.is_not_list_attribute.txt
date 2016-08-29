@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.is_not_list_attribute
+===============================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.is_not_list_attribute

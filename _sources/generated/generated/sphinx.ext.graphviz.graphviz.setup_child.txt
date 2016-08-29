@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.setup_child
+========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.setup_child

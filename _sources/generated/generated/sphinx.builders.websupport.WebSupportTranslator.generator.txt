@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.generator
+=========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.generator

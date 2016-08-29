@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_superscript
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_superscript

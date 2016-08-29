@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_Text
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_Text

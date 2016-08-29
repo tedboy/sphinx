@@ -1,0 +1,6 @@
+sphinx.domains.CDomain.initial_data
+===================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CDomain.initial_data

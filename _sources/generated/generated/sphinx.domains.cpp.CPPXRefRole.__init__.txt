@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPXRefRole.__init__
+=======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPXRefRole.__init__

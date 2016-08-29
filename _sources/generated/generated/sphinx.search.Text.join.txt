@@ -1,0 +1,6 @@
+sphinx.search.Text.join
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.join

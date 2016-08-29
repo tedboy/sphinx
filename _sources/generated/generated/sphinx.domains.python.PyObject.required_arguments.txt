@@ -1,0 +1,6 @@
+sphinx.domains.python.PyObject.required_arguments
+=================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyObject.required_arguments

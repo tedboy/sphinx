@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.render_partial
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.render_partial

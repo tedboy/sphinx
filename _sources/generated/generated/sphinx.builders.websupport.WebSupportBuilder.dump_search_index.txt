@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.dump_search_index
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.dump_search_index

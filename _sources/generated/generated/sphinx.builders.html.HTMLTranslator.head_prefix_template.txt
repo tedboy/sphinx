@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.head_prefix_template
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.head_prefix_template

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.handle_visit_commentable
+========================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.handle_visit_commentable

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.__init__
+======================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.__init__

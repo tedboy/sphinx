@@ -1,0 +1,6 @@
+sphinx.search.IndexBuilder.get_objects
+======================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: IndexBuilder.get_objects

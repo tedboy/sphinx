@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.attval
+======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.attval

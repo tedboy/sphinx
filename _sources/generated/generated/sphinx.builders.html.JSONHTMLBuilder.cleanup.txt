@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.cleanup
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.cleanup

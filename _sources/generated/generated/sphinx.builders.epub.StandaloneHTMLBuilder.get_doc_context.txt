@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.get_doc_context
+==========================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.get_doc_context

@@ -1,0 +1,19 @@
+sphinx.domains.python.PyXrefMixin
+=================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyXrefMixin
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyXrefMixin.make_xref
+
+
+
+
+

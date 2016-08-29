@@ -1,0 +1,80 @@
+sphinx.builders.texinfo.OptionParser
+====================================
+.. currentmodule:: sphinx.builders.texinfo
+.. autoclass:: OptionParser
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~OptionParser.__init__
+   ~OptionParser.add_option
+   ~OptionParser.add_option_group
+   ~OptionParser.add_options
+   ~OptionParser.check_args
+   ~OptionParser.check_values
+   ~OptionParser.destroy
+   ~OptionParser.disable_interspersed_args
+   ~OptionParser.enable_interspersed_args
+   ~OptionParser.error
+   ~OptionParser.exit
+   ~OptionParser.expand_prog_name
+   ~OptionParser.format_description
+   ~OptionParser.format_epilog
+   ~OptionParser.format_help
+   ~OptionParser.format_option_help
+   ~OptionParser.get_config_file_settings
+   ~OptionParser.get_default_values
+   ~OptionParser.get_description
+   ~OptionParser.get_option
+   ~OptionParser.get_option_by_dest
+   ~OptionParser.get_option_group
+   ~OptionParser.get_prog_name
+   ~OptionParser.get_standard_config_files
+   ~OptionParser.get_standard_config_settings
+   ~OptionParser.get_usage
+   ~OptionParser.get_version
+   ~OptionParser.has_option
+   ~OptionParser.parse_args
+   ~OptionParser.populate_from_components
+   ~OptionParser.print_help
+   ~OptionParser.print_usage
+   ~OptionParser.print_version
+   ~OptionParser.remove_option
+   ~OptionParser.set_conflict_handler
+   ~OptionParser.set_default
+   ~OptionParser.set_defaults
+   ~OptionParser.set_defaults_from_dict
+   ~OptionParser.set_description
+   ~OptionParser.set_process_default_values
+   ~OptionParser.set_usage
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~OptionParser.booleans
+   ~OptionParser.config_section
+   ~OptionParser.config_section_dependencies
+   ~OptionParser.default_error_encoding
+   ~OptionParser.default_error_encoding_error_handler
+   ~OptionParser.relative_path_settings
+   ~OptionParser.settings_default_overrides
+   ~OptionParser.settings_defaults
+   ~OptionParser.settings_spec
+   ~OptionParser.standard_config_files
+   ~OptionParser.standard_option_list
+   ~OptionParser.threshold_choices
+   ~OptionParser.thresholds
+   ~OptionParser.version_template
+

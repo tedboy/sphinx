@@ -1,0 +1,6 @@
+sphinx.domains.javascript.GroupedField.make_xref
+================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: GroupedField.make_xref

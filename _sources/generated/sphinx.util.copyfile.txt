@@ -1,0 +1,6 @@
+sphinx.util.copyfile
+====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: copyfile

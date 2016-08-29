@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorFunction.option_spec
+=====================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyDecoratorFunction.option_spec

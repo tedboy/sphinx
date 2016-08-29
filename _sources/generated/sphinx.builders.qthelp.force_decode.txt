@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.force_decode
+===================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autofunction:: force_decode

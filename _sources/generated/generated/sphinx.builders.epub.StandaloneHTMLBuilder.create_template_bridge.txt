@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.create_template_bridge
+=================================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.create_template_bridge

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.sort
+================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.sort

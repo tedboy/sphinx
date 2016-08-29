@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.lower
+==================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.lower

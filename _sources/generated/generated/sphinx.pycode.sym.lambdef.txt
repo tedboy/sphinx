@@ -1,0 +1,6 @@
+sphinx.pycode.sym.lambdef
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.lambdef

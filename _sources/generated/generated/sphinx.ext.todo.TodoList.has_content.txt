@@ -1,0 +1,6 @@
+sphinx.ext.todo.TodoList.has_content
+====================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: TodoList.has_content

@@ -1,0 +1,6 @@
+sphinx.ext.linkcode.SphinxError
+===============================
+
+.. currentmodule:: sphinx.ext.linkcode
+
+.. autoexception:: SphinxError

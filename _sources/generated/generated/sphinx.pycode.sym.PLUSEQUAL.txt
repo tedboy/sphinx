@@ -1,0 +1,6 @@
+sphinx.pycode.sym.PLUSEQUAL
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.PLUSEQUAL

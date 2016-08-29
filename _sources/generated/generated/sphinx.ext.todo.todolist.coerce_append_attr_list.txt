@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.coerce_append_attr_list
+================================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.coerce_append_attr_list

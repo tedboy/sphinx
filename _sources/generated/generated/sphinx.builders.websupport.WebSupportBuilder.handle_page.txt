@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.handle_page
+========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.handle_page

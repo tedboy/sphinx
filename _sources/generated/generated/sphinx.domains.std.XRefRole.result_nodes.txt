@@ -1,0 +1,6 @@
+sphinx.domains.std.XRefRole.result_nodes
+========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: XRefRole.result_nodes

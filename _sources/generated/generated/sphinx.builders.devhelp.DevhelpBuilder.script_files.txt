@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.script_files
+===================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.script_files

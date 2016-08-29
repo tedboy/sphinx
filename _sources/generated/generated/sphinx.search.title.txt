@@ -1,0 +1,87 @@
+sphinx.search.title
+===================
+.. currentmodule:: sphinx.search
+.. autoclass:: title
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~title.__init__
+   ~title.append
+   ~title.append_attr_list
+   ~title.asdom
+   ~title.astext
+   ~title.attlist
+   ~title.clear
+   ~title.coerce_append_attr_list
+   ~title.copy
+   ~title.copy_attr_coerce
+   ~title.copy_attr_concatenate
+   ~title.copy_attr_consistent
+   ~title.copy_attr_convert
+   ~title.deepcopy
+   ~title.delattr
+   ~title.emptytag
+   ~title.endtag
+   ~title.extend
+   ~title.first_child_matching_class
+   ~title.first_child_not_matching_class
+   ~title.get
+   ~title.get_language_code
+   ~title.has_key
+   ~title.hasattr
+   ~title.index
+   ~title.insert
+   ~title.is_not_default
+   ~title.is_not_known_attribute
+   ~title.is_not_list_attribute
+   ~title.next_node
+   ~title.non_default_attributes
+   ~title.note_referenced_by
+   ~title.pformat
+   ~title.pop
+   ~title.remove
+   ~title.replace
+   ~title.replace_attr
+   ~title.replace_self
+   ~title.set_class
+   ~title.setdefault
+   ~title.setup_child
+   ~title.shortrepr
+   ~title.starttag
+   ~title.traverse
+   ~title.update_all_atts
+   ~title.update_all_atts_coercion
+   ~title.update_all_atts_concatenating
+   ~title.update_all_atts_consistantly
+   ~title.update_all_atts_convert
+   ~title.update_basic_atts
+   ~title.walk
+   ~title.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~title.basic_attributes
+   ~title.child_text_separator
+   ~title.document
+   ~title.known_attributes
+   ~title.line
+   ~title.list_attributes
+   ~title.local_attributes
+   ~title.parent
+   ~title.source
+   ~title.tagname
+

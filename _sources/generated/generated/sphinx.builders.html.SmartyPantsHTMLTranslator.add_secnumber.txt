@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.add_secnumber
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.add_secnumber

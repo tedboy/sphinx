@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.Directive.severe
+===============================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: Directive.severe

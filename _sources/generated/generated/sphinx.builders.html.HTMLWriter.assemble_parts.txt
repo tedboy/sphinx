@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.assemble_parts
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLWriter.assemble_parts

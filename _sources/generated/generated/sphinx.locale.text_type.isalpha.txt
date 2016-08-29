@@ -1,0 +1,6 @@
+sphinx.locale.text_type.isalpha
+===============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.isalpha

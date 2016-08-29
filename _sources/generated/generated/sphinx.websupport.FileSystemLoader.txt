@@ -1,0 +1,30 @@
+sphinx.websupport.FileSystemLoader
+==================================
+.. currentmodule:: sphinx.websupport
+.. autoclass:: FileSystemLoader
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~FileSystemLoader.__init__
+   ~FileSystemLoader.get_source
+   ~FileSystemLoader.list_templates
+   ~FileSystemLoader.load
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~FileSystemLoader.has_source_access
+

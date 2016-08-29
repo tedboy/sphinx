@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.option_spec
+=============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: ProductionList.option_spec

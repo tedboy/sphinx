@@ -1,0 +1,6 @@
+sphinx.util.ExtensionError
+==========================
+
+.. currentmodule:: sphinx.util
+
+.. autoexception:: ExtensionError

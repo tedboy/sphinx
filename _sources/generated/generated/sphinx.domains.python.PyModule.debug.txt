@@ -1,0 +1,6 @@
+sphinx.domains.python.PyModule.debug
+====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyModule.debug

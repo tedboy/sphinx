@@ -1,0 +1,6 @@
+sphinx.builders.text.TextBuilder.build
+======================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: TextBuilder.build

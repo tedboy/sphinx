@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AttributeDocumenter.add_line
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AttributeDocumenter.add_line

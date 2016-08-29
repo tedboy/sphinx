@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.xml_declaration
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.xml_declaration

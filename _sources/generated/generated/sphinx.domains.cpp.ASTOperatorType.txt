@@ -1,0 +1,26 @@
+sphinx.domains.cpp.ASTOperatorType
+==================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTOperatorType
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTOperatorType.__init__
+   ~ASTOperatorType.clone
+   ~ASTOperatorType.describe_signature
+   ~ASTOperatorType.get_id_v1
+   ~ASTOperatorType.get_id_v2
+   ~ASTOperatorType.get_name
+   ~ASTOperatorType.get_name_no_template
+   ~ASTOperatorType.prefix_nested_name
+
+
+
+
+

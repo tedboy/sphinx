@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVarXRefRole.result_nodes
+==============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVarXRefRole.result_nodes

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.offset
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.offset

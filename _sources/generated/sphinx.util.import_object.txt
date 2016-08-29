@@ -1,0 +1,6 @@
+sphinx.util.import_object
+=========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: import_object

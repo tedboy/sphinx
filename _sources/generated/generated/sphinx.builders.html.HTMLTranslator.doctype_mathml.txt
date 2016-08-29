@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.doctype_mathml
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.doctype_mathml

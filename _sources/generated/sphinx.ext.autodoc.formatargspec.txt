@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.formatargspec
+================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: formatargspec

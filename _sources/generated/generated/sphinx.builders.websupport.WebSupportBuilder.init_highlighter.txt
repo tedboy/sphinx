@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.init_highlighter
+=============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.init_highlighter

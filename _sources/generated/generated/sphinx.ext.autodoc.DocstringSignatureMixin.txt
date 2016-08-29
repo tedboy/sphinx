@@ -1,0 +1,20 @@
+sphinx.ext.autodoc.DocstringSignatureMixin
+==========================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: DocstringSignatureMixin
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DocstringSignatureMixin.format_signature
+   ~DocstringSignatureMixin.get_doc
+
+
+
+
+

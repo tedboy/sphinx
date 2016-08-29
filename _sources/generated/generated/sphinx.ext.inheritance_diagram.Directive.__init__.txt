@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.Directive.__init__
+=================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: Directive.__init__

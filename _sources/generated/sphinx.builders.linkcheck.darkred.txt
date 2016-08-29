@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.darkred
+=================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: darkred

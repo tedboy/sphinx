@@ -1,0 +1,91 @@
+sphinx.builders.html.WebHTMLBuilder
+===================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: WebHTMLBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~WebHTMLBuilder.__init__
+   ~WebHTMLBuilder.add_sidebars
+   ~WebHTMLBuilder.build
+   ~WebHTMLBuilder.build_all
+   ~WebHTMLBuilder.build_specific
+   ~WebHTMLBuilder.build_update
+   ~WebHTMLBuilder.cleanup
+   ~WebHTMLBuilder.compile_all_catalogs
+   ~WebHTMLBuilder.compile_catalogs
+   ~WebHTMLBuilder.compile_specific_catalogs
+   ~WebHTMLBuilder.compile_update_catalogs
+   ~WebHTMLBuilder.copy_download_files
+   ~WebHTMLBuilder.copy_extra_files
+   ~WebHTMLBuilder.copy_image_files
+   ~WebHTMLBuilder.copy_static_files
+   ~WebHTMLBuilder.create_template_bridge
+   ~WebHTMLBuilder.dump_context
+   ~WebHTMLBuilder.dump_inventory
+   ~WebHTMLBuilder.dump_search_index
+   ~WebHTMLBuilder.finish
+   ~WebHTMLBuilder.gen_additional_pages
+   ~WebHTMLBuilder.gen_indices
+   ~WebHTMLBuilder.get_builder_config
+   ~WebHTMLBuilder.get_doc_context
+   ~WebHTMLBuilder.get_outdated_docs
+   ~WebHTMLBuilder.get_outfilename
+   ~WebHTMLBuilder.get_relative_uri
+   ~WebHTMLBuilder.get_target_uri
+   ~WebHTMLBuilder.get_theme_config
+   ~WebHTMLBuilder.handle_finish
+   ~WebHTMLBuilder.handle_page
+   ~WebHTMLBuilder.index_page
+   ~WebHTMLBuilder.init
+   ~WebHTMLBuilder.init_highlighter
+   ~WebHTMLBuilder.init_templates
+   ~WebHTMLBuilder.init_translator_class
+   ~WebHTMLBuilder.load_indexer
+   ~WebHTMLBuilder.post_process_images
+   ~WebHTMLBuilder.prepare_writing
+   ~WebHTMLBuilder.render_partial
+   ~WebHTMLBuilder.write
+   ~WebHTMLBuilder.write_buildinfo
+   ~WebHTMLBuilder.write_doc
+   ~WebHTMLBuilder.write_doc_serialized
+   ~WebHTMLBuilder.write_domain_indices
+   ~WebHTMLBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~WebHTMLBuilder.add_permalinks
+   ~WebHTMLBuilder.additional_dump_args
+   ~WebHTMLBuilder.allow_parallel
+   ~WebHTMLBuilder.copysource
+   ~WebHTMLBuilder.css_files
+   ~WebHTMLBuilder.default_sidebars
+   ~WebHTMLBuilder.embedded
+   ~WebHTMLBuilder.format
+   ~WebHTMLBuilder.globalcontext_filename
+   ~WebHTMLBuilder.implementation_dumps_unicode
+   ~WebHTMLBuilder.indexer_dumps_unicode
+   ~WebHTMLBuilder.link_suffix
+   ~WebHTMLBuilder.name
+   ~WebHTMLBuilder.out_suffix
+   ~WebHTMLBuilder.script_files
+   ~WebHTMLBuilder.search
+   ~WebHTMLBuilder.searchindex_filename
+   ~WebHTMLBuilder.supported_image_types
+   ~WebHTMLBuilder.versioning_compare
+   ~WebHTMLBuilder.versioning_method
+

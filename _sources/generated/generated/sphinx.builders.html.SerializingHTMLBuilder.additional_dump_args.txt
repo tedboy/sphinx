@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.additional_dump_args
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.additional_dump_args

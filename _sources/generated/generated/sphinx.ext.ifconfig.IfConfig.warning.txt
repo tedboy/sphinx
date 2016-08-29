@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.warning
+====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: IfConfig.warning

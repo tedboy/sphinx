@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.optional_arguments
+=====================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: GraphvizSimple.optional_arguments

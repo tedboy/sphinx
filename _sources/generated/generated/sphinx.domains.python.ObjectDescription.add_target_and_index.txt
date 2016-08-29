@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.add_target_and_index
+============================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: ObjectDescription.add_target_and_index

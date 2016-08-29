@@ -1,0 +1,6 @@
+sphinx.pycode.sym.testlist1
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.testlist1

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.defaultdict.popitem
+===========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: defaultdict.popitem

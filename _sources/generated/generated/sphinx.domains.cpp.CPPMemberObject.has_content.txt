@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPMemberObject.has_content
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPMemberObject.has_content

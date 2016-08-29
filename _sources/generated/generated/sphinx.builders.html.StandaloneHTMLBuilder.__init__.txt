@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.__init__
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.__init__

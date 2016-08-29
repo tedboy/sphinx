@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.process_programmatic_settings
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.process_programmatic_settings

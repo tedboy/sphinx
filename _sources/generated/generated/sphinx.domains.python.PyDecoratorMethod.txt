@@ -1,0 +1,49 @@
+sphinx.domains.python.PyDecoratorMethod
+=======================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyDecoratorMethod
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyDecoratorMethod.__init__
+   ~PyDecoratorMethod.add_name
+   ~PyDecoratorMethod.add_target_and_index
+   ~PyDecoratorMethod.after_content
+   ~PyDecoratorMethod.assert_has_content
+   ~PyDecoratorMethod.before_content
+   ~PyDecoratorMethod.debug
+   ~PyDecoratorMethod.directive_error
+   ~PyDecoratorMethod.error
+   ~PyDecoratorMethod.get_index_text
+   ~PyDecoratorMethod.get_signature_prefix
+   ~PyDecoratorMethod.get_signatures
+   ~PyDecoratorMethod.handle_signature
+   ~PyDecoratorMethod.info
+   ~PyDecoratorMethod.needs_arglist
+   ~PyDecoratorMethod.run
+   ~PyDecoratorMethod.severe
+   ~PyDecoratorMethod.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PyDecoratorMethod.doc_field_types
+   ~PyDecoratorMethod.final_argument_whitespace
+   ~PyDecoratorMethod.has_content
+   ~PyDecoratorMethod.option_spec
+   ~PyDecoratorMethod.optional_arguments
+   ~PyDecoratorMethod.required_arguments
+

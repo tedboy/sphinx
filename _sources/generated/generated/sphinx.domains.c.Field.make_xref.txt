@@ -1,0 +1,6 @@
+sphinx.domains.c.Field.make_xref
+================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: Field.make_xref

@@ -1,0 +1,6 @@
+sphinx.util.binary_type.swapcase
+================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: binary_type.swapcase

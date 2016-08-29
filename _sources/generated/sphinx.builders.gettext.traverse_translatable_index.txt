@@ -1,0 +1,6 @@
+sphinx.builders.gettext.traverse_translatable_index
+===================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: traverse_translatable_index

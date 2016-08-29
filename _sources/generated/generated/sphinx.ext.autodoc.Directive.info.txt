@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Directive.info
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: Directive.info

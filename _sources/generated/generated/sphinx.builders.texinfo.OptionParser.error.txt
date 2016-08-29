@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.error
+==========================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.error

@@ -1,0 +1,6 @@
+sphinx.pycode.sym.LESS
+======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.LESS

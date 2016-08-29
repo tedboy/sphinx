@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDomain.process_doc
+=========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDomain.process_doc

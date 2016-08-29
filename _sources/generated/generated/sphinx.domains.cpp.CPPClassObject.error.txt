@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPClassObject.error
+=======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPClassObject.error

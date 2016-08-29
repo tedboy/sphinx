@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.option_spec
+================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSCallable.option_spec

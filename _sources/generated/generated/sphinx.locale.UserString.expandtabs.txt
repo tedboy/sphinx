@@ -1,0 +1,6 @@
+sphinx.locale.UserString.expandtabs
+===================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.expandtabs

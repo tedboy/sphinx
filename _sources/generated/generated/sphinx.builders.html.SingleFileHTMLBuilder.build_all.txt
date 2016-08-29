@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.build_all
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.build_all

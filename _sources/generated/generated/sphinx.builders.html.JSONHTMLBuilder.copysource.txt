@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.copysource
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.copysource

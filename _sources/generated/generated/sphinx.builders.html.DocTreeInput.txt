@@ -1,0 +1,36 @@
+sphinx.builders.html.DocTreeInput
+=================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: DocTreeInput
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DocTreeInput.__init__
+   ~DocTreeInput.decode
+   ~DocTreeInput.determine_encoding_from_data
+   ~DocTreeInput.get_transforms
+   ~DocTreeInput.read
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~DocTreeInput.byte_order_marks
+   ~DocTreeInput.coding_slug
+   ~DocTreeInput.component_type
+   ~DocTreeInput.default_source_path
+   ~DocTreeInput.default_transforms
+   ~DocTreeInput.unknown_reference_resolvers
+

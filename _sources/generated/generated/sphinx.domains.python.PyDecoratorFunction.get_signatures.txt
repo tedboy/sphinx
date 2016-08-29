@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorFunction.get_signatures
+========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorFunction.get_signatures

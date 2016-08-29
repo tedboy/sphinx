@@ -1,0 +1,6 @@
+sphinx.domains.python.PyObject.before_content
+=============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyObject.before_content

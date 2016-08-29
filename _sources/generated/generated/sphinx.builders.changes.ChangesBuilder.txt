@@ -1,0 +1,55 @@
+sphinx.builders.changes.ChangesBuilder
+======================================
+.. currentmodule:: sphinx.builders.changes
+.. autoclass:: ChangesBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ChangesBuilder.__init__
+   ~ChangesBuilder.build
+   ~ChangesBuilder.build_all
+   ~ChangesBuilder.build_specific
+   ~ChangesBuilder.build_update
+   ~ChangesBuilder.cleanup
+   ~ChangesBuilder.compile_all_catalogs
+   ~ChangesBuilder.compile_catalogs
+   ~ChangesBuilder.compile_specific_catalogs
+   ~ChangesBuilder.compile_update_catalogs
+   ~ChangesBuilder.create_template_bridge
+   ~ChangesBuilder.finish
+   ~ChangesBuilder.get_builder_config
+   ~ChangesBuilder.get_outdated_docs
+   ~ChangesBuilder.get_relative_uri
+   ~ChangesBuilder.get_target_uri
+   ~ChangesBuilder.hl
+   ~ChangesBuilder.init
+   ~ChangesBuilder.post_process_images
+   ~ChangesBuilder.prepare_writing
+   ~ChangesBuilder.write
+   ~ChangesBuilder.write_doc
+   ~ChangesBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ChangesBuilder.allow_parallel
+   ~ChangesBuilder.format
+   ~ChangesBuilder.name
+   ~ChangesBuilder.supported_image_types
+   ~ChangesBuilder.typemap
+   ~ChangesBuilder.versioning_compare
+   ~ChangesBuilder.versioning_method
+

@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.post_process_images
+===============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.post_process_images

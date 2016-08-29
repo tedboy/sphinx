@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.sort
+=================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.sort

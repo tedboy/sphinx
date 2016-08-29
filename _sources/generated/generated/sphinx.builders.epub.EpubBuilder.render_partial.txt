@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.render_partial
+===============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.render_partial

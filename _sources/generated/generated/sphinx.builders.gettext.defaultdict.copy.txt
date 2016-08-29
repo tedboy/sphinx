@@ -1,0 +1,6 @@
+sphinx.builders.gettext.defaultdict.copy
+========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: defaultdict.copy

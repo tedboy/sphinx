@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.create_template_bridge
+=================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: Builder.create_template_bridge

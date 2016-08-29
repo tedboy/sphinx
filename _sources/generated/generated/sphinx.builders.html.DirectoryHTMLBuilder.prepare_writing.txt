@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.prepare_writing
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.prepare_writing

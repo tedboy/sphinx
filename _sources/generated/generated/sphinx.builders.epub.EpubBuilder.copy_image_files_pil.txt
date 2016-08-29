@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.copy_image_files_pil
+=====================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.copy_image_files_pil

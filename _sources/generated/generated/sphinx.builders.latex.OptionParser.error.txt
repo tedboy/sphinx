@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.error
+========================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.error

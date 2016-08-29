@@ -1,0 +1,6 @@
+sphinx.util.Tee.__init__
+========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: Tee.__init__

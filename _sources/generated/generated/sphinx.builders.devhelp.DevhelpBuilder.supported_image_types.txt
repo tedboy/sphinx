@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.supported_image_types
+============================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.supported_image_types

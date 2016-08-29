@@ -1,0 +1,420 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.search.Text &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>sphinx.search.Text</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.search.Text.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-search-text">
+<h1>sphinx.search.Text<a class="headerlink" href="#sphinx-search-text" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.search.Text">
+<em class="property">class </em><code class="descclassname">sphinx.search.</code><code class="descname">Text</code><span class="sig-paren">(</span><em>data</em>, <em>rawsource=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/docutils/nodes.html#Text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.search.Text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instances are terminal nodes (leaves) containing text only; no child
+nodes or attributes.  Initialize by passing a string to the constructor.
+Access the text itself with the <cite>astext</cite> method.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.__init__.html#sphinx.search.Text.__init__" title="sphinx.search.Text.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(data[,&nbsp;rawsource])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.asdom.html#sphinx.search.Text.asdom" title="sphinx.search.Text.asdom"><code class="xref py py-obj docutils literal"><span class="pre">asdom</span></code></a>([dom])</td>
+<td>Return a DOM <strong>fragment</strong> representation of this Node.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.astext.html#sphinx.search.Text.astext" title="sphinx.search.Text.astext"><code class="xref py py-obj docutils literal"><span class="pre">astext</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.capitalize.html#sphinx.search.Text.capitalize" title="sphinx.search.Text.capitalize"><code class="xref py py-obj docutils literal"><span class="pre">capitalize</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a capitalized version of S, i.e.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.center.html#sphinx.search.Text.center" title="sphinx.search.Text.center"><code class="xref py py-obj docutils literal"><span class="pre">center</span></code></a>((width[,&nbsp;fillchar])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return S centered in a Unicode string of length width.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.copy.html#sphinx.search.Text.copy" title="sphinx.search.Text.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.count.html#sphinx.search.Text.count" title="sphinx.search.Text.count"><code class="xref py py-obj docutils literal"><span class="pre">count</span></code></a>((sub[,&nbsp;start[,&nbsp;end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Return the number of non-overlapping occurrences of substring sub in Unicode string S[start:end].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.decode.html#sphinx.search.Text.decode" title="sphinx.search.Text.decode"><code class="xref py py-obj docutils literal"><span class="pre">decode</span></code></a>(...)</td>
+<td>Decodes S using the codec registered for encoding.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.deepcopy.html#sphinx.search.Text.deepcopy" title="sphinx.search.Text.deepcopy"><code class="xref py py-obj docutils literal"><span class="pre">deepcopy</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.encode.html#sphinx.search.Text.encode" title="sphinx.search.Text.encode"><code class="xref py py-obj docutils literal"><span class="pre">encode</span></code></a>(...)</td>
+<td>Encodes S using the codec registered for encoding.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.endswith.html#sphinx.search.Text.endswith" title="sphinx.search.Text.endswith"><code class="xref py py-obj docutils literal"><span class="pre">endswith</span></code></a>((suffix[,&nbsp;start[,&nbsp;end]])&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if S ends with the specified suffix, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.expandtabs.html#sphinx.search.Text.expandtabs" title="sphinx.search.Text.expandtabs"><code class="xref py py-obj docutils literal"><span class="pre">expandtabs</span></code></a>(([tabsize])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of S where all tab characters are expanded using spaces.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.find.html#sphinx.search.Text.find" title="sphinx.search.Text.find"><code class="xref py py-obj docutils literal"><span class="pre">find</span></code></a>((sub&nbsp;[,start&nbsp;[,end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.format.html#sphinx.search.Text.format" title="sphinx.search.Text.format"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a>((*args,&nbsp;**kwargs)&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a formatted version of S, using substitutions from args and kwargs.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.index.html#sphinx.search.Text.index" title="sphinx.search.Text.index"><code class="xref py py-obj docutils literal"><span class="pre">index</span></code></a>((sub&nbsp;[,start&nbsp;[,end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Like S.find() but raise ValueError when the substring is not found.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.isalnum.html#sphinx.search.Text.isalnum" title="sphinx.search.Text.isalnum"><code class="xref py py-obj docutils literal"><span class="pre">isalnum</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all characters in S are alphanumeric and there is at least one character in S, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.isalpha.html#sphinx.search.Text.isalpha" title="sphinx.search.Text.isalpha"><code class="xref py py-obj docutils literal"><span class="pre">isalpha</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all characters in S are alphabetic and there is at least one character in S, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.isdecimal.html#sphinx.search.Text.isdecimal" title="sphinx.search.Text.isdecimal"><code class="xref py py-obj docutils literal"><span class="pre">isdecimal</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if there are only decimal characters in S, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.isdigit.html#sphinx.search.Text.isdigit" title="sphinx.search.Text.isdigit"><code class="xref py py-obj docutils literal"><span class="pre">isdigit</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all characters in S are digits and there is at least one character in S, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.islower.html#sphinx.search.Text.islower" title="sphinx.search.Text.islower"><code class="xref py py-obj docutils literal"><span class="pre">islower</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all cased characters in S are lowercase and there is at least one cased character in S, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.isnumeric.html#sphinx.search.Text.isnumeric" title="sphinx.search.Text.isnumeric"><code class="xref py py-obj docutils literal"><span class="pre">isnumeric</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if there are only numeric characters in S, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.isspace.html#sphinx.search.Text.isspace" title="sphinx.search.Text.isspace"><code class="xref py py-obj docutils literal"><span class="pre">isspace</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all characters in S are whitespace and there is at least one character in S, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.istitle.html#sphinx.search.Text.istitle" title="sphinx.search.Text.istitle"><code class="xref py py-obj docutils literal"><span class="pre">istitle</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if S is a titlecased string and there is at least one character in S, i.e.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.isupper.html#sphinx.search.Text.isupper" title="sphinx.search.Text.isupper"><code class="xref py py-obj docutils literal"><span class="pre">isupper</span></code></a>(()&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if all cased characters in S are uppercase and there is at least one cased character in S, False otherwise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.join.html#sphinx.search.Text.join" title="sphinx.search.Text.join"><code class="xref py py-obj docutils literal"><span class="pre">join</span></code></a>((iterable)&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a string which is the concatenation of the strings in the iterable.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.ljust.html#sphinx.search.Text.ljust" title="sphinx.search.Text.ljust"><code class="xref py py-obj docutils literal"><span class="pre">ljust</span></code></a>((width[,&nbsp;fillchar])&nbsp;-&gt;&nbsp;int)</td>
+<td>Return S left-justified in a Unicode string of length width.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.lower.html#sphinx.search.Text.lower" title="sphinx.search.Text.lower"><code class="xref py py-obj docutils literal"><span class="pre">lower</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of the string S converted to lowercase.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.lstrip.html#sphinx.search.Text.lstrip" title="sphinx.search.Text.lstrip"><code class="xref py py-obj docutils literal"><span class="pre">lstrip</span></code></a>([chars])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.next_node.html#sphinx.search.Text.next_node" title="sphinx.search.Text.next_node"><code class="xref py py-obj docutils literal"><span class="pre">next_node</span></code></a>([condition,&nbsp;include_self,&nbsp;...])</td>
+<td>Return the first node in the iterable returned by traverse(), or None if the iterable is empty.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.partition.html#sphinx.search.Text.partition" title="sphinx.search.Text.partition"><code class="xref py py-obj docutils literal"><span class="pre">partition</span></code></a>(sep)&nbsp;-&gt;&nbsp;(head,&nbsp;sep,&nbsp;tail)</td>
+<td>Search for the separator sep in S, and return the part before it, the separator itself, and the part after it.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.pformat.html#sphinx.search.Text.pformat" title="sphinx.search.Text.pformat"><code class="xref py py-obj docutils literal"><span class="pre">pformat</span></code></a>([indent,&nbsp;level])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.replace.html#sphinx.search.Text.replace" title="sphinx.search.Text.replace"><code class="xref py py-obj docutils literal"><span class="pre">replace</span></code></a>((old,&nbsp;new[,&nbsp;count])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of S with all occurrences of substring old replaced by new.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.rfind.html#sphinx.search.Text.rfind" title="sphinx.search.Text.rfind"><code class="xref py py-obj docutils literal"><span class="pre">rfind</span></code></a>((sub&nbsp;[,start&nbsp;[,end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.rindex.html#sphinx.search.Text.rindex" title="sphinx.search.Text.rindex"><code class="xref py py-obj docutils literal"><span class="pre">rindex</span></code></a>((sub&nbsp;[,start&nbsp;[,end]])&nbsp;-&gt;&nbsp;int)</td>
+<td>Like S.rfind() but raise ValueError when the substring is not found.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.rjust.html#sphinx.search.Text.rjust" title="sphinx.search.Text.rjust"><code class="xref py py-obj docutils literal"><span class="pre">rjust</span></code></a>((width[,&nbsp;fillchar])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return S right-justified in a Unicode string of length width.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.rpartition.html#sphinx.search.Text.rpartition" title="sphinx.search.Text.rpartition"><code class="xref py py-obj docutils literal"><span class="pre">rpartition</span></code></a>(sep)&nbsp;-&gt;&nbsp;(head,&nbsp;sep,&nbsp;tail)</td>
+<td>Search for the separator sep in S, starting at the end of S, and return the part before it, the separator itself, and the part after it.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.rsplit.html#sphinx.search.Text.rsplit" title="sphinx.search.Text.rsplit"><code class="xref py py-obj docutils literal"><span class="pre">rsplit</span></code></a>(([sep&nbsp;[,maxsplit]])&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;strings)</td>
+<td>Return a list of the words in S, using sep as the delimiter string, starting at the end of the string and working to the front.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.rstrip.html#sphinx.search.Text.rstrip" title="sphinx.search.Text.rstrip"><code class="xref py py-obj docutils literal"><span class="pre">rstrip</span></code></a>([chars])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.setup_child.html#sphinx.search.Text.setup_child" title="sphinx.search.Text.setup_child"><code class="xref py py-obj docutils literal"><span class="pre">setup_child</span></code></a>(child)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.shortrepr.html#sphinx.search.Text.shortrepr" title="sphinx.search.Text.shortrepr"><code class="xref py py-obj docutils literal"><span class="pre">shortrepr</span></code></a>([maxlen])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.split.html#sphinx.search.Text.split" title="sphinx.search.Text.split"><code class="xref py py-obj docutils literal"><span class="pre">split</span></code></a>(([sep&nbsp;[,maxsplit]])&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;strings)</td>
+<td>Return a list of the words in S, using sep as the delimiter string.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.splitlines.html#sphinx.search.Text.splitlines" title="sphinx.search.Text.splitlines"><code class="xref py py-obj docutils literal"><span class="pre">splitlines</span></code></a>((keepends=False)&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;strings)</td>
+<td>Return a list of the lines in S, breaking at line boundaries.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.startswith.html#sphinx.search.Text.startswith" title="sphinx.search.Text.startswith"><code class="xref py py-obj docutils literal"><span class="pre">startswith</span></code></a>((prefix[,&nbsp;start[,&nbsp;end]])&nbsp;-&gt;&nbsp;bool)</td>
+<td>Return True if S starts with the specified prefix, False otherwise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.strip.html#sphinx.search.Text.strip" title="sphinx.search.Text.strip"><code class="xref py py-obj docutils literal"><span class="pre">strip</span></code></a>(([chars])&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of the string S with leading and trailing whitespace removed.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.swapcase.html#sphinx.search.Text.swapcase" title="sphinx.search.Text.swapcase"><code class="xref py py-obj docutils literal"><span class="pre">swapcase</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of S with uppercase characters converted to lowercase and vice versa.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.title.html#sphinx.search.Text.title" title="sphinx.search.Text.title"><code class="xref py py-obj docutils literal"><span class="pre">title</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a titlecased version of S, i.e.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.translate.html#sphinx.search.Text.translate" title="sphinx.search.Text.translate"><code class="xref py py-obj docutils literal"><span class="pre">translate</span></code></a>((table)&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of the string S, where all characters have been mapped through the given translation table, which must be a mapping of Unicode ordinals to Unicode ordinals, Unicode strings or None.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.traverse.html#sphinx.search.Text.traverse" title="sphinx.search.Text.traverse"><code class="xref py py-obj docutils literal"><span class="pre">traverse</span></code></a>([condition,&nbsp;include_self,&nbsp;descend,&nbsp;...])</td>
+<td>Return an iterable containing</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.upper.html#sphinx.search.Text.upper" title="sphinx.search.Text.upper"><code class="xref py py-obj docutils literal"><span class="pre">upper</span></code></a>(()&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Return a copy of S converted to uppercase.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.walk.html#sphinx.search.Text.walk" title="sphinx.search.Text.walk"><code class="xref py py-obj docutils literal"><span class="pre">walk</span></code></a>(visitor)</td>
+<td>Traverse a tree of <cite>Node</cite> objects, calling the <cite>dispatch_visit()</cite> method of <cite>visitor</cite> when entering each node.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.walkabout.html#sphinx.search.Text.walkabout" title="sphinx.search.Text.walkabout"><code class="xref py py-obj docutils literal"><span class="pre">walkabout</span></code></a>(visitor)</td>
+<td>Perform a tree traversal similarly to <cite>Node.walk()</cite> (which see), except also call the <cite>dispatch_departure()</cite> method before exiting each node.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.zfill.html#sphinx.search.Text.zfill" title="sphinx.search.Text.zfill"><code class="xref py py-obj docutils literal"><span class="pre">zfill</span></code></a>((width)&nbsp;-&gt;&nbsp;unicode)</td>
+<td>Pad a numeric string S with zeros on the left, to fill a field of the specified width.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.children.html#sphinx.search.Text.children" title="sphinx.search.Text.children"><code class="xref py py-obj docutils literal"><span class="pre">children</span></code></a></td>
+<td>Text nodes have no children, and cannot have children.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.document.html#sphinx.search.Text.document" title="sphinx.search.Text.document"><code class="xref py py-obj docutils literal"><span class="pre">document</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.line.html#sphinx.search.Text.line" title="sphinx.search.Text.line"><code class="xref py py-obj docutils literal"><span class="pre">line</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.parent.html#sphinx.search.Text.parent" title="sphinx.search.Text.parent"><code class="xref py py-obj docutils literal"><span class="pre">parent</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.Text.source.html#sphinx.search.Text.source" title="sphinx.search.Text.source"><code class="xref py py-obj docutils literal"><span class="pre">source</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.Text.tagname.html#sphinx.search.Text.tagname" title="sphinx.search.Text.tagname"><code class="xref py py-obj docutils literal"><span class="pre">tagname</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

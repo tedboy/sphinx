@@ -1,0 +1,6 @@
+sphinx.builders.gettext.Builder.name
+====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: Builder.name

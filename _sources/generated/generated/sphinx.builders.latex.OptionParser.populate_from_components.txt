@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.populate_from_components
+===========================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.populate_from_components

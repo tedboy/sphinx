@@ -1,0 +1,6 @@
+sphinx.builders.gettext.tzinfo.utcoffset
+========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: tzinfo.utcoffset

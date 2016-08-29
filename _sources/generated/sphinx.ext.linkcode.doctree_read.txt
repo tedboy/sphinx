@@ -1,0 +1,6 @@
+sphinx.ext.linkcode.doctree_read
+================================
+
+.. currentmodule:: sphinx.ext.linkcode
+
+.. autofunction:: doctree_read

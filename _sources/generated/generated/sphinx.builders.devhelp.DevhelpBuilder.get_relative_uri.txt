@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.get_relative_uri
+=======================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.get_relative_uri

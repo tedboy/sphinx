@@ -1,0 +1,6 @@
+sphinx.builders.xml.Builder.prepare_writing
+===========================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: Builder.prepare_writing

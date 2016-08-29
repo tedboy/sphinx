@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.ext.viewcode &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.ext.viewcode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.ext.viewcode</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.ext.viewcode</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Add links to module code in Python object descriptions.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span><span class="p">,</span> <span class="n">text_type</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+
+<span class="kn">import</span> <span class="nn">sphinx</span>
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">sphinx.pycode</span> <span class="kn">import</span> <span class="n">ModuleAnalyzer</span>
+<span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">get_full_modname</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.nodes</span> <span class="kn">import</span> <span class="n">make_refnode</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.console</span> <span class="kn">import</span> <span class="n">blue</span>
+
+
+<span class="k">def</span> <span class="nf">_get_full_modname</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">attribute</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_full_modname</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="c1"># sphinx.ext.viewcode can&#39;t follow class instance attribute</span>
+        <span class="c1"># then AttributeError logging output only verbose mode.</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span><span class="s1">&#39;Didn</span><span class="se">\&#39;</span><span class="s1">t find </span><span class="si">%s</span><span class="s1"> in </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">modname</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># sphinx.ext.viewcode follow python domain directives.</span>
+        <span class="c1"># because of that, if there are no real modules exists that specified</span>
+        <span class="c1"># by py:function or other directives, viewcode emits a lot of warnings.</span>
+        <span class="c1"># It should be displayed only verbose mode.</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span><span class="s1">&#39;viewcode can</span><span class="se">\&#39;</span><span class="s1">t import </span><span class="si">%s</span><span class="s1">, failed with error &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span>
+                    <span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+
+<div class="viewcode-block" id="doctree_read"><a class="viewcode-back" href="../../../generated/sphinx.ext.viewcode.doctree_read.html#sphinx.ext.viewcode.doctree_read">[docs]</a><span class="k">def</span> <span class="nf">doctree_read</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;_viewcode_modules&#39;</span><span class="p">):</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">has_tag</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span> <span class="n">refname</span><span class="p">):</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">analyzer</span> <span class="o">=</span> <span class="n">ModuleAnalyzer</span><span class="o">.</span><span class="n">for_module</span><span class="p">(</span><span class="n">modname</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span><span class="p">[</span><span class="n">modname</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">analyzer</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="n">analyzer</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">analyzer</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="n">analyzer</span><span class="o">.</span><span class="n">code</span>
+        <span class="k">if</span> <span class="n">entry</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">code</span><span class="p">:</span>
+            <span class="n">analyzer</span><span class="o">.</span><span class="n">find_tags</span><span class="p">()</span>
+            <span class="n">entry</span> <span class="o">=</span> <span class="n">code</span><span class="p">,</span> <span class="n">analyzer</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="p">{},</span> <span class="n">refname</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span><span class="p">[</span><span class="n">modname</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
+        <span class="k">elif</span> <span class="n">entry</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">used</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">entry</span>
+        <span class="k">if</span> <span class="n">fullname</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+            <span class="n">used</span><span class="p">[</span><span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> <span class="n">docname</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">for</span> <span class="n">objnode</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">addnodes</span><span class="o">.</span><span class="n">desc</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">objnode</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;domain&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;py&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">signode</span> <span class="ow">in</span> <span class="n">objnode</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">signode</span><span class="p">,</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_signature</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">modname</span> <span class="o">=</span> <span class="n">signode</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">)</span>
+            <span class="n">fullname</span> <span class="o">=</span> <span class="n">signode</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;fullname&#39;</span><span class="p">)</span>
+            <span class="n">refname</span> <span class="o">=</span> <span class="n">modname</span>
+            <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">viewcode_import</span><span class="p">:</span>
+                <span class="n">modname</span> <span class="o">=</span> <span class="n">_get_full_modname</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">fullname</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">modname</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">fullname</span> <span class="o">=</span> <span class="n">signode</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;fullname&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">has_tag</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="n">refname</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">fullname</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="c1"># only one link per name, please</span>
+                <span class="k">continue</span>
+            <span class="n">names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fullname</span><span class="p">)</span>
+            <span class="n">pagename</span> <span class="o">=</span> <span class="s1">&#39;_modules/&#39;</span> <span class="o">+</span> <span class="n">modname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+            <span class="n">onlynode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="s1">&#39;html&#39;</span><span class="p">)</span>
+            <span class="n">onlynode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">pending_xref</span><span class="p">(</span>
+                <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">reftype</span><span class="o">=</span><span class="s1">&#39;viewcode&#39;</span><span class="p">,</span> <span class="n">refdomain</span><span class="o">=</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">refexplicit</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                <span class="n">reftarget</span><span class="o">=</span><span class="n">pagename</span><span class="p">,</span> <span class="n">refid</span><span class="o">=</span><span class="n">fullname</span><span class="p">,</span>
+                <span class="n">refdoc</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">)</span>
+            <span class="n">onlynode</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">inline</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;[source]&#39;</span><span class="p">),</span>
+                                        <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;viewcode-link&#39;</span><span class="p">])</span>
+            <span class="n">signode</span> <span class="o">+=</span> <span class="n">onlynode</span></div>
+
+
+<div class="viewcode-block" id="env_merge_info"><a class="viewcode-back" href="../../../generated/sphinx.ext.viewcode.env_merge_info.html#sphinx.ext.viewcode.env_merge_info">[docs]</a><span class="k">def</span> <span class="nf">env_merge_info</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">docnames</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s1">&#39;_viewcode_modules&#39;</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="c1"># create a _viewcode_modules dict on the main environment</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;_viewcode_modules&#39;</span><span class="p">):</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># now merge in the information from the subprocess</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_viewcode_modules</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="missing_reference"><a class="viewcode-back" href="../../../generated/sphinx.ext.viewcode.missing_reference.html#sphinx.ext.viewcode.missing_reference">[docs]</a><span class="k">def</span> <span class="nf">missing_reference</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">contnode</span><span class="p">):</span>
+    <span class="c1"># resolve our &quot;viewcode&quot; reference nodes -- they need special treatment</span>
+    <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftype&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;viewcode&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">make_refnode</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;refdoc&#39;</span><span class="p">],</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftarget&#39;</span><span class="p">],</span>
+                            <span class="n">node</span><span class="p">[</span><span class="s1">&#39;refid&#39;</span><span class="p">],</span> <span class="n">contnode</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="collect_pages"><a class="viewcode-back" href="../../../generated/sphinx.ext.viewcode.collect_pages.html#sphinx.ext.viewcode.collect_pages">[docs]</a><span class="k">def</span> <span class="nf">collect_pages</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;_viewcode_modules&#39;</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="n">highlighter</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">highlighter</span>
+    <span class="n">urito</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_relative_uri</span>
+
+    <span class="n">modnames</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span><span class="p">)</span>
+
+<span class="c1">#    app.builder.info(&#39; (%d module code pages)&#39; %</span>
+<span class="c1">#                     len(env._viewcode_modules), nonl=1)</span>
+
+    <span class="k">for</span> <span class="n">modname</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">status_iterator</span><span class="p">(</span>
+            <span class="n">iteritems</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span><span class="p">),</span> <span class="s1">&#39;highlighting module code... &#39;</span><span class="p">,</span>
+            <span class="n">blue</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">_viewcode_modules</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">entry</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">code</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">used</span><span class="p">,</span> <span class="n">refname</span> <span class="o">=</span> <span class="n">entry</span>
+        <span class="c1"># construct a page name for the highlighted source</span>
+        <span class="n">pagename</span> <span class="o">=</span> <span class="s1">&#39;_modules/&#39;</span> <span class="o">+</span> <span class="n">modname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="c1"># highlight the source using the builder&#39;s highlighter</span>
+        <span class="n">highlighted</span> <span class="o">=</span> <span class="n">highlighter</span><span class="o">.</span><span class="n">highlight_block</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="n">linenos</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="c1"># split the code into lines</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">highlighted</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="c1"># split off wrap markup from the first line of the actual code</span>
+        <span class="n">before</span><span class="p">,</span> <span class="n">after</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">before</span> <span class="o">+</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">,</span> <span class="n">after</span><span class="p">]</span>
+        <span class="c1"># nothing to do for the last line; it always starts with &lt;/pre&gt; anyway</span>
+        <span class="c1"># now that we have code lines (starting at index 1), insert anchors for</span>
+        <span class="c1"># the collected tags (HACK: this only works if the tag boundaries are</span>
+        <span class="c1"># properly nested!)</span>
+        <span class="n">maxindex</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">docname</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">used</span><span class="p">):</span>
+            <span class="nb">type</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="n">backlink</span> <span class="o">=</span> <span class="n">urito</span><span class="p">(</span><span class="n">pagename</span><span class="p">,</span> <span class="n">docname</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">refname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="n">lines</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s1">&#39;&lt;div class=&quot;viewcode-block&quot; id=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&lt;a class=&quot;viewcode-back&quot; &#39;</span>
+                <span class="s1">&#39;href=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/a&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">backlink</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;[docs]&#39;</span><span class="p">))</span> <span class="o">+</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">start</span><span class="p">])</span>
+            <span class="n">lines</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">maxindex</span><span class="p">)]</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/div&gt;&#39;</span>
+        <span class="c1"># try to find parents (for submodules)</span>
+        <span class="n">parents</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">modname</span>
+        <span class="k">while</span> <span class="s1">&#39;.&#39;</span> <span class="ow">in</span> <span class="n">parent</span><span class="p">:</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">modnames</span><span class="p">:</span>
+                <span class="n">parents</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s1">&#39;link&#39;</span><span class="p">:</span> <span class="n">urito</span><span class="p">(</span><span class="n">pagename</span><span class="p">,</span> <span class="s1">&#39;_modules/&#39;</span> <span class="o">+</span>
+                                  <span class="n">parent</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)),</span>
+                    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">parent</span><span class="p">})</span>
+        <span class="n">parents</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;link&#39;</span><span class="p">:</span> <span class="n">urito</span><span class="p">(</span><span class="n">pagename</span><span class="p">,</span> <span class="s1">&#39;_modules/index&#39;</span><span class="p">),</span>
+                        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Module code&#39;</span><span class="p">)})</span>
+        <span class="n">parents</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+        <span class="c1"># putting it all together</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;parents&#39;</span><span class="p">:</span> <span class="n">parents</span><span class="p">,</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">modname</span><span class="p">,</span>
+            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;Source code for </span><span class="si">%s</span><span class="s1">&lt;/h1&gt;&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">modname</span> <span class="o">+</span>
+                     <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)),</span>
+        <span class="p">}</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="n">pagename</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="s1">&#39;page.html&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">modnames</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">html</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+    <span class="c1"># the stack logic is needed for using nested lists for submodules</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">modname</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">modnames</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">modname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;ul&gt;&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="n">modname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/ul&gt;&#39;</span><span class="p">)</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;a href=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/a&gt;&lt;/li&gt;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">urito</span><span class="p">(</span><span class="s1">&#39;_modules/index&#39;</span><span class="p">,</span> <span class="s1">&#39;_modules/&#39;</span> <span class="o">+</span> <span class="n">modname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)),</span>
+            <span class="n">modname</span><span class="p">))</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/ul&gt;&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Overview: module code&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;All modules for which code is available&lt;/h1&gt;&#39;</span><span class="p">)</span> <span class="o">+</span>
+                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html</span><span class="p">)),</span>
+    <span class="p">}</span>
+
+    <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;_modules/index&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="s1">&#39;page.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../../generated/sphinx.ext.viewcode.setup.html#sphinx.ext.viewcode.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;viewcode_import&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;doctree-read&#39;</span><span class="p">,</span> <span class="n">doctree_read</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;env-merge-info&#39;</span><span class="p">,</span> <span class="n">env_merge_info</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;html-collect-pages&#39;</span><span class="p">,</span> <span class="n">collect_pages</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;missing-reference&#39;</span><span class="p">,</span> <span class="n">missing_reference</span><span class="p">)</span>
+    <span class="c1"># app.add_config_value(&#39;viewcode_include_modules&#39;, [], &#39;env&#39;)</span>
+    <span class="c1"># app.add_config_value(&#39;viewcode_exclude_modules&#39;, [], &#39;env&#39;)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">__display_version__</span><span class="p">,</span> <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

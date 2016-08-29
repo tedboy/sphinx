@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.get_signatures
+==========================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.get_signatures

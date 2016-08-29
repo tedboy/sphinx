@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.util.smartypants &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.util" href="../util.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../util.html">sphinx.util</a> &raquo;</li>
+        
+      <li>sphinx.util.smartypants</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.util.smartypants</h1><div class="highlight"><pre>
+<span></span><span class="sd">r&quot;&quot;&quot;</span>
+<span class="sd">This is based on SmartyPants.py by `Chad Miller`_ &lt;smartypantspy@chad.org&gt;,</span>
+<span class="sd">version 1.5_1.6.</span>
+
+<span class="sd">Copyright and License</span>
+<span class="sd">=====================</span>
+
+<span class="sd">SmartyPants_ license::</span>
+
+<span class="sd">    Copyright (c) 2003 John Gruber</span>
+<span class="sd">    (http://daringfireball.net/)</span>
+<span class="sd">    All rights reserved.</span>
+
+<span class="sd">    Redistribution and use in source and binary forms, with or without</span>
+<span class="sd">    modification, are permitted provided that the following conditions are</span>
+<span class="sd">    met:</span>
+
+<span class="sd">    *   Redistributions of source code must retain the above copyright</span>
+<span class="sd">        notice, this list of conditions and the following disclaimer.</span>
+
+<span class="sd">    *   Redistributions in binary form must reproduce the above copyright</span>
+<span class="sd">        notice, this list of conditions and the following disclaimer in</span>
+<span class="sd">        the documentation and/or other materials provided with the</span>
+<span class="sd">        distribution.</span>
+
+<span class="sd">    *   Neither the name &quot;SmartyPants&quot; nor the names of its contributors</span>
+<span class="sd">        may be used to endorse or promote products derived from this</span>
+<span class="sd">        software without specific prior written permission.</span>
+
+<span class="sd">    This software is provided by the copyright holders and contributors &quot;as</span>
+<span class="sd">    is&quot; and any express or implied warranties, including, but not limited</span>
+<span class="sd">    to, the implied warranties of merchantability and fitness for a</span>
+<span class="sd">    particular purpose are disclaimed. In no event shall the copyright</span>
+<span class="sd">    owner or contributors be liable for any direct, indirect, incidental,</span>
+<span class="sd">    special, exemplary, or consequential damages (including, but not</span>
+<span class="sd">    limited to, procurement of substitute goods or services; loss of use,</span>
+<span class="sd">    data, or profits; or business interruption) however caused and on any</span>
+<span class="sd">    theory of liability, whether in contract, strict liability, or tort</span>
+<span class="sd">    (including negligence or otherwise) arising in any way out of the use</span>
+<span class="sd">    of this software, even if advised of the possibility of such damage.</span>
+
+
+<span class="sd">smartypants.py license::</span>
+
+<span class="sd">    smartypants.py is a derivative work of SmartyPants.</span>
+
+<span class="sd">    Redistribution and use in source and binary forms, with or without</span>
+<span class="sd">    modification, are permitted provided that the following conditions are</span>
+<span class="sd">    met:</span>
+
+<span class="sd">    *   Redistributions of source code must retain the above copyright</span>
+<span class="sd">        notice, this list of conditions and the following disclaimer.</span>
+
+<span class="sd">    *   Redistributions in binary form must reproduce the above copyright</span>
+<span class="sd">        notice, this list of conditions and the following disclaimer in</span>
+<span class="sd">        the documentation and/or other materials provided with the</span>
+<span class="sd">        distribution.</span>
+
+<span class="sd">    This software is provided by the copyright holders and contributors &quot;as</span>
+<span class="sd">    is&quot; and any express or implied warranties, including, but not limited</span>
+<span class="sd">    to, the implied warranties of merchantability and fitness for a</span>
+<span class="sd">    particular purpose are disclaimed. In no event shall the copyright</span>
+<span class="sd">    owner or contributors be liable for any direct, indirect, incidental,</span>
+<span class="sd">    special, exemplary, or consequential damages (including, but not</span>
+<span class="sd">    limited to, procurement of substitute goods or services; loss of use,</span>
+<span class="sd">    data, or profits; or business interruption) however caused and on any</span>
+<span class="sd">    theory of liability, whether in contract, strict liability, or tort</span>
+<span class="sd">    (including negligence or otherwise) arising in any way out of the use</span>
+<span class="sd">    of this software, even if advised of the possibility of such damage.</span>
+
+<span class="sd">.. _Chad Miller: http://web.chad.org/</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="k">def</span> <span class="nf">sphinx_smarty_pants</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&amp;quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">educate_dashes_oldschool</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">educate_quotes</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;quot;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t</span>
+
+<span class="c1"># Constants for quote education.</span>
+
+<span class="n">punct_class</span> <span class="o">=</span> <span class="s2">r&quot;&quot;&quot;[!&quot;#\$\%&#39;()*+,-.\/:;&lt;=&gt;?\@\[\\\]\^_`{|}~]&quot;&quot;&quot;</span>
+<span class="n">end_of_word_class</span> <span class="o">=</span> <span class="s2">r&quot;&quot;&quot;[\s.,;:!?)]&quot;&quot;&quot;</span>
+<span class="n">close_class</span> <span class="o">=</span> <span class="s2">r&quot;&quot;&quot;[^\ \t\r\n\[\{\(\-]&quot;&quot;&quot;</span>
+<span class="n">dec_dashes</span> <span class="o">=</span> <span class="s2">r&quot;&quot;&quot;&amp;#8211;|&amp;#8212;&quot;&quot;&quot;</span>
+
+<span class="c1"># Special case if the very first character is a quote</span>
+<span class="c1"># followed by punctuation at a non-word-break. Close the quotes by brute force:</span>
+<span class="n">single_quote_start_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;^&#39;(?=</span><span class="si">%s</span><span class="s2">\\B)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">punct_class</span><span class="p">,))</span>
+<span class="n">double_quote_start_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;^&quot;(?=</span><span class="si">%s</span><span class="s2">\\B)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">punct_class</span><span class="p">,))</span>
+
+<span class="c1"># Special case for double sets of quotes, e.g.:</span>
+<span class="c1">#   &lt;p&gt;He said, &quot;&#39;Quoted&#39; words in a larger quote.&quot;&lt;/p&gt;</span>
+<span class="n">double_quote_sets_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;&quot;&#39;(?=\w)&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">single_quote_sets_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;&#39;&quot;(?=\w)&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Special case for decade abbreviations (the &#39;80s):</span>
+<span class="n">decade_abbr_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;\b&#39;(?=\d{2}s)&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get most opening double quotes:</span>
+<span class="n">opening_double_quotes_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;</span>
+<span class="s2">                (</span>
+<span class="s2">                        \s          |   # a whitespace char, or</span>
+<span class="s2">                        &amp;nbsp;      |   # a non-breaking space entity, or</span>
+<span class="s2">                        --          |   # dashes, or</span>
+<span class="s2">                        &amp;[mn]dash;  |   # named dash entities</span>
+<span class="s2">                        </span><span class="si">%s</span><span class="s2">          |   # or decimal entities</span>
+<span class="s2">                        &amp;\#x201[34];    # or hex</span>
+<span class="s2">                )</span>
+<span class="s2">                &quot;                 # the quote</span>
+<span class="s2">                (?=\w)            # followed by a word character</span>
+<span class="s2">                &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dec_dashes</span><span class="p">,),</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="c1"># Double closing quotes:</span>
+<span class="n">closing_double_quotes_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;</span>
+<span class="s2">                #(</span><span class="si">%s</span><span class="s2">)?   # character that indicates the quote should be closing</span>
+<span class="s2">                &quot;</span>
+<span class="s2">                (?=</span><span class="si">%s</span><span class="s2">)</span>
+<span class="s2">                &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">close_class</span><span class="p">,</span> <span class="n">end_of_word_class</span><span class="p">),</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="n">closing_double_quotes_regex_2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;</span>
+<span class="s2">                (</span><span class="si">%s</span><span class="s2">)   # character that indicates the quote should be closing</span>
+<span class="s2">                &quot;</span>
+<span class="s2">                &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">close_class</span><span class="p">,),</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="c1"># Get most opening single quotes:</span>
+<span class="n">opening_single_quotes_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;</span>
+<span class="s2">                (</span>
+<span class="s2">                        \s          |   # a whitespace char, or</span>
+<span class="s2">                        &amp;nbsp;      |   # a non-breaking space entity, or</span>
+<span class="s2">                        --          |   # dashes, or</span>
+<span class="s2">                        &amp;[mn]dash;  |   # named dash entities</span>
+<span class="s2">                        </span><span class="si">%s</span><span class="s2">          |   # or decimal entities</span>
+<span class="s2">                        &amp;\#x201[34];    # or hex</span>
+<span class="s2">                )</span>
+<span class="s2">                &#39;                 # the quote</span>
+<span class="s2">                (?=\w)            # followed by a word character</span>
+<span class="s2">                &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dec_dashes</span><span class="p">,),</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="n">closing_single_quotes_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;</span>
+<span class="s2">                (</span><span class="si">%s</span><span class="s2">)</span>
+<span class="s2">                &#39;</span>
+<span class="s2">                (?!\s | s\b | \d)</span>
+<span class="s2">                &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">close_class</span><span class="p">,),</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="n">closing_single_quotes_regex_2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;</span>
+<span class="s2">                (</span><span class="si">%s</span><span class="s2">)</span>
+<span class="s2">                &#39;</span>
+<span class="s2">                (\s | s\b)</span>
+<span class="s2">                &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">close_class</span><span class="p">,),</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">educate_quotes</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameter:  String.</span>
+
+<span class="sd">    Returns:    The string, with &quot;educated&quot; curly quote HTML entities.</span>
+
+<span class="sd">    Example input:  &quot;Isn&#39;t this fun?&quot;</span>
+<span class="sd">    Example output: &amp;#8220;Isn&amp;#8217;t this fun?&amp;#8221;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Special case if the very first character is a quote</span>
+    <span class="c1"># followed by punctuation at a non-word-break. Close the quotes</span>
+    <span class="c1"># by brute force:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">single_quote_start_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&amp;#8217;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">double_quote_start_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&amp;#8221;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Special case for double sets of quotes, e.g.:</span>
+    <span class="c1">#   &lt;p&gt;He said, &quot;&#39;Quoted&#39; words in a larger quote.&quot;&lt;/p&gt;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">double_quote_sets_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&amp;#8220;&amp;#8216;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">single_quote_sets_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&amp;#8216;&amp;#8220;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Special case for decade abbreviations (the &#39;80s):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">decade_abbr_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&amp;#8217;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">opening_single_quotes_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;\1&amp;#8216;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">closing_single_quotes_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;\1&amp;#8217;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">closing_single_quotes_regex_2</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;\1&amp;#8217;\2&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Any remaining single quotes should be opening ones:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8216;&quot;</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">opening_double_quotes_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;\1&amp;#8220;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">closing_double_quotes_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;&amp;#8221;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">closing_double_quotes_regex_2</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;\1&amp;#8221;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Any remaining quotes should be opening ones.</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8220;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">educate_quotes_latex</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dquotes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;``&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;&#39;&quot;</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameter:  String.</span>
+
+<span class="sd">    Returns:    The string, with double quotes corrected to LaTeX quotes.</span>
+
+<span class="sd">    Example input:  &quot;Isn&#39;t this fun?&quot;</span>
+<span class="sd">    Example output: ``Isn&#39;t this fun?&#39;&#39;;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Special case if the very first character is a quote</span>
+    <span class="c1"># followed by punctuation at a non-word-break. Close the quotes</span>
+    <span class="c1"># by brute force:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">single_quote_start_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x04</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">double_quote_start_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x02</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Special case for double sets of quotes, e.g.:</span>
+    <span class="c1">#   &lt;p&gt;He said, &quot;&#39;Quoted&#39; words in a larger quote.&quot;&lt;/p&gt;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">double_quote_sets_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x01\x03</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">single_quote_sets_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x03\x01</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Special case for decade abbreviations (the &#39;80s):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">decade_abbr_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x04</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">opening_single_quotes_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">1</span><span class="se">\x03</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">closing_single_quotes_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">1</span><span class="se">\x04</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">closing_single_quotes_regex_2</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">1</span><span class="se">\x04\\</span><span class="s2">2&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Any remaining single quotes should be opening ones:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\x03</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">opening_double_quotes_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">1</span><span class="se">\x01</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">closing_double_quotes_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x02</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">closing_double_quotes_regex_2</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">1</span><span class="se">\x02</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Any remaining quotes should be opening ones.</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\x01</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Finally, replace all helpers with quotes.</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x01</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dquotes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x02</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dquotes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span>\
+        <span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x03</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;`&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x04</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">educate_backticks</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameter:  String.</span>
+<span class="sd">    Returns:    The string, with ``backticks&#39;&#39; -style double quotes</span>
+<span class="sd">        translated into HTML curly quote entities.</span>
+<span class="sd">    Example input:  ``Isn&#39;t this fun?&#39;&#39;</span>
+<span class="sd">    Example output: &amp;#8220;Isn&#39;t this fun?&amp;#8221;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;``&quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8220;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8221;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">educate_single_backticks</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameter:  String.</span>
+<span class="sd">    Returns:    The string, with `backticks&#39; -style single quotes</span>
+<span class="sd">        translated into HTML curly quote entities.</span>
+
+<span class="sd">    Example input:  `Isn&#39;t this fun?&#39;</span>
+<span class="sd">    Example output: &amp;#8216;Isn&amp;#8217;t this fun?&amp;#8217;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;`&#39;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8216;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8217;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">educate_dashes_oldschool</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameter:  String.</span>
+
+<span class="sd">    Returns:    The string, with each instance of &quot;--&quot; translated to</span>
+<span class="sd">        an en-dash HTML entity, and each &quot;---&quot; translated to</span>
+<span class="sd">        an em-dash HTML entity.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8212;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8211;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">educate_dashes_oldschool_inverted</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameter:  String.</span>
+
+<span class="sd">    Returns:    The string, with each instance of &quot;--&quot; translated to</span>
+<span class="sd">        an em-dash HTML entity, and each &quot;---&quot; translated to</span>
+<span class="sd">        an en-dash HTML entity. Two reasons why: First, unlike the</span>
+<span class="sd">        en- and em-dash syntax supported by</span>
+<span class="sd">        educate_dashes_oldschool(), it&#39;s compatible with existing</span>
+<span class="sd">        entries written before SmartyPants 1.1, back when &quot;--&quot; was</span>
+<span class="sd">        only used for em-dashes.  Second, em-dashes are more</span>
+<span class="sd">        common than en-dashes, and so it sort of makes sense that</span>
+<span class="sd">        the shortcut should be shorter to type. (Thanks to Aaron</span>
+<span class="sd">        Swartz for the idea.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8211;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8212;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">educate_ellipses</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameter:  String.</span>
+<span class="sd">    Returns:    The string, with each instance of &quot;...&quot; translated to</span>
+<span class="sd">        an ellipsis HTML entity.</span>
+
+<span class="sd">    Example input:  Huh...?</span>
+<span class="sd">    Example output: Huh&amp;#8230;?</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8230;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;. . .&#39;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8230;&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

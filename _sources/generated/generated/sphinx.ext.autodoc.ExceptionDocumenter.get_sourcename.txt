@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.get_sourcename
+=====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.get_sourcename

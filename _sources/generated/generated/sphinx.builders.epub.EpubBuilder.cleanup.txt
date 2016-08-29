@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.cleanup
+========================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.cleanup

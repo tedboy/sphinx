@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.required_arguments
+============================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: Directive.required_arguments

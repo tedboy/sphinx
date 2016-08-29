@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.text_type.startswith
+========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: text_type.startswith

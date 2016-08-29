@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.attval
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.attval

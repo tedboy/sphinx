@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.info
+====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Directive.info

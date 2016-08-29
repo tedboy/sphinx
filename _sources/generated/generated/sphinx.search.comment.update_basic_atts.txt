@@ -1,0 +1,6 @@
+sphinx.search.comment.update_basic_atts
+=======================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.update_basic_atts

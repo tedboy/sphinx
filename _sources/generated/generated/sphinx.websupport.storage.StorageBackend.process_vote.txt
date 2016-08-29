@@ -1,0 +1,6 @@
+sphinx.websupport.storage.StorageBackend.process_vote
+=====================================================
+
+.. currentmodule:: sphinx.websupport.storage
+
+.. automethod:: StorageBackend.process_vote

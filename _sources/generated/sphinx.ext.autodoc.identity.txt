@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.identity
+===========================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: identity

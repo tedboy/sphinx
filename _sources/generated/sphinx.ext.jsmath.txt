@@ -1,0 +1,33 @@
+.. automodule:: sphinx.ext.jsmath
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      builder_inited
+      html_visit_displaymath
+      html_visit_math
+      mathbase_setup
+      setup
+   
+   
+
+   
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      ExtensionError
+   
+   

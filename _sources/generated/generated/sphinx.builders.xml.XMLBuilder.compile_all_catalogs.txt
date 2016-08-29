@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.compile_all_catalogs
+===================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLBuilder.compile_all_catalogs

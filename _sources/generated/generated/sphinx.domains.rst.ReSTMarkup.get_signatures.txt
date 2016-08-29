@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.get_signatures
+============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.get_signatures

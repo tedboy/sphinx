@@ -1,0 +1,36 @@
+sphinx.builders.linkcheck.RedirectHandler
+=========================================
+.. currentmodule:: sphinx.builders.linkcheck
+.. autoclass:: RedirectHandler
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~RedirectHandler.add_parent
+   ~RedirectHandler.close
+   ~RedirectHandler.http_error_301
+   ~RedirectHandler.http_error_302
+   ~RedirectHandler.http_error_303
+   ~RedirectHandler.http_error_307
+   ~RedirectHandler.redirect_request
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~RedirectHandler.handler_order
+   ~RedirectHandler.inf_msg
+   ~RedirectHandler.max_redirections
+   ~RedirectHandler.max_repeats
+

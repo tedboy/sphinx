@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjType.__init__
+===================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjType.__init__

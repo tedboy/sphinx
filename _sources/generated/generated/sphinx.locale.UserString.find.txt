@@ -1,0 +1,6 @@
+sphinx.locale.UserString.find
+=============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.find

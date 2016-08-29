@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.allow_parallel
+============================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: MessageCatalogBuilder.allow_parallel

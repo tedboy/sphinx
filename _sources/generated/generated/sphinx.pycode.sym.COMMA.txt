@@ -1,0 +1,6 @@
+sphinx.pycode.sym.COMMA
+=======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.COMMA

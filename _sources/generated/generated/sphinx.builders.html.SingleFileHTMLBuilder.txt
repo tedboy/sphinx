@@ -1,0 +1,91 @@
+sphinx.builders.html.SingleFileHTMLBuilder
+==========================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: SingleFileHTMLBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~SingleFileHTMLBuilder.__init__
+   ~SingleFileHTMLBuilder.add_sidebars
+   ~SingleFileHTMLBuilder.assemble_doctree
+   ~SingleFileHTMLBuilder.assemble_toc_secnumbers
+   ~SingleFileHTMLBuilder.build
+   ~SingleFileHTMLBuilder.build_all
+   ~SingleFileHTMLBuilder.build_specific
+   ~SingleFileHTMLBuilder.build_update
+   ~SingleFileHTMLBuilder.cleanup
+   ~SingleFileHTMLBuilder.compile_all_catalogs
+   ~SingleFileHTMLBuilder.compile_catalogs
+   ~SingleFileHTMLBuilder.compile_specific_catalogs
+   ~SingleFileHTMLBuilder.compile_update_catalogs
+   ~SingleFileHTMLBuilder.copy_download_files
+   ~SingleFileHTMLBuilder.copy_extra_files
+   ~SingleFileHTMLBuilder.copy_image_files
+   ~SingleFileHTMLBuilder.copy_static_files
+   ~SingleFileHTMLBuilder.create_template_bridge
+   ~SingleFileHTMLBuilder.dump_inventory
+   ~SingleFileHTMLBuilder.dump_search_index
+   ~SingleFileHTMLBuilder.finish
+   ~SingleFileHTMLBuilder.fix_refuris
+   ~SingleFileHTMLBuilder.gen_additional_pages
+   ~SingleFileHTMLBuilder.gen_indices
+   ~SingleFileHTMLBuilder.get_builder_config
+   ~SingleFileHTMLBuilder.get_doc_context
+   ~SingleFileHTMLBuilder.get_outdated_docs
+   ~SingleFileHTMLBuilder.get_outfilename
+   ~SingleFileHTMLBuilder.get_relative_uri
+   ~SingleFileHTMLBuilder.get_target_uri
+   ~SingleFileHTMLBuilder.get_theme_config
+   ~SingleFileHTMLBuilder.handle_finish
+   ~SingleFileHTMLBuilder.handle_page
+   ~SingleFileHTMLBuilder.index_page
+   ~SingleFileHTMLBuilder.init
+   ~SingleFileHTMLBuilder.init_highlighter
+   ~SingleFileHTMLBuilder.init_templates
+   ~SingleFileHTMLBuilder.init_translator_class
+   ~SingleFileHTMLBuilder.load_indexer
+   ~SingleFileHTMLBuilder.post_process_images
+   ~SingleFileHTMLBuilder.prepare_writing
+   ~SingleFileHTMLBuilder.render_partial
+   ~SingleFileHTMLBuilder.write
+   ~SingleFileHTMLBuilder.write_buildinfo
+   ~SingleFileHTMLBuilder.write_doc
+   ~SingleFileHTMLBuilder.write_doc_serialized
+   ~SingleFileHTMLBuilder.write_domain_indices
+   ~SingleFileHTMLBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~SingleFileHTMLBuilder.add_permalinks
+   ~SingleFileHTMLBuilder.allow_parallel
+   ~SingleFileHTMLBuilder.copysource
+   ~SingleFileHTMLBuilder.css_files
+   ~SingleFileHTMLBuilder.default_sidebars
+   ~SingleFileHTMLBuilder.embedded
+   ~SingleFileHTMLBuilder.format
+   ~SingleFileHTMLBuilder.indexer_dumps_unicode
+   ~SingleFileHTMLBuilder.indexer_format
+   ~SingleFileHTMLBuilder.link_suffix
+   ~SingleFileHTMLBuilder.name
+   ~SingleFileHTMLBuilder.out_suffix
+   ~SingleFileHTMLBuilder.script_files
+   ~SingleFileHTMLBuilder.search
+   ~SingleFileHTMLBuilder.searchindex_filename
+   ~SingleFileHTMLBuilder.supported_image_types
+   ~SingleFileHTMLBuilder.versioning_compare
+   ~SingleFileHTMLBuilder.versioning_method
+

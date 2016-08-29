@@ -1,0 +1,6 @@
+sphinx.builders.gettext.LocalTimeZone.utcoffset
+===============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: LocalTimeZone.utcoffset

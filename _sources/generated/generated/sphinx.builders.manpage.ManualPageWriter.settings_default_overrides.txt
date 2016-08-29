@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.settings_default_overrides
+===================================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.settings_default_overrides

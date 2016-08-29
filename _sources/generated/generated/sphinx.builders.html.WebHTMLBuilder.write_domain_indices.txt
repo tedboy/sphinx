@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.write_domain_indices
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.write_domain_indices

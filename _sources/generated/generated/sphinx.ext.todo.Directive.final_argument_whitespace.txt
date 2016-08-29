@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.final_argument_whitespace
+===================================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: Directive.final_argument_whitespace

@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.create_template_bridge
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.create_template_bridge

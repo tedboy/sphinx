@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.get_theme_config
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.get_theme_config

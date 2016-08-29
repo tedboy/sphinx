@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.get_full_modname
+====================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. autofunction:: get_full_modname

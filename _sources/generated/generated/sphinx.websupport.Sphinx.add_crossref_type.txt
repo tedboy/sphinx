@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.add_crossref_type
+==========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.add_crossref_type

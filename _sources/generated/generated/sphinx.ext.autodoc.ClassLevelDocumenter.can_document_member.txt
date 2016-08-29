@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassLevelDocumenter.can_document_member
+===========================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassLevelDocumenter.can_document_member

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.allow_parallel
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.allow_parallel

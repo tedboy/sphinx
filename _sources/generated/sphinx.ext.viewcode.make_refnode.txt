@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.make_refnode
+================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. autofunction:: make_refnode

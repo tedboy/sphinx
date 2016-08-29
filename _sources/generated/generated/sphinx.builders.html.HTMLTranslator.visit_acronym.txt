@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_acronym
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_acronym

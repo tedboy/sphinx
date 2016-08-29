@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.option_spec
+=======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Glossary.option_spec

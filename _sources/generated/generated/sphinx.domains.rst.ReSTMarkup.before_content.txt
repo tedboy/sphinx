@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.before_content
+============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.before_content

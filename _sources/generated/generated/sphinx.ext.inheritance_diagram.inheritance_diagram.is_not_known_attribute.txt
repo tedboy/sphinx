@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.inheritance_diagram.is_not_known_attribute
+=========================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: inheritance_diagram.is_not_known_attribute

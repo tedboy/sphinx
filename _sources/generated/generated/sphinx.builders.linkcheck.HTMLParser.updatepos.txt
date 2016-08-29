@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.updatepos
+==============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.updatepos

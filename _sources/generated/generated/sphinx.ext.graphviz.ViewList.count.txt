@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.count
+==================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.count

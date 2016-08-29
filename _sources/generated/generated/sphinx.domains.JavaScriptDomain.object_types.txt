@@ -1,0 +1,6 @@
+sphinx.domains.JavaScriptDomain.object_types
+============================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: JavaScriptDomain.object_types

@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.final_argument_whitespace
+===================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: EnvVar.final_argument_whitespace

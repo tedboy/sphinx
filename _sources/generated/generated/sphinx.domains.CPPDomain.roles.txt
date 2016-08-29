@@ -1,0 +1,6 @@
+sphinx.domains.CPPDomain.roles
+==============================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CPPDomain.roles

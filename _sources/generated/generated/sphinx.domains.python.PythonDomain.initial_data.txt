@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.initial_data
+===============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PythonDomain.initial_data

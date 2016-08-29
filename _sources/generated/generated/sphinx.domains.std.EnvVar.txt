@@ -1,0 +1,48 @@
+sphinx.domains.std.EnvVar
+=========================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: EnvVar
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~EnvVar.__init__
+   ~EnvVar.add_name
+   ~EnvVar.add_target_and_index
+   ~EnvVar.after_content
+   ~EnvVar.assert_has_content
+   ~EnvVar.before_content
+   ~EnvVar.debug
+   ~EnvVar.directive_error
+   ~EnvVar.error
+   ~EnvVar.get_signatures
+   ~EnvVar.handle_signature
+   ~EnvVar.info
+   ~EnvVar.run
+   ~EnvVar.severe
+   ~EnvVar.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~EnvVar.doc_field_types
+   ~EnvVar.final_argument_whitespace
+   ~EnvVar.has_content
+   ~EnvVar.indextemplate
+   ~EnvVar.option_spec
+   ~EnvVar.optional_arguments
+   ~EnvVar.parse_node
+   ~EnvVar.required_arguments
+

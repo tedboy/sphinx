@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.get_outdated_docs
+=============================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: Builder.get_outdated_docs

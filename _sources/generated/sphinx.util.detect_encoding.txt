@@ -1,0 +1,6 @@
+sphinx.util.detect_encoding
+===========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: detect_encoding

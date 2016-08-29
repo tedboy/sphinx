@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.unknown_reference_resolvers
+===========================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextWriter.unknown_reference_resolvers

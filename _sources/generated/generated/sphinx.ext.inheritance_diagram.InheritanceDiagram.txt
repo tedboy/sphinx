@@ -1,0 +1,40 @@
+sphinx.ext.inheritance_diagram.InheritanceDiagram
+=================================================
+.. currentmodule:: sphinx.ext.inheritance_diagram
+.. autoclass:: InheritanceDiagram
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~InheritanceDiagram.__init__
+   ~InheritanceDiagram.add_name
+   ~InheritanceDiagram.assert_has_content
+   ~InheritanceDiagram.debug
+   ~InheritanceDiagram.directive_error
+   ~InheritanceDiagram.error
+   ~InheritanceDiagram.info
+   ~InheritanceDiagram.run
+   ~InheritanceDiagram.severe
+   ~InheritanceDiagram.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~InheritanceDiagram.final_argument_whitespace
+   ~InheritanceDiagram.has_content
+   ~InheritanceDiagram.option_spec
+   ~InheritanceDiagram.optional_arguments
+   ~InheritanceDiagram.required_arguments
+

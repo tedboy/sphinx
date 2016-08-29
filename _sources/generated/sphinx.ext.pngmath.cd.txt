@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.cd
+=====================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: cd

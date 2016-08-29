@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.add_fignumber
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.add_fignumber

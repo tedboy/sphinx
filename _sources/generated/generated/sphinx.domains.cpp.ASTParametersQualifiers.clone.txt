@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTParametersQualifiers.clone
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTParametersQualifiers.clone

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.final_argument_whitespace
+==============================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSCallable.final_argument_whitespace

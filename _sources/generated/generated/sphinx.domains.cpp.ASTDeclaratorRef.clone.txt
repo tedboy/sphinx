@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorRef.clone
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorRef.clone

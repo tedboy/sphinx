@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.handle_page
+========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.handle_page

@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.get_transforms
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DocTreeInput.get_transforms

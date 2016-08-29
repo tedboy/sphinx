@@ -1,0 +1,6 @@
+sphinx.websupport.BaseSearch.get_js_stemmer_rawcode
+===================================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: BaseSearch.get_js_stemmer_rawcode

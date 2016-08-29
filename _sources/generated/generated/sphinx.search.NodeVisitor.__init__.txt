@@ -1,0 +1,6 @@
+sphinx.search.NodeVisitor.__init__
+==================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: NodeVisitor.__init__

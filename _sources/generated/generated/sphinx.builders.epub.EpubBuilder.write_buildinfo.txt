@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.write_buildinfo
+================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.write_buildinfo

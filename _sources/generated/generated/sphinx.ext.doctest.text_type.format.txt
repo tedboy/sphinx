@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.format
+===================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.format

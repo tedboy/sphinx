@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.current_char
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: DefinitionParser.current_char

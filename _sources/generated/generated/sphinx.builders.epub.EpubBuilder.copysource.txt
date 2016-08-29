@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.copysource
+===========================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: EpubBuilder.copysource

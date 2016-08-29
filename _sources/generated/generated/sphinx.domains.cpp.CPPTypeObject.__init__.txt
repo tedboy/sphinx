@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.__init__
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPTypeObject.__init__

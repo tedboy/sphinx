@@ -1,0 +1,34 @@
+sphinx.ext.inheritance_diagram.ModuleAnalyzer
+=============================================
+.. currentmodule:: sphinx.ext.inheritance_diagram
+.. autoclass:: ModuleAnalyzer
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ModuleAnalyzer.__init__
+   ~ModuleAnalyzer.find_attr_docs
+   ~ModuleAnalyzer.find_tags
+   ~ModuleAnalyzer.for_file
+   ~ModuleAnalyzer.for_module
+   ~ModuleAnalyzer.for_string
+   ~ModuleAnalyzer.parse
+   ~ModuleAnalyzer.tokenize
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ModuleAnalyzer.cache
+

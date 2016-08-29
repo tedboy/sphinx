@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.supported
+=========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.supported

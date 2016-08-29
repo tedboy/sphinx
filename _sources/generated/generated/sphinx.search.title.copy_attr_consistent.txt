@@ -1,0 +1,6 @@
+sphinx.search.title.copy_attr_consistent
+========================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.copy_attr_consistent

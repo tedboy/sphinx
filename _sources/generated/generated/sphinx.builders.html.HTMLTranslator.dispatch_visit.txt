@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.dispatch_visit
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.dispatch_visit

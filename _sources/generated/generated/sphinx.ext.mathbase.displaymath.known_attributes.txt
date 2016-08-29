@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.known_attributes
+================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: displaymath.known_attributes

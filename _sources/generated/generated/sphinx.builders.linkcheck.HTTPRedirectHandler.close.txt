@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTTPRedirectHandler.close
+===================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTTPRedirectHandler.close

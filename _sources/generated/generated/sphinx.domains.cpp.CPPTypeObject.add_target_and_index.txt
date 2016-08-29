@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.add_target_and_index
+=====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPTypeObject.add_target_and_index

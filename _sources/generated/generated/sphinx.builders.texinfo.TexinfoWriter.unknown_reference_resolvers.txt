@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.unknown_reference_resolvers
+=================================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.unknown_reference_resolvers

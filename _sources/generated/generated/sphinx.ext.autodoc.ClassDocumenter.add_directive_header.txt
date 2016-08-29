@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassDocumenter.add_directive_header
+=======================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassDocumenter.add_directive_header

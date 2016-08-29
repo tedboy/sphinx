@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.assert_has_content
+==================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Directive.assert_has_content

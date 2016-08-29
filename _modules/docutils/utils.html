@@ -1,0 +1,966 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>docutils.utils &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="docutils" href="../docutils.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../docutils.html">docutils</a> &raquo;</li>
+        
+      <li>docutils.utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for docutils.utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+<span class="c1"># $Id: __init__.py 7668 2013-06-04 12:46:30Z milde $</span>
+<span class="c1"># Author: David Goodger &lt;goodger@python.org&gt;</span>
+<span class="c1"># Copyright: This module has been placed in the public domain.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Miscellaneous utilities for the documentation utilities.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">__docformat__</span> <span class="o">=</span> <span class="s1">&#39;reStructuredText&#39;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">unicodedata</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">ApplicationError</span><span class="p">,</span> <span class="n">DataError</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">import</span> <span class="nn">docutils.io</span>
+<span class="kn">from</span> <span class="nn">docutils.utils.error_reporting</span> <span class="kn">import</span> <span class="n">ErrorOutput</span><span class="p">,</span> <span class="n">SafeString</span>
+
+
+<span class="k">class</span> <span class="nc">SystemMessage</span><span class="p">(</span><span class="n">ApplicationError</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_message</span><span class="p">,</span> <span class="n">level</span><span class="p">):</span>
+        <span class="ne">Exception</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_message</span><span class="o">.</span><span class="n">astext</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">level</span>
+
+
+<span class="k">class</span> <span class="nc">SystemMessagePropagation</span><span class="p">(</span><span class="n">ApplicationError</span><span class="p">):</span> <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">Reporter</span><span class="p">:</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Info/warning/error reporter and ``system_message`` element generator.</span>
+
+<span class="sd">    Five levels of system messages are defined, along with corresponding</span>
+<span class="sd">    methods: `debug()`, `info()`, `warning()`, `error()`, and `severe()`.</span>
+
+<span class="sd">    There is typically one Reporter object per process.  A Reporter object is</span>
+<span class="sd">    instantiated with thresholds for reporting (generating warnings) and</span>
+<span class="sd">    halting processing (raising exceptions), a switch to turn debug output on</span>
+<span class="sd">    or off, and an I/O stream for warnings.  These are stored as instance</span>
+<span class="sd">    attributes.</span>
+
+<span class="sd">    When a system message is generated, its level is compared to the stored</span>
+<span class="sd">    thresholds, and a warning or error is generated as appropriate.  Debug</span>
+<span class="sd">    messages are produced if the stored debug switch is on, independently of</span>
+<span class="sd">    other thresholds.  Message output is sent to the stored warning stream if</span>
+<span class="sd">    not set to &#39;&#39;.</span>
+
+<span class="sd">    The Reporter class also employs a modified form of the &quot;Observer&quot; pattern</span>
+<span class="sd">    [GoF95]_ to track system messages generated.  The `attach_observer` method</span>
+<span class="sd">    should be called before parsing, with a bound method or function which</span>
+<span class="sd">    accepts system messages.  The observer can be removed with</span>
+<span class="sd">    `detach_observer`, and another added in its place.</span>
+
+<span class="sd">    .. [GoF95] Gamma, Helm, Johnson, Vlissides. *Design Patterns: Elements of</span>
+<span class="sd">       Reusable Object-Oriented Software*. Addison-Wesley, Reading, MA, USA,</span>
+<span class="sd">       1995.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="s1">&#39;DEBUG INFO WARNING ERROR SEVERE&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="sd">&quot;&quot;&quot;List of names for system message levels, indexed by level.&quot;&quot;&quot;</span>
+
+    <span class="c1"># system message level constants:</span>
+    <span class="p">(</span><span class="n">DEBUG_LEVEL</span><span class="p">,</span>
+     <span class="n">INFO_LEVEL</span><span class="p">,</span>
+     <span class="n">WARNING_LEVEL</span><span class="p">,</span>
+     <span class="n">ERROR_LEVEL</span><span class="p">,</span>
+     <span class="n">SEVERE_LEVEL</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">report_level</span><span class="p">,</span> <span class="n">halt_level</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">error_handler</span><span class="o">=</span><span class="s1">&#39;backslashreplace&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">            - `source`: The path to or description of the source data.</span>
+<span class="sd">            - `report_level`: The level at or above which warning output will</span>
+<span class="sd">              be sent to `stream`.</span>
+<span class="sd">            - `halt_level`: The level at or above which `SystemMessage`</span>
+<span class="sd">              exceptions will be raised, halting execution.</span>
+<span class="sd">            - `debug`: Show debug (level=0) system messages?</span>
+<span class="sd">            - `stream`: Where warning output is sent.  Can be file-like (has a</span>
+<span class="sd">              ``.write`` method), a string (file name, opened for writing),</span>
+<span class="sd">              &#39;&#39; (empty string) or `False` (for discarding all stream messages)</span>
+<span class="sd">              or `None` (implies `sys.stderr`; default).</span>
+<span class="sd">            - `encoding`: The output encoding.</span>
+<span class="sd">            - `error_handler`: The error handler for stderr output encoding.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="sd">&quot;&quot;&quot;The path to or description of the source data.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_handler</span> <span class="o">=</span> <span class="n">error_handler</span>
+        <span class="sd">&quot;&quot;&quot;The character encoding error handler.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_flag</span> <span class="o">=</span> <span class="n">debug</span>
+        <span class="sd">&quot;&quot;&quot;Show debug (level=0) system messages?&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">report_level</span> <span class="o">=</span> <span class="n">report_level</span>
+        <span class="sd">&quot;&quot;&quot;The level at or above which warning output will be sent</span>
+<span class="sd">        to `self.stream`.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">halt_level</span> <span class="o">=</span> <span class="n">halt_level</span>
+        <span class="sd">&quot;&quot;&quot;The level at or above which `SystemMessage` exceptions</span>
+<span class="sd">        will be raised, halting execution.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">ErrorOutput</span><span class="p">):</span>
+            <span class="n">stream</span> <span class="o">=</span> <span class="n">ErrorOutput</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">error_handler</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
+        <span class="sd">&quot;&quot;&quot;Where warning output is sent.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="s1">&#39;encoding&#39;</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;The output character encoding.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">observers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="sd">&quot;&quot;&quot;List of bound methods or functions to call with each system_message</span>
+<span class="sd">        created.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_level</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;The highest level system message generated so far.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">set_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">report_level</span><span class="p">,</span> <span class="n">halt_level</span><span class="p">,</span>
+                       <span class="n">stream</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;docutils.utils.Reporter.set_conditions deprecated; &#39;</span>
+                      <span class="s1">&#39;set attributes via configuration settings or directly&#39;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report_level</span> <span class="o">=</span> <span class="n">report_level</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">halt_level</span> <span class="o">=</span> <span class="n">halt_level</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">ErrorOutput</span><span class="p">):</span>
+            <span class="n">stream</span> <span class="o">=</span> <span class="n">ErrorOutput</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_handler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_flag</span> <span class="o">=</span> <span class="n">debug</span>
+
+    <span class="k">def</span> <span class="nf">attach_observer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observer</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The `observer` parameter is a function or bound method which takes one</span>
+<span class="sd">        argument, a `nodes.system_message` instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observer</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">detach_observer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">observer</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">notify_observers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">observer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">observers</span><span class="p">:</span>
+            <span class="n">observer</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">system_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">children</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a system_message object.</span>
+
+<span class="sd">        Raise an exception or generate a warning if appropriate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># `message` can be a `string`, `unicode`, or `Exception` instance.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">):</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">SafeString</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;base_node&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">source</span><span class="p">,</span> <span class="n">line</span> <span class="o">=</span> <span class="n">get_source_line</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;base_node&#39;</span><span class="p">])</span>
+            <span class="k">del</span> <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;base_node&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">attributes</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">line</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">attributes</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+                <span class="c1"># assert source is not None, &quot;node has line- but no source-argument&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;source&#39;</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span> <span class="c1"># &#39;line&#39; is absolute line number</span>
+            <span class="k">try</span><span class="p">:</span> <span class="c1"># look up (source, line-in-source)</span>
+                <span class="n">source</span><span class="p">,</span> <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_source_and_line</span><span class="p">(</span><span class="n">attributes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line&#39;</span><span class="p">))</span>
+                <span class="c1"># print &quot;locator lookup&quot;, kwargs.get(&#39;line&#39;), &quot;-&gt;&quot;, source, line</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="n">source</span><span class="p">,</span> <span class="n">line</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+            <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span>
+            <span class="k">if</span> <span class="n">line</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;line&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="c1"># assert attributes[&#39;line&#39;] is not None, (message, kwargs)</span>
+        <span class="c1"># assert attributes[&#39;source&#39;] is not None, (message, kwargs)</span>
+        <span class="n">attributes</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
+                                   <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="n">level</span><span class="p">],</span>
+                                   <span class="o">*</span><span class="n">children</span><span class="p">,</span> <span class="o">**</span><span class="n">attributes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="ow">and</span> <span class="p">(</span><span class="n">level</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">report_level</span>
+                            <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug_flag</span> <span class="ow">and</span> <span class="n">level</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEBUG_LEVEL</span>
+                            <span class="ow">or</span> <span class="n">level</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">halt_level</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">halt_level</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SystemMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEBUG_LEVEL</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug_flag</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notify_observers</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_level</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_level</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">msg</span>
+
+    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Level-0, &quot;DEBUG&quot;: an internal reporting issue. Typically, there is no</span>
+<span class="sd">        effect on the processing. Level-0 system messages are handled</span>
+<span class="sd">        separately from the others.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug_flag</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEBUG_LEVEL</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Level-1, &quot;INFO&quot;: a minor issue that can be ignored. Typically there is</span>
+<span class="sd">        no effect on processing, and level-1 system messages are not reported.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">INFO_LEVEL</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Level-2, &quot;WARNING&quot;: an issue that should be addressed. If ignored,</span>
+<span class="sd">        there may be unpredictable problems with the output.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">WARNING_LEVEL</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Level-3, &quot;ERROR&quot;: an error that should be addressed. If ignored, the</span>
+<span class="sd">        output will contain errors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ERROR_LEVEL</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">severe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Level-4, &quot;SEVERE&quot;: a severe error that must be addressed. If ignored,</span>
+<span class="sd">        the output will contain severe errors. Typically level-4 system</span>
+<span class="sd">        messages are turned into exceptions which halt processing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SEVERE_LEVEL</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ExtensionOptionError</span><span class="p">(</span><span class="n">DataError</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">class</span> <span class="nc">BadOptionError</span><span class="p">(</span><span class="n">ExtensionOptionError</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">class</span> <span class="nc">BadOptionDataError</span><span class="p">(</span><span class="n">ExtensionOptionError</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">class</span> <span class="nc">DuplicateOptionError</span><span class="p">(</span><span class="n">ExtensionOptionError</span><span class="p">):</span> <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">extract_extension_options</span><span class="p">(</span><span class="n">field_list</span><span class="p">,</span> <span class="n">options_spec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a dictionary mapping extension option names to converted values.</span>
+
+<span class="sd">    :Parameters:</span>
+<span class="sd">        - `field_list`: A flat field list without field arguments, where each</span>
+<span class="sd">          field body consists of a single paragraph only.</span>
+<span class="sd">        - `options_spec`: Dictionary mapping known option names to a</span>
+<span class="sd">          conversion function such as `int` or `float`.</span>
+
+<span class="sd">    :Exceptions:</span>
+<span class="sd">        - `KeyError` for unknown option names.</span>
+<span class="sd">        - `ValueError` for invalid option values (raised by the conversion</span>
+<span class="sd">           function).</span>
+<span class="sd">        - `TypeError` for invalid option value types (raised by conversion</span>
+<span class="sd">           function).</span>
+<span class="sd">        - `DuplicateOptionError` for duplicate options.</span>
+<span class="sd">        - `BadOptionError` for invalid fields.</span>
+<span class="sd">        - `BadOptionDataError` for invalid option data (missing name,</span>
+<span class="sd">          missing data, bad quotes, etc.).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">option_list</span> <span class="o">=</span> <span class="n">extract_options</span><span class="p">(</span><span class="n">field_list</span><span class="p">)</span>
+    <span class="n">option_dict</span> <span class="o">=</span> <span class="n">assemble_option_dict</span><span class="p">(</span><span class="n">option_list</span><span class="p">,</span> <span class="n">options_spec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">option_dict</span>
+
+<span class="k">def</span> <span class="nf">extract_options</span><span class="p">(</span><span class="n">field_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of option (name, value) pairs from field names &amp; bodies.</span>
+
+<span class="sd">    :Parameter:</span>
+<span class="sd">        `field_list`: A flat field list, where each field name is a single</span>
+<span class="sd">        word and each field body consists of a single paragraph only.</span>
+
+<span class="sd">    :Exceptions:</span>
+<span class="sd">        - `BadOptionError` for invalid fields.</span>
+<span class="sd">        - `BadOptionDataError` for invalid option data (missing name,</span>
+<span class="sd">          missing data, bad quotes, etc.).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">option_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">field_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">BadOptionError</span><span class="p">(</span>
+                <span class="s1">&#39;extension option field name may not contain multiple words&#39;</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">field</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">)</span> \
+              <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">BadOptionDataError</span><span class="p">(</span>
+                  <span class="s1">&#39;extension option field body may contain</span><span class="se">\n</span><span class="s1">&#39;</span>
+                  <span class="s1">&#39;a single paragraph only (option &quot;</span><span class="si">%s</span><span class="s1">&quot;)&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+        <span class="n">option_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">option_list</span>
+
+<div class="viewcode-block" id="assemble_option_dict"><a class="viewcode-back" href="../../generated/sphinx.ext.autodoc.assemble_option_dict.html#sphinx.builders.html.assemble_option_dict">[docs]</a><span class="k">def</span> <span class="nf">assemble_option_dict</span><span class="p">(</span><span class="n">option_list</span><span class="p">,</span> <span class="n">options_spec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a mapping of option names to values.</span>
+
+<span class="sd">    :Parameters:</span>
+<span class="sd">        - `option_list`: A list of (name, value) pairs (the output of</span>
+<span class="sd">          `extract_options()`).</span>
+<span class="sd">        - `options_spec`: Dictionary mapping known option names to a</span>
+<span class="sd">          conversion function such as `int` or `float`.</span>
+
+<span class="sd">    :Exceptions:</span>
+<span class="sd">        - `KeyError` for unknown option names.</span>
+<span class="sd">        - `DuplicateOptionError` for duplicate options.</span>
+<span class="sd">        - `ValueError` for invalid option values (raised by conversion</span>
+<span class="sd">           function).</span>
+<span class="sd">        - `TypeError` for invalid option value types (raised by conversion</span>
+<span class="sd">           function).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">option_list</span><span class="p">:</span>
+        <span class="n">convertor</span> <span class="o">=</span> <span class="n">options_spec</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>  <span class="c1"># raises KeyError if unknown</span>
+        <span class="k">if</span> <span class="n">convertor</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>        <span class="c1"># or if explicitly disabled</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DuplicateOptionError</span><span class="p">(</span><span class="s1">&#39;duplicate option &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">options</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">convertor</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">),</span> <span class="n">detail</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">detail</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="s1">&#39;(option: &quot;</span><span class="si">%s</span><span class="s1">&quot;; value: </span><span class="si">%r</span><span class="s1">)</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span>
+                                   <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">detail</span><span class="o">.</span><span class="n">args</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">options</span></div>
+
+
+<span class="k">class</span> <span class="nc">NameValueError</span><span class="p">(</span><span class="n">DataError</span><span class="p">):</span> <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">decode_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Ensure `path` is Unicode. Return `nodes.reprunicode` object.</span>
+
+<span class="sd">    Decode file/path string in a failsave manner if not already done.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># see also http://article.gmane.org/gmane.text.docutils.user/2905</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">path</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getfilesystemencoding</span><span class="p">(),</span> <span class="s1">&#39;strict&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="c1"># default value None has no decode method</span>
+        <span class="k">return</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reprunicode</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reprunicode</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">extract_name_value</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of (name, value) from a line of the form &quot;name=value ...&quot;.</span>
+
+<span class="sd">    :Exception:</span>
+<span class="sd">        `NameValueError` for invalid input (missing name, missing data, bad</span>
+<span class="sd">        quotes, etc.).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attlist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">equals</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">equals</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NameValueError</span><span class="p">(</span><span class="s1">&#39;missing &quot;=&quot;&#39;</span><span class="p">)</span>
+        <span class="n">attname</span> <span class="o">=</span> <span class="n">line</span><span class="p">[:</span><span class="n">equals</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">equals</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">attname</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NameValueError</span><span class="p">(</span>
+                  <span class="s1">&#39;missing attribute name before &quot;=&quot;&#39;</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">equals</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NameValueError</span><span class="p">(</span>
+                  <span class="s1">&#39;missing value after &quot;</span><span class="si">%s</span><span class="s1">=&quot;&#39;</span> <span class="o">%</span> <span class="n">attname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&quot;&#39;</span><span class="p">:</span>
+            <span class="n">endquote</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">endquote</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">NameValueError</span><span class="p">(</span>
+                      <span class="s1">&#39;attribute &quot;</span><span class="si">%s</span><span class="s1">&quot; missing end quote (</span><span class="si">%s</span><span class="s1">)&#39;</span>
+                      <span class="o">%</span> <span class="p">(</span><span class="n">attname</span><span class="p">,</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">endquote</span> <span class="o">+</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="n">endquote</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="n">NameValueError</span><span class="p">(</span>
+                      <span class="s1">&#39;attribute &quot;</span><span class="si">%s</span><span class="s1">&quot; end quote (</span><span class="si">%s</span><span class="s1">) not followed by &#39;</span>
+                      <span class="s1">&#39;whitespace&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">attname</span><span class="p">,</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">endquote</span><span class="p">]</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">endquote</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">space</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">space</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">line</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">line</span><span class="p">[:</span><span class="n">space</span><span class="p">]</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">space</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+        <span class="n">attlist</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">attname</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">data</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">attlist</span>
+
+<span class="k">def</span> <span class="nf">new_reporter</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a new Reporter object.</span>
+
+<span class="sd">    :Parameters:</span>
+<span class="sd">        `source` : string</span>
+<span class="sd">            The path to or description of the source text of the document.</span>
+<span class="sd">        `settings` : optparse.Values object</span>
+<span class="sd">            Runtime settings.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">reporter</span> <span class="o">=</span> <span class="n">Reporter</span><span class="p">(</span>
+        <span class="n">source_path</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">report_level</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">halt_level</span><span class="p">,</span>
+        <span class="n">stream</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">warning_stream</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">debug</span><span class="p">,</span>
+        <span class="n">encoding</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">error_encoding</span><span class="p">,</span>
+        <span class="n">error_handler</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">error_encoding_error_handler</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">reporter</span>
+
+<div class="viewcode-block" id="new_document"><a class="viewcode-back" href="../../generated/sphinx.builders.texinfo.new_document.html#sphinx.builders.html.new_document">[docs]</a><span class="k">def</span> <span class="nf">new_document</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a new empty document object.</span>
+
+<span class="sd">    :Parameters:</span>
+<span class="sd">        `source_path` : string</span>
+<span class="sd">            The path to or description of the source text of the document.</span>
+<span class="sd">        `settings` : optparse.Values object</span>
+<span class="sd">            Runtime settings.  If none are provided, a default core set will</span>
+<span class="sd">            be used.  If you will use the document object with any Docutils</span>
+<span class="sd">            components, you must provide their default settings as well.  For</span>
+<span class="sd">            example, if parsing, at least provide the parser settings,</span>
+<span class="sd">            obtainable as follows::</span>
+
+<span class="sd">                settings = docutils.frontend.OptionParser(</span>
+<span class="sd">                    components=(docutils.parsers.rst.Parser,)</span>
+<span class="sd">                    ).get_default_values()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">frontend</span>
+    <span class="k">if</span> <span class="n">settings</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="n">frontend</span><span class="o">.</span><span class="n">OptionParser</span><span class="p">()</span><span class="o">.</span><span class="n">get_default_values</span><span class="p">()</span>
+    <span class="n">source_path</span> <span class="o">=</span> <span class="n">decode_path</span><span class="p">(</span><span class="n">source_path</span><span class="p">)</span>
+    <span class="n">reporter</span> <span class="o">=</span> <span class="n">new_reporter</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">document</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">reporter</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source_path</span><span class="p">)</span>
+    <span class="n">document</span><span class="o">.</span><span class="n">note_source</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">document</span></div>
+
+<span class="k">def</span> <span class="nf">clean_rcs_keywords</span><span class="p">(</span><span class="n">paragraph</span><span class="p">,</span> <span class="n">keyword_substitutions</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paragraph</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paragraph</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+        <span class="n">textnode</span> <span class="o">=</span> <span class="n">paragraph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">substitution</span> <span class="ow">in</span> <span class="n">keyword_substitutions</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">textnode</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                <span class="n">paragraph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">substitution</span><span class="p">,</span> <span class="n">textnode</span><span class="p">))</span>
+                <span class="k">return</span>
+
+<div class="viewcode-block" id="relative_path"><a class="viewcode-back" href="../../generated/sphinx.util.relative_path.html#sphinx.builders.html.relative_path">[docs]</a><span class="k">def</span> <span class="nf">relative_path</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build and return a path to `target`, relative to `source` (both files).</span>
+
+<span class="sd">    If there is no common prefix, return the absolute path to `target`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">source_parts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">source</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">target</span><span class="p">)(</span><span class="s1">&#39;dummy_file&#39;</span><span class="p">)</span>
+                                  <span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+    <span class="n">target_parts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+    <span class="c1"># Check first 2 parts because &#39;/dir&#39;.split(&#39;/&#39;) == [&#39;&#39;, &#39;dir&#39;]:</span>
+    <span class="k">if</span> <span class="n">source_parts</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="n">target_parts</span><span class="p">[:</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="c1"># Nothing in common between paths.</span>
+        <span class="c1"># Return absolute path, using &#39;/&#39; for URLs:</span>
+        <span class="k">return</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_parts</span><span class="p">)</span>
+    <span class="n">source_parts</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="n">target_parts</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">source_parts</span> <span class="ow">and</span> <span class="n">target_parts</span>
+           <span class="ow">and</span> <span class="n">source_parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="c1"># Remove path components in common:</span>
+        <span class="n">source_parts</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">target_parts</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="n">target_parts</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;..&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">source_parts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">target_parts</span>
+    <span class="k">return</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span></div>
+
+<span class="k">def</span> <span class="nf">get_stylesheet_reference</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">relative_to</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a stylesheet reference from the settings object.</span>
+
+<span class="sd">    Deprecated. Use get_stylesheet_list() instead to</span>
+<span class="sd">    enable specification of multiple stylesheets as a comma-separated</span>
+<span class="sd">    list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">stylesheet_path</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">settings</span><span class="o">.</span><span class="n">stylesheet</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s1">&#39;stylesheet and stylesheet_path are mutually exclusive.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">relative_to</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">relative_to</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">_destination</span>
+        <span class="k">return</span> <span class="n">relative_path</span><span class="p">(</span><span class="n">relative_to</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">stylesheet_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">settings</span><span class="o">.</span><span class="n">stylesheet</span>
+
+<span class="c1"># Return &#39;stylesheet&#39; or &#39;stylesheet_path&#39; arguments as list.</span>
+<span class="c1">#</span>
+<span class="c1"># The original settings arguments are kept unchanged: you can test</span>
+<span class="c1"># with e.g. ``if settings.stylesheet_path:``</span>
+<span class="c1">#</span>
+<span class="c1"># Differences to ``get_stylesheet_reference``:</span>
+<span class="c1"># * return value is a list</span>
+<span class="c1"># * no re-writing of the path (and therefore no optional argument)</span>
+<span class="c1">#   (if required, use ``utils.relative_path(source, target)``</span>
+<span class="c1">#   in the calling script)</span>
+<span class="k">def</span> <span class="nf">get_stylesheet_list</span><span class="p">(</span><span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve list of stylesheet references from the settings object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">stylesheet</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">stylesheet_path</span><span class="p">),</span> <span class="p">(</span>
+            <span class="s1">&#39;stylesheet and stylesheet_path are mutually exclusive.&#39;</span><span class="p">)</span>
+    <span class="n">stylesheets</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">stylesheet_path</span> <span class="ow">or</span> <span class="n">settings</span><span class="o">.</span><span class="n">stylesheet</span> <span class="ow">or</span> <span class="p">[]</span>
+    <span class="c1"># programmatically set default can be string or unicode:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stylesheets</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">stylesheets</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">stylesheets</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+    <span class="c1"># expand relative paths if found in stylesheet-dirs:</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">find_file_in_dirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">stylesheet_dirs</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">stylesheets</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">find_file_in_dirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">dirs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Search for `path` in the list of directories `dirs`.</span>
+
+<span class="sd">    Return the first expansion that matches an existing file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">path</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+<span class="k">def</span> <span class="nf">get_trim_footnote_ref_space</span><span class="p">(</span><span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return whether or not to trim footnote space.</span>
+
+<span class="sd">    If trim_footnote_reference_space is not None, return it.</span>
+
+<span class="sd">    If trim_footnote_reference_space is None, return False unless the</span>
+<span class="sd">    footnote reference style is &#39;superscript&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">trim_footnote_reference_space</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;footnote_references&#39;</span><span class="p">)</span> <span class="ow">and</span> \
+               <span class="n">settings</span><span class="o">.</span><span class="n">footnote_references</span> <span class="o">==</span> <span class="s1">&#39;superscript&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">settings</span><span class="o">.</span><span class="n">trim_footnote_reference_space</span>
+
+<span class="k">def</span> <span class="nf">get_source_line</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the &quot;source&quot; and &quot;line&quot; attributes from the `node` given or from</span>
+<span class="sd">    its closest ancestor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">source</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">line</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">line</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+    <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">escape2null</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a string with escape-backslashes converted to nulls.&quot;&quot;&quot;</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">found</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:])</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+        <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">found</span><span class="p">])</span>
+        <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">text</span><span class="p">[</span><span class="n">found</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">found</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">found</span> <span class="o">+</span> <span class="mi">2</span>               <span class="c1"># skip character after escape</span>
+
+<span class="k">def</span> <span class="nf">unescape</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">restore_backslashes</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a string with nulls removed or restored to backslashes.</span>
+<span class="sd">    Backslash-escaped spaces are also removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">restore_backslashes</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">sep</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1"> &#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\x00\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">]:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+<span class="k">def</span> <span class="nf">strip_combining_chars</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">text</span>
+    <span class="k">return</span> <span class="s1">u&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">combining</span><span class="p">(</span><span class="n">c</span><span class="p">)])</span>
+
+<span class="k">def</span> <span class="nf">find_combining_chars</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return indices of all combining chars in  Unicode string `text`.</span>
+
+<span class="sd">    &gt;&gt;&gt; find_combining_chars(u&#39;A t̆ab̆lĕ&#39;)</span>
+<span class="sd">    [3, 6, 9]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">combining</span><span class="p">(</span><span class="n">c</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">column_indices</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Indices of Unicode string `text` when skipping combining characters.</span>
+
+<span class="sd">    &gt;&gt;&gt; column_indices(u&#39;A t̆ab̆lĕ&#39;)</span>
+<span class="sd">    [0, 1, 2, 4, 5, 7, 8]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO: account for asian wide chars here instead of using dummy</span>
+    <span class="c1"># replacements in the tableparser?</span>
+    <span class="n">string_indices</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">find_combining_chars</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="n">string_indices</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">string_indices</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">]</span>
+
+<span class="n">east_asian_widths</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>   <span class="c1"># Wide</span>
+                     <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>   <span class="c1"># Full-width (wide)</span>
+                     <span class="s1">&#39;Na&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># Narrow</span>
+                     <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>   <span class="c1"># Half-width (narrow)</span>
+                     <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>   <span class="c1"># Neutral (not East Asian, treated as narrow)</span>
+                     <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>   <span class="c1"># Ambiguous (s/b wide in East Asian context,</span>
+                               <span class="c1"># narrow otherwise, but that doesn&#39;t work)</span>
+<span class="sd">&quot;&quot;&quot;Mapping of result codes from `unicodedata.east_asian_widt()` to character</span>
+<span class="sd">column widths.&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">column_width</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the column width of text.</span>
+
+<span class="sd">    Correct ``len(text)`` for wide East Asian and combining Unicode chars.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">east_asian_widths</span><span class="p">[</span><span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">c</span><span class="p">)]</span>
+                     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">text</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># east_asian_width() New in version 2.4.</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="c1"># correction for combining chars:</span>
+    <span class="n">width</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">find_combining_chars</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">width</span>
+
+<span class="k">def</span> <span class="nf">uniq</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+     <span class="n">r</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+         <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
+             <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+     <span class="k">return</span> <span class="n">r</span>
+
+<span class="c1"># by Li Daobing http://code.activestate.com/recipes/190465/</span>
+<span class="c1"># since Python 2.6 there is also itertools.combinations()</span>
+<span class="k">def</span> <span class="nf">unique_combinations</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return n-length tuples, in sorted order, no repeated elements&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="k">yield</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="o">-</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">unique_combinations</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:],</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="p">[</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="n">cc</span>
+
+<span class="k">def</span> <span class="nf">normalize_language_tag</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a list of normalized combinations for a `BCP 47` language tag.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; normalize_language_tag(&#39;de_AT-1901&#39;)</span>
+<span class="sd">    [&#39;de-at-1901&#39;, &#39;de-at&#39;, &#39;de-1901&#39;, &#39;de&#39;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># normalize:</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="c1"># split (except singletons, which mark the following tag as non-standard):</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;-([a-zA-Z0-9])-&#39;</span><span class="p">,</span> <span class="s1">r&#39;-\1_&#39;</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
+    <span class="n">taglist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">subtags</span> <span class="o">=</span> <span class="p">[</span><span class="n">subtag</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">subtag</span> <span class="ow">in</span> <span class="n">tag</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)]</span>
+    <span class="n">base_tag</span> <span class="o">=</span> <span class="p">[</span><span class="n">subtags</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="c1"># find all combinations of subtags</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subtags</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">tags</span> <span class="ow">in</span> <span class="n">unique_combinations</span><span class="p">(</span><span class="n">subtags</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">taglist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_tag</span><span class="o">+</span><span class="n">tags</span><span class="p">))</span>
+    <span class="n">taglist</span> <span class="o">+=</span> <span class="n">base_tag</span>
+    <span class="k">return</span> <span class="n">taglist</span>
+
+
+<span class="k">class</span> <span class="nc">DependencyList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    List of dependencies, with file recording support.</span>
+
+<span class="sd">    Note that the output file is not automatically closed.  You have</span>
+<span class="sd">    to explicitly call the close() method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the dependency list, automatically setting the</span>
+<span class="sd">        output file to `output_file` (see `set_output()`) and adding</span>
+<span class="sd">        all supplied dependencies.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_output</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dependencies</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the output file and clear the list of already added</span>
+<span class="sd">        dependencies.</span>
+
+<span class="sd">        `output_file` must be a string.  The specified file is</span>
+<span class="sd">        immediately overwritten.</span>
+
+<span class="sd">        If output_file is &#39;-&#39;, the output will be written to stdout.</span>
+<span class="sd">        If it is None, no file output is done when calling add().</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">output_file</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">output_file</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+                <span class="n">of</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">of</span> <span class="o">=</span> <span class="n">output_file</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">docutils</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FileOutput</span><span class="p">(</span><span class="n">destination_path</span><span class="o">=</span><span class="n">of</span><span class="p">,</span>
+                                   <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filenames</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If the dependency `filename` has not already been added,</span>
+<span class="sd">        append it to self.list and print it to self.file if self.file</span>
+<span class="sd">        is not None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the output file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">output_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">output_file</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">(</span><span class="si">%r</span><span class="s1">, </span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonModuleIndex.__init__
+================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PythonModuleIndex.__init__

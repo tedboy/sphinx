@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.supported_image_types
+==========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.supported_image_types

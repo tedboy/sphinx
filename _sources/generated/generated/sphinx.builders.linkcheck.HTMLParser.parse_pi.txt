@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.parse_pi
+=============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.parse_pi

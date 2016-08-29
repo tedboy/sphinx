@@ -1,0 +1,6 @@
+sphinx.pycode.text_type.strip
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: text_type.strip

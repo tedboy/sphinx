@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.get_relative_uri
+===============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: XMLBuilder.get_relative_uri

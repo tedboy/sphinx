@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.cloak_email
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.cloak_email

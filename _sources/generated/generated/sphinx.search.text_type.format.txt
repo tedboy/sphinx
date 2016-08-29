@@ -1,0 +1,6 @@
+sphinx.search.text_type.format
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.format

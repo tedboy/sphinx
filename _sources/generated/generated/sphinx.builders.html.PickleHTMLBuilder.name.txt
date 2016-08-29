@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.name
+===========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: PickleHTMLBuilder.name

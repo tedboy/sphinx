@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.reset
+==========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.reset

@@ -1,0 +1,6 @@
+sphinx.locale.text_type.rstrip
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.rstrip

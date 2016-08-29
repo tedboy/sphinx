@@ -1,0 +1,6 @@
+sphinx.search.itervalues
+========================
+
+.. currentmodule:: sphinx.search
+
+.. autofunction:: itervalues

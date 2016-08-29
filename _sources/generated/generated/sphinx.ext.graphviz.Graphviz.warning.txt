@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Graphviz.warning
+====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Graphviz.warning

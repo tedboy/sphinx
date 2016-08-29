@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.option_spec
+=====================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: Directive.option_spec

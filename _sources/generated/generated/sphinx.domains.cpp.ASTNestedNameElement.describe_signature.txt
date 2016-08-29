@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTNestedNameElement.describe_signature
+==========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTNestedNameElement.describe_signature

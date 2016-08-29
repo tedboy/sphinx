@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.feed
+=========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.feed

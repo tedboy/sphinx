@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.index_page
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.index_page

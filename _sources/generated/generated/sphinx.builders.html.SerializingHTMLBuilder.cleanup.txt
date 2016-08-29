@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.cleanup
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.cleanup

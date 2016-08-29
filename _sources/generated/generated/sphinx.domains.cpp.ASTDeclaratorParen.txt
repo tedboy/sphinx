@@ -1,0 +1,42 @@
+sphinx.domains.cpp.ASTDeclaratorParen
+=====================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTDeclaratorParen
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTDeclaratorParen.__init__
+   ~ASTDeclaratorParen.clone
+   ~ASTDeclaratorParen.describe_signature
+   ~ASTDeclaratorParen.get_id_v1
+   ~ASTDeclaratorParen.get_id_v2
+   ~ASTDeclaratorParen.get_modifiers_id_v1
+   ~ASTDeclaratorParen.get_modifiers_id_v2
+   ~ASTDeclaratorParen.get_name
+   ~ASTDeclaratorParen.get_param_id_v1
+   ~ASTDeclaratorParen.get_param_id_v2
+   ~ASTDeclaratorParen.get_ptr_suffix_id_v1
+   ~ASTDeclaratorParen.get_ptr_suffix_id_v2
+   ~ASTDeclaratorParen.get_type_id_v2
+   ~ASTDeclaratorParen.is_function_type
+   ~ASTDeclaratorParen.prefix_nested_name
+   ~ASTDeclaratorParen.require_space_after_declSpecs
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ASTDeclaratorParen.name
+

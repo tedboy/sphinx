@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.compile_expression
+================================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.compile_expression

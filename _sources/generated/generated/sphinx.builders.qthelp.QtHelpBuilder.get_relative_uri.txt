@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.get_relative_uri
+=====================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.get_relative_uri

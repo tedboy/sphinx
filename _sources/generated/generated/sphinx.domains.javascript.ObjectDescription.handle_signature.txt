@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.handle_signature
+============================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.handle_signature

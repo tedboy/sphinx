@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.render_dot_html
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autofunction:: render_dot_html

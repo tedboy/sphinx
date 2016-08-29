@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.get_builder_config
+=====================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXBuilder.get_builder_config

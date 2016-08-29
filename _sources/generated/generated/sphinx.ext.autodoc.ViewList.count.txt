@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.count
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.count

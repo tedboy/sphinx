@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.ModuleAnalyzer.parse
+===================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: ModuleAnalyzer.parse

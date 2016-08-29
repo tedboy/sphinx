@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.link_suffix
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.link_suffix

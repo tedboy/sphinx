@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.get_relative_uri
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.get_relative_uri

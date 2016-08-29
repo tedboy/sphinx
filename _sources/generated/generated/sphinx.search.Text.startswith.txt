@@ -1,0 +1,6 @@
+sphinx.search.Text.startswith
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.startswith

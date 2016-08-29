@@ -1,0 +1,6 @@
+sphinx.builders.html.Theme.cleanup
+==================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Theme.cleanup

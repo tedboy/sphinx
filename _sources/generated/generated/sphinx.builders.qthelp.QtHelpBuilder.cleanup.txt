@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.cleanup
+============================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.cleanup

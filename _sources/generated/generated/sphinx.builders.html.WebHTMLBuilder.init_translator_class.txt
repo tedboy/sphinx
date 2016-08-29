@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.init_translator_class
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.init_translator_class

@@ -1,0 +1,6 @@
+sphinx.domains.CPPDomain.directive
+==================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: CPPDomain.directive

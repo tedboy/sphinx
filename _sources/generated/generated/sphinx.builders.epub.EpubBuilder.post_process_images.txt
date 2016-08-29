@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.post_process_images
+====================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.post_process_images

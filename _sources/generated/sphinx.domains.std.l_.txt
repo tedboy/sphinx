@@ -1,0 +1,6 @@
+sphinx.domains.std.l_
+=====================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autofunction:: l_

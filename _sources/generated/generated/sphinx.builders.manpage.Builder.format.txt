@@ -1,0 +1,6 @@
+sphinx.builders.manpage.Builder.format
+======================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: Builder.format

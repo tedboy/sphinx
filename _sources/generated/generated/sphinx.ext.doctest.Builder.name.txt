@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.name
+===============================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: Builder.name

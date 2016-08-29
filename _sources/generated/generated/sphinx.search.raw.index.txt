@@ -1,0 +1,6 @@
+sphinx.search.raw.index
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.index

@@ -1,0 +1,6 @@
+sphinx.builders.changes.Builder.build
+=====================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: Builder.build

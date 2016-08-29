@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.print_help
+===============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.print_help

@@ -1,0 +1,6 @@
+sphinx.builders.html.text_type.format
+=====================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: text_type.format

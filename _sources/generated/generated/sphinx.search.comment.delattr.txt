@@ -1,0 +1,6 @@
+sphinx.search.comment.delattr
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.delattr

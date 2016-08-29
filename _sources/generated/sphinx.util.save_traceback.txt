@@ -1,0 +1,6 @@
+sphinx.util.save_traceback
+==========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: save_traceback

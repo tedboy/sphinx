@@ -1,0 +1,6 @@
+sphinx.pycode.sym.BACKQUOTE
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.BACKQUOTE

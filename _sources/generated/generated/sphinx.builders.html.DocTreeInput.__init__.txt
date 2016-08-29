@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.__init__
+==========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DocTreeInput.__init__

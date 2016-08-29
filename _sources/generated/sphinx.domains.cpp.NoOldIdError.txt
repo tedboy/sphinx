@@ -1,0 +1,6 @@
+sphinx.domains.cpp.NoOldIdError
+===============================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoexception:: NoOldIdError

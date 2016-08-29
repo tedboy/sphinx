@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.feed
+================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.feed

@@ -1,0 +1,6 @@
+sphinx.pycode.sym.del_stmt
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.del_stmt

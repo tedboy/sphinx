@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.add_target_and_index
+=============================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.add_target_and_index

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.info
+=======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: GraphvizSimple.info

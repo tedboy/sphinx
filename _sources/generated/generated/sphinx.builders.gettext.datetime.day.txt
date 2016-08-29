@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.day
+====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.day

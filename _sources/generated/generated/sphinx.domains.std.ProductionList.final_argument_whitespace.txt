@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.final_argument_whitespace
+===========================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: ProductionList.final_argument_whitespace

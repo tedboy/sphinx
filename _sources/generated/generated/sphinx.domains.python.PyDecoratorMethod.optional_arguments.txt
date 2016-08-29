@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.optional_arguments
+==========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyDecoratorMethod.optional_arguments

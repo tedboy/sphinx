@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.error
+========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: GraphvizSimple.error

@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.attribution_formats
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.attribution_formats

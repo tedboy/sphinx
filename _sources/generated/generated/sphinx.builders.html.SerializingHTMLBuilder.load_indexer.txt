@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.load_indexer
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.load_indexer

@@ -1,0 +1,6 @@
+sphinx.ext.mathjax.html_visit_math
+==================================
+
+.. currentmodule:: sphinx.ext.mathjax
+
+.. autofunction:: html_visit_math

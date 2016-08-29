@@ -1,0 +1,6 @@
+sphinx.builders.changes.Theme.load_extra_theme
+==============================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: Theme.load_extra_theme

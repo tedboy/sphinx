@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.known_attributes
+==========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todo_node.known_attributes

@@ -1,0 +1,6 @@
+sphinx.search.IndexBuilder.context_for_searchtool
+=================================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: IndexBuilder.context_for_searchtool

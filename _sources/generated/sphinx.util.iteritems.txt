@@ -1,0 +1,6 @@
+sphinx.util.iteritems
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: iteritems

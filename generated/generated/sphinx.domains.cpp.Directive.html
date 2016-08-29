@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.3.2.38. sphinx.domains.cpp.Directive &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="5.3. sphinx.domains.cpp" href="../sphinx.domains.cpp.html"/>
+        <link rel="next" title="5.3.2.38.1.1. sphinx.domains.cpp.Directive.__init__" href="sphinx.domains.cpp.Directive.__init__.html"/>
+        <link rel="prev" title="5.3.2.37.2.3. sphinx.domains.cpp.DefinitionParser.matched_text" href="sphinx.domains.cpp.DefinitionParser.matched_text.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.html">5.1. sphinx.domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.c.html">5.2. sphinx.domains.c</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.domains.cpp.html">5.3. sphinx.domains.cpp</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.domains.cpp.html#functions">5.3.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.domains.cpp.html#classes">5.3.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTArray.html">5.3.2.1. sphinx.domains.cpp.ASTArray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTBase.html">5.3.2.2. sphinx.domains.cpp.ASTBase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTBaseClass.html">5.3.2.3. sphinx.domains.cpp.ASTBaseClass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTClass.html">5.3.2.4. sphinx.domains.cpp.ASTClass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTDeclSpecs.html">5.3.2.5. sphinx.domains.cpp.ASTDeclSpecs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTDeclSpecsSimple.html">5.3.2.6. sphinx.domains.cpp.ASTDeclSpecsSimple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTDeclaratorParamPack.html">5.3.2.7. sphinx.domains.cpp.ASTDeclaratorParamPack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTDeclaratorParen.html">5.3.2.8. sphinx.domains.cpp.ASTDeclaratorParen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTDeclaratorPtr.html">5.3.2.9. sphinx.domains.cpp.ASTDeclaratorPtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTDeclaratorRef.html">5.3.2.10. sphinx.domains.cpp.ASTDeclaratorRef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTDecleratorNameParamQual.html">5.3.2.11. sphinx.domains.cpp.ASTDecleratorNameParamQual</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTEnum.html">5.3.2.12. sphinx.domains.cpp.ASTEnum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTEnumerator.html">5.3.2.13. sphinx.domains.cpp.ASTEnumerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTFunctinoParameter.html">5.3.2.14. sphinx.domains.cpp.ASTFunctinoParameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTInitializer.html">5.3.2.15. sphinx.domains.cpp.ASTInitializer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTNestedName.html">5.3.2.16. sphinx.domains.cpp.ASTNestedName</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTNestedNameElement.html">5.3.2.17. sphinx.domains.cpp.ASTNestedNameElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTNestedNameElementEmpty.html">5.3.2.18. sphinx.domains.cpp.ASTNestedNameElementEmpty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTOperatorBuildIn.html">5.3.2.19. sphinx.domains.cpp.ASTOperatorBuildIn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTOperatorType.html">5.3.2.20. sphinx.domains.cpp.ASTOperatorType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTParametersQualifiers.html">5.3.2.21. sphinx.domains.cpp.ASTParametersQualifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTTemplateArgConstant.html">5.3.2.22. sphinx.domains.cpp.ASTTemplateArgConstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTTrailingTypeSpecFundamental.html">5.3.2.23. sphinx.domains.cpp.ASTTrailingTypeSpecFundamental</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTTrailingTypeSpecName.html">5.3.2.24. sphinx.domains.cpp.ASTTrailingTypeSpecName</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTType.html">5.3.2.25. sphinx.domains.cpp.ASTType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ASTTypeWithInit.html">5.3.2.26. sphinx.domains.cpp.ASTTypeWithInit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPClassObject.html">5.3.2.27. sphinx.domains.cpp.CPPClassObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPDomain.html">5.3.2.28. sphinx.domains.cpp.CPPDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPEnumObject.html">5.3.2.29. sphinx.domains.cpp.CPPEnumObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPEnumeratorObject.html">5.3.2.30. sphinx.domains.cpp.CPPEnumeratorObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPFunctionObject.html">5.3.2.31. sphinx.domains.cpp.CPPFunctionObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPMemberObject.html">5.3.2.32. sphinx.domains.cpp.CPPMemberObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPNamespaceObject.html">5.3.2.33. sphinx.domains.cpp.CPPNamespaceObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPObject.html">5.3.2.34. sphinx.domains.cpp.CPPObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPTypeObject.html">5.3.2.35. sphinx.domains.cpp.CPPTypeObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.CPPXRefRole.html">5.3.2.36. sphinx.domains.cpp.CPPXRefRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.DefinitionParser.html">5.3.2.37. sphinx.domains.cpp.DefinitionParser</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">5.3.2.38. sphinx.domains.cpp.Directive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.Domain.html">5.3.2.39. sphinx.domains.cpp.Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.Field.html">5.3.2.40. sphinx.domains.cpp.Field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.GroupedField.html">5.3.2.41. sphinx.domains.cpp.GroupedField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ObjType.html">5.3.2.42. sphinx.domains.cpp.ObjType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.ObjectDescription.html">5.3.2.43. sphinx.domains.cpp.ObjectDescription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.UnicodeMixin.html">5.3.2.44. sphinx.domains.cpp.UnicodeMixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.XRefRole.html">5.3.2.45. sphinx.domains.cpp.XRefRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.cpp.text_type.html">5.3.2.46. sphinx.domains.cpp.text_type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.domains.cpp.html#exceptions">5.3.3. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.javascript.html">5.4. sphinx.domains.javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.python.html">5.5. sphinx.domains.python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.html">5.1. sphinx.domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.std.html">5.6. sphinx.domains.std</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.domains.cpp.html">5.3. sphinx.domains.cpp</a> &raquo;</li>
+        
+      <li>5.3.2.38. sphinx.domains.cpp.Directive</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.domains.cpp.Directive.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-domains-cpp-directive">
+<h1>5.3.2.38. sphinx.domains.cpp.Directive<a class="headerlink" href="#sphinx-domains-cpp-directive" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.domains.cpp.Directive">
+<em class="property">class </em><code class="descclassname">sphinx.domains.cpp.</code><code class="descname">Directive</code><span class="sig-paren">(</span><em>name</em>, <em>arguments</em>, <em>options</em>, <em>content</em>, <em>lineno</em>, <em>content_offset</em>, <em>block_text</em>, <em>state</em>, <em>state_machine</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/docutils/parsers/rst.html#Directive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.domains.cpp.Directive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for reStructuredText directives.</p>
+<p>The following attributes may be set by subclasses.  They are
+interpreted by the directive parser (which runs the directive
+class):</p>
+<ul>
+<li><p class="first"><cite>required_arguments</cite>: The number of required arguments (default:
+0).</p>
+</li>
+<li><p class="first"><cite>optional_arguments</cite>: The number of optional arguments (default:
+0).</p>
+</li>
+<li><p class="first"><cite>final_argument_whitespace</cite>: A boolean, indicating if the final
+argument may contain whitespace (default: False).</p>
+</li>
+<li><p class="first"><cite>option_spec</cite>: A dictionary, mapping known option names to
+conversion functions such as <cite>int</cite> or <cite>float</cite> (default: {}, no
+options).  Several conversion functions are defined in the
+directives/__init__.py module.</p>
+<p>Option conversion functions take a single parameter, the option
+argument (a string or <code class="docutils literal"><span class="pre">None</span></code>), validate it and/or convert it
+to the appropriate form.  Conversion functions may raise
+<cite>ValueError</cite> and <cite>TypeError</cite> exceptions.</p>
+</li>
+<li><p class="first"><cite>has_content</cite>: A boolean; True if content is allowed.  Client
+code must handle the case where content is required but not
+supplied (an empty content list will be supplied).</p>
+</li>
+</ul>
+<p>Arguments are normally single whitespace-separated words.  The
+final argument may contain whitespace and/or newlines if
+<cite>final_argument_whitespace</cite> is True.</p>
+<p>If the form of the arguments is more complex, specify only one
+argument (either required or optional) and set
+<cite>final_argument_whitespace</cite> to True; the client code must do any
+context-sensitive parsing.</p>
+<p>When a directive implementation is being run, the directive class
+is instantiated, and the <cite>run()</cite> method is executed.  During
+instantiation, the following instance variables are set:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">name</span></code> is the directive type or name (string).</li>
+<li><code class="docutils literal"><span class="pre">arguments</span></code> is the list of positional arguments (strings).</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> is a dictionary mapping option names (strings) to
+values (type depends on option conversion functions; see
+<cite>option_spec</cite> above).</li>
+<li><code class="docutils literal"><span class="pre">content</span></code> is a list of strings, the directive content line by line.</li>
+<li><code class="docutils literal"><span class="pre">lineno</span></code> is the absolute line number of the first line
+of the directive.</li>
+<li><code class="docutils literal"><span class="pre">src</span></code> is the name (or path) of the rst source of the directive.</li>
+<li><code class="docutils literal"><span class="pre">srcline</span></code> is the line number of the first line of the directive
+in its source. It may differ from <code class="docutils literal"><span class="pre">lineno</span></code>, if the main source
+includes other sources with the <code class="docutils literal"><span class="pre">..</span> <span class="pre">include::</span></code> directive.</li>
+<li><code class="docutils literal"><span class="pre">content_offset</span></code> is the line offset of the first line of the content from
+the beginning of the current input.  Used when initiating a nested parse.</li>
+<li><code class="docutils literal"><span class="pre">block_text</span></code> is a string containing the entire directive.</li>
+<li><code class="docutils literal"><span class="pre">state</span></code> is the state which called the directive function.</li>
+<li><code class="docutils literal"><span class="pre">state_machine</span></code> is the state machine which controls the state which called
+the directive function.</li>
+</ul>
+<p>Directive functions return a list of nodes which will be inserted
+into the document tree at the point where the directive was
+encountered.  This can be an empty list if there is nothing to
+insert.</p>
+<p>For ordinary directives, the list must contain body elements or
+structural elements.  Some directives are intended specifically
+for substitution definitions, and must return a list of <cite>Text</cite>
+nodes and/or inline elements (suitable for inline insertion, in
+place of the substitution reference).  Such directives must verify
+substitution definition context, typically using code like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">states</span><span class="o">.</span><span class="n">SubstitutionDef</span><span class="p">):</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">state_machine</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+        <span class="s1">&#39;Invalid context: the &quot;</span><span class="si">%s</span><span class="s1">&quot; directive can only be used &#39;</span>
+        <span class="s1">&#39;within a substitution definition.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">),</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">literal_block</span><span class="p">(</span><span class="n">block_text</span><span class="p">,</span> <span class="n">block_text</span><span class="p">),</span> <span class="n">line</span><span class="o">=</span><span class="n">lineno</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">error</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>5.3.2.38.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.__init__.html#sphinx.domains.cpp.Directive.__init__" title="sphinx.domains.cpp.Directive.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.add_name.html#sphinx.domains.cpp.Directive.add_name" title="sphinx.domains.cpp.Directive.add_name"><code class="xref py py-obj docutils literal"><span class="pre">add_name</span></code></a>(node)</td>
+<td>Append self.options[&#8216;name&#8217;] to node[&#8216;names&#8217;] if it exists.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.assert_has_content.html#sphinx.domains.cpp.Directive.assert_has_content" title="sphinx.domains.cpp.Directive.assert_has_content"><code class="xref py py-obj docutils literal"><span class="pre">assert_has_content</span></code></a>()</td>
+<td>Throw an ERROR-level DirectiveError if the directive doesn&#8217;t have contents.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.debug.html#sphinx.domains.cpp.Directive.debug" title="sphinx.domains.cpp.Directive.debug"><code class="xref py py-obj docutils literal"><span class="pre">debug</span></code></a>(message)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.directive_error.html#sphinx.domains.cpp.Directive.directive_error" title="sphinx.domains.cpp.Directive.directive_error"><code class="xref py py-obj docutils literal"><span class="pre">directive_error</span></code></a>(level,&nbsp;message)</td>
+<td>Return a DirectiveError suitable for being thrown as an exception.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.error.html#sphinx.domains.cpp.Directive.error" title="sphinx.domains.cpp.Directive.error"><code class="xref py py-obj docutils literal"><span class="pre">error</span></code></a>(message)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.info.html#sphinx.domains.cpp.Directive.info" title="sphinx.domains.cpp.Directive.info"><code class="xref py py-obj docutils literal"><span class="pre">info</span></code></a>(message)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.run.html#sphinx.domains.cpp.Directive.run" title="sphinx.domains.cpp.Directive.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.severe.html#sphinx.domains.cpp.Directive.severe" title="sphinx.domains.cpp.Directive.severe"><code class="xref py py-obj docutils literal"><span class="pre">severe</span></code></a>(message)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.warning.html#sphinx.domains.cpp.Directive.warning" title="sphinx.domains.cpp.Directive.warning"><code class="xref py py-obj docutils literal"><span class="pre">warning</span></code></a>(message)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>5.3.2.38.2. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.final_argument_whitespace.html#sphinx.domains.cpp.Directive.final_argument_whitespace" title="sphinx.domains.cpp.Directive.final_argument_whitespace"><code class="xref py py-obj docutils literal"><span class="pre">final_argument_whitespace</span></code></a></td>
+<td>May the final argument contain whitespace?</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.has_content.html#sphinx.domains.cpp.Directive.has_content" title="sphinx.domains.cpp.Directive.has_content"><code class="xref py py-obj docutils literal"><span class="pre">has_content</span></code></a></td>
+<td>May the directive have content?</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.option_spec.html#sphinx.domains.cpp.Directive.option_spec" title="sphinx.domains.cpp.Directive.option_spec"><code class="xref py py-obj docutils literal"><span class="pre">option_spec</span></code></a></td>
+<td>Mapping of option names to validator functions.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.optional_arguments.html#sphinx.domains.cpp.Directive.optional_arguments" title="sphinx.domains.cpp.Directive.optional_arguments"><code class="xref py py-obj docutils literal"><span class="pre">optional_arguments</span></code></a></td>
+<td>Number of optional arguments after the required arguments.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.domains.cpp.Directive.required_arguments.html#sphinx.domains.cpp.Directive.required_arguments" title="sphinx.domains.cpp.Directive.required_arguments"><code class="xref py py-obj docutils literal"><span class="pre">required_arguments</span></code></a></td>
+<td>Number of required directive arguments.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.domains.cpp.Directive.__init__.html" class="btn btn-neutral float-right" title="5.3.2.38.1.1. sphinx.domains.cpp.Directive.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.domains.cpp.DefinitionParser.matched_text.html" class="btn btn-neutral" title="5.3.2.37.2.3. sphinx.domains.cpp.DefinitionParser.matched_text" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

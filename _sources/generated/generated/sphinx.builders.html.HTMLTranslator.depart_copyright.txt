@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_copyright
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_copyright

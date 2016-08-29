@@ -1,0 +1,6 @@
+sphinx.domains.std.fully_normalize_name
+=======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autofunction:: fully_normalize_name

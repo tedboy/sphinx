@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.get_target_uri
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.get_target_uri

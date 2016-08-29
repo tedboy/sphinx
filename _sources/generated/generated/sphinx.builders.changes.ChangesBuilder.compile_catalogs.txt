@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.compile_catalogs
+=======================================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: ChangesBuilder.compile_catalogs

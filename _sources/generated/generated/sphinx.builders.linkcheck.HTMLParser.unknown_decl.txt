@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.unknown_decl
+=================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.unknown_decl

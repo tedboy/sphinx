@@ -1,0 +1,6 @@
+sphinx.builders.gettext.extract_messages
+========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: extract_messages

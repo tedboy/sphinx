@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.append_attr_list
+=========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: math.append_attr_list

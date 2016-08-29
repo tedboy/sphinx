@@ -1,0 +1,6 @@
+sphinx.search.text_type.rsplit
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.rsplit

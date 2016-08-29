@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClassmember.error
+=========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClassmember.error

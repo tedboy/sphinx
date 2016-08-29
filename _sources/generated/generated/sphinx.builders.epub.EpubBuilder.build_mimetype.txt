@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.build_mimetype
+===============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.build_mimetype

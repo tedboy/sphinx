@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTParametersQualifiers.__init__
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTParametersQualifiers.__init__

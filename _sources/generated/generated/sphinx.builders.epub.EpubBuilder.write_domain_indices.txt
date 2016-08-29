@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.write_domain_indices
+=====================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.write_domain_indices

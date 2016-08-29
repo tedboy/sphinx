@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.pop
+===============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.pop

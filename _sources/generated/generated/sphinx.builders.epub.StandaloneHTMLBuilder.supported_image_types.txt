@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.supported_image_types
+================================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.supported_image_types

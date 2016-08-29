@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.post_process_images
+=====================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DocTestBuilder.post_process_images

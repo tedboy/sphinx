@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.before_content
+========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.before_content

@@ -1,0 +1,40 @@
+sphinx.domains.std.Glossary
+===========================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: Glossary
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Glossary.__init__
+   ~Glossary.add_name
+   ~Glossary.assert_has_content
+   ~Glossary.debug
+   ~Glossary.directive_error
+   ~Glossary.error
+   ~Glossary.info
+   ~Glossary.run
+   ~Glossary.severe
+   ~Glossary.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Glossary.final_argument_whitespace
+   ~Glossary.has_content
+   ~Glossary.option_spec
+   ~Glossary.optional_arguments
+   ~Glossary.required_arguments
+

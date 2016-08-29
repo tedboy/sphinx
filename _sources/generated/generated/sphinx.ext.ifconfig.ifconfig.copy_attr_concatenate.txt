@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.copy_attr_concatenate
+==================================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.copy_attr_concatenate

@@ -1,0 +1,6 @@
+sphinx.util.attrdict.update
+===========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.update

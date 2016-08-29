@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.gen_additional_pages
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.gen_additional_pages

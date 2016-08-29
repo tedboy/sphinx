@@ -1,0 +1,6 @@
+sphinx.domains.python.PyModule.error
+====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyModule.error

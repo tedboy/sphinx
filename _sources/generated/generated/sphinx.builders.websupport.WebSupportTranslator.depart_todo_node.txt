@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_todo_node
+================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_todo_node

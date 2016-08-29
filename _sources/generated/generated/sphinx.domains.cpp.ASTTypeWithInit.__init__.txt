@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTypeWithInit.__init__
+===========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTypeWithInit.__init__

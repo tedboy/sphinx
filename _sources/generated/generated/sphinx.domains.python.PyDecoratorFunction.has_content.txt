@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorFunction.has_content
+=====================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyDecoratorFunction.has_content

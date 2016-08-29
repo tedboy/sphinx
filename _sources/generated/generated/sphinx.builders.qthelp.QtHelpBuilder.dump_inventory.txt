@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.dump_inventory
+===================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.dump_inventory

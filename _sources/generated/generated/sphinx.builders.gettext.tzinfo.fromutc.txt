@@ -1,0 +1,6 @@
+sphinx.builders.gettext.tzinfo.fromutc
+======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: tzinfo.fromutc

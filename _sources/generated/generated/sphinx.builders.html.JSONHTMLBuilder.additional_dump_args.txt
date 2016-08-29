@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.additional_dump_args
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.additional_dump_args

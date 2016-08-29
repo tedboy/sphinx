@@ -1,0 +1,6 @@
+sphinx.search.raw.astext
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.astext

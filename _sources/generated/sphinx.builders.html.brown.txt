@@ -1,0 +1,6 @@
+sphinx.builders.html.brown
+==========================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: brown

@@ -1,0 +1,6 @@
+sphinx.pycode.sym.DOUBLESLASHEQUAL
+==================================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.DOUBLESLASHEQUAL

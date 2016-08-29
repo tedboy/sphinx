@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.member_order
+===================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ExceptionDocumenter.member_order

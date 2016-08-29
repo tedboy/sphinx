@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLBuilder.name
+===================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: XMLBuilder.name

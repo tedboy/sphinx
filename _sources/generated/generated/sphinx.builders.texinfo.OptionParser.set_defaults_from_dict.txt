@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.set_defaults_from_dict
+===========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.set_defaults_from_dict

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassDocumenter.titles_allowed
+=================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ClassDocumenter.titles_allowed

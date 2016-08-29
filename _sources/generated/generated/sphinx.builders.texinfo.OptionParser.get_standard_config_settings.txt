@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.get_standard_config_settings
+=================================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.get_standard_config_settings

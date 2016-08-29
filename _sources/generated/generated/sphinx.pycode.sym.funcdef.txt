@@ -1,0 +1,6 @@
+sphinx.pycode.sym.funcdef
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.funcdef

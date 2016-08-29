@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.remove_option
+================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.remove_option

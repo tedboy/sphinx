@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.set_class_on_child
+=================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.set_class_on_child

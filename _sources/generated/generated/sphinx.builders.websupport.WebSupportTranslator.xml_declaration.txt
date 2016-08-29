@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.xml_declaration
+===============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.xml_declaration

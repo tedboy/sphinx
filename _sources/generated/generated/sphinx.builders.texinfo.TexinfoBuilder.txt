@@ -1,0 +1,55 @@
+sphinx.builders.texinfo.TexinfoBuilder
+======================================
+.. currentmodule:: sphinx.builders.texinfo
+.. autoclass:: TexinfoBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TexinfoBuilder.__init__
+   ~TexinfoBuilder.assemble_doctree
+   ~TexinfoBuilder.build
+   ~TexinfoBuilder.build_all
+   ~TexinfoBuilder.build_specific
+   ~TexinfoBuilder.build_update
+   ~TexinfoBuilder.cleanup
+   ~TexinfoBuilder.compile_all_catalogs
+   ~TexinfoBuilder.compile_catalogs
+   ~TexinfoBuilder.compile_specific_catalogs
+   ~TexinfoBuilder.compile_update_catalogs
+   ~TexinfoBuilder.create_template_bridge
+   ~TexinfoBuilder.finish
+   ~TexinfoBuilder.get_builder_config
+   ~TexinfoBuilder.get_outdated_docs
+   ~TexinfoBuilder.get_relative_uri
+   ~TexinfoBuilder.get_target_uri
+   ~TexinfoBuilder.init
+   ~TexinfoBuilder.init_document_data
+   ~TexinfoBuilder.post_process_images
+   ~TexinfoBuilder.prepare_writing
+   ~TexinfoBuilder.write
+   ~TexinfoBuilder.write_doc
+   ~TexinfoBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TexinfoBuilder.allow_parallel
+   ~TexinfoBuilder.format
+   ~TexinfoBuilder.name
+   ~TexinfoBuilder.supported_image_types
+   ~TexinfoBuilder.versioning_compare
+   ~TexinfoBuilder.versioning_method
+

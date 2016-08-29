@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcodeDirective.error
+==========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestcodeDirective.error

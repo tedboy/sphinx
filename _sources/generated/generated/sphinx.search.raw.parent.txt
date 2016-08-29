@@ -1,0 +1,6 @@
+sphinx.search.raw.parent
+========================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: raw.parent

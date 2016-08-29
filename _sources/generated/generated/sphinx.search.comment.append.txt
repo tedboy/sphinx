@@ -1,0 +1,6 @@
+sphinx.search.comment.append
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.append

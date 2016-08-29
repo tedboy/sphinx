@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.priority
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ExceptionDocumenter.priority

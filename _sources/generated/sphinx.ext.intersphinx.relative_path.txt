@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.relative_path
+====================================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. autofunction:: relative_path

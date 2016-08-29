@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.search.IndexBuilder &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>sphinx.search.IndexBuilder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.search.IndexBuilder.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-search-indexbuilder">
+<h1>sphinx.search.IndexBuilder<a class="headerlink" href="#sphinx-search-indexbuilder" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.search.IndexBuilder">
+<em class="property">class </em><code class="descclassname">sphinx.search.</code><code class="descname">IndexBuilder</code><span class="sig-paren">(</span><em>env</em>, <em>lang</em>, <em>options</em>, <em>scoring</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sphinx/search.html#IndexBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.search.IndexBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper class that creates a searchindex based on the doctrees
+passed to the <cite>feed</cite> method.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.IndexBuilder.__init__.html#sphinx.search.IndexBuilder.__init__" title="sphinx.search.IndexBuilder.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(env,&nbsp;lang,&nbsp;options,&nbsp;scoring)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.IndexBuilder.context_for_searchtool.html#sphinx.search.IndexBuilder.context_for_searchtool" title="sphinx.search.IndexBuilder.context_for_searchtool"><code class="xref py py-obj docutils literal"><span class="pre">context_for_searchtool</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.IndexBuilder.dump.html#sphinx.search.IndexBuilder.dump" title="sphinx.search.IndexBuilder.dump"><code class="xref py py-obj docutils literal"><span class="pre">dump</span></code></a>(stream,&nbsp;format)</td>
+<td>Dump the frozen index to a stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.IndexBuilder.feed.html#sphinx.search.IndexBuilder.feed" title="sphinx.search.IndexBuilder.feed"><code class="xref py py-obj docutils literal"><span class="pre">feed</span></code></a>(filename,&nbsp;title,&nbsp;doctree)</td>
+<td>Feed a doctree to the index.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.IndexBuilder.freeze.html#sphinx.search.IndexBuilder.freeze" title="sphinx.search.IndexBuilder.freeze"><code class="xref py py-obj docutils literal"><span class="pre">freeze</span></code></a>()</td>
+<td>Create a usable data structure for serializing.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.IndexBuilder.get_js_stemmer_rawcode.html#sphinx.search.IndexBuilder.get_js_stemmer_rawcode" title="sphinx.search.IndexBuilder.get_js_stemmer_rawcode"><code class="xref py py-obj docutils literal"><span class="pre">get_js_stemmer_rawcode</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.IndexBuilder.get_objects.html#sphinx.search.IndexBuilder.get_objects" title="sphinx.search.IndexBuilder.get_objects"><code class="xref py py-obj docutils literal"><span class="pre">get_objects</span></code></a>(fn2index)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.IndexBuilder.get_terms.html#sphinx.search.IndexBuilder.get_terms" title="sphinx.search.IndexBuilder.get_terms"><code class="xref py py-obj docutils literal"><span class="pre">get_terms</span></code></a>(fn2index)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.IndexBuilder.label.html#sphinx.search.IndexBuilder.label" title="sphinx.search.IndexBuilder.label"><code class="xref py py-obj docutils literal"><span class="pre">label</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.search.IndexBuilder.load.html#sphinx.search.IndexBuilder.load" title="sphinx.search.IndexBuilder.load"><code class="xref py py-obj docutils literal"><span class="pre">load</span></code></a>(stream,&nbsp;format)</td>
+<td>Reconstruct from frozen data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.IndexBuilder.prune.html#sphinx.search.IndexBuilder.prune" title="sphinx.search.IndexBuilder.prune"><code class="xref py py-obj docutils literal"><span class="pre">prune</span></code></a>(filenames)</td>
+<td>Remove data for all filenames not in the list.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.search.IndexBuilder.formats.html#sphinx.search.IndexBuilder.formats" title="sphinx.search.IndexBuilder.formats"><code class="xref py py-obj docutils literal"><span class="pre">formats</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

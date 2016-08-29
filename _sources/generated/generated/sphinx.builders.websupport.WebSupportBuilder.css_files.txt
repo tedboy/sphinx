@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.css_files
+======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.css_files

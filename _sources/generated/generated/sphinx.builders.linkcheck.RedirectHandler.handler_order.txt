@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.RedirectHandler.handler_order
+=======================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: RedirectHandler.handler_order

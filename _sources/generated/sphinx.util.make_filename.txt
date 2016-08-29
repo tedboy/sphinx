@@ -1,0 +1,6 @@
+sphinx.util.make_filename
+=========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: make_filename

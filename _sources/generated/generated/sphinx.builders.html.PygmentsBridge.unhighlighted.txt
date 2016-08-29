@@ -1,0 +1,6 @@
+sphinx.builders.html.PygmentsBridge.unhighlighted
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PygmentsBridge.unhighlighted

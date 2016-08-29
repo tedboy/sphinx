@@ -1,0 +1,6 @@
+sphinx.search.raw.append_attr_list
+==================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.append_attr_list

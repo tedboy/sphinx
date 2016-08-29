@@ -1,0 +1,6 @@
+sphinx.search.title.known_attributes
+====================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: title.known_attributes

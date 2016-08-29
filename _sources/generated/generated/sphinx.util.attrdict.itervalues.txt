@@ -1,0 +1,6 @@
+sphinx.util.attrdict.itervalues
+===============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.itervalues

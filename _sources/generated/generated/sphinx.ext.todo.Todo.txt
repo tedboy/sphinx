@@ -1,0 +1,40 @@
+sphinx.ext.todo.Todo
+====================
+.. currentmodule:: sphinx.ext.todo
+.. autoclass:: Todo
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Todo.__init__
+   ~Todo.add_name
+   ~Todo.assert_has_content
+   ~Todo.debug
+   ~Todo.directive_error
+   ~Todo.error
+   ~Todo.info
+   ~Todo.run
+   ~Todo.severe
+   ~Todo.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Todo.final_argument_whitespace
+   ~Todo.has_content
+   ~Todo.option_spec
+   ~Todo.optional_arguments
+   ~Todo.required_arguments
+

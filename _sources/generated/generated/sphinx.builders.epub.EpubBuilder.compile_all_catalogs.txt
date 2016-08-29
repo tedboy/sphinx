@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.compile_all_catalogs
+=====================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.compile_all_catalogs

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.update_all_atts_concatenating
+==========================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.update_all_atts_concatenating

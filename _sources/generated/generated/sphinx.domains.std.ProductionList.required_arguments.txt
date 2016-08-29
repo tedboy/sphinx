@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.required_arguments
+====================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: ProductionList.required_arguments

@@ -1,0 +1,6 @@
+sphinx.builders.html.text_type.encode
+=====================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: text_type.encode

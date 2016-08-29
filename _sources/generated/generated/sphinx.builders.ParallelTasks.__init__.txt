@@ -1,0 +1,6 @@
+sphinx.builders.ParallelTasks.__init__
+======================================
+
+.. currentmodule:: sphinx.builders
+
+.. automethod:: ParallelTasks.__init__

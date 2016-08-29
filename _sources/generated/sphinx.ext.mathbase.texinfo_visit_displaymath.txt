@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.texinfo_visit_displaymath
+=============================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: texinfo_visit_displaymath

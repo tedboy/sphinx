@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.setup_child
+====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: math.setup_child

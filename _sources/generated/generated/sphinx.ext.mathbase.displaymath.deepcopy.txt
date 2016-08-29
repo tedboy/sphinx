@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.deepcopy
+========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.deepcopy

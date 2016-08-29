@@ -1,0 +1,6 @@
+sphinx.ext.extlinks.setup_link_roles
+====================================
+
+.. currentmodule:: sphinx.ext.extlinks
+
+.. autofunction:: setup_link_roles

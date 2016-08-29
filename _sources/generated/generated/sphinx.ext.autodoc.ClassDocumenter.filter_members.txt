@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassDocumenter.filter_members
+=================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassDocumenter.filter_members

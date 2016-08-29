@@ -1,0 +1,6 @@
+sphinx.builders.html.ensuredir
+==============================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: ensuredir

@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.run
+=============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.run

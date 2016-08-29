@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.itervalues
+=============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: itervalues

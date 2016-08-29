@@ -1,0 +1,6 @@
+sphinx.search.comment.walkabout
+===============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.walkabout

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.handle_signature
+============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.handle_signature

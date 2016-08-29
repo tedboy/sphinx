@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.build_all
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.build_all

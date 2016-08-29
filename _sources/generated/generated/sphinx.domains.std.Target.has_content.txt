@@ -1,0 +1,6 @@
+sphinx.domains.std.Target.has_content
+=====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Target.has_content

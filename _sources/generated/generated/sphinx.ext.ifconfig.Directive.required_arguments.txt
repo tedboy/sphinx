@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.required_arguments
+================================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: Directive.required_arguments

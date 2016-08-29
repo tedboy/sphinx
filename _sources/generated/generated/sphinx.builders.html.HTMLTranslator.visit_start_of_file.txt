@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_start_of_file
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_start_of_file

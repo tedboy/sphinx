@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.render_partial
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.render_partial

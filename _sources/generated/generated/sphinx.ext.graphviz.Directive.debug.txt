@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Directive.debug
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Directive.debug

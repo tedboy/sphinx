@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.optional_arguments
+====================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: ProductionList.optional_arguments

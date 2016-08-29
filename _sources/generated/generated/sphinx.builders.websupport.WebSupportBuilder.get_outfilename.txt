@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.get_outfilename
+============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.get_outfilename

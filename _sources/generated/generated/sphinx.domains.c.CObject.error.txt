@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.error
+==============================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.error

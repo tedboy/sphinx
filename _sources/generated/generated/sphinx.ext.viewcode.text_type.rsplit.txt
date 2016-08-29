@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.text_type.rsplit
+====================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: text_type.rsplit

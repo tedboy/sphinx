@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.check_module
+===================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.check_module

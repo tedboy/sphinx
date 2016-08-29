@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.iteritems
+============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: iteritems

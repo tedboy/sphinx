@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.add_name
+=================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.add_name

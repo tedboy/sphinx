@@ -1,0 +1,49 @@
+sphinx.domains.python.PyModulelevel
+===================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyModulelevel
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyModulelevel.__init__
+   ~PyModulelevel.add_name
+   ~PyModulelevel.add_target_and_index
+   ~PyModulelevel.after_content
+   ~PyModulelevel.assert_has_content
+   ~PyModulelevel.before_content
+   ~PyModulelevel.debug
+   ~PyModulelevel.directive_error
+   ~PyModulelevel.error
+   ~PyModulelevel.get_index_text
+   ~PyModulelevel.get_signature_prefix
+   ~PyModulelevel.get_signatures
+   ~PyModulelevel.handle_signature
+   ~PyModulelevel.info
+   ~PyModulelevel.needs_arglist
+   ~PyModulelevel.run
+   ~PyModulelevel.severe
+   ~PyModulelevel.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PyModulelevel.doc_field_types
+   ~PyModulelevel.final_argument_whitespace
+   ~PyModulelevel.has_content
+   ~PyModulelevel.option_spec
+   ~PyModulelevel.optional_arguments
+   ~PyModulelevel.required_arguments
+

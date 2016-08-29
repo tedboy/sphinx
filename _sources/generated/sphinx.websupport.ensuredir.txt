@@ -1,0 +1,6 @@
+sphinx.websupport.ensuredir
+===========================
+
+.. currentmodule:: sphinx.websupport
+
+.. autofunction:: ensuredir

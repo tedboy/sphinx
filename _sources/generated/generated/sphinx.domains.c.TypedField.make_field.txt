@@ -1,0 +1,6 @@
+sphinx.domains.c.TypedField.make_field
+======================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: TypedField.make_field

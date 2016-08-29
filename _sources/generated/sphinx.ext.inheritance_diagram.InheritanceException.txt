@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.InheritanceException
+===================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoexception:: InheritanceException

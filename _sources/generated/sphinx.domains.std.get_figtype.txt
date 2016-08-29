@@ -1,0 +1,6 @@
+sphinx.domains.std.get_figtype
+==============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autofunction:: get_figtype

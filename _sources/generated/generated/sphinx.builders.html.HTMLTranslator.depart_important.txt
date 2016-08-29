@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_important
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_important

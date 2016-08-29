@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.debug
+===================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.debug

@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.add_name
+================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorMethod.add_name

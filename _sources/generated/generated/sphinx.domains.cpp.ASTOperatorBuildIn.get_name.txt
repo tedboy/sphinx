@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTOperatorBuildIn.get_name
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTOperatorBuildIn.get_name

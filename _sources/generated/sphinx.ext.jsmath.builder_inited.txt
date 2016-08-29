@@ -1,0 +1,6 @@
+sphinx.ext.jsmath.builder_inited
+================================
+
+.. currentmodule:: sphinx.ext.jsmath
+
+.. autofunction:: builder_inited

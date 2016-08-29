@@ -1,0 +1,6 @@
+sphinx.pycode.sym.print_stmt
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.print_stmt

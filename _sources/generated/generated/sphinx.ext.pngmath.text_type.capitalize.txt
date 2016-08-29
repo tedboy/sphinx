@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.text_type.capitalize
+=======================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: text_type.capitalize

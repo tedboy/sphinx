@@ -1,0 +1,6 @@
+sphinx.util.open
+================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: open

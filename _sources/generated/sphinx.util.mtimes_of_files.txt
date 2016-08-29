@@ -1,0 +1,6 @@
+sphinx.util.mtimes_of_files
+===========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: mtimes_of_files

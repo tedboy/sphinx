@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.error
+===================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.error

@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.ext.coverage &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.ext.coverage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.ext.coverage</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.ext.coverage</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Check Python modules and C API for coverage.  Mostly written by Josip</span>
+<span class="sd">    Dzolonga for the Google Highly Open Participation contest.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
+
+<span class="kn">import</span> <span class="nn">sphinx</span>
+<span class="kn">from</span> <span class="nn">sphinx.builders</span> <span class="kn">import</span> <span class="n">Builder</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.inspect</span> <span class="kn">import</span> <span class="n">safe_getattr</span>
+
+
+<span class="c1"># utility</span>
+<div class="viewcode-block" id="write_header"><a class="viewcode-back" href="../../../generated/sphinx.ext.coverage.write_header.html#sphinx.ext.coverage.write_header">[docs]</a><span class="k">def</span> <span class="nf">write_header</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">char</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="compile_regex_list"><a class="viewcode-back" href="../../../generated/sphinx.ext.coverage.compile_regex_list.html#sphinx.ext.coverage.compile_regex_list">[docs]</a><span class="k">def</span> <span class="nf">compile_regex_list</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">exps</span><span class="p">,</span> <span class="n">warnfunc</span><span class="p">):</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="n">exps</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">warnfunc</span><span class="p">(</span><span class="s1">&#39;invalid regex </span><span class="si">%r</span><span class="s1"> in </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">lst</span></div>
+
+
+<div class="viewcode-block" id="CoverageBuilder"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.html#sphinx.ext.coverage.CoverageBuilder">[docs]</a><span class="k">class</span> <span class="nc">CoverageBuilder</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;coverage&#39;</span>
+
+<div class="viewcode-block" id="CoverageBuilder.init"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.init.html#sphinx.ext.coverage.CoverageBuilder.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_sourcefiles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_c_path</span><span class="p">:</span>
+            <span class="n">pattern</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">srcdir</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c_sourcefiles</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_regexes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">exp</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_c_regexes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">c_regexes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">exp</span><span class="p">)))</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;invalid regex </span><span class="si">%r</span><span class="s1"> in coverage_c_regexes&#39;</span> <span class="o">%</span> <span class="n">exp</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_ignorexps</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">exps</span><span class="p">)</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_ignore_c_items</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c_ignorexps</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">compile_regex_list</span><span class="p">(</span>
+                <span class="s1">&#39;coverage_ignore_c_items&#39;</span><span class="p">,</span> <span class="n">exps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mod_ignorexps</span> <span class="o">=</span> <span class="n">compile_regex_list</span><span class="p">(</span>
+            <span class="s1">&#39;coverage_ignore_modules&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_ignore_modules</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cls_ignorexps</span> <span class="o">=</span> <span class="n">compile_regex_list</span><span class="p">(</span>
+            <span class="s1">&#39;coverage_ignore_classes&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_ignore_classes</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fun_ignorexps</span> <span class="o">=</span> <span class="n">compile_regex_list</span><span class="p">(</span>
+            <span class="s1">&#39;coverage_ignore_functions&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_ignore_functions</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CoverageBuilder.get_outdated_docs"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.get_outdated_docs.html#sphinx.ext.coverage.CoverageBuilder.get_outdated_docs">[docs]</a>    <span class="k">def</span> <span class="nf">get_outdated_docs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;coverage overview&#39;</span></div>
+
+<div class="viewcode-block" id="CoverageBuilder.write"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.write.html#sphinx.ext.coverage.CoverageBuilder.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">ignored</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">py_undoc</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_py_coverage</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_py_coverage</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_undoc</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_c_coverage</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_c_coverage</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CoverageBuilder.build_c_coverage"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.build_c_coverage.html#sphinx.ext.coverage.CoverageBuilder.build_c_coverage">[docs]</a>    <span class="k">def</span> <span class="nf">build_c_coverage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Fetch all the info from the header files</span>
+        <span class="n">c_objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">][</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_sourcefiles</span><span class="p">:</span>
+            <span class="n">undoc</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">regex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_regexes</span><span class="p">:</span>
+                        <span class="n">match</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                            <span class="n">name</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+                            <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c_objects</span><span class="p">:</span>
+                                <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_ignorexps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">()):</span>
+                                    <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+                                        <span class="k">break</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">undoc</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                            <span class="k">continue</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">undoc</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">c_undoc</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">undoc</span></div>
+
+<div class="viewcode-block" id="CoverageBuilder.write_c_coverage"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.write_c_coverage.html#sphinx.ext.coverage.CoverageBuilder.write_c_coverage">[docs]</a>    <span class="k">def</span> <span class="nf">write_c_coverage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="s1">&#39;c.txt&#39;</span><span class="p">)</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_write_headline</span><span class="p">:</span>
+                <span class="n">write_header</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="s1">&#39;Undocumented C API elements&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">)</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">filename</span><span class="p">,</span> <span class="n">undoc</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c_undoc</span><span class="p">):</span>
+                <span class="n">write_header</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">typ</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">undoc</span><span class="p">):</span>
+                    <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; * </span><span class="si">%-50s</span><span class="s1"> [</span><span class="si">%9s</span><span class="s1">]</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">typ</span><span class="p">))</span>
+                <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CoverageBuilder.build_py_coverage"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.build_py_coverage.html#sphinx.ext.coverage.CoverageBuilder.build_py_coverage">[docs]</a>    <span class="k">def</span> <span class="nf">build_py_coverage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;py&#39;</span><span class="p">][</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span>
+        <span class="n">modules</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;py&#39;</span><span class="p">][</span><span class="s1">&#39;modules&#39;</span><span class="p">]</span>
+
+        <span class="n">skip_undoc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_skip_undoc_in_source</span>
+
+        <span class="k">for</span> <span class="n">mod_name</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">:</span>
+            <span class="n">ignore</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mod_ignorexps</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">mod_name</span><span class="p">):</span>
+                    <span class="n">ignore</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">ignore</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">mod</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">mod_name</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;module </span><span class="si">%s</span><span class="s1"> could not be imported: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span>
+                          <span class="p">(</span><span class="n">mod_name</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">py_undoc</span><span class="p">[</span><span class="n">mod_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">err</span><span class="p">}</span>
+                <span class="k">continue</span>
+
+            <span class="n">funcs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">classes</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">mod</span><span class="p">):</span>
+                <span class="c1"># diverse module attributes are ignored:</span>
+                <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;_&#39;</span><span class="p">:</span>
+                    <span class="c1"># begins in an underscore</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">):</span>
+                    <span class="c1"># cannot be attributed to a module</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">__module__</span> <span class="o">!=</span> <span class="n">mod_name</span><span class="p">:</span>
+                    <span class="c1"># is not defined in this module</span>
+                    <span class="k">continue</span>
+
+                <span class="n">full_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mod_name</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">full_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun_ignorexps</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+                                <span class="k">break</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">skip_undoc</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">obj</span><span class="o">.</span><span class="n">__doc__</span><span class="p">:</span>
+                                <span class="k">continue</span>
+                            <span class="n">funcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cls_ignorexps</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+                            <span class="k">break</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">full_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">skip_undoc</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">obj</span><span class="o">.</span><span class="n">__doc__</span><span class="p">:</span>
+                                <span class="k">continue</span>
+                            <span class="c1"># not documented at all</span>
+                            <span class="n">classes</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                            <span class="k">continue</span>
+
+                        <span class="n">attrs</span> <span class="o">=</span> <span class="p">[]</span>
+
+                        <span class="k">for</span> <span class="n">attr_name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="n">attr_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+                                <span class="k">continue</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">attr</span> <span class="o">=</span> <span class="n">safe_getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr_name</span><span class="p">)</span>
+                            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                                <span class="k">continue</span>
+                            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span> <span class="ow">or</span>
+                                    <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">attr</span><span class="p">)):</span>
+                                <span class="k">continue</span>
+                            <span class="k">if</span> <span class="n">attr_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;_&#39;</span><span class="p">:</span>
+                                <span class="c1"># starts with an underscore, ignore it</span>
+                                <span class="k">continue</span>
+                            <span class="k">if</span> <span class="n">skip_undoc</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">__doc__</span><span class="p">:</span>
+                                <span class="c1"># skip methods without docstring if wished</span>
+                                <span class="k">continue</span>
+
+                            <span class="n">full_attr_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">full_name</span><span class="p">,</span> <span class="n">attr_name</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="n">full_attr_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                                <span class="n">attrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr_name</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
+                            <span class="c1"># some attributes are undocumented</span>
+                            <span class="n">classes</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">py_undoc</span><span class="p">[</span><span class="n">mod_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;funcs&#39;</span><span class="p">:</span> <span class="n">funcs</span><span class="p">,</span> <span class="s1">&#39;classes&#39;</span><span class="p">:</span> <span class="n">classes</span><span class="p">}</span></div>
+
+<div class="viewcode-block" id="CoverageBuilder.write_py_coverage"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.write_py_coverage.html#sphinx.ext.coverage.CoverageBuilder.write_py_coverage">[docs]</a>    <span class="k">def</span> <span class="nf">write_py_coverage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="s1">&#39;python.txt&#39;</span><span class="p">)</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">failed</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coverage_write_headline</span><span class="p">:</span>
+                <span class="n">write_header</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="s1">&#39;Undocumented Python objects&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">)</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">py_undoc</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+                <span class="n">undoc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">py_undoc</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">undoc</span><span class="p">:</span>
+                    <span class="n">failed</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">undoc</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">undoc</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">undoc</span><span class="p">[</span><span class="s1">&#39;funcs&#39;</span><span class="p">]:</span>
+                        <span class="k">continue</span>
+
+                    <span class="n">write_header</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">undoc</span><span class="p">[</span><span class="s1">&#39;funcs&#39;</span><span class="p">]:</span>
+                        <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Functions:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="n">op</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="s1">&#39; * </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">undoc</span><span class="p">[</span><span class="s1">&#39;funcs&#39;</span><span class="p">])</span>
+                        <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">undoc</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]:</span>
+                        <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Classes:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">methods</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+                                <span class="n">iteritems</span><span class="p">(</span><span class="n">undoc</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">])):</span>
+                            <span class="k">if</span> <span class="ow">not</span> <span class="n">methods</span><span class="p">:</span>
+                                <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; * </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; * </span><span class="si">%s</span><span class="s1"> -- missing methods:</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+                                <span class="n">op</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="s1">&#39;   - </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">methods</span><span class="p">)</span>
+                        <span class="n">op</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">failed</span><span class="p">:</span>
+                <span class="n">write_header</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="s1">&#39;Modules that failed to import&#39;</span><span class="p">)</span>
+                <span class="n">op</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="s1">&#39; * </span><span class="si">%s</span><span class="s1"> -- </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">failed</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CoverageBuilder.finish"><a class="viewcode-back" href="../../../generated/generated/sphinx.ext.coverage.CoverageBuilder.finish.html#sphinx.ext.coverage.CoverageBuilder.finish">[docs]</a>    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># dump the coverage data to a pickle file too</span>
+        <span class="n">picklepath</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="s1">&#39;undoc.pickle&#39;</span><span class="p">)</span>
+        <span class="n">dumpfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">picklepath</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">py_undoc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_undoc</span><span class="p">),</span> <span class="n">dumpfile</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">dumpfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../../generated/sphinx.ext.coverage.setup.html#sphinx.ext.coverage.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">CoverageBuilder</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;coverage_ignore_modules&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;coverage_ignore_functions&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;coverage_ignore_classes&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;coverage_c_path&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;coverage_c_regexes&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;coverage_ignore_c_items&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;coverage_write_headline&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;coverage_skip_undoc_in_source&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">__display_version__</span><span class="p">,</span> <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

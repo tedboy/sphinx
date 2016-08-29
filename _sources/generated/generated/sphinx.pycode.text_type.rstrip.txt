@@ -1,0 +1,6 @@
+sphinx.pycode.text_type.rstrip
+==============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: text_type.rstrip

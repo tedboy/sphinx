@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.add_transform
+======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.add_transform

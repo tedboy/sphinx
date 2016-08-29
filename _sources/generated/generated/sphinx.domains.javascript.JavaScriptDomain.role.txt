@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JavaScriptDomain.role
+===============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JavaScriptDomain.role

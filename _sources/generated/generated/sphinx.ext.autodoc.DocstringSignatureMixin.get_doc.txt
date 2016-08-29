@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DocstringSignatureMixin.get_doc
+==================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DocstringSignatureMixin.get_doc

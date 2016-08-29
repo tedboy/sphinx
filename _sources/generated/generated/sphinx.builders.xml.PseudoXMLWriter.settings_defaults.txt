@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLWriter.settings_defaults
+=====================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLWriter.settings_defaults

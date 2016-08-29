@@ -1,0 +1,67 @@
+.. automodule:: sphinx.search
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      iteritems
+      itervalues
+      parse_stop_word
+      rpartition
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      IndexBuilder
+      NodeVisitor
+      SearchEnglish
+      SearchLanguage
+      Text
+      WordCollector
+      comment
+      raw
+      text_type
+      title
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.search.IndexBuilder
+       generated/sphinx.search.NodeVisitor
+       generated/sphinx.search.SearchEnglish
+       generated/sphinx.search.SearchLanguage
+       generated/sphinx.search.Text
+       generated/sphinx.search.WordCollector
+       generated/sphinx.search.comment
+       generated/sphinx.search.raw
+       generated/sphinx.search.text_type
+       generated/sphinx.search.title
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      SkipNode
+   
+   

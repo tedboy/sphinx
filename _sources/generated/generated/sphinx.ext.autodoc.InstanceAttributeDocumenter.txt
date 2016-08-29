@@ -1,0 +1,54 @@
+sphinx.ext.autodoc.InstanceAttributeDocumenter
+==============================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: InstanceAttributeDocumenter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~InstanceAttributeDocumenter.__init__
+   ~InstanceAttributeDocumenter.add_content
+   ~InstanceAttributeDocumenter.add_directive_header
+   ~InstanceAttributeDocumenter.add_line
+   ~InstanceAttributeDocumenter.can_document_member
+   ~InstanceAttributeDocumenter.check_module
+   ~InstanceAttributeDocumenter.document_members
+   ~InstanceAttributeDocumenter.filter_members
+   ~InstanceAttributeDocumenter.format_args
+   ~InstanceAttributeDocumenter.format_name
+   ~InstanceAttributeDocumenter.format_signature
+   ~InstanceAttributeDocumenter.generate
+   ~InstanceAttributeDocumenter.get_attr
+   ~InstanceAttributeDocumenter.get_doc
+   ~InstanceAttributeDocumenter.get_object_members
+   ~InstanceAttributeDocumenter.get_real_modname
+   ~InstanceAttributeDocumenter.get_sourcename
+   ~InstanceAttributeDocumenter.import_object
+   ~InstanceAttributeDocumenter.parse_name
+   ~InstanceAttributeDocumenter.process_doc
+   ~InstanceAttributeDocumenter.resolve_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~InstanceAttributeDocumenter.content_indent
+   ~InstanceAttributeDocumenter.directivetype
+   ~InstanceAttributeDocumenter.member_order
+   ~InstanceAttributeDocumenter.method_types
+   ~InstanceAttributeDocumenter.objtype
+   ~InstanceAttributeDocumenter.option_spec
+   ~InstanceAttributeDocumenter.priority
+   ~InstanceAttributeDocumenter.titles_allowed
+

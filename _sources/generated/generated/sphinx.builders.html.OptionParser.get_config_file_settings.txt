@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.get_config_file_settings
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: OptionParser.get_config_file_settings

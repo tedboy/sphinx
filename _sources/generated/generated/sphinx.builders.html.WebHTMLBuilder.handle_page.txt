@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.handle_page
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.handle_page

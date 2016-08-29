@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.setdefault
+==========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.setdefault

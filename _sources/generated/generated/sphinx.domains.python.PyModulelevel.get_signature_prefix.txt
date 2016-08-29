@@ -1,0 +1,6 @@
+sphinx.domains.python.PyModulelevel.get_signature_prefix
+========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyModulelevel.get_signature_prefix

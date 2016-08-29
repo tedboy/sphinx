@@ -1,0 +1,6 @@
+sphinx.domains.PythonDomain.find_obj
+====================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: PythonDomain.find_obj

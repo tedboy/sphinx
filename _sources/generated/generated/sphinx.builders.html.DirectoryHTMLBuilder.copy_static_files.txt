@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.copy_static_files
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.copy_static_files

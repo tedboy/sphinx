@@ -1,0 +1,47 @@
+sphinx.domains.rst.ReSTRole
+===========================
+.. currentmodule:: sphinx.domains.rst
+.. autoclass:: ReSTRole
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ReSTRole.__init__
+   ~ReSTRole.add_name
+   ~ReSTRole.add_target_and_index
+   ~ReSTRole.after_content
+   ~ReSTRole.assert_has_content
+   ~ReSTRole.before_content
+   ~ReSTRole.debug
+   ~ReSTRole.directive_error
+   ~ReSTRole.error
+   ~ReSTRole.get_index_text
+   ~ReSTRole.get_signatures
+   ~ReSTRole.handle_signature
+   ~ReSTRole.info
+   ~ReSTRole.run
+   ~ReSTRole.severe
+   ~ReSTRole.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ReSTRole.doc_field_types
+   ~ReSTRole.final_argument_whitespace
+   ~ReSTRole.has_content
+   ~ReSTRole.option_spec
+   ~ReSTRole.optional_arguments
+   ~ReSTRole.required_arguments
+

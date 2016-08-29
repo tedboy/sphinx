@@ -1,0 +1,6 @@
+sphinx.builders.Builder.write_doc
+=================================
+
+.. currentmodule:: sphinx.builders
+
+.. automethod:: Builder.write_doc

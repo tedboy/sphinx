@@ -1,0 +1,6 @@
+sphinx.search.text_type.expandtabs
+==================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.expandtabs

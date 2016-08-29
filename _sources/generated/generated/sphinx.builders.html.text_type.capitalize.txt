@@ -1,0 +1,6 @@
+sphinx.builders.html.text_type.capitalize
+=========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: text_type.capitalize

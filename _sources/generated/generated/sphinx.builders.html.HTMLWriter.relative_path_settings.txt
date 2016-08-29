@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.relative_path_settings
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.relative_path_settings

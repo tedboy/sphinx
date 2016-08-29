@@ -1,0 +1,6 @@
+sphinx.search.title.get
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.get

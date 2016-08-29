@@ -1,0 +1,6 @@
+sphinx.search.title.child_text_separator
+========================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: title.child_text_separator

@@ -1,0 +1,6 @@
+sphinx.search.text_type.center
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.center

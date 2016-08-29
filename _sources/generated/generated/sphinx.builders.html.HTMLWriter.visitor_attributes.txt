@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.visitor_attributes
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.visitor_attributes

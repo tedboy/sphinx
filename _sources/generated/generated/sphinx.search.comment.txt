@@ -1,0 +1,87 @@
+sphinx.search.comment
+=====================
+.. currentmodule:: sphinx.search
+.. autoclass:: comment
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~comment.__init__
+   ~comment.append
+   ~comment.append_attr_list
+   ~comment.asdom
+   ~comment.astext
+   ~comment.attlist
+   ~comment.clear
+   ~comment.coerce_append_attr_list
+   ~comment.copy
+   ~comment.copy_attr_coerce
+   ~comment.copy_attr_concatenate
+   ~comment.copy_attr_consistent
+   ~comment.copy_attr_convert
+   ~comment.deepcopy
+   ~comment.delattr
+   ~comment.emptytag
+   ~comment.endtag
+   ~comment.extend
+   ~comment.first_child_matching_class
+   ~comment.first_child_not_matching_class
+   ~comment.get
+   ~comment.get_language_code
+   ~comment.has_key
+   ~comment.hasattr
+   ~comment.index
+   ~comment.insert
+   ~comment.is_not_default
+   ~comment.is_not_known_attribute
+   ~comment.is_not_list_attribute
+   ~comment.next_node
+   ~comment.non_default_attributes
+   ~comment.note_referenced_by
+   ~comment.pformat
+   ~comment.pop
+   ~comment.remove
+   ~comment.replace
+   ~comment.replace_attr
+   ~comment.replace_self
+   ~comment.set_class
+   ~comment.setdefault
+   ~comment.setup_child
+   ~comment.shortrepr
+   ~comment.starttag
+   ~comment.traverse
+   ~comment.update_all_atts
+   ~comment.update_all_atts_coercion
+   ~comment.update_all_atts_concatenating
+   ~comment.update_all_atts_consistantly
+   ~comment.update_all_atts_convert
+   ~comment.update_basic_atts
+   ~comment.walk
+   ~comment.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~comment.basic_attributes
+   ~comment.child_text_separator
+   ~comment.document
+   ~comment.known_attributes
+   ~comment.line
+   ~comment.list_attributes
+   ~comment.local_attributes
+   ~comment.parent
+   ~comment.source
+   ~comment.tagname
+

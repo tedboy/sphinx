@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.InstanceAttributeDocumenter.content_indent
+=============================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: InstanceAttributeDocumenter.content_indent

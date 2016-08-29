@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.darkgray
+==================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: darkgray

@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.starttag
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.starttag

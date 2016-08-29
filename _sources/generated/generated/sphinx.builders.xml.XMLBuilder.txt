@@ -1,0 +1,54 @@
+sphinx.builders.xml.XMLBuilder
+==============================
+.. currentmodule:: sphinx.builders.xml
+.. autoclass:: XMLBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~XMLBuilder.__init__
+   ~XMLBuilder.build
+   ~XMLBuilder.build_all
+   ~XMLBuilder.build_specific
+   ~XMLBuilder.build_update
+   ~XMLBuilder.cleanup
+   ~XMLBuilder.compile_all_catalogs
+   ~XMLBuilder.compile_catalogs
+   ~XMLBuilder.compile_specific_catalogs
+   ~XMLBuilder.compile_update_catalogs
+   ~XMLBuilder.create_template_bridge
+   ~XMLBuilder.finish
+   ~XMLBuilder.get_builder_config
+   ~XMLBuilder.get_outdated_docs
+   ~XMLBuilder.get_relative_uri
+   ~XMLBuilder.get_target_uri
+   ~XMLBuilder.init
+   ~XMLBuilder.post_process_images
+   ~XMLBuilder.prepare_writing
+   ~XMLBuilder.write
+   ~XMLBuilder.write_doc
+   ~XMLBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~XMLBuilder.allow_parallel
+   ~XMLBuilder.format
+   ~XMLBuilder.name
+   ~XMLBuilder.out_suffix
+   ~XMLBuilder.supported_image_types
+   ~XMLBuilder.versioning_compare
+   ~XMLBuilder.versioning_method
+

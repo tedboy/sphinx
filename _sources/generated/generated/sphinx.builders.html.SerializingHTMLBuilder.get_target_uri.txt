@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.get_target_uri
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.get_target_uri

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.trim_end
+=====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.trim_end

@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.popitem
+====================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.popitem

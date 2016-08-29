@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.assert_has_content
+==============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Glossary.assert_has_content

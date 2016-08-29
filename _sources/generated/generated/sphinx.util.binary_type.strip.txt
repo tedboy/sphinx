@@ -1,0 +1,6 @@
+sphinx.util.binary_type.strip
+=============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: binary_type.strip

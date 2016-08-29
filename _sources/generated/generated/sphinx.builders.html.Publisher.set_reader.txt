@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.set_reader
+=========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.set_reader

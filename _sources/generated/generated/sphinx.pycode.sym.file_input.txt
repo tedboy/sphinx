@@ -1,0 +1,6 @@
+sphinx.pycode.sym.file_input
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.file_input

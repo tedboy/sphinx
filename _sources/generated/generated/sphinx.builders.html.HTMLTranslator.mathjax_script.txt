@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.mathjax_script
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.mathjax_script

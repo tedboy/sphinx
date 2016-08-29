@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.add_name
+======================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.add_name

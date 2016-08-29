@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.is_not_known_attribute
+===============================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: math.is_not_known_attribute

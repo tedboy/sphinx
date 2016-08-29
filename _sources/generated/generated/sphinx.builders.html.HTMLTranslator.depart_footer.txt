@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.depart_footer
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.depart_footer

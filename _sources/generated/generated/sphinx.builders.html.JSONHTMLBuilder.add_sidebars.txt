@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.add_sidebars
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.add_sidebars

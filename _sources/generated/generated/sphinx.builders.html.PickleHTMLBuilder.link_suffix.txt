@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.link_suffix
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: PickleHTMLBuilder.link_suffix

@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.bulk_text_processor
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.bulk_text_processor

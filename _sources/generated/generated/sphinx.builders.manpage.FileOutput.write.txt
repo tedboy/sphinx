@@ -1,0 +1,6 @@
+sphinx.builders.manpage.FileOutput.write
+========================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: FileOutput.write

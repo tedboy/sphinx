@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.Builder.post_process_images
+===================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: Builder.post_process_images

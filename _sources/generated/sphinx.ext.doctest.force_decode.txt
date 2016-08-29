@@ -1,0 +1,6 @@
+sphinx.ext.doctest.force_decode
+===============================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autofunction:: force_decode

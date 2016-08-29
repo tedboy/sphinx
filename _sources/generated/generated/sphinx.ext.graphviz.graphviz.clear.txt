@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.clear
+==================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.clear

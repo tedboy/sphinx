@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.run
+===============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.run

@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.indextemplate
+=======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: EnvVar.indextemplate

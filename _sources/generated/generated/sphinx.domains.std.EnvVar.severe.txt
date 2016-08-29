@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.severe
+================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.severe

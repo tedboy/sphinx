@@ -1,0 +1,6 @@
+sphinx.builders.gettext.I18nBuilder.compile_update_catalogs
+===========================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: I18nBuilder.compile_update_catalogs

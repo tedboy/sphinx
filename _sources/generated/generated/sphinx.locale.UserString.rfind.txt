@@ -1,0 +1,6 @@
+sphinx.locale.UserString.rfind
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.rfind

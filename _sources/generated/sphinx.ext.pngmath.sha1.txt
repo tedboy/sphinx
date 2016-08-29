@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.sha1
+=======================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: sha1

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.get_starttag_text
+======================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.get_starttag_text

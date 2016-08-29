@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.copy_download_files
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.copy_download_files

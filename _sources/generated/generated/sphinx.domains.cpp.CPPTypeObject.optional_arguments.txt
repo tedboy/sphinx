@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.optional_arguments
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPTypeObject.optional_arguments

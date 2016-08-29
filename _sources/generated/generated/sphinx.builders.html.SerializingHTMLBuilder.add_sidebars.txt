@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.add_sidebars
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.add_sidebars

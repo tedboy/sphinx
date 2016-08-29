@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.update_all_atts_convert
+================================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.update_all_atts_convert

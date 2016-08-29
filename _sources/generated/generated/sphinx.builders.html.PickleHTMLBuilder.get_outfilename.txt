@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.get_outfilename
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.get_outfilename

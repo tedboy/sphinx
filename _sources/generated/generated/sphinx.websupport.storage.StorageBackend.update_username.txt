@@ -1,0 +1,6 @@
+sphinx.websupport.storage.StorageBackend.update_username
+========================================================
+
+.. currentmodule:: sphinx.websupport.storage
+
+.. automethod:: StorageBackend.update_username

@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. sphinx.builders &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="index.html"/>
+        <link rel="next" title="4.1. sphinx.builders" href="generated/sphinx.builders.html"/>
+        <link rel="prev" title="3.16.2.2.1.40. sphinx.ext.viewcode.text_type.zfill" href="generated/generated/sphinx.ext.viewcode.text_type.zfill.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.epub.html">4.4. sphinx.builders.epub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.html.html">4.6. sphinx.builders.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.builders.xml.html">4.15. sphinx.builders.xml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sphinx.builders.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-builders">
+<h1>4. <a class="reference internal" href="generated/sphinx.builders.html#module-sphinx.builders" title="sphinx.builders"><code class="xref py py-mod docutils literal"><span class="pre">sphinx.builders</span></code></a><a class="headerlink" href="#sphinx-builders" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.epub.html">4.4. sphinx.builders.epub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.html.html">4.6. sphinx.builders.html</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.builders.xml.html">4.15. sphinx.builders.xml</a></li>
+</ul>
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.builders.html#module-sphinx.builders" title="sphinx.builders"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders</span></code></a></td>
+<td>sphinx.builders</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.apphelp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.builders.changes.html#module-sphinx.builders.changes" title="sphinx.builders.changes"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.changes</span></code></a></td>
+<td>sphinx.builders.changes</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.builders.devhelp.html#module-sphinx.builders.devhelp" title="sphinx.builders.devhelp"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.devhelp</span></code></a></td>
+<td>sphinx.builders.devhelp</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.builders.epub.html#module-sphinx.builders.epub" title="sphinx.builders.epub"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.epub</span></code></a></td>
+<td>sphinx.builders.epub</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.builders.gettext.html#module-sphinx.builders.gettext" title="sphinx.builders.gettext"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.gettext</span></code></a></td>
+<td>sphinx.builders.gettext</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.builders.html.html#module-sphinx.builders.html" title="sphinx.builders.html"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.html</span></code></a></td>
+<td>sphinx.builders.html</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.builders.htmlhelp.html#module-sphinx.builders.htmlhelp" title="sphinx.builders.htmlhelp"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.htmlhelp</span></code></a></td>
+<td>sphinx.builders.htmlhelp</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.builders.latex.html#module-sphinx.builders.latex" title="sphinx.builders.latex"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.latex</span></code></a></td>
+<td>sphinx.builders.latex</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.builders.linkcheck.html#module-sphinx.builders.linkcheck" title="sphinx.builders.linkcheck"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.linkcheck</span></code></a></td>
+<td>sphinx.builders.linkcheck</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.builders.manpage.html#module-sphinx.builders.manpage" title="sphinx.builders.manpage"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.manpage</span></code></a></td>
+<td>sphinx.builders.manpage</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.builders.qthelp.html#module-sphinx.builders.qthelp" title="sphinx.builders.qthelp"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.qthelp</span></code></a></td>
+<td>sphinx.builders.qthelp</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.builders.texinfo.html#module-sphinx.builders.texinfo" title="sphinx.builders.texinfo"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.texinfo</span></code></a></td>
+<td>sphinx.builders.texinfo</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.builders.text.html#module-sphinx.builders.text" title="sphinx.builders.text"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.text</span></code></a></td>
+<td>sphinx.builders.text</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.builders.websupport.html#module-sphinx.builders.websupport" title="sphinx.builders.websupport"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.websupport</span></code></a></td>
+<td>sphinx.builders.websupport</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.builders.xml.html#module-sphinx.builders.xml" title="sphinx.builders.xml"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.builders.xml</span></code></a></td>
+<td>sphinx.builders.xml</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/sphinx.builders.html" class="btn btn-neutral float-right" title="4.1. sphinx.builders" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/generated/sphinx.ext.viewcode.text_type.zfill.html" class="btn btn-neutral" title="3.16.2.2.1.40. sphinx.ext.viewcode.text_type.zfill" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

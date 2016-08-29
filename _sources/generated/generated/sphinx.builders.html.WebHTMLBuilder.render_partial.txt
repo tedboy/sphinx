@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.render_partial
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.render_partial

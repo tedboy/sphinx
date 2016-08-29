@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.add_name
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.add_name

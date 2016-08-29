@@ -1,0 +1,33 @@
+sphinx.domains.cpp.ASTDeclSpecs
+===============================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTDeclSpecs
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTDeclSpecs.__init__
+   ~ASTDeclSpecs.clone
+   ~ASTDeclSpecs.describe_signature
+   ~ASTDeclSpecs.get_id_v1
+   ~ASTDeclSpecs.get_id_v2
+   ~ASTDeclSpecs.get_name
+   ~ASTDeclSpecs.prefix_nested_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ASTDeclSpecs.name
+

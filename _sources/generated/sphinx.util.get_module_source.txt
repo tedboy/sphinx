@@ -1,0 +1,6 @@
+sphinx.util.get_module_source
+=============================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: get_module_source

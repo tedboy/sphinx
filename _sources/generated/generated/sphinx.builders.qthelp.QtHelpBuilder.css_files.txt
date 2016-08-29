@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.css_files
+==============================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.css_files

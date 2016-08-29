@@ -1,0 +1,25 @@
+sphinx.domains.cpp.ASTTemplateArgConstant
+=========================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTTemplateArgConstant
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTTemplateArgConstant.__init__
+   ~ASTTemplateArgConstant.clone
+   ~ASTTemplateArgConstant.describe_signature
+   ~ASTTemplateArgConstant.get_id_v1
+   ~ASTTemplateArgConstant.get_id_v2
+   ~ASTTemplateArgConstant.get_name
+   ~ASTTemplateArgConstant.prefix_nested_name
+
+
+
+
+

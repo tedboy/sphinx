@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.__init__
+=========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.__init__

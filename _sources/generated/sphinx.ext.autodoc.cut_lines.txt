@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.cut_lines
+============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: cut_lines

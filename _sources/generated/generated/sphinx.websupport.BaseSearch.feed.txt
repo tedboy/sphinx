@@ -1,0 +1,6 @@
+sphinx.websupport.BaseSearch.feed
+=================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: BaseSearch.feed

@@ -1,0 +1,6 @@
+sphinx.locale.UserString.isalnum
+================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.isalnum

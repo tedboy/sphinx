@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.strftime
+=========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.strftime

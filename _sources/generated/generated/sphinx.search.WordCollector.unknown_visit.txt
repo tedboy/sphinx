@@ -1,0 +1,6 @@
+sphinx.search.WordCollector.unknown_visit
+=========================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: WordCollector.unknown_visit

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.write_doc_serialized
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.write_doc_serialized

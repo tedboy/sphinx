@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.6. sphinx.ext.graphviz &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../index.html"/>
+        <link rel="up" title="3. sphinx.ext" href="../sphinx.ext.html"/>
+        <link rel="next" title="3.6.1.1. sphinx.ext.graphviz.ensuredir" href="sphinx.ext.graphviz.ensuredir.html"/>
+        <link rel="prev" title="3.5.1.5. sphinx.ext.extlinks.split_explicit_title" href="sphinx.ext.extlinks.split_explicit_title.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.html">3.1. sphinx.ext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.autodoc.html">3.2. sphinx.ext.autodoc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.coverage.html">3.3. sphinx.ext.coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.doctest.html">3.4. sphinx.ext.doctest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.extlinks.html">3.5. sphinx.ext.extlinks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">3.6. sphinx.ext.graphviz</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">3.6.1. Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.ensuredir.html">3.6.1.1. sphinx.ext.graphviz.ensuredir</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.figure_wrapper.html">3.6.1.2. sphinx.ext.graphviz.figure_wrapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.html_visit_graphviz.html">3.6.1.3. sphinx.ext.graphviz.html_visit_graphviz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.latex_visit_graphviz.html">3.6.1.4. sphinx.ext.graphviz.latex_visit_graphviz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.man_visit_graphviz.html">3.6.1.5. sphinx.ext.graphviz.man_visit_graphviz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.render_dot.html">3.6.1.6. sphinx.ext.graphviz.render_dot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.render_dot_html.html">3.6.1.7. sphinx.ext.graphviz.render_dot_html</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.render_dot_latex.html">3.6.1.8. sphinx.ext.graphviz.render_dot_latex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.render_dot_texinfo.html">3.6.1.9. sphinx.ext.graphviz.render_dot_texinfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.setup.html">3.6.1.10. sphinx.ext.graphviz.setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.sha1.html">3.6.1.11. sphinx.ext.graphviz.sha1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.texinfo_visit_graphviz.html">3.6.1.12. sphinx.ext.graphviz.texinfo_visit_graphviz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.text_visit_graphviz.html">3.6.1.13. sphinx.ext.graphviz.text_visit_graphviz</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">3.6.2. Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.graphviz.Directive.html">3.6.2.1. sphinx.ext.graphviz.Directive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.graphviz.Graphviz.html">3.6.2.2. sphinx.ext.graphviz.Graphviz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.graphviz.GraphvizSimple.html">3.6.2.3. sphinx.ext.graphviz.GraphvizSimple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.graphviz.Popen.html">3.6.2.4. sphinx.ext.graphviz.Popen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.graphviz.ViewList.html">3.6.2.5. sphinx.ext.graphviz.ViewList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.graphviz.graphviz.html">3.6.2.6. sphinx.ext.graphviz.graphviz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sphinx.ext.graphviz.text_type.html">3.6.2.7. sphinx.ext.graphviz.text_type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#exceptions">3.6.3. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.GraphvizError.html">3.6.3.1. sphinx.ext.graphviz.GraphvizError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.ext.graphviz.SphinxError.html">3.6.3.2. sphinx.ext.graphviz.SphinxError</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.ifconfig.html">3.7. sphinx.ext.ifconfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.inheritance_diagram.html">3.8. sphinx.ext.inheritance_diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.intersphinx.html">3.9. sphinx.ext.intersphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.jsmath.html">3.10. sphinx.ext.jsmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.linkcode.html">3.11. sphinx.ext.linkcode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.mathbase.html">3.12. sphinx.ext.mathbase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.mathjax.html">3.13. sphinx.ext.mathjax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.pngmath.html">3.14. sphinx.ext.pngmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.todo.html">3.15. sphinx.ext.todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx.ext.viewcode.html">3.16. sphinx.ext.viewcode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a> &raquo;</li>
+        
+      <li>3.6. sphinx.ext.graphviz</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/sphinx.ext.graphviz.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-sphinx.ext.graphviz"></span><div class="section" id="sphinx-ext-graphviz">
+<h1>3.6. sphinx.ext.graphviz<a class="headerlink" href="#sphinx-ext-graphviz" title="Permalink to this headline">¶</a></h1>
+<p>Allow graphviz-formatted graphs to be included in Sphinx-generated
+documents inline.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Copyright 2007-2016 by the Sphinx team, see AUTHORS.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD, see LICENSE for details.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="functions">
+<h2>3.6.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.graphviz.ensuredir.html#sphinx.ext.graphviz.ensuredir" title="sphinx.ext.graphviz.ensuredir"><code class="xref py py-obj docutils literal"><span class="pre">ensuredir</span></code></a>(path)</td>
+<td>Ensure that a path exists.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.graphviz.figure_wrapper.html#sphinx.ext.graphviz.figure_wrapper" title="sphinx.ext.graphviz.figure_wrapper"><code class="xref py py-obj docutils literal"><span class="pre">figure_wrapper</span></code></a>(directive,&nbsp;node,&nbsp;caption)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.graphviz.html_visit_graphviz.html#sphinx.ext.graphviz.html_visit_graphviz" title="sphinx.ext.graphviz.html_visit_graphviz"><code class="xref py py-obj docutils literal"><span class="pre">html_visit_graphviz</span></code></a>(self,&nbsp;node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.graphviz.latex_visit_graphviz.html#sphinx.ext.graphviz.latex_visit_graphviz" title="sphinx.ext.graphviz.latex_visit_graphviz"><code class="xref py py-obj docutils literal"><span class="pre">latex_visit_graphviz</span></code></a>(self,&nbsp;node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.graphviz.man_visit_graphviz.html#sphinx.ext.graphviz.man_visit_graphviz" title="sphinx.ext.graphviz.man_visit_graphviz"><code class="xref py py-obj docutils literal"><span class="pre">man_visit_graphviz</span></code></a>(self,&nbsp;node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.graphviz.render_dot.html#sphinx.ext.graphviz.render_dot" title="sphinx.ext.graphviz.render_dot"><code class="xref py py-obj docutils literal"><span class="pre">render_dot</span></code></a>(self,&nbsp;code,&nbsp;options,&nbsp;format[,&nbsp;prefix])</td>
+<td>Render graphviz code into a PNG or PDF output file.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.graphviz.render_dot_html.html#sphinx.ext.graphviz.render_dot_html" title="sphinx.ext.graphviz.render_dot_html"><code class="xref py py-obj docutils literal"><span class="pre">render_dot_html</span></code></a>(self,&nbsp;node,&nbsp;code,&nbsp;options[,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.graphviz.render_dot_latex.html#sphinx.ext.graphviz.render_dot_latex" title="sphinx.ext.graphviz.render_dot_latex"><code class="xref py py-obj docutils literal"><span class="pre">render_dot_latex</span></code></a>(self,&nbsp;node,&nbsp;code,&nbsp;options)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.graphviz.render_dot_texinfo.html#sphinx.ext.graphviz.render_dot_texinfo" title="sphinx.ext.graphviz.render_dot_texinfo"><code class="xref py py-obj docutils literal"><span class="pre">render_dot_texinfo</span></code></a>(self,&nbsp;node,&nbsp;code,&nbsp;options)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.graphviz.setup.html#sphinx.ext.graphviz.setup" title="sphinx.ext.graphviz.setup"><code class="xref py py-obj docutils literal"><span class="pre">setup</span></code></a>(app)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.graphviz.sha1.html#sphinx.ext.graphviz.sha1" title="sphinx.ext.graphviz.sha1"><code class="xref py py-obj docutils literal"><span class="pre">sha1</span></code></a></td>
+<td>Returns a sha1 hash object; optionally initialized with a string</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.graphviz.texinfo_visit_graphviz.html#sphinx.ext.graphviz.texinfo_visit_graphviz" title="sphinx.ext.graphviz.texinfo_visit_graphviz"><code class="xref py py-obj docutils literal"><span class="pre">texinfo_visit_graphviz</span></code></a>(self,&nbsp;node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.graphviz.text_visit_graphviz.html#sphinx.ext.graphviz.text_visit_graphviz" title="sphinx.ext.graphviz.text_visit_graphviz"><code class="xref py py-obj docutils literal"><span class="pre">text_visit_graphviz</span></code></a>(self,&nbsp;node)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="classes">
+<h2>3.6.2. Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.graphviz.Directive.html#sphinx.ext.graphviz.Directive" title="sphinx.ext.graphviz.Directive"><code class="xref py py-obj docutils literal"><span class="pre">Directive</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td>Base class for reStructuredText directives.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.graphviz.Graphviz.html#sphinx.ext.graphviz.Graphviz" title="sphinx.ext.graphviz.Graphviz"><code class="xref py py-obj docutils literal"><span class="pre">Graphviz</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;content,&nbsp;...)</td>
+<td>Directive to insert arbitrary dot markup.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.graphviz.GraphvizSimple.html#sphinx.ext.graphviz.GraphvizSimple" title="sphinx.ext.graphviz.GraphvizSimple"><code class="xref py py-obj docutils literal"><span class="pre">GraphvizSimple</span></code></a>(name,&nbsp;arguments,&nbsp;options,&nbsp;...)</td>
+<td>Directive to insert arbitrary dot markup.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.graphviz.Popen.html#sphinx.ext.graphviz.Popen" title="sphinx.ext.graphviz.Popen"><code class="xref py py-obj docutils literal"><span class="pre">Popen</span></code></a>(args[,&nbsp;bufsize,&nbsp;executable,&nbsp;stdin,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.graphviz.ViewList.html#sphinx.ext.graphviz.ViewList" title="sphinx.ext.graphviz.ViewList"><code class="xref py py-obj docutils literal"><span class="pre">ViewList</span></code></a>([initlist,&nbsp;source,&nbsp;items,&nbsp;parent,&nbsp;...])</td>
+<td>List with extended functionality: slices of ViewList objects are child lists, linked to their parents.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.graphviz.graphviz.html#sphinx.ext.graphviz.graphviz" title="sphinx.ext.graphviz.graphviz"><code class="xref py py-obj docutils literal"><span class="pre">graphviz</span></code></a>([rawsource])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.graphviz.text_type.html#sphinx.ext.graphviz.text_type" title="sphinx.ext.graphviz.text_type"><code class="xref py py-obj docutils literal"><span class="pre">text_type</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">unicode</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="exceptions">
+<h2>3.6.3. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.ext.graphviz.GraphvizError.html#sphinx.ext.graphviz.GraphvizError" title="sphinx.ext.graphviz.GraphvizError"><code class="xref py py-obj docutils literal"><span class="pre">GraphvizError</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.ext.graphviz.SphinxError.html#sphinx.ext.graphviz.SphinxError" title="sphinx.ext.graphviz.SphinxError"><code class="xref py py-obj docutils literal"><span class="pre">SphinxError</span></code></a></td>
+<td>Base class for Sphinx errors that are shown to the user in a nicer way than normal exceptions.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.ext.graphviz.ensuredir.html" class="btn btn-neutral float-right" title="3.6.1.1. sphinx.ext.graphviz.ensuredir" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.ext.extlinks.split_explicit_title.html" class="btn btn-neutral" title="3.5.1.5. sphinx.ext.extlinks.split_explicit_title" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

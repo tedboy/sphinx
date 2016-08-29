@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.__init__
+=====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.__init__

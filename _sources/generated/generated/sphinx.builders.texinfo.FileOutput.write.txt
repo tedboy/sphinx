@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.FileOutput.write
+========================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: FileOutput.write

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTBaseClass.clone
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTBaseClass.clone

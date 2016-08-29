@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.globalcontext_filename
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.globalcontext_filename

@@ -1,0 +1,6 @@
+sphinx.pycode.sym.COLON
+=======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.COLON

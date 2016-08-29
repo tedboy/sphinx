@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTType.describe_signature
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTType.describe_signature

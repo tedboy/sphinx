@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.default_transforms
+==================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextWriter.default_transforms

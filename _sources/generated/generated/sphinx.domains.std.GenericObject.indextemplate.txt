@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.indextemplate
+==============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: GenericObject.indextemplate

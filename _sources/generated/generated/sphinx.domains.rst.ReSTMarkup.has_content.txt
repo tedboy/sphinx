@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.has_content
+=========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTMarkup.has_content

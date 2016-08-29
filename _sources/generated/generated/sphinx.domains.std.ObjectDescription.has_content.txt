@@ -1,0 +1,6 @@
+sphinx.domains.std.ObjectDescription.has_content
+================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: ObjectDescription.has_content

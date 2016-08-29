@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.optional_arguments
+==================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: Directive.optional_arguments

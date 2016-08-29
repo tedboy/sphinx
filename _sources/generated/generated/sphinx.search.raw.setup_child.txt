@@ -1,0 +1,6 @@
+sphinx.search.raw.setup_child
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.setup_child

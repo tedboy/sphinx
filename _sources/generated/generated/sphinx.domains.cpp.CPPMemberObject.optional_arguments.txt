@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPMemberObject.optional_arguments
+=====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPMemberObject.optional_arguments

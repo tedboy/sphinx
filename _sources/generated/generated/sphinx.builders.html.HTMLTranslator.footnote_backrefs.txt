@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.footnote_backrefs
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.footnote_backrefs

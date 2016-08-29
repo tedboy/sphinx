@@ -1,0 +1,6 @@
+sphinx.pycode.sym.except_clause
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.except_clause

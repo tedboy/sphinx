@@ -1,0 +1,6 @@
+sphinx.builders.gettext.I18nBuilder.finish
+==========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: I18nBuilder.finish

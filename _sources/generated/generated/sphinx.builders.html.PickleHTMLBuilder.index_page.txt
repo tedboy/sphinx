@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.index_page
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.index_page

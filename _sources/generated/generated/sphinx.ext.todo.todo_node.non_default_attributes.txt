@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.non_default_attributes
+================================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todo_node.non_default_attributes

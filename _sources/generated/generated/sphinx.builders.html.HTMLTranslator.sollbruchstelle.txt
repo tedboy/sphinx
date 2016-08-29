@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.sollbruchstelle
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.sollbruchstelle

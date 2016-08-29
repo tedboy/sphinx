@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.unimplemented_visit
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.unimplemented_visit

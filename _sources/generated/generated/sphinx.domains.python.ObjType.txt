@@ -1,0 +1,27 @@
+sphinx.domains.python.ObjType
+=============================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: ObjType
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ObjType.__init__
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ObjType.known_attrs
+

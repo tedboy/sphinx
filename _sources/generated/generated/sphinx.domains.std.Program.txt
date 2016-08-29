@@ -1,0 +1,40 @@
+sphinx.domains.std.Program
+==========================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: Program
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Program.__init__
+   ~Program.add_name
+   ~Program.assert_has_content
+   ~Program.debug
+   ~Program.directive_error
+   ~Program.error
+   ~Program.info
+   ~Program.run
+   ~Program.severe
+   ~Program.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Program.final_argument_whitespace
+   ~Program.has_content
+   ~Program.option_spec
+   ~Program.optional_arguments
+   ~Program.required_arguments
+

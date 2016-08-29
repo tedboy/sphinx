@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.css_files
+======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.css_files

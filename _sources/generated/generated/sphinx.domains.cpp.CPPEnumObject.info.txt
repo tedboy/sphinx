@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.info
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumObject.info

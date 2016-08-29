@@ -1,0 +1,6 @@
+sphinx.pycode.ModuleAnalyzer.find_tags
+======================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: ModuleAnalyzer.find_tags

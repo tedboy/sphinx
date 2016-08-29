@@ -1,0 +1,6 @@
+sphinx.search.raw.replace
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.replace

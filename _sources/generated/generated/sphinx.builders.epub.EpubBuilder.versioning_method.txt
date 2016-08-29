@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.versioning_method
+==================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: EpubBuilder.versioning_method

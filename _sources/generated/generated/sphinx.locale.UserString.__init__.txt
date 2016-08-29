@@ -1,0 +1,6 @@
+sphinx.locale.UserString.__init__
+=================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.__init__

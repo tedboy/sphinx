@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVarXRefRole.process_link
+==============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVarXRefRole.process_link

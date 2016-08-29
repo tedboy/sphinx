@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.next_node
+======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.next_node

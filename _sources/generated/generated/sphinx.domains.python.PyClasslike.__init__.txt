@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.__init__
+==========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.__init__

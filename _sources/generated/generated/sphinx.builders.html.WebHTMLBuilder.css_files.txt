@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.css_files
+=============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: WebHTMLBuilder.css_files

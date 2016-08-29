@@ -1,0 +1,6 @@
+sphinx.domains.python.iteritems
+===============================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autofunction:: iteritems

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.has_key
+=================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.has_key

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.error
+=================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.error

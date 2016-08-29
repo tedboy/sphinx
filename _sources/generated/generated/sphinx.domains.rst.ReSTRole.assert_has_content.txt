@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.assert_has_content
+==============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.assert_has_content

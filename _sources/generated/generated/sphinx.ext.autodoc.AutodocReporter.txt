@@ -1,0 +1,25 @@
+sphinx.ext.autodoc.AutodocReporter
+==================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: AutodocReporter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~AutodocReporter.__init__
+   ~AutodocReporter.debug
+   ~AutodocReporter.error
+   ~AutodocReporter.info
+   ~AutodocReporter.severe
+   ~AutodocReporter.system_message
+   ~AutodocReporter.warning
+
+
+
+
+

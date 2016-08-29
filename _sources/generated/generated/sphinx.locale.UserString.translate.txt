@@ -1,0 +1,6 @@
+sphinx.locale.UserString.translate
+==================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.translate

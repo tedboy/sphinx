@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.indexer_dumps_unicode
+==================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.indexer_dumps_unicode

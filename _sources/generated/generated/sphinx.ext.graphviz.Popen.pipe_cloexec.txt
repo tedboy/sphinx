@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Popen.pipe_cloexec
+======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Popen.pipe_cloexec

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.MethodDocumenter.content_indent
+==================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: MethodDocumenter.content_indent

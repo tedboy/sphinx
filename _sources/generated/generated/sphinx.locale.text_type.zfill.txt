@@ -1,0 +1,6 @@
+sphinx.locale.text_type.zfill
+=============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.zfill

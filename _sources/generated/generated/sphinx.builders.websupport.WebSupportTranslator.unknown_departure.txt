@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.unknown_departure
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.unknown_departure

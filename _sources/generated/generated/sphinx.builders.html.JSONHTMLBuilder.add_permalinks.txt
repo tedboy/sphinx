@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.add_permalinks
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.add_permalinks

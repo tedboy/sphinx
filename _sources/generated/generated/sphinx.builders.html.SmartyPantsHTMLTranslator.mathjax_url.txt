@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.mathjax_url
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.mathjax_url

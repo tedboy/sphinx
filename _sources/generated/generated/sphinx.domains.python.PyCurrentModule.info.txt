@@ -1,0 +1,6 @@
+sphinx.domains.python.PyCurrentModule.info
+==========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyCurrentModule.info

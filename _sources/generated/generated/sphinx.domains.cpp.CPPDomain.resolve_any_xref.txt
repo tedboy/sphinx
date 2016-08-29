@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPDomain.resolve_any_xref
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPDomain.resolve_any_xref

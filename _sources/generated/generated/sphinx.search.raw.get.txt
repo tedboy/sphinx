@@ -1,0 +1,6 @@
+sphinx.search.raw.get
+=====================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.get

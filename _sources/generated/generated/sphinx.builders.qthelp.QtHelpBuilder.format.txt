@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.format
+===========================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.format

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleLevelDocumenter.priority
+=================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ModuleLevelDocumenter.priority

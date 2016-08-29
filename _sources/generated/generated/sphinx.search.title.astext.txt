@@ -1,0 +1,6 @@
+sphinx.search.title.astext
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.astext

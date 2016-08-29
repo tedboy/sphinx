@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.has_content
+===================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSConstructor.has_content

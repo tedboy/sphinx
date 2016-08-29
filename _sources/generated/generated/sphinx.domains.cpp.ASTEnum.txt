@@ -1,0 +1,25 @@
+sphinx.domains.cpp.ASTEnum
+==========================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTEnum
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTEnum.__init__
+   ~ASTEnum.clone
+   ~ASTEnum.describe_signature
+   ~ASTEnum.get_id_v1
+   ~ASTEnum.get_id_v2
+   ~ASTEnum.get_name
+   ~ASTEnum.prefix_nested_name
+
+
+
+
+

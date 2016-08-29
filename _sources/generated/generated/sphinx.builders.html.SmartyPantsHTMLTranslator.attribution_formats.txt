@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.attribution_formats
+==================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.attribution_formats

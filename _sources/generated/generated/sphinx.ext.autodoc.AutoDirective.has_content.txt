@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.has_content
+============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: AutoDirective.has_content

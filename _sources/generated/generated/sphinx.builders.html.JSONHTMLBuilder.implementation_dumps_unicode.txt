@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.implementation_dumps_unicode
+=================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.implementation_dumps_unicode

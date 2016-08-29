@@ -1,0 +1,6 @@
+sphinx.locale.UserString.zfill
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.zfill

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.xitems
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.xitems

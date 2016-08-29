@@ -1,0 +1,6 @@
+sphinx.ext.doctest.SphinxDocTestRunner.report_unexpected_exception
+==================================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: SphinxDocTestRunner.report_unexpected_exception

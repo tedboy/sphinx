@@ -1,0 +1,6 @@
+sphinx.domains.std.Program.directive_error
+==========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Program.directive_error

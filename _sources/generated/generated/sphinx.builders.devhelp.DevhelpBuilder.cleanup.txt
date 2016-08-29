@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.cleanup
+==============================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.cleanup

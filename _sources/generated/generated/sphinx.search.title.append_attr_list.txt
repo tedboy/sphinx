@@ -1,0 +1,6 @@
+sphinx.search.title.append_attr_list
+====================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.append_attr_list

@@ -1,0 +1,6 @@
+sphinx.builders.changes.bold
+============================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. autofunction:: bold

@@ -1,0 +1,6 @@
+sphinx.util.deque.count
+=======================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.count

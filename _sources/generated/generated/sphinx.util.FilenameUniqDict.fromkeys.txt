@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.fromkeys
+=====================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.fromkeys

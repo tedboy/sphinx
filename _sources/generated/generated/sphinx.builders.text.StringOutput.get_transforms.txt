@@ -1,0 +1,6 @@
+sphinx.builders.text.StringOutput.get_transforms
+================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: StringOutput.get_transforms

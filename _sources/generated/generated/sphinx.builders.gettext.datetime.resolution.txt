@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.resolution
+===========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.resolution

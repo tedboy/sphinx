@@ -1,0 +1,118 @@
+.. automodule:: sphinx.ext.autodoc
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      add_documenter
+      annotation_option
+      assemble_option_dict
+      between
+      bool_option
+      cut_lines
+      force_decode
+      formatargspec
+      getargspec
+      identity
+      is_builtin_class_method
+      isdescriptor
+      iteritems
+      itervalues
+      members_option
+      members_set_option
+      mock_import
+      nested_parse_with_titles
+      object_description
+      prepare_docstring
+      rpartition
+      safe_getattr
+      safe_getmembers
+      setup
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      AttributeDocumenter
+      AutoDirective
+      AutodocReporter
+      BuiltinFunctionType
+      ClassDocumenter
+      ClassLevelDocumenter
+      DataDocumenter
+      DefDict
+      Directive
+      DocstringSignatureMixin
+      DocstringStripSignatureMixin
+      Documenter
+      ExceptionDocumenter
+      FunctionDocumenter
+      FunctionType
+      InstanceAttributeDocumenter
+      MethodDocumenter
+      MethodType
+      ModuleAnalyzer
+      ModuleDocumenter
+      ModuleLevelDocumenter
+      Options
+      ViewList
+      testcls
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.autodoc.AttributeDocumenter
+       generated/sphinx.ext.autodoc.AutoDirective
+       generated/sphinx.ext.autodoc.AutodocReporter
+       generated/sphinx.ext.autodoc.BuiltinFunctionType
+       generated/sphinx.ext.autodoc.ClassDocumenter
+       generated/sphinx.ext.autodoc.ClassLevelDocumenter
+       generated/sphinx.ext.autodoc.DataDocumenter
+       generated/sphinx.ext.autodoc.DefDict
+       generated/sphinx.ext.autodoc.Directive
+       generated/sphinx.ext.autodoc.DocstringSignatureMixin
+       generated/sphinx.ext.autodoc.DocstringStripSignatureMixin
+       generated/sphinx.ext.autodoc.Documenter
+       generated/sphinx.ext.autodoc.ExceptionDocumenter
+       generated/sphinx.ext.autodoc.FunctionDocumenter
+       generated/sphinx.ext.autodoc.FunctionType
+       generated/sphinx.ext.autodoc.InstanceAttributeDocumenter
+       generated/sphinx.ext.autodoc.MethodDocumenter
+       generated/sphinx.ext.autodoc.MethodType
+       generated/sphinx.ext.autodoc.ModuleAnalyzer
+       generated/sphinx.ext.autodoc.ModuleDocumenter
+       generated/sphinx.ext.autodoc.ModuleLevelDocumenter
+       generated/sphinx.ext.autodoc.Options
+       generated/sphinx.ext.autodoc.ViewList
+       generated/sphinx.ext.autodoc.testcls
+       generated/sphinx.ext.autodoc.text_type
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      ExtensionError
+      PycodeError
+   
+   

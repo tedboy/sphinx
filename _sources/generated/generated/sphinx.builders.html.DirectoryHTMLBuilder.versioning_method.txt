@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.versioning_method
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.versioning_method

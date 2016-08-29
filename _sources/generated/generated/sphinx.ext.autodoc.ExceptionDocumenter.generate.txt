@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.generate
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.generate

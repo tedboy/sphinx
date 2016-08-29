@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.dump_context
+=========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.dump_context

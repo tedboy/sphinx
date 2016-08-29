@@ -1,0 +1,6 @@
+sphinx.util.attrdict.values
+===========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.values

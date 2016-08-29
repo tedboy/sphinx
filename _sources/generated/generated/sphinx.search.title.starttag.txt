@@ -1,0 +1,6 @@
+sphinx.search.title.starttag
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.starttag

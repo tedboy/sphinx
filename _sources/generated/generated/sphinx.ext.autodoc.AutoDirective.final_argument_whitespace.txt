@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.final_argument_whitespace
+==========================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: AutoDirective.final_argument_whitespace

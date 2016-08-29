@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.versioning_method
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.versioning_method

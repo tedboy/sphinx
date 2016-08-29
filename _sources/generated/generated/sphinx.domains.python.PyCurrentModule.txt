@@ -1,0 +1,40 @@
+sphinx.domains.python.PyCurrentModule
+=====================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyCurrentModule
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyCurrentModule.__init__
+   ~PyCurrentModule.add_name
+   ~PyCurrentModule.assert_has_content
+   ~PyCurrentModule.debug
+   ~PyCurrentModule.directive_error
+   ~PyCurrentModule.error
+   ~PyCurrentModule.info
+   ~PyCurrentModule.run
+   ~PyCurrentModule.severe
+   ~PyCurrentModule.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PyCurrentModule.final_argument_whitespace
+   ~PyCurrentModule.has_content
+   ~PyCurrentModule.option_spec
+   ~PyCurrentModule.optional_arguments
+   ~PyCurrentModule.required_arguments
+

@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.run
+=====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.run

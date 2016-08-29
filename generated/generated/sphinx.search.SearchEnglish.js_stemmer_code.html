@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.search.SearchEnglish.js_stemmer_code &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>sphinx.search.SearchEnglish.js_stemmer_code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.search.SearchEnglish.js_stemmer_code.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-search-searchenglish-js-stemmer-code">
+<h1>sphinx.search.SearchEnglish.js_stemmer_code<a class="headerlink" href="#sphinx-search-searchenglish-js-stemmer-code" title="Permalink to this headline">¶</a></h1>
+<dl class="attribute">
+<dt id="sphinx.search.SearchEnglish.js_stemmer_code">
+<code class="descclassname">SearchEnglish.</code><code class="descname">js_stemmer_code</code><em class="property"> = '\n/**\n * Porter Stemmer\n */\nvar Stemmer = function() {\n\n  var step2list = {\n    ational: \'ate\',\n    tional: \'tion\',\n    enci: \'ence\',\n    anci: \'ance\',\n    izer: \'ize\',\n    bli: \'ble\',\n    alli: \'al\',\n    entli: \'ent\',\n    eli: \'e\',\n    ousli: \'ous\',\n    ization: \'ize\',\n    ation: \'ate\',\n    ator: \'ate\',\n    alism: \'al\',\n    iveness: \'ive\',\n    fulness: \'ful\',\n    ousness: \'ous\',\n    aliti: \'al\',\n    iviti: \'ive\',\n    biliti: \'ble\',\n    logi: \'log\'\n  };\n\n  var step3list = {\n    icate: \'ic\',\n    ative: \'\',\n    alize: \'al\',\n    iciti: \'ic\',\n    ical: \'ic\',\n    ful: \'\',\n    ness: \'\'\n  };\n\n  var c = &quot;[^aeiou]&quot;;          // consonant\n  var v = &quot;[aeiouy]&quot;;          // vowel\n  var C = c + &quot;[^aeiouy]*&quot;;    // consonant sequence\n  var V = v + &quot;[aeiou]*&quot;;      // vowel sequence\n\n  var mgr0 = &quot;^(&quot; + C + &quot;)?&quot; + V + C;                      // [C]VC... is m&gt;0\n  var meq1 = &quot;^(&quot; + C + &quot;)?&quot; + V + C + &quot;(&quot; + V + &quot;)?$&quot;;    // [C]VC[V] is m=1\n  var mgr1 = &quot;^(&quot; + C + &quot;)?&quot; + V + C + V + C;              // [C]VCVC... is m&gt;1\n  var s_v   = &quot;^(&quot; + C + &quot;)?&quot; + v;                         // vowel in stem\n\n  this.stemWord = function (w) {\n    var stem;\n    var suffix;\n    var firstch;\n    var origword = w;\n\n    if (w.length &lt; 3)\n      return w;\n\n    var re;\n    var re2;\n    var re3;\n    var re4;\n\n    firstch = w.substr(0,1);\n    if (firstch == &quot;y&quot;)\n      w = firstch.toUpperCase() + w.substr(1);\n\n    // Step 1a\n    re = /^(.+?)(ss|i)es$/;\n    re2 = /^(.+?)([^s])s$/;\n\n    if (re.test(w))\n      w = w.replace(re,&quot;$1$2&quot;);\n    else if (re2.test(w))\n      w = w.replace(re2,&quot;$1$2&quot;);\n\n    // Step 1b\n    re = /^(.+?)eed$/;\n    re2 = /^(.+?)(ed|ing)$/;\n    if (re.test(w)) {\n      var fp = re.exec(w);\n      re = new RegExp(mgr0);\n      if (re.test(fp[1])) {\n        re = /.$/;\n        w = w.replace(re,&quot;&quot;);\n      }\n    }\n    else if (re2.test(w)) {\n      var fp = re2.exec(w);\n      stem = fp[1];\n      re2 = new RegExp(s_v);\n      if (re2.test(stem)) {\n        w = stem;\n        re2 = /(at|bl|iz)$/;\n        re3 = new RegExp(&quot;([^aeiouylsz])\\\\1$&quot;);\n        re4 = new RegExp(&quot;^&quot; + C + v + &quot;[^aeiouwxy]$&quot;);\n        if (re2.test(w))\n          w = w + &quot;e&quot;;\n        else if (re3.test(w)) {\n          re = /.$/;\n          w = w.replace(re,&quot;&quot;);\n        }\n        else if (re4.test(w))\n          w = w + &quot;e&quot;;\n      }\n    }\n\n    // Step 1c\n    re = /^(.+?)y$/;\n    if (re.test(w)) {\n      var fp = re.exec(w);\n      stem = fp[1];\n      re = new RegExp(s_v);\n      if (re.test(stem))\n        w = stem + &quot;i&quot;;\n    }\n\n    // Step 2\n    re = /^(.+?)(ational|tional|enci|anci|izer|bli|alli|entli|eli|ousli|ization|ation|ator|alism|iveness|fulness|ousness|aliti|iviti|biliti|logi)$/;\n    if (re.test(w)) {\n      var fp = re.exec(w);\n      stem = fp[1];\n      suffix = fp[2];\n      re = new RegExp(mgr0);\n      if (re.test(stem))\n        w = stem + step2list[suffix];\n    }\n\n    // Step 3\n    re = /^(.+?)(icate|ative|alize|iciti|ical|ful|ness)$/;\n    if (re.test(w)) {\n      var fp = re.exec(w);\n      stem = fp[1];\n      suffix = fp[2];\n      re = new RegExp(mgr0);\n      if (re.test(stem))\n        w = stem + step3list[suffix];\n    }\n\n    // Step 4\n    re = /^(.+?)(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ou|ism|ate|iti|ous|ive|ize)$/;\n    re2 = /^(.+?)(s|t)(ion)$/;\n    if (re.test(w)) {\n      var fp = re.exec(w);\n      stem = fp[1];\n      re = new RegExp(mgr1);\n      if (re.test(stem))\n        w = stem;\n    }\n    else if (re2.test(w)) {\n      var fp = re2.exec(w);\n      stem = fp[1] + fp[2];\n      re2 = new RegExp(mgr1);\n      if (re2.test(stem))\n        w = stem;\n    }\n\n    // Step 5\n    re = /^(.+?)e$/;\n    if (re.test(w)) {\n      var fp = re.exec(w);\n      stem = fp[1];\n      re = new RegExp(mgr1);\n      re2 = new RegExp(meq1);\n      re3 = new RegExp(&quot;^&quot; + C + v + &quot;[^aeiouwxy]$&quot;);\n      if (re.test(stem) || (re2.test(stem) &amp;&amp; !(re3.test(stem))))\n        w = stem;\n    }\n    re = /ll$/;\n    re2 = new RegExp(mgr1);\n    if (re.test(w) &amp;&amp; re2.test(w)) {\n      re = /.$/;\n      w = w.replace(re,&quot;&quot;);\n    }\n\n    // and turn initial Y back to y\n    if (firstch == &quot;y&quot;)\n      w = firstch.toLowerCase() + w.substr(1);\n    return w;\n  }\n}\n'</em><a class="headerlink" href="#sphinx.search.SearchEnglish.js_stemmer_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

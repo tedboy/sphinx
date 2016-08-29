@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.__init__
+=================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.__init__

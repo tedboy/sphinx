@@ -1,0 +1,6 @@
+sphinx.util.format_exception_cut_frames
+=======================================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: format_exception_cut_frames

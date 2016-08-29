@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.__init__
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.__init__

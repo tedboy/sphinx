@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.embedded_stylesheet
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.embedded_stylesheet

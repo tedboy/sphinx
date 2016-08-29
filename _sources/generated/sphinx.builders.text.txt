@@ -1,0 +1,45 @@
+.. automodule:: sphinx.builders.text
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      ensuredir
+      os_path
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      StringOutput
+      TextBuilder
+      TextWriter
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.text.Builder
+       generated/sphinx.builders.text.StringOutput
+       generated/sphinx.builders.text.TextBuilder
+       generated/sphinx.builders.text.TextWriter
+
+   
+   
+
+   
+   
+   

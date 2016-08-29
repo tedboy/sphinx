@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.add_target_and_index
+================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.add_target_and_index

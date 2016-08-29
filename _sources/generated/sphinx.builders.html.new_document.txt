@@ -1,0 +1,6 @@
+sphinx.builders.html.new_document
+=================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: new_document

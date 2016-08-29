@@ -1,0 +1,6 @@
+sphinx.search.raw.pformat
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.pformat

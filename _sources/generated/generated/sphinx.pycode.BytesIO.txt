@@ -1,0 +1,32 @@
+sphinx.pycode.BytesIO
+=====================
+.. currentmodule:: sphinx.pycode
+.. autoclass:: BytesIO
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~BytesIO.__init__
+   ~BytesIO.close
+   ~BytesIO.flush
+   ~BytesIO.getvalue
+   ~BytesIO.isatty
+   ~BytesIO.next
+   ~BytesIO.read
+   ~BytesIO.readline
+   ~BytesIO.readlines
+   ~BytesIO.seek
+   ~BytesIO.tell
+   ~BytesIO.truncate
+   ~BytesIO.write
+   ~BytesIO.writelines
+
+
+
+
+

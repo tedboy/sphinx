@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLBuilder.build
+==========================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: PseudoXMLBuilder.build

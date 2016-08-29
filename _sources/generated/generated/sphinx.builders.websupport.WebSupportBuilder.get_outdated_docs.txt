@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.get_outdated_docs
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.get_outdated_docs

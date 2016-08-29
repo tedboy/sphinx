@@ -1,0 +1,6 @@
+sphinx.util.quote_plus
+======================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: quote_plus

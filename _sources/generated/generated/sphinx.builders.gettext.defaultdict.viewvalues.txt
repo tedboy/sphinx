@@ -1,0 +1,6 @@
+sphinx.builders.gettext.defaultdict.viewvalues
+==============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: defaultdict.viewvalues

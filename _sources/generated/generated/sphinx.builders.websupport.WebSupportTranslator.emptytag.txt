@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.emptytag
+========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.emptytag

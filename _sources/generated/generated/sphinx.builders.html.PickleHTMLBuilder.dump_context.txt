@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.dump_context
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.dump_context

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.before_content
+===================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.before_content

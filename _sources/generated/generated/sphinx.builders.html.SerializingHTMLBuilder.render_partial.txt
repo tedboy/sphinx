@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.render_partial
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.render_partial

@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.add_name
+==========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ProductionList.add_name

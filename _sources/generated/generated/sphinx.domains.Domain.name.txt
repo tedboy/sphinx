@@ -1,0 +1,6 @@
+sphinx.domains.Domain.name
+==========================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: Domain.name

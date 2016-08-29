@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.build_specific
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.build_specific

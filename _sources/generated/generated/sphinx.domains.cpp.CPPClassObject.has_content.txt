@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPClassObject.has_content
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPClassObject.has_content

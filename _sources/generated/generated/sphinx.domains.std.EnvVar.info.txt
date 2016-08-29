@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.info
+==============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.info

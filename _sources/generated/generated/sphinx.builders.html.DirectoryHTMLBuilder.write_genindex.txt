@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.write_genindex
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.write_genindex

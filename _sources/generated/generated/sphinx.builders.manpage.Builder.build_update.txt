@@ -1,0 +1,6 @@
+sphinx.builders.manpage.Builder.build_update
+============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: Builder.build_update

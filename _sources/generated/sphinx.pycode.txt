@@ -1,0 +1,61 @@
+.. automodule:: sphinx.pycode
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      TextIOWrapper
+      detect_encoding
+      get_module_source
+      iteritems
+      prepare_commentdoc
+      prepare_docstring
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      AttrDocVisitor
+      BytesIO
+      ModuleAnalyzer
+      StringIO
+      sym
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.pycode.AttrDocVisitor
+       generated/sphinx.pycode.BytesIO
+       generated/sphinx.pycode.ModuleAnalyzer
+       generated/sphinx.pycode.StringIO
+       generated/sphinx.pycode.sym
+       generated/sphinx.pycode.text_type
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      PycodeError
+   
+   

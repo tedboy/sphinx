@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.handle_finish
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.handle_finish

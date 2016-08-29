@@ -1,0 +1,6 @@
+sphinx.domains.std.clean_astext
+===============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autofunction:: clean_astext

@@ -1,0 +1,6 @@
+sphinx.util.attrdict.viewvalues
+===============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.viewvalues

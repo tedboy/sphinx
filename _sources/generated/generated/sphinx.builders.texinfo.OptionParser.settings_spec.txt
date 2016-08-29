@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.settings_spec
+==================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: OptionParser.settings_spec

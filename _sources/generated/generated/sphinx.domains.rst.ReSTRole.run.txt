@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.run
+===============================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.run

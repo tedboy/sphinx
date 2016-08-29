@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.darkgreen
+=================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autofunction:: darkgreen

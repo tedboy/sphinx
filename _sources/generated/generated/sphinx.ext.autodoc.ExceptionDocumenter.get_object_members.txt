@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.get_object_members
+=========================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.get_object_members

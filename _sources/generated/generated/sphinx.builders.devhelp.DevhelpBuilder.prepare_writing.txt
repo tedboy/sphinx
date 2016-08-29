@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.prepare_writing
+======================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.prepare_writing

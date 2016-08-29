@@ -1,0 +1,6 @@
+sphinx.builders.gettext.iteritems
+=================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: iteritems

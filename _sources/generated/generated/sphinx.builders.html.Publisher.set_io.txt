@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.set_io
+=====================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.set_io

@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.wrap_displaymath
+===================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: wrap_displaymath

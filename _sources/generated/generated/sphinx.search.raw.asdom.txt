@@ -1,0 +1,6 @@
+sphinx.search.raw.asdom
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.asdom

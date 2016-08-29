@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.get_signatures
+=======================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.get_signatures

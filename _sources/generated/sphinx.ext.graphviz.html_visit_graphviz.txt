@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.html_visit_graphviz
+=======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autofunction:: html_visit_graphviz

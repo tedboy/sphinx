@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.get_target_uri
+=================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXBuilder.get_target_uri

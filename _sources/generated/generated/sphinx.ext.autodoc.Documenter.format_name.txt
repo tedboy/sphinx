@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Documenter.format_name
+=========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: Documenter.format_name

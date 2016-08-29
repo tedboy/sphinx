@@ -1,0 +1,6 @@
+sphinx.util.deque.maxlen
+========================
+
+.. currentmodule:: sphinx.util
+
+.. autoattribute:: deque.maxlen

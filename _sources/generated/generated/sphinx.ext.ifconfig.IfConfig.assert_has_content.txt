@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.assert_has_content
+===============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: IfConfig.assert_has_content

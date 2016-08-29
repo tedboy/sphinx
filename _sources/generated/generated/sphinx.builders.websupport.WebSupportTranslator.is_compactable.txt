@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.is_compactable
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.is_compactable

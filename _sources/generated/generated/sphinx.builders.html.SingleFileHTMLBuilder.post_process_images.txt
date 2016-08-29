@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.post_process_images
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.post_process_images

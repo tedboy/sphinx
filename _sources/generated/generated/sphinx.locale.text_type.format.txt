@@ -1,0 +1,6 @@
+sphinx.locale.text_type.format
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.format

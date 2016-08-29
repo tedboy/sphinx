@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.warning
+===============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.warning

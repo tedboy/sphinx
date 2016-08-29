@@ -1,0 +1,6 @@
+sphinx.domains.Index.localname
+==============================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: Index.localname

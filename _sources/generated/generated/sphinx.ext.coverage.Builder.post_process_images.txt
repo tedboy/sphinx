@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.post_process_images
+===============================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: Builder.post_process_images

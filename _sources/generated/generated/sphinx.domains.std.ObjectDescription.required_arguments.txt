@@ -1,0 +1,6 @@
+sphinx.domains.std.ObjectDescription.required_arguments
+=======================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: ObjectDescription.required_arguments

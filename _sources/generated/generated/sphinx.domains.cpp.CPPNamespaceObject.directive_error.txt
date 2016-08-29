@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPNamespaceObject.directive_error
+=====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPNamespaceObject.directive_error

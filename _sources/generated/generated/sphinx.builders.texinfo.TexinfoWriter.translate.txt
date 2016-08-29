@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.translate
+===============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoWriter.translate

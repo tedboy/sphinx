@@ -1,0 +1,6 @@
+sphinx.websupport.search.BaseSearch.add_document
+================================================
+
+.. currentmodule:: sphinx.websupport.search
+
+.. automethod:: BaseSearch.add_document

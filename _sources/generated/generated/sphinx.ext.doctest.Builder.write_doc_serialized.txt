@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.write_doc_serialized
+===============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: Builder.write_doc_serialized

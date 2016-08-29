@@ -1,0 +1,6 @@
+sphinx.domains.JavaScriptDomain.initial_data
+============================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: JavaScriptDomain.initial_data

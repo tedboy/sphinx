@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLWriter.settings_spec
+===========================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: XMLWriter.settings_spec

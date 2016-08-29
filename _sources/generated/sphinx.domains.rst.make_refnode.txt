@@ -1,0 +1,6 @@
+sphinx.domains.rst.make_refnode
+===============================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autofunction:: make_refnode

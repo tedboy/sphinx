@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.component_type
+=======================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.component_type

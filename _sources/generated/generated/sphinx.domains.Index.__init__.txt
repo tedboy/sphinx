@@ -1,0 +1,6 @@
+sphinx.domains.Index.__init__
+=============================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: Index.__init__

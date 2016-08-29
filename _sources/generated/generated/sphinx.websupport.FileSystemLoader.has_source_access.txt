@@ -1,0 +1,6 @@
+sphinx.websupport.FileSystemLoader.has_source_access
+====================================================
+
+.. currentmodule:: sphinx.websupport
+
+.. autoattribute:: FileSystemLoader.has_source_access

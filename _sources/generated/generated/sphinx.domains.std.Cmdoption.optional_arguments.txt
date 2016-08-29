@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.optional_arguments
+===============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Cmdoption.optional_arguments

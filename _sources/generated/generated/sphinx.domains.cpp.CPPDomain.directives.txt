@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPDomain.directives
+=======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPDomain.directives

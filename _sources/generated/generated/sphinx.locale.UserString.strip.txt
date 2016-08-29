@@ -1,0 +1,6 @@
+sphinx.locale.UserString.strip
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.strip

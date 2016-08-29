@@ -1,0 +1,6 @@
+sphinx.websupport.storage.StorageBackend.has_node
+=================================================
+
+.. currentmodule:: sphinx.websupport.storage
+
+.. automethod:: StorageBackend.has_node

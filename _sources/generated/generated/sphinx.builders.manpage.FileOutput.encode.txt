@@ -1,0 +1,6 @@
+sphinx.builders.manpage.FileOutput.encode
+=========================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: FileOutput.encode

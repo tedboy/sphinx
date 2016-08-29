@@ -1,0 +1,6 @@
+sphinx.search.NodeVisitor.optional
+==================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: NodeVisitor.optional

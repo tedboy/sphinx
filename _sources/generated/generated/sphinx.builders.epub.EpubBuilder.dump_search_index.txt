@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.dump_search_index
+==================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.dump_search_index

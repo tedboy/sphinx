@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.set_first_last
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.set_first_last

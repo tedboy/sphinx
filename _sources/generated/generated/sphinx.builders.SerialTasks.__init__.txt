@@ -1,0 +1,6 @@
+sphinx.builders.SerialTasks.__init__
+====================================
+
+.. currentmodule:: sphinx.builders
+
+.. automethod:: SerialTasks.__init__

@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.source
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.source

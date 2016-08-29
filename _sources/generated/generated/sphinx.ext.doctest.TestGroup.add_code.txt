@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestGroup.add_code
+=====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestGroup.add_code

@@ -1,0 +1,6 @@
+sphinx.make_main
+================
+
+.. currentmodule:: sphinx
+
+.. autofunction:: make_main

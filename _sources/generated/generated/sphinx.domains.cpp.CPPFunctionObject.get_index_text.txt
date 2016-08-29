@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.get_index_text
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPFunctionObject.get_index_text

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.doc_field_types
+================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTDirective.doc_field_types

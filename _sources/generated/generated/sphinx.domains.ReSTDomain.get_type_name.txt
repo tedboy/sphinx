@@ -1,0 +1,6 @@
+sphinx.domains.ReSTDomain.get_type_name
+=======================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: ReSTDomain.get_type_name

@@ -1,0 +1,6 @@
+sphinx.locale.text_type.partition
+=================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.partition

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.mathjax_script
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.mathjax_script

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.optional_arguments
+===============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: IfConfig.optional_arguments

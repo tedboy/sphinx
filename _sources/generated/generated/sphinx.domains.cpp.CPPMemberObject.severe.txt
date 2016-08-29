@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPMemberObject.severe
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPMemberObject.severe

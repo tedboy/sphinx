@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.after_content
+==============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.after_content

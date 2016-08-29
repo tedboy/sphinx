@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.format
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StandaloneHTMLBuilder.format

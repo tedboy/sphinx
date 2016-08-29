@@ -1,0 +1,6 @@
+sphinx.pycode.sym.continue_stmt
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.continue_stmt

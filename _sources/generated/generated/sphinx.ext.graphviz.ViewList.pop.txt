@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.pop
+================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.pop

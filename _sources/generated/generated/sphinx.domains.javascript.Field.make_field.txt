@@ -1,0 +1,6 @@
+sphinx.domains.javascript.Field.make_field
+==========================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: Field.make_field

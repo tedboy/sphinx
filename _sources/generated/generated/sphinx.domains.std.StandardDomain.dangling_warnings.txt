@@ -1,0 +1,6 @@
+sphinx.domains.std.StandardDomain.dangling_warnings
+===================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: StandardDomain.dangling_warnings

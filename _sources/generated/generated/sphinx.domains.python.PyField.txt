@@ -1,0 +1,31 @@
+sphinx.domains.python.PyField
+=============================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyField
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyField.__init__
+   ~PyField.make_entry
+   ~PyField.make_field
+   ~PyField.make_xref
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PyField.is_grouped
+   ~PyField.is_typed
+

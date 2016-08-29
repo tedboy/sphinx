@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_desc_addname
+===================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_desc_addname

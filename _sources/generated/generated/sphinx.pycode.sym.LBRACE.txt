@@ -1,0 +1,6 @@
+sphinx.pycode.sym.LBRACE
+========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.LBRACE

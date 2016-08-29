@@ -1,0 +1,6 @@
+sphinx.builders.manpage.FileOutput.mode
+=======================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: FileOutput.mode

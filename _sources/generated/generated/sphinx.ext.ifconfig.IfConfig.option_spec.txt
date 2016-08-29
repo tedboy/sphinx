@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.option_spec
+========================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: IfConfig.option_spec

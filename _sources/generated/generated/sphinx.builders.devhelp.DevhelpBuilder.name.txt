@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.name
+===========================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.name

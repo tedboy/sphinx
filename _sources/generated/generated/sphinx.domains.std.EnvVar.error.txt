@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.error
+===============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.error

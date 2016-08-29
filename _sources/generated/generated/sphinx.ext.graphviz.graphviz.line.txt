@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.line
+=================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: graphviz.line

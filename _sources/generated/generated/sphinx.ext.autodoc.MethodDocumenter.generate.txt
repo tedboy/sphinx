@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.MethodDocumenter.generate
+============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: MethodDocumenter.generate

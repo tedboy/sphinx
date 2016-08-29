@@ -1,0 +1,6 @@
+sphinx.search.Text.copy
+=======================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.copy

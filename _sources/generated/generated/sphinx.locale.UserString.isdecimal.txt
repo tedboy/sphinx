@@ -1,0 +1,6 @@
+sphinx.locale.UserString.isdecimal
+==================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.isdecimal

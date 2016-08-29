@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.get_template
+==========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.get_template

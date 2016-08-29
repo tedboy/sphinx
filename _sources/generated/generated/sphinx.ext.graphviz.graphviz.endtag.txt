@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.endtag
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.endtag

@@ -1,0 +1,48 @@
+.. automodule:: sphinx.ext.viewcode
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      blue
+      collect_pages
+      doctree_read
+      env_merge_info
+      get_full_modname
+      iteritems
+      make_refnode
+      missing_reference
+      setup
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      ModuleAnalyzer
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.viewcode.ModuleAnalyzer
+       generated/sphinx.ext.viewcode.text_type
+
+   
+   
+
+   
+   
+   

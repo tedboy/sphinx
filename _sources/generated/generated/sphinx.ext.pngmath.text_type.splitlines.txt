@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.text_type.splitlines
+=======================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: text_type.splitlines

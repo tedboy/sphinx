@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleLevelDocumenter.resolve_name
+=====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleLevelDocumenter.resolve_name

@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Directive.has_content
+========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: Directive.has_content

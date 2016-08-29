@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.emit_firstresult
+=========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.emit_firstresult

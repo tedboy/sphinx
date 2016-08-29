@@ -1,0 +1,6 @@
+sphinx.util.os_path
+===================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: os_path

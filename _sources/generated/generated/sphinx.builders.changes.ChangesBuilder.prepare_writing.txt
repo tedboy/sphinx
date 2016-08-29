@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.prepare_writing
+======================================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: ChangesBuilder.prepare_writing

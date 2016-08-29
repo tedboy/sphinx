@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.parse_args
+===============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: OptionParser.parse_args

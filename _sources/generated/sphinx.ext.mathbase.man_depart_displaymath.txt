@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.man_depart_displaymath
+==========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: man_depart_displaymath

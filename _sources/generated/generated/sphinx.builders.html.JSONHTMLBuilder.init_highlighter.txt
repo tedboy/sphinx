@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.init_highlighter
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.init_highlighter

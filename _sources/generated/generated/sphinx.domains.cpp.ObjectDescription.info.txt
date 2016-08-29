@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ObjectDescription.info
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ObjectDescription.info

@@ -1,0 +1,6 @@
+sphinx.domains.ReSTDomain.dangling_warnings
+===========================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: ReSTDomain.dangling_warnings

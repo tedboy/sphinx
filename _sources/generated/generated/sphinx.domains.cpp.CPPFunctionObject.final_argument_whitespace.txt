@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.final_argument_whitespace
+==============================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPFunctionObject.final_argument_whitespace

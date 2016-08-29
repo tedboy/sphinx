@@ -1,0 +1,6 @@
+sphinx.domains.std.StandardDomain.clear_doc
+===========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: StandardDomain.clear_doc

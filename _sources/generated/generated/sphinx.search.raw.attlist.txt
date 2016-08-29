@@ -1,0 +1,6 @@
+sphinx.search.raw.attlist
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.attlist

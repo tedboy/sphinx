@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.component_type
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DoctreeReader.component_type

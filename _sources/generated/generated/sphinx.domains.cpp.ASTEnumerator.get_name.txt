@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTEnumerator.get_name
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTEnumerator.get_name

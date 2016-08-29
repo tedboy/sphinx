@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.option_spec
+=========================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: Directive.option_spec

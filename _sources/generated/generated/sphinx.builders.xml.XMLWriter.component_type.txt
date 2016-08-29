@@ -1,0 +1,6 @@
+sphinx.builders.xml.XMLWriter.component_type
+============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: XMLWriter.component_type

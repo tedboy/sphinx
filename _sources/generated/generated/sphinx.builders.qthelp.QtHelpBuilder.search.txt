@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.search
+===========================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.search

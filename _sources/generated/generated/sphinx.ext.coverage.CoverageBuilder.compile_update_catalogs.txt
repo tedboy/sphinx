@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.compile_update_catalogs
+===========================================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: CoverageBuilder.compile_update_catalogs

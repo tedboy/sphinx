@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.dump_search_index
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.dump_search_index

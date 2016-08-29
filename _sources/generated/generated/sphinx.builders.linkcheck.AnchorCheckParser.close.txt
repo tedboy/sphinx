@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.close
+=================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.close

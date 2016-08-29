@@ -1,0 +1,51 @@
+.. automodule:: sphinx.websupport
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      dump_json
+      ensuredir
+      htmlescape
+      publish_parts
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      BaseSearch
+      Environment
+      FileSystemLoader
+      Sphinx
+      StorageBackend
+      WebSupport
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.websupport.BaseSearch
+       generated/sphinx.websupport.Environment
+       generated/sphinx.websupport.FileSystemLoader
+       generated/sphinx.websupport.Sphinx
+       generated/sphinx.websupport.StorageBackend
+       generated/sphinx.websupport.WebSupport
+
+   
+   
+
+   
+   
+   

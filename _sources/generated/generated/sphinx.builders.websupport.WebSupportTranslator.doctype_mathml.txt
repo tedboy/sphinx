@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.doctype_mathml
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.doctype_mathml

@@ -1,0 +1,6 @@
+sphinx.pycode.sym.with_item
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.with_item

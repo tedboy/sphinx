@@ -1,0 +1,6 @@
+sphinx.pycode.sym.yield_expr
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.yield_expr

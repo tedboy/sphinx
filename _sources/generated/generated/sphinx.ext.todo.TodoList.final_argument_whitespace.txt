@@ -1,0 +1,6 @@
+sphinx.ext.todo.TodoList.final_argument_whitespace
+==================================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: TodoList.final_argument_whitespace

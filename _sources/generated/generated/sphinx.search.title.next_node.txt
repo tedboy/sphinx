@@ -1,0 +1,6 @@
+sphinx.search.title.next_node
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.next_node

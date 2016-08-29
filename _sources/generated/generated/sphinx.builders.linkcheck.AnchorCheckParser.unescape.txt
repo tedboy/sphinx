@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.unescape
+====================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.unescape

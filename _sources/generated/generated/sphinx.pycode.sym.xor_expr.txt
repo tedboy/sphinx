@@ -1,0 +1,6 @@
+sphinx.pycode.sym.xor_expr
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.xor_expr

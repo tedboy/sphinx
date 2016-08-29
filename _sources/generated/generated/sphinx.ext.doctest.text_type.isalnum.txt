@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.isalnum
+====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.isalnum

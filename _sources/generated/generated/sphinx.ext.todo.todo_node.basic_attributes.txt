@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.basic_attributes
+==========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todo_node.basic_attributes

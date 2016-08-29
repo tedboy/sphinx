@@ -1,0 +1,6 @@
+sphinx.ext.coverage.write_header
+================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autofunction:: write_header

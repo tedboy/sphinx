@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.purple
+================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: purple

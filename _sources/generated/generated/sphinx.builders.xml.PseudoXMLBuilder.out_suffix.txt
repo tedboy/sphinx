@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLBuilder.out_suffix
+===============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLBuilder.out_suffix

@@ -1,0 +1,6 @@
+sphinx.domains.ReSTDomain.initial_data
+======================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: ReSTDomain.initial_data

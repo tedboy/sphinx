@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.final_argument_whitespace
+==========================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: GenericObject.final_argument_whitespace

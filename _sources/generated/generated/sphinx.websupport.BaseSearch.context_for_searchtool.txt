@@ -1,0 +1,6 @@
+sphinx.websupport.BaseSearch.context_for_searchtool
+===================================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: BaseSearch.context_for_searchtool

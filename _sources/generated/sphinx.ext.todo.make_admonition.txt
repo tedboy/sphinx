@@ -1,0 +1,6 @@
+sphinx.ext.todo.make_admonition
+===============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autofunction:: make_admonition

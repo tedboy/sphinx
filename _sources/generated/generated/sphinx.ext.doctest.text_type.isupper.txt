@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.isupper
+====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.isupper

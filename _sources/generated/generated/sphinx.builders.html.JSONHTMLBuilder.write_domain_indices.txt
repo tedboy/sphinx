@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.write_domain_indices
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.write_domain_indices

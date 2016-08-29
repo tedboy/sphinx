@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.append
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.append

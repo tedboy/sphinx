@@ -1,0 +1,992 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.domains.python &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.domains" href="../domains.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../domains.html">sphinx.domains</a> &raquo;</li>
+        
+      <li>sphinx.domains.python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.domains.python</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.domains.python</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    The Python domain.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">directives</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.roles</span> <span class="kn">import</span> <span class="n">XRefRole</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">l_</span><span class="p">,</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">sphinx.domains</span> <span class="kn">import</span> <span class="n">Domain</span><span class="p">,</span> <span class="n">ObjType</span><span class="p">,</span> <span class="n">Index</span>
+<span class="kn">from</span> <span class="nn">sphinx.directives</span> <span class="kn">import</span> <span class="n">ObjectDescription</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.nodes</span> <span class="kn">import</span> <span class="n">make_refnode</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.compat</span> <span class="kn">import</span> <span class="n">Directive</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.docfields</span> <span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">GroupedField</span><span class="p">,</span> <span class="n">TypedField</span>
+
+
+<span class="c1"># REs for Python signatures</span>
+<span class="n">py_sig_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="sd">r&#39;&#39;&#39;^ ([\w.]*\.)?            # class name(s)</span>
+<span class="sd">          (\w+)  \s*             # thing name</span>
+<span class="sd">          (?: \((.*)\)           # optional: arguments</span>
+<span class="sd">           (?:\s* -&gt; \s* (.*))?  #           return annotation</span>
+<span class="sd">          )? $                   # and nothing more</span>
+<span class="sd">          &#39;&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_pseudo_parse_arglist</span><span class="p">(</span><span class="n">signode</span><span class="p">,</span> <span class="n">arglist</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;&quot;Parse&quot; a list of arguments separated by commas.</span>
+
+<span class="sd">    Arguments can have &quot;optional&quot; annotations given by enclosing them in</span>
+<span class="sd">    brackets.  Currently, this will split at any comma, even if it&#39;s inside a</span>
+<span class="sd">    string literal (e.g. default argument value).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">paramlist</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_parameterlist</span><span class="p">()</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">paramlist</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">argument</span> <span class="ow">in</span> <span class="n">arglist</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">):</span>
+            <span class="n">argument</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">ends_open</span> <span class="o">=</span> <span class="n">ends_close</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">argument</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">):</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">addnodes</span><span class="o">.</span><span class="n">desc_optional</span><span class="p">())</span>
+                <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">argument</span> <span class="o">=</span> <span class="n">argument</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">while</span> <span class="n">argument</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">):</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">argument</span> <span class="o">=</span> <span class="n">argument</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">while</span> <span class="n">argument</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">argument</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;[]&#39;</span><span class="p">):</span>
+                <span class="n">ends_close</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">argument</span> <span class="o">=</span> <span class="n">argument</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">while</span> <span class="n">argument</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">):</span>
+                <span class="n">ends_open</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">argument</span> <span class="o">=</span> <span class="n">argument</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">argument</span><span class="p">:</span>
+                <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_parameter</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">ends_open</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">addnodes</span><span class="o">.</span><span class="n">desc_optional</span><span class="p">())</span>
+                <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">ends_open</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">ends_close</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">ends_close</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="c1"># if there are too few or too many elements on the stack, just give up</span>
+        <span class="c1"># and treat the whole argument list as one argument, discarding the</span>
+        <span class="c1"># already partially populated paramlist node</span>
+        <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_parameterlist</span><span class="p">()</span>
+        <span class="n">signode</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_parameter</span><span class="p">(</span><span class="n">arglist</span><span class="p">,</span> <span class="n">arglist</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">signode</span> <span class="o">+=</span> <span class="n">paramlist</span>
+
+
+<span class="c1"># This override allows our inline type specifiers to behave like :class: link</span>
+<span class="c1"># when it comes to handling &quot;.&quot; and &quot;~&quot; prefixes.</span>
+<div class="viewcode-block" id="PyXrefMixin"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyXrefMixin.html#sphinx.domains.PyXrefMixin">[docs]</a><span class="k">class</span> <span class="nc">PyXrefMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="PyXrefMixin.make_xref"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyXrefMixin.make_xref.html#sphinx.domains.PyXrefMixin.make_xref">[docs]</a>    <span class="k">def</span> <span class="nf">make_xref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rolename</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">innernode</span><span class="o">=</span><span class="n">nodes</span><span class="o">.</span><span class="n">emphasis</span><span class="p">,</span>
+                  <span class="n">contnode</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">PyXrefMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">make_xref</span><span class="p">(</span><span class="n">rolename</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
+                                                    <span class="n">innernode</span><span class="p">,</span> <span class="n">contnode</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s1">&#39;refspecific&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;~&#39;</span><span class="p">)):</span>
+            <span class="n">prefix</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;reftarget&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">if</span> <span class="n">prefix</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">elif</span> <span class="n">prefix</span> <span class="o">==</span> <span class="s1">&#39;~&#39;</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">node</span><span class="p">)]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">break</span>
+        <span class="k">return</span> <span class="n">result</span></div></div>
+
+
+<div class="viewcode-block" id="PyField"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyField.html#sphinx.domains.PyField">[docs]</a><span class="k">class</span> <span class="nc">PyField</span><span class="p">(</span><span class="n">PyXrefMixin</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="PyTypedField"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyTypedField.html#sphinx.domains.PyTypedField">[docs]</a><span class="k">class</span> <span class="nc">PyTypedField</span><span class="p">(</span><span class="n">PyXrefMixin</span><span class="p">,</span> <span class="n">TypedField</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="PyObject"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyObject.html#sphinx.domains.PyObject">[docs]</a><span class="k">class</span> <span class="nc">PyObject</span><span class="p">(</span><span class="n">ObjectDescription</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description of a general Python object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;noindex&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+        <span class="s1">&#39;module&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">unchanged</span><span class="p">,</span>
+        <span class="s1">&#39;annotation&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">unchanged</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">doc_field_types</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">PyTypedField</span><span class="p">(</span><span class="s1">&#39;parameter&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Parameters&#39;</span><span class="p">),</span>
+                     <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;param&#39;</span><span class="p">,</span> <span class="s1">&#39;parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;arg&#39;</span><span class="p">,</span> <span class="s1">&#39;argument&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;kwarg&#39;</span><span class="p">,</span> <span class="s1">&#39;kwparam&#39;</span><span class="p">),</span>
+                     <span class="n">typerolename</span><span class="o">=</span><span class="s1">&#39;obj&#39;</span><span class="p">,</span> <span class="n">typenames</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;paramtype&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">),</span>
+                     <span class="n">can_collapse</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">PyTypedField</span><span class="p">(</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Variables&#39;</span><span class="p">),</span> <span class="n">rolename</span><span class="o">=</span><span class="s1">&#39;obj&#39;</span><span class="p">,</span>
+                     <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;ivar&#39;</span><span class="p">,</span> <span class="s1">&#39;cvar&#39;</span><span class="p">),</span>
+                     <span class="n">typerolename</span><span class="o">=</span><span class="s1">&#39;obj&#39;</span><span class="p">,</span> <span class="n">typenames</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;vartype&#39;</span><span class="p">,),</span>
+                     <span class="n">can_collapse</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">GroupedField</span><span class="p">(</span><span class="s1">&#39;exceptions&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Raises&#39;</span><span class="p">),</span> <span class="n">rolename</span><span class="o">=</span><span class="s1">&#39;exc&#39;</span><span class="p">,</span>
+                     <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;raises&#39;</span><span class="p">,</span> <span class="s1">&#39;raise&#39;</span><span class="p">,</span> <span class="s1">&#39;exception&#39;</span><span class="p">,</span> <span class="s1">&#39;except&#39;</span><span class="p">),</span>
+                     <span class="n">can_collapse</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">Field</span><span class="p">(</span><span class="s1">&#39;returnvalue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Returns&#39;</span><span class="p">),</span> <span class="n">has_arg</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+              <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;returns&#39;</span><span class="p">,</span> <span class="s1">&#39;return&#39;</span><span class="p">)),</span>
+        <span class="n">PyField</span><span class="p">(</span><span class="s1">&#39;returntype&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Return type&#39;</span><span class="p">),</span> <span class="n">has_arg</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;rtype&#39;</span><span class="p">,),</span> <span class="n">bodyrolename</span><span class="o">=</span><span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="PyObject.get_signature_prefix"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyObject.get_signature_prefix.html#sphinx.domains.PyObject.get_signature_prefix">[docs]</a>    <span class="k">def</span> <span class="nf">get_signature_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;May return a prefix to put before the object name in the</span>
+<span class="sd">        signature.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
+
+<div class="viewcode-block" id="PyObject.needs_arglist"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyObject.needs_arglist.html#sphinx.domains.PyObject.needs_arglist">[docs]</a>    <span class="k">def</span> <span class="nf">needs_arglist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;May return true if an empty argument list is to be generated even if</span>
+<span class="sd">        the document contains none.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">False</span></div>
+
+<div class="viewcode-block" id="PyObject.handle_signature"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyObject.handle_signature.html#sphinx.domains.PyObject.handle_signature">[docs]</a>    <span class="k">def</span> <span class="nf">handle_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Transform a Python signature into RST nodes.</span>
+
+<span class="sd">        Return (fully qualified name of the thing, classname if any).</span>
+
+<span class="sd">        If inside a class, the current class name is handled intelligently:</span>
+<span class="sd">        * it is stripped from the displayed name if present</span>
+<span class="sd">        * it is added to the full name (return value) if not present</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">py_sig_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+        <span class="n">name_prefix</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">arglist</span><span class="p">,</span> <span class="n">retann</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+
+        <span class="c1"># determine module and class name (if applicable), as well as full name</span>
+        <span class="n">modname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:module&#39;</span><span class="p">))</span>
+        <span class="n">classname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:class&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">classname</span><span class="p">:</span>
+            <span class="n">add_module</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="n">name_prefix</span> <span class="ow">and</span> <span class="n">name_prefix</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">classname</span><span class="p">):</span>
+                <span class="n">fullname</span> <span class="o">=</span> <span class="n">name_prefix</span> <span class="o">+</span> <span class="n">name</span>
+                <span class="c1"># class name is given again in the signature</span>
+                <span class="n">name_prefix</span> <span class="o">=</span> <span class="n">name_prefix</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">classname</span><span class="p">):]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">name_prefix</span><span class="p">:</span>
+                <span class="c1"># class name is given in the signature, but different</span>
+                <span class="c1"># (shouldn&#39;t happen)</span>
+                <span class="n">fullname</span> <span class="o">=</span> <span class="n">classname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name_prefix</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># class name is not given in the signature</span>
+                <span class="n">fullname</span> <span class="o">=</span> <span class="n">classname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">add_module</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">if</span> <span class="n">name_prefix</span><span class="p">:</span>
+                <span class="n">classname</span> <span class="o">=</span> <span class="n">name_prefix</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+                <span class="n">fullname</span> <span class="o">=</span> <span class="n">name_prefix</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">classname</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">fullname</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">modname</span>
+        <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">classname</span>
+        <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;fullname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fullname</span>
+
+        <span class="n">sig_prefix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_signature_prefix</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sig_prefix</span><span class="p">:</span>
+            <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_annotation</span><span class="p">(</span><span class="n">sig_prefix</span><span class="p">,</span> <span class="n">sig_prefix</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">name_prefix</span><span class="p">:</span>
+            <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_addname</span><span class="p">(</span><span class="n">name_prefix</span><span class="p">,</span> <span class="n">name_prefix</span><span class="p">)</span>
+        <span class="c1"># exceptions are a special case, since they are documented in the</span>
+        <span class="c1"># &#39;exceptions&#39; module.</span>
+        <span class="k">elif</span> <span class="n">add_module</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_module_names</span><span class="p">:</span>
+            <span class="n">modname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:module&#39;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">modname</span> <span class="ow">and</span> <span class="n">modname</span> <span class="o">!=</span> <span class="s1">&#39;exceptions&#39;</span><span class="p">:</span>
+                <span class="n">nodetext</span> <span class="o">=</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span>
+                <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_addname</span><span class="p">(</span><span class="n">nodetext</span><span class="p">,</span> <span class="n">nodetext</span><span class="p">)</span>
+
+        <span class="n">anno</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;annotation&#39;</span><span class="p">)</span>
+
+        <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">arglist</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">needs_arglist</span><span class="p">():</span>
+                <span class="c1"># for callables, add an empty parameter list</span>
+                <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_parameterlist</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">retann</span><span class="p">:</span>
+                <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_returns</span><span class="p">(</span><span class="n">retann</span><span class="p">,</span> <span class="n">retann</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">anno</span><span class="p">:</span>
+                <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_annotation</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">anno</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">anno</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">name_prefix</span>
+
+        <span class="n">_pseudo_parse_arglist</span><span class="p">(</span><span class="n">signode</span><span class="p">,</span> <span class="n">arglist</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">retann</span><span class="p">:</span>
+            <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_returns</span><span class="p">(</span><span class="n">retann</span><span class="p">,</span> <span class="n">retann</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">anno</span><span class="p">:</span>
+            <span class="n">signode</span> <span class="o">+=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_annotation</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">anno</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">anno</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">name_prefix</span></div>
+
+<div class="viewcode-block" id="PyObject.get_index_text"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyObject.get_index_text.html#sphinx.domains.PyObject.get_index_text">[docs]</a>    <span class="k">def</span> <span class="nf">get_index_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the text for the index entry of the object.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;must be implemented in subclasses&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyObject.add_target_and_index"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyObject.add_target_and_index.html#sphinx.domains.PyObject.add_target_and_index">[docs]</a>    <span class="k">def</span> <span class="nf">add_target_and_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_cls</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="n">modname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:module&#39;</span><span class="p">))</span>
+        <span class="n">fullname</span> <span class="o">=</span> <span class="p">(</span><span class="n">modname</span> <span class="ow">and</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">name_cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># note target</span>
+        <span class="k">if</span> <span class="n">fullname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">ids</span><span class="p">:</span>
+            <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fullname</span><span class="p">)</span>
+            <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fullname</span><span class="p">)</span>
+            <span class="n">signode</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">note_explicit_target</span><span class="p">(</span><span class="n">signode</span><span class="p">)</span>
+            <span class="n">objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;py&#39;</span><span class="p">][</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">fullname</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s1">&#39;duplicate object description of </span><span class="si">%s</span><span class="s1">, &#39;</span> <span class="o">%</span> <span class="n">fullname</span> <span class="o">+</span>
+                    <span class="s1">&#39;other instance in &#39;</span> <span class="o">+</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">objects</span><span class="p">[</span><span class="n">fullname</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span>
+                    <span class="s1">&#39;, use :noindex: for one of them&#39;</span><span class="p">,</span>
+                    <span class="n">line</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">)</span>
+            <span class="n">objects</span><span class="p">[</span><span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span><span class="p">)</span>
+
+        <span class="n">indextext</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_index_text</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">name_cls</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">indextext</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indexnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">indextext</span><span class="p">,</span>
+                                              <span class="n">fullname</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="PyObject.before_content"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyObject.before_content.html#sphinx.domains.PyObject.before_content">[docs]</a>    <span class="k">def</span> <span class="nf">before_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># needed for automatic qualification of members (reset in subclasses)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clsname_set</span> <span class="o">=</span> <span class="bp">False</span></div>
+
+<div class="viewcode-block" id="PyObject.after_content"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyObject.after_content.html#sphinx.domains.PyObject.after_content">[docs]</a>    <span class="k">def</span> <span class="nf">after_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">clsname_set</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;py:class&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PyModulelevel"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyModulelevel.html#sphinx.domains.PyModulelevel">[docs]</a><span class="k">class</span> <span class="nc">PyModulelevel</span><span class="p">(</span><span class="n">PyObject</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description of an object on module level (functions, data).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PyModulelevel.needs_arglist"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyModulelevel.needs_arglist.html#sphinx.domains.PyModulelevel.needs_arglist">[docs]</a>    <span class="k">def</span> <span class="nf">needs_arglist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;function&#39;</span></div>
+
+<div class="viewcode-block" id="PyModulelevel.get_index_text"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyModulelevel.get_index_text.html#sphinx.domains.PyModulelevel.get_index_text">[docs]</a>    <span class="k">def</span> <span class="nf">get_index_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">name_cls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;function&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">modname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (built-in function)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">name_cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (in module </span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">name_cls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">modname</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">modname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (built-in variable)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">name_cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (in module </span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">name_cls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">modname</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span></div></div>
+
+
+<div class="viewcode-block" id="PyClasslike"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClasslike.html#sphinx.domains.PyClasslike">[docs]</a><span class="k">class</span> <span class="nc">PyClasslike</span><span class="p">(</span><span class="n">PyObject</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description of a class-like object (classes, interfaces, exceptions).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PyClasslike.get_signature_prefix"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClasslike.get_signature_prefix.html#sphinx.domains.PyClasslike.get_signature_prefix">[docs]</a>    <span class="k">def</span> <span class="nf">get_signature_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span></div>
+
+<div class="viewcode-block" id="PyClasslike.get_index_text"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClasslike.get_index_text.html#sphinx.domains.PyClasslike.get_index_text">[docs]</a>    <span class="k">def</span> <span class="nf">get_index_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">name_cls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;class&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">modname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (built-in class)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">name_cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (class in </span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">name_cls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">modname</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;exception&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">name_cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
+
+<div class="viewcode-block" id="PyClasslike.before_content"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClasslike.before_content.html#sphinx.domains.PyClasslike.before_content">[docs]</a>    <span class="k">def</span> <span class="nf">before_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">PyObject</span><span class="o">.</span><span class="n">before_content</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="p">[</span><span class="s1">&#39;py:class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clsname_set</span> <span class="o">=</span> <span class="bp">True</span></div></div>
+
+
+<div class="viewcode-block" id="PyClassmember"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClassmember.html#sphinx.domains.PyClassmember">[docs]</a><span class="k">class</span> <span class="nc">PyClassmember</span><span class="p">(</span><span class="n">PyObject</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description of a class member (methods, attributes).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PyClassmember.needs_arglist"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClassmember.needs_arglist.html#sphinx.domains.PyClassmember.needs_arglist">[docs]</a>    <span class="k">def</span> <span class="nf">needs_arglist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyClassmember.get_signature_prefix"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClassmember.get_signature_prefix.html#sphinx.domains.PyClassmember.get_signature_prefix">[docs]</a>    <span class="k">def</span> <span class="nf">get_signature_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;staticmethod&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;static &#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;classmethod&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;classmethod &#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
+
+<div class="viewcode-block" id="PyClassmember.get_index_text"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClassmember.get_index_text.html#sphinx.domains.PyClassmember.get_index_text">[docs]</a>    <span class="k">def</span> <span class="nf">get_index_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">name_cls</span><span class="p">):</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">cls</span> <span class="o">=</span> <span class="n">name_cls</span>
+        <span class="n">add_modules</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_module_names</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">clsname</span><span class="p">,</span> <span class="n">methname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">modname</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (in module </span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">modname</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">()&#39;</span> <span class="o">%</span> <span class="n">name</span>
+            <span class="k">if</span> <span class="n">modname</span> <span class="ow">and</span> <span class="n">add_modules</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1"> method)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">methname</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">clsname</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (</span><span class="si">%s</span><span class="s1"> method)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">methname</span><span class="p">,</span> <span class="n">clsname</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;staticmethod&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">clsname</span><span class="p">,</span> <span class="n">methname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">modname</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (in module </span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">modname</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">()&#39;</span> <span class="o">%</span> <span class="n">name</span>
+            <span class="k">if</span> <span class="n">modname</span> <span class="ow">and</span> <span class="n">add_modules</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1"> static method)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">methname</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span>
+                                                          <span class="n">clsname</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (</span><span class="si">%s</span><span class="s1"> static method)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">methname</span><span class="p">,</span> <span class="n">clsname</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;classmethod&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">clsname</span><span class="p">,</span> <span class="n">methname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">modname</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (in module </span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">modname</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">()&#39;</span> <span class="o">%</span> <span class="n">name</span>
+            <span class="k">if</span> <span class="n">modname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1"> class method)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">methname</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span>
+                                                         <span class="n">clsname</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">() (</span><span class="si">%s</span><span class="s1"> class method)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">methname</span><span class="p">,</span> <span class="n">clsname</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtype</span> <span class="o">==</span> <span class="s1">&#39;attribute&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">clsname</span><span class="p">,</span> <span class="n">attrname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">modname</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (in module </span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">modname</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">name</span>
+            <span class="k">if</span> <span class="n">modname</span> <span class="ow">and</span> <span class="n">add_modules</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1"> attribute)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">attrname</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">clsname</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1"> attribute)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">attrname</span><span class="p">,</span> <span class="n">clsname</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
+
+<div class="viewcode-block" id="PyClassmember.before_content"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyClassmember.before_content.html#sphinx.domains.PyClassmember.before_content">[docs]</a>    <span class="k">def</span> <span class="nf">before_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">PyObject</span><span class="o">.</span><span class="n">before_content</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">lastname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">lastname</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:class&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="p">[</span><span class="s1">&#39;py:class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lastname</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clsname_set</span> <span class="o">=</span> <span class="bp">True</span></div></div>
+
+
+<div class="viewcode-block" id="PyDecoratorMixin"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyDecoratorMixin.html#sphinx.domains.PyDecoratorMixin">[docs]</a><span class="k">class</span> <span class="nc">PyDecoratorMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mixin for decorator directives.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="PyDecoratorMixin.handle_signature"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyDecoratorMixin.handle_signature.html#sphinx.domains.PyDecoratorMixin.handle_signature">[docs]</a>    <span class="k">def</span> <span class="nf">handle_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">PyDecoratorMixin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">handle_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">signode</span><span class="p">)</span>
+        <span class="n">signode</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_addname</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+
+<div class="viewcode-block" id="PyDecoratorMixin.needs_arglist"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyDecoratorMixin.needs_arglist.html#sphinx.domains.PyDecoratorMixin.needs_arglist">[docs]</a>    <span class="k">def</span> <span class="nf">needs_arglist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">False</span></div></div>
+
+
+<div class="viewcode-block" id="PyDecoratorFunction"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyDecoratorFunction.html#sphinx.domains.PyDecoratorFunction">[docs]</a><span class="k">class</span> <span class="nc">PyDecoratorFunction</span><span class="p">(</span><span class="n">PyDecoratorMixin</span><span class="p">,</span> <span class="n">PyModulelevel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Directive to mark functions meant to be used as decorators.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="PyDecoratorFunction.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyDecoratorFunction.run.html#sphinx.domains.PyDecoratorFunction.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># a decorator function is a function after all</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;py:function&#39;</span>
+        <span class="k">return</span> <span class="n">PyModulelevel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PyDecoratorMethod"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyDecoratorMethod.html#sphinx.domains.PyDecoratorMethod">[docs]</a><span class="k">class</span> <span class="nc">PyDecoratorMethod</span><span class="p">(</span><span class="n">PyDecoratorMixin</span><span class="p">,</span> <span class="n">PyClassmember</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Directive to mark methods meant to be used as decorators.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="PyDecoratorMethod.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyDecoratorMethod.run.html#sphinx.domains.PyDecoratorMethod.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;py:method&#39;</span>
+        <span class="k">return</span> <span class="n">PyClassmember</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PyModule"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyModule.html#sphinx.domains.PyModule">[docs]</a><span class="k">class</span> <span class="nc">PyModule</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Directive to mark description of a new module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;platform&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
+        <span class="s1">&#39;synopsis&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
+        <span class="s1">&#39;noindex&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+        <span class="s1">&#39;deprecated&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="PyModule.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyModule.run.html#sphinx.domains.PyModule.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">modname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">noindex</span> <span class="o">=</span> <span class="s1">&#39;noindex&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="p">[</span><span class="s1">&#39;py:module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">modname</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">noindex</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;py&#39;</span><span class="p">][</span><span class="s1">&#39;modules&#39;</span><span class="p">][</span><span class="n">modname</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;synopsis&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+                 <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;platform&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="s1">&#39;deprecated&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+            <span class="c1"># make a duplicate entry in &#39;objects&#39; to facilitate searching for</span>
+            <span class="c1"># the module in PythonDomain.find_obj()</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">domaindata</span><span class="p">[</span><span class="s1">&#39;py&#39;</span><span class="p">][</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="n">modname</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="s1">&#39;module&#39;</span><span class="p">)</span>
+            <span class="n">targetnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;module-&#39;</span> <span class="o">+</span> <span class="n">modname</span><span class="p">],</span>
+                                      <span class="n">ismod</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">note_explicit_target</span><span class="p">(</span><span class="n">targetnode</span><span class="p">)</span>
+            <span class="c1"># the platform and synopsis aren&#39;t printed; in fact, they are only</span>
+            <span class="c1"># used in the modindex currently</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">targetnode</span><span class="p">)</span>
+            <span class="n">indextext</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (module)&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">modname</span>
+            <span class="n">inode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">entries</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">indextext</span><span class="p">,</span>
+                                             <span class="s1">&#39;module-&#39;</span> <span class="o">+</span> <span class="n">modname</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)])</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span></div></div>
+
+
+<div class="viewcode-block" id="PyCurrentModule"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyCurrentModule.html#sphinx.domains.PyCurrentModule">[docs]</a><span class="k">class</span> <span class="nc">PyCurrentModule</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This directive is just to tell Sphinx that we&#39;re documenting</span>
+<span class="sd">    stuff in module foo, but links to module foo won&#39;t lead here.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="PyCurrentModule.run"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyCurrentModule.run.html#sphinx.domains.PyCurrentModule.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">modname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">modname</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;py:module&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="p">[</span><span class="s1">&#39;py:module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">modname</span>
+        <span class="k">return</span> <span class="p">[]</span></div></div>
+
+
+<div class="viewcode-block" id="PyXRefRole"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyXRefRole.html#sphinx.domains.PyXRefRole">[docs]</a><span class="k">class</span> <span class="nc">PyXRefRole</span><span class="p">(</span><span class="n">XRefRole</span><span class="p">):</span>
+<div class="viewcode-block" id="PyXRefRole.process_link"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PyXRefRole.process_link.html#sphinx.domains.PyXRefRole.process_link">[docs]</a>    <span class="k">def</span> <span class="nf">process_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">refnode</span><span class="p">,</span> <span class="n">has_explicit_title</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="n">refnode</span><span class="p">[</span><span class="s1">&#39;py:module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:module&#39;</span><span class="p">)</span>
+        <span class="n">refnode</span><span class="p">[</span><span class="s1">&#39;py:class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:class&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_explicit_title</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>    <span class="c1"># only has a meaning for the target</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)</span>  <span class="c1"># only has a meaning for the title</span>
+            <span class="c1"># if the first character is a tilde, don&#39;t display the module/class</span>
+            <span class="c1"># parts of the contents</span>
+            <span class="k">if</span> <span class="n">title</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;~&#39;</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+                <span class="n">dot</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dot</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">[</span><span class="n">dot</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="c1"># if the first character is a dot, search more specific namespaces first</span>
+        <span class="c1"># else search builtins first</span>
+        <span class="k">if</span> <span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">refnode</span><span class="p">[</span><span class="s1">&#39;refspecific&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="n">title</span><span class="p">,</span> <span class="n">target</span></div></div>
+
+
+<div class="viewcode-block" id="PythonModuleIndex"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonModuleIndex.html#sphinx.domains.PythonModuleIndex">[docs]</a><span class="k">class</span> <span class="nc">PythonModuleIndex</span><span class="p">(</span><span class="n">Index</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Index subclass to provide the Python module index.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;modindex&#39;</span>
+    <span class="n">localname</span> <span class="o">=</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Python Module Index&#39;</span><span class="p">)</span>
+    <span class="n">shortname</span> <span class="o">=</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;modules&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PythonModuleIndex.generate"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonModuleIndex.generate.html#sphinx.domains.PythonModuleIndex.generate">[docs]</a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docnames</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># list of prefixes to ignore</span>
+        <span class="n">ignores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;modindex_common_prefix&#39;</span><span class="p">]</span>
+        <span class="n">ignores</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ignores</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="c1"># list of all modules, sorted by module name</span>
+        <span class="n">modules</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">]),</span>
+                         <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="c1"># sort out collapsable modules</span>
+        <span class="n">prev_modname</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">num_toplevels</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">modname</span><span class="p">,</span> <span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="n">synopsis</span><span class="p">,</span> <span class="n">platforms</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">)</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">docnames</span> <span class="ow">and</span> <span class="n">docname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">docnames</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">for</span> <span class="n">ignore</span> <span class="ow">in</span> <span class="n">ignores</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">modname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">ignore</span><span class="p">):</span>
+                    <span class="n">modname</span> <span class="o">=</span> <span class="n">modname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">ignore</span><span class="p">):]</span>
+                    <span class="n">stripped</span> <span class="o">=</span> <span class="n">ignore</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stripped</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+            <span class="c1"># we stripped the whole module name?</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">modname</span><span class="p">:</span>
+                <span class="n">modname</span><span class="p">,</span> <span class="n">stripped</span> <span class="o">=</span> <span class="n">stripped</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+
+            <span class="n">entries</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">modname</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="p">[])</span>
+
+            <span class="n">package</span> <span class="o">=</span> <span class="n">modname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">package</span> <span class="o">!=</span> <span class="n">modname</span><span class="p">:</span>
+                <span class="c1"># it&#39;s a submodule</span>
+                <span class="k">if</span> <span class="n">prev_modname</span> <span class="o">==</span> <span class="n">package</span><span class="p">:</span>
+                    <span class="c1"># first submodule - make parent a group head</span>
+                    <span class="k">if</span> <span class="n">entries</span><span class="p">:</span>
+                        <span class="n">entries</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">elif</span> <span class="ow">not</span> <span class="n">prev_modname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">package</span><span class="p">):</span>
+                    <span class="c1"># submodule without parent in list, add dummy entry</span>
+                    <span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">stripped</span> <span class="o">+</span> <span class="n">package</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])</span>
+                <span class="n">subtype</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">num_toplevels</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">subtype</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="n">qualifier</span> <span class="o">=</span> <span class="n">deprecated</span> <span class="ow">and</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Deprecated&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">stripped</span> <span class="o">+</span> <span class="n">modname</span><span class="p">,</span> <span class="n">subtype</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span>
+                            <span class="s1">&#39;module-&#39;</span> <span class="o">+</span> <span class="n">stripped</span> <span class="o">+</span> <span class="n">modname</span><span class="p">,</span> <span class="n">platforms</span><span class="p">,</span>
+                            <span class="n">qualifier</span><span class="p">,</span> <span class="n">synopsis</span><span class="p">])</span>
+            <span class="n">prev_modname</span> <span class="o">=</span> <span class="n">modname</span>
+
+        <span class="c1"># apply heuristics when to collapse modindex at page load:</span>
+        <span class="c1"># only collapse if number of toplevel modules is larger than</span>
+        <span class="c1"># number of submodules</span>
+        <span class="n">collapse</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">modules</span><span class="p">)</span> <span class="o">-</span> <span class="n">num_toplevels</span> <span class="o">&lt;</span> <span class="n">num_toplevels</span>
+
+        <span class="c1"># sort by first letter</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">iteritems</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">content</span><span class="p">,</span> <span class="n">collapse</span></div></div>
+
+
+<div class="viewcode-block" id="PythonDomain"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonDomain.html#sphinx.domains.PythonDomain">[docs]</a><span class="k">class</span> <span class="nc">PythonDomain</span><span class="p">(</span><span class="n">Domain</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Python language domain.&quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;py&#39;</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span>
+    <span class="n">object_types</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;function&#39;</span><span class="p">:</span>     <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">),</span>      <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span>         <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">),</span>          <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span>        <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">),</span>         <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;exc&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;exception&#39;</span><span class="p">:</span>    <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;exception&#39;</span><span class="p">),</span>     <span class="s1">&#39;exc&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;method&#39;</span><span class="p">:</span>       <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">),</span>        <span class="s1">&#39;meth&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;classmethod&#39;</span><span class="p">:</span>  <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;class method&#39;</span><span class="p">),</span>  <span class="s1">&#39;meth&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;staticmethod&#39;</span><span class="p">:</span> <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;static method&#39;</span><span class="p">),</span> <span class="s1">&#39;meth&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;attribute&#39;</span><span class="p">:</span>    <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;attribute&#39;</span><span class="p">),</span>     <span class="s1">&#39;attr&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;module&#39;</span><span class="p">:</span>       <span class="n">ObjType</span><span class="p">(</span><span class="n">l_</span><span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">),</span>        <span class="s1">&#39;mod&#39;</span><span class="p">,</span> <span class="s1">&#39;obj&#39;</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="n">directives</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;function&#39;</span><span class="p">:</span>        <span class="n">PyModulelevel</span><span class="p">,</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span>            <span class="n">PyModulelevel</span><span class="p">,</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span>           <span class="n">PyClasslike</span><span class="p">,</span>
+        <span class="s1">&#39;exception&#39;</span><span class="p">:</span>       <span class="n">PyClasslike</span><span class="p">,</span>
+        <span class="s1">&#39;method&#39;</span><span class="p">:</span>          <span class="n">PyClassmember</span><span class="p">,</span>
+        <span class="s1">&#39;classmethod&#39;</span><span class="p">:</span>     <span class="n">PyClassmember</span><span class="p">,</span>
+        <span class="s1">&#39;staticmethod&#39;</span><span class="p">:</span>    <span class="n">PyClassmember</span><span class="p">,</span>
+        <span class="s1">&#39;attribute&#39;</span><span class="p">:</span>       <span class="n">PyClassmember</span><span class="p">,</span>
+        <span class="s1">&#39;module&#39;</span><span class="p">:</span>          <span class="n">PyModule</span><span class="p">,</span>
+        <span class="s1">&#39;currentmodule&#39;</span><span class="p">:</span>   <span class="n">PyCurrentModule</span><span class="p">,</span>
+        <span class="s1">&#39;decorator&#39;</span><span class="p">:</span>       <span class="n">PyDecoratorFunction</span><span class="p">,</span>
+        <span class="s1">&#39;decoratormethod&#39;</span><span class="p">:</span> <span class="n">PyDecoratorMethod</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">roles</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span>  <span class="n">PyXRefRole</span><span class="p">(),</span>
+        <span class="s1">&#39;exc&#39;</span><span class="p">:</span>   <span class="n">PyXRefRole</span><span class="p">(),</span>
+        <span class="s1">&#39;func&#39;</span><span class="p">:</span>  <span class="n">PyXRefRole</span><span class="p">(</span><span class="n">fix_parens</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">PyXRefRole</span><span class="p">(),</span>
+        <span class="s1">&#39;const&#39;</span><span class="p">:</span> <span class="n">PyXRefRole</span><span class="p">(),</span>
+        <span class="s1">&#39;attr&#39;</span><span class="p">:</span>  <span class="n">PyXRefRole</span><span class="p">(),</span>
+        <span class="s1">&#39;meth&#39;</span><span class="p">:</span>  <span class="n">PyXRefRole</span><span class="p">(</span><span class="n">fix_parens</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s1">&#39;mod&#39;</span><span class="p">:</span>   <span class="n">PyXRefRole</span><span class="p">(),</span>
+        <span class="s1">&#39;obj&#39;</span><span class="p">:</span>   <span class="n">PyXRefRole</span><span class="p">(),</span>
+    <span class="p">}</span>
+    <span class="n">initial_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;objects&#39;</span><span class="p">:</span> <span class="p">{},</span>  <span class="c1"># fullname -&gt; docname, objtype</span>
+        <span class="s1">&#39;modules&#39;</span><span class="p">:</span> <span class="p">{},</span>  <span class="c1"># modname -&gt; docname, synopsis, platform, deprecated</span>
+    <span class="p">}</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">PythonModuleIndex</span><span class="p">,</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="PythonDomain.clear_doc"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonDomain.clear_doc.html#sphinx.domains.PythonDomain.clear_doc">[docs]</a>    <span class="k">def</span> <span class="nf">clear_doc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docname</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">fullname</span><span class="p">,</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">_l</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">fn</span> <span class="o">==</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="n">fullname</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">modname</span><span class="p">,</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">_x</span><span class="p">,</span> <span class="n">_x</span><span class="p">,</span> <span class="n">_x</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">fn</span> <span class="o">==</span> <span class="n">docname</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">][</span><span class="n">modname</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PythonDomain.merge_domaindata"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonDomain.merge_domaindata.html#sphinx.domains.PythonDomain.merge_domaindata">[docs]</a>    <span class="k">def</span> <span class="nf">merge_domaindata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docnames</span><span class="p">,</span> <span class="n">otherdata</span><span class="p">):</span>
+        <span class="c1"># XXX check duplicates?</span>
+        <span class="k">for</span> <span class="n">fullname</span><span class="p">,</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">objtype</span><span class="p">)</span> <span class="ow">in</span> <span class="n">otherdata</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">docnames</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">][</span><span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">objtype</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">modname</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">otherdata</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">docnames</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">][</span><span class="n">modname</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="PythonDomain.find_obj"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonDomain.find_obj.html#sphinx.domains.PythonDomain.find_obj">[docs]</a>    <span class="k">def</span> <span class="nf">find_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">searchmode</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find a Python object for &quot;name&quot;, perhaps using the given module</span>
+<span class="sd">        and/or classname.  Returns a list of (name, object entry) tuples.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># skip parens</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;()&#39;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">newname</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="n">searchmode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">objtypes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object_types</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">objtypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objtypes_for_role</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">objtypes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">modname</span> <span class="ow">and</span> <span class="n">classname</span><span class="p">:</span>
+                    <span class="n">fullname</span> <span class="o">=</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">classname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+                    <span class="k">if</span> <span class="n">fullname</span> <span class="ow">in</span> <span class="n">objects</span> <span class="ow">and</span> <span class="n">objects</span><span class="p">[</span><span class="n">fullname</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">objtypes</span><span class="p">:</span>
+                        <span class="n">newname</span> <span class="o">=</span> <span class="n">fullname</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">newname</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">modname</span> <span class="ow">and</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">objects</span> <span class="ow">and</span> \
+                       <span class="n">objects</span><span class="p">[</span><span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">objtypes</span><span class="p">:</span>
+                        <span class="n">newname</span> <span class="o">=</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+                    <span class="k">elif</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">objects</span> <span class="ow">and</span> <span class="n">objects</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">objtypes</span><span class="p">:</span>
+                        <span class="n">newname</span> <span class="o">=</span> <span class="n">name</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># &quot;fuzzy&quot; searching mode</span>
+                        <span class="n">searchname</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+                        <span class="n">matches</span> <span class="o">=</span> <span class="p">[(</span><span class="n">oname</span><span class="p">,</span> <span class="n">objects</span><span class="p">[</span><span class="n">oname</span><span class="p">])</span> <span class="k">for</span> <span class="n">oname</span> <span class="ow">in</span> <span class="n">objects</span>
+                                   <span class="k">if</span> <span class="n">oname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">searchname</span><span class="p">)</span> <span class="ow">and</span>
+                                   <span class="n">objects</span><span class="p">[</span><span class="n">oname</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">objtypes</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># NOTE: searching for exact match, object type is not considered</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                <span class="n">newname</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;mod&#39;</span><span class="p">:</span>
+                <span class="c1"># only exact matches allowed for modules</span>
+                <span class="k">return</span> <span class="p">[]</span>
+            <span class="k">elif</span> <span class="n">classname</span> <span class="ow">and</span> <span class="n">classname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                <span class="n">newname</span> <span class="o">=</span> <span class="n">classname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="k">elif</span> <span class="n">modname</span> <span class="ow">and</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                <span class="n">newname</span> <span class="o">=</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="k">elif</span> <span class="n">modname</span> <span class="ow">and</span> <span class="n">classname</span> <span class="ow">and</span> \
+                    <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">classname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                <span class="n">newname</span> <span class="o">=</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">classname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="c1"># special case: builtin exceptions have module &quot;exceptions&quot; set</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;exc&#39;</span> <span class="ow">and</span> <span class="s1">&#39;.&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> \
+                    <span class="s1">&#39;exceptions.&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                <span class="n">newname</span> <span class="o">=</span> <span class="s1">&#39;exceptions.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="c1"># special case: object methods</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;meth&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;.&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> \
+                    <span class="s1">&#39;object.&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+                <span class="n">newname</span> <span class="o">=</span> <span class="s1">&#39;object.&#39;</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="n">newname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">matches</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">newname</span><span class="p">,</span> <span class="n">objects</span><span class="p">[</span><span class="n">newname</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">matches</span></div>
+
+<div class="viewcode-block" id="PythonDomain.resolve_xref"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonDomain.resolve_xref.html#sphinx.domains.PythonDomain.resolve_xref">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_xref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span>
+                     <span class="nb">type</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">contnode</span><span class="p">):</span>
+        <span class="n">modname</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:module&#39;</span><span class="p">)</span>
+        <span class="n">clsname</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:class&#39;</span><span class="p">)</span>
+        <span class="n">searchmode</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s1">&#39;refspecific&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">0</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_obj</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">clsname</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
+                                <span class="nb">type</span><span class="p">,</span> <span class="n">searchmode</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">matches</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">warn_node</span><span class="p">(</span>
+                <span class="s1">&#39;more than one target found for cross-reference &#39;</span>
+                <span class="s1">&#39;</span><span class="si">%r</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">)),</span>
+                <span class="n">node</span><span class="p">)</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">obj</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;module&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_module_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+                                             <span class="n">contnode</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">make_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="p">,</span>
+                                <span class="n">contnode</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PythonDomain.resolve_any_xref"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonDomain.resolve_any_xref.html#sphinx.domains.PythonDomain.resolve_any_xref">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_any_xref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
+                         <span class="n">node</span><span class="p">,</span> <span class="n">contnode</span><span class="p">):</span>
+        <span class="n">modname</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:module&#39;</span><span class="p">)</span>
+        <span class="n">clsname</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:class&#39;</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># always search in &quot;refspecific&quot; mode with the :any: role</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_obj</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">clsname</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">obj</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;module&#39;</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;py:mod&#39;</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_make_module_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span>
+                                                          <span class="n">name</span><span class="p">,</span> <span class="n">contnode</span><span class="p">)))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;py:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">role_for_objtype</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                                <span class="n">make_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="p">,</span>
+                                             <span class="n">contnode</span><span class="p">,</span> <span class="n">name</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">results</span></div>
+
+    <span class="k">def</span> <span class="nf">_make_module_refnode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">contnode</span><span class="p">):</span>
+        <span class="c1"># get additional info for modules</span>
+        <span class="n">docname</span><span class="p">,</span> <span class="n">synopsis</span><span class="p">,</span> <span class="n">platform</span><span class="p">,</span> <span class="n">deprecated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="n">synopsis</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">synopsis</span>
+        <span class="k">if</span> <span class="n">deprecated</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">+=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39; (deprecated)&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">platform</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">platform</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+        <span class="k">return</span> <span class="n">make_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span>
+                            <span class="s1">&#39;module-&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">,</span> <span class="n">contnode</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PythonDomain.get_objects"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.PythonDomain.get_objects.html#sphinx.domains.PythonDomain.get_objects">[docs]</a>    <span class="k">def</span> <span class="nf">get_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">modname</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">]):</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;module-&#39;</span> <span class="o">+</span> <span class="n">modname</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">refname</span><span class="p">,</span> <span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="nb">type</span> <span class="o">!=</span> <span class="s1">&#39;module&#39;</span><span class="p">:</span>  <span class="c1"># modules are already handled</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">refname</span><span class="p">,</span> <span class="n">refname</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span> <span class="n">refname</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

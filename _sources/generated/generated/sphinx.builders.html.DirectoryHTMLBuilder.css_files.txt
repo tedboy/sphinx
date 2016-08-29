@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.css_files
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.css_files

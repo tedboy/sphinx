@@ -1,0 +1,6 @@
+sphinx.builders.xml.StringOutput.encode
+=======================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: StringOutput.encode

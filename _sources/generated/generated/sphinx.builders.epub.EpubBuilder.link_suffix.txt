@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.link_suffix
+============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: EpubBuilder.link_suffix

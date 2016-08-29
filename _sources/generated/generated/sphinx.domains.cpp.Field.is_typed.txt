@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Field.is_typed
+=================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: Field.is_typed

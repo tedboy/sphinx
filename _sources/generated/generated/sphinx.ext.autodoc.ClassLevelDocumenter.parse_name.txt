@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassLevelDocumenter.parse_name
+==================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassLevelDocumenter.parse_name

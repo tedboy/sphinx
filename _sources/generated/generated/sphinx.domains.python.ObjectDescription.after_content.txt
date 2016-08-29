@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.after_content
+=====================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: ObjectDescription.after_content

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.number_equations
+====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: number_equations

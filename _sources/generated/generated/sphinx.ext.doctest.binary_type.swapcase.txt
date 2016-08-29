@@ -1,0 +1,6 @@
+sphinx.ext.doctest.binary_type.swapcase
+=======================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: binary_type.swapcase

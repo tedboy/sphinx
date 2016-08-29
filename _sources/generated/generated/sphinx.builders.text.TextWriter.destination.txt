@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.destination
+===========================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextWriter.destination

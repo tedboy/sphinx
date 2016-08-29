@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.Directive.assert_has_content
+===========================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: Directive.assert_has_content

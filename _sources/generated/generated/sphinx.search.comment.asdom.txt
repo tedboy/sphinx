@@ -1,0 +1,6 @@
+sphinx.search.comment.asdom
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.asdom

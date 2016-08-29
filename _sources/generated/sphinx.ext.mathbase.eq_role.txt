@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eq_role
+===========================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: eq_role

@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.css_files
+================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.css_files

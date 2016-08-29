@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.dump_context
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.dump_context

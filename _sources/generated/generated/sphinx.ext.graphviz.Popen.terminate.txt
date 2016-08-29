@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Popen.terminate
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Popen.terminate

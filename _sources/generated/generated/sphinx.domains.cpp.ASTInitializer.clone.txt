@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTInitializer.clone
+=======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTInitializer.clone

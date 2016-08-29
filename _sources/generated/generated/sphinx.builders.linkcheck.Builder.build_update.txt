@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.build_update
+==============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.build_update

@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.versioning_compare
+=========================================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. autoattribute:: ChangesBuilder.versioning_compare

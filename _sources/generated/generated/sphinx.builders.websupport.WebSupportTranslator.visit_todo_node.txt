@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_todo_node
+===============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_todo_node

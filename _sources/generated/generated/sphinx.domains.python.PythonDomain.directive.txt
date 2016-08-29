@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.directive
+============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PythonDomain.directive

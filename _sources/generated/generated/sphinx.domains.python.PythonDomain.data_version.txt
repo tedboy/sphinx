@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.data_version
+===============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PythonDomain.data_version

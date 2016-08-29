@@ -1,0 +1,6 @@
+sphinx.pycode.sym.N_TOKENS
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.N_TOKENS

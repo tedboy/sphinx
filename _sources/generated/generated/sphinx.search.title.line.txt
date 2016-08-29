@@ -1,0 +1,6 @@
+sphinx.search.title.line
+========================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: title.line

@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.add_permalinks
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.add_permalinks

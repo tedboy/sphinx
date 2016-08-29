@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.text_type.title
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: text_type.title

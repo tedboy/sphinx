@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.name
+======================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: Builder.name

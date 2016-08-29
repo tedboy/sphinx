@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.final_argument_whitespace
+==================================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. autoattribute:: CObject.final_argument_whitespace

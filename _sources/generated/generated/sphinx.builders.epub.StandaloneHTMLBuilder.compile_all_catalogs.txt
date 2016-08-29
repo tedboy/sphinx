@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.compile_all_catalogs
+===============================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.compile_all_catalogs

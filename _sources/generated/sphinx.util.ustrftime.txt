@@ -1,0 +1,6 @@
+sphinx.util.ustrftime
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: ustrftime

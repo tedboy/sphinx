@@ -1,0 +1,31 @@
+sphinx.search.NodeVisitor
+=========================
+.. currentmodule:: sphinx.search
+.. autoclass:: NodeVisitor
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~NodeVisitor.__init__
+   ~NodeVisitor.dispatch_departure
+   ~NodeVisitor.dispatch_visit
+   ~NodeVisitor.unknown_departure
+   ~NodeVisitor.unknown_visit
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~NodeVisitor.optional
+

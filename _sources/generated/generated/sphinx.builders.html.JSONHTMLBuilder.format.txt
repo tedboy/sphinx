@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.format
+===========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.format

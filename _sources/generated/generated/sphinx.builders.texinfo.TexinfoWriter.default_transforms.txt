@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.default_transforms
+========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.default_transforms

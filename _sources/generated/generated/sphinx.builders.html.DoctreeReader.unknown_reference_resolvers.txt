@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.unknown_reference_resolvers
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DoctreeReader.unknown_reference_resolvers

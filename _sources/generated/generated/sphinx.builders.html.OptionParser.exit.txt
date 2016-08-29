@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.exit
+======================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: OptionParser.exit

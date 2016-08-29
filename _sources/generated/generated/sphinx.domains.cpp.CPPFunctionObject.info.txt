@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.info
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPFunctionObject.info

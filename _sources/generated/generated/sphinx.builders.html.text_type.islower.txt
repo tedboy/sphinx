@@ -1,0 +1,6 @@
+sphinx.builders.html.text_type.islower
+======================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: text_type.islower

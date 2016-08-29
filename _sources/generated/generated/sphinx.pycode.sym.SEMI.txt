@@ -1,0 +1,6 @@
+sphinx.pycode.sym.SEMI
+======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.SEMI

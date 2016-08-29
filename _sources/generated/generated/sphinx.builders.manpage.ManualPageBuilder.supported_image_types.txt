@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageBuilder.supported_image_types
+===============================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageBuilder.supported_image_types

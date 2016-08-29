@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.text_type.isspace
+====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: text_type.isspace

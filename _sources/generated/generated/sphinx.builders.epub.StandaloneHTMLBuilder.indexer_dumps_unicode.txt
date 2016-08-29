@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.indexer_dumps_unicode
+================================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: StandaloneHTMLBuilder.indexer_dumps_unicode

@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.head_prefix_template
+===================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.head_prefix_template

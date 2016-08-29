@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.get_standard_config_files
+============================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.get_standard_config_files

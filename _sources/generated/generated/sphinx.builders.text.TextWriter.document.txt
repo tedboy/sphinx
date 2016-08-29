@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.document
+========================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextWriter.document

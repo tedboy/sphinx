@@ -1,0 +1,6 @@
+sphinx.search.SearchEnglish.stem
+================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: SearchEnglish.stem

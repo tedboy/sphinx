@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorPtr.get_param_id_v1
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorPtr.get_param_id_v1

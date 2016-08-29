@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.is_not_known_attribute
+===================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.is_not_known_attribute

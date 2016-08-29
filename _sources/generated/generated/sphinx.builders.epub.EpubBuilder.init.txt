@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.init
+=====================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.init

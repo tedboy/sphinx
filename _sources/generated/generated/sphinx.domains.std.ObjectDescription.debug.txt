@@ -1,0 +1,6 @@
+sphinx.domains.std.ObjectDescription.debug
+==========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ObjectDescription.debug

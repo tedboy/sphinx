@@ -1,0 +1,6 @@
+sphinx.search.raw.update_basic_atts
+===================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.update_basic_atts

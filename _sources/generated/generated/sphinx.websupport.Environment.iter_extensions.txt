@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.iter_extensions
+=============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.iter_extensions

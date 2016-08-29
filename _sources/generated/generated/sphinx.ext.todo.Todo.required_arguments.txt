@@ -1,0 +1,6 @@
+sphinx.ext.todo.Todo.required_arguments
+=======================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: Todo.required_arguments

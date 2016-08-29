@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.debug
+==========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.debug

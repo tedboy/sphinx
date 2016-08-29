@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.versioning_compare
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.versioning_compare

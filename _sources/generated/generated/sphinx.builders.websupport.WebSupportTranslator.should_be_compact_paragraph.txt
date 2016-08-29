@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.should_be_compact_paragraph
+===========================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.should_be_compact_paragraph

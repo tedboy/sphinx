@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLBuilder.get_builder_config
+=======================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: PseudoXMLBuilder.get_builder_config

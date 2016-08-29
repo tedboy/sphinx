@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.replace_attr
+=====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: math.replace_attr

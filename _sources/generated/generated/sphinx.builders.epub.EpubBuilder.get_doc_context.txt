@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.get_doc_context
+================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.get_doc_context

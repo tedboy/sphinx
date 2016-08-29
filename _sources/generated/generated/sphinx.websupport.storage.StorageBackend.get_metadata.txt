@@ -1,0 +1,6 @@
+sphinx.websupport.storage.StorageBackend.get_metadata
+=====================================================
+
+.. currentmodule:: sphinx.websupport.storage
+
+.. automethod:: StorageBackend.get_metadata

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.get_index_text
+===================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.get_index_text

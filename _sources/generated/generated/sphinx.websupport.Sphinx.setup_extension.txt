@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.setup_extension
+========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.setup_extension

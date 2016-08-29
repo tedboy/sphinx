@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.versioning_compare
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StandaloneHTMLBuilder.versioning_compare

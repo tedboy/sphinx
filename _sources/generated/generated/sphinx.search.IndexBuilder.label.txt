@@ -1,0 +1,6 @@
+sphinx.search.IndexBuilder.label
+================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: IndexBuilder.label

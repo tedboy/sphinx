@@ -1,0 +1,49 @@
+sphinx.domains.cpp.CPPMemberObject
+==================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPMemberObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPMemberObject.__init__
+   ~CPPMemberObject.add_name
+   ~CPPMemberObject.add_target_and_index
+   ~CPPMemberObject.after_content
+   ~CPPMemberObject.assert_has_content
+   ~CPPMemberObject.before_content
+   ~CPPMemberObject.debug
+   ~CPPMemberObject.describe_signature
+   ~CPPMemberObject.directive_error
+   ~CPPMemberObject.error
+   ~CPPMemberObject.get_index_text
+   ~CPPMemberObject.get_signatures
+   ~CPPMemberObject.handle_signature
+   ~CPPMemberObject.info
+   ~CPPMemberObject.parse_definition
+   ~CPPMemberObject.run
+   ~CPPMemberObject.severe
+   ~CPPMemberObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CPPMemberObject.doc_field_types
+   ~CPPMemberObject.final_argument_whitespace
+   ~CPPMemberObject.has_content
+   ~CPPMemberObject.option_spec
+   ~CPPMemberObject.optional_arguments
+   ~CPPMemberObject.required_arguments
+

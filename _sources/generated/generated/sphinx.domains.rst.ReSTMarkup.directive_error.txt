@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.directive_error
+=============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.directive_error

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.get_transforms
+====================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoWriter.get_transforms

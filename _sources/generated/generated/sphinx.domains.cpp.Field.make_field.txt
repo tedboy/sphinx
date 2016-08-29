@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Field.make_field
+===================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: Field.make_field

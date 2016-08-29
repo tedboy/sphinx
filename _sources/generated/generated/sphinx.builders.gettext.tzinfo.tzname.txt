@@ -1,0 +1,6 @@
+sphinx.builders.gettext.tzinfo.tzname
+=====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: tzinfo.tzname

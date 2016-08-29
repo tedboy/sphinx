@@ -1,0 +1,6 @@
+sphinx.domains.ReSTDomain.object_types
+======================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: ReSTDomain.object_types

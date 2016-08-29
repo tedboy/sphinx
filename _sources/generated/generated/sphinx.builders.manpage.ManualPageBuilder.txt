@@ -1,0 +1,53 @@
+sphinx.builders.manpage.ManualPageBuilder
+=========================================
+.. currentmodule:: sphinx.builders.manpage
+.. autoclass:: ManualPageBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ManualPageBuilder.__init__
+   ~ManualPageBuilder.build
+   ~ManualPageBuilder.build_all
+   ~ManualPageBuilder.build_specific
+   ~ManualPageBuilder.build_update
+   ~ManualPageBuilder.cleanup
+   ~ManualPageBuilder.compile_all_catalogs
+   ~ManualPageBuilder.compile_catalogs
+   ~ManualPageBuilder.compile_specific_catalogs
+   ~ManualPageBuilder.compile_update_catalogs
+   ~ManualPageBuilder.create_template_bridge
+   ~ManualPageBuilder.finish
+   ~ManualPageBuilder.get_builder_config
+   ~ManualPageBuilder.get_outdated_docs
+   ~ManualPageBuilder.get_relative_uri
+   ~ManualPageBuilder.get_target_uri
+   ~ManualPageBuilder.init
+   ~ManualPageBuilder.post_process_images
+   ~ManualPageBuilder.prepare_writing
+   ~ManualPageBuilder.write
+   ~ManualPageBuilder.write_doc
+   ~ManualPageBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ManualPageBuilder.allow_parallel
+   ~ManualPageBuilder.format
+   ~ManualPageBuilder.name
+   ~ManualPageBuilder.supported_image_types
+   ~ManualPageBuilder.versioning_compare
+   ~ManualPageBuilder.versioning_method
+

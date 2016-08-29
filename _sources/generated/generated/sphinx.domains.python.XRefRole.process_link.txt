@@ -1,0 +1,6 @@
+sphinx.domains.python.XRefRole.process_link
+===========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: XRefRole.process_link

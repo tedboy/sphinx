@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.setup
+=========================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. autofunction:: setup

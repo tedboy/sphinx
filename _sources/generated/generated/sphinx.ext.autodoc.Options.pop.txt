@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Options.pop
+==============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: Options.pop

@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.handle_finish
+==================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.handle_finish

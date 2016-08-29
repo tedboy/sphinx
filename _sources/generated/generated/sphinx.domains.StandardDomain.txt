@@ -1,0 +1,45 @@
+sphinx.domains.StandardDomain
+=============================
+.. currentmodule:: sphinx.domains
+.. autoclass:: StandardDomain
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~StandardDomain.__init__
+   ~StandardDomain.build_reference_node
+   ~StandardDomain.clear_doc
+   ~StandardDomain.directive
+   ~StandardDomain.get_objects
+   ~StandardDomain.get_type_name
+   ~StandardDomain.merge_domaindata
+   ~StandardDomain.process_doc
+   ~StandardDomain.resolve_any_xref
+   ~StandardDomain.resolve_xref
+   ~StandardDomain.role
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~StandardDomain.dangling_warnings
+   ~StandardDomain.data_version
+   ~StandardDomain.directives
+   ~StandardDomain.indices
+   ~StandardDomain.initial_data
+   ~StandardDomain.label
+   ~StandardDomain.name
+   ~StandardDomain.object_types
+   ~StandardDomain.roles
+

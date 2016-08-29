@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleDocumenter.document_members
+====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleDocumenter.document_members

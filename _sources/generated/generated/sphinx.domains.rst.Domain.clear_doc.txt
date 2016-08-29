@@ -1,0 +1,6 @@
+sphinx.domains.rst.Domain.clear_doc
+===================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: Domain.clear_doc

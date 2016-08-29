@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.additional_dump_args
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.additional_dump_args

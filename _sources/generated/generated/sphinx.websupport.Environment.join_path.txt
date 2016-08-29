@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.join_path
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.join_path

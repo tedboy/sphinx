@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.warning
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumObject.warning

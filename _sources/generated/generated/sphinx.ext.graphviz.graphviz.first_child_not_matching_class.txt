@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.first_child_not_matching_class
+===========================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.first_child_not_matching_class

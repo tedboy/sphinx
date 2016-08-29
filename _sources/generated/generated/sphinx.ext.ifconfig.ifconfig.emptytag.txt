@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.emptytag
+=====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.emptytag

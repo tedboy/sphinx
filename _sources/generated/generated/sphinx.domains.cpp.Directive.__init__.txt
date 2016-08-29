@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Directive.__init__
+=====================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: Directive.__init__

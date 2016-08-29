@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.get_doc_context
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.get_doc_context

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.shortrepr
+======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.shortrepr

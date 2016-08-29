@@ -1,0 +1,40 @@
+sphinx.ext.doctest.TestsetupDirective
+=====================================
+.. currentmodule:: sphinx.ext.doctest
+.. autoclass:: TestsetupDirective
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TestsetupDirective.__init__
+   ~TestsetupDirective.add_name
+   ~TestsetupDirective.assert_has_content
+   ~TestsetupDirective.debug
+   ~TestsetupDirective.directive_error
+   ~TestsetupDirective.error
+   ~TestsetupDirective.info
+   ~TestsetupDirective.run
+   ~TestsetupDirective.severe
+   ~TestsetupDirective.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TestsetupDirective.final_argument_whitespace
+   ~TestsetupDirective.has_content
+   ~TestsetupDirective.option_spec
+   ~TestsetupDirective.optional_arguments
+   ~TestsetupDirective.required_arguments
+

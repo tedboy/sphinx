@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.post_process_images
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.post_process_images

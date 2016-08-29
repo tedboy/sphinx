@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLBuilder.format
+===========================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLBuilder.format

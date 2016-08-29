@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.assert_has_content
+=====================================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: GraphvizSimple.assert_has_content

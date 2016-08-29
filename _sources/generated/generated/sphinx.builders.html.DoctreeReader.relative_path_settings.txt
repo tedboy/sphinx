@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.relative_path_settings
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DoctreeReader.relative_path_settings

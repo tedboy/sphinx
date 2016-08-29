@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.supported_image_types
+=======================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: DocTestBuilder.supported_image_types

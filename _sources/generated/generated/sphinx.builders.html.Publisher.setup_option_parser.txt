@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.setup_option_parser
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.setup_option_parser

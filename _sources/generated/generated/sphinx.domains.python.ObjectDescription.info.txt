@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.info
+============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: ObjectDescription.info

@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.local_attributes
+=========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todolist.local_attributes

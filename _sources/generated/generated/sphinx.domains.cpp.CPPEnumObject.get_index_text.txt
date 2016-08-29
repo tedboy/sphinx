@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.get_index_text
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumObject.get_index_text

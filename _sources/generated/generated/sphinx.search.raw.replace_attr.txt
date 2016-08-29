@@ -1,0 +1,6 @@
+sphinx.search.raw.replace_attr
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.replace_attr

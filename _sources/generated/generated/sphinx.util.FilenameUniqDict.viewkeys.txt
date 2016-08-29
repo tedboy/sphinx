@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.viewkeys
+=====================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.viewkeys

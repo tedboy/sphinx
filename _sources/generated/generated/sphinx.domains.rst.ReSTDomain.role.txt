@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDomain.role
+==================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDomain.role

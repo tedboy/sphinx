@@ -1,0 +1,6 @@
+sphinx.websupport.WebSupport.get_document
+=========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: WebSupport.get_document

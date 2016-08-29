@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.handle_signature
+==========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.handle_signature

@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.tell
+================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.tell

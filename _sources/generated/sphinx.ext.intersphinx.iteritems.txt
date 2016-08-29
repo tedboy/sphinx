@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.iteritems
+================================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. autofunction:: iteritems

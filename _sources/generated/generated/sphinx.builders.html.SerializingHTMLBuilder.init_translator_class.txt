@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.init_translator_class
+=================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.init_translator_class

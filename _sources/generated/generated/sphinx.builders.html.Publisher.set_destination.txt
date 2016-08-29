@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.set_destination
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.set_destination

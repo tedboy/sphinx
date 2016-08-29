@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.final_argument_whitespace
+=========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: Directive.final_argument_whitespace

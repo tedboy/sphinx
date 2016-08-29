@@ -1,0 +1,6 @@
+sphinx.pycode.sym.suite
+=======================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.suite

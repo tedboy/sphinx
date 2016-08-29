@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.asdom
+==================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.asdom

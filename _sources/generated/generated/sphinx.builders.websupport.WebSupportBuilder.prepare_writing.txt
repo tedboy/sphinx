@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.prepare_writing
+============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.prepare_writing

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.append_attr_list
+=============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.append_attr_list

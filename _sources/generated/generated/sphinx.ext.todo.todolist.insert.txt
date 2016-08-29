@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.insert
+===============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.insert

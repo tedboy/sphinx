@@ -1,0 +1,61 @@
+.. automodule:: sphinx.domains.javascript
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      l_
+      make_refnode
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Domain
+      Field
+      GroupedField
+      JSCallable
+      JSConstructor
+      JSObject
+      JSXRefRole
+      JavaScriptDomain
+      ObjType
+      ObjectDescription
+      TypedField
+      XRefRole
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.domains.javascript.Domain
+       generated/sphinx.domains.javascript.Field
+       generated/sphinx.domains.javascript.GroupedField
+       generated/sphinx.domains.javascript.JSCallable
+       generated/sphinx.domains.javascript.JSConstructor
+       generated/sphinx.domains.javascript.JSObject
+       generated/sphinx.domains.javascript.JSXRefRole
+       generated/sphinx.domains.javascript.JavaScriptDomain
+       generated/sphinx.domains.javascript.ObjType
+       generated/sphinx.domains.javascript.ObjectDescription
+       generated/sphinx.domains.javascript.TypedField
+       generated/sphinx.domains.javascript.XRefRole
+
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.__init__
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SmartyPantsHTMLTranslator.__init__

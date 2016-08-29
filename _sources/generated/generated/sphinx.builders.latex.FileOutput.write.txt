@@ -1,0 +1,6 @@
+sphinx.builders.latex.FileOutput.write
+======================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: FileOutput.write

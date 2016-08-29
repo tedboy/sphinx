@@ -1,0 +1,6 @@
+sphinx.builders.gettext.defaultdict.itervalues
+==============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: defaultdict.itervalues

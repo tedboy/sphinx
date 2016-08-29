@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.final_argument_whitespace
+=====================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Glossary.final_argument_whitespace

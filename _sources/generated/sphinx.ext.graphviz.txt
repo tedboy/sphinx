@@ -1,0 +1,71 @@
+.. automodule:: sphinx.ext.graphviz
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      ensuredir
+      figure_wrapper
+      html_visit_graphviz
+      latex_visit_graphviz
+      man_visit_graphviz
+      render_dot
+      render_dot_html
+      render_dot_latex
+      render_dot_texinfo
+      setup
+      sha1
+      texinfo_visit_graphviz
+      text_visit_graphviz
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Directive
+      Graphviz
+      GraphvizSimple
+      Popen
+      ViewList
+      graphviz
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.graphviz.Directive
+       generated/sphinx.ext.graphviz.Graphviz
+       generated/sphinx.ext.graphviz.GraphvizSimple
+       generated/sphinx.ext.graphviz.Popen
+       generated/sphinx.ext.graphviz.ViewList
+       generated/sphinx.ext.graphviz.graphviz
+       generated/sphinx.ext.graphviz.text_type
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      GraphvizError
+      SphinxError
+   
+   

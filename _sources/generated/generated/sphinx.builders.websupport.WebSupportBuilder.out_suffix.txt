@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.out_suffix
+=======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportBuilder.out_suffix

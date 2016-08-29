@@ -1,0 +1,6 @@
+sphinx.search.comment.pop
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.pop

@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.blue
+========================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. autofunction:: blue

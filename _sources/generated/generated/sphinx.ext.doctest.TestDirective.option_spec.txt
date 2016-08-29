@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestDirective.option_spec
+============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: TestDirective.option_spec

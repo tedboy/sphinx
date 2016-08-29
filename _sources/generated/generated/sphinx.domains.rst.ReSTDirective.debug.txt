@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.debug
+======================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.debug

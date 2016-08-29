@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.set_cdata_mode
+===================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.set_cdata_mode

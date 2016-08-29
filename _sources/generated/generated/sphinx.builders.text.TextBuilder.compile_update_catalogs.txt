@@ -1,0 +1,6 @@
+sphinx.builders.text.TextBuilder.compile_update_catalogs
+========================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: TextBuilder.compile_update_catalogs

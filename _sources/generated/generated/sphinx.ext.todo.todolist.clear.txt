@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.clear
+==============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.clear

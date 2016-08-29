@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.render_math
+==============================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: render_math

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.has_content
+=============================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: MathDirective.has_content

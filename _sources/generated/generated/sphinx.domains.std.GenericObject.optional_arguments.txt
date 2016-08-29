@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.optional_arguments
+===================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: GenericObject.optional_arguments

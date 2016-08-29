@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.attlist
+=================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.attlist

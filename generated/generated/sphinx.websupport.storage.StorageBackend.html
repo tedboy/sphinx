@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.3.1.1. sphinx.websupport.storage.StorageBackend &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="7.3. sphinx.websupport.storage" href="../sphinx.websupport.storage.html"/>
+        <link rel="next" title="7.3.1.1.1.1. sphinx.websupport.storage.StorageBackend.accept_comment" href="sphinx.websupport.storage.StorageBackend.accept_comment.html"/>
+        <link rel="prev" title="7.3. sphinx.websupport.storage" href="../sphinx.websupport.storage.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.websupport.html">7.1. sphinx.websupport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.websupport.search.html">7.2. sphinx.websupport.search</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.websupport.storage.html">7.3. sphinx.websupport.storage</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.websupport.storage.html#classes">7.3.1. Classes</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="">7.3.1.1. sphinx.websupport.storage.StorageBackend</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.websupport.html">7. sphinx.websupport</a> &raquo;</li>
+        
+          <li><a href="../sphinx.websupport.storage.html">7.3. sphinx.websupport.storage</a> &raquo;</li>
+        
+      <li>7.3.1.1. sphinx.websupport.storage.StorageBackend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.websupport.storage.StorageBackend.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-websupport-storage-storagebackend">
+<h1>7.3.1.1. sphinx.websupport.storage.StorageBackend<a class="headerlink" href="#sphinx-websupport-storage-storagebackend" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.websupport.storage.StorageBackend">
+<em class="property">class </em><code class="descclassname">sphinx.websupport.storage.</code><code class="descname">StorageBackend</code><a class="reference internal" href="../../_modules/sphinx/websupport/storage.html#StorageBackend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.websupport.storage.StorageBackend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="methods">
+<h2>7.3.1.1.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.accept_comment.html#sphinx.websupport.storage.StorageBackend.accept_comment" title="sphinx.websupport.storage.StorageBackend.accept_comment"><code class="xref py py-obj docutils literal"><span class="pre">accept_comment</span></code></a>(comment_id)</td>
+<td>Called when a moderator accepts a comment.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.add_comment.html#sphinx.websupport.storage.StorageBackend.add_comment" title="sphinx.websupport.storage.StorageBackend.add_comment"><code class="xref py py-obj docutils literal"><span class="pre">add_comment</span></code></a>(text,&nbsp;displayed,&nbsp;username,&nbsp;time,&nbsp;...)</td>
+<td>Called when a comment is being added.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.add_node.html#sphinx.websupport.storage.StorageBackend.add_node" title="sphinx.websupport.storage.StorageBackend.add_node"><code class="xref py py-obj docutils literal"><span class="pre">add_node</span></code></a>(id,&nbsp;document,&nbsp;source)</td>
+<td>Add a node to the StorageBackend.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.delete_comment.html#sphinx.websupport.storage.StorageBackend.delete_comment" title="sphinx.websupport.storage.StorageBackend.delete_comment"><code class="xref py py-obj docutils literal"><span class="pre">delete_comment</span></code></a>(comment_id,&nbsp;username,&nbsp;moderator)</td>
+<td>Delete a comment.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.get_data.html#sphinx.websupport.storage.StorageBackend.get_data" title="sphinx.websupport.storage.StorageBackend.get_data"><code class="xref py py-obj docutils literal"><span class="pre">get_data</span></code></a>(node_id,&nbsp;username,&nbsp;moderator)</td>
+<td>Called to retrieve all data for a node.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.get_metadata.html#sphinx.websupport.storage.StorageBackend.get_metadata" title="sphinx.websupport.storage.StorageBackend.get_metadata"><code class="xref py py-obj docutils literal"><span class="pre">get_metadata</span></code></a>(docname,&nbsp;moderator)</td>
+<td>Get metadata for a document.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.has_node.html#sphinx.websupport.storage.StorageBackend.has_node" title="sphinx.websupport.storage.StorageBackend.has_node"><code class="xref py py-obj docutils literal"><span class="pre">has_node</span></code></a>(id)</td>
+<td>Check to see if a node exists.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.post_build.html#sphinx.websupport.storage.StorageBackend.post_build" title="sphinx.websupport.storage.StorageBackend.post_build"><code class="xref py py-obj docutils literal"><span class="pre">post_build</span></code></a>()</td>
+<td>Called after a build has completed.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.pre_build.html#sphinx.websupport.storage.StorageBackend.pre_build" title="sphinx.websupport.storage.StorageBackend.pre_build"><code class="xref py py-obj docutils literal"><span class="pre">pre_build</span></code></a>()</td>
+<td>Called immediately before the build process begins.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.process_vote.html#sphinx.websupport.storage.StorageBackend.process_vote" title="sphinx.websupport.storage.StorageBackend.process_vote"><code class="xref py py-obj docutils literal"><span class="pre">process_vote</span></code></a>(comment_id,&nbsp;username,&nbsp;value)</td>
+<td>Process a vote that is being cast.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.storage.StorageBackend.update_username.html#sphinx.websupport.storage.StorageBackend.update_username" title="sphinx.websupport.storage.StorageBackend.update_username"><code class="xref py py-obj docutils literal"><span class="pre">update_username</span></code></a>(old_username,&nbsp;new_username)</td>
+<td>If a user is allowed to change their username this method should be called so that there is not stagnate data in the storage system.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.websupport.storage.StorageBackend.accept_comment.html" class="btn btn-neutral float-right" title="7.3.1.1.1.1. sphinx.websupport.storage.StorageBackend.accept_comment" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../sphinx.websupport.storage.html" class="btn btn-neutral" title="7.3. sphinx.websupport.storage" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

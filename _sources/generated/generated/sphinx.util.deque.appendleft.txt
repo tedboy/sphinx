@@ -1,0 +1,6 @@
+sphinx.util.deque.appendleft
+============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.appendleft

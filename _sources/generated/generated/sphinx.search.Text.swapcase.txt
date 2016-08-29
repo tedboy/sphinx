@@ -1,0 +1,6 @@
+sphinx.search.Text.swapcase
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.swapcase

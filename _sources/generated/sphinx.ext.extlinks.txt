@@ -1,0 +1,25 @@
+.. automodule:: sphinx.ext.extlinks
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      iteritems
+      make_link_role
+      setup
+      setup_link_roles
+      split_explicit_title
+   
+   
+
+   
+   
+   
+
+   
+   
+   

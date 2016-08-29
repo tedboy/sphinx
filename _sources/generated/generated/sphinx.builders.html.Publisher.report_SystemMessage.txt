@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.report_SystemMessage
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.report_SystemMessage

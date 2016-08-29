@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.compile_all_catalogs
+======================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DocTestBuilder.compile_all_catalogs

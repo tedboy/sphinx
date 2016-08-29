@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.optional
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLTranslator.optional

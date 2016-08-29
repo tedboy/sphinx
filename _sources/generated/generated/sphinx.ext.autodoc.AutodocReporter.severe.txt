@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutodocReporter.severe
+=========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutodocReporter.severe

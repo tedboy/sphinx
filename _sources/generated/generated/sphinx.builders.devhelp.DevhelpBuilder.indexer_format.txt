@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.indexer_format
+=====================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.indexer_format

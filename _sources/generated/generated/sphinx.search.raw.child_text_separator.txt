@@ -1,0 +1,6 @@
+sphinx.search.raw.child_text_separator
+======================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: raw.child_text_separator

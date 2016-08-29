@@ -1,0 +1,6 @@
+sphinx.search.title.endtag
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.endtag

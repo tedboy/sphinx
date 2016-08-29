@@ -1,0 +1,6 @@
+sphinx.util.copy_static_entry
+=============================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: copy_static_entry

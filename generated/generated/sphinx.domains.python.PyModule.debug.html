@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.5.2.15.1.4. sphinx.domains.python.PyModule.debug &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="5.5.2.15. sphinx.domains.python.PyModule" href="sphinx.domains.python.PyModule.html"/>
+        <link rel="next" title="5.5.2.15.1.5. sphinx.domains.python.PyModule.directive_error" href="sphinx.domains.python.PyModule.directive_error.html"/>
+        <link rel="prev" title="5.5.2.15.1.3. sphinx.domains.python.PyModule.assert_has_content" href="sphinx.domains.python.PyModule.assert_has_content.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.html">5.1. sphinx.domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.c.html">5.2. sphinx.domains.c</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.cpp.html">5.3. sphinx.domains.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.javascript.html">5.4. sphinx.domains.javascript</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.domains.python.html">5.5. sphinx.domains.python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.domains.python.html#functions">5.5.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.domains.python.html#classes">5.5.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.Directive.html">5.5.2.1. sphinx.domains.python.Directive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.Domain.html">5.5.2.2. sphinx.domains.python.Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.Field.html">5.5.2.3. sphinx.domains.python.Field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.GroupedField.html">5.5.2.4. sphinx.domains.python.GroupedField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.Index.html">5.5.2.5. sphinx.domains.python.Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.ObjType.html">5.5.2.6. sphinx.domains.python.ObjType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.ObjectDescription.html">5.5.2.7. sphinx.domains.python.ObjectDescription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyClasslike.html">5.5.2.8. sphinx.domains.python.PyClasslike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyClassmember.html">5.5.2.9. sphinx.domains.python.PyClassmember</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyCurrentModule.html">5.5.2.10. sphinx.domains.python.PyCurrentModule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyDecoratorFunction.html">5.5.2.11. sphinx.domains.python.PyDecoratorFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyDecoratorMethod.html">5.5.2.12. sphinx.domains.python.PyDecoratorMethod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyDecoratorMixin.html">5.5.2.13. sphinx.domains.python.PyDecoratorMixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyField.html">5.5.2.14. sphinx.domains.python.PyField</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="sphinx.domains.python.PyModule.html">5.5.2.15. sphinx.domains.python.PyModule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyModulelevel.html">5.5.2.16. sphinx.domains.python.PyModulelevel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyObject.html">5.5.2.17. sphinx.domains.python.PyObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyTypedField.html">5.5.2.18. sphinx.domains.python.PyTypedField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyXRefRole.html">5.5.2.19. sphinx.domains.python.PyXRefRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PyXrefMixin.html">5.5.2.20. sphinx.domains.python.PyXrefMixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PythonDomain.html">5.5.2.21. sphinx.domains.python.PythonDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.PythonModuleIndex.html">5.5.2.22. sphinx.domains.python.PythonModuleIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.TypedField.html">5.5.2.23. sphinx.domains.python.TypedField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.domains.python.XRefRole.html">5.5.2.24. sphinx.domains.python.XRefRole</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.html">5.1. sphinx.domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.domains.std.html">5.6. sphinx.domains.std</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.domains.python.html">5.5. sphinx.domains.python</a> &raquo;</li>
+        
+          <li><a href="sphinx.domains.python.PyModule.html">5.5.2.15. sphinx.domains.python.PyModule</a> &raquo;</li>
+        
+      <li>5.5.2.15.1.4. sphinx.domains.python.PyModule.debug</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.domains.python.PyModule.debug.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-domains-python-pymodule-debug">
+<h1>5.5.2.15.1.4. sphinx.domains.python.PyModule.debug<a class="headerlink" href="#sphinx-domains-python-pymodule-debug" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="sphinx.domains.python.PyModule.debug">
+<code class="descclassname">PyModule.</code><code class="descname">debug</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#sphinx.domains.python.PyModule.debug" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.domains.python.PyModule.directive_error.html" class="btn btn-neutral float-right" title="5.5.2.15.1.5. sphinx.domains.python.PyModule.directive_error" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.domains.python.PyModule.assert_has_content.html" class="btn btn-neutral" title="5.5.2.15.1.3. sphinx.domains.python.PyModule.assert_has_content" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

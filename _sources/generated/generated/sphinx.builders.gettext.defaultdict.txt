@@ -1,0 +1,44 @@
+sphinx.builders.gettext.defaultdict
+===================================
+.. currentmodule:: sphinx.builders.gettext
+.. autoclass:: defaultdict
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~defaultdict.clear
+   ~defaultdict.copy
+   ~defaultdict.fromkeys
+   ~defaultdict.get
+   ~defaultdict.has_key
+   ~defaultdict.items
+   ~defaultdict.iteritems
+   ~defaultdict.iterkeys
+   ~defaultdict.itervalues
+   ~defaultdict.keys
+   ~defaultdict.pop
+   ~defaultdict.popitem
+   ~defaultdict.setdefault
+   ~defaultdict.update
+   ~defaultdict.values
+   ~defaultdict.viewitems
+   ~defaultdict.viewkeys
+   ~defaultdict.viewvalues
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~defaultdict.default_factory
+

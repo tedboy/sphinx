@@ -1,0 +1,6 @@
+sphinx.domains.std.Target.run
+=============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Target.run

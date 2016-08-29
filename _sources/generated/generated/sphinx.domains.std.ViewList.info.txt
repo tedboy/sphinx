@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.info
+================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.info

@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.setup
+====================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autofunction:: setup

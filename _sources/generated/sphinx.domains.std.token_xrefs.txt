@@ -1,0 +1,6 @@
+sphinx.domains.std.token_xrefs
+==============================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autofunction:: token_xrefs

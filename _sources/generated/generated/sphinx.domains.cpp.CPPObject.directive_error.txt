@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.directive_error
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.directive_error

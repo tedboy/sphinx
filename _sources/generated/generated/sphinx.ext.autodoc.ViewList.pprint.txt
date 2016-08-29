@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.pprint
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.pprint

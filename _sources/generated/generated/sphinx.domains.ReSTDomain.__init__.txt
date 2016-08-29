@@ -1,0 +1,6 @@
+sphinx.domains.ReSTDomain.__init__
+==================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: ReSTDomain.__init__

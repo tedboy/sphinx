@@ -1,0 +1,6 @@
+sphinx.locale.UserString.count
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.count

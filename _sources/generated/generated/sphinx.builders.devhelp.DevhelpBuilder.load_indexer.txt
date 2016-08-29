@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.load_indexer
+===================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.load_indexer

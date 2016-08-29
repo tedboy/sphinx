@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.cloak_email
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.cloak_email

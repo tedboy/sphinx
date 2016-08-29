@@ -1,0 +1,6 @@
+sphinx.websupport.WebSupport.build
+==================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: WebSupport.build

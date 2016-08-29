@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.lexer
+===================================
+
+.. currentmodule:: sphinx.websupport
+
+.. autoattribute:: Environment.lexer

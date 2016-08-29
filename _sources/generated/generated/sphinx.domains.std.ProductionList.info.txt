@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.info
+======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ProductionList.info

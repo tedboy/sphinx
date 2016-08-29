@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.next_node
+=========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.next_node

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.option_spec
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPFunctionObject.option_spec

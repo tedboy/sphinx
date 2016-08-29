@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.init_document_data
+=====================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXBuilder.init_document_data

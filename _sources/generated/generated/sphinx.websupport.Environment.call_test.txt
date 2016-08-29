@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.call_test
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.call_test

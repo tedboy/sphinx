@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_enumerated_list
+=====================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_enumerated_list

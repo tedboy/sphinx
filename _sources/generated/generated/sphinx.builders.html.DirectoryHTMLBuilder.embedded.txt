@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.embedded
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.embedded

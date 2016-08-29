@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPDomain.object_types
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPDomain.object_types

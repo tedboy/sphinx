@@ -1,0 +1,6 @@
+sphinx.domains.python.Index.shortname
+=====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: Index.shortname

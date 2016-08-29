@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_field_list
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_field_list

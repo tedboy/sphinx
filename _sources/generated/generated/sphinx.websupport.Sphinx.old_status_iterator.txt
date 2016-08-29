@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.old_status_iterator
+============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.old_status_iterator

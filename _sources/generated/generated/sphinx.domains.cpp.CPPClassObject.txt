@@ -1,0 +1,49 @@
+sphinx.domains.cpp.CPPClassObject
+=================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPClassObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPClassObject.__init__
+   ~CPPClassObject.add_name
+   ~CPPClassObject.add_target_and_index
+   ~CPPClassObject.after_content
+   ~CPPClassObject.assert_has_content
+   ~CPPClassObject.before_content
+   ~CPPClassObject.debug
+   ~CPPClassObject.describe_signature
+   ~CPPClassObject.directive_error
+   ~CPPClassObject.error
+   ~CPPClassObject.get_index_text
+   ~CPPClassObject.get_signatures
+   ~CPPClassObject.handle_signature
+   ~CPPClassObject.info
+   ~CPPClassObject.parse_definition
+   ~CPPClassObject.run
+   ~CPPClassObject.severe
+   ~CPPClassObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CPPClassObject.doc_field_types
+   ~CPPClassObject.final_argument_whitespace
+   ~CPPClassObject.has_content
+   ~CPPClassObject.option_spec
+   ~CPPClassObject.optional_arguments
+   ~CPPClassObject.required_arguments
+

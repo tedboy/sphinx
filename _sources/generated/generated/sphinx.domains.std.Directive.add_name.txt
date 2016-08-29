@@ -1,0 +1,6 @@
+sphinx.domains.std.Directive.add_name
+=====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Directive.add_name

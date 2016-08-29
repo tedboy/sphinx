@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.get_theme_config
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.get_theme_config

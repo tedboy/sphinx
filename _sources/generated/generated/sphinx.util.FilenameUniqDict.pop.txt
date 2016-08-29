@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.pop
+================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.pop

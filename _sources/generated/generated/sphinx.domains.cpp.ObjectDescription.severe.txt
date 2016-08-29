@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ObjectDescription.severe
+===========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ObjectDescription.severe

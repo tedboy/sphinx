@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.warning
+========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.warning

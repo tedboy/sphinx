@@ -1,0 +1,6 @@
+sphinx.pycode.ModuleAnalyzer.__init__
+=====================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: ModuleAnalyzer.__init__

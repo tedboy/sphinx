@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.delattr
+================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: math.delattr

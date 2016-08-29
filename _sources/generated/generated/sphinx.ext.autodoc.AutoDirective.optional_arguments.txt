@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutoDirective.optional_arguments
+===================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: AutoDirective.optional_arguments

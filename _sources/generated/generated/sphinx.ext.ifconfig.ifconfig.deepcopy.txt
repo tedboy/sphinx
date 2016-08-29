@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.deepcopy
+=====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.deepcopy

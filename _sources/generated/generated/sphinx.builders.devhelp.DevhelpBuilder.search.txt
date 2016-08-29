@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.search
+=============================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.search

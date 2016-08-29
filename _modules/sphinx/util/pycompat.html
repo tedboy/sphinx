@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.util.pycompat &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.util" href="../util.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../util.html">sphinx.util</a> &raquo;</li>
+        
+      <li>sphinx.util.pycompat</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.util.pycompat</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.util.pycompat</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Stuff for Python version compatibility.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">class_types</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">zip_longest</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">PY3</span><span class="p">,</span> <span class="n">text_type</span><span class="p">,</span> <span class="n">exec_</span>
+
+<span class="c1"># ------------------------------------------------------------------------------</span>
+<span class="c1"># Python 2/3 compatibility</span>
+
+<span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
+    <span class="c1"># Python 3</span>
+    <span class="c1"># prefix for Unicode strings</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">TextIOWrapper</span>
+
+    <span class="c1"># safely encode a string for printing to the terminal</span>
+    <span class="k">def</span> <span class="nf">terminal_safe</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;backslashreplace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="c1"># some kind of default system encoding; should be used with a lenient</span>
+    <span class="c1"># error handler</span>
+    <span class="n">sys_encoding</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getdefaultencoding</span><span class="p">()</span>
+
+    <span class="c1"># support for running 2to3 over config files</span>
+    <span class="k">def</span> <span class="nf">convert_with_2to3</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">lib2to3.refactor</span> <span class="kn">import</span> <span class="n">RefactoringTool</span><span class="p">,</span> <span class="n">get_fixers_from_package</span>
+        <span class="kn">from</span> <span class="nn">lib2to3.pgen2.parse</span> <span class="kn">import</span> <span class="n">ParseError</span>
+        <span class="n">fixers</span> <span class="o">=</span> <span class="n">get_fixers_from_package</span><span class="p">(</span><span class="s1">&#39;lib2to3.fixes&#39;</span><span class="p">)</span>
+        <span class="n">refactoring_tool</span> <span class="o">=</span> <span class="n">RefactoringTool</span><span class="p">(</span><span class="n">fixers</span><span class="p">)</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">refactoring_tool</span><span class="o">.</span><span class="n">_read_python_source</span><span class="p">(</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">refactoring_tool</span><span class="o">.</span><span class="n">refactor_string</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;conf.py&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">ParseError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="c1"># do not propagate lib2to3 exceptions</span>
+            <span class="n">lineno</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">err</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># try to match ParseError details with SyntaxError details</span>
+            <span class="k">raise</span> <span class="ne">SyntaxError</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">text_type</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">html</span> <span class="kn">import</span> <span class="n">escape</span> <span class="k">as</span> <span class="n">htmlescape</span>  <span class="c1"># noqa: &gt;= Python 3.2</span>
+
+    <span class="k">class</span> <span class="nc">UnicodeMixin</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Mixin class to handle defining the proper __str__/__unicode__</span>
+<span class="sd">        methods in Python 2 or 3.&quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">()</span>
+
+    <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">indent</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Python 2</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="s1">&#39;u&#39;</span>
+    <span class="c1"># no need to refactor on 2.x versions</span>
+    <span class="n">convert_with_2to3</span> <span class="o">=</span> <span class="bp">None</span>
+
+<div class="viewcode-block" id="TextIOWrapper"><a class="viewcode-back" href="../../../generated/sphinx.pycode.TextIOWrapper.html#sphinx.domains.cpp.TextIOWrapper">[docs]</a>    <span class="k">def</span> <span class="nf">TextIOWrapper</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">encoding</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">codecs</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">encoding</span> <span class="ow">or</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">](</span><span class="n">stream</span><span class="p">)</span></div>
+
+    <span class="c1"># safely encode a string for printing to the terminal</span>
+    <span class="k">def</span> <span class="nf">terminal_safe</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;backslashreplace&#39;</span><span class="p">)</span>
+    <span class="c1"># some kind of default system encoding; should be used with a lenient</span>
+    <span class="c1"># error handler</span>
+    <span class="n">sys_encoding</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;locale&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">()</span>
+    <span class="c1"># use Python 3 name</span>
+    <span class="kn">from</span> <span class="nn">cgi</span> <span class="kn">import</span> <span class="n">escape</span> <span class="k">as</span> <span class="n">htmlescape</span>  <span class="c1"># noqa: 2.6, 2.7</span>
+
+<div class="viewcode-block" id="UnicodeMixin"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.cpp.UnicodeMixin.html#sphinx.domains.cpp.UnicodeMixin">[docs]</a>    <span class="k">class</span> <span class="nc">UnicodeMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Mixin class to handle defining the proper __str__/__unicode__</span>
+<span class="sd">        methods in Python 2 or 3.&quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span></div>
+
+    <span class="c1"># backport from python3</span>
+    <span class="k">def</span> <span class="nf">indent</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">predicate</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">predicate</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">prefixed_lines</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span><span class="bp">True</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">line</span> <span class="k">if</span> <span class="n">predicate</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">else</span> <span class="n">line</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefixed_lines</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">execfile_</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">_globals</span><span class="p">,</span> <span class="nb">open</span><span class="o">=</span><span class="nb">open</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">sphinx.util.osutil</span> <span class="kn">import</span> <span class="n">fs_encoding</span>
+    <span class="c1"># get config source -- &#39;b&#39; is a no-op under 2.x, while &#39;U&#39; is</span>
+    <span class="c1"># ignored under 3.x (but 3.x compile() accepts \r\n newlines)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;rbU&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># py26 accept only LF eol instead of CRLF</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># compile to a code object, handle syntax errors</span>
+    <span class="n">filepath_enc</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">fs_encoding</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">filepath_enc</span><span class="p">,</span> <span class="s1">&#39;exec&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">SyntaxError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">convert_with_2to3</span><span class="p">:</span>
+            <span class="c1"># maybe the file uses 2.x syntax; try to refactor to</span>
+            <span class="c1"># 3.x syntax using 2to3</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">convert_with_2to3</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">filepath_enc</span><span class="p">,</span> <span class="s1">&#39;exec&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span>
+    <span class="n">exec_</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">_globals</span><span class="p">)</span>
+
+<span class="c1"># ------------------------------------------------------------------------------</span>
+<span class="c1"># Internal module backwards-compatibility</span>
+
+
+<span class="k">class</span> <span class="nc">_DeprecationWrapper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">=</span> <span class="n">mod</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deprecated</span> <span class="o">=</span> <span class="n">deprecated</span>
+
+    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deprecated</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;sphinx.util.pycompat.</span><span class="si">%s</span><span class="s2"> is deprecated and will be &quot;</span>
+                          <span class="s2">&quot;removed in Sphinx 1.4, please use the standard &quot;</span>
+                          <span class="s2">&quot;library version instead.&quot;</span> <span class="o">%</span> <span class="n">attr</span><span class="p">,</span>
+                          <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deprecated</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mod</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="n">_DeprecationWrapper</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">__name__</span><span class="p">],</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">zip_longest</span> <span class="o">=</span> <span class="n">zip_longest</span><span class="p">,</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">product</span><span class="p">,</span>
+    <span class="nb">all</span> <span class="o">=</span> <span class="nb">all</span><span class="p">,</span>
+    <span class="nb">any</span> <span class="o">=</span> <span class="nb">any</span><span class="p">,</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="nb">next</span><span class="p">,</span>
+    <span class="nb">open</span> <span class="o">=</span> <span class="nb">open</span><span class="p">,</span>
+    <span class="n">class_types</span> <span class="o">=</span> <span class="n">class_types</span><span class="p">,</span>
+    <span class="n">base_exception</span> <span class="o">=</span> <span class="ne">BaseException</span><span class="p">,</span>
+    <span class="n">relpath</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">,</span>
+    <span class="n">StringIO</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">,</span>
+    <span class="n">BytesIO</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">,</span>
+<span class="p">))</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

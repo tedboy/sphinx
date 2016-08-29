@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLWriter.translate
+=============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. automethod:: PseudoXMLWriter.translate

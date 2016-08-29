@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.doc_field_types
+=============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTMarkup.doc_field_types

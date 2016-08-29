@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.sollbruchstelle
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.sollbruchstelle

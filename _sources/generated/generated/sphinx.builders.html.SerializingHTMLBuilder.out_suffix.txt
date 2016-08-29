@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.out_suffix
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.out_suffix

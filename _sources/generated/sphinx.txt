@@ -1,0 +1,23 @@
+.. automodule:: sphinx
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      build_main
+      main
+      make_main
+   
+   
+
+   
+   
+   
+
+   
+   
+   

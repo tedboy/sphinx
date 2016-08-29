@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.display_prefix
+===================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSCallable.display_prefix

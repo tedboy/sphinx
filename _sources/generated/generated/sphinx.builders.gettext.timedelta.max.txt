@@ -1,0 +1,6 @@
+sphinx.builders.gettext.timedelta.max
+=====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: timedelta.max

@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.inheritance_diagram.coerce_append_attr_list
+==========================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: inheritance_diagram.coerce_append_attr_list

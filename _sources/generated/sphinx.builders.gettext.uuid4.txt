@@ -1,0 +1,6 @@
+sphinx.builders.gettext.uuid4
+=============================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: uuid4

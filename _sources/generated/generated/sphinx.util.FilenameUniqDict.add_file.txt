@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.add_file
+=====================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.add_file

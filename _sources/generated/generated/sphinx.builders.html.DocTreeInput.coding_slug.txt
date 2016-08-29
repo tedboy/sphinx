@@ -1,0 +1,6 @@
+sphinx.builders.html.DocTreeInput.coding_slug
+=============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DocTreeInput.coding_slug

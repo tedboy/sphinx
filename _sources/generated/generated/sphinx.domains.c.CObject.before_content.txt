@@ -1,0 +1,6 @@
+sphinx.domains.c.CObject.before_content
+=======================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CObject.before_content

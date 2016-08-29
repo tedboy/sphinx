@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.final_argument_whitespace
+=====================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTRole.final_argument_whitespace

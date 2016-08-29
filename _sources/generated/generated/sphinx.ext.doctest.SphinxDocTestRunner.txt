@@ -1,0 +1,34 @@
+sphinx.ext.doctest.SphinxDocTestRunner
+======================================
+.. currentmodule:: sphinx.ext.doctest
+.. autoclass:: SphinxDocTestRunner
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~SphinxDocTestRunner.__init__
+   ~SphinxDocTestRunner.merge
+   ~SphinxDocTestRunner.report_failure
+   ~SphinxDocTestRunner.report_start
+   ~SphinxDocTestRunner.report_success
+   ~SphinxDocTestRunner.report_unexpected_exception
+   ~SphinxDocTestRunner.run
+   ~SphinxDocTestRunner.summarize
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~SphinxDocTestRunner.DIVIDER
+

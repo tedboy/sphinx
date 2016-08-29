@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.MathExtError
+===============================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autoexception:: MathExtError

@@ -1,0 +1,62 @@
+.. automodule:: sphinx.domains
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      iteritems
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      CDomain
+      CPPDomain
+      Domain
+      Index
+      JavaScriptDomain
+      ObjType
+      PythonDomain
+      ReSTDomain
+      StandardDomain
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.domains.CDomain
+       generated/sphinx.domains.CPPDomain
+       generated/sphinx.domains.Domain
+       generated/sphinx.domains.Index
+       generated/sphinx.domains.JavaScriptDomain
+       generated/sphinx.domains.ObjType
+       generated/sphinx.domains.PythonDomain
+       generated/sphinx.domains.ReSTDomain
+       generated/sphinx.domains.StandardDomain
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      SphinxError
+   
+   

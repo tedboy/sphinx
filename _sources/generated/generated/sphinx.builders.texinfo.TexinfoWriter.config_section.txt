@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.config_section
+====================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.config_section

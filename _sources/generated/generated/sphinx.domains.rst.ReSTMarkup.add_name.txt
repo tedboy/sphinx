@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.add_name
+======================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.add_name

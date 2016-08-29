@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.seek
+================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.seek

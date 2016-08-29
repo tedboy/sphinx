@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.check_args
+===============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.check_args

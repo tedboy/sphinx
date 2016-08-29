@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.12.2.3. sphinx.builders.texinfo.OptionParser &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="4.12. sphinx.builders.texinfo" href="../sphinx.builders.texinfo.html"/>
+        <link rel="next" title="4.12.2.3.1.1. sphinx.builders.texinfo.OptionParser.__init__" href="sphinx.builders.texinfo.OptionParser.__init__.html"/>
+        <link rel="prev" title="4.12.2.2.2.5. sphinx.builders.texinfo.FileOutput.unknown_reference_resolvers" href="sphinx.builders.texinfo.FileOutput.unknown_reference_resolvers.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.epub.html">4.4. sphinx.builders.epub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html.html">4.6. sphinx.builders.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.builders.texinfo.html#functions">4.12.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.builders.texinfo.html#classes">4.12.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.texinfo.Builder.html">4.12.2.1. sphinx.builders.texinfo.Builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.texinfo.FileOutput.html">4.12.2.2. sphinx.builders.texinfo.FileOutput</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">4.12.2.3. sphinx.builders.texinfo.OptionParser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.texinfo.TexinfoBuilder.html">4.12.2.4. sphinx.builders.texinfo.TexinfoBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.texinfo.TexinfoWriter.html">4.12.2.5. sphinx.builders.texinfo.TexinfoWriter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.builders.texinfo.html#exceptions">4.12.3. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.xml.html">4.15. sphinx.builders.xml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a> &raquo;</li>
+        
+      <li>4.12.2.3. sphinx.builders.texinfo.OptionParser</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.builders.texinfo.OptionParser.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-builders-texinfo-optionparser">
+<h1>4.12.2.3. sphinx.builders.texinfo.OptionParser<a class="headerlink" href="#sphinx-builders-texinfo-optionparser" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.builders.texinfo.OptionParser">
+<em class="property">class </em><code class="descclassname">sphinx.builders.texinfo.</code><code class="descname">OptionParser</code><span class="sig-paren">(</span><em>components=()</em>, <em>defaults=None</em>, <em>read_config_files=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/docutils/frontend.html#OptionParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.builders.texinfo.OptionParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser for command-line and library use.  The <cite>settings_spec</cite>
+specification here and in other Docutils components are merged to build
+the set of command-line options and runtime settings for this process.</p>
+<p>Common settings (defined below) and component-specific settings must not
+conflict.  Short options are reserved for common settings, and components
+are restrict to using long options.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>4.12.2.3.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.__init__.html#sphinx.builders.texinfo.OptionParser.__init__" title="sphinx.builders.texinfo.OptionParser.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([components,&nbsp;defaults,&nbsp;...])</td>
+<td><cite>components</cite> is a list of Docutils components each containing a</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.add_option.html#sphinx.builders.texinfo.OptionParser.add_option" title="sphinx.builders.texinfo.OptionParser.add_option"><code class="xref py py-obj docutils literal"><span class="pre">add_option</span></code></a>(Option)&nbsp;add_option(opt_str,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.add_option_group.html#sphinx.builders.texinfo.OptionParser.add_option_group" title="sphinx.builders.texinfo.OptionParser.add_option_group"><code class="xref py py-obj docutils literal"><span class="pre">add_option_group</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.add_options.html#sphinx.builders.texinfo.OptionParser.add_options" title="sphinx.builders.texinfo.OptionParser.add_options"><code class="xref py py-obj docutils literal"><span class="pre">add_options</span></code></a>(option_list)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.check_args.html#sphinx.builders.texinfo.OptionParser.check_args" title="sphinx.builders.texinfo.OptionParser.check_args"><code class="xref py py-obj docutils literal"><span class="pre">check_args</span></code></a>(args)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.check_values.html#sphinx.builders.texinfo.OptionParser.check_values" title="sphinx.builders.texinfo.OptionParser.check_values"><code class="xref py py-obj docutils literal"><span class="pre">check_values</span></code></a>(values,&nbsp;args)</td>
+<td>Store positional arguments as runtime settings.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.destroy.html#sphinx.builders.texinfo.OptionParser.destroy" title="sphinx.builders.texinfo.OptionParser.destroy"><code class="xref py py-obj docutils literal"><span class="pre">destroy</span></code></a>()</td>
+<td>Declare that you are done with this OptionParser.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.disable_interspersed_args.html#sphinx.builders.texinfo.OptionParser.disable_interspersed_args" title="sphinx.builders.texinfo.OptionParser.disable_interspersed_args"><code class="xref py py-obj docutils literal"><span class="pre">disable_interspersed_args</span></code></a>()</td>
+<td>Set parsing to stop on the first non-option.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.enable_interspersed_args.html#sphinx.builders.texinfo.OptionParser.enable_interspersed_args" title="sphinx.builders.texinfo.OptionParser.enable_interspersed_args"><code class="xref py py-obj docutils literal"><span class="pre">enable_interspersed_args</span></code></a>()</td>
+<td>Set parsing to not stop on the first non-option, allowing interspersing switches with command arguments.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.error.html#sphinx.builders.texinfo.OptionParser.error" title="sphinx.builders.texinfo.OptionParser.error"><code class="xref py py-obj docutils literal"><span class="pre">error</span></code></a>(msg&nbsp;:&nbsp;string)</td>
+<td>Print a usage message incorporating &#8216;msg&#8217; to stderr and exit.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.exit.html#sphinx.builders.texinfo.OptionParser.exit" title="sphinx.builders.texinfo.OptionParser.exit"><code class="xref py py-obj docutils literal"><span class="pre">exit</span></code></a>([status,&nbsp;msg])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.expand_prog_name.html#sphinx.builders.texinfo.OptionParser.expand_prog_name" title="sphinx.builders.texinfo.OptionParser.expand_prog_name"><code class="xref py py-obj docutils literal"><span class="pre">expand_prog_name</span></code></a>(s)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.format_description.html#sphinx.builders.texinfo.OptionParser.format_description" title="sphinx.builders.texinfo.OptionParser.format_description"><code class="xref py py-obj docutils literal"><span class="pre">format_description</span></code></a>(formatter)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.format_epilog.html#sphinx.builders.texinfo.OptionParser.format_epilog" title="sphinx.builders.texinfo.OptionParser.format_epilog"><code class="xref py py-obj docutils literal"><span class="pre">format_epilog</span></code></a>(formatter)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.format_help.html#sphinx.builders.texinfo.OptionParser.format_help" title="sphinx.builders.texinfo.OptionParser.format_help"><code class="xref py py-obj docutils literal"><span class="pre">format_help</span></code></a>([formatter])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.format_option_help.html#sphinx.builders.texinfo.OptionParser.format_option_help" title="sphinx.builders.texinfo.OptionParser.format_option_help"><code class="xref py py-obj docutils literal"><span class="pre">format_option_help</span></code></a>([formatter])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_config_file_settings.html#sphinx.builders.texinfo.OptionParser.get_config_file_settings" title="sphinx.builders.texinfo.OptionParser.get_config_file_settings"><code class="xref py py-obj docutils literal"><span class="pre">get_config_file_settings</span></code></a>(config_file)</td>
+<td>Returns a dictionary containing appropriate config file settings.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_default_values.html#sphinx.builders.texinfo.OptionParser.get_default_values" title="sphinx.builders.texinfo.OptionParser.get_default_values"><code class="xref py py-obj docutils literal"><span class="pre">get_default_values</span></code></a>()</td>
+<td>Needed to get custom <cite>Values</cite> instances.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_description.html#sphinx.builders.texinfo.OptionParser.get_description" title="sphinx.builders.texinfo.OptionParser.get_description"><code class="xref py py-obj docutils literal"><span class="pre">get_description</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_option.html#sphinx.builders.texinfo.OptionParser.get_option" title="sphinx.builders.texinfo.OptionParser.get_option"><code class="xref py py-obj docutils literal"><span class="pre">get_option</span></code></a>(opt_str)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_option_by_dest.html#sphinx.builders.texinfo.OptionParser.get_option_by_dest" title="sphinx.builders.texinfo.OptionParser.get_option_by_dest"><code class="xref py py-obj docutils literal"><span class="pre">get_option_by_dest</span></code></a>(dest)</td>
+<td>Get an option by its dest.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_option_group.html#sphinx.builders.texinfo.OptionParser.get_option_group" title="sphinx.builders.texinfo.OptionParser.get_option_group"><code class="xref py py-obj docutils literal"><span class="pre">get_option_group</span></code></a>(opt_str)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_prog_name.html#sphinx.builders.texinfo.OptionParser.get_prog_name" title="sphinx.builders.texinfo.OptionParser.get_prog_name"><code class="xref py py-obj docutils literal"><span class="pre">get_prog_name</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_standard_config_files.html#sphinx.builders.texinfo.OptionParser.get_standard_config_files" title="sphinx.builders.texinfo.OptionParser.get_standard_config_files"><code class="xref py py-obj docutils literal"><span class="pre">get_standard_config_files</span></code></a>()</td>
+<td>Return list of config files, from environment or standard.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_standard_config_settings.html#sphinx.builders.texinfo.OptionParser.get_standard_config_settings" title="sphinx.builders.texinfo.OptionParser.get_standard_config_settings"><code class="xref py py-obj docutils literal"><span class="pre">get_standard_config_settings</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_usage.html#sphinx.builders.texinfo.OptionParser.get_usage" title="sphinx.builders.texinfo.OptionParser.get_usage"><code class="xref py py-obj docutils literal"><span class="pre">get_usage</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.get_version.html#sphinx.builders.texinfo.OptionParser.get_version" title="sphinx.builders.texinfo.OptionParser.get_version"><code class="xref py py-obj docutils literal"><span class="pre">get_version</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.has_option.html#sphinx.builders.texinfo.OptionParser.has_option" title="sphinx.builders.texinfo.OptionParser.has_option"><code class="xref py py-obj docutils literal"><span class="pre">has_option</span></code></a>(opt_str)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.parse_args.html#sphinx.builders.texinfo.OptionParser.parse_args" title="sphinx.builders.texinfo.OptionParser.parse_args"><code class="xref py py-obj docutils literal"><span class="pre">parse_args</span></code></a>(args&nbsp;:&nbsp;[string]&nbsp;=&nbsp;sys.argv[1:],&nbsp;...)</td>
+<td>Parse the command-line options found in &#8216;args&#8217; (default: sys.argv[1:]).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.populate_from_components.html#sphinx.builders.texinfo.OptionParser.populate_from_components" title="sphinx.builders.texinfo.OptionParser.populate_from_components"><code class="xref py py-obj docutils literal"><span class="pre">populate_from_components</span></code></a>(components)</td>
+<td>For each component, first populate from the <cite>SettingsSpec.settings_spec</cite> structure, then from the <cite>SettingsSpec.settings_defaults</cite> dictionary.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.print_help.html#sphinx.builders.texinfo.OptionParser.print_help" title="sphinx.builders.texinfo.OptionParser.print_help"><code class="xref py py-obj docutils literal"><span class="pre">print_help</span></code></a>(file&nbsp;:&nbsp;file&nbsp;=&nbsp;stdout)</td>
+<td>Print an extended help message, listing all options and any help text provided with them, to &#8216;file&#8217; (default stdout).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.print_usage.html#sphinx.builders.texinfo.OptionParser.print_usage" title="sphinx.builders.texinfo.OptionParser.print_usage"><code class="xref py py-obj docutils literal"><span class="pre">print_usage</span></code></a>(file&nbsp;:&nbsp;file&nbsp;=&nbsp;stdout)</td>
+<td>Print the usage message for the current program (self.usage) to &#8216;file&#8217; (default stdout).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.print_version.html#sphinx.builders.texinfo.OptionParser.print_version" title="sphinx.builders.texinfo.OptionParser.print_version"><code class="xref py py-obj docutils literal"><span class="pre">print_version</span></code></a>(file&nbsp;:&nbsp;file&nbsp;=&nbsp;stdout)</td>
+<td>Print the version message for this program (self.version) to &#8216;file&#8217; (default stdout).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.remove_option.html#sphinx.builders.texinfo.OptionParser.remove_option" title="sphinx.builders.texinfo.OptionParser.remove_option"><code class="xref py py-obj docutils literal"><span class="pre">remove_option</span></code></a>(opt_str)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.set_conflict_handler.html#sphinx.builders.texinfo.OptionParser.set_conflict_handler" title="sphinx.builders.texinfo.OptionParser.set_conflict_handler"><code class="xref py py-obj docutils literal"><span class="pre">set_conflict_handler</span></code></a>(handler)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.set_default.html#sphinx.builders.texinfo.OptionParser.set_default" title="sphinx.builders.texinfo.OptionParser.set_default"><code class="xref py py-obj docutils literal"><span class="pre">set_default</span></code></a>(dest,&nbsp;value)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.set_defaults.html#sphinx.builders.texinfo.OptionParser.set_defaults" title="sphinx.builders.texinfo.OptionParser.set_defaults"><code class="xref py py-obj docutils literal"><span class="pre">set_defaults</span></code></a>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.set_defaults_from_dict.html#sphinx.builders.texinfo.OptionParser.set_defaults_from_dict" title="sphinx.builders.texinfo.OptionParser.set_defaults_from_dict"><code class="xref py py-obj docutils literal"><span class="pre">set_defaults_from_dict</span></code></a>(defaults)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.set_description.html#sphinx.builders.texinfo.OptionParser.set_description" title="sphinx.builders.texinfo.OptionParser.set_description"><code class="xref py py-obj docutils literal"><span class="pre">set_description</span></code></a>(description)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.set_process_default_values.html#sphinx.builders.texinfo.OptionParser.set_process_default_values" title="sphinx.builders.texinfo.OptionParser.set_process_default_values"><code class="xref py py-obj docutils literal"><span class="pre">set_process_default_values</span></code></a>(process)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.set_usage.html#sphinx.builders.texinfo.OptionParser.set_usage" title="sphinx.builders.texinfo.OptionParser.set_usage"><code class="xref py py-obj docutils literal"><span class="pre">set_usage</span></code></a>(usage)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>4.12.2.3.2. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.booleans.html#sphinx.builders.texinfo.OptionParser.booleans" title="sphinx.builders.texinfo.OptionParser.booleans"><code class="xref py py-obj docutils literal"><span class="pre">booleans</span></code></a></td>
+<td>Lookup table for boolean configuration file settings.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.config_section.html#sphinx.builders.texinfo.OptionParser.config_section" title="sphinx.builders.texinfo.OptionParser.config_section"><code class="xref py py-obj docutils literal"><span class="pre">config_section</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.config_section_dependencies.html#sphinx.builders.texinfo.OptionParser.config_section_dependencies" title="sphinx.builders.texinfo.OptionParser.config_section_dependencies"><code class="xref py py-obj docutils literal"><span class="pre">config_section_dependencies</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.default_error_encoding.html#sphinx.builders.texinfo.OptionParser.default_error_encoding" title="sphinx.builders.texinfo.OptionParser.default_error_encoding"><code class="xref py py-obj docutils literal"><span class="pre">default_error_encoding</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.default_error_encoding_error_handler.html#sphinx.builders.texinfo.OptionParser.default_error_encoding_error_handler" title="sphinx.builders.texinfo.OptionParser.default_error_encoding_error_handler"><code class="xref py py-obj docutils literal"><span class="pre">default_error_encoding_error_handler</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.relative_path_settings.html#sphinx.builders.texinfo.OptionParser.relative_path_settings" title="sphinx.builders.texinfo.OptionParser.relative_path_settings"><code class="xref py py-obj docutils literal"><span class="pre">relative_path_settings</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.settings_default_overrides.html#sphinx.builders.texinfo.OptionParser.settings_default_overrides" title="sphinx.builders.texinfo.OptionParser.settings_default_overrides"><code class="xref py py-obj docutils literal"><span class="pre">settings_default_overrides</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.settings_defaults.html#sphinx.builders.texinfo.OptionParser.settings_defaults" title="sphinx.builders.texinfo.OptionParser.settings_defaults"><code class="xref py py-obj docutils literal"><span class="pre">settings_defaults</span></code></a></td>
+<td>Defaults for settings that don&#8217;t have command-line option equivalents.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.settings_spec.html#sphinx.builders.texinfo.OptionParser.settings_spec" title="sphinx.builders.texinfo.OptionParser.settings_spec"><code class="xref py py-obj docutils literal"><span class="pre">settings_spec</span></code></a></td>
+<td>Runtime settings and command-line options common to all Docutils front ends.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.standard_config_files.html#sphinx.builders.texinfo.OptionParser.standard_config_files" title="sphinx.builders.texinfo.OptionParser.standard_config_files"><code class="xref py py-obj docutils literal"><span class="pre">standard_config_files</span></code></a></td>
+<td>Docutils configuration files, using ConfigParser syntax.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.standard_option_list.html#sphinx.builders.texinfo.OptionParser.standard_option_list" title="sphinx.builders.texinfo.OptionParser.standard_option_list"><code class="xref py py-obj docutils literal"><span class="pre">standard_option_list</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.threshold_choices.html#sphinx.builders.texinfo.OptionParser.threshold_choices" title="sphinx.builders.texinfo.OptionParser.threshold_choices"><code class="xref py py-obj docutils literal"><span class="pre">threshold_choices</span></code></a></td>
+<td>Possible inputs for for &#8211;report and &#8211;halt threshold values.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.thresholds.html#sphinx.builders.texinfo.OptionParser.thresholds" title="sphinx.builders.texinfo.OptionParser.thresholds"><code class="xref py py-obj docutils literal"><span class="pre">thresholds</span></code></a></td>
+<td>Lookup table for &#8211;report and &#8211;halt threshold values.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.texinfo.OptionParser.version_template.html#sphinx.builders.texinfo.OptionParser.version_template" title="sphinx.builders.texinfo.OptionParser.version_template"><code class="xref py py-obj docutils literal"><span class="pre">version_template</span></code></a></td>
+<td>Default version message.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.builders.texinfo.OptionParser.__init__.html" class="btn btn-neutral float-right" title="4.12.2.3.1.1. sphinx.builders.texinfo.OptionParser.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.builders.texinfo.FileOutput.unknown_reference_resolvers.html" class="btn btn-neutral" title="4.12.2.2.2.5. sphinx.builders.texinfo.FileOutput.unknown_reference_resolvers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

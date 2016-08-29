@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.build_specific
+================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.build_specific

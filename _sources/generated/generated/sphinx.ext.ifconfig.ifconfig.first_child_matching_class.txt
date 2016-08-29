@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.first_child_matching_class
+=======================================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.first_child_matching_class

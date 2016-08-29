@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.lex
+=================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.lex

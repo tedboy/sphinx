@@ -1,0 +1,6 @@
+sphinx.domains.python.XRefRole.__init__
+=======================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: XRefRole.__init__

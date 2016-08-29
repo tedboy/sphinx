@@ -1,0 +1,6 @@
+sphinx.ext.doctest.doctest_encode
+=================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autofunction:: doctest_encode

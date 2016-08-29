@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.load_indexer
+=========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.load_indexer

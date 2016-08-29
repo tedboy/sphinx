@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.nested_parse_with_titles
+===========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: nested_parse_with_titles

@@ -1,0 +1,6 @@
+sphinx.search.comment.deepcopy
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.deepcopy

@@ -1,0 +1,6 @@
+sphinx.util.split_index_msg
+===========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: split_index_msg

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.run
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPFunctionObject.run

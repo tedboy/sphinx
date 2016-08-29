@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.error
+=====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Directive.error

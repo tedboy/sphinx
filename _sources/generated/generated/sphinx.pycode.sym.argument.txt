@@ -1,0 +1,6 @@
+sphinx.pycode.sym.argument
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.argument

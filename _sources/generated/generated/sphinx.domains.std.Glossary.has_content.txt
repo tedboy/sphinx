@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.has_content
+=======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Glossary.has_content

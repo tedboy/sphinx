@@ -1,0 +1,6 @@
+sphinx.util.walk
+================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: walk

@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.format_help
+=============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: OptionParser.format_help

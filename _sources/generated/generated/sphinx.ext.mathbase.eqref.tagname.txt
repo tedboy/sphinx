@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.tagname
+=================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: eqref.tagname

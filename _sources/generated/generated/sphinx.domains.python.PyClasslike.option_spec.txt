@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.option_spec
+=============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyClasslike.option_spec

@@ -1,0 +1,40 @@
+sphinx.ext.doctest.TestDirective
+================================
+.. currentmodule:: sphinx.ext.doctest
+.. autoclass:: TestDirective
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TestDirective.__init__
+   ~TestDirective.add_name
+   ~TestDirective.assert_has_content
+   ~TestDirective.debug
+   ~TestDirective.directive_error
+   ~TestDirective.error
+   ~TestDirective.info
+   ~TestDirective.run
+   ~TestDirective.severe
+   ~TestDirective.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TestDirective.final_argument_whitespace
+   ~TestDirective.has_content
+   ~TestDirective.option_spec
+   ~TestDirective.optional_arguments
+   ~TestDirective.required_arguments
+

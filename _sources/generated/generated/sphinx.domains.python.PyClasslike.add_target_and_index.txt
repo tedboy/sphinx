@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.add_target_and_index
+======================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.add_target_and_index

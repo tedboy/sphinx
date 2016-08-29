@@ -1,0 +1,6 @@
+sphinx.builders.SerialTasks.add_task
+====================================
+
+.. currentmodule:: sphinx.builders
+
+.. automethod:: SerialTasks.add_task

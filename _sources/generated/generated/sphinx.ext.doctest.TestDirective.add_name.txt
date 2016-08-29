@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestDirective.add_name
+=========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestDirective.add_name

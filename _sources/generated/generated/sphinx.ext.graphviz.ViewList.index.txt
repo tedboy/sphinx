@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.ViewList.index
+==================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: ViewList.index

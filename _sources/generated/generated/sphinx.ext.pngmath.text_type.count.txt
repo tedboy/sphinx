@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.text_type.count
+==================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: text_type.count

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.prepare_writing
+============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.prepare_writing

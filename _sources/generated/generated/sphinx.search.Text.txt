@@ -1,0 +1,83 @@
+sphinx.search.Text
+==================
+.. currentmodule:: sphinx.search
+.. autoclass:: Text
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Text.__init__
+   ~Text.asdom
+   ~Text.astext
+   ~Text.capitalize
+   ~Text.center
+   ~Text.copy
+   ~Text.count
+   ~Text.decode
+   ~Text.deepcopy
+   ~Text.encode
+   ~Text.endswith
+   ~Text.expandtabs
+   ~Text.find
+   ~Text.format
+   ~Text.index
+   ~Text.isalnum
+   ~Text.isalpha
+   ~Text.isdecimal
+   ~Text.isdigit
+   ~Text.islower
+   ~Text.isnumeric
+   ~Text.isspace
+   ~Text.istitle
+   ~Text.isupper
+   ~Text.join
+   ~Text.ljust
+   ~Text.lower
+   ~Text.lstrip
+   ~Text.next_node
+   ~Text.partition
+   ~Text.pformat
+   ~Text.replace
+   ~Text.rfind
+   ~Text.rindex
+   ~Text.rjust
+   ~Text.rpartition
+   ~Text.rsplit
+   ~Text.rstrip
+   ~Text.setup_child
+   ~Text.shortrepr
+   ~Text.split
+   ~Text.splitlines
+   ~Text.startswith
+   ~Text.strip
+   ~Text.swapcase
+   ~Text.title
+   ~Text.translate
+   ~Text.traverse
+   ~Text.upper
+   ~Text.walk
+   ~Text.walkabout
+   ~Text.zfill
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Text.children
+   ~Text.document
+   ~Text.line
+   ~Text.parent
+   ~Text.source
+   ~Text.tagname
+

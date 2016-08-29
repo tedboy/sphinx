@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.versioning_compare
+=====================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: LaTeXBuilder.versioning_compare

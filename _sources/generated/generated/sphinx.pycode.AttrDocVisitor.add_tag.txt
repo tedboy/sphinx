@@ -1,0 +1,6 @@
+sphinx.pycode.AttrDocVisitor.add_tag
+====================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: AttrDocVisitor.add_tag

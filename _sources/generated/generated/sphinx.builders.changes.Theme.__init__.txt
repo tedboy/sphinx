@@ -1,0 +1,6 @@
+sphinx.builders.changes.Theme.__init__
+======================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: Theme.__init__

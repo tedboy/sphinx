@@ -1,0 +1,6 @@
+sphinx.domains.std.ObjectDescription.doc_field_types
+====================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: ObjectDescription.doc_field_types

@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.iteritems
+======================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.iteritems

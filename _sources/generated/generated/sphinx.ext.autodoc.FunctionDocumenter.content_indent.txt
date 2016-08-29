@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.FunctionDocumenter.content_indent
+====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: FunctionDocumenter.content_indent

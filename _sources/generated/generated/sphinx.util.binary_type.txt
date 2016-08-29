@@ -1,0 +1,56 @@
+sphinx.util.binary_type
+=======================
+.. currentmodule:: sphinx.util
+.. autoclass:: binary_type
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~binary_type.capitalize
+   ~binary_type.center
+   ~binary_type.count
+   ~binary_type.decode
+   ~binary_type.encode
+   ~binary_type.endswith
+   ~binary_type.expandtabs
+   ~binary_type.find
+   ~binary_type.format
+   ~binary_type.index
+   ~binary_type.isalnum
+   ~binary_type.isalpha
+   ~binary_type.isdigit
+   ~binary_type.islower
+   ~binary_type.isspace
+   ~binary_type.istitle
+   ~binary_type.isupper
+   ~binary_type.join
+   ~binary_type.ljust
+   ~binary_type.lower
+   ~binary_type.lstrip
+   ~binary_type.partition
+   ~binary_type.replace
+   ~binary_type.rfind
+   ~binary_type.rindex
+   ~binary_type.rjust
+   ~binary_type.rpartition
+   ~binary_type.rsplit
+   ~binary_type.rstrip
+   ~binary_type.split
+   ~binary_type.splitlines
+   ~binary_type.startswith
+   ~binary_type.strip
+   ~binary_type.swapcase
+   ~binary_type.title
+   ~binary_type.translate
+   ~binary_type.upper
+   ~binary_type.zfill
+
+
+
+
+

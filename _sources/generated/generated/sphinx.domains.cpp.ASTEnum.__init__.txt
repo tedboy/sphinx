@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTEnum.__init__
+===================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTEnum.__init__

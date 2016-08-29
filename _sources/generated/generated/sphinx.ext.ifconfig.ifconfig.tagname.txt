@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.tagname
+====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: ifconfig.tagname

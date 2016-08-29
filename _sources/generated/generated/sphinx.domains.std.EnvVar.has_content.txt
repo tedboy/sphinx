@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.has_content
+=====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: EnvVar.has_content

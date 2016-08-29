@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.text_type.rjust
+===================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: text_type.rjust

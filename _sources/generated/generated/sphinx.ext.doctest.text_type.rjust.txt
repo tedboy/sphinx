@@ -1,0 +1,6 @@
+sphinx.ext.doctest.text_type.rjust
+==================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: text_type.rjust

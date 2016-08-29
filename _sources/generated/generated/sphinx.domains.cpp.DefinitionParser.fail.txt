@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.fail
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.fail

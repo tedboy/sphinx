@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_todo_node
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_todo_node

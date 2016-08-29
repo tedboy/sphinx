@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.replace
+=================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todo_node.replace

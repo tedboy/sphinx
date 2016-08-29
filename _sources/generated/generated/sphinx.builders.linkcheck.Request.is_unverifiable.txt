@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Request.is_unverifiable
+=================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Request.is_unverifiable

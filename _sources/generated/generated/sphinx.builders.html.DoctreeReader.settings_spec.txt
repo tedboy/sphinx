@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.settings_spec
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DoctreeReader.settings_spec

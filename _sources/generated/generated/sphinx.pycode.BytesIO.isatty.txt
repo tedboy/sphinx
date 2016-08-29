@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.isatty
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.isatty

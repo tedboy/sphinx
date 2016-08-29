@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.config_section
+==============================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextWriter.config_section

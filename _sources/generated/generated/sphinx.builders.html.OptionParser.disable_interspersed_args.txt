@@ -1,0 +1,6 @@
+sphinx.builders.html.OptionParser.disable_interspersed_args
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: OptionParser.disable_interspersed_args

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.has_content
+=======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: ObjectDescription.has_content

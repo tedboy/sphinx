@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.line
+=============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todolist.line

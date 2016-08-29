@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.handle_signature
+========================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.handle_signature

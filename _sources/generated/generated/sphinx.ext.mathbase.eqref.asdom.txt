@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.asdom
+===============================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.asdom

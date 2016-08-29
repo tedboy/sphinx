@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageWriter.destination
+====================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: ManualPageWriter.destination

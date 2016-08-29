@@ -1,0 +1,58 @@
+sphinx.builders.linkcheck.AnchorCheckParser
+===========================================
+.. currentmodule:: sphinx.builders.linkcheck
+.. autoclass:: AnchorCheckParser
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~AnchorCheckParser.__init__
+   ~AnchorCheckParser.check_for_whole_start_tag
+   ~AnchorCheckParser.clear_cdata_mode
+   ~AnchorCheckParser.close
+   ~AnchorCheckParser.error
+   ~AnchorCheckParser.feed
+   ~AnchorCheckParser.get_starttag_text
+   ~AnchorCheckParser.getpos
+   ~AnchorCheckParser.goahead
+   ~AnchorCheckParser.handle_charref
+   ~AnchorCheckParser.handle_comment
+   ~AnchorCheckParser.handle_data
+   ~AnchorCheckParser.handle_decl
+   ~AnchorCheckParser.handle_endtag
+   ~AnchorCheckParser.handle_entityref
+   ~AnchorCheckParser.handle_pi
+   ~AnchorCheckParser.handle_startendtag
+   ~AnchorCheckParser.handle_starttag
+   ~AnchorCheckParser.parse_bogus_comment
+   ~AnchorCheckParser.parse_comment
+   ~AnchorCheckParser.parse_declaration
+   ~AnchorCheckParser.parse_endtag
+   ~AnchorCheckParser.parse_html_declaration
+   ~AnchorCheckParser.parse_marked_section
+   ~AnchorCheckParser.parse_pi
+   ~AnchorCheckParser.parse_starttag
+   ~AnchorCheckParser.reset
+   ~AnchorCheckParser.set_cdata_mode
+   ~AnchorCheckParser.unescape
+   ~AnchorCheckParser.unknown_decl
+   ~AnchorCheckParser.updatepos
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~AnchorCheckParser.CDATA_CONTENT_ELEMENTS
+   ~AnchorCheckParser.entitydefs
+

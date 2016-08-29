@@ -1,0 +1,6 @@
+sphinx.pycode.StringIO.getvalue
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: StringIO.getvalue

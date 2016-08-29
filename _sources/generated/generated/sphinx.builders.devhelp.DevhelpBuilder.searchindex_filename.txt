@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.searchindex_filename
+===========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.searchindex_filename

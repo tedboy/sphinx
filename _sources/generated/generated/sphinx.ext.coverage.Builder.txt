@@ -1,0 +1,53 @@
+sphinx.ext.coverage.Builder
+===========================
+.. currentmodule:: sphinx.ext.coverage
+.. autoclass:: Builder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Builder.__init__
+   ~Builder.build
+   ~Builder.build_all
+   ~Builder.build_specific
+   ~Builder.build_update
+   ~Builder.cleanup
+   ~Builder.compile_all_catalogs
+   ~Builder.compile_catalogs
+   ~Builder.compile_specific_catalogs
+   ~Builder.compile_update_catalogs
+   ~Builder.create_template_bridge
+   ~Builder.finish
+   ~Builder.get_builder_config
+   ~Builder.get_outdated_docs
+   ~Builder.get_relative_uri
+   ~Builder.get_target_uri
+   ~Builder.init
+   ~Builder.post_process_images
+   ~Builder.prepare_writing
+   ~Builder.write
+   ~Builder.write_doc
+   ~Builder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Builder.allow_parallel
+   ~Builder.format
+   ~Builder.name
+   ~Builder.supported_image_types
+   ~Builder.versioning_compare
+   ~Builder.versioning_method
+

@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.search
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DirectoryHTMLBuilder.search

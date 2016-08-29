@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.add_name
+=============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.add_name

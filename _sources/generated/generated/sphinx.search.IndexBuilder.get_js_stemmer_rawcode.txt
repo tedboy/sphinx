@@ -1,0 +1,6 @@
+sphinx.search.IndexBuilder.get_js_stemmer_rawcode
+=================================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: IndexBuilder.get_js_stemmer_rawcode

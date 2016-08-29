@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.writelines
+================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.writelines

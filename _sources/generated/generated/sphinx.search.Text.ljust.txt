@@ -1,0 +1,6 @@
+sphinx.search.Text.ljust
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.ljust

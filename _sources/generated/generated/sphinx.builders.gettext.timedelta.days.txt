@@ -1,0 +1,6 @@
+sphinx.builders.gettext.timedelta.days
+======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: timedelta.days

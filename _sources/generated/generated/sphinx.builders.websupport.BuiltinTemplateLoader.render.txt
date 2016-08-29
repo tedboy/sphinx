@@ -1,0 +1,6 @@
+sphinx.builders.websupport.BuiltinTemplateLoader.render
+=======================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: BuiltinTemplateLoader.render

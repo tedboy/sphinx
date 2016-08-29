@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.get_outdated_docs
+============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: Builder.get_outdated_docs

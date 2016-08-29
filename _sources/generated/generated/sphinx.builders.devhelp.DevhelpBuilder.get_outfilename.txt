@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.get_outfilename
+======================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.get_outfilename

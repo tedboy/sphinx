@@ -1,0 +1,6 @@
+sphinx.websupport.StorageBackend.add_node
+=========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: StorageBackend.add_node

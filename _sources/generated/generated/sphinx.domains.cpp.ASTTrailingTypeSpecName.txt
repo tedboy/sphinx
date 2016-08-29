@@ -1,0 +1,33 @@
+sphinx.domains.cpp.ASTTrailingTypeSpecName
+==========================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTTrailingTypeSpecName
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTTrailingTypeSpecName.__init__
+   ~ASTTrailingTypeSpecName.clone
+   ~ASTTrailingTypeSpecName.describe_signature
+   ~ASTTrailingTypeSpecName.get_id_v1
+   ~ASTTrailingTypeSpecName.get_id_v2
+   ~ASTTrailingTypeSpecName.get_name
+   ~ASTTrailingTypeSpecName.prefix_nested_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ASTTrailingTypeSpecName.name
+

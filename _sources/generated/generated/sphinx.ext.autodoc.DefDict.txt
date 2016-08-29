@@ -1,0 +1,37 @@
+sphinx.ext.autodoc.DefDict
+==========================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: DefDict
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DefDict.__init__
+   ~DefDict.clear
+   ~DefDict.copy
+   ~DefDict.fromkeys
+   ~DefDict.get
+   ~DefDict.has_key
+   ~DefDict.items
+   ~DefDict.iteritems
+   ~DefDict.iterkeys
+   ~DefDict.itervalues
+   ~DefDict.keys
+   ~DefDict.pop
+   ~DefDict.popitem
+   ~DefDict.setdefault
+   ~DefDict.update
+   ~DefDict.values
+   ~DefDict.viewitems
+   ~DefDict.viewkeys
+   ~DefDict.viewvalues
+
+
+
+
+

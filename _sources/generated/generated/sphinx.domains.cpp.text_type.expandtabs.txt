@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.expandtabs
+=======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.expandtabs

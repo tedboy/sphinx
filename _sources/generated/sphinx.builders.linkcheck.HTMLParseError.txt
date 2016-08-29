@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParseError
+========================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoexception:: HTMLParseError

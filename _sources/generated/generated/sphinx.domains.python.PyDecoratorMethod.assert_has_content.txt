@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.assert_has_content
+==========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorMethod.assert_has_content

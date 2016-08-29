@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.link_suffix
+================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.link_suffix

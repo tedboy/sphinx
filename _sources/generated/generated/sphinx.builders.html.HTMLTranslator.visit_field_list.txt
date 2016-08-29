@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_field_list
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_field_list

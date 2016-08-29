@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.setdefault
+=======================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.setdefault

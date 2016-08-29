@@ -1,0 +1,6 @@
+sphinx.search.title.is_not_known_attribute
+==========================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.is_not_known_attribute

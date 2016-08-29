@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.util.nodes &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.util" href="../util.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../util.html">sphinx.util</a> &raquo;</li>
+        
+      <li>sphinx.util.nodes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.util.nodes</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.util.nodes</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Docutils node-related utility functions for Sphinx.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">text_type</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">pairindextypes</span>
+
+
+<span class="k">class</span> <span class="nc">WarningStream</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">warnfunc</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warnfunc</span> <span class="o">=</span> <span class="n">warnfunc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;\((DEBUG|INFO|WARNING|ERROR|SEVERE)/[0-4]\)&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warnfunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;\1:&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">),</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># \x00 means the &quot;&lt;&quot; was backslash-escaped</span>
+<span class="n">explicit_title_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;^(.+?)\s*(?&lt;!\x00)&lt;(.*?)&gt;$&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<span class="n">caption_ref_re</span> <span class="o">=</span> <span class="n">explicit_title_re</span>  <span class="c1"># b/w compat alias</span>
+
+
+<span class="k">def</span> <span class="nf">apply_source_workaround</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="c1"># workaround: nodes.term have wrong rawsource if classifier is specified.</span>
+    <span class="c1"># The behavior of docutils-0.11, 0.12 is:</span>
+    <span class="c1"># * when ``term text : classifier1 : classifier2`` is specified,</span>
+    <span class="c1"># * rawsource of term node will have: ``term text : classifier1 : classifier2``</span>
+    <span class="c1"># * rawsource of classifier node will be None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">classifier</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span><span class="p">:</span>
+        <span class="n">definition_list_item</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">definition_list_item</span><span class="o">.</span><span class="n">source</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">definition_list_item</span><span class="o">.</span><span class="n">line</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>  <span class="c1"># set &#39;classifier1&#39; (or &#39;classifier2&#39;)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">term</span><span class="p">):</span>
+        <span class="c1"># strip classifier from rawsource of term</span>
+        <span class="k">for</span> <span class="n">classifier</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">classifier</span><span class="p">)):</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+                <span class="s1">&#39;\s*:\s*</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">classifier</span><span class="o">.</span><span class="n">astext</span><span class="p">()),</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span><span class="p">)</span>
+
+    <span class="c1"># workaround: recommonmark-0.2.0 doesn&#39;t set rawsource attribute</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span><span class="p">:</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">source</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="c1"># workaround: docutils-0.10.0 or older&#39;s nodes.caption for nodes.figure</span>
+    <span class="c1"># and nodes.title for nodes.admonition doesn&#39;t have source, line.</span>
+    <span class="c1"># this issue was filed to Docutils tracker:</span>
+    <span class="c1"># sf.net/tracker/?func=detail&amp;aid=3599485&amp;group_id=38414&amp;atid=422032</span>
+    <span class="c1"># sourceforge.net/p/docutils/patches/108/</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">caption</span><span class="p">,</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">rubric</span><span class="p">,</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">line</span><span class="p">,</span>
+    <span class="p">))):</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">find_source_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># need fix docutils to get `node.line`</span>
+        <span class="k">return</span>
+
+
+<span class="n">IGNORED_NODES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">Invisible</span><span class="p">,</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">Inline</span><span class="p">,</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">literal_block</span><span class="p">,</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">doctest_block</span><span class="p">,</span>
+    <span class="n">addnodes</span><span class="o">.</span><span class="n">versionmodified</span><span class="p">,</span>
+    <span class="c1"># XXX there are probably more</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">is_translatable</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">TextElement</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">source</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>  <span class="c1"># built-in message</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">IGNORED_NODES</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;translatable&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;translatable&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">):</span>
+            <span class="c1"># not(node[&#39;translatable&#39;] == True or node[&#39;translatable&#39;] is None)</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="c1"># &lt;field_name&gt;orphan&lt;/field_name&gt;</span>
+        <span class="c1"># XXX ignore all metadata (== docinfo)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_name</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;orphan&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">image</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;translatable&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="n">LITERAL_TYPE_NODES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">literal_block</span><span class="p">,</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">doctest_block</span><span class="p">,</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">IMAGE_TYPE_NODES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">image</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="extract_messages"><a class="viewcode-back" href="../../../generated/sphinx.builders.gettext.extract_messages.html#sphinx.ext.graphviz.extract_messages">[docs]</a><span class="k">def</span> <span class="nf">extract_messages</span><span class="p">(</span><span class="n">doctree</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extract translatable messages from a document tree.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">is_translatable</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">LITERAL_TYPE_NODES</span><span class="p">):</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">msg</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">IMAGE_TYPE_NODES</span><span class="p">):</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;.. image:: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;alt&#39;</span><span class="p">):</span>
+                <span class="n">msg</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">   :alt: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="c1"># XXX nodes rendering empty are likely a bug in sphinx.addnodes</span>
+        <span class="k">if</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">node</span><span class="p">,</span> <span class="n">msg</span></div>
+
+
+<span class="k">def</span> <span class="nf">find_source_node</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">pnode</span> <span class="ow">in</span> <span class="n">traverse_parent</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pnode</span><span class="o">.</span><span class="n">source</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pnode</span><span class="o">.</span><span class="n">source</span>
+
+
+<span class="k">def</span> <span class="nf">traverse_parent</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">node</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+
+
+<div class="viewcode-block" id="traverse_translatable_index"><a class="viewcode-back" href="../../../generated/sphinx.builders.gettext.traverse_translatable_index.html#sphinx.ext.graphviz.traverse_translatable_index">[docs]</a><span class="k">def</span> <span class="nf">traverse_translatable_index</span><span class="p">(</span><span class="n">doctree</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Traverse translatable index node from a document tree.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">is_block_index</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="ow">and</span>  \
+            <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;inline&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">is_block_index</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;raw_entries&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">entries</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;raw_entries&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">entries</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span>
+        <span class="k">yield</span> <span class="n">node</span><span class="p">,</span> <span class="n">entries</span></div>
+
+
+<div class="viewcode-block" id="nested_parse_with_titles"><a class="viewcode-back" href="../../../generated/sphinx.util.nested_parse_with_titles.html#sphinx.ext.graphviz.nested_parse_with_titles">[docs]</a><span class="k">def</span> <span class="nf">nested_parse_with_titles</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Version of state.nested_parse() that allows titles and does not require</span>
+<span class="sd">    titles to have the same decoration as the calling document.</span>
+
+<span class="sd">    This is useful when the parsed content comes from a completely different</span>
+<span class="sd">    context, such as docstrings.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># hack around title style bookkeeping</span>
+    <span class="n">surrounding_title_styles</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">memo</span><span class="o">.</span><span class="n">title_styles</span>
+    <span class="n">surrounding_section_level</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">memo</span><span class="o">.</span><span class="n">section_level</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">memo</span><span class="o">.</span><span class="n">title_styles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">memo</span><span class="o">.</span><span class="n">section_level</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">state</span><span class="o">.</span><span class="n">nested_parse</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">match_titles</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">memo</span><span class="o">.</span><span class="n">title_styles</span> <span class="o">=</span> <span class="n">surrounding_title_styles</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">memo</span><span class="o">.</span><span class="n">section_level</span> <span class="o">=</span> <span class="n">surrounding_section_level</span></div>
+
+
+<div class="viewcode-block" id="clean_astext"><a class="viewcode-back" href="../../../generated/sphinx.domains.std.clean_astext.html#sphinx.ext.graphviz.clean_astext">[docs]</a><span class="k">def</span> <span class="nf">clean_astext</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Like node.astext(), but ignore images.&quot;&quot;&quot;</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">image</span><span class="p">):</span>
+        <span class="n">img</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="split_explicit_title"><a class="viewcode-back" href="../../../generated/sphinx.util.split_explicit_title.html#sphinx.ext.graphviz.split_explicit_title">[docs]</a><span class="k">def</span> <span class="nf">split_explicit_title</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Split role content into title and target, if given.&quot;&quot;&quot;</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">explicit_title_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span><span class="p">,</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">False</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">text</span></div>
+
+
+<span class="n">indextypes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="s1">&#39;pair&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;triple&#39;</span><span class="p">,</span> <span class="s1">&#39;see&#39;</span><span class="p">,</span> <span class="s1">&#39;seealso&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">process_index_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">targetid</span><span class="p">):</span>
+    <span class="n">indexentries</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">oentry</span> <span class="o">=</span> <span class="n">entry</span>
+    <span class="n">main</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">):</span>
+        <span class="n">main</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+    <span class="k">for</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">pairindextypes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="nb">type</span><span class="o">+</span><span class="s1">&#39;:&#39;</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">pairindextypes</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;; &#39;</span> <span class="o">+</span> <span class="n">value</span>
+            <span class="n">indexentries</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;pair&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">targetid</span><span class="p">,</span> <span class="n">main</span><span class="p">))</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">indextypes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="nb">type</span><span class="o">+</span><span class="s1">&#39;:&#39;</span><span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;double&#39;</span><span class="p">:</span>
+                    <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;pair&#39;</span>
+                <span class="n">indexentries</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">targetid</span><span class="p">,</span> <span class="n">main</span><span class="p">))</span>
+                <span class="k">break</span>
+        <span class="c1"># shorthand notation for single entries</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">oentry</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">main</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">):</span>
+                    <span class="n">main</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">indexentries</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">targetid</span><span class="p">,</span> <span class="n">main</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">indexentries</span>
+
+
+<div class="viewcode-block" id="inline_all_toctrees"><a class="viewcode-back" href="../../../generated/sphinx.builders.texinfo.inline_all_toctrees.html#sphinx.ext.graphviz.inline_all_toctrees">[docs]</a><span class="k">def</span> <span class="nf">inline_all_toctrees</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">docnameset</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">colorfunc</span><span class="p">,</span> <span class="n">traversed</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Inline all toctrees in the *tree*.</span>
+
+<span class="sd">    Record all docnames in *docnameset*, and output docnames with *colorfunc*.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">toctreenode</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">addnodes</span><span class="o">.</span><span class="n">toctree</span><span class="p">):</span>
+        <span class="n">newnodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">includefiles</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">text_type</span><span class="p">,</span> <span class="n">toctreenode</span><span class="p">[</span><span class="s1">&#39;includefiles&#39;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">includefile</span> <span class="ow">in</span> <span class="n">includefiles</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">includefile</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">traversed</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">traversed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">includefile</span><span class="p">)</span>
+                    <span class="n">builder</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">colorfunc</span><span class="p">(</span><span class="n">includefile</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">nonl</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="n">subtree</span> <span class="o">=</span> <span class="n">inline_all_toctrees</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">docnameset</span><span class="p">,</span> <span class="n">includefile</span><span class="p">,</span>
+                                                  <span class="n">builder</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_doctree</span><span class="p">(</span><span class="n">includefile</span><span class="p">),</span>
+                                                  <span class="n">colorfunc</span><span class="p">,</span> <span class="n">traversed</span><span class="p">)</span>
+                    <span class="n">docnameset</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">includefile</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="n">builder</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;toctree contains ref to nonexisting &#39;</span>
+                                 <span class="s1">&#39;file </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">includefile</span><span class="p">,</span>
+                                 <span class="n">builder</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">docname</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">sof</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">start_of_file</span><span class="p">(</span><span class="n">docname</span><span class="o">=</span><span class="n">includefile</span><span class="p">)</span>
+                    <span class="n">sof</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">subtree</span><span class="o">.</span><span class="n">children</span>
+                    <span class="k">for</span> <span class="n">sectionnode</span> <span class="ow">in</span> <span class="n">sof</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">section</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="s1">&#39;docname&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sectionnode</span><span class="p">:</span>
+                            <span class="n">sectionnode</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">includefile</span>
+                    <span class="n">newnodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sof</span><span class="p">)</span>
+        <span class="n">toctreenode</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">toctreenode</span><span class="p">,</span> <span class="n">newnodes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tree</span></div>
+
+
+<div class="viewcode-block" id="make_refnode"><a class="viewcode-back" href="../../../generated/sphinx.ext.viewcode.make_refnode.html#sphinx.ext.graphviz.make_refnode">[docs]</a><span class="k">def</span> <span class="nf">make_refnode</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">,</span> <span class="n">todocname</span><span class="p">,</span> <span class="n">targetid</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Shortcut to create a reference node.&quot;&quot;&quot;</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">internal</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fromdocname</span> <span class="o">==</span> <span class="n">todocname</span><span class="p">:</span>
+        <span class="n">node</span><span class="p">[</span><span class="s1">&#39;refid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targetid</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_relative_uri</span><span class="p">(</span><span class="n">fromdocname</span><span class="p">,</span> <span class="n">todocname</span><span class="p">)</span> <span class="o">+</span>
+                          <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">targetid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+        <span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftitle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">node</span></div>
+
+
+<div class="viewcode-block" id="set_source_info"><a class="viewcode-back" href="../../../generated/sphinx.ext.todo.set_source_info.html#sphinx.ext.graphviz.set_source_info">[docs]</a><span class="k">def</span> <span class="nf">set_source_info</span><span class="p">(</span><span class="n">directive</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> \
+        <span class="n">directive</span><span class="o">.</span><span class="n">state_machine</span><span class="o">.</span><span class="n">get_source_and_line</span><span class="p">(</span><span class="n">directive</span><span class="o">.</span><span class="n">lineno</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">set_role_source_info</span><span class="p">(</span><span class="n">inliner</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">get_source_and_line</span><span class="p">(</span><span class="n">lineno</span><span class="p">)</span>
+
+
+<span class="c1"># monkey-patch Element.copy to copy the rawsource and line</span>
+
+<span class="k">def</span> <span class="nf">_new_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">newnode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rawsource</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">attributes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="p">):</span>
+        <span class="n">newnode</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span>
+        <span class="n">newnode</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span>
+    <span class="k">return</span> <span class="n">newnode</span>
+
+<span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="o">.</span><span class="n">copy</span> <span class="o">=</span> <span class="n">_new_copy</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.Directive.required_arguments
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: Directive.required_arguments

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JavaScriptDomain.name
+===============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JavaScriptDomain.name

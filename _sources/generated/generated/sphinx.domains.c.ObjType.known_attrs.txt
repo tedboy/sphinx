@@ -1,0 +1,6 @@
+sphinx.domains.c.ObjType.known_attrs
+====================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. autoattribute:: ObjType.known_attrs

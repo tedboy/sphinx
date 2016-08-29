@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Request.get_full_url
+==============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Request.get_full_url

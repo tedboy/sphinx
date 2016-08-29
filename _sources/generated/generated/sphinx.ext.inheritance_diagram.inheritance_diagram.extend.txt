@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.inheritance_diagram.extend
+=========================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: inheritance_diagram.extend

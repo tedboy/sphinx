@@ -1,0 +1,6 @@
+sphinx.builders.gettext.I18nBuilder.supported_image_types
+=========================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: I18nBuilder.supported_image_types

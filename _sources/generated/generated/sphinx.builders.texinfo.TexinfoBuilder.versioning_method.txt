@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.versioning_method
+========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoBuilder.versioning_method

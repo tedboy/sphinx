@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Directive.required_arguments
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: Directive.required_arguments

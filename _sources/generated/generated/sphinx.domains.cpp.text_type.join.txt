@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.join
+=================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.join

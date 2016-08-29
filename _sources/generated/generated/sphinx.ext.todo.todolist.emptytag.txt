@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.emptytag
+=================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.emptytag

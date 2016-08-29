@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_production
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_production

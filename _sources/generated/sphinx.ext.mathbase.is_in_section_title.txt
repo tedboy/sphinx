@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.is_in_section_title
+=======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: is_in_section_title

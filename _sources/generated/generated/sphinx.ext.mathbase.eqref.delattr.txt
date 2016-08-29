@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.delattr
+=================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.delattr

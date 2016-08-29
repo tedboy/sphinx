@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>jinja2.loaders &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>jinja2.loaders</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for jinja2.loaders</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    jinja2.loaders</span>
+<span class="sd">    ~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Jinja loader classes.</span>
+
+<span class="sd">    :copyright: (c) 2010 by the Jinja Team.</span>
+<span class="sd">    :license: BSD, see LICENSE for more details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">weakref</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha1</span>
+<span class="kn">from</span> <span class="nn">jinja2.exceptions</span> <span class="kn">import</span> <span class="n">TemplateNotFound</span>
+<span class="kn">from</span> <span class="nn">jinja2.utils</span> <span class="kn">import</span> <span class="n">open_if_exists</span><span class="p">,</span> <span class="n">internalcode</span>
+<span class="kn">from</span> <span class="nn">jinja2._compat</span> <span class="kn">import</span> <span class="n">string_types</span><span class="p">,</span> <span class="n">iteritems</span>
+
+
+<span class="k">def</span> <span class="nf">split_template_path</span><span class="p">(</span><span class="n">template</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Split a path into segments and perform a sanity check.  If it detects</span>
+<span class="sd">    &#39;..&#39; in the path it will raise a `TemplateNotFound` error.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pieces</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">template</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">sep</span> <span class="ow">in</span> <span class="n">piece</span> \
+           <span class="ow">or</span> <span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">altsep</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">altsep</span> <span class="ow">in</span> <span class="n">piece</span><span class="p">)</span> <span class="ow">or</span> \
+           <span class="n">piece</span> <span class="o">==</span> <span class="n">path</span><span class="o">.</span><span class="n">pardir</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">piece</span> <span class="ow">and</span> <span class="n">piece</span> <span class="o">!=</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span>
+            <span class="n">pieces</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pieces</span>
+
+
+<span class="k">class</span> <span class="nc">BaseLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Baseclass for all loaders.  Subclass this and override `get_source` to</span>
+<span class="sd">    implement a custom loading mechanism.  The environment provides a</span>
+<span class="sd">    `get_template` method that calls the loader&#39;s `load` method to get the</span>
+<span class="sd">    :class:`Template` object.</span>
+
+<span class="sd">    A very basic example for a loader that looks up templates on the file</span>
+<span class="sd">    system could look like this::</span>
+
+<span class="sd">        from jinja2 import BaseLoader, TemplateNotFound</span>
+<span class="sd">        from os.path import join, exists, getmtime</span>
+
+<span class="sd">        class MyLoader(BaseLoader):</span>
+
+<span class="sd">            def __init__(self, path):</span>
+<span class="sd">                self.path = path</span>
+
+<span class="sd">            def get_source(self, environment, template):</span>
+<span class="sd">                path = join(self.path, template)</span>
+<span class="sd">                if not exists(path):</span>
+<span class="sd">                    raise TemplateNotFound(template)</span>
+<span class="sd">                mtime = getmtime(path)</span>
+<span class="sd">                with file(path) as f:</span>
+<span class="sd">                    source = f.read().decode(&#39;utf-8&#39;)</span>
+<span class="sd">                return source, path, lambda: mtime == getmtime(path)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: if set to `False` it indicates that the loader cannot provide access</span>
+    <span class="c1">#: to the source of templates.</span>
+    <span class="c1">#:</span>
+    <span class="c1">#: .. versionadded:: 2.4</span>
+    <span class="n">has_source_access</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the template source, filename and reload helper for a template.</span>
+<span class="sd">        It&#39;s passed the environment and template name and has to return a</span>
+<span class="sd">        tuple in the form ``(source, filename, uptodate)`` or raise a</span>
+<span class="sd">        `TemplateNotFound` error if it can&#39;t locate the template.</span>
+
+<span class="sd">        The source part of the returned tuple must be the source of the</span>
+<span class="sd">        template as unicode string or a ASCII bytestring.  The filename should</span>
+<span class="sd">        be the name of the file on the filesystem if it was loaded from there,</span>
+<span class="sd">        otherwise `None`.  The filename is used by python for the tracebacks</span>
+<span class="sd">        if no loader extension is used.</span>
+
+<span class="sd">        The last item in the tuple is the `uptodate` function.  If auto</span>
+<span class="sd">        reloading is enabled it&#39;s always called to check if the template</span>
+<span class="sd">        changed.  No arguments are passed so the function must store the</span>
+<span class="sd">        old state somewhere (for example in a closure).  If it returns `False`</span>
+<span class="sd">        the template will be reloaded.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_source_access</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> cannot provide access to the source&#39;</span> <span class="o">%</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">list_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Iterates over all templates.  If the loader does not support that</span>
+<span class="sd">        it should raise a :exc:`TypeError` which is the default behavior.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;this loader cannot iterate over all templates&#39;</span><span class="p">)</span>
+
+    <span class="nd">@internalcode</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loads a template.  This method looks up the template in the cache</span>
+<span class="sd">        or loads one by calling :meth:`get_source`.  Subclasses should not</span>
+<span class="sd">        override this method as loaders working on collections of other</span>
+<span class="sd">        loaders (such as :class:`PrefixLoader` or :class:`ChoiceLoader`)</span>
+<span class="sd">        will not call this method but `get_source` directly.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="nb">globals</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="nb">globals</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># first we try to get the source for this template together</span>
+        <span class="c1"># with the filename and the uptodate function.</span>
+        <span class="n">source</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">uptodate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_source</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="c1"># try to load the code from the bytecode cache if there is a</span>
+        <span class="c1"># bytecode cache configured.</span>
+        <span class="n">bcc</span> <span class="o">=</span> <span class="n">environment</span><span class="o">.</span><span class="n">bytecode_cache</span>
+        <span class="k">if</span> <span class="n">bcc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">bucket</span> <span class="o">=</span> <span class="n">bcc</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">code</span>
+
+        <span class="c1"># if we don&#39;t have code so far (not cached, no longer up to</span>
+        <span class="c1"># date) etc. we compile the template</span>
+        <span class="k">if</span> <span class="n">code</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="n">environment</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+        <span class="c1"># if the bytecode cache is available and the bucket doesn&#39;t</span>
+        <span class="c1"># have a code so far, we give the bucket the new code and put</span>
+        <span class="c1"># it back to the bytecode cache.</span>
+        <span class="k">if</span> <span class="n">bcc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">bucket</span><span class="o">.</span><span class="n">code</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">bucket</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
+            <span class="n">bcc</span><span class="o">.</span><span class="n">set_bucket</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">environment</span><span class="o">.</span><span class="n">template_class</span><span class="o">.</span><span class="n">from_code</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span>
+                                                    <span class="nb">globals</span><span class="p">,</span> <span class="n">uptodate</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="FileSystemLoader"><a class="viewcode-back" href="../../generated/generated/sphinx.websupport.FileSystemLoader.html#sphinx.builders.websupport.FileSystemLoader">[docs]</a><span class="k">class</span> <span class="nc">FileSystemLoader</span><span class="p">(</span><span class="n">BaseLoader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Loads templates from the file system.  This loader can find templates</span>
+<span class="sd">    in folders on the file system and is the preferred way to load them.</span>
+
+<span class="sd">    The loader takes the path to the templates as string, or if multiple</span>
+<span class="sd">    locations are wanted a list of them which is then looked up in the</span>
+<span class="sd">    given order::</span>
+
+<span class="sd">    &gt;&gt;&gt; loader = FileSystemLoader(&#39;/path/to/templates&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; loader = FileSystemLoader([&#39;/path/to/templates&#39;, &#39;/other/path&#39;])</span>
+
+<span class="sd">    Per default the template encoding is ``&#39;utf-8&#39;`` which can be changed</span>
+<span class="sd">    by setting the `encoding` parameter to something else.</span>
+
+<span class="sd">    To follow symbolic links, set the *followlinks* parameter to ``True``::</span>
+
+<span class="sd">    &gt;&gt;&gt; loader = FileSystemLoader(&#39;/path/to/templates&#39;, followlinks=True)</span>
+
+<span class="sd">    .. versionchanged:: 2.8+</span>
+<span class="sd">       The *followlinks* parameter was added.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="FileSystemLoader.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.websupport.FileSystemLoader.__init__.html#sphinx.builders.websupport.FileSystemLoader.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">searchpath</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">followlinks</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">searchpath</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">searchpath</span> <span class="o">=</span> <span class="p">[</span><span class="n">searchpath</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">searchpath</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">searchpath</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">followlinks</span> <span class="o">=</span> <span class="n">followlinks</span></div>
+
+<div class="viewcode-block" id="FileSystemLoader.get_source"><a class="viewcode-back" href="../../generated/generated/sphinx.websupport.FileSystemLoader.get_source.html#sphinx.builders.websupport.FileSystemLoader.get_source">[docs]</a>    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="n">pieces</span> <span class="o">=</span> <span class="n">split_template_path</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">searchpath</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">searchpath</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">searchpath</span><span class="p">,</span> <span class="o">*</span><span class="n">pieces</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">open_if_exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="n">mtime</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+            <span class="k">def</span> <span class="nf">uptodate</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">==</span> <span class="n">mtime</span>
+                <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+            <span class="k">return</span> <span class="n">contents</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">uptodate</span>
+        <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FileSystemLoader.list_templates"><a class="viewcode-back" href="../../generated/generated/sphinx.websupport.FileSystemLoader.list_templates.html#sphinx.builders.websupport.FileSystemLoader.list_templates">[docs]</a>    <span class="k">def</span> <span class="nf">list_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">searchpath</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">searchpath</span><span class="p">:</span>
+            <span class="n">walk_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">searchpath</span><span class="p">,</span> <span class="n">followlinks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">followlinks</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">walk_dir</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+                    <span class="n">template</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span> \
+                        <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">searchpath</span><span class="p">):]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span> \
+                                          <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">template</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;./&#39;</span><span class="p">:</span>
+                        <span class="n">template</span> <span class="o">=</span> <span class="n">template</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+                    <span class="k">if</span> <span class="n">template</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">found</span><span class="p">:</span>
+                        <span class="n">found</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">found</span><span class="p">)</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">PackageLoader</span><span class="p">(</span><span class="n">BaseLoader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load templates from python eggs or packages.  It is constructed with</span>
+<span class="sd">    the name of the python package and the path to the templates in that</span>
+<span class="sd">    package::</span>
+
+<span class="sd">        loader = PackageLoader(&#39;mypackage&#39;, &#39;views&#39;)</span>
+
+<span class="sd">    If the package path is not given, ``&#39;templates&#39;`` is assumed.</span>
+
+<span class="sd">    Per default the template encoding is ``&#39;utf-8&#39;`` which can be changed</span>
+<span class="sd">    by setting the `encoding` parameter to something else.  Due to the nature</span>
+<span class="sd">    of eggs it&#39;s only possible to reload templates if the package was loaded</span>
+<span class="sd">    from the file system and not a zip file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">package_path</span><span class="o">=</span><span class="s1">&#39;templates&#39;</span><span class="p">,</span>
+                 <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="kn">import</span> <span class="n">DefaultProvider</span><span class="p">,</span> <span class="n">ResourceManager</span><span class="p">,</span> \
+                                  <span class="n">get_provider</span>
+        <span class="n">provider</span> <span class="o">=</span> <span class="n">get_provider</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">manager</span> <span class="o">=</span> <span class="n">ResourceManager</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filesystem_bound</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">DefaultProvider</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">=</span> <span class="n">provider</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">package_path</span> <span class="o">=</span> <span class="n">package_path</span>
+
+    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="n">pieces</span> <span class="o">=</span> <span class="n">split_template_path</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">package_path</span><span class="p">,)</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">pieces</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">has_resource</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">uptodate</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesystem_bound</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">get_resource_filename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+            <span class="n">mtime</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">uptodate</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">==</span> <span class="n">mtime</span>
+                <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">get_resource_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">source</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">),</span> <span class="n">filename</span><span class="p">,</span> <span class="n">uptodate</span>
+
+    <span class="k">def</span> <span class="nf">list_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">package_path</span>
+        <span class="k">if</span> <span class="n">path</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;./&#39;</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="k">elif</span> <span class="n">path</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">def</span> <span class="nf">_walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">resource_listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="n">fullname</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">filename</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">resource_isdir</span><span class="p">(</span><span class="n">fullname</span><span class="p">):</span>
+                    <span class="n">_walk</span><span class="p">(</span><span class="n">fullname</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fullname</span><span class="p">[</span><span class="n">offset</span><span class="p">:]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span>
+        <span class="n">_walk</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">results</span>
+
+
+<span class="k">class</span> <span class="nc">DictLoader</span><span class="p">(</span><span class="n">BaseLoader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Loads a template from a python dict.  It&#39;s passed a dict of unicode</span>
+<span class="sd">    strings bound to template names.  This loader is useful for unittesting:</span>
+
+<span class="sd">    &gt;&gt;&gt; loader = DictLoader({&#39;index.html&#39;: &#39;source here&#39;})</span>
+
+<span class="sd">    Because auto reloading is rarely useful this is disabled per default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="n">mapping</span>
+
+    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">template</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">:</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="n">template</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">source</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">source</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">list_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">FunctionLoader</span><span class="p">(</span><span class="n">BaseLoader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A loader that is passed a function which does the loading.  The</span>
+<span class="sd">    function receives the name of the template and has to return either</span>
+<span class="sd">    an unicode string with the template source, a tuple in the form ``(source,</span>
+<span class="sd">    filename, uptodatefunc)`` or `None` if the template does not exist.</span>
+
+<span class="sd">    &gt;&gt;&gt; def load_template(name):</span>
+<span class="sd">    ...     if name == &#39;index.html&#39;:</span>
+<span class="sd">    ...         return &#39;...&#39;</span>
+<span class="sd">    ...</span>
+<span class="sd">    &gt;&gt;&gt; loader = FunctionLoader(load_template)</span>
+
+<span class="sd">    The `uptodatefunc` is a function that is called if autoreload is enabled</span>
+<span class="sd">    and has to return `True` if the template is still up to date.  For more</span>
+<span class="sd">    details have a look at :meth:`BaseLoader.get_source` which has the same</span>
+<span class="sd">    return value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">load_func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_func</span> <span class="o">=</span> <span class="n">load_func</span>
+
+    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_func</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rv</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rv</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">rv</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">rv</span>
+
+
+<span class="k">class</span> <span class="nc">PrefixLoader</span><span class="p">(</span><span class="n">BaseLoader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A loader that is passed a dict of loaders where each loader is bound</span>
+<span class="sd">    to a prefix.  The prefix is delimited from the template by a slash per</span>
+<span class="sd">    default, which can be changed by setting the `delimiter` argument to</span>
+<span class="sd">    something else::</span>
+
+<span class="sd">        loader = PrefixLoader({</span>
+<span class="sd">            &#39;app1&#39;:     PackageLoader(&#39;mypackage.app1&#39;),</span>
+<span class="sd">            &#39;app2&#39;:     PackageLoader(&#39;mypackage.app2&#39;)</span>
+<span class="sd">        })</span>
+
+<span class="sd">    By loading ``&#39;app1/index.html&#39;`` the file from the app1 package is loaded,</span>
+<span class="sd">    by loading ``&#39;app2/index.html&#39;`` the file from the second.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="n">mapping</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delimiter</span> <span class="o">=</span> <span class="n">delimiter</span>
+
+    <span class="k">def</span> <span class="nf">get_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">prefix</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delimiter</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">loader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="n">prefix</span><span class="p">]</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loader</span><span class="p">,</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="n">loader</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_loader</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_source</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">TemplateNotFound</span><span class="p">:</span>
+            <span class="c1"># re-raise the exception with the correct fileame here.</span>
+            <span class="c1"># (the one that includes the prefix)</span>
+            <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+    <span class="nd">@internalcode</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">loader</span><span class="p">,</span> <span class="n">local_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_loader</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">local_name</span><span class="p">,</span> <span class="nb">globals</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">TemplateNotFound</span><span class="p">:</span>
+            <span class="c1"># re-raise the exception with the correct fileame here.</span>
+            <span class="c1"># (the one that includes the prefix)</span>
+            <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">list_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">loader</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">template</span> <span class="ow">in</span> <span class="n">loader</span><span class="o">.</span><span class="n">list_templates</span><span class="p">():</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">delimiter</span> <span class="o">+</span> <span class="n">template</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">class</span> <span class="nc">ChoiceLoader</span><span class="p">(</span><span class="n">BaseLoader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This loader works like the `PrefixLoader` just that no prefix is</span>
+<span class="sd">    specified.  If a template could not be found by one loader the next one</span>
+<span class="sd">    is tried.</span>
+
+<span class="sd">    &gt;&gt;&gt; loader = ChoiceLoader([</span>
+<span class="sd">    ...     FileSystemLoader(&#39;/path/to/user/templates&#39;),</span>
+<span class="sd">    ...     FileSystemLoader(&#39;/path/to/system/templates&#39;)</span>
+<span class="sd">    ... ])</span>
+
+<span class="sd">    This is useful if you want to allow users to override builtin templates</span>
+<span class="sd">    from a different location.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loaders</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span> <span class="o">=</span> <span class="n">loaders</span>
+
+    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">loader</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_source</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">template</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">TemplateNotFound</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+    <span class="nd">@internalcode</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">loader</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">globals</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">TemplateNotFound</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">list_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">loader</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">:</span>
+            <span class="n">found</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">loader</span><span class="o">.</span><span class="n">list_templates</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">found</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_TemplateModule</span><span class="p">(</span><span class="n">ModuleType</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Like a normal module but with support for weak references&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">ModuleLoader</span><span class="p">(</span><span class="n">BaseLoader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This loader loads templates from precompiled templates.</span>
+
+<span class="sd">    Example usage:</span>
+
+<span class="sd">    &gt;&gt;&gt; loader = ChoiceLoader([</span>
+<span class="sd">    ...     ModuleLoader(&#39;/path/to/compiled/templates&#39;),</span>
+<span class="sd">    ...     FileSystemLoader(&#39;/path/to/templates&#39;)</span>
+<span class="sd">    ... ])</span>
+
+<span class="sd">    Templates can be precompiled with :meth:`Environment.compile_templates`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">has_source_access</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="n">package_name</span> <span class="o">=</span> <span class="s1">&#39;_jinja2_module_templates_</span><span class="si">%x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># create a fake module that looks for the templates in the</span>
+        <span class="c1"># path given.</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">_TemplateModule</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">mod</span><span class="o">.</span><span class="n">__path__</span> <span class="o">=</span> <span class="n">path</span>
+
+        <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">package_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">proxy</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
+
+        <span class="c1"># the only strong reference, the sys.modules entry is weak</span>
+        <span class="c1"># so that the garbage collector can remove it once the</span>
+        <span class="c1"># loader that created it goes out of business.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module</span> <span class="o">=</span> <span class="n">mod</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">package_name</span> <span class="o">=</span> <span class="n">package_name</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_template_key</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;tmpl_&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_module_filename</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ModuleLoader</span><span class="o">.</span><span class="n">get_template_key</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.py&#39;</span>
+
+    <span class="nd">@internalcode</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_template_key</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mod</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">mod</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+            <span class="c1"># remove the entry from sys.modules, we only want the attribute</span>
+            <span class="c1"># on the module object we have stored on the loader.</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">environment</span><span class="o">.</span><span class="n">template_class</span><span class="o">.</span><span class="n">from_module_dict</span><span class="p">(</span>
+            <span class="n">environment</span><span class="p">,</span> <span class="n">mod</span><span class="o">.</span><span class="n">__dict__</span><span class="p">,</span> <span class="nb">globals</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

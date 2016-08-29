@@ -1,0 +1,32 @@
+sphinx.ext.inheritance_diagram.InheritanceGraph
+===============================================
+.. currentmodule:: sphinx.ext.inheritance_diagram
+.. autoclass:: InheritanceGraph
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~InheritanceGraph.__init__
+   ~InheritanceGraph.class_name
+   ~InheritanceGraph.generate_dot
+   ~InheritanceGraph.get_all_class_names
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~InheritanceGraph.default_edge_attrs
+   ~InheritanceGraph.default_graph_attrs
+   ~InheritanceGraph.default_node_attrs
+

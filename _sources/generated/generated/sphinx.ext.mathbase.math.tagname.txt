@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.tagname
+================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: math.tagname

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.compile_update_catalogs
+====================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.compile_update_catalogs

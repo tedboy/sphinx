@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.build_all
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.build_all

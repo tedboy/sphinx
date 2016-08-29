@@ -1,0 +1,6 @@
+sphinx.search.comment.basic_attributes
+======================================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: comment.basic_attributes

@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.InheritanceGraph.get_all_class_names
+===================================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: InheritanceGraph.get_all_class_names

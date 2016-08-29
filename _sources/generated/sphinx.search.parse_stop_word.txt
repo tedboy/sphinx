@@ -1,0 +1,6 @@
+sphinx.search.parse_stop_word
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. autofunction:: parse_stop_word

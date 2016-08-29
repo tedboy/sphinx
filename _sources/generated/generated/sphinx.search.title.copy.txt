@@ -1,0 +1,6 @@
+sphinx.search.title.copy
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.copy

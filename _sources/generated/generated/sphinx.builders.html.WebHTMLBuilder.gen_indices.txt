@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.gen_indices
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.gen_indices

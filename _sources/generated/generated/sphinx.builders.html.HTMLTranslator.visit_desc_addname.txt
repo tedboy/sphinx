@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_desc_addname
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_desc_addname

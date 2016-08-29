@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.debug
+========================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: GraphvizSimple.debug

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleLevelDocumenter.process_doc
+====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ModuleLevelDocumenter.process_doc

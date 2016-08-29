@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. sphinx.util &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../index.html"/>
+        <link rel="up" title="&lt;no title&gt;" href="../sphinx.util.html"/>
+        <link rel="next" title="6.1.1. sphinx.util.copy_static_entry" href="sphinx.util.copy_static_entry.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="../sphinx.util.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">6. sphinx.util</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#functions">6.1. Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.copy_static_entry.html">6.1.1. sphinx.util.copy_static_entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.copyfile.html">6.1.2. sphinx.util.copyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.copytimes.html">6.1.3. sphinx.util.copytimes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.detect_encoding.html">6.1.4. sphinx.util.detect_encoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.docname_join.html">6.1.5. sphinx.util.docname_join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.encode_uri.html">6.1.6. sphinx.util.encode_uri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.ensuredir.html">6.1.7. sphinx.util.ensuredir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.force_decode.html">6.1.8. sphinx.util.force_decode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.format_exception_cut_frames.html">6.1.9. sphinx.util.format_exception_cut_frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.get_figtype.html">6.1.10. sphinx.util.get_figtype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.get_full_modname.html">6.1.11. sphinx.util.get_full_modname</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.get_matching_docs.html">6.1.12. sphinx.util.get_matching_docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.get_matching_files.html">6.1.13. sphinx.util.get_matching_files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.get_module_source.html">6.1.14. sphinx.util.get_module_source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.import_object.html">6.1.15. sphinx.util.import_object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.iteritems.html">6.1.16. sphinx.util.iteritems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.make_filename.html">6.1.17. sphinx.util.make_filename</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.movefile.html">6.1.18. sphinx.util.movefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.mtimes_of_files.html">6.1.19. sphinx.util.mtimes_of_files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.nested_parse_with_titles.html">6.1.20. sphinx.util.nested_parse_with_titles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.open.html">6.1.21. sphinx.util.open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.os_path.html">6.1.22. sphinx.util.os_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.parse_qsl.html">6.1.23. sphinx.util.parse_qsl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.parselinenos.html">6.1.24. sphinx.util.parselinenos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.patfilter.html">6.1.25. sphinx.util.patfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.path_stabilize.html">6.1.26. sphinx.util.path_stabilize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.quote_plus.html">6.1.27. sphinx.util.quote_plus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.relative_path.html">6.1.28. sphinx.util.relative_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.relative_uri.html">6.1.29. sphinx.util.relative_uri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.rpartition.html">6.1.30. sphinx.util.rpartition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.save_traceback.html">6.1.31. sphinx.util.save_traceback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.split_explicit_title.html">6.1.32. sphinx.util.split_explicit_title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.split_index_msg.html">6.1.33. sphinx.util.split_index_msg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.split_into.html">6.1.34. sphinx.util.split_into</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.strip_colors.html">6.1.35. sphinx.util.strip_colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.urlencode.html">6.1.36. sphinx.util.urlencode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.urlsplit.html">6.1.37. sphinx.util.urlsplit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.urlunsplit.html">6.1.38. sphinx.util.urlunsplit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.ustrftime.html">6.1.39. sphinx.util.ustrftime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.walk.html">6.1.40. sphinx.util.walk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#classes">6.2. Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sphinx.util.FilenameUniqDict.html">6.2.1. sphinx.util.FilenameUniqDict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sphinx.util.PeekableIterator.html">6.2.2. sphinx.util.PeekableIterator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sphinx.util.Tee.html">6.2.3. sphinx.util.Tee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sphinx.util.attrdict.html">6.2.4. sphinx.util.attrdict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sphinx.util.binary_type.html">6.2.5. sphinx.util.binary_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sphinx.util.deque.html">6.2.6. sphinx.util.deque</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sphinx.util.range.html">6.2.7. sphinx.util.range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sphinx.util.text_type.html">6.2.8. sphinx.util.text_type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">6.3. Exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.ExtensionError.html">6.3.1. sphinx.util.ExtensionError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.PycodeError.html">6.3.2. sphinx.util.PycodeError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx.util.SphinxParallelError.html">6.3.3. sphinx.util.SphinxParallelError</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../sphinx.util.html">&lt;no title&gt;</a> &raquo;</li>
+        
+      <li>6. sphinx.util</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/sphinx.util.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-sphinx.util"></span><div class="section" id="sphinx-util">
+<h1>6. sphinx.util<a class="headerlink" href="#sphinx-util" title="Permalink to this headline">¶</a></h1>
+<p>Utility functions for Sphinx.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Copyright 2007-2016 by the Sphinx team, see AUTHORS.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD, see LICENSE for details.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="functions">
+<h2>6.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.copy_static_entry.html#sphinx.util.copy_static_entry" title="sphinx.util.copy_static_entry"><code class="xref py py-obj docutils literal"><span class="pre">copy_static_entry</span></code></a>(source,&nbsp;targetdir,&nbsp;builder)</td>
+<td>Copy a HTML builder static_path entry from source to targetdir.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.copyfile.html#sphinx.util.copyfile" title="sphinx.util.copyfile"><code class="xref py py-obj docutils literal"><span class="pre">copyfile</span></code></a>(source,&nbsp;dest)</td>
+<td>Copy a file and its modification times, if possible.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.copytimes.html#sphinx.util.copytimes" title="sphinx.util.copytimes"><code class="xref py py-obj docutils literal"><span class="pre">copytimes</span></code></a>(source,&nbsp;dest)</td>
+<td>Copy a file&#8217;s modification times.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.detect_encoding.html#sphinx.util.detect_encoding" title="sphinx.util.detect_encoding"><code class="xref py py-obj docutils literal"><span class="pre">detect_encoding</span></code></a>(readline)</td>
+<td>Like tokenize.detect_encoding() from Py3k, but a bit simplified.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.docname_join.html#sphinx.util.docname_join" title="sphinx.util.docname_join"><code class="xref py py-obj docutils literal"><span class="pre">docname_join</span></code></a>(basedocname,&nbsp;docname)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.encode_uri.html#sphinx.util.encode_uri" title="sphinx.util.encode_uri"><code class="xref py py-obj docutils literal"><span class="pre">encode_uri</span></code></a>(uri)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.ensuredir.html#sphinx.util.ensuredir" title="sphinx.util.ensuredir"><code class="xref py py-obj docutils literal"><span class="pre">ensuredir</span></code></a>(path)</td>
+<td>Ensure that a path exists.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.force_decode.html#sphinx.util.force_decode" title="sphinx.util.force_decode"><code class="xref py py-obj docutils literal"><span class="pre">force_decode</span></code></a>(string,&nbsp;encoding)</td>
+<td>Forcibly get a unicode string out of a bytestring.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.format_exception_cut_frames.html#sphinx.util.format_exception_cut_frames" title="sphinx.util.format_exception_cut_frames"><code class="xref py py-obj docutils literal"><span class="pre">format_exception_cut_frames</span></code></a>([x])</td>
+<td>Format an exception with traceback, but only the last x frames.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.get_figtype.html#sphinx.util.get_figtype" title="sphinx.util.get_figtype"><code class="xref py py-obj docutils literal"><span class="pre">get_figtype</span></code></a>(node)</td>
+<td>Return figtype for given node.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.get_full_modname.html#sphinx.util.get_full_modname" title="sphinx.util.get_full_modname"><code class="xref py py-obj docutils literal"><span class="pre">get_full_modname</span></code></a>(modname,&nbsp;attribute)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.get_matching_docs.html#sphinx.util.get_matching_docs" title="sphinx.util.get_matching_docs"><code class="xref py py-obj docutils literal"><span class="pre">get_matching_docs</span></code></a>(dirname,&nbsp;suffixes[,&nbsp;...])</td>
+<td>Get all file names (without suffixes) matching a suffix in a directory, recursively.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.get_matching_files.html#sphinx.util.get_matching_files" title="sphinx.util.get_matching_files"><code class="xref py py-obj docutils literal"><span class="pre">get_matching_files</span></code></a>(dirname[,&nbsp;exclude_matchers])</td>
+<td>Get all file names in a directory, recursively.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.get_module_source.html#sphinx.util.get_module_source" title="sphinx.util.get_module_source"><code class="xref py py-obj docutils literal"><span class="pre">get_module_source</span></code></a>(modname)</td>
+<td>Try to find the source code for a module.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.import_object.html#sphinx.util.import_object" title="sphinx.util.import_object"><code class="xref py py-obj docutils literal"><span class="pre">import_object</span></code></a>(objname[,&nbsp;source])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.iteritems.html#sphinx.util.iteritems" title="sphinx.util.iteritems"><code class="xref py py-obj docutils literal"><span class="pre">iteritems</span></code></a>(d,&nbsp;**kw)</td>
+<td>Return an iterator over the (key, value) pairs of a dictionary.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.make_filename.html#sphinx.util.make_filename" title="sphinx.util.make_filename"><code class="xref py py-obj docutils literal"><span class="pre">make_filename</span></code></a>(string)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.movefile.html#sphinx.util.movefile" title="sphinx.util.movefile"><code class="xref py py-obj docutils literal"><span class="pre">movefile</span></code></a>(source,&nbsp;dest)</td>
+<td>Move a file, removing the destination if it exists.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.mtimes_of_files.html#sphinx.util.mtimes_of_files" title="sphinx.util.mtimes_of_files"><code class="xref py py-obj docutils literal"><span class="pre">mtimes_of_files</span></code></a>(dirnames,&nbsp;suffix)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.nested_parse_with_titles.html#sphinx.util.nested_parse_with_titles" title="sphinx.util.nested_parse_with_titles"><code class="xref py py-obj docutils literal"><span class="pre">nested_parse_with_titles</span></code></a>(state,&nbsp;content,&nbsp;node)</td>
+<td>Version of state.nested_parse() that allows titles and does not require titles to have the same decoration as the calling document.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.open.html#sphinx.util.open" title="sphinx.util.open"><code class="xref py py-obj docutils literal"><span class="pre">open</span></code></a>(filename[,&nbsp;mode,&nbsp;encoding,&nbsp;errors,&nbsp;...])</td>
+<td>Open an encoded file using the given mode and return a wrapped version providing transparent encoding/decoding.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.os_path.html#sphinx.util.os_path" title="sphinx.util.os_path"><code class="xref py py-obj docutils literal"><span class="pre">os_path</span></code></a>(canonicalpath)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.parse_qsl.html#sphinx.util.parse_qsl" title="sphinx.util.parse_qsl"><code class="xref py py-obj docutils literal"><span class="pre">parse_qsl</span></code></a>(qs[,&nbsp;keep_blank_values,&nbsp;...])</td>
+<td>Parse a query given as a string argument.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.parselinenos.html#sphinx.util.parselinenos" title="sphinx.util.parselinenos"><code class="xref py py-obj docutils literal"><span class="pre">parselinenos</span></code></a>(spec,&nbsp;total)</td>
+<td>Parse a line number spec (such as &#8220;1,2,4-6&#8221;) and return a list of wanted line numbers.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.patfilter.html#sphinx.util.patfilter" title="sphinx.util.patfilter"><code class="xref py py-obj docutils literal"><span class="pre">patfilter</span></code></a>(names,&nbsp;pat)</td>
+<td>Return the subset of the list NAMES that match PAT.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.path_stabilize.html#sphinx.util.path_stabilize" title="sphinx.util.path_stabilize"><code class="xref py py-obj docutils literal"><span class="pre">path_stabilize</span></code></a>(filepath)</td>
+<td>normalize path separater and unicode string</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.quote_plus.html#sphinx.util.quote_plus" title="sphinx.util.quote_plus"><code class="xref py py-obj docutils literal"><span class="pre">quote_plus</span></code></a>(s[,&nbsp;safe])</td>
+<td>Quote the query fragment of a URL; replacing &#8216; &#8216; with &#8216;+&#8217;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.relative_path.html#sphinx.util.relative_path" title="sphinx.util.relative_path"><code class="xref py py-obj docutils literal"><span class="pre">relative_path</span></code></a>(source,&nbsp;target)</td>
+<td>Build and return a path to <cite>target</cite>, relative to <cite>source</cite> (both files).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.relative_uri.html#sphinx.util.relative_uri" title="sphinx.util.relative_uri"><code class="xref py py-obj docutils literal"><span class="pre">relative_uri</span></code></a>(base,&nbsp;to)</td>
+<td>Return a relative URL from <code class="docutils literal"><span class="pre">base</span></code> to <code class="docutils literal"><span class="pre">to</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.rpartition.html#sphinx.util.rpartition" title="sphinx.util.rpartition"><code class="xref py py-obj docutils literal"><span class="pre">rpartition</span></code></a>(s,&nbsp;t)</td>
+<td>Similar to str.rpartition from 2.5, but doesn&#8217;t return the separator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.save_traceback.html#sphinx.util.save_traceback" title="sphinx.util.save_traceback"><code class="xref py py-obj docutils literal"><span class="pre">save_traceback</span></code></a>(app)</td>
+<td>Save the current exception&#8217;s traceback in a temporary file.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.split_explicit_title.html#sphinx.util.split_explicit_title" title="sphinx.util.split_explicit_title"><code class="xref py py-obj docutils literal"><span class="pre">split_explicit_title</span></code></a>(text)</td>
+<td>Split role content into title and target, if given.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.split_index_msg.html#sphinx.util.split_index_msg" title="sphinx.util.split_index_msg"><code class="xref py py-obj docutils literal"><span class="pre">split_index_msg</span></code></a>(type,&nbsp;value)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.split_into.html#sphinx.util.split_into" title="sphinx.util.split_into"><code class="xref py py-obj docutils literal"><span class="pre">split_into</span></code></a>(n,&nbsp;type,&nbsp;value)</td>
+<td>Split an index entry into a given number of parts at semicolons.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.strip_colors.html#sphinx.util.strip_colors" title="sphinx.util.strip_colors"><code class="xref py py-obj docutils literal"><span class="pre">strip_colors</span></code></a>(s)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.urlencode.html#sphinx.util.urlencode" title="sphinx.util.urlencode"><code class="xref py py-obj docutils literal"><span class="pre">urlencode</span></code></a>(query[,&nbsp;doseq])</td>
+<td>Encode a sequence of two-element tuples or dictionary into a URL query string.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.urlsplit.html#sphinx.util.urlsplit" title="sphinx.util.urlsplit"><code class="xref py py-obj docutils literal"><span class="pre">urlsplit</span></code></a>(url[,&nbsp;scheme,&nbsp;allow_fragments])</td>
+<td>Parse a URL into 5 components: &lt;scheme&gt;://&lt;netloc&gt;/&lt;path&gt;?&lt;query&gt;#&lt;fragment&gt; Return a 5-tuple: (scheme, netloc, path, query, fragment).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.urlunsplit.html#sphinx.util.urlunsplit" title="sphinx.util.urlunsplit"><code class="xref py py-obj docutils literal"><span class="pre">urlunsplit</span></code></a>(data)</td>
+<td>Combine the elements of a tuple as returned by urlsplit() into a complete URL as a string.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.ustrftime.html#sphinx.util.ustrftime" title="sphinx.util.ustrftime"><code class="xref py py-obj docutils literal"><span class="pre">ustrftime</span></code></a>(format,&nbsp;*args)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.walk.html#sphinx.util.walk" title="sphinx.util.walk"><code class="xref py py-obj docutils literal"><span class="pre">walk</span></code></a>(top[,&nbsp;topdown,&nbsp;followlinks])</td>
+<td>Backport of os.walk from 2.6, where the <em>followlinks</em> argument was added.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="classes">
+<h2>6.2. Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.util.FilenameUniqDict.html#sphinx.util.FilenameUniqDict" title="sphinx.util.FilenameUniqDict"><code class="xref py py-obj docutils literal"><span class="pre">FilenameUniqDict</span></code></a>()</td>
+<td>A dictionary that automatically generates unique names for its keys, interpreted as filenames, and keeps track of a set of docnames they appear in.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.util.PeekableIterator.html#sphinx.util.PeekableIterator" title="sphinx.util.PeekableIterator"><code class="xref py py-obj docutils literal"><span class="pre">PeekableIterator</span></code></a>(iterable)</td>
+<td>An iterator which wraps any iterable and makes it possible to peek to see what&#8217;s the next item.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.util.Tee.html#sphinx.util.Tee" title="sphinx.util.Tee"><code class="xref py py-obj docutils literal"><span class="pre">Tee</span></code></a>(stream1,&nbsp;stream2)</td>
+<td>File-like object writing to two streams.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.util.attrdict.html#sphinx.util.attrdict" title="sphinx.util.attrdict"><code class="xref py py-obj docutils literal"><span class="pre">attrdict</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.util.binary_type.html#sphinx.util.binary_type" title="sphinx.util.binary_type"><code class="xref py py-obj docutils literal"><span class="pre">binary_type</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">str</span></code></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.util.deque.html#sphinx.util.deque" title="sphinx.util.deque"><code class="xref py py-obj docutils literal"><span class="pre">deque</span></code></a></td>
+<td>deque([iterable[, maxlen]]) &#8211;&gt; deque object</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.util.range.html#sphinx.util.range" title="sphinx.util.range"><code class="xref py py-obj docutils literal"><span class="pre">range</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">xrange</span></code></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.util.text_type.html#sphinx.util.text_type" title="sphinx.util.text_type"><code class="xref py py-obj docutils literal"><span class="pre">text_type</span></code></a></td>
+<td>alias of <code class="xref py py-class docutils literal"><span class="pre">unicode</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="exceptions">
+<h2>6.3. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.ExtensionError.html#sphinx.util.ExtensionError" title="sphinx.util.ExtensionError"><code class="xref py py-obj docutils literal"><span class="pre">ExtensionError</span></code></a>(message[,&nbsp;orig_exc])</td>
+<td>Raised if something&#8217;s wrong with the configuration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.util.PycodeError.html#sphinx.util.PycodeError" title="sphinx.util.PycodeError"><code class="xref py py-obj docutils literal"><span class="pre">PycodeError</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.util.SphinxParallelError.html#sphinx.util.SphinxParallelError" title="sphinx.util.SphinxParallelError"><code class="xref py py-obj docutils literal"><span class="pre">SphinxParallelError</span></code></a>(orig_exc,&nbsp;traceback)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.util.copy_static_entry.html" class="btn btn-neutral float-right" title="6.1.1. sphinx.util.copy_static_entry" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../sphinx.util.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

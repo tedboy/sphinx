@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestcleanupDirective.add_name
+================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestcleanupDirective.add_name

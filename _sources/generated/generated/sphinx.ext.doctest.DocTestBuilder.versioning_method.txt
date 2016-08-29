@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.versioning_method
+===================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: DocTestBuilder.versioning_method

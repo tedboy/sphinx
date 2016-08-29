@@ -1,0 +1,53 @@
+sphinx.builders.gettext.I18nBuilder
+===================================
+.. currentmodule:: sphinx.builders.gettext
+.. autoclass:: I18nBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~I18nBuilder.__init__
+   ~I18nBuilder.build
+   ~I18nBuilder.build_all
+   ~I18nBuilder.build_specific
+   ~I18nBuilder.build_update
+   ~I18nBuilder.cleanup
+   ~I18nBuilder.compile_all_catalogs
+   ~I18nBuilder.compile_catalogs
+   ~I18nBuilder.compile_specific_catalogs
+   ~I18nBuilder.compile_update_catalogs
+   ~I18nBuilder.create_template_bridge
+   ~I18nBuilder.finish
+   ~I18nBuilder.get_builder_config
+   ~I18nBuilder.get_outdated_docs
+   ~I18nBuilder.get_relative_uri
+   ~I18nBuilder.get_target_uri
+   ~I18nBuilder.init
+   ~I18nBuilder.post_process_images
+   ~I18nBuilder.prepare_writing
+   ~I18nBuilder.write
+   ~I18nBuilder.write_doc
+   ~I18nBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~I18nBuilder.allow_parallel
+   ~I18nBuilder.format
+   ~I18nBuilder.name
+   ~I18nBuilder.supported_image_types
+   ~I18nBuilder.versioning_compare
+   ~I18nBuilder.versioning_method
+

@@ -1,0 +1,6 @@
+sphinx.pycode.get_module_source
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autofunction:: get_module_source

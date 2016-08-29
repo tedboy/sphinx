@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.popitem
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.popitem

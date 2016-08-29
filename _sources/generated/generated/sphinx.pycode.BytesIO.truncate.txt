@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.truncate
+==============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.truncate

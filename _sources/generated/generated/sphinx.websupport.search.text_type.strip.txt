@@ -1,0 +1,6 @@
+sphinx.websupport.search.text_type.strip
+========================================
+
+.. currentmodule:: sphinx.websupport.search
+
+.. automethod:: text_type.strip

@@ -1,0 +1,6 @@
+sphinx.builders.latex.Builder.finish
+====================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: Builder.finish

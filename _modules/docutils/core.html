@@ -1,0 +1,880 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>docutils.core &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="docutils" href="../docutils.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../docutils.html">docutils</a> &raquo;</li>
+        
+      <li>docutils.core</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for docutils.core</h1><div class="highlight"><pre>
+<span></span><span class="c1"># $Id: core.py 7466 2012-06-25 14:56:51Z milde $</span>
+<span class="c1"># Author: David Goodger &lt;goodger@python.org&gt;</span>
+<span class="c1"># Copyright: This module has been placed in the public domain.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Calling the ``publish_*`` convenience functions (or instantiating a</span>
+<span class="sd">`Publisher` object) with component names will result in default</span>
+<span class="sd">behavior.  For custom behavior (setting component options), create</span>
+<span class="sd">custom component objects first, and pass *them* to</span>
+<span class="sd">``publish_*``/`Publisher`.  See `The Docutils Publisher`_.</span>
+
+<span class="sd">.. _The Docutils Publisher: http://docutils.sf.net/docs/api/publisher.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">__docformat__</span> <span class="o">=</span> <span class="s1">&#39;reStructuredText&#39;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">__version_details__</span><span class="p">,</span> <span class="n">SettingsSpec</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">frontend</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">readers</span><span class="p">,</span> <span class="n">writers</span>
+<span class="kn">from</span> <span class="nn">docutils.frontend</span> <span class="kn">import</span> <span class="n">OptionParser</span>
+<span class="kn">from</span> <span class="nn">docutils.transforms</span> <span class="kn">import</span> <span class="n">Transformer</span>
+<span class="kn">from</span> <span class="nn">docutils.utils.error_reporting</span> <span class="kn">import</span> <span class="n">ErrorOutput</span><span class="p">,</span> <span class="n">ErrorString</span>
+<span class="kn">import</span> <span class="nn">docutils.readers.doctree</span>
+
+<div class="viewcode-block" id="Publisher"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.html#sphinx.builders.html.Publisher">[docs]</a><span class="k">class</span> <span class="nc">Publisher</span><span class="p">:</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A facade encapsulating the high-level logic of a Docutils system.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Publisher.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.__init__.html#sphinx.builders.html.Publisher.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">source</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">source_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">FileInput</span><span class="p">,</span>
+                 <span class="n">destination</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">FileOutput</span><span class="p">,</span>
+                 <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initial setup.  If any of `reader`, `parser`, or `writer` are not</span>
+<span class="sd">        specified, the corresponding ``set_...`` method should be called with</span>
+<span class="sd">        a component name (`set_reader` sets the parser as well).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="sd">&quot;&quot;&quot;The document tree (`docutils.nodes` objects).&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reader</span> <span class="o">=</span> <span class="n">reader</span>
+        <span class="sd">&quot;&quot;&quot;A `docutils.readers.Reader` instance.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">parser</span>
+        <span class="sd">&quot;&quot;&quot;A `docutils.parsers.Parser` instance.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">writer</span>
+        <span class="sd">&quot;&quot;&quot;A `docutils.writers.Writer` instance.&quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="s1">&#39;reader&#39;</span><span class="p">,</span> <span class="s1">&#39;parser&#39;</span><span class="p">,</span> <span class="s1">&#39;writer&#39;</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">),</span> <span class="nb">str</span><span class="p">),</span> <span class="p">(</span>
+                <span class="s1">&#39;passed string &quot;</span><span class="si">%s</span><span class="s1">&quot; as &quot;</span><span class="si">%s</span><span class="s1">&quot; parameter; pass an instance, &#39;</span>
+                <span class="s1">&#39;or use the &quot;</span><span class="si">%s</span><span class="s1">_name&quot; parameter instead (in &#39;</span>
+                <span class="s1">&#39;docutils.core.publish_* convenience functions).&#39;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">),</span> <span class="n">component</span><span class="p">,</span> <span class="n">component</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="sd">&quot;&quot;&quot;The source of input data, a `docutils.io.Input` instance.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_class</span> <span class="o">=</span> <span class="n">source_class</span>
+        <span class="sd">&quot;&quot;&quot;The class for dynamically created source objects.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="n">destination</span>
+        <span class="sd">&quot;&quot;&quot;The destination for docutils output, a `docutils.io.Output`</span>
+<span class="sd">        instance.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">destination_class</span> <span class="o">=</span> <span class="n">destination_class</span>
+        <span class="sd">&quot;&quot;&quot;The class for dynamically created destination objects.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span>
+        <span class="sd">&quot;&quot;&quot;An object containing Docutils settings as instance attributes.</span>
+<span class="sd">        Set by `self.process_command_line()` or `self.get_settings()`.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span> <span class="o">=</span> <span class="n">ErrorOutput</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Publisher.set_reader"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.set_reader.html#sphinx.builders.html.Publisher.set_reader">[docs]</a>    <span class="k">def</span> <span class="nf">set_reader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reader_name</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set `self.reader` by name.&quot;&quot;&quot;</span>
+        <span class="n">reader_class</span> <span class="o">=</span> <span class="n">readers</span><span class="o">.</span><span class="n">get_reader_class</span><span class="p">(</span><span class="n">reader_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reader</span> <span class="o">=</span> <span class="n">reader_class</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">parser</span></div>
+
+<div class="viewcode-block" id="Publisher.set_writer"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.set_writer.html#sphinx.builders.html.Publisher.set_writer">[docs]</a>    <span class="k">def</span> <span class="nf">set_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set `self.writer` by name.&quot;&quot;&quot;</span>
+        <span class="n">writer_class</span> <span class="o">=</span> <span class="n">writers</span><span class="o">.</span><span class="n">get_writer_class</span><span class="p">(</span><span class="n">writer_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">writer_class</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Publisher.set_components"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.set_components.html#sphinx.builders.html.Publisher.set_components">[docs]</a>    <span class="k">def</span> <span class="nf">set_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reader_name</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">,</span> <span class="n">writer_name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reader</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_reader</span><span class="p">(</span><span class="n">reader_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">parser</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">set_parser</span><span class="p">(</span><span class="n">parser_name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">parser</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_writer</span><span class="p">(</span><span class="n">writer_name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Publisher.setup_option_parser"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.setup_option_parser.html#sphinx.builders.html.Publisher.setup_option_parser">[docs]</a>    <span class="k">def</span> <span class="nf">setup_option_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                            <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                            <span class="o">**</span><span class="n">defaults</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">config_section</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">settings_spec</span><span class="p">:</span>
+                <span class="n">settings_spec</span> <span class="o">=</span> <span class="n">SettingsSpec</span><span class="p">()</span>
+            <span class="n">settings_spec</span><span class="o">.</span><span class="n">config_section</span> <span class="o">=</span> <span class="n">config_section</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">config_section</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;application&#39;</span><span class="p">:</span>
+                <span class="n">settings_spec</span><span class="o">.</span><span class="n">config_section_dependencies</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;applications&#39;</span><span class="p">]</span>
+        <span class="c1">#@@@ Add self.source &amp; self.destination to components in future?</span>
+        <span class="n">option_parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">(</span>
+            <span class="n">components</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="p">,</span> <span class="n">settings_spec</span><span class="p">),</span>
+            <span class="n">defaults</span><span class="o">=</span><span class="n">defaults</span><span class="p">,</span> <span class="n">read_config_files</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">usage</span><span class="o">=</span><span class="n">usage</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">option_parser</span></div>
+
+<div class="viewcode-block" id="Publisher.get_settings"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.get_settings.html#sphinx.builders.html.Publisher.get_settings">[docs]</a>    <span class="k">def</span> <span class="nf">get_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">defaults</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set and return default settings (overrides in `defaults` dict).</span>
+
+<span class="sd">        Set components first (`self.set_reader` &amp; `self.set_writer`).</span>
+<span class="sd">        Explicitly setting `self.settings` disables command line option</span>
+<span class="sd">        processing from `self.publish()`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">option_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_option_parser</span><span class="p">(</span>
+            <span class="n">usage</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">settings_spec</span><span class="p">,</span> <span class="n">config_section</span><span class="p">,</span> <span class="o">**</span><span class="n">defaults</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">option_parser</span><span class="o">.</span><span class="n">get_default_values</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span></div>
+
+<div class="viewcode-block" id="Publisher.process_programmatic_settings"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.process_programmatic_settings.html#sphinx.builders.html.Publisher.process_programmatic_settings">[docs]</a>    <span class="k">def</span> <span class="nf">process_programmatic_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings_spec</span><span class="p">,</span>
+                                      <span class="n">settings_overrides</span><span class="p">,</span>
+                                      <span class="n">config_section</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">defaults</span> <span class="o">=</span> <span class="p">(</span><span class="n">settings_overrides</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="c1"># Propagate exceptions by default when used programmatically:</span>
+            <span class="n">defaults</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;traceback&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_settings</span><span class="p">(</span><span class="n">settings_spec</span><span class="o">=</span><span class="n">settings_spec</span><span class="p">,</span>
+                              <span class="n">config_section</span><span class="o">=</span><span class="n">config_section</span><span class="p">,</span>
+                              <span class="o">**</span><span class="n">defaults</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Publisher.process_command_line"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.process_command_line.html#sphinx.builders.html.Publisher.process_command_line">[docs]</a>    <span class="k">def</span> <span class="nf">process_command_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                             <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                             <span class="o">**</span><span class="n">defaults</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pass an empty list to `argv` to avoid reading `sys.argv` (the</span>
+<span class="sd">        default).</span>
+
+<span class="sd">        Set components first (`self.set_reader` &amp; `self.set_writer`).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">option_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_option_parser</span><span class="p">(</span>
+            <span class="n">usage</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">settings_spec</span><span class="p">,</span> <span class="n">config_section</span><span class="p">,</span> <span class="o">**</span><span class="n">defaults</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">argv</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">argv</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="c1"># converting to Unicode (Python 3 does this automatically):</span>
+            <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+                <span class="c1"># TODO: make this failsafe and reversible?</span>
+                <span class="n">argv_encoding</span> <span class="o">=</span> <span class="p">(</span><span class="n">frontend</span><span class="o">.</span><span class="n">locale_encoding</span> <span class="ow">or</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+                <span class="n">argv</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">argv_encoding</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">argv</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">option_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Publisher.set_io"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.set_io.html#sphinx.builders.html.Publisher.set_io">[docs]</a>    <span class="k">def</span> <span class="nf">set_io</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_source</span><span class="p">(</span><span class="n">source_path</span><span class="o">=</span><span class="n">source_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_destination</span><span class="p">(</span><span class="n">destination_path</span><span class="o">=</span><span class="n">destination_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Publisher.set_source"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.set_source.html#sphinx.builders.html.Publisher.set_source">[docs]</a>    <span class="k">def</span> <span class="nf">set_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">source_path</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">source_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">_source</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">_source</span> <span class="o">=</span> <span class="n">source_path</span>
+        <span class="c1"># Raise IOError instead of system exit with `tracback == True`</span>
+        <span class="c1"># TODO: change io.FileInput&#39;s default behaviour and remove this hack</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_class</span><span class="p">(</span>
+                <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="n">source_path</span><span class="p">,</span>
+                <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">input_encoding</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_class</span><span class="p">(</span>
+                <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="n">source_path</span><span class="p">,</span>
+                <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">input_encoding</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Publisher.set_destination"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.set_destination.html#sphinx.builders.html.Publisher.set_destination">[docs]</a>    <span class="k">def</span> <span class="nf">set_destination</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">destination_path</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">destination_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">_destination</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">_destination</span> <span class="o">=</span> <span class="n">destination_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination_class</span><span class="p">(</span>
+            <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="n">destination_path</span><span class="p">,</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">output_encoding</span><span class="p">,</span>
+            <span class="n">error_handler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">output_encoding_error_handler</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Publisher.apply_transforms"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.apply_transforms.html#sphinx.builders.html.Publisher.apply_transforms">[docs]</a>    <span class="k">def</span> <span class="nf">apply_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">populate_from_components</span><span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="p">,</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Publisher.publish"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.publish.html#sphinx.builders.html.Publisher.publish">[docs]</a>    <span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">enable_exit_status</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process command line options and arguments (if `self.settings` not</span>
+<span class="sd">        already set), run `self.reader` and then `self.writer`.  Return</span>
+<span class="sd">        `self.writer`&#39;s output.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">exit</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">process_command_line</span><span class="p">(</span>
+                    <span class="n">argv</span><span class="p">,</span> <span class="n">usage</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">settings_spec</span><span class="p">,</span> <span class="n">config_section</span><span class="p">,</span>
+                    <span class="o">**</span><span class="p">(</span><span class="n">settings_overrides</span> <span class="ow">or</span> <span class="p">{}))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_io</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">()</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">assemble_parts</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">SystemExit</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span>
+            <span class="nb">exit</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">exit_status</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">code</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">:</span>       <span class="c1"># exception too early to report nicely</span>
+                <span class="k">raise</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">traceback</span><span class="p">:</span> <span class="c1"># Propagate exceptions?</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">debugging_dumps</span><span class="p">()</span>
+                <span class="k">raise</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report_Exception</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="nb">exit</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">exit_status</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debugging_dumps</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">enable_exit_status</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span>
+            <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">max_level</span>
+                 <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">exit_status_level</span><span class="p">)):</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">max_level</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">exit</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">exit_status</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="Publisher.debugging_dumps"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.debugging_dumps.html#sphinx.builders.html.Publisher.debugging_dumps">[docs]</a>    <span class="k">def</span> <span class="nf">debugging_dumps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">dump_settings</span><span class="p">:</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">::: Runtime settings:&#39;</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">dump_internals</span><span class="p">:</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">::: Document internals:&#39;</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">dump_transforms</span><span class="p">:</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">::: Transforms applied:&#39;</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39; (priority, transform class, &#39;</span>
+                                 <span class="s1">&#39;pending node details, keyword args)&#39;</span><span class="p">)</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span>
+                <span class="p">[(</span><span class="n">priority</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">xclass</span><span class="o">.</span><span class="n">__module__</span><span class="p">,</span> <span class="n">xclass</span><span class="o">.</span><span class="n">__name__</span><span class="p">),</span>
+                  <span class="n">pending</span> <span class="ow">and</span> <span class="n">pending</span><span class="o">.</span><span class="n">details</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">priority</span><span class="p">,</span> <span class="n">xclass</span><span class="p">,</span> <span class="n">pending</span><span class="p">,</span> <span class="n">kwargs</span>
+                 <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">applied</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">dump_pseudo_xml</span><span class="p">:</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">::: Pseudo-XML:&#39;</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">pformat</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                <span class="s1">&#39;raw_unicode_escape&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Publisher.report_Exception"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.report_Exception.html#sphinx.builders.html.Publisher.report_Exception">[docs]</a>    <span class="k">def</span> <span class="nf">report_Exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">utils</span><span class="o">.</span><span class="n">SystemMessage</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report_SystemMessage</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="ne">UnicodeEncodeError</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report_UnicodeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">InputError</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">u&#39;Unable to open source file for reading:</span><span class="se">\n</span><span class="s1">&#39;</span>
+                               <span class="s1">u&#39;  </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ErrorString</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">OutputError</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="s1">u&#39;Unable to open destination file for writing:</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="s1">u&#39;  </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ErrorString</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="s1">u&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ErrorString</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">Exiting due to error.  Use &quot;--traceback&quot; to diagnose.</span>
+<span class="s2">Please report errors to &lt;docutils-users@lists.sf.net&gt;.</span>
+<span class="s2">Include &quot;--traceback&quot; output, Docutils version (</span><span class="si">%s</span><span class="s2"> [</span><span class="si">%s</span><span class="s2">]),</span>
+<span class="s2">Python version (</span><span class="si">%s</span><span class="s2">), your OS type &amp; version, and the</span>
+<span class="s2">command line used.&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">__version__</span><span class="p">,</span> <span class="n">__version_details__</span><span class="p">,</span>
+                         <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="Publisher.report_SystemMessage"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.report_SystemMessage.html#sphinx.builders.html.Publisher.report_SystemMessage">[docs]</a>    <span class="k">def</span> <span class="nf">report_SystemMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
+        <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;Exiting due to level-</span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1">) system message.&#39;</span>
+                             <span class="o">%</span> <span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
+                                <span class="n">utils</span><span class="o">.</span><span class="n">Reporter</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="n">error</span><span class="o">.</span><span class="n">level</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="Publisher.report_UnicodeError"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Publisher.report_UnicodeError.html#sphinx.builders.html.Publisher.report_UnicodeError">[docs]</a>    <span class="k">def</span> <span class="nf">report_UnicodeError</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">object</span><span class="p">[</span><span class="n">error</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="n">error</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;The specified output encoding (</span><span class="si">%s</span><span class="s1">) cannot</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;handle all of the output.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;Try setting &quot;--output-encoding-error-handler&quot; to</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;* &quot;xmlcharrefreplace&quot; (for HTML &amp; XML output);</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;  the output will contain &quot;</span><span class="si">%s</span><span class="s1">&quot; and should be usable.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;* &quot;backslashreplace&quot; (for other output formats);</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;  look for &quot;</span><span class="si">%s</span><span class="s1">&quot; in the output.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;* &quot;replace&quot;; look for &quot;?&quot; in the output.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;&quot;--output-encoding-error-handler&quot; is currently set to &quot;</span><span class="si">%s</span><span class="s1">&quot;.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;Exiting due to error.  Use &quot;--traceback&quot; to diagnose.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;If the advice above doesn</span><span class="se">\&#39;</span><span class="s1">t eliminate the error,</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;please report it to &lt;docutils-users@lists.sf.net&gt;.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;Include &quot;--traceback&quot; output, Docutils version (</span><span class="si">%s</span><span class="s1">),</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;Python version (</span><span class="si">%s</span><span class="s1">), your OS type &amp; version, and the</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;command line used.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">ErrorString</span><span class="p">(</span><span class="n">error</span><span class="p">),</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">output_encoding</span><span class="p">,</span>
+               <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;xmlcharrefreplace&#39;</span><span class="p">),</span>
+               <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;backslashreplace&#39;</span><span class="p">),</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">output_encoding_error_handler</span><span class="p">,</span>
+               <span class="n">__version__</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span></div></div>
+
+<span class="n">default_usage</span> <span class="o">=</span> <span class="s1">&#39;%prog [options] [&lt;source&gt; [&lt;destination&gt;]]&#39;</span>
+<span class="n">default_description</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Reads from &lt;source&gt; (default is stdin) and writes to &#39;</span>
+                       <span class="s1">&#39;&lt;destination&gt; (default is stdout).  See &#39;</span>
+                       <span class="s1">&#39;&lt;http://docutils.sf.net/docs/user/config.html&gt; for &#39;</span>
+                       <span class="s1">&#39;the full reference.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">publish_cmdline</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="s1">&#39;standalone&#39;</span><span class="p">,</span>
+                    <span class="n">parser</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+                    <span class="n">writer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="s1">&#39;pseudoxml&#39;</span><span class="p">,</span>
+                    <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">settings_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">enable_exit_status</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">usage</span><span class="o">=</span><span class="n">default_usage</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">default_description</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up &amp; run a `Publisher` for command-line-based file I/O (input and</span>
+<span class="sd">    output file paths taken automatically from the command line).  Return the</span>
+<span class="sd">    encoded string output also.</span>
+
+<span class="sd">    Parameters: see `publish_programmatically` for the remainder.</span>
+
+<span class="sd">    - `argv`: Command-line argument list to use instead of ``sys.argv[1:]``.</span>
+<span class="sd">    - `usage`: Usage string, output if there&#39;s a problem parsing the command</span>
+<span class="sd">      line.</span>
+<span class="sd">    - `description`: Program description, output for the &quot;--help&quot; option</span>
+<span class="sd">      (along with command-line option descriptions).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">Publisher</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">writer</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_components</span><span class="p">(</span><span class="n">reader_name</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">,</span> <span class="n">writer_name</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span>
+        <span class="n">argv</span><span class="p">,</span> <span class="n">usage</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">settings_spec</span><span class="p">,</span> <span class="n">settings_overrides</span><span class="p">,</span>
+        <span class="n">config_section</span><span class="o">=</span><span class="n">config_section</span><span class="p">,</span> <span class="n">enable_exit_status</span><span class="o">=</span><span class="n">enable_exit_status</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span>
+
+<span class="k">def</span> <span class="nf">publish_file</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">destination</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">reader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="s1">&#39;standalone&#39;</span><span class="p">,</span>
+                 <span class="n">parser</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+                 <span class="n">writer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="s1">&#39;pseudoxml&#39;</span><span class="p">,</span>
+                 <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">enable_exit_status</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up &amp; run a `Publisher` for programmatic use with file-like I/O.</span>
+<span class="sd">    Return the encoded string output also.</span>
+
+<span class="sd">    Parameters: see `publish_programmatically`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output</span><span class="p">,</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">publish_programmatically</span><span class="p">(</span>
+        <span class="n">source_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">FileInput</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="n">source_path</span><span class="p">,</span>
+        <span class="n">destination_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">FileOutput</span><span class="p">,</span>
+        <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="n">destination_path</span><span class="p">,</span>
+        <span class="n">reader</span><span class="o">=</span><span class="n">reader</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="n">reader_name</span><span class="p">,</span>
+        <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="n">parser_name</span><span class="p">,</span>
+        <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="n">writer_name</span><span class="p">,</span>
+        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="n">settings_spec</span><span class="p">,</span>
+        <span class="n">settings_overrides</span><span class="o">=</span><span class="n">settings_overrides</span><span class="p">,</span>
+        <span class="n">config_section</span><span class="o">=</span><span class="n">config_section</span><span class="p">,</span>
+        <span class="n">enable_exit_status</span><span class="o">=</span><span class="n">enable_exit_status</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span>
+
+<span class="k">def</span> <span class="nf">publish_string</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                   <span class="n">reader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="s1">&#39;standalone&#39;</span><span class="p">,</span>
+                   <span class="n">parser</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+                   <span class="n">writer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="s1">&#39;pseudoxml&#39;</span><span class="p">,</span>
+                   <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                   <span class="n">settings_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                   <span class="n">enable_exit_status</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up &amp; run a `Publisher` for programmatic use with string I/O.  Return</span>
+<span class="sd">    the encoded string or Unicode string output.</span>
+
+<span class="sd">    For encoded string output, be sure to set the &#39;output_encoding&#39; setting to</span>
+<span class="sd">    the desired encoding.  Set it to &#39;unicode&#39; for unencoded Unicode string</span>
+<span class="sd">    output.  Here&#39;s one way::</span>
+
+<span class="sd">        publish_string(..., settings_overrides={&#39;output_encoding&#39;: &#39;unicode&#39;})</span>
+
+<span class="sd">    Similarly for Unicode string input (`source`)::</span>
+
+<span class="sd">        publish_string(..., settings_overrides={&#39;input_encoding&#39;: &#39;unicode&#39;})</span>
+
+<span class="sd">    Parameters: see `publish_programmatically`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output</span><span class="p">,</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">publish_programmatically</span><span class="p">(</span>
+        <span class="n">source_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">StringInput</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="n">source_path</span><span class="p">,</span>
+        <span class="n">destination_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">StringOutput</span><span class="p">,</span>
+        <span class="n">destination</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="n">destination_path</span><span class="p">,</span>
+        <span class="n">reader</span><span class="o">=</span><span class="n">reader</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="n">reader_name</span><span class="p">,</span>
+        <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="n">parser_name</span><span class="p">,</span>
+        <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="n">writer_name</span><span class="p">,</span>
+        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="n">settings_spec</span><span class="p">,</span>
+        <span class="n">settings_overrides</span><span class="o">=</span><span class="n">settings_overrides</span><span class="p">,</span>
+        <span class="n">config_section</span><span class="o">=</span><span class="n">config_section</span><span class="p">,</span>
+        <span class="n">enable_exit_status</span><span class="o">=</span><span class="n">enable_exit_status</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span>
+
+<div class="viewcode-block" id="publish_parts"><a class="viewcode-back" href="../../generated/sphinx.websupport.publish_parts.html#sphinx.builders.html.publish_parts">[docs]</a><span class="k">def</span> <span class="nf">publish_parts</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">source_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">StringInput</span><span class="p">,</span>
+                  <span class="n">destination_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                  <span class="n">reader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="s1">&#39;standalone&#39;</span><span class="p">,</span>
+                  <span class="n">parser</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+                  <span class="n">writer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="s1">&#39;pseudoxml&#39;</span><span class="p">,</span>
+                  <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                  <span class="n">settings_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                  <span class="n">enable_exit_status</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up &amp; run a `Publisher`, and return a dictionary of document parts.</span>
+<span class="sd">    Dictionary keys are the names of parts, and values are Unicode strings;</span>
+<span class="sd">    encoding is up to the client.  For programmatic use with string I/O.</span>
+
+<span class="sd">    For encoded string input, be sure to set the &#39;input_encoding&#39; setting to</span>
+<span class="sd">    the desired encoding.  Set it to &#39;unicode&#39; for unencoded Unicode string</span>
+<span class="sd">    input.  Here&#39;s how::</span>
+
+<span class="sd">        publish_parts(..., settings_overrides={&#39;input_encoding&#39;: &#39;unicode&#39;})</span>
+
+<span class="sd">    Parameters: see `publish_programmatically`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output</span><span class="p">,</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">publish_programmatically</span><span class="p">(</span>
+        <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="n">source_path</span><span class="p">,</span> <span class="n">source_class</span><span class="o">=</span><span class="n">source_class</span><span class="p">,</span>
+        <span class="n">destination_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">StringOutput</span><span class="p">,</span>
+        <span class="n">destination</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="n">destination_path</span><span class="p">,</span>
+        <span class="n">reader</span><span class="o">=</span><span class="n">reader</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="n">reader_name</span><span class="p">,</span>
+        <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="n">parser_name</span><span class="p">,</span>
+        <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="n">writer_name</span><span class="p">,</span>
+        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="n">settings_spec</span><span class="p">,</span>
+        <span class="n">settings_overrides</span><span class="o">=</span><span class="n">settings_overrides</span><span class="p">,</span>
+        <span class="n">config_section</span><span class="o">=</span><span class="n">config_section</span><span class="p">,</span>
+        <span class="n">enable_exit_status</span><span class="o">=</span><span class="n">enable_exit_status</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pub</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">parts</span></div>
+
+<span class="k">def</span> <span class="nf">publish_doctree</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">source_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">StringInput</span><span class="p">,</span>
+                    <span class="n">reader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="s1">&#39;standalone&#39;</span><span class="p">,</span>
+                    <span class="n">parser</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+                    <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">settings_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">enable_exit_status</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up &amp; run a `Publisher` for programmatic use with string I/O.</span>
+<span class="sd">    Return the document tree.</span>
+
+<span class="sd">    For encoded string input, be sure to set the &#39;input_encoding&#39; setting to</span>
+<span class="sd">    the desired encoding.  Set it to &#39;unicode&#39; for unencoded Unicode string</span>
+<span class="sd">    input.  Here&#39;s one way::</span>
+
+<span class="sd">        publish_doctree(..., settings_overrides={&#39;input_encoding&#39;: &#39;unicode&#39;})</span>
+
+<span class="sd">    Parameters: see `publish_programmatically`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">Publisher</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="n">reader</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
+                    <span class="n">source_class</span><span class="o">=</span><span class="n">source_class</span><span class="p">,</span>
+                    <span class="n">destination_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">NullOutput</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_components</span><span class="p">(</span><span class="n">reader_name</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">process_programmatic_settings</span><span class="p">(</span>
+        <span class="n">settings_spec</span><span class="p">,</span> <span class="n">settings_overrides</span><span class="p">,</span> <span class="n">config_section</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_source</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_destination</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">enable_exit_status</span><span class="o">=</span><span class="n">enable_exit_status</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pub</span><span class="o">.</span><span class="n">document</span>
+
+<span class="k">def</span> <span class="nf">publish_from_doctree</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="n">destination_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                         <span class="n">writer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="s1">&#39;pseudoxml&#39;</span><span class="p">,</span>
+                         <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                         <span class="n">settings_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                         <span class="n">enable_exit_status</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up &amp; run a `Publisher` to render from an existing document</span>
+<span class="sd">    tree data structure, for programmatic use with string I/O.  Return</span>
+<span class="sd">    the encoded string output.</span>
+
+<span class="sd">    Note that document.settings is overridden; if you want to use the settings</span>
+<span class="sd">    of the original `document`, pass settings=document.settings.</span>
+
+<span class="sd">    Also, new document.transformer and document.reporter objects are</span>
+<span class="sd">    generated.</span>
+
+<span class="sd">    For encoded string output, be sure to set the &#39;output_encoding&#39; setting to</span>
+<span class="sd">    the desired encoding.  Set it to &#39;unicode&#39; for unencoded Unicode string</span>
+<span class="sd">    output.  Here&#39;s one way::</span>
+
+<span class="sd">        publish_from_doctree(</span>
+<span class="sd">            ..., settings_overrides={&#39;output_encoding&#39;: &#39;unicode&#39;})</span>
+
+<span class="sd">    Parameters: `document` is a `docutils.nodes.document` object, an existing</span>
+<span class="sd">    document tree.</span>
+
+<span class="sd">    Other parameters: see `publish_programmatically`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">docutils</span><span class="o">.</span><span class="n">readers</span><span class="o">.</span><span class="n">doctree</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="n">parser_name</span><span class="o">=</span><span class="s1">&#39;null&#39;</span><span class="p">)</span>
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">Publisher</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">writer</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">DocTreeInput</span><span class="p">(</span><span class="n">document</span><span class="p">),</span>
+                    <span class="n">destination_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">StringOutput</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">writer</span> <span class="ow">and</span> <span class="n">writer_name</span><span class="p">:</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">set_writer</span><span class="p">(</span><span class="n">writer_name</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">process_programmatic_settings</span><span class="p">(</span>
+        <span class="n">settings_spec</span><span class="p">,</span> <span class="n">settings_overrides</span><span class="p">,</span> <span class="n">config_section</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_destination</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">enable_exit_status</span><span class="o">=</span><span class="n">enable_exit_status</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">publish_cmdline_to_binary</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reader_name</span><span class="o">=</span><span class="s1">&#39;standalone&#39;</span><span class="p">,</span>
+                    <span class="n">parser</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parser_name</span><span class="o">=</span><span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+                    <span class="n">writer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="s1">&#39;pseudoxml&#39;</span><span class="p">,</span>
+                    <span class="n">settings</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">settings_spec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">settings_overrides</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">config_section</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">enable_exit_status</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">usage</span><span class="o">=</span><span class="n">default_usage</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">default_description</span><span class="p">,</span>
+                    <span class="n">destination</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destination_class</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">BinaryFileOutput</span>
+                    <span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up &amp; run a `Publisher` for command-line-based file I/O (input and</span>
+<span class="sd">    output file paths taken automatically from the command line).  Return the</span>
+<span class="sd">    encoded string output also.</span>
+
+<span class="sd">    This is just like publish_cmdline, except that it uses</span>
+<span class="sd">    io.BinaryFileOutput instead of io.FileOutput.</span>
+
+<span class="sd">    Parameters: see `publish_programmatically` for the remainder.</span>
+
+<span class="sd">    - `argv`: Command-line argument list to use instead of ``sys.argv[1:]``.</span>
+<span class="sd">    - `usage`: Usage string, output if there&#39;s a problem parsing the command</span>
+<span class="sd">      line.</span>
+<span class="sd">    - `description`: Program description, output for the &quot;--help&quot; option</span>
+<span class="sd">      (along with command-line option descriptions).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">Publisher</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">writer</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
+        <span class="n">destination_class</span><span class="o">=</span><span class="n">destination_class</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_components</span><span class="p">(</span><span class="n">reader_name</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">,</span> <span class="n">writer_name</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span>
+        <span class="n">argv</span><span class="p">,</span> <span class="n">usage</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">settings_spec</span><span class="p">,</span> <span class="n">settings_overrides</span><span class="p">,</span>
+        <span class="n">config_section</span><span class="o">=</span><span class="n">config_section</span><span class="p">,</span> <span class="n">enable_exit_status</span><span class="o">=</span><span class="n">enable_exit_status</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span>
+
+<span class="k">def</span> <span class="nf">publish_programmatically</span><span class="p">(</span><span class="n">source_class</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="p">,</span>
+                             <span class="n">destination_class</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span>
+                             <span class="n">reader</span><span class="p">,</span> <span class="n">reader_name</span><span class="p">,</span>
+                             <span class="n">parser</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">,</span>
+                             <span class="n">writer</span><span class="p">,</span> <span class="n">writer_name</span><span class="p">,</span>
+                             <span class="n">settings</span><span class="p">,</span> <span class="n">settings_spec</span><span class="p">,</span>
+                             <span class="n">settings_overrides</span><span class="p">,</span> <span class="n">config_section</span><span class="p">,</span>
+                             <span class="n">enable_exit_status</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up &amp; run a `Publisher` for custom programmatic use.  Return the</span>
+<span class="sd">    encoded string output and the Publisher object.</span>
+
+<span class="sd">    Applications should not need to call this function directly.  If it does</span>
+<span class="sd">    seem to be necessary to call this function directly, please write to the</span>
+<span class="sd">    Docutils-develop mailing list</span>
+<span class="sd">    &lt;http://docutils.sf.net/docs/user/mailing-lists.html#docutils-develop&gt;.</span>
+
+<span class="sd">    Parameters:</span>
+
+<span class="sd">    * `source_class` **required**: The class for dynamically created source</span>
+<span class="sd">      objects.  Typically `io.FileInput` or `io.StringInput`.</span>
+
+<span class="sd">    * `source`: Type depends on `source_class`:</span>
+
+<span class="sd">      - If `source_class` is `io.FileInput`: Either a file-like object</span>
+<span class="sd">        (must have &#39;read&#39; and &#39;close&#39; methods), or ``None``</span>
+<span class="sd">        (`source_path` is opened).  If neither `source` nor</span>
+<span class="sd">        `source_path` are supplied, `sys.stdin` is used.</span>
+
+<span class="sd">      - If `source_class` is `io.StringInput` **required**: The input</span>
+<span class="sd">        string, either an encoded 8-bit string (set the</span>
+<span class="sd">        &#39;input_encoding&#39; setting to the correct encoding) or a Unicode</span>
+<span class="sd">        string (set the &#39;input_encoding&#39; setting to &#39;unicode&#39;).</span>
+
+<span class="sd">    * `source_path`: Type depends on `source_class`:</span>
+
+<span class="sd">      - `io.FileInput`: Path to the input file, opened if no `source`</span>
+<span class="sd">        supplied.</span>
+
+<span class="sd">      - `io.StringInput`: Optional.  Path to the file or object that produced</span>
+<span class="sd">        `source`.  Only used for diagnostic output.</span>
+
+<span class="sd">    * `destination_class` **required**: The class for dynamically created</span>
+<span class="sd">      destination objects.  Typically `io.FileOutput` or `io.StringOutput`.</span>
+
+<span class="sd">    * `destination`: Type depends on `destination_class`:</span>
+
+<span class="sd">      - `io.FileOutput`: Either a file-like object (must have &#39;write&#39; and</span>
+<span class="sd">        &#39;close&#39; methods), or ``None`` (`destination_path` is opened).  If</span>
+<span class="sd">        neither `destination` nor `destination_path` are supplied,</span>
+<span class="sd">        `sys.stdout` is used.</span>
+
+<span class="sd">      - `io.StringOutput`: Not used; pass ``None``.</span>
+
+<span class="sd">    * `destination_path`: Type depends on `destination_class`:</span>
+
+<span class="sd">      - `io.FileOutput`: Path to the output file.  Opened if no `destination`</span>
+<span class="sd">        supplied.</span>
+
+<span class="sd">      - `io.StringOutput`: Path to the file or object which will receive the</span>
+<span class="sd">        output; optional.  Used for determining relative paths (stylesheets,</span>
+<span class="sd">        source links, etc.).</span>
+
+<span class="sd">    * `reader`: A `docutils.readers.Reader` object.</span>
+
+<span class="sd">    * `reader_name`: Name or alias of the Reader class to be instantiated if</span>
+<span class="sd">      no `reader` supplied.</span>
+
+<span class="sd">    * `parser`: A `docutils.parsers.Parser` object.</span>
+
+<span class="sd">    * `parser_name`: Name or alias of the Parser class to be instantiated if</span>
+<span class="sd">      no `parser` supplied.</span>
+
+<span class="sd">    * `writer`: A `docutils.writers.Writer` object.</span>
+
+<span class="sd">    * `writer_name`: Name or alias of the Writer class to be instantiated if</span>
+<span class="sd">      no `writer` supplied.</span>
+
+<span class="sd">    * `settings`: A runtime settings (`docutils.frontend.Values`) object, for</span>
+<span class="sd">      dotted-attribute access to runtime settings.  It&#39;s the end result of the</span>
+<span class="sd">      `SettingsSpec`, config file, and option processing.  If `settings` is</span>
+<span class="sd">      passed, it&#39;s assumed to be complete and no further setting/config/option</span>
+<span class="sd">      processing is done.</span>
+
+<span class="sd">    * `settings_spec`: A `docutils.SettingsSpec` subclass or object.  Provides</span>
+<span class="sd">      extra application-specific settings definitions independently of</span>
+<span class="sd">      components.  In other words, the application becomes a component, and</span>
+<span class="sd">      its settings data is processed along with that of the other components.</span>
+<span class="sd">      Used only if no `settings` specified.</span>
+
+<span class="sd">    * `settings_overrides`: A dictionary containing application-specific</span>
+<span class="sd">      settings defaults that override the defaults of other components.</span>
+<span class="sd">      Used only if no `settings` specified.</span>
+
+<span class="sd">    * `config_section`: A string, the name of the configuration file section</span>
+<span class="sd">      for this application.  Overrides the ``config_section`` attribute</span>
+<span class="sd">      defined by `settings_spec`.  Used only if no `settings` specified.</span>
+
+<span class="sd">    * `enable_exit_status`: Boolean; enable exit status at end of processing?</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">Publisher</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">writer</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
+                    <span class="n">source_class</span><span class="o">=</span><span class="n">source_class</span><span class="p">,</span>
+                    <span class="n">destination_class</span><span class="o">=</span><span class="n">destination_class</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_components</span><span class="p">(</span><span class="n">reader_name</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">,</span> <span class="n">writer_name</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">process_programmatic_settings</span><span class="p">(</span>
+        <span class="n">settings_spec</span><span class="p">,</span> <span class="n">settings_overrides</span><span class="p">,</span> <span class="n">config_section</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_source</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">source_path</span><span class="p">)</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">set_destination</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">enable_exit_status</span><span class="o">=</span><span class="n">enable_exit_status</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">pub</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

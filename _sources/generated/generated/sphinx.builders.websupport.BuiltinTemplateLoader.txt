@@ -1,0 +1,33 @@
+sphinx.builders.websupport.BuiltinTemplateLoader
+================================================
+.. currentmodule:: sphinx.builders.websupport
+.. autoclass:: BuiltinTemplateLoader
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~BuiltinTemplateLoader.get_source
+   ~BuiltinTemplateLoader.init
+   ~BuiltinTemplateLoader.list_templates
+   ~BuiltinTemplateLoader.load
+   ~BuiltinTemplateLoader.newest_template_mtime
+   ~BuiltinTemplateLoader.render
+   ~BuiltinTemplateLoader.render_string
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~BuiltinTemplateLoader.has_source_access
+

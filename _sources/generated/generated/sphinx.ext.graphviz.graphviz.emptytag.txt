@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.emptytag
+=====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.emptytag

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.copy_attr_consistent
+====================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.copy_attr_consistent

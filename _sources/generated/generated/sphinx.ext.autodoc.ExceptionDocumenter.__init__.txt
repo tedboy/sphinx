@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.__init__
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.__init__

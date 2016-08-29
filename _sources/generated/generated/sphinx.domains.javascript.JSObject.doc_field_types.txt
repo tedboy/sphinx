@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSObject.doc_field_types
+==================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSObject.doc_field_types

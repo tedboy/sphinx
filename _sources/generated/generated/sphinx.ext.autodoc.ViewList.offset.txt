@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.offset
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.offset

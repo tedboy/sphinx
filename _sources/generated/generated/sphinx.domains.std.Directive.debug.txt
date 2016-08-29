@@ -1,0 +1,6 @@
+sphinx.domains.std.Directive.debug
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Directive.debug

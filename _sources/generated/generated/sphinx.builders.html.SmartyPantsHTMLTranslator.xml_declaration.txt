@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.xml_declaration
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.xml_declaration

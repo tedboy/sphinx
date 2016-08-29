@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.indexer_format
+===================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.indexer_format

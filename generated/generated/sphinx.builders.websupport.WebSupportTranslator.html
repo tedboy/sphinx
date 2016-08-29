@@ -1,0 +1,1203 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.14.2.5. sphinx.builders.websupport.WebSupportTranslator &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="4.14. sphinx.builders.websupport" href="../sphinx.builders.websupport.html"/>
+        <link rel="next" title="4.14.2.5.1.1. sphinx.builders.websupport.WebSupportTranslator.__init__" href="sphinx.builders.websupport.WebSupportTranslator.__init__.html"/>
+        <link rel="prev" title="4.14.2.4.2.20. sphinx.builders.websupport.WebSupportBuilder.versioning_method" href="sphinx.builders.websupport.WebSupportBuilder.versioning_method.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.epub.html">4.4. sphinx.builders.epub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html.html">4.6. sphinx.builders.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.builders.websupport.html#functions">4.14.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.builders.websupport.html#classes">4.14.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.websupport.BuiltinTemplateLoader.html">4.14.2.1. sphinx.builders.websupport.BuiltinTemplateLoader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.websupport.PickleHTMLBuilder.html">4.14.2.2. sphinx.builders.websupport.PickleHTMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.websupport.StringOutput.html">4.14.2.3. sphinx.builders.websupport.StringOutput</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.websupport.WebSupportBuilder.html">4.14.2.4. sphinx.builders.websupport.WebSupportBuilder</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">4.14.2.5. sphinx.builders.websupport.WebSupportTranslator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.xml.html">4.15. sphinx.builders.xml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a> &raquo;</li>
+        
+      <li>4.14.2.5. sphinx.builders.websupport.WebSupportTranslator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.builders.websupport.WebSupportTranslator.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-builders-websupport-websupporttranslator">
+<h1>4.14.2.5. sphinx.builders.websupport.WebSupportTranslator<a class="headerlink" href="#sphinx-builders-websupport-websupporttranslator" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.builders.websupport.WebSupportTranslator">
+<em class="property">class </em><code class="descclassname">sphinx.builders.websupport.</code><code class="descname">WebSupportTranslator</code><span class="sig-paren">(</span><em>builder</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sphinx/writers/websupport.html#WebSupportTranslator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.builders.websupport.WebSupportTranslator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Our custom HTML translator.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>4.14.2.5.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.__init__.html#sphinx.builders.websupport.WebSupportTranslator.__init__" title="sphinx.builders.websupport.WebSupportTranslator.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(builder,&nbsp;*args,&nbsp;**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.add_db_node.html#sphinx.builders.websupport.WebSupportTranslator.add_db_node" title="sphinx.builders.websupport.WebSupportTranslator.add_db_node"><code class="xref py py-obj docutils literal"><span class="pre">add_db_node</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.add_fignumber.html#sphinx.builders.websupport.WebSupportTranslator.add_fignumber" title="sphinx.builders.websupport.WebSupportTranslator.add_fignumber"><code class="xref py py-obj docutils literal"><span class="pre">add_fignumber</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.add_meta.html#sphinx.builders.websupport.WebSupportTranslator.add_meta" title="sphinx.builders.websupport.WebSupportTranslator.add_meta"><code class="xref py py-obj docutils literal"><span class="pre">add_meta</span></code></a>(tag)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.add_permalink_ref.html#sphinx.builders.websupport.WebSupportTranslator.add_permalink_ref" title="sphinx.builders.websupport.WebSupportTranslator.add_permalink_ref"><code class="xref py py-obj docutils literal"><span class="pre">add_permalink_ref</span></code></a>(node,&nbsp;title)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.add_secnumber.html#sphinx.builders.websupport.WebSupportTranslator.add_secnumber" title="sphinx.builders.websupport.WebSupportTranslator.add_secnumber"><code class="xref py py-obj docutils literal"><span class="pre">add_secnumber</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.astext.html#sphinx.builders.websupport.WebSupportTranslator.astext" title="sphinx.builders.websupport.WebSupportTranslator.astext"><code class="xref py py-obj docutils literal"><span class="pre">astext</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.attval.html#sphinx.builders.websupport.WebSupportTranslator.attval" title="sphinx.builders.websupport.WebSupportTranslator.attval"><code class="xref py py-obj docutils literal"><span class="pre">attval</span></code></a>(text[,&nbsp;whitespace])</td>
+<td>Cleanse, HTML encode, and return attribute value text.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.bulk_text_processor.html#sphinx.builders.websupport.WebSupportTranslator.bulk_text_processor" title="sphinx.builders.websupport.WebSupportTranslator.bulk_text_processor"><code class="xref py py-obj docutils literal"><span class="pre">bulk_text_processor</span></code></a>(text)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.check_simple_list.html#sphinx.builders.websupport.WebSupportTranslator.check_simple_list" title="sphinx.builders.websupport.WebSupportTranslator.check_simple_list"><code class="xref py py-obj docutils literal"><span class="pre">check_simple_list</span></code></a>(node)</td>
+<td>Check for a simple list that can be rendered compactly.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.cloak_email.html#sphinx.builders.websupport.WebSupportTranslator.cloak_email" title="sphinx.builders.websupport.WebSupportTranslator.cloak_email"><code class="xref py py-obj docutils literal"><span class="pre">cloak_email</span></code></a>(addr)</td>
+<td>Try to hide the link text of a email link from harversters.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.cloak_mailto.html#sphinx.builders.websupport.WebSupportTranslator.cloak_mailto" title="sphinx.builders.websupport.WebSupportTranslator.cloak_mailto"><code class="xref py py-obj docutils literal"><span class="pre">cloak_mailto</span></code></a>(uri)</td>
+<td>Try to hide a mailto: URL from harvesters.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_Text.html#sphinx.builders.websupport.WebSupportTranslator.depart_Text" title="sphinx.builders.websupport.WebSupportTranslator.depart_Text"><code class="xref py py-obj docutils literal"><span class="pre">depart_Text</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_abbreviation.html#sphinx.builders.websupport.WebSupportTranslator.depart_abbreviation" title="sphinx.builders.websupport.WebSupportTranslator.depart_abbreviation"><code class="xref py py-obj docutils literal"><span class="pre">depart_abbreviation</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_acks.html#sphinx.builders.websupport.WebSupportTranslator.depart_acks" title="sphinx.builders.websupport.WebSupportTranslator.depart_acks"><code class="xref py py-obj docutils literal"><span class="pre">depart_acks</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_acronym.html#sphinx.builders.websupport.WebSupportTranslator.depart_acronym" title="sphinx.builders.websupport.WebSupportTranslator.depart_acronym"><code class="xref py py-obj docutils literal"><span class="pre">depart_acronym</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_address.html#sphinx.builders.websupport.WebSupportTranslator.depart_address" title="sphinx.builders.websupport.WebSupportTranslator.depart_address"><code class="xref py py-obj docutils literal"><span class="pre">depart_address</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_admonition.html#sphinx.builders.websupport.WebSupportTranslator.depart_admonition" title="sphinx.builders.websupport.WebSupportTranslator.depart_admonition"><code class="xref py py-obj docutils literal"><span class="pre">depart_admonition</span></code></a>([node])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_attention.html#sphinx.builders.websupport.WebSupportTranslator.depart_attention" title="sphinx.builders.websupport.WebSupportTranslator.depart_attention"><code class="xref py py-obj docutils literal"><span class="pre">depart_attention</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_attribution.html#sphinx.builders.websupport.WebSupportTranslator.depart_attribution" title="sphinx.builders.websupport.WebSupportTranslator.depart_attribution"><code class="xref py py-obj docutils literal"><span class="pre">depart_attribution</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_author.html#sphinx.builders.websupport.WebSupportTranslator.depart_author" title="sphinx.builders.websupport.WebSupportTranslator.depart_author"><code class="xref py py-obj docutils literal"><span class="pre">depart_author</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_authors.html#sphinx.builders.websupport.WebSupportTranslator.depart_authors" title="sphinx.builders.websupport.WebSupportTranslator.depart_authors"><code class="xref py py-obj docutils literal"><span class="pre">depart_authors</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_autosummary_table.html#sphinx.builders.websupport.WebSupportTranslator.depart_autosummary_table" title="sphinx.builders.websupport.WebSupportTranslator.depart_autosummary_table"><code class="xref py py-obj docutils literal"><span class="pre">depart_autosummary_table</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_autosummary_toc.html#sphinx.builders.websupport.WebSupportTranslator.depart_autosummary_toc" title="sphinx.builders.websupport.WebSupportTranslator.depart_autosummary_toc"><code class="xref py py-obj docutils literal"><span class="pre">depart_autosummary_toc</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_block_quote.html#sphinx.builders.websupport.WebSupportTranslator.depart_block_quote" title="sphinx.builders.websupport.WebSupportTranslator.depart_block_quote"><code class="xref py py-obj docutils literal"><span class="pre">depart_block_quote</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_bullet_list.html#sphinx.builders.websupport.WebSupportTranslator.depart_bullet_list" title="sphinx.builders.websupport.WebSupportTranslator.depart_bullet_list"><code class="xref py py-obj docutils literal"><span class="pre">depart_bullet_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_caption.html#sphinx.builders.websupport.WebSupportTranslator.depart_caption" title="sphinx.builders.websupport.WebSupportTranslator.depart_caption"><code class="xref py py-obj docutils literal"><span class="pre">depart_caption</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_caution.html#sphinx.builders.websupport.WebSupportTranslator.depart_caution" title="sphinx.builders.websupport.WebSupportTranslator.depart_caution"><code class="xref py py-obj docutils literal"><span class="pre">depart_caution</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_centered.html#sphinx.builders.websupport.WebSupportTranslator.depart_centered" title="sphinx.builders.websupport.WebSupportTranslator.depart_centered"><code class="xref py py-obj docutils literal"><span class="pre">depart_centered</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_citation.html#sphinx.builders.websupport.WebSupportTranslator.depart_citation" title="sphinx.builders.websupport.WebSupportTranslator.depart_citation"><code class="xref py py-obj docutils literal"><span class="pre">depart_citation</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_citation_reference.html#sphinx.builders.websupport.WebSupportTranslator.depart_citation_reference" title="sphinx.builders.websupport.WebSupportTranslator.depart_citation_reference"><code class="xref py py-obj docutils literal"><span class="pre">depart_citation_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_classifier.html#sphinx.builders.websupport.WebSupportTranslator.depart_classifier" title="sphinx.builders.websupport.WebSupportTranslator.depart_classifier"><code class="xref py py-obj docutils literal"><span class="pre">depart_classifier</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_colspec.html#sphinx.builders.websupport.WebSupportTranslator.depart_colspec" title="sphinx.builders.websupport.WebSupportTranslator.depart_colspec"><code class="xref py py-obj docutils literal"><span class="pre">depart_colspec</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_compact_paragraph.html#sphinx.builders.websupport.WebSupportTranslator.depart_compact_paragraph" title="sphinx.builders.websupport.WebSupportTranslator.depart_compact_paragraph"><code class="xref py py-obj docutils literal"><span class="pre">depart_compact_paragraph</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_compound.html#sphinx.builders.websupport.WebSupportTranslator.depart_compound" title="sphinx.builders.websupport.WebSupportTranslator.depart_compound"><code class="xref py py-obj docutils literal"><span class="pre">depart_compound</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_contact.html#sphinx.builders.websupport.WebSupportTranslator.depart_contact" title="sphinx.builders.websupport.WebSupportTranslator.depart_contact"><code class="xref py py-obj docutils literal"><span class="pre">depart_contact</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_container.html#sphinx.builders.websupport.WebSupportTranslator.depart_container" title="sphinx.builders.websupport.WebSupportTranslator.depart_container"><code class="xref py py-obj docutils literal"><span class="pre">depart_container</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_copyright.html#sphinx.builders.websupport.WebSupportTranslator.depart_copyright" title="sphinx.builders.websupport.WebSupportTranslator.depart_copyright"><code class="xref py py-obj docutils literal"><span class="pre">depart_copyright</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_danger.html#sphinx.builders.websupport.WebSupportTranslator.depart_danger" title="sphinx.builders.websupport.WebSupportTranslator.depart_danger"><code class="xref py py-obj docutils literal"><span class="pre">depart_danger</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_date.html#sphinx.builders.websupport.WebSupportTranslator.depart_date" title="sphinx.builders.websupport.WebSupportTranslator.depart_date"><code class="xref py py-obj docutils literal"><span class="pre">depart_date</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_decoration.html#sphinx.builders.websupport.WebSupportTranslator.depart_decoration" title="sphinx.builders.websupport.WebSupportTranslator.depart_decoration"><code class="xref py py-obj docutils literal"><span class="pre">depart_decoration</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_definition.html#sphinx.builders.websupport.WebSupportTranslator.depart_definition" title="sphinx.builders.websupport.WebSupportTranslator.depart_definition"><code class="xref py py-obj docutils literal"><span class="pre">depart_definition</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_definition_list.html#sphinx.builders.websupport.WebSupportTranslator.depart_definition_list" title="sphinx.builders.websupport.WebSupportTranslator.depart_definition_list"><code class="xref py py-obj docutils literal"><span class="pre">depart_definition_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_definition_list_item.html#sphinx.builders.websupport.WebSupportTranslator.depart_definition_list_item" title="sphinx.builders.websupport.WebSupportTranslator.depart_definition_list_item"><code class="xref py py-obj docutils literal"><span class="pre">depart_definition_list_item</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_addname.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_addname" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_addname"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_addname</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_annotation.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_annotation" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_annotation"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_annotation</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_content.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_content" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_content"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_content</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_name.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_name" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_name"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_name</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_optional.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_optional" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_optional"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_optional</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_parameter.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_parameter" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_parameter"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_parameter</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_parameterlist.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_parameterlist" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_parameterlist"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_parameterlist</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_returns.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_returns" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_returns"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_returns</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_signature.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_signature" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_signature"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_signature</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_desc_type.html#sphinx.builders.websupport.WebSupportTranslator.depart_desc_type" title="sphinx.builders.websupport.WebSupportTranslator.depart_desc_type"><code class="xref py py-obj docutils literal"><span class="pre">depart_desc_type</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_description.html#sphinx.builders.websupport.WebSupportTranslator.depart_description" title="sphinx.builders.websupport.WebSupportTranslator.depart_description"><code class="xref py py-obj docutils literal"><span class="pre">depart_description</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_docinfo.html#sphinx.builders.websupport.WebSupportTranslator.depart_docinfo" title="sphinx.builders.websupport.WebSupportTranslator.depart_docinfo"><code class="xref py py-obj docutils literal"><span class="pre">depart_docinfo</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_docinfo_item.html#sphinx.builders.websupport.WebSupportTranslator.depart_docinfo_item" title="sphinx.builders.websupport.WebSupportTranslator.depart_docinfo_item"><code class="xref py py-obj docutils literal"><span class="pre">depart_docinfo_item</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_doctest_block.html#sphinx.builders.websupport.WebSupportTranslator.depart_doctest_block" title="sphinx.builders.websupport.WebSupportTranslator.depart_doctest_block"><code class="xref py py-obj docutils literal"><span class="pre">depart_doctest_block</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_document.html#sphinx.builders.websupport.WebSupportTranslator.depart_document" title="sphinx.builders.websupport.WebSupportTranslator.depart_document"><code class="xref py py-obj docutils literal"><span class="pre">depart_document</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_download_reference.html#sphinx.builders.websupport.WebSupportTranslator.depart_download_reference" title="sphinx.builders.websupport.WebSupportTranslator.depart_download_reference"><code class="xref py py-obj docutils literal"><span class="pre">depart_download_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_emphasis.html#sphinx.builders.websupport.WebSupportTranslator.depart_emphasis" title="sphinx.builders.websupport.WebSupportTranslator.depart_emphasis"><code class="xref py py-obj docutils literal"><span class="pre">depart_emphasis</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_entry.html#sphinx.builders.websupport.WebSupportTranslator.depart_entry" title="sphinx.builders.websupport.WebSupportTranslator.depart_entry"><code class="xref py py-obj docutils literal"><span class="pre">depart_entry</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_enumerated_list.html#sphinx.builders.websupport.WebSupportTranslator.depart_enumerated_list" title="sphinx.builders.websupport.WebSupportTranslator.depart_enumerated_list"><code class="xref py py-obj docutils literal"><span class="pre">depart_enumerated_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_eqref.html#sphinx.builders.websupport.WebSupportTranslator.depart_eqref" title="sphinx.builders.websupport.WebSupportTranslator.depart_eqref"><code class="xref py py-obj docutils literal"><span class="pre">depart_eqref</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_error.html#sphinx.builders.websupport.WebSupportTranslator.depart_error" title="sphinx.builders.websupport.WebSupportTranslator.depart_error"><code class="xref py py-obj docutils literal"><span class="pre">depart_error</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_field.html#sphinx.builders.websupport.WebSupportTranslator.depart_field" title="sphinx.builders.websupport.WebSupportTranslator.depart_field"><code class="xref py py-obj docutils literal"><span class="pre">depart_field</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_field_body.html#sphinx.builders.websupport.WebSupportTranslator.depart_field_body" title="sphinx.builders.websupport.WebSupportTranslator.depart_field_body"><code class="xref py py-obj docutils literal"><span class="pre">depart_field_body</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_field_list.html#sphinx.builders.websupport.WebSupportTranslator.depart_field_list" title="sphinx.builders.websupport.WebSupportTranslator.depart_field_list"><code class="xref py py-obj docutils literal"><span class="pre">depart_field_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_field_name.html#sphinx.builders.websupport.WebSupportTranslator.depart_field_name" title="sphinx.builders.websupport.WebSupportTranslator.depart_field_name"><code class="xref py py-obj docutils literal"><span class="pre">depart_field_name</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_figure.html#sphinx.builders.websupport.WebSupportTranslator.depart_figure" title="sphinx.builders.websupport.WebSupportTranslator.depart_figure"><code class="xref py py-obj docutils literal"><span class="pre">depart_figure</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_footer.html#sphinx.builders.websupport.WebSupportTranslator.depart_footer" title="sphinx.builders.websupport.WebSupportTranslator.depart_footer"><code class="xref py py-obj docutils literal"><span class="pre">depart_footer</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_footnote.html#sphinx.builders.websupport.WebSupportTranslator.depart_footnote" title="sphinx.builders.websupport.WebSupportTranslator.depart_footnote"><code class="xref py py-obj docutils literal"><span class="pre">depart_footnote</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_footnote_reference.html#sphinx.builders.websupport.WebSupportTranslator.depart_footnote_reference" title="sphinx.builders.websupport.WebSupportTranslator.depart_footnote_reference"><code class="xref py py-obj docutils literal"><span class="pre">depart_footnote_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_generated.html#sphinx.builders.websupport.WebSupportTranslator.depart_generated" title="sphinx.builders.websupport.WebSupportTranslator.depart_generated"><code class="xref py py-obj docutils literal"><span class="pre">depart_generated</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_glossary.html#sphinx.builders.websupport.WebSupportTranslator.depart_glossary" title="sphinx.builders.websupport.WebSupportTranslator.depart_glossary"><code class="xref py py-obj docutils literal"><span class="pre">depart_glossary</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_header.html#sphinx.builders.websupport.WebSupportTranslator.depart_header" title="sphinx.builders.websupport.WebSupportTranslator.depart_header"><code class="xref py py-obj docutils literal"><span class="pre">depart_header</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_highlightlang.html#sphinx.builders.websupport.WebSupportTranslator.depart_highlightlang" title="sphinx.builders.websupport.WebSupportTranslator.depart_highlightlang"><code class="xref py py-obj docutils literal"><span class="pre">depart_highlightlang</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_hint.html#sphinx.builders.websupport.WebSupportTranslator.depart_hint" title="sphinx.builders.websupport.WebSupportTranslator.depart_hint"><code class="xref py py-obj docutils literal"><span class="pre">depart_hint</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_hlist.html#sphinx.builders.websupport.WebSupportTranslator.depart_hlist" title="sphinx.builders.websupport.WebSupportTranslator.depart_hlist"><code class="xref py py-obj docutils literal"><span class="pre">depart_hlist</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_hlistcol.html#sphinx.builders.websupport.WebSupportTranslator.depart_hlistcol" title="sphinx.builders.websupport.WebSupportTranslator.depart_hlistcol"><code class="xref py py-obj docutils literal"><span class="pre">depart_hlistcol</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_image.html#sphinx.builders.websupport.WebSupportTranslator.depart_image" title="sphinx.builders.websupport.WebSupportTranslator.depart_image"><code class="xref py py-obj docutils literal"><span class="pre">depart_image</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_important.html#sphinx.builders.websupport.WebSupportTranslator.depart_important" title="sphinx.builders.websupport.WebSupportTranslator.depart_important"><code class="xref py py-obj docutils literal"><span class="pre">depart_important</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_inline.html#sphinx.builders.websupport.WebSupportTranslator.depart_inline" title="sphinx.builders.websupport.WebSupportTranslator.depart_inline"><code class="xref py py-obj docutils literal"><span class="pre">depart_inline</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_label.html#sphinx.builders.websupport.WebSupportTranslator.depart_label" title="sphinx.builders.websupport.WebSupportTranslator.depart_label"><code class="xref py py-obj docutils literal"><span class="pre">depart_label</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_legend.html#sphinx.builders.websupport.WebSupportTranslator.depart_legend" title="sphinx.builders.websupport.WebSupportTranslator.depart_legend"><code class="xref py py-obj docutils literal"><span class="pre">depart_legend</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_line.html#sphinx.builders.websupport.WebSupportTranslator.depart_line" title="sphinx.builders.websupport.WebSupportTranslator.depart_line"><code class="xref py py-obj docutils literal"><span class="pre">depart_line</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_line_block.html#sphinx.builders.websupport.WebSupportTranslator.depart_line_block" title="sphinx.builders.websupport.WebSupportTranslator.depart_line_block"><code class="xref py py-obj docutils literal"><span class="pre">depart_line_block</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_list_item.html#sphinx.builders.websupport.WebSupportTranslator.depart_list_item" title="sphinx.builders.websupport.WebSupportTranslator.depart_list_item"><code class="xref py py-obj docutils literal"><span class="pre">depart_list_item</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_literal.html#sphinx.builders.websupport.WebSupportTranslator.depart_literal" title="sphinx.builders.websupport.WebSupportTranslator.depart_literal"><code class="xref py py-obj docutils literal"><span class="pre">depart_literal</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_literal_block.html#sphinx.builders.websupport.WebSupportTranslator.depart_literal_block" title="sphinx.builders.websupport.WebSupportTranslator.depart_literal_block"><code class="xref py py-obj docutils literal"><span class="pre">depart_literal_block</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_literal_emphasis.html#sphinx.builders.websupport.WebSupportTranslator.depart_literal_emphasis" title="sphinx.builders.websupport.WebSupportTranslator.depart_literal_emphasis"><code class="xref py py-obj docutils literal"><span class="pre">depart_literal_emphasis</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_literal_strong.html#sphinx.builders.websupport.WebSupportTranslator.depart_literal_strong" title="sphinx.builders.websupport.WebSupportTranslator.depart_literal_strong"><code class="xref py py-obj docutils literal"><span class="pre">depart_literal_strong</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_math.html#sphinx.builders.websupport.WebSupportTranslator.depart_math" title="sphinx.builders.websupport.WebSupportTranslator.depart_math"><code class="xref py py-obj docutils literal"><span class="pre">depart_math</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_math_block.html#sphinx.builders.websupport.WebSupportTranslator.depart_math_block" title="sphinx.builders.websupport.WebSupportTranslator.depart_math_block"><code class="xref py py-obj docutils literal"><span class="pre">depart_math_block</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_meta.html#sphinx.builders.websupport.WebSupportTranslator.depart_meta" title="sphinx.builders.websupport.WebSupportTranslator.depart_meta"><code class="xref py py-obj docutils literal"><span class="pre">depart_meta</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_note.html#sphinx.builders.websupport.WebSupportTranslator.depart_note" title="sphinx.builders.websupport.WebSupportTranslator.depart_note"><code class="xref py py-obj docutils literal"><span class="pre">depart_note</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_number_reference.html#sphinx.builders.websupport.WebSupportTranslator.depart_number_reference" title="sphinx.builders.websupport.WebSupportTranslator.depart_number_reference"><code class="xref py py-obj docutils literal"><span class="pre">depart_number_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_option.html#sphinx.builders.websupport.WebSupportTranslator.depart_option" title="sphinx.builders.websupport.WebSupportTranslator.depart_option"><code class="xref py py-obj docutils literal"><span class="pre">depart_option</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_option_argument.html#sphinx.builders.websupport.WebSupportTranslator.depart_option_argument" title="sphinx.builders.websupport.WebSupportTranslator.depart_option_argument"><code class="xref py py-obj docutils literal"><span class="pre">depart_option_argument</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_option_group.html#sphinx.builders.websupport.WebSupportTranslator.depart_option_group" title="sphinx.builders.websupport.WebSupportTranslator.depart_option_group"><code class="xref py py-obj docutils literal"><span class="pre">depart_option_group</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_option_list.html#sphinx.builders.websupport.WebSupportTranslator.depart_option_list" title="sphinx.builders.websupport.WebSupportTranslator.depart_option_list"><code class="xref py py-obj docutils literal"><span class="pre">depart_option_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_option_list_item.html#sphinx.builders.websupport.WebSupportTranslator.depart_option_list_item" title="sphinx.builders.websupport.WebSupportTranslator.depart_option_list_item"><code class="xref py py-obj docutils literal"><span class="pre">depart_option_list_item</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_option_string.html#sphinx.builders.websupport.WebSupportTranslator.depart_option_string" title="sphinx.builders.websupport.WebSupportTranslator.depart_option_string"><code class="xref py py-obj docutils literal"><span class="pre">depart_option_string</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_organization.html#sphinx.builders.websupport.WebSupportTranslator.depart_organization" title="sphinx.builders.websupport.WebSupportTranslator.depart_organization"><code class="xref py py-obj docutils literal"><span class="pre">depart_organization</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_paragraph.html#sphinx.builders.websupport.WebSupportTranslator.depart_paragraph" title="sphinx.builders.websupport.WebSupportTranslator.depart_paragraph"><code class="xref py py-obj docutils literal"><span class="pre">depart_paragraph</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_problematic.html#sphinx.builders.websupport.WebSupportTranslator.depart_problematic" title="sphinx.builders.websupport.WebSupportTranslator.depart_problematic"><code class="xref py py-obj docutils literal"><span class="pre">depart_problematic</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_production.html#sphinx.builders.websupport.WebSupportTranslator.depart_production" title="sphinx.builders.websupport.WebSupportTranslator.depart_production"><code class="xref py py-obj docutils literal"><span class="pre">depart_production</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_productionlist.html#sphinx.builders.websupport.WebSupportTranslator.depart_productionlist" title="sphinx.builders.websupport.WebSupportTranslator.depart_productionlist"><code class="xref py py-obj docutils literal"><span class="pre">depart_productionlist</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_reference.html#sphinx.builders.websupport.WebSupportTranslator.depart_reference" title="sphinx.builders.websupport.WebSupportTranslator.depart_reference"><code class="xref py py-obj docutils literal"><span class="pre">depart_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_revision.html#sphinx.builders.websupport.WebSupportTranslator.depart_revision" title="sphinx.builders.websupport.WebSupportTranslator.depart_revision"><code class="xref py py-obj docutils literal"><span class="pre">depart_revision</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_row.html#sphinx.builders.websupport.WebSupportTranslator.depart_row" title="sphinx.builders.websupport.WebSupportTranslator.depart_row"><code class="xref py py-obj docutils literal"><span class="pre">depart_row</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_rubric.html#sphinx.builders.websupport.WebSupportTranslator.depart_rubric" title="sphinx.builders.websupport.WebSupportTranslator.depart_rubric"><code class="xref py py-obj docutils literal"><span class="pre">depart_rubric</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_section.html#sphinx.builders.websupport.WebSupportTranslator.depart_section" title="sphinx.builders.websupport.WebSupportTranslator.depart_section"><code class="xref py py-obj docutils literal"><span class="pre">depart_section</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_seealso.html#sphinx.builders.websupport.WebSupportTranslator.depart_seealso" title="sphinx.builders.websupport.WebSupportTranslator.depart_seealso"><code class="xref py py-obj docutils literal"><span class="pre">depart_seealso</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_sidebar.html#sphinx.builders.websupport.WebSupportTranslator.depart_sidebar" title="sphinx.builders.websupport.WebSupportTranslator.depart_sidebar"><code class="xref py py-obj docutils literal"><span class="pre">depart_sidebar</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_start_of_file.html#sphinx.builders.websupport.WebSupportTranslator.depart_start_of_file" title="sphinx.builders.websupport.WebSupportTranslator.depart_start_of_file"><code class="xref py py-obj docutils literal"><span class="pre">depart_start_of_file</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_status.html#sphinx.builders.websupport.WebSupportTranslator.depart_status" title="sphinx.builders.websupport.WebSupportTranslator.depart_status"><code class="xref py py-obj docutils literal"><span class="pre">depart_status</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_strong.html#sphinx.builders.websupport.WebSupportTranslator.depart_strong" title="sphinx.builders.websupport.WebSupportTranslator.depart_strong"><code class="xref py py-obj docutils literal"><span class="pre">depart_strong</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_subscript.html#sphinx.builders.websupport.WebSupportTranslator.depart_subscript" title="sphinx.builders.websupport.WebSupportTranslator.depart_subscript"><code class="xref py py-obj docutils literal"><span class="pre">depart_subscript</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_subtitle.html#sphinx.builders.websupport.WebSupportTranslator.depart_subtitle" title="sphinx.builders.websupport.WebSupportTranslator.depart_subtitle"><code class="xref py py-obj docutils literal"><span class="pre">depart_subtitle</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_superscript.html#sphinx.builders.websupport.WebSupportTranslator.depart_superscript" title="sphinx.builders.websupport.WebSupportTranslator.depart_superscript"><code class="xref py py-obj docutils literal"><span class="pre">depart_superscript</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_system_message.html#sphinx.builders.websupport.WebSupportTranslator.depart_system_message" title="sphinx.builders.websupport.WebSupportTranslator.depart_system_message"><code class="xref py py-obj docutils literal"><span class="pre">depart_system_message</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_table.html#sphinx.builders.websupport.WebSupportTranslator.depart_table" title="sphinx.builders.websupport.WebSupportTranslator.depart_table"><code class="xref py py-obj docutils literal"><span class="pre">depart_table</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_target.html#sphinx.builders.websupport.WebSupportTranslator.depart_target" title="sphinx.builders.websupport.WebSupportTranslator.depart_target"><code class="xref py py-obj docutils literal"><span class="pre">depart_target</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_tbody.html#sphinx.builders.websupport.WebSupportTranslator.depart_tbody" title="sphinx.builders.websupport.WebSupportTranslator.depart_tbody"><code class="xref py py-obj docutils literal"><span class="pre">depart_tbody</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_term.html#sphinx.builders.websupport.WebSupportTranslator.depart_term" title="sphinx.builders.websupport.WebSupportTranslator.depart_term"><code class="xref py py-obj docutils literal"><span class="pre">depart_term</span></code></a>(node)</td>
+<td>Leave the end tag to <cite>self.visit_definition()</cite>, in case there&#8217;s a classifier.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_tgroup.html#sphinx.builders.websupport.WebSupportTranslator.depart_tgroup" title="sphinx.builders.websupport.WebSupportTranslator.depart_tgroup"><code class="xref py py-obj docutils literal"><span class="pre">depart_tgroup</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_thead.html#sphinx.builders.websupport.WebSupportTranslator.depart_thead" title="sphinx.builders.websupport.WebSupportTranslator.depart_thead"><code class="xref py py-obj docutils literal"><span class="pre">depart_thead</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_tip.html#sphinx.builders.websupport.WebSupportTranslator.depart_tip" title="sphinx.builders.websupport.WebSupportTranslator.depart_tip"><code class="xref py py-obj docutils literal"><span class="pre">depart_tip</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_title.html#sphinx.builders.websupport.WebSupportTranslator.depart_title" title="sphinx.builders.websupport.WebSupportTranslator.depart_title"><code class="xref py py-obj docutils literal"><span class="pre">depart_title</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_title_reference.html#sphinx.builders.websupport.WebSupportTranslator.depart_title_reference" title="sphinx.builders.websupport.WebSupportTranslator.depart_title_reference"><code class="xref py py-obj docutils literal"><span class="pre">depart_title_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_todo_node.html#sphinx.builders.websupport.WebSupportTranslator.depart_todo_node" title="sphinx.builders.websupport.WebSupportTranslator.depart_todo_node"><code class="xref py py-obj docutils literal"><span class="pre">depart_todo_node</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_topic.html#sphinx.builders.websupport.WebSupportTranslator.depart_topic" title="sphinx.builders.websupport.WebSupportTranslator.depart_topic"><code class="xref py py-obj docutils literal"><span class="pre">depart_topic</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_transition.html#sphinx.builders.websupport.WebSupportTranslator.depart_transition" title="sphinx.builders.websupport.WebSupportTranslator.depart_transition"><code class="xref py py-obj docutils literal"><span class="pre">depart_transition</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_version.html#sphinx.builders.websupport.WebSupportTranslator.depart_version" title="sphinx.builders.websupport.WebSupportTranslator.depart_version"><code class="xref py py-obj docutils literal"><span class="pre">depart_version</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_versionmodified.html#sphinx.builders.websupport.WebSupportTranslator.depart_versionmodified" title="sphinx.builders.websupport.WebSupportTranslator.depart_versionmodified"><code class="xref py py-obj docutils literal"><span class="pre">depart_versionmodified</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.depart_warning.html#sphinx.builders.websupport.WebSupportTranslator.depart_warning" title="sphinx.builders.websupport.WebSupportTranslator.depart_warning"><code class="xref py py-obj docutils literal"><span class="pre">depart_warning</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.dispatch_departure.html#sphinx.builders.websupport.WebSupportTranslator.dispatch_departure" title="sphinx.builders.websupport.WebSupportTranslator.dispatch_departure"><code class="xref py py-obj docutils literal"><span class="pre">dispatch_departure</span></code></a>(node)</td>
+<td>Call self.&#8221;<code class="docutils literal"><span class="pre">depart_</span></code> + node class name&#8221; with <cite>node</cite> as parameter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.dispatch_visit.html#sphinx.builders.websupport.WebSupportTranslator.dispatch_visit" title="sphinx.builders.websupport.WebSupportTranslator.dispatch_visit"><code class="xref py py-obj docutils literal"><span class="pre">dispatch_visit</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.emptytag.html#sphinx.builders.websupport.WebSupportTranslator.emptytag" title="sphinx.builders.websupport.WebSupportTranslator.emptytag"><code class="xref py py-obj docutils literal"><span class="pre">emptytag</span></code></a>(node,&nbsp;tagname[,&nbsp;suffix])</td>
+<td>Construct and return an XML-compatible empty tag.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.encode.html#sphinx.builders.websupport.WebSupportTranslator.encode" title="sphinx.builders.websupport.WebSupportTranslator.encode"><code class="xref py py-obj docutils literal"><span class="pre">encode</span></code></a>(text)</td>
+<td>Encode special characters in <cite>text</cite> &amp; return.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.footnote_backrefs.html#sphinx.builders.websupport.WebSupportTranslator.footnote_backrefs" title="sphinx.builders.websupport.WebSupportTranslator.footnote_backrefs"><code class="xref py py-obj docutils literal"><span class="pre">footnote_backrefs</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.handle_visit_commentable.html#sphinx.builders.websupport.WebSupportTranslator.handle_visit_commentable" title="sphinx.builders.websupport.WebSupportTranslator.handle_visit_commentable"><code class="xref py py-obj docutils literal"><span class="pre">handle_visit_commentable</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.is_compactable.html#sphinx.builders.websupport.WebSupportTranslator.is_compactable" title="sphinx.builders.websupport.WebSupportTranslator.is_compactable"><code class="xref py py-obj docutils literal"><span class="pre">is_compactable</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.set_class_on_child.html#sphinx.builders.websupport.WebSupportTranslator.set_class_on_child" title="sphinx.builders.websupport.WebSupportTranslator.set_class_on_child"><code class="xref py py-obj docutils literal"><span class="pre">set_class_on_child</span></code></a>(node,&nbsp;class_[,&nbsp;index])</td>
+<td>Set class <cite>class_</cite> on the visible child no.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.set_first_last.html#sphinx.builders.websupport.WebSupportTranslator.set_first_last" title="sphinx.builders.websupport.WebSupportTranslator.set_first_last"><code class="xref py py-obj docutils literal"><span class="pre">set_first_last</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.should_be_compact_paragraph.html#sphinx.builders.websupport.WebSupportTranslator.should_be_compact_paragraph" title="sphinx.builders.websupport.WebSupportTranslator.should_be_compact_paragraph"><code class="xref py py-obj docutils literal"><span class="pre">should_be_compact_paragraph</span></code></a>(node)</td>
+<td>Determine if the &lt;p&gt; tags around paragraph can be omitted.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.starttag.html#sphinx.builders.websupport.WebSupportTranslator.starttag" title="sphinx.builders.websupport.WebSupportTranslator.starttag"><code class="xref py py-obj docutils literal"><span class="pre">starttag</span></code></a>(node,&nbsp;tagname[,&nbsp;suffix,&nbsp;empty])</td>
+<td>Construct and return a start tag given a node (id &amp; class attributes are extracted), tag name, and optional attributes.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.stylesheet_call.html#sphinx.builders.websupport.WebSupportTranslator.stylesheet_call" title="sphinx.builders.websupport.WebSupportTranslator.stylesheet_call"><code class="xref py py-obj docutils literal"><span class="pre">stylesheet_call</span></code></a>(path)</td>
+<td>Return code to reference or embed stylesheet file <cite>path</cite></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.unimplemented_visit.html#sphinx.builders.websupport.WebSupportTranslator.unimplemented_visit" title="sphinx.builders.websupport.WebSupportTranslator.unimplemented_visit"><code class="xref py py-obj docutils literal"><span class="pre">unimplemented_visit</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.unknown_departure.html#sphinx.builders.websupport.WebSupportTranslator.unknown_departure" title="sphinx.builders.websupport.WebSupportTranslator.unknown_departure"><code class="xref py py-obj docutils literal"><span class="pre">unknown_departure</span></code></a>(node)</td>
+<td>Called before exiting unknown <cite>Node</cite> types.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.unknown_visit.html#sphinx.builders.websupport.WebSupportTranslator.unknown_visit" title="sphinx.builders.websupport.WebSupportTranslator.unknown_visit"><code class="xref py py-obj docutils literal"><span class="pre">unknown_visit</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_Text.html#sphinx.builders.websupport.WebSupportTranslator.visit_Text" title="sphinx.builders.websupport.WebSupportTranslator.visit_Text"><code class="xref py py-obj docutils literal"><span class="pre">visit_Text</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_abbreviation.html#sphinx.builders.websupport.WebSupportTranslator.visit_abbreviation" title="sphinx.builders.websupport.WebSupportTranslator.visit_abbreviation"><code class="xref py py-obj docutils literal"><span class="pre">visit_abbreviation</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_acks.html#sphinx.builders.websupport.WebSupportTranslator.visit_acks" title="sphinx.builders.websupport.WebSupportTranslator.visit_acks"><code class="xref py py-obj docutils literal"><span class="pre">visit_acks</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_acronym.html#sphinx.builders.websupport.WebSupportTranslator.visit_acronym" title="sphinx.builders.websupport.WebSupportTranslator.visit_acronym"><code class="xref py py-obj docutils literal"><span class="pre">visit_acronym</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_address.html#sphinx.builders.websupport.WebSupportTranslator.visit_address" title="sphinx.builders.websupport.WebSupportTranslator.visit_address"><code class="xref py py-obj docutils literal"><span class="pre">visit_address</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_admonition.html#sphinx.builders.websupport.WebSupportTranslator.visit_admonition" title="sphinx.builders.websupport.WebSupportTranslator.visit_admonition"><code class="xref py py-obj docutils literal"><span class="pre">visit_admonition</span></code></a>(node[,&nbsp;name])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_attention.html#sphinx.builders.websupport.WebSupportTranslator.visit_attention" title="sphinx.builders.websupport.WebSupportTranslator.visit_attention"><code class="xref py py-obj docutils literal"><span class="pre">visit_attention</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_attribution.html#sphinx.builders.websupport.WebSupportTranslator.visit_attribution" title="sphinx.builders.websupport.WebSupportTranslator.visit_attribution"><code class="xref py py-obj docutils literal"><span class="pre">visit_attribution</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_author.html#sphinx.builders.websupport.WebSupportTranslator.visit_author" title="sphinx.builders.websupport.WebSupportTranslator.visit_author"><code class="xref py py-obj docutils literal"><span class="pre">visit_author</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_authors.html#sphinx.builders.websupport.WebSupportTranslator.visit_authors" title="sphinx.builders.websupport.WebSupportTranslator.visit_authors"><code class="xref py py-obj docutils literal"><span class="pre">visit_authors</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_autosummary_table.html#sphinx.builders.websupport.WebSupportTranslator.visit_autosummary_table" title="sphinx.builders.websupport.WebSupportTranslator.visit_autosummary_table"><code class="xref py py-obj docutils literal"><span class="pre">visit_autosummary_table</span></code></a>(node)</td>
+<td>Make the first column of the table non-breaking.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_autosummary_toc.html#sphinx.builders.websupport.WebSupportTranslator.visit_autosummary_toc" title="sphinx.builders.websupport.WebSupportTranslator.visit_autosummary_toc"><code class="xref py py-obj docutils literal"><span class="pre">visit_autosummary_toc</span></code></a>(node)</td>
+<td>Hide autosummary toctree list in HTML output.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_block_quote.html#sphinx.builders.websupport.WebSupportTranslator.visit_block_quote" title="sphinx.builders.websupport.WebSupportTranslator.visit_block_quote"><code class="xref py py-obj docutils literal"><span class="pre">visit_block_quote</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_bullet_list.html#sphinx.builders.websupport.WebSupportTranslator.visit_bullet_list" title="sphinx.builders.websupport.WebSupportTranslator.visit_bullet_list"><code class="xref py py-obj docutils literal"><span class="pre">visit_bullet_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_caption.html#sphinx.builders.websupport.WebSupportTranslator.visit_caption" title="sphinx.builders.websupport.WebSupportTranslator.visit_caption"><code class="xref py py-obj docutils literal"><span class="pre">visit_caption</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_caution.html#sphinx.builders.websupport.WebSupportTranslator.visit_caution" title="sphinx.builders.websupport.WebSupportTranslator.visit_caution"><code class="xref py py-obj docutils literal"><span class="pre">visit_caution</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_centered.html#sphinx.builders.websupport.WebSupportTranslator.visit_centered" title="sphinx.builders.websupport.WebSupportTranslator.visit_centered"><code class="xref py py-obj docutils literal"><span class="pre">visit_centered</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_citation.html#sphinx.builders.websupport.WebSupportTranslator.visit_citation" title="sphinx.builders.websupport.WebSupportTranslator.visit_citation"><code class="xref py py-obj docutils literal"><span class="pre">visit_citation</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_citation_reference.html#sphinx.builders.websupport.WebSupportTranslator.visit_citation_reference" title="sphinx.builders.websupport.WebSupportTranslator.visit_citation_reference"><code class="xref py py-obj docutils literal"><span class="pre">visit_citation_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_classifier.html#sphinx.builders.websupport.WebSupportTranslator.visit_classifier" title="sphinx.builders.websupport.WebSupportTranslator.visit_classifier"><code class="xref py py-obj docutils literal"><span class="pre">visit_classifier</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_colspec.html#sphinx.builders.websupport.WebSupportTranslator.visit_colspec" title="sphinx.builders.websupport.WebSupportTranslator.visit_colspec"><code class="xref py py-obj docutils literal"><span class="pre">visit_colspec</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_comment.html#sphinx.builders.websupport.WebSupportTranslator.visit_comment" title="sphinx.builders.websupport.WebSupportTranslator.visit_comment"><code class="xref py py-obj docutils literal"><span class="pre">visit_comment</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_compact_paragraph.html#sphinx.builders.websupport.WebSupportTranslator.visit_compact_paragraph" title="sphinx.builders.websupport.WebSupportTranslator.visit_compact_paragraph"><code class="xref py py-obj docutils literal"><span class="pre">visit_compact_paragraph</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_compound.html#sphinx.builders.websupport.WebSupportTranslator.visit_compound" title="sphinx.builders.websupport.WebSupportTranslator.visit_compound"><code class="xref py py-obj docutils literal"><span class="pre">visit_compound</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_contact.html#sphinx.builders.websupport.WebSupportTranslator.visit_contact" title="sphinx.builders.websupport.WebSupportTranslator.visit_contact"><code class="xref py py-obj docutils literal"><span class="pre">visit_contact</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_container.html#sphinx.builders.websupport.WebSupportTranslator.visit_container" title="sphinx.builders.websupport.WebSupportTranslator.visit_container"><code class="xref py py-obj docutils literal"><span class="pre">visit_container</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_copyright.html#sphinx.builders.websupport.WebSupportTranslator.visit_copyright" title="sphinx.builders.websupport.WebSupportTranslator.visit_copyright"><code class="xref py py-obj docutils literal"><span class="pre">visit_copyright</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_danger.html#sphinx.builders.websupport.WebSupportTranslator.visit_danger" title="sphinx.builders.websupport.WebSupportTranslator.visit_danger"><code class="xref py py-obj docutils literal"><span class="pre">visit_danger</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_date.html#sphinx.builders.websupport.WebSupportTranslator.visit_date" title="sphinx.builders.websupport.WebSupportTranslator.visit_date"><code class="xref py py-obj docutils literal"><span class="pre">visit_date</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_decoration.html#sphinx.builders.websupport.WebSupportTranslator.visit_decoration" title="sphinx.builders.websupport.WebSupportTranslator.visit_decoration"><code class="xref py py-obj docutils literal"><span class="pre">visit_decoration</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_definition.html#sphinx.builders.websupport.WebSupportTranslator.visit_definition" title="sphinx.builders.websupport.WebSupportTranslator.visit_definition"><code class="xref py py-obj docutils literal"><span class="pre">visit_definition</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_definition_list.html#sphinx.builders.websupport.WebSupportTranslator.visit_definition_list" title="sphinx.builders.websupport.WebSupportTranslator.visit_definition_list"><code class="xref py py-obj docutils literal"><span class="pre">visit_definition_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_definition_list_item.html#sphinx.builders.websupport.WebSupportTranslator.visit_definition_list_item" title="sphinx.builders.websupport.WebSupportTranslator.visit_definition_list_item"><code class="xref py py-obj docutils literal"><span class="pre">visit_definition_list_item</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_addname.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_addname" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_addname"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_addname</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_annotation.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_annotation" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_annotation"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_annotation</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_content.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_content" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_content"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_content</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_name.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_name" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_name"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_name</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_optional.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_optional" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_optional"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_optional</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_parameter.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_parameter" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_parameter"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_parameter</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_parameterlist.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_parameterlist" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_parameterlist"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_parameterlist</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_returns.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_returns" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_returns"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_returns</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_signature.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_signature" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_signature"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_signature</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_desc_type.html#sphinx.builders.websupport.WebSupportTranslator.visit_desc_type" title="sphinx.builders.websupport.WebSupportTranslator.visit_desc_type"><code class="xref py py-obj docutils literal"><span class="pre">visit_desc_type</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_description.html#sphinx.builders.websupport.WebSupportTranslator.visit_description" title="sphinx.builders.websupport.WebSupportTranslator.visit_description"><code class="xref py py-obj docutils literal"><span class="pre">visit_description</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_displaymath.html#sphinx.builders.websupport.WebSupportTranslator.visit_displaymath" title="sphinx.builders.websupport.WebSupportTranslator.visit_displaymath"><code class="xref py py-obj docutils literal"><span class="pre">visit_displaymath</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_docinfo.html#sphinx.builders.websupport.WebSupportTranslator.visit_docinfo" title="sphinx.builders.websupport.WebSupportTranslator.visit_docinfo"><code class="xref py py-obj docutils literal"><span class="pre">visit_docinfo</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_docinfo_item.html#sphinx.builders.websupport.WebSupportTranslator.visit_docinfo_item" title="sphinx.builders.websupport.WebSupportTranslator.visit_docinfo_item"><code class="xref py py-obj docutils literal"><span class="pre">visit_docinfo_item</span></code></a>(node,&nbsp;name[,&nbsp;meta])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_doctest_block.html#sphinx.builders.websupport.WebSupportTranslator.visit_doctest_block" title="sphinx.builders.websupport.WebSupportTranslator.visit_doctest_block"><code class="xref py py-obj docutils literal"><span class="pre">visit_doctest_block</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_document.html#sphinx.builders.websupport.WebSupportTranslator.visit_document" title="sphinx.builders.websupport.WebSupportTranslator.visit_document"><code class="xref py py-obj docutils literal"><span class="pre">visit_document</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_download_reference.html#sphinx.builders.websupport.WebSupportTranslator.visit_download_reference" title="sphinx.builders.websupport.WebSupportTranslator.visit_download_reference"><code class="xref py py-obj docutils literal"><span class="pre">visit_download_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_emphasis.html#sphinx.builders.websupport.WebSupportTranslator.visit_emphasis" title="sphinx.builders.websupport.WebSupportTranslator.visit_emphasis"><code class="xref py py-obj docutils literal"><span class="pre">visit_emphasis</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_entry.html#sphinx.builders.websupport.WebSupportTranslator.visit_entry" title="sphinx.builders.websupport.WebSupportTranslator.visit_entry"><code class="xref py py-obj docutils literal"><span class="pre">visit_entry</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_enumerated_list.html#sphinx.builders.websupport.WebSupportTranslator.visit_enumerated_list" title="sphinx.builders.websupport.WebSupportTranslator.visit_enumerated_list"><code class="xref py py-obj docutils literal"><span class="pre">visit_enumerated_list</span></code></a>(node)</td>
+<td>The &#8216;start&#8217; attribute does not conform to HTML 4.01&#8217;s strict.dtd, but CSS1 doesn&#8217;t help.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_eqref.html#sphinx.builders.websupport.WebSupportTranslator.visit_eqref" title="sphinx.builders.websupport.WebSupportTranslator.visit_eqref"><code class="xref py py-obj docutils literal"><span class="pre">visit_eqref</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_error.html#sphinx.builders.websupport.WebSupportTranslator.visit_error" title="sphinx.builders.websupport.WebSupportTranslator.visit_error"><code class="xref py py-obj docutils literal"><span class="pre">visit_error</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_field.html#sphinx.builders.websupport.WebSupportTranslator.visit_field" title="sphinx.builders.websupport.WebSupportTranslator.visit_field"><code class="xref py py-obj docutils literal"><span class="pre">visit_field</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_field_body.html#sphinx.builders.websupport.WebSupportTranslator.visit_field_body" title="sphinx.builders.websupport.WebSupportTranslator.visit_field_body"><code class="xref py py-obj docutils literal"><span class="pre">visit_field_body</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_field_list.html#sphinx.builders.websupport.WebSupportTranslator.visit_field_list" title="sphinx.builders.websupport.WebSupportTranslator.visit_field_list"><code class="xref py py-obj docutils literal"><span class="pre">visit_field_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_field_name.html#sphinx.builders.websupport.WebSupportTranslator.visit_field_name" title="sphinx.builders.websupport.WebSupportTranslator.visit_field_name"><code class="xref py py-obj docutils literal"><span class="pre">visit_field_name</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_figure.html#sphinx.builders.websupport.WebSupportTranslator.visit_figure" title="sphinx.builders.websupport.WebSupportTranslator.visit_figure"><code class="xref py py-obj docutils literal"><span class="pre">visit_figure</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_footer.html#sphinx.builders.websupport.WebSupportTranslator.visit_footer" title="sphinx.builders.websupport.WebSupportTranslator.visit_footer"><code class="xref py py-obj docutils literal"><span class="pre">visit_footer</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_footnote.html#sphinx.builders.websupport.WebSupportTranslator.visit_footnote" title="sphinx.builders.websupport.WebSupportTranslator.visit_footnote"><code class="xref py py-obj docutils literal"><span class="pre">visit_footnote</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_footnote_reference.html#sphinx.builders.websupport.WebSupportTranslator.visit_footnote_reference" title="sphinx.builders.websupport.WebSupportTranslator.visit_footnote_reference"><code class="xref py py-obj docutils literal"><span class="pre">visit_footnote_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_generated.html#sphinx.builders.websupport.WebSupportTranslator.visit_generated" title="sphinx.builders.websupport.WebSupportTranslator.visit_generated"><code class="xref py py-obj docutils literal"><span class="pre">visit_generated</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_glossary.html#sphinx.builders.websupport.WebSupportTranslator.visit_glossary" title="sphinx.builders.websupport.WebSupportTranslator.visit_glossary"><code class="xref py py-obj docutils literal"><span class="pre">visit_glossary</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_header.html#sphinx.builders.websupport.WebSupportTranslator.visit_header" title="sphinx.builders.websupport.WebSupportTranslator.visit_header"><code class="xref py py-obj docutils literal"><span class="pre">visit_header</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_highlightlang.html#sphinx.builders.websupport.WebSupportTranslator.visit_highlightlang" title="sphinx.builders.websupport.WebSupportTranslator.visit_highlightlang"><code class="xref py py-obj docutils literal"><span class="pre">visit_highlightlang</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_hint.html#sphinx.builders.websupport.WebSupportTranslator.visit_hint" title="sphinx.builders.websupport.WebSupportTranslator.visit_hint"><code class="xref py py-obj docutils literal"><span class="pre">visit_hint</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_hlist.html#sphinx.builders.websupport.WebSupportTranslator.visit_hlist" title="sphinx.builders.websupport.WebSupportTranslator.visit_hlist"><code class="xref py py-obj docutils literal"><span class="pre">visit_hlist</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_hlistcol.html#sphinx.builders.websupport.WebSupportTranslator.visit_hlistcol" title="sphinx.builders.websupport.WebSupportTranslator.visit_hlistcol"><code class="xref py py-obj docutils literal"><span class="pre">visit_hlistcol</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_image.html#sphinx.builders.websupport.WebSupportTranslator.visit_image" title="sphinx.builders.websupport.WebSupportTranslator.visit_image"><code class="xref py py-obj docutils literal"><span class="pre">visit_image</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_important.html#sphinx.builders.websupport.WebSupportTranslator.visit_important" title="sphinx.builders.websupport.WebSupportTranslator.visit_important"><code class="xref py py-obj docutils literal"><span class="pre">visit_important</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_index.html#sphinx.builders.websupport.WebSupportTranslator.visit_index" title="sphinx.builders.websupport.WebSupportTranslator.visit_index"><code class="xref py py-obj docutils literal"><span class="pre">visit_index</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_inline.html#sphinx.builders.websupport.WebSupportTranslator.visit_inline" title="sphinx.builders.websupport.WebSupportTranslator.visit_inline"><code class="xref py py-obj docutils literal"><span class="pre">visit_inline</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_label.html#sphinx.builders.websupport.WebSupportTranslator.visit_label" title="sphinx.builders.websupport.WebSupportTranslator.visit_label"><code class="xref py py-obj docutils literal"><span class="pre">visit_label</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_legend.html#sphinx.builders.websupport.WebSupportTranslator.visit_legend" title="sphinx.builders.websupport.WebSupportTranslator.visit_legend"><code class="xref py py-obj docutils literal"><span class="pre">visit_legend</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_line.html#sphinx.builders.websupport.WebSupportTranslator.visit_line" title="sphinx.builders.websupport.WebSupportTranslator.visit_line"><code class="xref py py-obj docutils literal"><span class="pre">visit_line</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_line_block.html#sphinx.builders.websupport.WebSupportTranslator.visit_line_block" title="sphinx.builders.websupport.WebSupportTranslator.visit_line_block"><code class="xref py py-obj docutils literal"><span class="pre">visit_line_block</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_list_item.html#sphinx.builders.websupport.WebSupportTranslator.visit_list_item" title="sphinx.builders.websupport.WebSupportTranslator.visit_list_item"><code class="xref py py-obj docutils literal"><span class="pre">visit_list_item</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_literal.html#sphinx.builders.websupport.WebSupportTranslator.visit_literal" title="sphinx.builders.websupport.WebSupportTranslator.visit_literal"><code class="xref py py-obj docutils literal"><span class="pre">visit_literal</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_literal_block.html#sphinx.builders.websupport.WebSupportTranslator.visit_literal_block" title="sphinx.builders.websupport.WebSupportTranslator.visit_literal_block"><code class="xref py py-obj docutils literal"><span class="pre">visit_literal_block</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_literal_emphasis.html#sphinx.builders.websupport.WebSupportTranslator.visit_literal_emphasis" title="sphinx.builders.websupport.WebSupportTranslator.visit_literal_emphasis"><code class="xref py py-obj docutils literal"><span class="pre">visit_literal_emphasis</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_literal_strong.html#sphinx.builders.websupport.WebSupportTranslator.visit_literal_strong" title="sphinx.builders.websupport.WebSupportTranslator.visit_literal_strong"><code class="xref py py-obj docutils literal"><span class="pre">visit_literal_strong</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_math.html#sphinx.builders.websupport.WebSupportTranslator.visit_math" title="sphinx.builders.websupport.WebSupportTranslator.visit_math"><code class="xref py py-obj docutils literal"><span class="pre">visit_math</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_math_block.html#sphinx.builders.websupport.WebSupportTranslator.visit_math_block" title="sphinx.builders.websupport.WebSupportTranslator.visit_math_block"><code class="xref py py-obj docutils literal"><span class="pre">visit_math_block</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_meta.html#sphinx.builders.websupport.WebSupportTranslator.visit_meta" title="sphinx.builders.websupport.WebSupportTranslator.visit_meta"><code class="xref py py-obj docutils literal"><span class="pre">visit_meta</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_note.html#sphinx.builders.websupport.WebSupportTranslator.visit_note" title="sphinx.builders.websupport.WebSupportTranslator.visit_note"><code class="xref py py-obj docutils literal"><span class="pre">visit_note</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_number_reference.html#sphinx.builders.websupport.WebSupportTranslator.visit_number_reference" title="sphinx.builders.websupport.WebSupportTranslator.visit_number_reference"><code class="xref py py-obj docutils literal"><span class="pre">visit_number_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_option.html#sphinx.builders.websupport.WebSupportTranslator.visit_option" title="sphinx.builders.websupport.WebSupportTranslator.visit_option"><code class="xref py py-obj docutils literal"><span class="pre">visit_option</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_option_argument.html#sphinx.builders.websupport.WebSupportTranslator.visit_option_argument" title="sphinx.builders.websupport.WebSupportTranslator.visit_option_argument"><code class="xref py py-obj docutils literal"><span class="pre">visit_option_argument</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_option_group.html#sphinx.builders.websupport.WebSupportTranslator.visit_option_group" title="sphinx.builders.websupport.WebSupportTranslator.visit_option_group"><code class="xref py py-obj docutils literal"><span class="pre">visit_option_group</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_option_list.html#sphinx.builders.websupport.WebSupportTranslator.visit_option_list" title="sphinx.builders.websupport.WebSupportTranslator.visit_option_list"><code class="xref py py-obj docutils literal"><span class="pre">visit_option_list</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_option_list_item.html#sphinx.builders.websupport.WebSupportTranslator.visit_option_list_item" title="sphinx.builders.websupport.WebSupportTranslator.visit_option_list_item"><code class="xref py py-obj docutils literal"><span class="pre">visit_option_list_item</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_option_string.html#sphinx.builders.websupport.WebSupportTranslator.visit_option_string" title="sphinx.builders.websupport.WebSupportTranslator.visit_option_string"><code class="xref py py-obj docutils literal"><span class="pre">visit_option_string</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_organization.html#sphinx.builders.websupport.WebSupportTranslator.visit_organization" title="sphinx.builders.websupport.WebSupportTranslator.visit_organization"><code class="xref py py-obj docutils literal"><span class="pre">visit_organization</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_paragraph.html#sphinx.builders.websupport.WebSupportTranslator.visit_paragraph" title="sphinx.builders.websupport.WebSupportTranslator.visit_paragraph"><code class="xref py py-obj docutils literal"><span class="pre">visit_paragraph</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_problematic.html#sphinx.builders.websupport.WebSupportTranslator.visit_problematic" title="sphinx.builders.websupport.WebSupportTranslator.visit_problematic"><code class="xref py py-obj docutils literal"><span class="pre">visit_problematic</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_production.html#sphinx.builders.websupport.WebSupportTranslator.visit_production" title="sphinx.builders.websupport.WebSupportTranslator.visit_production"><code class="xref py py-obj docutils literal"><span class="pre">visit_production</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_productionlist.html#sphinx.builders.websupport.WebSupportTranslator.visit_productionlist" title="sphinx.builders.websupport.WebSupportTranslator.visit_productionlist"><code class="xref py py-obj docutils literal"><span class="pre">visit_productionlist</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_raw.html#sphinx.builders.websupport.WebSupportTranslator.visit_raw" title="sphinx.builders.websupport.WebSupportTranslator.visit_raw"><code class="xref py py-obj docutils literal"><span class="pre">visit_raw</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_reference.html#sphinx.builders.websupport.WebSupportTranslator.visit_reference" title="sphinx.builders.websupport.WebSupportTranslator.visit_reference"><code class="xref py py-obj docutils literal"><span class="pre">visit_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_revision.html#sphinx.builders.websupport.WebSupportTranslator.visit_revision" title="sphinx.builders.websupport.WebSupportTranslator.visit_revision"><code class="xref py py-obj docutils literal"><span class="pre">visit_revision</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_row.html#sphinx.builders.websupport.WebSupportTranslator.visit_row" title="sphinx.builders.websupport.WebSupportTranslator.visit_row"><code class="xref py py-obj docutils literal"><span class="pre">visit_row</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_rubric.html#sphinx.builders.websupport.WebSupportTranslator.visit_rubric" title="sphinx.builders.websupport.WebSupportTranslator.visit_rubric"><code class="xref py py-obj docutils literal"><span class="pre">visit_rubric</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_section.html#sphinx.builders.websupport.WebSupportTranslator.visit_section" title="sphinx.builders.websupport.WebSupportTranslator.visit_section"><code class="xref py py-obj docutils literal"><span class="pre">visit_section</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_seealso.html#sphinx.builders.websupport.WebSupportTranslator.visit_seealso" title="sphinx.builders.websupport.WebSupportTranslator.visit_seealso"><code class="xref py py-obj docutils literal"><span class="pre">visit_seealso</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_sidebar.html#sphinx.builders.websupport.WebSupportTranslator.visit_sidebar" title="sphinx.builders.websupport.WebSupportTranslator.visit_sidebar"><code class="xref py py-obj docutils literal"><span class="pre">visit_sidebar</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_start_of_file.html#sphinx.builders.websupport.WebSupportTranslator.visit_start_of_file" title="sphinx.builders.websupport.WebSupportTranslator.visit_start_of_file"><code class="xref py py-obj docutils literal"><span class="pre">visit_start_of_file</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_status.html#sphinx.builders.websupport.WebSupportTranslator.visit_status" title="sphinx.builders.websupport.WebSupportTranslator.visit_status"><code class="xref py py-obj docutils literal"><span class="pre">visit_status</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_strong.html#sphinx.builders.websupport.WebSupportTranslator.visit_strong" title="sphinx.builders.websupport.WebSupportTranslator.visit_strong"><code class="xref py py-obj docutils literal"><span class="pre">visit_strong</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_subscript.html#sphinx.builders.websupport.WebSupportTranslator.visit_subscript" title="sphinx.builders.websupport.WebSupportTranslator.visit_subscript"><code class="xref py py-obj docutils literal"><span class="pre">visit_subscript</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_substitution_definition.html#sphinx.builders.websupport.WebSupportTranslator.visit_substitution_definition" title="sphinx.builders.websupport.WebSupportTranslator.visit_substitution_definition"><code class="xref py py-obj docutils literal"><span class="pre">visit_substitution_definition</span></code></a>(node)</td>
+<td>Internal only.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_substitution_reference.html#sphinx.builders.websupport.WebSupportTranslator.visit_substitution_reference" title="sphinx.builders.websupport.WebSupportTranslator.visit_substitution_reference"><code class="xref py py-obj docutils literal"><span class="pre">visit_substitution_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_subtitle.html#sphinx.builders.websupport.WebSupportTranslator.visit_subtitle" title="sphinx.builders.websupport.WebSupportTranslator.visit_subtitle"><code class="xref py py-obj docutils literal"><span class="pre">visit_subtitle</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_superscript.html#sphinx.builders.websupport.WebSupportTranslator.visit_superscript" title="sphinx.builders.websupport.WebSupportTranslator.visit_superscript"><code class="xref py py-obj docutils literal"><span class="pre">visit_superscript</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_system_message.html#sphinx.builders.websupport.WebSupportTranslator.visit_system_message" title="sphinx.builders.websupport.WebSupportTranslator.visit_system_message"><code class="xref py py-obj docutils literal"><span class="pre">visit_system_message</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_table.html#sphinx.builders.websupport.WebSupportTranslator.visit_table" title="sphinx.builders.websupport.WebSupportTranslator.visit_table"><code class="xref py py-obj docutils literal"><span class="pre">visit_table</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_tabular_col_spec.html#sphinx.builders.websupport.WebSupportTranslator.visit_tabular_col_spec" title="sphinx.builders.websupport.WebSupportTranslator.visit_tabular_col_spec"><code class="xref py py-obj docutils literal"><span class="pre">visit_tabular_col_spec</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_target.html#sphinx.builders.websupport.WebSupportTranslator.visit_target" title="sphinx.builders.websupport.WebSupportTranslator.visit_target"><code class="xref py py-obj docutils literal"><span class="pre">visit_target</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_tbody.html#sphinx.builders.websupport.WebSupportTranslator.visit_tbody" title="sphinx.builders.websupport.WebSupportTranslator.visit_tbody"><code class="xref py py-obj docutils literal"><span class="pre">visit_tbody</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_term.html#sphinx.builders.websupport.WebSupportTranslator.visit_term" title="sphinx.builders.websupport.WebSupportTranslator.visit_term"><code class="xref py py-obj docutils literal"><span class="pre">visit_term</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_termsep.html#sphinx.builders.websupport.WebSupportTranslator.visit_termsep" title="sphinx.builders.websupport.WebSupportTranslator.visit_termsep"><code class="xref py py-obj docutils literal"><span class="pre">visit_termsep</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_tgroup.html#sphinx.builders.websupport.WebSupportTranslator.visit_tgroup" title="sphinx.builders.websupport.WebSupportTranslator.visit_tgroup"><code class="xref py py-obj docutils literal"><span class="pre">visit_tgroup</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_thead.html#sphinx.builders.websupport.WebSupportTranslator.visit_thead" title="sphinx.builders.websupport.WebSupportTranslator.visit_thead"><code class="xref py py-obj docutils literal"><span class="pre">visit_thead</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_tip.html#sphinx.builders.websupport.WebSupportTranslator.visit_tip" title="sphinx.builders.websupport.WebSupportTranslator.visit_tip"><code class="xref py py-obj docutils literal"><span class="pre">visit_tip</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_title.html#sphinx.builders.websupport.WebSupportTranslator.visit_title" title="sphinx.builders.websupport.WebSupportTranslator.visit_title"><code class="xref py py-obj docutils literal"><span class="pre">visit_title</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_title_reference.html#sphinx.builders.websupport.WebSupportTranslator.visit_title_reference" title="sphinx.builders.websupport.WebSupportTranslator.visit_title_reference"><code class="xref py py-obj docutils literal"><span class="pre">visit_title_reference</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_toctree.html#sphinx.builders.websupport.WebSupportTranslator.visit_toctree" title="sphinx.builders.websupport.WebSupportTranslator.visit_toctree"><code class="xref py py-obj docutils literal"><span class="pre">visit_toctree</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_todo_node.html#sphinx.builders.websupport.WebSupportTranslator.visit_todo_node" title="sphinx.builders.websupport.WebSupportTranslator.visit_todo_node"><code class="xref py py-obj docutils literal"><span class="pre">visit_todo_node</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_topic.html#sphinx.builders.websupport.WebSupportTranslator.visit_topic" title="sphinx.builders.websupport.WebSupportTranslator.visit_topic"><code class="xref py py-obj docutils literal"><span class="pre">visit_topic</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_transition.html#sphinx.builders.websupport.WebSupportTranslator.visit_transition" title="sphinx.builders.websupport.WebSupportTranslator.visit_transition"><code class="xref py py-obj docutils literal"><span class="pre">visit_transition</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_version.html#sphinx.builders.websupport.WebSupportTranslator.visit_version" title="sphinx.builders.websupport.WebSupportTranslator.visit_version"><code class="xref py py-obj docutils literal"><span class="pre">visit_version</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_versionmodified.html#sphinx.builders.websupport.WebSupportTranslator.visit_versionmodified" title="sphinx.builders.websupport.WebSupportTranslator.visit_versionmodified"><code class="xref py py-obj docutils literal"><span class="pre">visit_versionmodified</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.visit_warning.html#sphinx.builders.websupport.WebSupportTranslator.visit_warning" title="sphinx.builders.websupport.WebSupportTranslator.visit_warning"><code class="xref py py-obj docutils literal"><span class="pre">visit_warning</span></code></a>(node)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.write_colspecs.html#sphinx.builders.websupport.WebSupportTranslator.write_colspecs" title="sphinx.builders.websupport.WebSupportTranslator.write_colspecs"><code class="xref py py-obj docutils literal"><span class="pre">write_colspecs</span></code></a>()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>4.14.2.5.2. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.attribution_formats.html#sphinx.builders.websupport.WebSupportTranslator.attribution_formats" title="sphinx.builders.websupport.WebSupportTranslator.attribution_formats"><code class="xref py py-obj docutils literal"><span class="pre">attribution_formats</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.content_type.html#sphinx.builders.websupport.WebSupportTranslator.content_type" title="sphinx.builders.websupport.WebSupportTranslator.content_type"><code class="xref py py-obj docutils literal"><span class="pre">content_type</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.content_type_mathml.html#sphinx.builders.websupport.WebSupportTranslator.content_type_mathml" title="sphinx.builders.websupport.WebSupportTranslator.content_type_mathml"><code class="xref py py-obj docutils literal"><span class="pre">content_type_mathml</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.doctype.html#sphinx.builders.websupport.WebSupportTranslator.doctype" title="sphinx.builders.websupport.WebSupportTranslator.doctype"><code class="xref py py-obj docutils literal"><span class="pre">doctype</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.doctype_mathml.html#sphinx.builders.websupport.WebSupportTranslator.doctype_mathml" title="sphinx.builders.websupport.WebSupportTranslator.doctype_mathml"><code class="xref py py-obj docutils literal"><span class="pre">doctype_mathml</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.embedded_stylesheet.html#sphinx.builders.websupport.WebSupportTranslator.embedded_stylesheet" title="sphinx.builders.websupport.WebSupportTranslator.embedded_stylesheet"><code class="xref py py-obj docutils literal"><span class="pre">embedded_stylesheet</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.generator.html#sphinx.builders.websupport.WebSupportTranslator.generator" title="sphinx.builders.websupport.WebSupportTranslator.generator"><code class="xref py py-obj docutils literal"><span class="pre">generator</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.head_prefix_template.html#sphinx.builders.websupport.WebSupportTranslator.head_prefix_template" title="sphinx.builders.websupport.WebSupportTranslator.head_prefix_template"><code class="xref py py-obj docutils literal"><span class="pre">head_prefix_template</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.lang_attribute.html#sphinx.builders.websupport.WebSupportTranslator.lang_attribute" title="sphinx.builders.websupport.WebSupportTranslator.lang_attribute"><code class="xref py py-obj docutils literal"><span class="pre">lang_attribute</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.mathjax_script.html#sphinx.builders.websupport.WebSupportTranslator.mathjax_script" title="sphinx.builders.websupport.WebSupportTranslator.mathjax_script"><code class="xref py py-obj docutils literal"><span class="pre">mathjax_script</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.mathjax_url.html#sphinx.builders.websupport.WebSupportTranslator.mathjax_url" title="sphinx.builders.websupport.WebSupportTranslator.mathjax_url"><code class="xref py py-obj docutils literal"><span class="pre">mathjax_url</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.optional.html#sphinx.builders.websupport.WebSupportTranslator.optional" title="sphinx.builders.websupport.WebSupportTranslator.optional"><code class="xref py py-obj docutils literal"><span class="pre">optional</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.sollbruchstelle.html#sphinx.builders.websupport.WebSupportTranslator.sollbruchstelle" title="sphinx.builders.websupport.WebSupportTranslator.sollbruchstelle"><code class="xref py py-obj docutils literal"><span class="pre">sollbruchstelle</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.stylesheet_link.html#sphinx.builders.websupport.WebSupportTranslator.stylesheet_link" title="sphinx.builders.websupport.WebSupportTranslator.stylesheet_link"><code class="xref py py-obj docutils literal"><span class="pre">stylesheet_link</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.words_and_spaces.html#sphinx.builders.websupport.WebSupportTranslator.words_and_spaces" title="sphinx.builders.websupport.WebSupportTranslator.words_and_spaces"><code class="xref py py-obj docutils literal"><span class="pre">words_and_spaces</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.websupport.WebSupportTranslator.xml_declaration.html#sphinx.builders.websupport.WebSupportTranslator.xml_declaration" title="sphinx.builders.websupport.WebSupportTranslator.xml_declaration"><code class="xref py py-obj docutils literal"><span class="pre">xml_declaration</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.builders.websupport.WebSupportTranslator.__init__.html" class="btn btn-neutral float-right" title="4.14.2.5.1.1. sphinx.builders.websupport.WebSupportTranslator.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.builders.websupport.WebSupportBuilder.versioning_method.html" class="btn btn-neutral" title="4.14.2.4.2.20. sphinx.builders.websupport.WebSupportBuilder.versioning_method" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.error
+===================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.error

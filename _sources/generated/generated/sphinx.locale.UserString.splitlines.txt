@@ -1,0 +1,6 @@
+sphinx.locale.UserString.splitlines
+===================================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.splitlines

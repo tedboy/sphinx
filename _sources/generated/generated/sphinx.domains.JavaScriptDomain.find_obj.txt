@@ -1,0 +1,6 @@
+sphinx.domains.JavaScriptDomain.find_obj
+========================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: JavaScriptDomain.find_obj

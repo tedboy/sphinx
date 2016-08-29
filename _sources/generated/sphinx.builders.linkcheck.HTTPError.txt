@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTTPError
+===================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoexception:: HTTPError

@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.add_permalinks
+===============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: EpubBuilder.add_permalinks

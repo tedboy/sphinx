@@ -1,0 +1,6 @@
+sphinx.pycode.StringIO.isatty
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: StringIO.isatty

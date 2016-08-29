@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.text_type.expandtabs
+========================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: text_type.expandtabs

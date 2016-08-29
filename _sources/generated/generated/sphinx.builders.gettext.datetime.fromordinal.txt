@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.fromordinal
+============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.fromordinal

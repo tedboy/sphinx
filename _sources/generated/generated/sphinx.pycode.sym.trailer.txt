@@ -1,0 +1,6 @@
+sphinx.pycode.sym.trailer
+=========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.trailer

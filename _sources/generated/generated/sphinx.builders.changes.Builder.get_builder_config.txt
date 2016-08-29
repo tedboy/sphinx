@@ -1,0 +1,6 @@
+sphinx.builders.changes.Builder.get_builder_config
+==================================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: Builder.get_builder_config

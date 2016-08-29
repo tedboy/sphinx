@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_target
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_target

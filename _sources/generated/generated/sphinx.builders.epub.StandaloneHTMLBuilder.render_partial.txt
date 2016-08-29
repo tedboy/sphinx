@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.render_partial
+=========================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.render_partial

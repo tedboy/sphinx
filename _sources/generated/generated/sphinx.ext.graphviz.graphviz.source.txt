@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.source
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: graphviz.source

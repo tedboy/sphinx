@@ -1,0 +1,6 @@
+sphinx.domains.std.Program.has_content
+======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Program.has_content

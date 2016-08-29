@@ -1,0 +1,56 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder
+===================================================
+.. currentmodule:: sphinx.builders.linkcheck
+.. autoclass:: CheckExternalLinksBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CheckExternalLinksBuilder.__init__
+   ~CheckExternalLinksBuilder.build
+   ~CheckExternalLinksBuilder.build_all
+   ~CheckExternalLinksBuilder.build_specific
+   ~CheckExternalLinksBuilder.build_update
+   ~CheckExternalLinksBuilder.check_thread
+   ~CheckExternalLinksBuilder.cleanup
+   ~CheckExternalLinksBuilder.compile_all_catalogs
+   ~CheckExternalLinksBuilder.compile_catalogs
+   ~CheckExternalLinksBuilder.compile_specific_catalogs
+   ~CheckExternalLinksBuilder.compile_update_catalogs
+   ~CheckExternalLinksBuilder.create_template_bridge
+   ~CheckExternalLinksBuilder.finish
+   ~CheckExternalLinksBuilder.get_builder_config
+   ~CheckExternalLinksBuilder.get_outdated_docs
+   ~CheckExternalLinksBuilder.get_relative_uri
+   ~CheckExternalLinksBuilder.get_target_uri
+   ~CheckExternalLinksBuilder.init
+   ~CheckExternalLinksBuilder.post_process_images
+   ~CheckExternalLinksBuilder.prepare_writing
+   ~CheckExternalLinksBuilder.process_result
+   ~CheckExternalLinksBuilder.write
+   ~CheckExternalLinksBuilder.write_doc
+   ~CheckExternalLinksBuilder.write_doc_serialized
+   ~CheckExternalLinksBuilder.write_entry
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CheckExternalLinksBuilder.allow_parallel
+   ~CheckExternalLinksBuilder.format
+   ~CheckExternalLinksBuilder.name
+   ~CheckExternalLinksBuilder.supported_image_types
+   ~CheckExternalLinksBuilder.versioning_compare
+   ~CheckExternalLinksBuilder.versioning_method
+

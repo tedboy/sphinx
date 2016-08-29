@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.text_type.isupper
+================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: text_type.isupper

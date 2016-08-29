@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.add_extension
+===========================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.add_extension

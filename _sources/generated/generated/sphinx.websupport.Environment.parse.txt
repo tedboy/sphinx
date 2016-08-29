@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.parse
+===================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Environment.parse

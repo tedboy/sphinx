@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.first_child_matching_class
+==========================================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.first_child_matching_class

@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.config_section_dependencies
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.config_section_dependencies

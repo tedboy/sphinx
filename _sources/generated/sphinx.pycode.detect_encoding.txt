@@ -1,0 +1,6 @@
+sphinx.pycode.detect_encoding
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autofunction:: detect_encoding

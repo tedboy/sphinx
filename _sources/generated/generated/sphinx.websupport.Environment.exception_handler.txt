@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.exception_handler
+===============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. autoattribute:: Environment.exception_handler

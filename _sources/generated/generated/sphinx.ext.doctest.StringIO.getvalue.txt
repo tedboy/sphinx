@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.getvalue
+====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.getvalue

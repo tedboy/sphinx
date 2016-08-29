@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.cleanup
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.cleanup

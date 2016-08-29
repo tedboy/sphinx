@@ -1,0 +1,6 @@
+sphinx.ext.doctest.SphinxDocTestRunner.__init__
+===============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: SphinxDocTestRunner.__init__

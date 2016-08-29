@@ -1,0 +1,6 @@
+sphinx.ext.coverage.Builder.write
+=================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: Builder.write

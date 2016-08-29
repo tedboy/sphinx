@@ -1,0 +1,6 @@
+sphinx.builders.gettext.Catalog.__init__
+========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: Catalog.__init__

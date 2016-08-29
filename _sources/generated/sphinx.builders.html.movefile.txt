@@ -1,0 +1,6 @@
+sphinx.builders.html.movefile
+=============================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: movefile

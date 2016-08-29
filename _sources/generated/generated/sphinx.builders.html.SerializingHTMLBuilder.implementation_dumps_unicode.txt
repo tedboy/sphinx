@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.implementation_dumps_unicode
+========================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.implementation_dumps_unicode

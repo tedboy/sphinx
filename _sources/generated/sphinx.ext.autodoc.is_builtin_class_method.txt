@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.is_builtin_class_method
+==========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: is_builtin_class_method

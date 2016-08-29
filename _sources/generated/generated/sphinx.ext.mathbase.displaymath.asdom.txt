@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.asdom
+=====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.asdom

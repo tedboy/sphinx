@@ -1,0 +1,35 @@
+sphinx.search.SearchEnglish
+===========================
+.. currentmodule:: sphinx.search
+.. autoclass:: SearchEnglish
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~SearchEnglish.__init__
+   ~SearchEnglish.init
+   ~SearchEnglish.split
+   ~SearchEnglish.stem
+   ~SearchEnglish.word_filter
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~SearchEnglish.js_stemmer_code
+   ~SearchEnglish.js_stemmer_rawcode
+   ~SearchEnglish.lang
+   ~SearchEnglish.language_name
+   ~SearchEnglish.stopwords
+

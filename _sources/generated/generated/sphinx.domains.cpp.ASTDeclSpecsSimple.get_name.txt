@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclSpecsSimple.get_name
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclSpecsSimple.get_name

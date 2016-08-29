@@ -1,0 +1,6 @@
+sphinx.websupport.WebSupport.update_username
+============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: WebSupport.update_username

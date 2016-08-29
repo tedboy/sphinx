@@ -1,0 +1,6 @@
+sphinx.search.raw.__init__
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.__init__

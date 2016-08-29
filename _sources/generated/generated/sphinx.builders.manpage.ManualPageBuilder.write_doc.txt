@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageBuilder.write_doc
+===================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageBuilder.write_doc

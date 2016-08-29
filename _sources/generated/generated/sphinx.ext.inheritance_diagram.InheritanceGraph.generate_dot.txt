@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.InheritanceGraph.generate_dot
+============================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. automethod:: InheritanceGraph.generate_dot

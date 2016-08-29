@@ -1,0 +1,6 @@
+sphinx.builders.websupport.BuiltinTemplateLoader.get_source
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: BuiltinTemplateLoader.get_source

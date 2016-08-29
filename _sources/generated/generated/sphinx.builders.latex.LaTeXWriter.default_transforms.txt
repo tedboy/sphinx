@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXWriter.default_transforms
+====================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: LaTeXWriter.default_transforms

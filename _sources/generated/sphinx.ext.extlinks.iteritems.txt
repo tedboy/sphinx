@@ -1,0 +1,6 @@
+sphinx.ext.extlinks.iteritems
+=============================
+
+.. currentmodule:: sphinx.ext.extlinks
+
+.. autofunction:: iteritems

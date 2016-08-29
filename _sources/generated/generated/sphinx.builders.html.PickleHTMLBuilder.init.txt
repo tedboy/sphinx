@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.init
+===========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.init

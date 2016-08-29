@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.doc_field_types
+============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Cmdoption.doc_field_types

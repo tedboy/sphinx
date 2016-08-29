@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.__init__
+=============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.__init__

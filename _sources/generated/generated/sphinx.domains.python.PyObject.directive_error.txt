@@ -1,0 +1,6 @@
+sphinx.domains.python.PyObject.directive_error
+==============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyObject.directive_error

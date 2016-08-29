@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.month
+======================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.month

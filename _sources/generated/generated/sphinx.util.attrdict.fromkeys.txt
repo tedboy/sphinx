@@ -1,0 +1,6 @@
+sphinx.util.attrdict.fromkeys
+=============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.fromkeys

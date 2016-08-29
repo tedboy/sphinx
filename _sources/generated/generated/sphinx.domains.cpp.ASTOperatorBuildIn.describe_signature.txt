@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTOperatorBuildIn.describe_signature
+========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTOperatorBuildIn.describe_signature

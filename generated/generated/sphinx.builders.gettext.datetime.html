@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.5.2.7. sphinx.builders.gettext.datetime &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="4.5. sphinx.builders.gettext" href="../sphinx.builders.gettext.html"/>
+        <link rel="next" title="4.5.2.7.1.1. sphinx.builders.gettext.datetime.astimezone" href="sphinx.builders.gettext.datetime.astimezone.html"/>
+        <link rel="prev" title="4.5.2.6.1.1. sphinx.builders.gettext.MsgOrigin.__init__" href="sphinx.builders.gettext.MsgOrigin.__init__.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.epub.html">4.4. sphinx.builders.epub</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.builders.gettext.html#functions">4.5.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.builders.gettext.html#classes">4.5.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.Builder.html">4.5.2.1. sphinx.builders.gettext.Builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.Catalog.html">4.5.2.2. sphinx.builders.gettext.Catalog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.I18nBuilder.html">4.5.2.3. sphinx.builders.gettext.I18nBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.LocalTimeZone.html">4.5.2.4. sphinx.builders.gettext.LocalTimeZone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.MessageCatalogBuilder.html">4.5.2.5. sphinx.builders.gettext.MessageCatalogBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.MsgOrigin.html">4.5.2.6. sphinx.builders.gettext.MsgOrigin</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">4.5.2.7. sphinx.builders.gettext.datetime</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.defaultdict.html">4.5.2.8. sphinx.builders.gettext.defaultdict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.timedelta.html">4.5.2.9. sphinx.builders.gettext.timedelta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.gettext.tzinfo.html">4.5.2.10. sphinx.builders.gettext.tzinfo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html.html">4.6. sphinx.builders.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.xml.html">4.15. sphinx.builders.xml</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a> &raquo;</li>
+        
+      <li>4.5.2.7. sphinx.builders.gettext.datetime</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.builders.gettext.datetime.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-builders-gettext-datetime">
+<h1>4.5.2.7. sphinx.builders.gettext.datetime<a class="headerlink" href="#sphinx-builders-gettext-datetime" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.builders.gettext.datetime">
+<em class="property">class </em><code class="descclassname">sphinx.builders.gettext.</code><code class="descname">datetime</code><a class="headerlink" href="#sphinx.builders.gettext.datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>The year, month and day arguments are required. tzinfo may be None, or an
+instance of a tzinfo subclass. The remaining arguments may be ints or longs.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>4.5.2.7.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.astimezone.html#sphinx.builders.gettext.datetime.astimezone" title="sphinx.builders.gettext.datetime.astimezone"><code class="xref py py-obj docutils literal"><span class="pre">astimezone</span></code></a></td>
+<td>tz -&gt; convert to local time in new timezone tz</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.combine.html#sphinx.builders.gettext.datetime.combine" title="sphinx.builders.gettext.datetime.combine"><code class="xref py py-obj docutils literal"><span class="pre">combine</span></code></a></td>
+<td>date, time -&gt; datetime with same date and time fields</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.ctime.html#sphinx.builders.gettext.datetime.ctime" title="sphinx.builders.gettext.datetime.ctime"><code class="xref py py-obj docutils literal"><span class="pre">ctime</span></code></a></td>
+<td>Return ctime() style string.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.date.html#sphinx.builders.gettext.datetime.date" title="sphinx.builders.gettext.datetime.date"><code class="xref py py-obj docutils literal"><span class="pre">date</span></code></a></td>
+<td>Return date object with same year, month and day.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.dst.html#sphinx.builders.gettext.datetime.dst" title="sphinx.builders.gettext.datetime.dst"><code class="xref py py-obj docutils literal"><span class="pre">dst</span></code></a></td>
+<td>Return self.tzinfo.dst(self).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.fromordinal.html#sphinx.builders.gettext.datetime.fromordinal" title="sphinx.builders.gettext.datetime.fromordinal"><code class="xref py py-obj docutils literal"><span class="pre">fromordinal</span></code></a></td>
+<td>int -&gt; date corresponding to a proleptic Gregorian ordinal.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.fromtimestamp.html#sphinx.builders.gettext.datetime.fromtimestamp" title="sphinx.builders.gettext.datetime.fromtimestamp"><code class="xref py py-obj docutils literal"><span class="pre">fromtimestamp</span></code></a></td>
+<td>timestamp[, tz] -&gt; tz&#8217;s local time from POSIX timestamp.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.isocalendar.html#sphinx.builders.gettext.datetime.isocalendar" title="sphinx.builders.gettext.datetime.isocalendar"><code class="xref py py-obj docutils literal"><span class="pre">isocalendar</span></code></a></td>
+<td>Return a 3-tuple containing ISO year, week number, and weekday.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.isoformat.html#sphinx.builders.gettext.datetime.isoformat" title="sphinx.builders.gettext.datetime.isoformat"><code class="xref py py-obj docutils literal"><span class="pre">isoformat</span></code></a></td>
+<td>[sep] -&gt; string in ISO 8601 format, YYYY-MM-DDTHH:MM:SS[.mmmmmm][+HH:MM].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.isoweekday.html#sphinx.builders.gettext.datetime.isoweekday" title="sphinx.builders.gettext.datetime.isoweekday"><code class="xref py py-obj docutils literal"><span class="pre">isoweekday</span></code></a></td>
+<td>Return the day of the week represented by the date.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.now.html#sphinx.builders.gettext.datetime.now" title="sphinx.builders.gettext.datetime.now"><code class="xref py py-obj docutils literal"><span class="pre">now</span></code></a></td>
+<td>[tz] -&gt; new datetime with tz&#8217;s local day and time.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.replace.html#sphinx.builders.gettext.datetime.replace" title="sphinx.builders.gettext.datetime.replace"><code class="xref py py-obj docutils literal"><span class="pre">replace</span></code></a></td>
+<td>Return datetime with new specified fields.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.strftime.html#sphinx.builders.gettext.datetime.strftime" title="sphinx.builders.gettext.datetime.strftime"><code class="xref py py-obj docutils literal"><span class="pre">strftime</span></code></a></td>
+<td>format -&gt; strftime() style string.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.strptime.html#sphinx.builders.gettext.datetime.strptime" title="sphinx.builders.gettext.datetime.strptime"><code class="xref py py-obj docutils literal"><span class="pre">strptime</span></code></a></td>
+<td>string, format -&gt; new datetime parsed from a string (like time.strptime()).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.time.html#sphinx.builders.gettext.datetime.time" title="sphinx.builders.gettext.datetime.time"><code class="xref py py-obj docutils literal"><span class="pre">time</span></code></a></td>
+<td>Return time object with same time but with tzinfo=None.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.timetuple.html#sphinx.builders.gettext.datetime.timetuple" title="sphinx.builders.gettext.datetime.timetuple"><code class="xref py py-obj docutils literal"><span class="pre">timetuple</span></code></a></td>
+<td>Return time tuple, compatible with time.localtime().</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.timetz.html#sphinx.builders.gettext.datetime.timetz" title="sphinx.builders.gettext.datetime.timetz"><code class="xref py py-obj docutils literal"><span class="pre">timetz</span></code></a></td>
+<td>Return time object with same time and tzinfo.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.today.html#sphinx.builders.gettext.datetime.today" title="sphinx.builders.gettext.datetime.today"><code class="xref py py-obj docutils literal"><span class="pre">today</span></code></a></td>
+<td>Current date or datetime:  same as self.__class__.fromtimestamp(time.time()).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.toordinal.html#sphinx.builders.gettext.datetime.toordinal" title="sphinx.builders.gettext.datetime.toordinal"><code class="xref py py-obj docutils literal"><span class="pre">toordinal</span></code></a></td>
+<td>Return proleptic Gregorian ordinal.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.tzname.html#sphinx.builders.gettext.datetime.tzname" title="sphinx.builders.gettext.datetime.tzname"><code class="xref py py-obj docutils literal"><span class="pre">tzname</span></code></a></td>
+<td>Return self.tzinfo.tzname(self).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.utcfromtimestamp.html#sphinx.builders.gettext.datetime.utcfromtimestamp" title="sphinx.builders.gettext.datetime.utcfromtimestamp"><code class="xref py py-obj docutils literal"><span class="pre">utcfromtimestamp</span></code></a></td>
+<td>timestamp -&gt; UTC datetime from a POSIX timestamp (like time.time()).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.utcnow.html#sphinx.builders.gettext.datetime.utcnow" title="sphinx.builders.gettext.datetime.utcnow"><code class="xref py py-obj docutils literal"><span class="pre">utcnow</span></code></a></td>
+<td>Return a new datetime representing UTC day and time.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.utcoffset.html#sphinx.builders.gettext.datetime.utcoffset" title="sphinx.builders.gettext.datetime.utcoffset"><code class="xref py py-obj docutils literal"><span class="pre">utcoffset</span></code></a></td>
+<td>Return self.tzinfo.utcoffset(self).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.utctimetuple.html#sphinx.builders.gettext.datetime.utctimetuple" title="sphinx.builders.gettext.datetime.utctimetuple"><code class="xref py py-obj docutils literal"><span class="pre">utctimetuple</span></code></a></td>
+<td>Return UTC time tuple, compatible with time.localtime().</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.weekday.html#sphinx.builders.gettext.datetime.weekday" title="sphinx.builders.gettext.datetime.weekday"><code class="xref py py-obj docutils literal"><span class="pre">weekday</span></code></a></td>
+<td>Return the day of the week represented by the date.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>4.5.2.7.2. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.day.html#sphinx.builders.gettext.datetime.day" title="sphinx.builders.gettext.datetime.day"><code class="xref py py-obj docutils literal"><span class="pre">day</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.hour.html#sphinx.builders.gettext.datetime.hour" title="sphinx.builders.gettext.datetime.hour"><code class="xref py py-obj docutils literal"><span class="pre">hour</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.max.html#sphinx.builders.gettext.datetime.max" title="sphinx.builders.gettext.datetime.max"><code class="xref py py-obj docutils literal"><span class="pre">max</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.microsecond.html#sphinx.builders.gettext.datetime.microsecond" title="sphinx.builders.gettext.datetime.microsecond"><code class="xref py py-obj docutils literal"><span class="pre">microsecond</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.min.html#sphinx.builders.gettext.datetime.min" title="sphinx.builders.gettext.datetime.min"><code class="xref py py-obj docutils literal"><span class="pre">min</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.minute.html#sphinx.builders.gettext.datetime.minute" title="sphinx.builders.gettext.datetime.minute"><code class="xref py py-obj docutils literal"><span class="pre">minute</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.month.html#sphinx.builders.gettext.datetime.month" title="sphinx.builders.gettext.datetime.month"><code class="xref py py-obj docutils literal"><span class="pre">month</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.resolution.html#sphinx.builders.gettext.datetime.resolution" title="sphinx.builders.gettext.datetime.resolution"><code class="xref py py-obj docutils literal"><span class="pre">resolution</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.second.html#sphinx.builders.gettext.datetime.second" title="sphinx.builders.gettext.datetime.second"><code class="xref py py-obj docutils literal"><span class="pre">second</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.tzinfo.html#sphinx.builders.gettext.datetime.tzinfo" title="sphinx.builders.gettext.datetime.tzinfo"><code class="xref py py-obj docutils literal"><span class="pre">tzinfo</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.gettext.datetime.year.html#sphinx.builders.gettext.datetime.year" title="sphinx.builders.gettext.datetime.year"><code class="xref py py-obj docutils literal"><span class="pre">year</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.builders.gettext.datetime.astimezone.html" class="btn btn-neutral float-right" title="4.5.2.7.1.1. sphinx.builders.gettext.datetime.astimezone" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.builders.gettext.MsgOrigin.__init__.html" class="btn btn-neutral" title="4.5.2.6.1.1. sphinx.builders.gettext.MsgOrigin.__init__" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

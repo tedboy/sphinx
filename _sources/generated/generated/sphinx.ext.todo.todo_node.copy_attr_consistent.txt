@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.copy_attr_consistent
+==============================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todo_node.copy_attr_consistent

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.skip_word_and_ws
+====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.skip_word_and_ws

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.visitor_attributes
+========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.visitor_attributes

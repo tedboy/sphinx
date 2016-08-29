@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.copy_static_files
+==================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.copy_static_files

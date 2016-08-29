@@ -1,0 +1,6 @@
+sphinx.ext.mathjax.setup
+========================
+
+.. currentmodule:: sphinx.ext.mathjax
+
+.. autofunction:: setup

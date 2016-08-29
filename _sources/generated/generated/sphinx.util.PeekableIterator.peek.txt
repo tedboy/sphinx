@@ -1,0 +1,6 @@
+sphinx.util.PeekableIterator.peek
+=================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: PeekableIterator.peek

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.add_name
+=============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.add_name

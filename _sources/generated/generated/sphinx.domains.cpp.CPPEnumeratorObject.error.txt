@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.error
+============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.error

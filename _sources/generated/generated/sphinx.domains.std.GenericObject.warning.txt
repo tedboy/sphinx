@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.warning
+========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: GenericObject.warning

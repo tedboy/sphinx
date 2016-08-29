@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPClassObject.assert_has_content
+====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPClassObject.assert_has_content

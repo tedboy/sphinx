@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.handle_comment
+===================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.handle_comment

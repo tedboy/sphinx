@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.has_content
+=============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyClasslike.has_content

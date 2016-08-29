@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.add_node
+=================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.add_node

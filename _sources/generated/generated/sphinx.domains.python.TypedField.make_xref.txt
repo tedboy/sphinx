@@ -1,0 +1,6 @@
+sphinx.domains.python.TypedField.make_xref
+==========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: TypedField.make_xref

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.versioning_compare
+===============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.versioning_compare

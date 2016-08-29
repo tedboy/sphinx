@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.text_visit_eqref
+====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: text_visit_eqref

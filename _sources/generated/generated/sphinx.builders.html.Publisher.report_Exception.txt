@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.report_Exception
+===============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.report_Exception

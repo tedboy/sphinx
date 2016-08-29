@@ -1,0 +1,6 @@
+sphinx.domains.python.PyXRefRole.result_nodes
+=============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyXRefRole.result_nodes

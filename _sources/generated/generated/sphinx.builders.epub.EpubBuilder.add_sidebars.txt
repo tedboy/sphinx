@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.add_sidebars
+=============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.add_sidebars

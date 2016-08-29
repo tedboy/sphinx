@@ -1,0 +1,6 @@
+sphinx.pycode.sym.while_stmt
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.while_stmt

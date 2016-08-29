@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPObject.parse_definition
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPObject.parse_definition

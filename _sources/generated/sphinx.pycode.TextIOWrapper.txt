@@ -1,0 +1,6 @@
+sphinx.pycode.TextIOWrapper
+===========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autofunction:: TextIOWrapper

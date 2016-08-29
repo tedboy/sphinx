@@ -1,0 +1,87 @@
+sphinx.search.raw
+=================
+.. currentmodule:: sphinx.search
+.. autoclass:: raw
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~raw.__init__
+   ~raw.append
+   ~raw.append_attr_list
+   ~raw.asdom
+   ~raw.astext
+   ~raw.attlist
+   ~raw.clear
+   ~raw.coerce_append_attr_list
+   ~raw.copy
+   ~raw.copy_attr_coerce
+   ~raw.copy_attr_concatenate
+   ~raw.copy_attr_consistent
+   ~raw.copy_attr_convert
+   ~raw.deepcopy
+   ~raw.delattr
+   ~raw.emptytag
+   ~raw.endtag
+   ~raw.extend
+   ~raw.first_child_matching_class
+   ~raw.first_child_not_matching_class
+   ~raw.get
+   ~raw.get_language_code
+   ~raw.has_key
+   ~raw.hasattr
+   ~raw.index
+   ~raw.insert
+   ~raw.is_not_default
+   ~raw.is_not_known_attribute
+   ~raw.is_not_list_attribute
+   ~raw.next_node
+   ~raw.non_default_attributes
+   ~raw.note_referenced_by
+   ~raw.pformat
+   ~raw.pop
+   ~raw.remove
+   ~raw.replace
+   ~raw.replace_attr
+   ~raw.replace_self
+   ~raw.set_class
+   ~raw.setdefault
+   ~raw.setup_child
+   ~raw.shortrepr
+   ~raw.starttag
+   ~raw.traverse
+   ~raw.update_all_atts
+   ~raw.update_all_atts_coercion
+   ~raw.update_all_atts_concatenating
+   ~raw.update_all_atts_consistantly
+   ~raw.update_all_atts_convert
+   ~raw.update_basic_atts
+   ~raw.walk
+   ~raw.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~raw.basic_attributes
+   ~raw.child_text_separator
+   ~raw.document
+   ~raw.known_attributes
+   ~raw.line
+   ~raw.list_attributes
+   ~raw.local_attributes
+   ~raw.parent
+   ~raw.source
+   ~raw.tagname
+

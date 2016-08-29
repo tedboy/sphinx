@@ -1,0 +1,6 @@
+sphinx.domains.CPPDomain.indices
+================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: CPPDomain.indices

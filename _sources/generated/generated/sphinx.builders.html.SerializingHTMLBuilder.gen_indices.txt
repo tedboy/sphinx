@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.gen_indices
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.gen_indices

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.Builder.compile_specific_catalogs
+=========================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: Builder.compile_specific_catalogs

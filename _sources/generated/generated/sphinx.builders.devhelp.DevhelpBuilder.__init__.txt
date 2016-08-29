@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.__init__
+===============================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.__init__

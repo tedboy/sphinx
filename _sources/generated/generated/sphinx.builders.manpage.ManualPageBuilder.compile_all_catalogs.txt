@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageBuilder.compile_all_catalogs
+==============================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageBuilder.compile_all_catalogs

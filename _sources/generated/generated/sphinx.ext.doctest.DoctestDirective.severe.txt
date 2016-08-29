@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DoctestDirective.severe
+==========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DoctestDirective.severe

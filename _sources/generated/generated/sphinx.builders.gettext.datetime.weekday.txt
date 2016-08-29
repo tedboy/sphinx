@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.weekday
+========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.weekday

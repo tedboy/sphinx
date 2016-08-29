@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.copy
+==============================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.copy

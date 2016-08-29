@@ -1,0 +1,6 @@
+sphinx.builders.latex.Builder.get_relative_uri
+==============================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: Builder.get_relative_uri

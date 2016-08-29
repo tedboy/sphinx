@@ -1,0 +1,6 @@
+sphinx.search.comment.copy_attr_convert
+=======================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.copy_attr_convert

@@ -1,0 +1,45 @@
+sphinx.builders.xml.PseudoXMLWriter
+===================================
+.. currentmodule:: sphinx.builders.xml
+.. autoclass:: PseudoXMLWriter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PseudoXMLWriter.__init__
+   ~PseudoXMLWriter.assemble_parts
+   ~PseudoXMLWriter.get_transforms
+   ~PseudoXMLWriter.supports
+   ~PseudoXMLWriter.translate
+   ~PseudoXMLWriter.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PseudoXMLWriter.component_type
+   ~PseudoXMLWriter.config_section
+   ~PseudoXMLWriter.config_section_dependencies
+   ~PseudoXMLWriter.default_transforms
+   ~PseudoXMLWriter.destination
+   ~PseudoXMLWriter.document
+   ~PseudoXMLWriter.language
+   ~PseudoXMLWriter.output
+   ~PseudoXMLWriter.relative_path_settings
+   ~PseudoXMLWriter.settings_default_overrides
+   ~PseudoXMLWriter.settings_defaults
+   ~PseudoXMLWriter.settings_spec
+   ~PseudoXMLWriter.supported
+   ~PseudoXMLWriter.unknown_reference_resolvers
+

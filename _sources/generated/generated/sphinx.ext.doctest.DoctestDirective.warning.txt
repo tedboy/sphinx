@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DoctestDirective.warning
+===========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: DoctestDirective.warning

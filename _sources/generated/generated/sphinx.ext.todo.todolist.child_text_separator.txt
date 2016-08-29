@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.child_text_separator
+=============================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todolist.child_text_separator

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.titles_allowed
+=====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ExceptionDocumenter.titles_allowed

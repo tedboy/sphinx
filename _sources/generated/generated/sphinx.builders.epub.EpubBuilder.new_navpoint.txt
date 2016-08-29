@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.new_navpoint
+=============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.new_navpoint

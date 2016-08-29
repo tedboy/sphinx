@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSCallable.severe
+===========================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSCallable.severe

@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.prepare_writing
+=================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.prepare_writing

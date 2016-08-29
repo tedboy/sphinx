@@ -1,0 +1,6 @@
+sphinx.util.attrdict.setdefault
+===============================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: attrdict.setdefault

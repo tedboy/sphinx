@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.rsplit
+===================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.rsplit

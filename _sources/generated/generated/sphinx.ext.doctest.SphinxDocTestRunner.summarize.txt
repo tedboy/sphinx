@@ -1,0 +1,6 @@
+sphinx.ext.doctest.SphinxDocTestRunner.summarize
+================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: SphinxDocTestRunner.summarize

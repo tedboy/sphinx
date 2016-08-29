@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClassmember.add_name
+============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClassmember.add_name

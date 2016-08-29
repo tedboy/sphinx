@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.__init__
+====================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.__init__

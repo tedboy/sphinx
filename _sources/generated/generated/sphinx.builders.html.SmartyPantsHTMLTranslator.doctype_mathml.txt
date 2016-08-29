@@ -1,0 +1,6 @@
+sphinx.builders.html.SmartyPantsHTMLTranslator.doctype_mathml
+=============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SmartyPantsHTMLTranslator.doctype_mathml

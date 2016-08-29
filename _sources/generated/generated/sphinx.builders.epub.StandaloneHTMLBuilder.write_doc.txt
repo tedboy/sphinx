@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.write_doc
+====================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.write_doc

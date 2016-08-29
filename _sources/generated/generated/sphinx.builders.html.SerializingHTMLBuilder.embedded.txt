@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.embedded
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.embedded

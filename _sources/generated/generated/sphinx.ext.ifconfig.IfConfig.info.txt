@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.info
+=================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: IfConfig.info

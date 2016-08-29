@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.default_sidebars
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.default_sidebars

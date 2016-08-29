@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.parent
+===============================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: todolist.parent

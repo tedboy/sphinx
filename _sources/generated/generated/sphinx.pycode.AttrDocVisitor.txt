@@ -1,0 +1,28 @@
+sphinx.pycode.AttrDocVisitor
+============================
+.. currentmodule:: sphinx.pycode
+.. autoclass:: AttrDocVisitor
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~AttrDocVisitor.__init__
+   ~AttrDocVisitor.add_docstring
+   ~AttrDocVisitor.add_tag
+   ~AttrDocVisitor.generic_visit
+   ~AttrDocVisitor.init
+   ~AttrDocVisitor.visit
+   ~AttrDocVisitor.visit_classdef
+   ~AttrDocVisitor.visit_expr_stmt
+   ~AttrDocVisitor.visit_funcdef
+   ~AttrDocVisitor.visit_simple_stmt
+
+
+
+
+

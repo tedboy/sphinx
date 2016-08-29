@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTrailingTypeSpecFundamental.clone
+=======================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTrailingTypeSpecFundamental.clone

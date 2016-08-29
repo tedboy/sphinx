@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportBuilder.post_process_images
+================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportBuilder.post_process_images

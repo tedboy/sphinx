@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Directive.add_name
+=====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: Directive.add_name

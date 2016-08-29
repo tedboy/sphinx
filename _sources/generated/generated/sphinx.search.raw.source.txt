@@ -1,0 +1,6 @@
+sphinx.search.raw.source
+========================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: raw.source

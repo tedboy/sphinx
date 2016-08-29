@@ -1,0 +1,6 @@
+sphinx.builders.gettext.timedelta.total_seconds
+===============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: timedelta.total_seconds

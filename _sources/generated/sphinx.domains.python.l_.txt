@@ -1,0 +1,6 @@
+sphinx.domains.python.l_
+========================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autofunction:: l_

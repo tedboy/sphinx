@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.searchindex_filename
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.searchindex_filename

@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.add_sidebars
+======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.add_sidebars

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.format
+=============================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoBuilder.format

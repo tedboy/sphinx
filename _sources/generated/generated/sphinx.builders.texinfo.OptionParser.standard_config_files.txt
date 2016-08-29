@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.standard_config_files
+==========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: OptionParser.standard_config_files

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.hasattr
+====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.hasattr

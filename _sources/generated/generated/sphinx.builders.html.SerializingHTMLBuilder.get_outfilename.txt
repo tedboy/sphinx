@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.get_outfilename
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.get_outfilename

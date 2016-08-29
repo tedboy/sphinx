@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.FunctionDocumenter.get_doc
+=============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: FunctionDocumenter.get_doc

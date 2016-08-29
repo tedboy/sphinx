@@ -1,0 +1,6 @@
+sphinx.ext.todo.todo_node.extend
+================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todo_node.extend

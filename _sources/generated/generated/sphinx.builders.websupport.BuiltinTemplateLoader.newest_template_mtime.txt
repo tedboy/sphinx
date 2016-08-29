@@ -1,0 +1,6 @@
+sphinx.builders.websupport.BuiltinTemplateLoader.newest_template_mtime
+======================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: BuiltinTemplateLoader.newest_template_mtime

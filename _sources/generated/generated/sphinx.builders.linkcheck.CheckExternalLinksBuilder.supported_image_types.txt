@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.CheckExternalLinksBuilder.supported_image_types
+=========================================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autoattribute:: CheckExternalLinksBuilder.supported_image_types

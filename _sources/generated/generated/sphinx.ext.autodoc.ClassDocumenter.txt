@@ -1,0 +1,52 @@
+sphinx.ext.autodoc.ClassDocumenter
+==================================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: ClassDocumenter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ClassDocumenter.__init__
+   ~ClassDocumenter.add_content
+   ~ClassDocumenter.add_directive_header
+   ~ClassDocumenter.add_line
+   ~ClassDocumenter.can_document_member
+   ~ClassDocumenter.check_module
+   ~ClassDocumenter.document_members
+   ~ClassDocumenter.filter_members
+   ~ClassDocumenter.format_args
+   ~ClassDocumenter.format_name
+   ~ClassDocumenter.format_signature
+   ~ClassDocumenter.generate
+   ~ClassDocumenter.get_attr
+   ~ClassDocumenter.get_doc
+   ~ClassDocumenter.get_object_members
+   ~ClassDocumenter.get_real_modname
+   ~ClassDocumenter.get_sourcename
+   ~ClassDocumenter.import_object
+   ~ClassDocumenter.parse_name
+   ~ClassDocumenter.process_doc
+   ~ClassDocumenter.resolve_name
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ClassDocumenter.content_indent
+   ~ClassDocumenter.member_order
+   ~ClassDocumenter.objtype
+   ~ClassDocumenter.option_spec
+   ~ClassDocumenter.priority
+   ~ClassDocumenter.titles_allowed
+

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.replace_self
+=========================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.replace_self

@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.finish
+==========================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: CoverageBuilder.finish

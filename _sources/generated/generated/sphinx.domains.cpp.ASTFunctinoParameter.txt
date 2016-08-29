@@ -1,0 +1,25 @@
+sphinx.domains.cpp.ASTFunctinoParameter
+=======================================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: ASTFunctinoParameter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ASTFunctinoParameter.__init__
+   ~ASTFunctinoParameter.clone
+   ~ASTFunctinoParameter.describe_signature
+   ~ASTFunctinoParameter.get_id_v1
+   ~ASTFunctinoParameter.get_id_v2
+   ~ASTFunctinoParameter.get_name
+   ~ASTFunctinoParameter.prefix_nested_name
+
+
+
+
+

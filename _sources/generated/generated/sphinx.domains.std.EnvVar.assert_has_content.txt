@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.assert_has_content
+============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: EnvVar.assert_has_content

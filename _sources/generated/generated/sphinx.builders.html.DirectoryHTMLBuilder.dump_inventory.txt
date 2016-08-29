@@ -1,0 +1,6 @@
+sphinx.builders.html.DirectoryHTMLBuilder.dump_inventory
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DirectoryHTMLBuilder.dump_inventory

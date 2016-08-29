@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.doc_field_types
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPEnumObject.doc_field_types

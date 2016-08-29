@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.trim_start
+======================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.trim_start

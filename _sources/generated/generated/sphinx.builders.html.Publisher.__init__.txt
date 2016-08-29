@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.__init__
+=======================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.__init__

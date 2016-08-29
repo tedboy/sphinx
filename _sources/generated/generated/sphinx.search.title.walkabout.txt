@@ -1,0 +1,6 @@
+sphinx.search.title.walkabout
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.walkabout

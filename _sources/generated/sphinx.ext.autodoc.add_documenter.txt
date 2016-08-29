@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.add_documenter
+=================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: add_documenter

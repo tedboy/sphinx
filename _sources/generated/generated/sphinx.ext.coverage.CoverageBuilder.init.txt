@@ -1,0 +1,6 @@
+sphinx.ext.coverage.CoverageBuilder.init
+========================================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. automethod:: CoverageBuilder.init

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.attribution_formats
+===================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: WebSupportTranslator.attribution_formats

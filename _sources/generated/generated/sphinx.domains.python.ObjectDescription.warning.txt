@@ -1,0 +1,6 @@
+sphinx.domains.python.ObjectDescription.warning
+===============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: ObjectDescription.warning

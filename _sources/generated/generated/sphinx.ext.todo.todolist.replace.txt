@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.replace
+================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.replace

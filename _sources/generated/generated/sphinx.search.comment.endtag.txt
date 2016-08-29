@@ -1,0 +1,6 @@
+sphinx.search.comment.endtag
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.endtag

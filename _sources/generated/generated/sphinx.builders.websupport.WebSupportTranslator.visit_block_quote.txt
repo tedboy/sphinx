@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_block_quote
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_block_quote

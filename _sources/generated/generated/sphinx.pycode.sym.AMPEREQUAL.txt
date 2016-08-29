@@ -1,0 +1,6 @@
+sphinx.pycode.sym.AMPEREQUAL
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.AMPEREQUAL

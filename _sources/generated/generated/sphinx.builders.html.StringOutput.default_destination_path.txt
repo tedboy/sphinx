@@ -1,0 +1,6 @@
+sphinx.builders.html.StringOutput.default_destination_path
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StringOutput.default_destination_path

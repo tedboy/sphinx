@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.required_arguments
+==========================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JSConstructor.required_arguments

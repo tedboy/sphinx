@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.optional_arguments
+==============================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTRole.optional_arguments

@@ -1,0 +1,87 @@
+sphinx.ext.graphviz.graphviz
+============================
+.. currentmodule:: sphinx.ext.graphviz
+.. autoclass:: graphviz
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~graphviz.__init__
+   ~graphviz.append
+   ~graphviz.append_attr_list
+   ~graphviz.asdom
+   ~graphviz.astext
+   ~graphviz.attlist
+   ~graphviz.clear
+   ~graphviz.coerce_append_attr_list
+   ~graphviz.copy
+   ~graphviz.copy_attr_coerce
+   ~graphviz.copy_attr_concatenate
+   ~graphviz.copy_attr_consistent
+   ~graphviz.copy_attr_convert
+   ~graphviz.deepcopy
+   ~graphviz.delattr
+   ~graphviz.emptytag
+   ~graphviz.endtag
+   ~graphviz.extend
+   ~graphviz.first_child_matching_class
+   ~graphviz.first_child_not_matching_class
+   ~graphviz.get
+   ~graphviz.get_language_code
+   ~graphviz.has_key
+   ~graphviz.hasattr
+   ~graphviz.index
+   ~graphviz.insert
+   ~graphviz.is_not_default
+   ~graphviz.is_not_known_attribute
+   ~graphviz.is_not_list_attribute
+   ~graphviz.next_node
+   ~graphviz.non_default_attributes
+   ~graphviz.note_referenced_by
+   ~graphviz.pformat
+   ~graphviz.pop
+   ~graphviz.remove
+   ~graphviz.replace
+   ~graphviz.replace_attr
+   ~graphviz.replace_self
+   ~graphviz.set_class
+   ~graphviz.setdefault
+   ~graphviz.setup_child
+   ~graphviz.shortrepr
+   ~graphviz.starttag
+   ~graphviz.traverse
+   ~graphviz.update_all_atts
+   ~graphviz.update_all_atts_coercion
+   ~graphviz.update_all_atts_concatenating
+   ~graphviz.update_all_atts_consistantly
+   ~graphviz.update_all_atts_convert
+   ~graphviz.update_basic_atts
+   ~graphviz.walk
+   ~graphviz.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~graphviz.basic_attributes
+   ~graphviz.child_text_separator
+   ~graphviz.document
+   ~graphviz.known_attributes
+   ~graphviz.line
+   ~graphviz.list_attributes
+   ~graphviz.local_attributes
+   ~graphviz.parent
+   ~graphviz.source
+   ~graphviz.tagname
+

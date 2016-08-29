@@ -1,0 +1,6 @@
+sphinx.search.title.document
+============================
+
+.. currentmodule:: sphinx.search
+
+.. autoattribute:: title.document

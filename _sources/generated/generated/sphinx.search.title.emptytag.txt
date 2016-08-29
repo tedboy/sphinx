@@ -1,0 +1,6 @@
+sphinx.search.title.emptytag
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.emptytag

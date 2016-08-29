@@ -1,0 +1,6 @@
+sphinx.websupport.Sphinx.set_translator
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: Sphinx.set_translator

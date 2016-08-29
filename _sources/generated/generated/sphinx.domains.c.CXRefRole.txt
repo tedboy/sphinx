@@ -1,0 +1,21 @@
+sphinx.domains.c.CXRefRole
+==========================
+.. currentmodule:: sphinx.domains.c
+.. autoclass:: CXRefRole
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CXRefRole.__init__
+   ~CXRefRole.process_link
+   ~CXRefRole.result_nodes
+
+
+
+
+

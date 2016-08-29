@@ -1,0 +1,6 @@
+sphinx.search.text_type.count
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: text_type.count

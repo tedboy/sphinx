@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HeadRequest.add_unredirected_header
+=============================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HeadRequest.add_unredirected_header

@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.close
+=================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.close

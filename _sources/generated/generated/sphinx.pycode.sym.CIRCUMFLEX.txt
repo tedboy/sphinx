@@ -1,0 +1,6 @@
+sphinx.pycode.sym.CIRCUMFLEX
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.CIRCUMFLEX

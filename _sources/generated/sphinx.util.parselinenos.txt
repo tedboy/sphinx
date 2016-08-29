@@ -1,0 +1,6 @@
+sphinx.util.parselinenos
+========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: parselinenos

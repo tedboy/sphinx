@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.get_transforms
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: DoctreeReader.get_transforms

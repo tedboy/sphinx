@@ -1,0 +1,6 @@
+sphinx.builders.html.Theme.get_confstr
+======================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Theme.get_confstr

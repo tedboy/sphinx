@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClassmember.before_content
+==================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClassmember.before_content

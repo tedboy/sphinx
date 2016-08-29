@@ -1,0 +1,6 @@
+sphinx.search.raw.set_class
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.set_class

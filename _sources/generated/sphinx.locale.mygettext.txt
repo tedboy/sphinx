@@ -1,0 +1,6 @@
+sphinx.locale.mygettext
+=======================
+
+.. currentmodule:: sphinx.locale
+
+.. autofunction:: mygettext

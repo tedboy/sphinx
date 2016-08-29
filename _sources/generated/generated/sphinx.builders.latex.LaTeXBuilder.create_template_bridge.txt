@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXBuilder.create_template_bridge
+=========================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: LaTeXBuilder.create_template_bridge

@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.handle_finish
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: JSONHTMLBuilder.handle_finish

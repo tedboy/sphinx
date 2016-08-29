@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParen.is_function_type
+======================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorParen.is_function_type

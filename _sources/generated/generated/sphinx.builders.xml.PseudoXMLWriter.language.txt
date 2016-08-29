@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLWriter.language
+============================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLWriter.language

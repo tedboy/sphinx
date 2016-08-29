@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.parse_node
+====================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: EnvVar.parse_node

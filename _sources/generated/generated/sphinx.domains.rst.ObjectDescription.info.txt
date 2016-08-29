@@ -1,0 +1,6 @@
+sphinx.domains.rst.ObjectDescription.info
+=========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ObjectDescription.info

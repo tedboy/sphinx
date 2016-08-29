@@ -1,0 +1,6 @@
+sphinx.websupport.Environment.sandboxed
+=======================================
+
+.. currentmodule:: sphinx.websupport
+
+.. autoattribute:: Environment.sandboxed

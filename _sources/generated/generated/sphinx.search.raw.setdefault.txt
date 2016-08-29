@@ -1,0 +1,6 @@
+sphinx.search.raw.setdefault
+============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.setdefault

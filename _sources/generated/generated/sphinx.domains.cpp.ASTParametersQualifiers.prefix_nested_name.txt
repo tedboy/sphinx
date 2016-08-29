@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTParametersQualifiers.prefix_nested_name
+=============================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTParametersQualifiers.prefix_nested_name

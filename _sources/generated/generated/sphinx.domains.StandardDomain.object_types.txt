@@ -1,0 +1,6 @@
+sphinx.domains.StandardDomain.object_types
+==========================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: StandardDomain.object_types

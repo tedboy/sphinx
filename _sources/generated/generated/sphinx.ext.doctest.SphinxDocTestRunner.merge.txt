@@ -1,0 +1,6 @@
+sphinx.ext.doctest.SphinxDocTestRunner.merge
+============================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: SphinxDocTestRunner.merge

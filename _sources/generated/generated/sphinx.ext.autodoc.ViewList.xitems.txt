@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ViewList.xitems
+==================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ViewList.xitems

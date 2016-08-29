@@ -1,0 +1,6 @@
+sphinx.builders.text.Builder.supported_image_types
+==================================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: Builder.supported_image_types

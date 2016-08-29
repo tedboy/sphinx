@@ -1,0 +1,6 @@
+sphinx.domains.cpp.text_type.isdecimal
+======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: text_type.isdecimal

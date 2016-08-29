@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTParametersQualifiers.get_modifiers_id_v2
+==============================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTParametersQualifiers.get_modifiers_id_v2

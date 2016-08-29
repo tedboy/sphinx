@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.Popen.poll
+==============================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: Popen.poll

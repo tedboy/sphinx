@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.format
+========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: DocTestBuilder.format

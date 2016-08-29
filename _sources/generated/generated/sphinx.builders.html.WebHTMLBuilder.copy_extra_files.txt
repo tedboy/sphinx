@@ -1,0 +1,6 @@
+sphinx.builders.html.WebHTMLBuilder.copy_extra_files
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: WebHTMLBuilder.copy_extra_files

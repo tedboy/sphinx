@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.local_attributes
+=============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: ifconfig.local_attributes

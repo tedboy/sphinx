@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.has_content
+===========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: Directive.has_content

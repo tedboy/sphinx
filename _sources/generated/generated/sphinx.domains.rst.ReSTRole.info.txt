@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.info
+================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.info

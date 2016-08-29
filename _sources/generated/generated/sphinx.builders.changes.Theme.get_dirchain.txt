@@ -1,0 +1,6 @@
+sphinx.builders.changes.Theme.get_dirchain
+==========================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: Theme.get_dirchain

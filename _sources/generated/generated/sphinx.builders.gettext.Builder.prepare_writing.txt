@@ -1,0 +1,6 @@
+sphinx.builders.gettext.Builder.prepare_writing
+===============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: Builder.prepare_writing

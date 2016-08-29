@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.pycode &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="sphinx" href="../sphinx.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.pycode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.pycode</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.pycode</span>
+<span class="sd">    ~~~~~~~~~~~~~</span>
+
+<span class="sd">    Utilities parsing and analyzing Python code.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span><span class="p">,</span> <span class="n">text_type</span><span class="p">,</span> <span class="n">BytesIO</span><span class="p">,</span> <span class="n">StringIO</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">package_dir</span>
+<span class="kn">from</span> <span class="nn">sphinx.errors</span> <span class="kn">import</span> <span class="n">PycodeError</span>
+<span class="kn">from</span> <span class="nn">sphinx.pycode</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.pycode.pgen2</span> <span class="kn">import</span> <span class="n">driver</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">tokenize</span><span class="p">,</span> <span class="n">parse</span><span class="p">,</span> <span class="n">literals</span>
+<span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">get_module_source</span><span class="p">,</span> <span class="n">detect_encoding</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.pycompat</span> <span class="kn">import</span> <span class="n">TextIOWrapper</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.docstrings</span> <span class="kn">import</span> <span class="n">prepare_docstring</span><span class="p">,</span> <span class="n">prepare_commentdoc</span>
+
+
+<span class="c1"># load the Python grammar</span>
+<span class="n">_grammarfile</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">package_dir</span><span class="p">,</span> <span class="s1">&#39;pycode&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;Grammar-py</span><span class="si">%d</span><span class="s1">.txt&#39;</span> <span class="o">%</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">pygrammar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">load_grammar</span><span class="p">(</span><span class="n">_grammarfile</span><span class="p">)</span>
+<span class="n">pydriver</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Driver</span><span class="p">(</span><span class="n">pygrammar</span><span class="p">,</span> <span class="n">convert</span><span class="o">=</span><span class="n">nodes</span><span class="o">.</span><span class="n">convert</span><span class="p">)</span>
+
+
+<span class="c1"># an object with attributes corresponding to token and symbol names</span>
+<div class="viewcode-block" id="sym"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.sym.html#sphinx.ext.autodoc.sym">[docs]</a><span class="k">class</span> <span class="nc">sym</span><span class="p">:</span>
+    <span class="k">pass</span></div>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">pygrammar</span><span class="o">.</span><span class="n">symbol2number</span><span class="p">):</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">tok_name</span><span class="p">):</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+<span class="c1"># a dict mapping terminal and nonterminal numbers to their names</span>
+<span class="n">number2name</span> <span class="o">=</span> <span class="n">pygrammar</span><span class="o">.</span><span class="n">number2symbol</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">number2name</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">tok_name</span><span class="p">)</span>
+
+<span class="n">_eq</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Leaf</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">EQUAL</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">)</span>
+
+<span class="n">emptyline_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^\s*(#.*)?$&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="AttrDocVisitor"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.AttrDocVisitor.html#sphinx.ext.autodoc.AttrDocVisitor">[docs]</a><span class="k">class</span> <span class="nc">AttrDocVisitor</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">NodeVisitor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Visitor that collects docstrings for attribute assignments on toplevel and</span>
+<span class="sd">    in classes (class attributes and attributes set in __init__).</span>
+
+<span class="sd">    The docstrings can either be in special &#39;#:&#39; comments before the assignment</span>
+<span class="sd">    or in a docstring after it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AttrDocVisitor.init"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.AttrDocVisitor.init.html#sphinx.ext.autodoc.AttrDocVisitor.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">encoding</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scope</span> <span class="o">=</span> <span class="n">scope</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_init</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">namespace</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collected</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagnumber</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagorder</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+<div class="viewcode-block" id="AttrDocVisitor.add_tag"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.AttrDocVisitor.add_tag.html#sphinx.ext.autodoc.AttrDocVisitor.add_tag">[docs]</a>    <span class="k">def</span> <span class="nf">add_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span> <span class="o">+</span> <span class="p">[</span><span class="n">name</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagorder</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tagnumber</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagnumber</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="AttrDocVisitor.visit_classdef"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.AttrDocVisitor.visit_classdef.html#sphinx.ext.autodoc.AttrDocVisitor.visit_classdef">[docs]</a>    <span class="k">def</span> <span class="nf">visit_classdef</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Visit a class.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_tag</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">namespace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">namespace</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="AttrDocVisitor.visit_funcdef"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.AttrDocVisitor.visit_funcdef.html#sphinx.ext.autodoc.AttrDocVisitor.visit_funcdef">[docs]</a>    <span class="k">def</span> <span class="nf">visit_funcdef</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Visit a function (or method).&quot;&quot;&quot;</span>
+        <span class="c1"># usually, don&#39;t descend into functions -- nothing interesting there</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_tag</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;__init__&#39;</span><span class="p">:</span>
+            <span class="c1"># however, collect attributes set in __init__ methods</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">in_init</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">in_init</span> <span class="o">-=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="AttrDocVisitor.visit_expr_stmt"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.AttrDocVisitor.visit_expr_stmt.html#sphinx.ext.autodoc.AttrDocVisitor.visit_expr_stmt">[docs]</a>    <span class="k">def</span> <span class="nf">visit_expr_stmt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Visit an assignment which may have a special comment before (or</span>
+<span class="sd">        after) it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">_eq</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="c1"># not an assignment (we don&#39;t care for augmented assignments)</span>
+            <span class="k">return</span>
+        <span class="c1"># look *after* the node; there may be a comment prefixing the NEWLINE</span>
+        <span class="c1"># of the simple_stmt</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">parent</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">parent</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">sym</span><span class="o">.</span><span class="n">SEMI</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>  <span class="c1"># skip over semicolon</span>
+            <span class="k">if</span> <span class="n">parent</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">sym</span><span class="o">.</span><span class="n">NEWLINE</span><span class="p">:</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">get_prefix</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+                    <span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+                <span class="n">docstring</span> <span class="o">=</span> <span class="n">prepare_commentdoc</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">docstring</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">add_docstring</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">docstring</span><span class="p">)</span>
+                    <span class="k">return</span>  <span class="c1"># don&#39;t allow docstrings both before and after</span>
+            <span class="k">break</span>
+        <span class="c1"># now look *before* the node</span>
+        <span class="n">pnode</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="n">pnode</span><span class="o">.</span><span class="n">get_prefix</span><span class="p">()</span>
+        <span class="c1"># if the assignment is the first statement on a new indentation</span>
+        <span class="c1"># level, its preceding whitespace and comments are not assigned</span>
+        <span class="c1"># to that token, but the first INDENT or DEDENT token</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">prefix</span><span class="p">:</span>
+            <span class="n">pnode</span> <span class="o">=</span> <span class="n">pnode</span><span class="o">.</span><span class="n">get_prev_leaf</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">pnode</span> <span class="ow">or</span> <span class="n">pnode</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">INDENT</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">DEDENT</span><span class="p">):</span>
+                <span class="k">break</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="n">pnode</span><span class="o">.</span><span class="n">get_prefix</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+        <span class="n">docstring</span> <span class="o">=</span> <span class="n">prepare_commentdoc</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_docstring</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">docstring</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AttrDocVisitor.visit_simple_stmt"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.AttrDocVisitor.visit_simple_stmt.html#sphinx.ext.autodoc.AttrDocVisitor.visit_simple_stmt">[docs]</a>    <span class="k">def</span> <span class="nf">visit_simple_stmt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Visit a docstring statement which may have an assignment before.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">token</span><span class="o">.</span><span class="n">STRING</span><span class="p">:</span>
+            <span class="c1"># not a docstring; but still need to visit children</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get_prev_sibling</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">prev</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">prev</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">sym</span><span class="o">.</span><span class="n">simple_stmt</span> <span class="ow">and</span> \
+           <span class="n">prev</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">sym</span><span class="o">.</span><span class="n">expr_stmt</span> <span class="ow">and</span> <span class="n">_eq</span> <span class="ow">in</span> <span class="n">prev</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="c1"># need to &quot;eval&quot; the string because it&#39;s returned in its</span>
+            <span class="c1"># original form</span>
+            <span class="n">docstring</span> <span class="o">=</span> <span class="n">literals</span><span class="o">.</span><span class="n">evalString</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+            <span class="n">docstring</span> <span class="o">=</span> <span class="n">prepare_docstring</span><span class="p">(</span><span class="n">docstring</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_docstring</span><span class="p">(</span><span class="n">prev</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">docstring</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AttrDocVisitor.add_docstring"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.AttrDocVisitor.add_docstring.html#sphinx.ext.autodoc.AttrDocVisitor.add_docstring">[docs]</a>    <span class="k">def</span> <span class="nf">add_docstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">docstring</span><span class="p">):</span>
+        <span class="c1"># add an item for each assignment target</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_init</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">number2name</span><span class="p">[</span><span class="n">target</span><span class="o">.</span><span class="n">type</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;power&#39;</span><span class="p">:</span>
+                <span class="c1"># maybe an attribute assignment -- check necessary conditions</span>
+                <span class="k">if</span> <span class="p">(</span>  <span class="c1"># node must have two children</span>
+                        <span class="nb">len</span><span class="p">(</span><span class="n">target</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span>
+                        <span class="c1"># first child must be &quot;self&quot;</span>
+                        <span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">token</span><span class="o">.</span><span class="n">NAME</span> <span class="ow">or</span> <span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="s1">&#39;self&#39;</span> <span class="ow">or</span>
+                        <span class="c1"># second child must be a &quot;trailer&quot; with two children</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">number2name</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">type</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;trailer&#39;</span> <span class="ow">or</span>
+                        <span class="nb">len</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span>
+                        <span class="c1"># first child must be a dot, second child a name</span>
+                        <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">token</span><span class="o">.</span><span class="n">DOT</span> <span class="ow">or</span>
+                        <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">token</span><span class="o">.</span><span class="n">NAME</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+            <span class="k">elif</span> <span class="n">target</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">token</span><span class="o">.</span><span class="n">NAME</span><span class="p">:</span>
+                <span class="c1"># don&#39;t care about other complex targets</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_tag</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">docstring</span><span class="p">:</span>
+                <span class="n">namespace</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">namespace</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scope</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">collected</span><span class="p">[</span><span class="n">namespace</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">docstring</span></div></div>
+
+
+<div class="viewcode-block" id="ModuleAnalyzer"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.html#sphinx.ext.autodoc.ModuleAnalyzer">[docs]</a><span class="k">class</span> <span class="nc">ModuleAnalyzer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># cache for analyzer objects -- caches both by module and file name</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ModuleAnalyzer.for_string"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.for_string.html#sphinx.ext.autodoc.ModuleAnalyzer.for_string">[docs]</a>    <span class="k">def</span> <span class="nf">for_string</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">srcname</span><span class="o">=</span><span class="s1">&#39;&lt;string&gt;&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">string</span><span class="p">),</span> <span class="n">modname</span><span class="p">,</span> <span class="n">srcname</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">string</span><span class="p">),</span> <span class="n">modname</span><span class="p">,</span> <span class="n">srcname</span><span class="p">,</span> <span class="n">decoded</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></div>
+
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ModuleAnalyzer.for_file"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.for_file.html#sphinx.ext.autodoc.ModuleAnalyzer.for_file">[docs]</a>    <span class="k">def</span> <span class="nf">for_file</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">modname</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fileobj</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PycodeError</span><span class="p">(</span><span class="s1">&#39;error opening </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">cls</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
+
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ModuleAnalyzer.for_module"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.for_module.html#sphinx.ext.autodoc.ModuleAnalyzer.for_module">[docs]</a>    <span class="k">def</span> <span class="nf">for_module</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">modname</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="n">modname</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="n">entry</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="n">modname</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">PycodeError</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">entry</span>
+            <span class="k">return</span> <span class="n">entry</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">type</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">get_module_source</span><span class="p">(</span><span class="n">modname</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;string&#39;</span><span class="p">:</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">for_string</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">modname</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">for_file</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">modname</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">PycodeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">cls</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="n">modname</span><span class="p">]</span> <span class="o">=</span> <span class="n">err</span>
+            <span class="k">raise</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="n">modname</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
+
+<div class="viewcode-block" id="ModuleAnalyzer.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.__init__.html#sphinx.ext.autodoc.ModuleAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">srcname</span><span class="p">,</span> <span class="n">decoded</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="c1"># name of the module</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modname</span> <span class="o">=</span> <span class="n">modname</span>
+        <span class="c1"># name of the source file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">srcname</span> <span class="o">=</span> <span class="n">srcname</span>
+        <span class="c1"># file-like object yielding source lines</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+
+        <span class="c1"># cache the source code as well</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">decoded</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">detect_encoding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">readline</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">TextIOWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+        <span class="c1"># will be filled by tokenize()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c1"># will be filled by parse()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parsetree</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c1"># will be filled by find_attr_docs()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_docs</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagorder</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c1"># will be filled by find_tags()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">None</span></div>
+
+<div class="viewcode-block" id="ModuleAnalyzer.tokenize"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.tokenize.html#sphinx.ext.autodoc.ModuleAnalyzer.tokenize">[docs]</a>    <span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate tokens from the source.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokenize</span><span class="o">.</span><span class="n">generate_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">readline</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">tokenize</span><span class="o">.</span><span class="n">TokenError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PycodeError</span><span class="p">(</span><span class="s1">&#39;tokenizing failed&#39;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ModuleAnalyzer.parse"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.parse.html#sphinx.ext.autodoc.ModuleAnalyzer.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse the generated source tokens.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parsetree</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenize</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parsetree</span> <span class="o">=</span> <span class="n">pydriver</span><span class="o">.</span><span class="n">parse_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">parse</span><span class="o">.</span><span class="n">ParseError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PycodeError</span><span class="p">(</span><span class="s1">&#39;parsing failed&#39;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ModuleAnalyzer.find_attr_docs"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.find_attr_docs.html#sphinx.ext.autodoc.ModuleAnalyzer.find_attr_docs">[docs]</a>    <span class="k">def</span> <span class="nf">find_attr_docs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find class and module-level attributes and their documentation.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_docs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_docs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+        <span class="n">attr_visitor</span> <span class="o">=</span> <span class="n">AttrDocVisitor</span><span class="p">(</span><span class="n">number2name</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+        <span class="n">attr_visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parsetree</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_docs</span> <span class="o">=</span> <span class="n">attr_visitor</span><span class="o">.</span><span class="n">collected</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagorder</span> <span class="o">=</span> <span class="n">attr_visitor</span><span class="o">.</span><span class="n">tagorder</span>
+        <span class="c1"># now that we found everything we could in the tree, throw it away</span>
+        <span class="c1"># (it takes quite a bit of memory for large modules)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parsetree</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">attr_visitor</span><span class="o">.</span><span class="n">collected</span></div>
+
+<div class="viewcode-block" id="ModuleAnalyzer.find_tags"><a class="viewcode-back" href="../../generated/generated/sphinx.pycode.ModuleAnalyzer.find_tags.html#sphinx.ext.autodoc.ModuleAnalyzer.find_tags">[docs]</a>    <span class="k">def</span> <span class="nf">find_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find class, function and method definitions and their location.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenize</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">namespace</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">indent</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">defline</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">expect_indent</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">emptylines</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">def</span> <span class="nf">tokeniter</span><span class="p">(</span><span class="n">ignore</span> <span class="o">=</span> <span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">COMMENT</span><span class="p">,)):</span>
+            <span class="k">for</span> <span class="n">tokentup</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">tokentup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">tokentup</span>
+        <span class="n">tokeniter</span> <span class="o">=</span> <span class="n">tokeniter</span><span class="p">()</span>
+        <span class="k">for</span> <span class="nb">type</span><span class="p">,</span> <span class="n">tok</span><span class="p">,</span> <span class="n">spos</span><span class="p">,</span> <span class="n">epos</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">tokeniter</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">expect_indent</span> <span class="ow">and</span> <span class="nb">type</span> <span class="o">!=</span> <span class="n">token</span><span class="o">.</span><span class="n">NL</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">type</span> <span class="o">!=</span> <span class="n">token</span><span class="o">.</span><span class="n">INDENT</span><span class="p">:</span>
+                    <span class="c1"># no suite -- one-line definition</span>
+                    <span class="k">assert</span> <span class="n">stack</span>
+                    <span class="n">dtype</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">startline</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                    <span class="n">endline</span> <span class="o">=</span> <span class="n">epos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">namespace</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                    <span class="n">result</span><span class="p">[</span><span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">startline</span><span class="p">,</span> <span class="n">endline</span> <span class="o">-</span> <span class="n">emptylines</span><span class="p">)</span>
+                <span class="n">expect_indent</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="n">tok</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">tokeniter</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">namespace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="n">fullname</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">namespace</span><span class="p">)</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tok</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">spos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">indent</span><span class="p">))</span>
+                <span class="n">defline</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="n">token</span><span class="o">.</span><span class="n">INDENT</span><span class="p">:</span>
+                <span class="n">expect_indent</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="n">indent</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="n">token</span><span class="o">.</span><span class="n">DEDENT</span><span class="p">:</span>
+                <span class="n">indent</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="c1"># if the stacklevel is the same as it was before the last</span>
+                <span class="c1"># def/class block, this dedent closes that block</span>
+                <span class="k">if</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">indent</span> <span class="o">==</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">3</span><span class="p">]:</span>
+                    <span class="n">dtype</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">startline</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                    <span class="n">endline</span> <span class="o">=</span> <span class="n">spos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">namespace</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                    <span class="n">result</span><span class="p">[</span><span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">startline</span><span class="p">,</span> <span class="n">endline</span> <span class="o">-</span> <span class="n">emptylines</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="n">token</span><span class="o">.</span><span class="n">NEWLINE</span><span class="p">:</span>
+                <span class="c1"># if this line contained a definition, expect an INDENT</span>
+                <span class="c1"># to start the suite; if there is no such INDENT</span>
+                <span class="c1"># it&#39;s a one-line definition</span>
+                <span class="k">if</span> <span class="n">defline</span><span class="p">:</span>
+                    <span class="n">defline</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="n">expect_indent</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="n">emptylines</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="n">token</span><span class="o">.</span><span class="n">NL</span><span class="p">:</span>
+                <span class="c1"># count up if line is empty or comment only</span>
+                <span class="k">if</span> <span class="n">emptyline_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                    <span class="n">emptylines</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">emptylines</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result</span></div></div>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="kn">import</span> <span class="nn">pprint</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="c1"># ma = ModuleAnalyzer.for_file(__file__.rstrip(&#39;c&#39;), &#39;sphinx.builders.html&#39;)</span>
+    <span class="n">ma</span> <span class="o">=</span> <span class="n">ModuleAnalyzer</span><span class="o">.</span><span class="n">for_file</span><span class="p">(</span><span class="s1">&#39;sphinx/environment.py&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;sphinx.environment&#39;</span><span class="p">)</span>
+    <span class="n">ma</span><span class="o">.</span><span class="n">tokenize</span><span class="p">()</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">ma</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="c1"># for (ns, name), doc in iteritems(ma.find_attr_docs()):</span>
+    <span class="c1">#     print &#39;&gt;&gt;&#39;, ns, name</span>
+    <span class="c1">#     print &#39;\n&#39;.join(doc)</span>
+    <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">find_tags</span><span class="p">())</span>
+    <span class="n">x3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="c1"># print nodes.nice_repr(ma.parsetree, number2name)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;tokenizing </span><span class="si">%.4f</span><span class="s2">, parsing </span><span class="si">%.4f</span><span class="s2">, finding </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">,</span> <span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">,</span> <span class="n">x3</span><span class="o">-</span><span class="n">x2</span><span class="p">))</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

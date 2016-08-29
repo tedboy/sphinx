@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.text_type.translate
+==========================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: text_type.translate

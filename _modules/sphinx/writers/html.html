@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.writers.html &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.writers.html</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.writers.html</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.writers.html</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    docutils writers handling Sphinx&#39; custom nodes.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">posixpath</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">string_types</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span> <span class="nn">docutils.writers.html4css1</span> <span class="kn">import</span> <span class="n">Writer</span><span class="p">,</span> <span class="n">HTMLTranslator</span> <span class="k">as</span> <span class="n">BaseTranslator</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">admonitionlabels</span><span class="p">,</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.smartypants</span> <span class="kn">import</span> <span class="n">sphinx_smarty_pants</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>        <span class="c1"># check for the Python Imaging Library</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">Image</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">Image</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="c1"># A good overview of the purpose behind these classes can be found here:</span>
+<span class="c1"># http://www.arnebrodowski.de/blog/write-your-own-restructuredtext-writer.html</span>
+
+
+<div class="viewcode-block" id="HTMLWriter"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLWriter.html#sphinx.builders.html.HTMLWriter">[docs]</a><span class="k">class</span> <span class="nc">HTMLWriter</span><span class="p">(</span><span class="n">Writer</span><span class="p">):</span>
+
+    <span class="c1"># override embed-stylesheet default value to 0.</span>
+    <span class="n">settings_spec</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">Writer</span><span class="o">.</span><span class="n">settings_spec</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_setting</span> <span class="ow">in</span> <span class="n">settings_spec</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="s1">&#39;--embed-stylesheet&#39;</span> <span class="ow">in</span> <span class="n">_setting</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">_setting</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="HTMLWriter.__init__"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLWriter.__init__.html#sphinx.builders.html.HTMLWriter.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">):</span>
+        <span class="n">Writer</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">builder</span></div>
+
+<div class="viewcode-block" id="HTMLWriter.translate"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLWriter.translate.html#sphinx.builders.html.HTMLWriter.translate">[docs]</a>    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># sadly, this is mostly copied from parent class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visitor</span> <span class="o">=</span> <span class="n">visitor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">translator_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span>
+                                                               <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">walkabout</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">visitor</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;head_prefix&#39;</span><span class="p">,</span> <span class="s1">&#39;stylesheet&#39;</span><span class="p">,</span> <span class="s1">&#39;head&#39;</span><span class="p">,</span> <span class="s1">&#39;body_prefix&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;body_pre_docinfo&#39;</span><span class="p">,</span> <span class="s1">&#39;docinfo&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span> <span class="s1">&#39;fragment&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;body_suffix&#39;</span><span class="p">,</span> <span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;subtitle&#39;</span><span class="p">,</span> <span class="s1">&#39;header&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;footer&#39;</span><span class="p">,</span> <span class="s1">&#39;html_prolog&#39;</span><span class="p">,</span> <span class="s1">&#39;html_head&#39;</span><span class="p">,</span> <span class="s1">&#39;html_title&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;html_subtitle&#39;</span><span class="p">,</span> <span class="s1">&#39;html_body&#39;</span><span class="p">,</span> <span class="p">):</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">visitor</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clean_meta</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">visitor</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span></div></div>
+
+
+<div class="viewcode-block" id="HTMLTranslator"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.html#sphinx.builders.html.HTMLTranslator">[docs]</a><span class="k">class</span> <span class="nc">HTMLTranslator</span><span class="p">(</span><span class="n">BaseTranslator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Our custom HTML translator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="HTMLTranslator.__init__"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.__init__.html#sphinx.builders.html.HTMLTranslator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+        <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">highlighter</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">highlighter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">builder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">highlightlang</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">highlightlang_base</span> <span class="o">=</span> \
+            <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">highlight_language</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">highlightopts</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">highlight_options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">highlightlinenothreshold</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protect_literal_text</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">html_add_permalinks</span>
+        <span class="c1"># support backwards-compatible setting to a bool</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span> <span class="ow">and</span> <span class="s1">u&#39;</span><span class="se">\u00B6</span><span class="s1">&#39;</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">secnumber_suffix</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">html_secnumber_suffix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_separator</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optional_param_level</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_table_row_index</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_start_of_file"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_start_of_file.html#sphinx.builders.html.HTMLTranslator.visit_start_of_file">[docs]</a>    <span class="k">def</span> <span class="nf">visit_start_of_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="c1"># only occurs in the single-file builder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span id=&quot;document-</span><span class="si">%s</span><span class="s1">&quot;&gt;&lt;/span&gt;&#39;</span> <span class="o">%</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_start_of_file"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_start_of_file.html#sphinx.builders.html.HTMLTranslator.depart_start_of_file">[docs]</a>    <span class="k">def</span> <span class="nf">depart_start_of_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc.html#sphinx.builders.html.HTMLTranslator.visit_desc">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;dl&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;objtype&#39;</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc.html#sphinx.builders.html.HTMLTranslator.depart_desc">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/dl&gt;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_signature"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_signature.html#sphinx.builders.html.HTMLTranslator.visit_desc_signature">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="c1"># the id is set automatically</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;dt&#39;</span><span class="p">))</span>
+        <span class="c1"># anchor for per-desc interactive data</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;objtype&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;describe&#39;</span> \
+           <span class="ow">and</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;!--[</span><span class="si">%s</span><span class="s1">]--&gt;&#39;</span> <span class="o">%</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_signature"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_signature.html#sphinx.builders.html.HTMLTranslator.depart_desc_signature">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_permalink_ref</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Permalink to this definition&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/dt&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_addname"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_addname.html#sphinx.builders.html.HTMLTranslator.visit_desc_addname">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_addname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="s1">&#39;descclassname&#39;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_addname"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_addname.html#sphinx.builders.html.HTMLTranslator.depart_desc_addname">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_addname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/code&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_type"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_type.html#sphinx.builders.html.HTMLTranslator.visit_desc_type">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_type"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_type.html#sphinx.builders.html.HTMLTranslator.depart_desc_type">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_returns"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_returns.html#sphinx.builders.html.HTMLTranslator.visit_desc_returns">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &amp;rarr; &#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_returns"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_returns.html#sphinx.builders.html.HTMLTranslator.depart_desc_returns">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_name"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_name.html#sphinx.builders.html.HTMLTranslator.visit_desc_name">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="s1">&#39;descname&#39;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_name"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_name.html#sphinx.builders.html.HTMLTranslator.depart_desc_name">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/code&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_parameterlist"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_parameterlist.html#sphinx.builders.html.HTMLTranslator.visit_desc_parameterlist">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_parameterlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;sig-paren&quot;&gt;(&lt;/span&gt;&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">first_param</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optional_param_level</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># How many required parameters are left.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">required_params_left</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_parameter</span><span class="p">)</span>
+                                         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_separator</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">child_text_separator</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_parameterlist"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_parameterlist.html#sphinx.builders.html.HTMLTranslator.depart_desc_parameterlist">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_parameterlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;sig-paren&quot;&gt;)&lt;/span&gt;&#39;</span><span class="p">)</span></div>
+
+    <span class="c1"># If required parameters are still to come, then put the comma after</span>
+    <span class="c1"># the parameter.  Otherwise, put the comma before.  This ensures that</span>
+    <span class="c1"># signatures like the following render correctly (see issue #1001):</span>
+    <span class="c1">#</span>
+    <span class="c1">#     foo([a, ]b, c[, d])</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_parameter"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_parameter.html#sphinx.builders.html.HTMLTranslator.visit_desc_parameter">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_param</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">first_param</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">required_params_left</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_separator</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">optional_param_level</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">required_params_left</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s1">&#39;noemph&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;em&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_parameter"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_parameter.html#sphinx.builders.html.HTMLTranslator.depart_desc_parameter">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s1">&#39;noemph&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/em&gt;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">required_params_left</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_separator</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_optional"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_optional.html#sphinx.builders.html.HTMLTranslator.visit_desc_optional">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_optional</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optional_param_level</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_optional"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_optional.html#sphinx.builders.html.HTMLTranslator.depart_desc_optional">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_optional</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optional_param_level</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;optional&quot;&gt;]&lt;/span&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_annotation"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_annotation.html#sphinx.builders.html.HTMLTranslator.visit_desc_annotation">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_annotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;em&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="s1">&#39;property&#39;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_annotation"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_annotation.html#sphinx.builders.html.HTMLTranslator.depart_desc_annotation">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_annotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/em&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_desc_content"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_desc_content.html#sphinx.builders.html.HTMLTranslator.visit_desc_content">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;dd&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_desc_content"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_desc_content.html#sphinx.builders.html.HTMLTranslator.depart_desc_content">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/dd&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_versionmodified"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_versionmodified.html#sphinx.builders.html.HTMLTranslator.visit_versionmodified">[docs]</a>    <span class="k">def</span> <span class="nf">visit_versionmodified</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_versionmodified"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_versionmodified.html#sphinx.builders.html.HTMLTranslator.depart_versionmodified">[docs]</a>    <span class="k">def</span> <span class="nf">depart_versionmodified</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/div&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+    <span class="c1"># overwritten</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_reference"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_reference.html#sphinx.builders.html.HTMLTranslator.visit_reference">[docs]</a>    <span class="k">def</span> <span class="nf">visit_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">atts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;reference&#39;</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;internal&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;refuri&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39; internal&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39; external&#39;</span>
+        <span class="k">if</span> <span class="s1">&#39;refuri&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cloak_email_addresses</span> <span class="ow">and</span> \
+               <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;mailto:&#39;</span><span class="p">):</span>
+                <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cloak_mailto</span><span class="p">(</span><span class="n">atts</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">in_mailto</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="s1">&#39;refid&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">,</span> \
+                   <span class="s1">&#39;References must have &quot;refuri&quot; or &quot;refid&quot; attribute.&#39;</span>
+            <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;refid&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">TextElement</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
+            <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39; image-reference&#39;</span>
+        <span class="k">if</span> <span class="s1">&#39;reftitle&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;reftitle&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">atts</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;secnumber&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">secnumber_suffix</span><span class="p">)</span> <span class="o">%</span>
+                             <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;secnumber&#39;</span><span class="p">])))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_number_reference"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_number_reference.html#sphinx.builders.html.HTMLTranslator.visit_number_reference">[docs]</a>    <span class="k">def</span> <span class="nf">visit_number_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_reference</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_number_reference"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_number_reference.html#sphinx.builders.html.HTMLTranslator.depart_number_reference">[docs]</a>    <span class="k">def</span> <span class="nf">depart_number_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_reference</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+    <span class="c1"># overwritten -- we don&#39;t want source comments to show up in the HTML</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_comment"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_comment.html#sphinx.builders.html.HTMLTranslator.visit_comment">[docs]</a>    <span class="k">def</span> <span class="nf">visit_comment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+    <span class="c1"># overwritten</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_admonition"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_admonition.html#sphinx.builders.html.HTMLTranslator.visit_admonition">[docs]</a>    <span class="k">def</span> <span class="nf">visit_admonition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span>
+            <span class="n">node</span><span class="p">,</span> <span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;admonition &#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">admonitionlabels</span><span class="p">[</span><span class="n">name</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_first_last</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_seealso"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_seealso.html#sphinx.builders.html.HTMLTranslator.visit_seealso">[docs]</a>    <span class="k">def</span> <span class="nf">visit_seealso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;seealso&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_seealso"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_seealso.html#sphinx.builders.html.HTMLTranslator.depart_seealso">[docs]</a>    <span class="k">def</span> <span class="nf">depart_seealso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.add_secnumber"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.add_secnumber.html#sphinx.builders.html.HTMLTranslator.add_secnumber">[docs]</a>    <span class="k">def</span> <span class="nf">add_secnumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;secnumber&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;secnumber&#39;</span><span class="p">]))</span> <span class="o">+</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">secnumber_suffix</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">section</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;singlehtml&#39;</span><span class="p">:</span>
+                <span class="n">docname</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;docname&#39;</span><span class="p">)</span>
+                <span class="n">anchorname</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="n">anchorname</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">secnumbers</span><span class="p">:</span>
+                    <span class="n">anchorname</span> <span class="o">=</span> <span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># try first heading which has no anchor</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">anchorname</span> <span class="o">=</span> <span class="p">(</span><span class="n">docname</span><span class="p">,</span> <span class="n">anchorname</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">anchorname</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">anchorname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">secnumbers</span><span class="p">:</span>
+                    <span class="n">anchorname</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># try first heading which has no anchor</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">secnumbers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">anchorname</span><span class="p">):</span>
+                <span class="n">numbers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">secnumbers</span><span class="p">[</span><span class="n">anchorname</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span> <span class="o">+</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">secnumber_suffix</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.add_fignumber"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.add_fignumber.html#sphinx.builders.html.HTMLTranslator.add_fignumber">[docs]</a>    <span class="k">def</span> <span class="nf">add_fignumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">append_fignumber</span><span class="p">(</span><span class="n">figtype</span><span class="p">,</span> <span class="n">figure_id</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">figure_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">fignumbers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">figtype</span><span class="p">,</span> <span class="p">{}):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;caption-number&quot;&gt;&#39;</span><span class="p">)</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">numfig_format</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">figtype</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">numbers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">fignumbers</span><span class="p">[</span><span class="n">figtype</span><span class="p">][</span><span class="n">figure_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span> <span class="o">%</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">figure</span><span class="p">):</span>
+            <span class="n">append_fignumber</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">table</span><span class="p">):</span>
+            <span class="n">append_fignumber</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">container</span><span class="p">):</span>
+            <span class="n">append_fignumber</span><span class="p">(</span><span class="s1">&#39;code-block&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.add_permalink_ref"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.add_permalink_ref.html#sphinx.builders.html.HTMLTranslator.add_permalink_ref">[docs]</a>    <span class="k">def</span> <span class="nf">add_permalink_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_permalinks</span><span class="p">:</span>
+            <span class="n">format</span> <span class="o">=</span> <span class="s1">u&#39;&lt;a class=&quot;headerlink&quot; href=&quot;#</span><span class="si">%s</span><span class="s1">&quot; title=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/a&gt;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">format</span> <span class="o">%</span> <span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span><span class="p">))</span></div>
+
+    <span class="c1"># overwritten to avoid emitting empty &lt;ul&gt;&lt;/ul&gt;</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_bullet_list"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_bullet_list.html#sphinx.builders.html.HTMLTranslator.visit_bullet_list">[docs]</a>    <span class="k">def</span> <span class="nf">visit_bullet_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tagname</span> <span class="o">==</span> <span class="s1">&#39;toctree&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+        <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_bullet_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+    <span class="c1"># overwritten</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_title"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_title.html#sphinx.builders.html.HTMLTranslator.visit_title">[docs]</a>    <span class="k">def</span> <span class="nf">visit_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_secnumber</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_fignumber</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">table</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;caption-text&quot;&gt;&#39;</span><span class="p">)</span></div>
+
+    <span class="c1"># overwritten</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_literal_block"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_literal_block.html#sphinx.builders.html.HTMLTranslator.visit_literal_block">[docs]</a>    <span class="k">def</span> <span class="nf">visit_literal_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span> <span class="o">!=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">():</span>
+            <span class="c1"># most probably a parsed-literal block -- don&#39;t highlight</span>
+            <span class="k">return</span> <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_literal_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="n">lang</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">highlightlang</span>
+        <span class="n">linenos</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">&gt;=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">highlightlinenothreshold</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">highlight_args</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;highlight_args&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">if</span> <span class="s1">&#39;language&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="c1"># code-block directives</span>
+            <span class="n">lang</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span>
+            <span class="n">highlight_args</span><span class="p">[</span><span class="s1">&#39;force&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="s1">&#39;linenos&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">linenos</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;linenos&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">lang</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">highlightlang_base</span><span class="p">:</span>
+            <span class="c1"># only pass highlighter options for original language</span>
+            <span class="n">opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">highlightopts</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">opts</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">def</span> <span class="nf">warner</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">current_docname</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">line</span><span class="p">))</span>
+        <span class="n">highlighted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">highlighter</span><span class="o">.</span><span class="n">highlight_block</span><span class="p">(</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">rawsource</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">opts</span><span class="o">=</span><span class="n">opts</span><span class="p">,</span> <span class="n">warn</span><span class="o">=</span><span class="n">warner</span><span class="p">,</span> <span class="n">linenos</span><span class="o">=</span><span class="n">linenos</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">highlight_args</span><span class="p">)</span>
+        <span class="n">starttag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                 <span class="n">CLASS</span><span class="o">=</span><span class="s1">&#39;highlight-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">lang</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">starttag</span> <span class="o">+</span> <span class="n">highlighted</span> <span class="o">+</span> <span class="s1">&#39;&lt;/div&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_caption"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_caption.html#sphinx.builders.html.HTMLTranslator.visit_caption">[docs]</a>    <span class="k">def</span> <span class="nf">visit_caption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">container</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;literal_block&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;code-block-caption&quot;&gt;&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_caption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_fignumber</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="s1">&#39;caption-text&#39;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_caption"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_caption.html#sphinx.builders.html.HTMLTranslator.depart_caption">[docs]</a>    <span class="k">def</span> <span class="nf">depart_caption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">)</span>
+
+        <span class="c1"># append permalink if available</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">container</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;literal_block&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_permalink_ref</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Permalink to this code&#39;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">figure</span><span class="p">):</span>
+            <span class="n">image_nodes</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
+            <span class="n">target_node</span> <span class="o">=</span> <span class="n">image_nodes</span> <span class="ow">and</span> <span class="n">image_nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_permalink_ref</span><span class="p">(</span><span class="n">target_node</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Permalink to this image&#39;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;toctree&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_permalink_ref</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Permalink to this toctree&#39;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">container</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;literal_block&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/div&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">depart_caption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_doctest_block"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_doctest_block.html#sphinx.builders.html.HTMLTranslator.visit_doctest_block">[docs]</a>    <span class="k">def</span> <span class="nf">visit_doctest_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_literal_block</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+    <span class="c1"># overwritten to add the &lt;div&gt; (for XHTML compliance)</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_block_quote"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_block_quote.html#sphinx.builders.html.HTMLTranslator.visit_block_quote">[docs]</a>    <span class="k">def</span> <span class="nf">visit_block_quote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;blockquote&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;div&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_block_quote"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_block_quote.html#sphinx.builders.html.HTMLTranslator.depart_block_quote">[docs]</a>    <span class="k">def</span> <span class="nf">depart_block_quote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/div&gt;&lt;/blockquote&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+    <span class="c1"># overwritten</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_literal"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_literal.html#sphinx.builders.html.HTMLTranslator.visit_literal">[docs]</a>    <span class="k">def</span> <span class="nf">visit_literal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                       <span class="n">CLASS</span><span class="o">=</span><span class="s1">&#39;docutils literal&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protect_literal_text</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_literal"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_literal.html#sphinx.builders.html.HTMLTranslator.depart_literal">[docs]</a>    <span class="k">def</span> <span class="nf">depart_literal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protect_literal_text</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/code&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_productionlist"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_productionlist.html#sphinx.builders.html.HTMLTranslator.visit_productionlist">[docs]</a>    <span class="k">def</span> <span class="nf">visit_productionlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;pre&#39;</span><span class="p">))</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">production</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">production</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">])</span>
+        <span class="n">maxlen</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">)</span>
+        <span class="n">lastname</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">production</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">production</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">]:</span>
+                <span class="n">lastname</span> <span class="o">=</span> <span class="n">production</span><span class="p">[</span><span class="s1">&#39;tokenname&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">maxlen</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">production</span><span class="p">,</span> <span class="s1">&#39;strong&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lastname</span> <span class="o">+</span> <span class="s1">&#39;&lt;/strong&gt; ::= &#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">lastname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">     &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">lastname</span><span class="p">)))</span>
+            <span class="n">production</span><span class="o">.</span><span class="n">walkabout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/pre&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_productionlist"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_productionlist.html#sphinx.builders.html.HTMLTranslator.depart_productionlist">[docs]</a>    <span class="k">def</span> <span class="nf">depart_productionlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_production"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_production.html#sphinx.builders.html.HTMLTranslator.visit_production">[docs]</a>    <span class="k">def</span> <span class="nf">visit_production</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_production"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_production.html#sphinx.builders.html.HTMLTranslator.depart_production">[docs]</a>    <span class="k">def</span> <span class="nf">depart_production</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_centered"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_centered.html#sphinx.builders.html.HTMLTranslator.visit_centered">[docs]</a>    <span class="k">def</span> <span class="nf">visit_centered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="s2">&quot;centered&quot;</span><span class="p">)</span> <span class="o">+</span>
+                         <span class="s1">&#39;&lt;strong&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_centered"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_centered.html#sphinx.builders.html.HTMLTranslator.depart_centered">[docs]</a>    <span class="k">def</span> <span class="nf">depart_centered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/strong&gt;&lt;/p&gt;&#39;</span><span class="p">)</span></div>
+
+    <span class="c1"># overwritten</span>
+<div class="viewcode-block" id="HTMLTranslator.should_be_compact_paragraph"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.should_be_compact_paragraph.html#sphinx.builders.html.HTMLTranslator.should_be_compact_paragraph">[docs]</a>    <span class="k">def</span> <span class="nf">should_be_compact_paragraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Determine if the &lt;p&gt; tags around paragraph can be omitted.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">desc_content</span><span class="p">):</span>
+            <span class="c1"># Never compact desc_content items.</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">versionmodified</span><span class="p">):</span>
+            <span class="c1"># Never compact versionmodified nodes.</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">should_be_compact_paragraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_compact_paragraph"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_compact_paragraph.html#sphinx.builders.html.HTMLTranslator.visit_compact_paragraph">[docs]</a>    <span class="k">def</span> <span class="nf">visit_compact_paragraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_compact_paragraph"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_compact_paragraph.html#sphinx.builders.html.HTMLTranslator.depart_compact_paragraph">[docs]</a>    <span class="k">def</span> <span class="nf">depart_compact_paragraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_highlightlang"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_highlightlang.html#sphinx.builders.html.HTMLTranslator.visit_highlightlang">[docs]</a>    <span class="k">def</span> <span class="nf">visit_highlightlang</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">highlightlang</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;lang&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">highlightlinenothreshold</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;linenothreshold&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_highlightlang"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_highlightlang.html#sphinx.builders.html.HTMLTranslator.depart_highlightlang">[docs]</a>    <span class="k">def</span> <span class="nf">depart_highlightlang</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_download_reference"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_download_reference.html#sphinx.builders.html.HTMLTranslator.visit_download_reference">[docs]</a>    <span class="k">def</span> <span class="nf">visit_download_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="s1">&#39;&lt;a class=&quot;reference download internal&quot; href=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&#39;</span> <span class="o">%</span>
+                <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">dlpath</span><span class="p">,</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_download_reference"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_download_reference.html#sphinx.builders.html.HTMLTranslator.depart_download_reference">[docs]</a>    <span class="k">def</span> <span class="nf">depart_download_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span></div>
+
+    <span class="c1"># overwritten</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_image"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_image.html#sphinx.builders.html.HTMLTranslator.visit_image">[docs]</a>    <span class="k">def</span> <span class="nf">visit_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">olduri</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
+        <span class="c1"># rewrite the URI if the environment knows about it</span>
+        <span class="k">if</span> <span class="n">olduri</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">images</span><span class="p">:</span>
+            <span class="n">node</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">imgpath</span><span class="p">,</span>
+                                         <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">olduri</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span> <span class="ow">or</span> \
+           <span class="n">node</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;svgz&#39;</span><span class="p">):</span>
+            <span class="n">atts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;src&#39;</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]}</span>
+            <span class="k">if</span> <span class="s1">&#39;width&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s1">&#39;height&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s1">&#39;alt&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                <span class="n">atts</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s1">&#39;align&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;div align=&quot;</span><span class="si">%s</span><span class="s1">&quot; class=&quot;align-</span><span class="si">%s</span><span class="s1">&quot;&gt;&#39;</span> <span class="o">%</span>
+                                 <span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;align&#39;</span><span class="p">],</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;align&#39;</span><span class="p">]))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/div&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">emptytag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">atts</span><span class="p">))</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="s1">&#39;scale&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="c1"># Try to figure out image height and width.  Docutils does that too,</span>
+            <span class="c1"># but it tries the final file name, which does not necessarily exist</span>
+            <span class="c1"># yet at the time the HTML file is written.</span>
+            <span class="k">if</span> <span class="n">Image</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="s1">&#39;width&#39;</span> <span class="ow">in</span> <span class="n">node</span> <span class="ow">and</span> <span class="s1">&#39;height&#39;</span> <span class="ow">in</span> <span class="n">node</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">srcdir</span><span class="p">,</span> <span class="n">olduri</span><span class="p">))</span>
+                <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span>  <span class="c1"># Source image can&#39;t be found or opened</span>
+                        <span class="ne">UnicodeError</span><span class="p">):</span>  <span class="c1"># PIL doesn&#39;t like Unicode paths.</span>
+                    <span class="k">pass</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s1">&#39;width&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                        <span class="n">node</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="s1">&#39;height&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                        <span class="n">node</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">im</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                        <span class="k">pass</span>
+        <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_toctree"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_toctree.html#sphinx.builders.html.HTMLTranslator.visit_toctree">[docs]</a>    <span class="k">def</span> <span class="nf">visit_toctree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="c1"># this only happens when formatting a toc from env.tocs -- in this</span>
+        <span class="c1"># case we don&#39;t want to include the subtree</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_index"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_index.html#sphinx.builders.html.HTMLTranslator.visit_index">[docs]</a>    <span class="k">def</span> <span class="nf">visit_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_tabular_col_spec"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_tabular_col_spec.html#sphinx.builders.html.HTMLTranslator.visit_tabular_col_spec">[docs]</a>    <span class="k">def</span> <span class="nf">visit_tabular_col_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_glossary"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_glossary.html#sphinx.builders.html.HTMLTranslator.visit_glossary">[docs]</a>    <span class="k">def</span> <span class="nf">visit_glossary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_glossary"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_glossary.html#sphinx.builders.html.HTMLTranslator.depart_glossary">[docs]</a>    <span class="k">def</span> <span class="nf">depart_glossary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_acks"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_acks.html#sphinx.builders.html.HTMLTranslator.visit_acks">[docs]</a>    <span class="k">def</span> <span class="nf">visit_acks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_acks"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_acks.html#sphinx.builders.html.HTMLTranslator.depart_acks">[docs]</a>    <span class="k">def</span> <span class="nf">depart_acks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_hlist"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_hlist.html#sphinx.builders.html.HTMLTranslator.visit_hlist">[docs]</a>    <span class="k">def</span> <span class="nf">visit_hlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;table class=&quot;hlist&quot;&gt;&lt;tr&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_hlist"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_hlist.html#sphinx.builders.html.HTMLTranslator.depart_hlist">[docs]</a>    <span class="k">def</span> <span class="nf">depart_hlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/tr&gt;&lt;/table&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_hlistcol"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_hlistcol.html#sphinx.builders.html.HTMLTranslator.visit_hlistcol">[docs]</a>    <span class="k">def</span> <span class="nf">visit_hlistcol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;td&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_hlistcol"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_hlistcol.html#sphinx.builders.html.HTMLTranslator.depart_hlistcol">[docs]</a>    <span class="k">def</span> <span class="nf">depart_hlistcol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/td&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.bulk_text_processor"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.bulk_text_processor.html#sphinx.builders.html.HTMLTranslator.bulk_text_processor">[docs]</a>    <span class="k">def</span> <span class="nf">bulk_text_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">text</span></div>
+
+    <span class="c1"># overwritten</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_Text"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_Text.html#sphinx.builders.html.HTMLTranslator.visit_Text">[docs]</a>    <span class="k">def</span> <span class="nf">visit_Text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">protect_literal_text</span><span class="p">:</span>
+            <span class="c1"># moved here from base class&#39;s visit_literal to support</span>
+            <span class="c1"># more formatting in literal nodes</span>
+            <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">words_and_spaces</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">encoded</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="c1"># protect literal text from line wrapping</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;pre&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/span&gt;&#39;</span> <span class="o">%</span> <span class="n">token</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">token</span> <span class="ow">in</span> <span class="s1">&#39; </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
+                    <span class="c1"># allow breaks at whitespace</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># protect runs of multiple spaces; the last one can wrap</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&amp;nbsp;&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_mailto</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cloak_email_addresses</span><span class="p">:</span>
+                <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cloak_email</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bulk_text_processor</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_note"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_note.html#sphinx.builders.html.HTMLTranslator.visit_note">[docs]</a>    <span class="k">def</span> <span class="nf">visit_note</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;note&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_note"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_note.html#sphinx.builders.html.HTMLTranslator.depart_note">[docs]</a>    <span class="k">def</span> <span class="nf">depart_note</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_warning"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_warning.html#sphinx.builders.html.HTMLTranslator.visit_warning">[docs]</a>    <span class="k">def</span> <span class="nf">visit_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;warning&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_warning"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_warning.html#sphinx.builders.html.HTMLTranslator.depart_warning">[docs]</a>    <span class="k">def</span> <span class="nf">depart_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_attention"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_attention.html#sphinx.builders.html.HTMLTranslator.visit_attention">[docs]</a>    <span class="k">def</span> <span class="nf">visit_attention</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;attention&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_attention"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_attention.html#sphinx.builders.html.HTMLTranslator.depart_attention">[docs]</a>    <span class="k">def</span> <span class="nf">depart_attention</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_caution"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_caution.html#sphinx.builders.html.HTMLTranslator.visit_caution">[docs]</a>    <span class="k">def</span> <span class="nf">visit_caution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;caution&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_caution"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_caution.html#sphinx.builders.html.HTMLTranslator.depart_caution">[docs]</a>    <span class="k">def</span> <span class="nf">depart_caution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_danger"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_danger.html#sphinx.builders.html.HTMLTranslator.visit_danger">[docs]</a>    <span class="k">def</span> <span class="nf">visit_danger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;danger&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_danger"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_danger.html#sphinx.builders.html.HTMLTranslator.depart_danger">[docs]</a>    <span class="k">def</span> <span class="nf">depart_danger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_error"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_error.html#sphinx.builders.html.HTMLTranslator.visit_error">[docs]</a>    <span class="k">def</span> <span class="nf">visit_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_error"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_error.html#sphinx.builders.html.HTMLTranslator.depart_error">[docs]</a>    <span class="k">def</span> <span class="nf">depart_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_hint"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_hint.html#sphinx.builders.html.HTMLTranslator.visit_hint">[docs]</a>    <span class="k">def</span> <span class="nf">visit_hint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;hint&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_hint"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_hint.html#sphinx.builders.html.HTMLTranslator.depart_hint">[docs]</a>    <span class="k">def</span> <span class="nf">depart_hint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_important"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_important.html#sphinx.builders.html.HTMLTranslator.visit_important">[docs]</a>    <span class="k">def</span> <span class="nf">visit_important</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;important&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_important"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_important.html#sphinx.builders.html.HTMLTranslator.depart_important">[docs]</a>    <span class="k">def</span> <span class="nf">depart_important</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_tip"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_tip.html#sphinx.builders.html.HTMLTranslator.visit_tip">[docs]</a>    <span class="k">def</span> <span class="nf">visit_tip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;tip&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_tip"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_tip.html#sphinx.builders.html.HTMLTranslator.depart_tip">[docs]</a>    <span class="k">def</span> <span class="nf">depart_tip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">()</span></div>
+
+    <span class="c1"># these are only handled specially in the SmartyPantsHTMLTranslator</span>
+<div class="viewcode-block" id="HTMLTranslator.visit_literal_emphasis"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_literal_emphasis.html#sphinx.builders.html.HTMLTranslator.visit_literal_emphasis">[docs]</a>    <span class="k">def</span> <span class="nf">visit_literal_emphasis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">visit_emphasis</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_literal_emphasis"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_literal_emphasis.html#sphinx.builders.html.HTMLTranslator.depart_literal_emphasis">[docs]</a>    <span class="k">def</span> <span class="nf">depart_literal_emphasis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">depart_emphasis</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_literal_strong"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_literal_strong.html#sphinx.builders.html.HTMLTranslator.visit_literal_strong">[docs]</a>    <span class="k">def</span> <span class="nf">visit_literal_strong</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">visit_strong</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_literal_strong"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_literal_strong.html#sphinx.builders.html.HTMLTranslator.depart_literal_strong">[docs]</a>    <span class="k">def</span> <span class="nf">depart_literal_strong</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">depart_strong</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_abbreviation"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_abbreviation.html#sphinx.builders.html.HTMLTranslator.visit_abbreviation">[docs]</a>    <span class="k">def</span> <span class="nf">visit_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s1">&#39;explanation&#39;</span><span class="p">):</span>
+            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;explanation&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;abbr&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">attrs</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_abbreviation"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_abbreviation.html#sphinx.builders.html.HTMLTranslator.depart_abbreviation">[docs]</a>    <span class="k">def</span> <span class="nf">depart_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/abbr&gt;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_termsep"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_termsep.html#sphinx.builders.html.HTMLTranslator.visit_termsep">[docs]</a>    <span class="k">def</span> <span class="nf">visit_termsep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.depart_title"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.depart_title.html#sphinx.builders.html.HTMLTranslator.depart_title">[docs]</a>    <span class="k">def</span> <span class="nf">depart_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">close_tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_permalinks</span> <span class="ow">and</span>
+           <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s1">&#39;ids&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]):</span>
+            <span class="c1"># add permalink anchor</span>
+            <span class="k">if</span> <span class="n">close_tag</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;/h&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_permalink_ref</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Permalink to this headline&#39;</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">close_tag</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;/a&gt;&lt;/h&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">u&#39;&lt;/a&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#</span><span class="si">%s</span><span class="s1">&quot; &#39;</span> <span class="o">%</span>
+                                 <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span>
+                                 <span class="s1">u&#39;title=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                                     <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Permalink to this headline&#39;</span><span class="p">),</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">permalink_text</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">table</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_permalink_ref</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Permalink to this table&#39;</span><span class="p">))</span>
+
+        <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">depart_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+    <span class="c1"># overwritten to add even/odd classes</span>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_table"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_table.html#sphinx.builders.html.HTMLTranslator.visit_table">[docs]</a>    <span class="k">def</span> <span class="nf">visit_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_table_row_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_row"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_row.html#sphinx.builders.html.HTMLTranslator.visit_row">[docs]</a>    <span class="k">def</span> <span class="nf">visit_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_table_row_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table_row_index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">node</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;row-even&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">node</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;row-odd&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;tr&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_field_list"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_field_list.html#sphinx.builders.html.HTMLTranslator.visit_field_list">[docs]</a>    <span class="k">def</span> <span class="nf">visit_field_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fieldlist_row_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">BaseTranslator</span><span class="o">.</span><span class="n">visit_field_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HTMLTranslator.visit_field"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.visit_field.html#sphinx.builders.html.HTMLTranslator.visit_field">[docs]</a>    <span class="k">def</span> <span class="nf">visit_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fieldlist_row_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fieldlist_row_index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">node</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;field-even&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">node</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;field-odd&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starttag</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;tr&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="s1">&#39;field&#39;</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">visit_math</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">math_env</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;using &quot;math&quot; markup without a Sphinx math extension &#39;</span>
+                          <span class="s1">&#39;active, please use one of the math extensions &#39;</span>
+                          <span class="s1">&#39;described at http://sphinx-doc.org/ext/math.html&#39;</span><span class="p">,</span>
+                          <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">current_docname</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">line</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+<div class="viewcode-block" id="HTMLTranslator.unknown_visit"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.HTMLTranslator.unknown_visit.html#sphinx.builders.html.HTMLTranslator.unknown_visit">[docs]</a>    <span class="k">def</span> <span class="nf">unknown_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Unknown node: &#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.html#sphinx.builders.html.SmartyPantsHTMLTranslator">[docs]</a><span class="k">class</span> <span class="nc">SmartyPantsHTMLTranslator</span><span class="p">(</span><span class="n">HTMLTranslator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handle ordinary text via smartypants, converting quotes and dashes</span>
+<span class="sd">    to the correct entities.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.__init__"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.__init__.html#sphinx.builders.html.SmartyPantsHTMLTranslator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.visit_literal"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.visit_literal.html#sphinx.builders.html.SmartyPantsHTMLTranslator.visit_literal">[docs]</a>    <span class="k">def</span> <span class="nf">visit_literal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># this raises SkipNode</span>
+            <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">visit_literal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">-=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.visit_literal_block"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.visit_literal_block.html#sphinx.builders.html.SmartyPantsHTMLTranslator.visit_literal_block">[docs]</a>    <span class="k">def</span> <span class="nf">visit_literal_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">visit_literal_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span><span class="p">:</span>
+            <span class="c1"># HTMLTranslator raises SkipNode for simple literal blocks,</span>
+            <span class="c1"># but not for parsed literal blocks</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">raise</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.depart_literal_block"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.depart_literal_block.html#sphinx.builders.html.SmartyPantsHTMLTranslator.depart_literal_block">[docs]</a>    <span class="k">def</span> <span class="nf">depart_literal_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">depart_literal_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">-=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.visit_literal_emphasis"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.visit_literal_emphasis.html#sphinx.builders.html.SmartyPantsHTMLTranslator.visit_literal_emphasis">[docs]</a>    <span class="k">def</span> <span class="nf">visit_literal_emphasis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_emphasis</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.depart_literal_emphasis"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.depart_literal_emphasis.html#sphinx.builders.html.SmartyPantsHTMLTranslator.depart_literal_emphasis">[docs]</a>    <span class="k">def</span> <span class="nf">depart_literal_emphasis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_emphasis</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">-=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.visit_literal_strong"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.visit_literal_strong.html#sphinx.builders.html.SmartyPantsHTMLTranslator.visit_literal_strong">[docs]</a>    <span class="k">def</span> <span class="nf">visit_literal_strong</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visit_strong</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.depart_literal_strong"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.depart_literal_strong.html#sphinx.builders.html.SmartyPantsHTMLTranslator.depart_literal_strong">[docs]</a>    <span class="k">def</span> <span class="nf">depart_literal_strong</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depart_strong</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">-=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.visit_desc_signature"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.visit_desc_signature.html#sphinx.builders.html.SmartyPantsHTMLTranslator.visit_desc_signature">[docs]</a>    <span class="k">def</span> <span class="nf">visit_desc_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">visit_desc_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.depart_desc_signature"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.depart_desc_signature.html#sphinx.builders.html.SmartyPantsHTMLTranslator.depart_desc_signature">[docs]</a>    <span class="k">def</span> <span class="nf">depart_desc_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">depart_desc_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.visit_productionlist"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.visit_productionlist.html#sphinx.builders.html.SmartyPantsHTMLTranslator.visit_productionlist">[docs]</a>    <span class="k">def</span> <span class="nf">visit_productionlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">visit_productionlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">-=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.visit_option"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.visit_option.html#sphinx.builders.html.SmartyPantsHTMLTranslator.visit_option">[docs]</a>    <span class="k">def</span> <span class="nf">visit_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">visit_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.depart_option"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.depart_option.html#sphinx.builders.html.SmartyPantsHTMLTranslator.depart_option">[docs]</a>    <span class="k">def</span> <span class="nf">depart_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">HTMLTranslator</span><span class="o">.</span><span class="n">depart_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SmartyPantsHTMLTranslator.bulk_text_processor"><a class="viewcode-back" href="../../../generated/generated/sphinx.builders.html.SmartyPantsHTMLTranslator.bulk_text_processor.html#sphinx.builders.html.SmartyPantsHTMLTranslator.bulk_text_processor">[docs]</a>    <span class="k">def</span> <span class="nf">bulk_text_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_smarty</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">sphinx_smarty_pants</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">text</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.visit_centered
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.visit_centered

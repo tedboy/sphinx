@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.ModuleAnalyzer.find_tags
+============================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: ModuleAnalyzer.find_tags

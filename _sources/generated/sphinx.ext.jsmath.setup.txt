@@ -1,0 +1,6 @@
+sphinx.ext.jsmath.setup
+=======================
+
+.. currentmodule:: sphinx.ext.jsmath
+
+.. autofunction:: setup

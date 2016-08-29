@@ -1,0 +1,6 @@
+sphinx.builders.xml.PseudoXMLWriter.relative_path_settings
+==========================================================
+
+.. currentmodule:: sphinx.builders.xml
+
+.. autoattribute:: PseudoXMLWriter.relative_path_settings

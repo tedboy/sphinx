@@ -1,0 +1,6 @@
+sphinx.search.Text.encode
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.encode

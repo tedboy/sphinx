@@ -1,0 +1,6 @@
+sphinx.search.comment.pformat
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.pformat

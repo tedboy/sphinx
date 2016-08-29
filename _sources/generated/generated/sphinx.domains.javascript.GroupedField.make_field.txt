@@ -1,0 +1,6 @@
+sphinx.domains.javascript.GroupedField.make_field
+=================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: GroupedField.make_field

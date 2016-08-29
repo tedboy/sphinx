@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.iteritems
+====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.iteritems

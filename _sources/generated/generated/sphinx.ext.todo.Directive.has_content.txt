@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.has_content
+=====================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. autoattribute:: Directive.has_content

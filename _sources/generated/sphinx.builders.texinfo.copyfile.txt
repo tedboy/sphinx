@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.copyfile
+================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autofunction:: copyfile

@@ -1,0 +1,40 @@
+sphinx.util.FilenameUniqDict
+============================
+.. currentmodule:: sphinx.util
+.. autoclass:: FilenameUniqDict
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~FilenameUniqDict.__init__
+   ~FilenameUniqDict.add_file
+   ~FilenameUniqDict.clear
+   ~FilenameUniqDict.copy
+   ~FilenameUniqDict.fromkeys
+   ~FilenameUniqDict.get
+   ~FilenameUniqDict.has_key
+   ~FilenameUniqDict.items
+   ~FilenameUniqDict.iteritems
+   ~FilenameUniqDict.iterkeys
+   ~FilenameUniqDict.itervalues
+   ~FilenameUniqDict.keys
+   ~FilenameUniqDict.merge_other
+   ~FilenameUniqDict.pop
+   ~FilenameUniqDict.popitem
+   ~FilenameUniqDict.purge_doc
+   ~FilenameUniqDict.setdefault
+   ~FilenameUniqDict.update
+   ~FilenameUniqDict.values
+   ~FilenameUniqDict.viewitems
+   ~FilenameUniqDict.viewkeys
+   ~FilenameUniqDict.viewvalues
+
+
+
+
+

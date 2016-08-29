@@ -1,0 +1,6 @@
+sphinx.search.WordCollector.dispatch_departure
+==============================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: WordCollector.dispatch_departure

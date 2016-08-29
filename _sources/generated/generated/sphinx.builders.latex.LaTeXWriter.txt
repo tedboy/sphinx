@@ -1,0 +1,45 @@
+sphinx.builders.latex.LaTeXWriter
+=================================
+.. currentmodule:: sphinx.builders.latex
+.. autoclass:: LaTeXWriter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~LaTeXWriter.__init__
+   ~LaTeXWriter.assemble_parts
+   ~LaTeXWriter.get_transforms
+   ~LaTeXWriter.supports
+   ~LaTeXWriter.translate
+   ~LaTeXWriter.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~LaTeXWriter.component_type
+   ~LaTeXWriter.config_section
+   ~LaTeXWriter.config_section_dependencies
+   ~LaTeXWriter.default_transforms
+   ~LaTeXWriter.destination
+   ~LaTeXWriter.document
+   ~LaTeXWriter.language
+   ~LaTeXWriter.output
+   ~LaTeXWriter.relative_path_settings
+   ~LaTeXWriter.settings_default_overrides
+   ~LaTeXWriter.settings_defaults
+   ~LaTeXWriter.settings_spec
+   ~LaTeXWriter.supported
+   ~LaTeXWriter.unknown_reference_resolvers
+

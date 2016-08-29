@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.post_process_images
+==========================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.post_process_images

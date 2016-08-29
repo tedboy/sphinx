@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.tell
+==========================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.tell

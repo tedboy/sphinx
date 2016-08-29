@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPNamespaceObject.error
+===========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPNamespaceObject.error

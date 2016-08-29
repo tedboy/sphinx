@@ -1,0 +1,6 @@
+sphinx.builders.darkgreen
+=========================
+
+.. currentmodule:: sphinx.builders
+
+.. autofunction:: darkgreen

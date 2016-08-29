@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.Popen.pipe_cloexec
+=====================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: Popen.pipe_cloexec

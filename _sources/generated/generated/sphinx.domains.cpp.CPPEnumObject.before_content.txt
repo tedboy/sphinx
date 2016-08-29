@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumObject.before_content
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumObject.before_content

@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.update_basic_atts
+==============================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.update_basic_atts

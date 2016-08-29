@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.add_target_and_index
+===========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.add_target_and_index

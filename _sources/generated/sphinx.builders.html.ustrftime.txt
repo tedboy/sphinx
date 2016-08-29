@@ -1,0 +1,6 @@
+sphinx.builders.html.ustrftime
+==============================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: ustrftime

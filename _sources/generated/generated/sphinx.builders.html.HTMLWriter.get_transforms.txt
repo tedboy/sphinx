@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.get_transforms
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLWriter.get_transforms

@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.component_type
+====================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoWriter.component_type

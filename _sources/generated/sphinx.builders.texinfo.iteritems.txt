@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.iteritems
+=================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autofunction:: iteritems

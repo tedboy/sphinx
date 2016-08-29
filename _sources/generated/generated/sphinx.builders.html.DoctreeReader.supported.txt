@@ -1,0 +1,6 @@
+sphinx.builders.html.DoctreeReader.supported
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: DoctreeReader.supported

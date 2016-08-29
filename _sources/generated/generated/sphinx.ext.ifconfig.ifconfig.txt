@@ -1,0 +1,87 @@
+sphinx.ext.ifconfig.ifconfig
+============================
+.. currentmodule:: sphinx.ext.ifconfig
+.. autoclass:: ifconfig
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ifconfig.__init__
+   ~ifconfig.append
+   ~ifconfig.append_attr_list
+   ~ifconfig.asdom
+   ~ifconfig.astext
+   ~ifconfig.attlist
+   ~ifconfig.clear
+   ~ifconfig.coerce_append_attr_list
+   ~ifconfig.copy
+   ~ifconfig.copy_attr_coerce
+   ~ifconfig.copy_attr_concatenate
+   ~ifconfig.copy_attr_consistent
+   ~ifconfig.copy_attr_convert
+   ~ifconfig.deepcopy
+   ~ifconfig.delattr
+   ~ifconfig.emptytag
+   ~ifconfig.endtag
+   ~ifconfig.extend
+   ~ifconfig.first_child_matching_class
+   ~ifconfig.first_child_not_matching_class
+   ~ifconfig.get
+   ~ifconfig.get_language_code
+   ~ifconfig.has_key
+   ~ifconfig.hasattr
+   ~ifconfig.index
+   ~ifconfig.insert
+   ~ifconfig.is_not_default
+   ~ifconfig.is_not_known_attribute
+   ~ifconfig.is_not_list_attribute
+   ~ifconfig.next_node
+   ~ifconfig.non_default_attributes
+   ~ifconfig.note_referenced_by
+   ~ifconfig.pformat
+   ~ifconfig.pop
+   ~ifconfig.remove
+   ~ifconfig.replace
+   ~ifconfig.replace_attr
+   ~ifconfig.replace_self
+   ~ifconfig.set_class
+   ~ifconfig.setdefault
+   ~ifconfig.setup_child
+   ~ifconfig.shortrepr
+   ~ifconfig.starttag
+   ~ifconfig.traverse
+   ~ifconfig.update_all_atts
+   ~ifconfig.update_all_atts_coercion
+   ~ifconfig.update_all_atts_concatenating
+   ~ifconfig.update_all_atts_consistantly
+   ~ifconfig.update_all_atts_convert
+   ~ifconfig.update_basic_atts
+   ~ifconfig.walk
+   ~ifconfig.walkabout
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ifconfig.basic_attributes
+   ~ifconfig.child_text_separator
+   ~ifconfig.document
+   ~ifconfig.known_attributes
+   ~ifconfig.line
+   ~ifconfig.list_attributes
+   ~ifconfig.local_attributes
+   ~ifconfig.parent
+   ~ifconfig.source
+   ~ifconfig.tagname
+

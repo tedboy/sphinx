@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.option_spec
+==============================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: GraphvizSimple.option_spec

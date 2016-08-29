@@ -1,0 +1,44 @@
+sphinx.domains.std.Domain
+=========================
+.. currentmodule:: sphinx.domains.std
+.. autoclass:: Domain
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Domain.__init__
+   ~Domain.clear_doc
+   ~Domain.directive
+   ~Domain.get_objects
+   ~Domain.get_type_name
+   ~Domain.merge_domaindata
+   ~Domain.process_doc
+   ~Domain.resolve_any_xref
+   ~Domain.resolve_xref
+   ~Domain.role
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~Domain.dangling_warnings
+   ~Domain.data_version
+   ~Domain.directives
+   ~Domain.indices
+   ~Domain.initial_data
+   ~Domain.label
+   ~Domain.name
+   ~Domain.object_types
+   ~Domain.roles
+

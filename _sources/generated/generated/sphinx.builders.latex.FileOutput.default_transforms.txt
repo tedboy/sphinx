@@ -1,0 +1,6 @@
+sphinx.builders.latex.FileOutput.default_transforms
+===================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: FileOutput.default_transforms

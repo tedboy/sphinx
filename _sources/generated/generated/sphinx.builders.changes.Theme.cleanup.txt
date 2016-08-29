@@ -1,0 +1,6 @@
+sphinx.builders.changes.Theme.cleanup
+=====================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. automethod:: Theme.cleanup

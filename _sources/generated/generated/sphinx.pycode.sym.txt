@@ -1,0 +1,162 @@
+sphinx.pycode.sym
+=================
+.. currentmodule:: sphinx.pycode
+.. autoclass:: sym
+   :undoc-members:
+
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~sym.AMPER
+   ~sym.AMPEREQUAL
+   ~sym.AT
+   ~sym.BACKQUOTE
+   ~sym.CIRCUMFLEX
+   ~sym.CIRCUMFLEXEQUAL
+   ~sym.COLON
+   ~sym.COMMA
+   ~sym.COMMENT
+   ~sym.DEDENT
+   ~sym.DOT
+   ~sym.DOUBLESLASH
+   ~sym.DOUBLESLASHEQUAL
+   ~sym.DOUBLESTAR
+   ~sym.DOUBLESTAREQUAL
+   ~sym.ELLIPSIS
+   ~sym.ENDMARKER
+   ~sym.EQEQUAL
+   ~sym.EQUAL
+   ~sym.ERRORTOKEN
+   ~sym.GREATER
+   ~sym.GREATEREQUAL
+   ~sym.INDENT
+   ~sym.LBRACE
+   ~sym.LEFTSHIFT
+   ~sym.LEFTSHIFTEQUAL
+   ~sym.LESS
+   ~sym.LESSEQUAL
+   ~sym.LPAR
+   ~sym.LSQB
+   ~sym.MINEQUAL
+   ~sym.MINUS
+   ~sym.NAME
+   ~sym.NEWLINE
+   ~sym.NL
+   ~sym.NOTEQUAL
+   ~sym.NT_OFFSET
+   ~sym.NUMBER
+   ~sym.N_TOKENS
+   ~sym.OP
+   ~sym.PERCENT
+   ~sym.PERCENTEQUAL
+   ~sym.PLUS
+   ~sym.PLUSEQUAL
+   ~sym.RARROW
+   ~sym.RBRACE
+   ~sym.RIGHTSHIFT
+   ~sym.RIGHTSHIFTEQUAL
+   ~sym.RPAR
+   ~sym.RSQB
+   ~sym.SEMI
+   ~sym.SLASH
+   ~sym.SLASHEQUAL
+   ~sym.STAR
+   ~sym.STAREQUAL
+   ~sym.STRING
+   ~sym.TILDE
+   ~sym.VBAR
+   ~sym.VBAREQUAL
+   ~sym.and_expr
+   ~sym.and_test
+   ~sym.arglist
+   ~sym.argument
+   ~sym.arith_expr
+   ~sym.assert_stmt
+   ~sym.atom
+   ~sym.augassign
+   ~sym.break_stmt
+   ~sym.classdef
+   ~sym.comp_for
+   ~sym.comp_if
+   ~sym.comp_iter
+   ~sym.comp_op
+   ~sym.comparison
+   ~sym.compound_stmt
+   ~sym.continue_stmt
+   ~sym.decorated
+   ~sym.decorator
+   ~sym.decorators
+   ~sym.del_stmt
+   ~sym.dictorsetmaker
+   ~sym.dotted_as_name
+   ~sym.dotted_as_names
+   ~sym.dotted_name
+   ~sym.encoding_decl
+   ~sym.eval_input
+   ~sym.except_clause
+   ~sym.exec_stmt
+   ~sym.expr
+   ~sym.expr_stmt
+   ~sym.exprlist
+   ~sym.factor
+   ~sym.file_input
+   ~sym.flow_stmt
+   ~sym.for_stmt
+   ~sym.fpdef
+   ~sym.fplist
+   ~sym.funcdef
+   ~sym.global_stmt
+   ~sym.if_stmt
+   ~sym.import_as_name
+   ~sym.import_as_names
+   ~sym.import_from
+   ~sym.import_name
+   ~sym.import_stmt
+   ~sym.lambdef
+   ~sym.list_for
+   ~sym.list_if
+   ~sym.list_iter
+   ~sym.listmaker
+   ~sym.not_test
+   ~sym.old_lambdef
+   ~sym.old_test
+   ~sym.or_test
+   ~sym.parameters
+   ~sym.pass_stmt
+   ~sym.power
+   ~sym.print_stmt
+   ~sym.raise_stmt
+   ~sym.return_stmt
+   ~sym.shift_expr
+   ~sym.simple_stmt
+   ~sym.single_input
+   ~sym.sliceop
+   ~sym.small_stmt
+   ~sym.stmt
+   ~sym.subscript
+   ~sym.subscriptlist
+   ~sym.suite
+   ~sym.term
+   ~sym.test
+   ~sym.testlist
+   ~sym.testlist1
+   ~sym.testlist_comp
+   ~sym.testlist_safe
+   ~sym.trailer
+   ~sym.try_stmt
+   ~sym.varargslist
+   ~sym.while_stmt
+   ~sym.with_item
+   ~sym.with_stmt
+   ~sym.xor_expr
+   ~sym.yield_expr
+   ~sym.yield_stmt
+

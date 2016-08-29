@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParamPack.describe_signature
+============================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorParamPack.describe_signature

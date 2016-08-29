@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.copy_image_files
+=======================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.copy_image_files

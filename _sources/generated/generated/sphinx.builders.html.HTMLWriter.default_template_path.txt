@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.default_template_path
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.default_template_path

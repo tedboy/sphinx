@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.embedded
+=========================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autoattribute:: EpubBuilder.embedded

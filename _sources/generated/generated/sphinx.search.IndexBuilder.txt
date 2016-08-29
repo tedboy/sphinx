@@ -1,0 +1,37 @@
+sphinx.search.IndexBuilder
+==========================
+.. currentmodule:: sphinx.search
+.. autoclass:: IndexBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~IndexBuilder.__init__
+   ~IndexBuilder.context_for_searchtool
+   ~IndexBuilder.dump
+   ~IndexBuilder.feed
+   ~IndexBuilder.freeze
+   ~IndexBuilder.get_js_stemmer_rawcode
+   ~IndexBuilder.get_objects
+   ~IndexBuilder.get_terms
+   ~IndexBuilder.label
+   ~IndexBuilder.load
+   ~IndexBuilder.prune
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~IndexBuilder.formats
+

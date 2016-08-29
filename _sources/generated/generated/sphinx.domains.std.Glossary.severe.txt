@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.severe
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Glossary.severe

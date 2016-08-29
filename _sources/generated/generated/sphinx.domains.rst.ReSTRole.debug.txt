@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.debug
+=================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.debug

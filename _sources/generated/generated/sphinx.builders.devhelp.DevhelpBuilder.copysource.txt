@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.copysource
+=================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.copysource

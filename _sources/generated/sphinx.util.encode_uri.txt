@@ -1,0 +1,6 @@
+sphinx.util.encode_uri
+======================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: encode_uri

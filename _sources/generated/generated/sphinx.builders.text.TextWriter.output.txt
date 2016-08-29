@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.output
+======================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. autoattribute:: TextWriter.output

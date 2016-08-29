@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTRole.after_content
+=========================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTRole.after_content

@@ -1,0 +1,6 @@
+sphinx.util.get_matching_files
+==============================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: get_matching_files

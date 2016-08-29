@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.required_arguments
+================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTMarkup.required_arguments

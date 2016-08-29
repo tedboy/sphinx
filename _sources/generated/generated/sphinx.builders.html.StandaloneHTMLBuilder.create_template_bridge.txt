@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.create_template_bridge
+=================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.create_template_bridge

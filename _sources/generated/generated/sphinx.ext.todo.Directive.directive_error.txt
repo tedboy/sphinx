@@ -1,0 +1,6 @@
+sphinx.ext.todo.Directive.directive_error
+=========================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: Directive.directive_error

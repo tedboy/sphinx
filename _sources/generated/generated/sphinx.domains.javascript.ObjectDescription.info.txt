@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.info
+================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.info

@@ -1,0 +1,6 @@
+sphinx.locale.text_type.decode
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.decode

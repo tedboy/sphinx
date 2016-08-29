@@ -1,0 +1,49 @@
+sphinx.domains.javascript.JSCallable
+====================================
+.. currentmodule:: sphinx.domains.javascript
+.. autoclass:: JSCallable
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~JSCallable.__init__
+   ~JSCallable.add_name
+   ~JSCallable.add_target_and_index
+   ~JSCallable.after_content
+   ~JSCallable.assert_has_content
+   ~JSCallable.before_content
+   ~JSCallable.debug
+   ~JSCallable.directive_error
+   ~JSCallable.error
+   ~JSCallable.get_index_text
+   ~JSCallable.get_signatures
+   ~JSCallable.handle_signature
+   ~JSCallable.info
+   ~JSCallable.run
+   ~JSCallable.severe
+   ~JSCallable.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~JSCallable.display_prefix
+   ~JSCallable.doc_field_types
+   ~JSCallable.final_argument_whitespace
+   ~JSCallable.has_arguments
+   ~JSCallable.has_content
+   ~JSCallable.option_spec
+   ~JSCallable.optional_arguments
+   ~JSCallable.required_arguments
+

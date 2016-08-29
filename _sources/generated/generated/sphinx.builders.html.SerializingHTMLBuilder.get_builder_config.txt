@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.get_builder_config
+==============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.get_builder_config

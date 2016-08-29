@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AutodocReporter.error
+========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AutodocReporter.error

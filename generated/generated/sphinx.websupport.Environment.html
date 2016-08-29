@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.1.2.2. sphinx.websupport.Environment &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="7.1. sphinx.websupport" href="../sphinx.websupport.html"/>
+        <link rel="next" title="7.1.2.2.1.1. sphinx.websupport.Environment.__init__" href="sphinx.websupport.Environment.__init__.html"/>
+        <link rel="prev" title="7.1.2.1.1.10. sphinx.websupport.BaseSearch.query" href="sphinx.websupport.BaseSearch.query.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.websupport.html">7.1. sphinx.websupport</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.websupport.html#functions">7.1.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.websupport.html#classes">7.1.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.BaseSearch.html">7.1.2.1. sphinx.websupport.BaseSearch</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">7.1.2.2. sphinx.websupport.Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.FileSystemLoader.html">7.1.2.3. sphinx.websupport.FileSystemLoader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.Sphinx.html">7.1.2.4. sphinx.websupport.Sphinx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.StorageBackend.html">7.1.2.5. sphinx.websupport.StorageBackend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.websupport.WebSupport.html">7.1.2.6. sphinx.websupport.WebSupport</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.websupport.search.html">7.2. sphinx.websupport.search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.websupport.storage.html">7.3. sphinx.websupport.storage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.websupport.html">7. sphinx.websupport</a> &raquo;</li>
+        
+          <li><a href="../sphinx.websupport.html">7.1. sphinx.websupport</a> &raquo;</li>
+        
+      <li>7.1.2.2. sphinx.websupport.Environment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.websupport.Environment.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-websupport-environment">
+<h1>7.1.2.2. sphinx.websupport.Environment<a class="headerlink" href="#sphinx-websupport-environment" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.websupport.Environment">
+<em class="property">class </em><code class="descclassname">sphinx.websupport.</code><code class="descname">Environment</code><span class="sig-paren">(</span><em>block_start_string='{%'</em>, <em>block_end_string='%}'</em>, <em>variable_start_string='{{'</em>, <em>variable_end_string='}}'</em>, <em>comment_start_string='{#'</em>, <em>comment_end_string='#}'</em>, <em>line_statement_prefix=None</em>, <em>line_comment_prefix=None</em>, <em>trim_blocks=False</em>, <em>lstrip_blocks=False</em>, <em>newline_sequence='n'</em>, <em>keep_trailing_newline=False</em>, <em>extensions=()</em>, <em>optimized=True</em>, <em>undefined=&lt;class 'jinja2.runtime.Undefined'&gt;</em>, <em>finalize=None</em>, <em>autoescape=False</em>, <em>loader=None</em>, <em>cache_size=400</em>, <em>auto_reload=True</em>, <em>bytecode_cache=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/jinja2/environment.html#Environment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.websupport.Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>The core component of Jinja is the <cite>Environment</cite>.  It contains
+important shared variables like configuration, filters, tests,
+globals and others.  Instances of this class may be modified if
+they are not shared and if no template was loaded so far.
+Modifications on environments after the first template was loaded
+will lead to surprising effects and undefined behavior.</p>
+<p>Here are the possible initialization parameters:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><cite>block_start_string</cite></dt>
+<dd>The string marking the beginning of a block.  Defaults to <code class="docutils literal"><span class="pre">'{%'</span></code>.</dd>
+<dt><cite>block_end_string</cite></dt>
+<dd>The string marking the end of a block.  Defaults to <code class="docutils literal"><span class="pre">'%}'</span></code>.</dd>
+<dt><cite>variable_start_string</cite></dt>
+<dd>The string marking the beginning of a print statement.
+Defaults to <code class="docutils literal"><span class="pre">'{{'</span></code>.</dd>
+<dt><cite>variable_end_string</cite></dt>
+<dd>The string marking the end of a print statement.  Defaults to
+<code class="docutils literal"><span class="pre">'}}'</span></code>.</dd>
+<dt><cite>comment_start_string</cite></dt>
+<dd>The string marking the beginning of a comment.  Defaults to <code class="docutils literal"><span class="pre">'{#'</span></code>.</dd>
+<dt><cite>comment_end_string</cite></dt>
+<dd>The string marking the end of a comment.  Defaults to <code class="docutils literal"><span class="pre">'#}'</span></code>.</dd>
+<dt><cite>line_statement_prefix</cite></dt>
+<dd>If given and a string, this will be used as prefix for line based
+statements.  See also <span class="xref std std-ref">line-statements</span>.</dd>
+<dt><cite>line_comment_prefix</cite></dt>
+<dd><p class="first">If given and a string, this will be used as prefix for line based
+comments.  See also <span class="xref std std-ref">line-statements</span>.</p>
+<div class="last versionadded">
+<p><span class="versionmodified">New in version 2.2.</span></p>
+</div>
+</dd>
+<dt><cite>trim_blocks</cite></dt>
+<dd>If this is set to <code class="docutils literal"><span class="pre">True</span></code> the first newline after a block is
+removed (block, not variable tag!).  Defaults to <cite>False</cite>.</dd>
+<dt><cite>lstrip_blocks</cite></dt>
+<dd>If this is set to <code class="docutils literal"><span class="pre">True</span></code> leading spaces and tabs are stripped
+from the start of a line to a block.  Defaults to <cite>False</cite>.</dd>
+<dt><cite>newline_sequence</cite></dt>
+<dd>The sequence that starts a newline.  Must be one of <code class="docutils literal"><span class="pre">'\r'</span></code>,
+<code class="docutils literal"><span class="pre">'\n'</span></code> or <code class="docutils literal"><span class="pre">'\r\n'</span></code>.  The default is <code class="docutils literal"><span class="pre">'\n'</span></code> which is a
+useful default for Linux and OS X systems as well as web
+applications.</dd>
+<dt><cite>keep_trailing_newline</cite></dt>
+<dd><p class="first">Preserve the trailing newline when rendering templates.
+The default is <code class="docutils literal"><span class="pre">False</span></code>, which causes a single newline,
+if present, to be stripped from the end of the template.</p>
+<div class="last versionadded">
+<p><span class="versionmodified">New in version 2.7.</span></p>
+</div>
+</dd>
+<dt><cite>extensions</cite></dt>
+<dd>List of Jinja extensions to use.  This can either be import paths
+as strings or extension classes.  For more information have a
+look at <span class="xref std std-ref">the extensions documentation</span>.</dd>
+<dt><cite>optimized</cite></dt>
+<dd>should the optimizer be enabled?  Default is <cite>True</cite>.</dd>
+<dt><cite>undefined</cite></dt>
+<dd><code class="xref py py-class docutils literal"><span class="pre">Undefined</span></code> or a subclass of it that is used to represent
+undefined values in the template.</dd>
+<dt><cite>finalize</cite></dt>
+<dd>A callable that can be used to process the result of a variable
+expression before it is output.  For example one can convert
+<cite>None</cite> implicitly into an empty string here.</dd>
+<dt><cite>autoescape</cite></dt>
+<dd><p class="first">If set to true the XML/HTML autoescaping feature is enabled by
+default.  For more details about autoescaping see
+<code class="xref py py-class docutils literal"><span class="pre">Markup</span></code>.  As of Jinja 2.4 this can also
+be a callable that is passed the template name and has to
+return <cite>True</cite> or <cite>False</cite> depending on autoescape should be
+enabled by default.</p>
+<div class="last versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span><cite>autoescape</cite> can now be a function</p>
+</div>
+</dd>
+<dt><cite>loader</cite></dt>
+<dd>The template loader for this environment.</dd>
+<dt><cite>cache_size</cite></dt>
+<dd><p class="first">The size of the cache.  Per default this is <code class="docutils literal"><span class="pre">400</span></code> which means
+that if more than 400 templates are loaded the loader will clean
+out the least recently used template.  If the cache size is set to
+<code class="docutils literal"><span class="pre">0</span></code> templates are recompiled all the time, if the cache size is
+<code class="docutils literal"><span class="pre">-1</span></code> the cache will not be cleaned.</p>
+<div class="last versionchanged">
+<p><span class="versionmodified">Changed in version 2.8: </span>The cache size was increased to 400 from a low 50.</p>
+</div>
+</dd>
+<dt><cite>auto_reload</cite></dt>
+<dd>Some loaders load templates from locations where the template
+sources may change (ie: file system or database).  If
+<cite>auto_reload</cite> is set to <cite>True</cite> (default) every time a template is
+requested the loader checks if the source changed and if yes, it
+will reload the template.  For higher performance it&#8217;s possible to
+disable that.</dd>
+<dt><cite>bytecode_cache</cite></dt>
+<dd><p class="first">If set to a bytecode cache object, this object will provide a
+cache for the internal Jinja bytecode so that templates don&#8217;t
+have to be parsed if they were not changed.</p>
+<p class="last">See <span class="xref std std-ref">bytecode-cache</span> for more information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>7.1.2.2.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.__init__.html#sphinx.websupport.Environment.__init__" title="sphinx.websupport.Environment.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([block_start_string,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.add_extension.html#sphinx.websupport.Environment.add_extension" title="sphinx.websupport.Environment.add_extension"><code class="xref py py-obj docutils literal"><span class="pre">add_extension</span></code></a>(extension)</td>
+<td>Adds an extension after the environment was created.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.call_filter.html#sphinx.websupport.Environment.call_filter" title="sphinx.websupport.Environment.call_filter"><code class="xref py py-obj docutils literal"><span class="pre">call_filter</span></code></a>(name,&nbsp;value[,&nbsp;args,&nbsp;kwargs,&nbsp;...])</td>
+<td>Invokes a filter on a value the same way the compiler does it.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.call_test.html#sphinx.websupport.Environment.call_test" title="sphinx.websupport.Environment.call_test"><code class="xref py py-obj docutils literal"><span class="pre">call_test</span></code></a>(name,&nbsp;value[,&nbsp;args,&nbsp;kwargs])</td>
+<td>Invokes a test on a value the same way the compiler does it.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.compile.html#sphinx.websupport.Environment.compile" title="sphinx.websupport.Environment.compile"><code class="xref py py-obj docutils literal"><span class="pre">compile</span></code></a>(source[,&nbsp;name,&nbsp;filename,&nbsp;raw,&nbsp;...])</td>
+<td>Compile a node or template source code.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.compile_expression.html#sphinx.websupport.Environment.compile_expression" title="sphinx.websupport.Environment.compile_expression"><code class="xref py py-obj docutils literal"><span class="pre">compile_expression</span></code></a>(source[,&nbsp;undefined_to_none])</td>
+<td>A handy helper method that returns a callable that accepts keyword arguments that appear as variables in the expression.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.compile_templates.html#sphinx.websupport.Environment.compile_templates" title="sphinx.websupport.Environment.compile_templates"><code class="xref py py-obj docutils literal"><span class="pre">compile_templates</span></code></a>(target[,&nbsp;extensions,&nbsp;...])</td>
+<td>Finds all the templates the loader can find, compiles them and stores them in <cite>target</cite>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.extend.html#sphinx.websupport.Environment.extend" title="sphinx.websupport.Environment.extend"><code class="xref py py-obj docutils literal"><span class="pre">extend</span></code></a>(**attributes)</td>
+<td>Add the items to the instance of the environment if they do not exist yet.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.from_string.html#sphinx.websupport.Environment.from_string" title="sphinx.websupport.Environment.from_string"><code class="xref py py-obj docutils literal"><span class="pre">from_string</span></code></a>(source[,&nbsp;globals,&nbsp;template_class])</td>
+<td>Load a template from a string.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.get_or_select_template.html#sphinx.websupport.Environment.get_or_select_template" title="sphinx.websupport.Environment.get_or_select_template"><code class="xref py py-obj docutils literal"><span class="pre">get_or_select_template</span></code></a>(template_name_or_list)</td>
+<td>Does a typecheck and dispatches to <code class="xref py py-meth docutils literal"><span class="pre">select_template()</span></code> if an iterable of template names is given, otherwise to <code class="xref py py-meth docutils literal"><span class="pre">get_template()</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.get_template.html#sphinx.websupport.Environment.get_template" title="sphinx.websupport.Environment.get_template"><code class="xref py py-obj docutils literal"><span class="pre">get_template</span></code></a>(name[,&nbsp;parent,&nbsp;globals])</td>
+<td>Load a template from the loader.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.getattr.html#sphinx.websupport.Environment.getattr" title="sphinx.websupport.Environment.getattr"><code class="xref py py-obj docutils literal"><span class="pre">getattr</span></code></a>(obj,&nbsp;attribute)</td>
+<td>Get an item or attribute of an object but prefer the attribute.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.getitem.html#sphinx.websupport.Environment.getitem" title="sphinx.websupport.Environment.getitem"><code class="xref py py-obj docutils literal"><span class="pre">getitem</span></code></a>(obj,&nbsp;argument)</td>
+<td>Get an item or attribute of an object but prefer the item.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.handle_exception.html#sphinx.websupport.Environment.handle_exception" title="sphinx.websupport.Environment.handle_exception"><code class="xref py py-obj docutils literal"><span class="pre">handle_exception</span></code></a>([exc_info,&nbsp;rendered,&nbsp;...])</td>
+<td>Exception handling helper.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.iter_extensions.html#sphinx.websupport.Environment.iter_extensions" title="sphinx.websupport.Environment.iter_extensions"><code class="xref py py-obj docutils literal"><span class="pre">iter_extensions</span></code></a>()</td>
+<td>Iterates over the extensions by priority.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.join_path.html#sphinx.websupport.Environment.join_path" title="sphinx.websupport.Environment.join_path"><code class="xref py py-obj docutils literal"><span class="pre">join_path</span></code></a>(template,&nbsp;parent)</td>
+<td>Join a template with the parent.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.lex.html#sphinx.websupport.Environment.lex" title="sphinx.websupport.Environment.lex"><code class="xref py py-obj docutils literal"><span class="pre">lex</span></code></a>(source[,&nbsp;name,&nbsp;filename])</td>
+<td>Lex the given sourcecode and return a generator that yields tokens as tuples in the form <code class="docutils literal"><span class="pre">(lineno,</span> <span class="pre">token_type,</span> <span class="pre">value)</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.list_templates.html#sphinx.websupport.Environment.list_templates" title="sphinx.websupport.Environment.list_templates"><code class="xref py py-obj docutils literal"><span class="pre">list_templates</span></code></a>([extensions,&nbsp;filter_func])</td>
+<td>Returns a list of templates for this environment.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.make_globals.html#sphinx.websupport.Environment.make_globals" title="sphinx.websupport.Environment.make_globals"><code class="xref py py-obj docutils literal"><span class="pre">make_globals</span></code></a>(d)</td>
+<td>Return a dict for the globals.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.overlay.html#sphinx.websupport.Environment.overlay" title="sphinx.websupport.Environment.overlay"><code class="xref py py-obj docutils literal"><span class="pre">overlay</span></code></a>([block_start_string,&nbsp;...])</td>
+<td>Create a new overlay environment that shares all the data with the current environment except for cache and the overridden attributes.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.parse.html#sphinx.websupport.Environment.parse" title="sphinx.websupport.Environment.parse"><code class="xref py py-obj docutils literal"><span class="pre">parse</span></code></a>(source[,&nbsp;name,&nbsp;filename])</td>
+<td>Parse the sourcecode and return the abstract syntax tree.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.preprocess.html#sphinx.websupport.Environment.preprocess" title="sphinx.websupport.Environment.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(source[,&nbsp;name,&nbsp;filename])</td>
+<td>Preprocesses the source with all extensions.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.select_template.html#sphinx.websupport.Environment.select_template" title="sphinx.websupport.Environment.select_template"><code class="xref py py-obj docutils literal"><span class="pre">select_template</span></code></a>(names[,&nbsp;parent,&nbsp;globals])</td>
+<td>Works like <code class="xref py py-meth docutils literal"><span class="pre">get_template()</span></code> but tries a number of templates before it fails.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>7.1.2.2.2. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.exception_formatter.html#sphinx.websupport.Environment.exception_formatter" title="sphinx.websupport.Environment.exception_formatter"><code class="xref py py-obj docutils literal"><span class="pre">exception_formatter</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.exception_handler.html#sphinx.websupport.Environment.exception_handler" title="sphinx.websupport.Environment.exception_handler"><code class="xref py py-obj docutils literal"><span class="pre">exception_handler</span></code></a></td>
+<td>these are currently EXPERIMENTAL undocumented features.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.lexer.html#sphinx.websupport.Environment.lexer" title="sphinx.websupport.Environment.lexer"><code class="xref py py-obj docutils literal"><span class="pre">lexer</span></code></a></td>
+<td>The lexer for this environment.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.linked_to.html#sphinx.websupport.Environment.linked_to" title="sphinx.websupport.Environment.linked_to"><code class="xref py py-obj docutils literal"><span class="pre">linked_to</span></code></a></td>
+<td>the environment this environment is linked to if it is an overlay</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.overlayed.html#sphinx.websupport.Environment.overlayed" title="sphinx.websupport.Environment.overlayed"><code class="xref py py-obj docutils literal"><span class="pre">overlayed</span></code></a></td>
+<td>True if the environment is just an overlay</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.websupport.Environment.sandboxed.html#sphinx.websupport.Environment.sandboxed" title="sphinx.websupport.Environment.sandboxed"><code class="xref py py-obj docutils literal"><span class="pre">sandboxed</span></code></a></td>
+<td>if this environment is sandboxed.  Modifying this variable won&#8217;t make</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.websupport.Environment.shared.html#sphinx.websupport.Environment.shared" title="sphinx.websupport.Environment.shared"><code class="xref py py-obj docutils literal"><span class="pre">shared</span></code></a></td>
+<td>shared environments have this set to <cite>True</cite>.  A shared environment</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.websupport.Environment.__init__.html" class="btn btn-neutral float-right" title="7.1.2.2.1.1. sphinx.websupport.Environment.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.websupport.BaseSearch.query.html" class="btn btn-neutral" title="7.1.2.1.1.10. sphinx.websupport.BaseSearch.query" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.defaultdict.update
+==========================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: defaultdict.update

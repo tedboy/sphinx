@@ -1,0 +1,6 @@
+sphinx.builders.text.TextWriter.supports
+========================================
+
+.. currentmodule:: sphinx.builders.text
+
+.. automethod:: TextWriter.supports

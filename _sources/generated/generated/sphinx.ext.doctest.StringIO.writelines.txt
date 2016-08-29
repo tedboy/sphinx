@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.writelines
+======================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.writelines

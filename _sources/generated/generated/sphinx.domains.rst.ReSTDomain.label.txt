@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDomain.label
+===================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTDomain.label

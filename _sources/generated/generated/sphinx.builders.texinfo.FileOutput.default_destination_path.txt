@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.FileOutput.default_destination_path
+===========================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: FileOutput.default_destination_path

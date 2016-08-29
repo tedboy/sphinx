@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.text_type.strip
+===================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: text_type.strip

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.IfConfig.add_name
+=====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: IfConfig.add_name

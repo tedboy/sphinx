@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.copy
+=================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.copy

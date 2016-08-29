@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.FunctionDocumenter.option_spec
+=================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: FunctionDocumenter.option_spec

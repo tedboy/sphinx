@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ModuleLevelDocumenter.objtype
+================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ModuleLevelDocumenter.objtype

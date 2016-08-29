@@ -1,0 +1,6 @@
+sphinx.domains.std.ViewList.append
+==================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ViewList.append

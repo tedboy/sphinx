@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HeadRequest.set_proxy
+===============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HeadRequest.set_proxy

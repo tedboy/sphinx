@@ -1,0 +1,6 @@
+sphinx.builders.gettext.open
+============================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: open

@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.warning
+===================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.warning

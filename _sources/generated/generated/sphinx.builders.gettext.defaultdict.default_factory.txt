@@ -1,0 +1,6 @@
+sphinx.builders.gettext.defaultdict.default_factory
+===================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: defaultdict.default_factory

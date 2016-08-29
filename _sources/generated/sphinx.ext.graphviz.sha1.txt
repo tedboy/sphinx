@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.sha1
+========================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autofunction:: sha1

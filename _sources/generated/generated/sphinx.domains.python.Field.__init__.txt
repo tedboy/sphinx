@@ -1,0 +1,6 @@
+sphinx.domains.python.Field.__init__
+====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Field.__init__

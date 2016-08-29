@@ -1,0 +1,6 @@
+sphinx.ext.linkcode.setup
+=========================
+
+.. currentmodule:: sphinx.ext.linkcode
+
+.. autofunction:: setup

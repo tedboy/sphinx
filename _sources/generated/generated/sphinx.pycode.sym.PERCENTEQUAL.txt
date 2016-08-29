@@ -1,0 +1,6 @@
+sphinx.pycode.sym.PERCENTEQUAL
+==============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.PERCENTEQUAL

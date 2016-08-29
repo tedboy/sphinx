@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.SphinxError
+===============================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoexception:: SphinxError

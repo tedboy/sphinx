@@ -1,0 +1,21 @@
+sphinx.domains.python.PyXRefRole
+================================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyXRefRole
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyXRefRole.__init__
+   ~PyXRefRole.process_link
+   ~PyXRefRole.result_nodes
+
+
+
+
+

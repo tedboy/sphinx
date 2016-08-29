@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.supported_image_types
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.supported_image_types

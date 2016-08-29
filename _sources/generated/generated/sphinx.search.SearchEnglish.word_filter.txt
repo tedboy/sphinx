@@ -1,0 +1,6 @@
+sphinx.search.SearchEnglish.word_filter
+=======================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: SearchEnglish.word_filter

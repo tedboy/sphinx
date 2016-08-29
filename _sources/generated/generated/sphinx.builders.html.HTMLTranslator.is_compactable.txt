@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.is_compactable
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.is_compactable

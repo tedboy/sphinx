@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.known_attributes
+=============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: ifconfig.known_attributes

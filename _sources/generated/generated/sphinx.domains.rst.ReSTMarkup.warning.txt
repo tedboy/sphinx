@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.warning
+=====================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.warning

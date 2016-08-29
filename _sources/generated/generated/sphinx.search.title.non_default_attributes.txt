@@ -1,0 +1,6 @@
+sphinx.search.title.non_default_attributes
+==========================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.non_default_attributes

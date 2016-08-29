@@ -1,0 +1,6 @@
+sphinx.util.SphinxParallelError
+===============================
+
+.. currentmodule:: sphinx.util
+
+.. autoexception:: SphinxParallelError

@@ -1,0 +1,6 @@
+sphinx.domains.c.CDomain.indices
+================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. autoattribute:: CDomain.indices

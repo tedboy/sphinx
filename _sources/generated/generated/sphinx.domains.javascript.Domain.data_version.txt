@@ -1,0 +1,6 @@
+sphinx.domains.javascript.Domain.data_version
+=============================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: Domain.data_version

@@ -1,0 +1,6 @@
+sphinx.search.title.coerce_append_attr_list
+===========================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.coerce_append_attr_list

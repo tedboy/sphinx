@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.name
+===========================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoBuilder.name

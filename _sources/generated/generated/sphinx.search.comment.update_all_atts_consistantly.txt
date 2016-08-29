@@ -1,0 +1,6 @@
+sphinx.search.comment.update_all_atts_consistantly
+==================================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.update_all_atts_consistantly

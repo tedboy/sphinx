@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.OptionParser.settings_default_overrides
+===============================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: OptionParser.settings_default_overrides

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassLevelDocumenter.generate
+================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassLevelDocumenter.generate

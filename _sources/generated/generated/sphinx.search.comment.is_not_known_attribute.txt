@@ -1,0 +1,6 @@
+sphinx.search.comment.is_not_known_attribute
+============================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.is_not_known_attribute

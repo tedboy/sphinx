@@ -1,0 +1,6 @@
+sphinx.domains.Index.generate
+=============================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: Index.generate

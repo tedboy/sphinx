@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorFunction.doc_field_types
+=========================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyDecoratorFunction.doc_field_types

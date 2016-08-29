@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.backout
+===========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.backout

@@ -1,0 +1,6 @@
+sphinx.domains.ReSTDomain.directive
+===================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: ReSTDomain.directive

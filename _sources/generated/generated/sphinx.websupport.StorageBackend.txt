@@ -1,0 +1,29 @@
+sphinx.websupport.StorageBackend
+================================
+.. currentmodule:: sphinx.websupport
+.. autoclass:: StorageBackend
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~StorageBackend.accept_comment
+   ~StorageBackend.add_comment
+   ~StorageBackend.add_node
+   ~StorageBackend.delete_comment
+   ~StorageBackend.get_data
+   ~StorageBackend.get_metadata
+   ~StorageBackend.has_node
+   ~StorageBackend.post_build
+   ~StorageBackend.pre_build
+   ~StorageBackend.process_vote
+   ~StorageBackend.update_username
+
+
+
+
+

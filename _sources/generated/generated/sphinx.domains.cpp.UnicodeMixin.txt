@@ -1,0 +1,11 @@
+sphinx.domains.cpp.UnicodeMixin
+===============================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: UnicodeMixin
+   :undoc-members:
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+sphinx.builders.make_chunks
+===========================
+
+.. currentmodule:: sphinx.builders
+
+.. autofunction:: make_chunks

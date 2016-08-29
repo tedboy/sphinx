@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.create_template_bridge
+===========================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. automethod:: QtHelpBuilder.create_template_bridge

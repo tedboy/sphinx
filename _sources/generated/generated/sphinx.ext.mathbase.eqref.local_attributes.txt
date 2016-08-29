@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.local_attributes
+==========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: eqref.local_attributes

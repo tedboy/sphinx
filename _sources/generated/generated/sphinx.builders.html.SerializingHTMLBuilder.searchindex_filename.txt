@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.searchindex_filename
+================================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.searchindex_filename

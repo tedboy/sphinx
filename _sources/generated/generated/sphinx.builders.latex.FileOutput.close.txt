@@ -1,0 +1,6 @@
+sphinx.builders.latex.FileOutput.close
+======================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: FileOutput.close

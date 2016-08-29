@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.locale &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="sphinx" href="../sphinx.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.locale</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.locale</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.locale</span>
+<span class="sd">    ~~~~~~~~~~~~~</span>
+
+<span class="sd">    Locale utilities.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">gettext</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">PY3</span><span class="p">,</span> <span class="n">text_type</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">UserString</span>
+
+
+<span class="k">class</span> <span class="nc">_TranslationProxy</span><span class="p">(</span><span class="n">UserString</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for proxy strings from gettext translations.  This is a helper for the</span>
+<span class="sd">    lazy_* functions from this module.</span>
+
+<span class="sd">    The proxy implementation attempts to be as complete as possible, so that</span>
+<span class="sd">    the lazy objects should mostly work as expected, for example for sorting.</span>
+
+<span class="sd">    This inherits from UserString because some docutils versions use UserString</span>
+<span class="sd">    for their Text nodes, which then checks its argument for being either a</span>
+<span class="sd">    basestring or UserString, otherwise calls str() -- not unicode() -- on it.</span>
+<span class="sd">    This also inherits from object to make the __new__ method work.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_func&#39;</span><span class="p">,</span> <span class="s1">&#39;_args&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+            <span class="c1"># not called with &quot;function&quot; and &quot;arguments&quot;, but a plain string</span>
+            <span class="k">return</span> <span class="n">text_type</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__getnewargs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">,)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_args</span> <span class="o">=</span> <span class="n">args</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">_args</span><span class="p">))</span>
+
+    <span class="c1"># replace function from UserString; it instantiates a self.__class__</span>
+    <span class="c1"># for the encoding result</span>
+
+    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">encoding</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">__nonzero__</span> <span class="o">=</span> <span class="n">__bool__</span>  <span class="c1"># for python2 compatibility</span>
+
+    <span class="k">def</span> <span class="nf">__dir__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dir</span><span class="p">(</span><span class="n">text_type</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">text_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">other</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">%</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__rmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">other</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">other</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">&lt;</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">&lt;=</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">!=</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">&gt;</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">&gt;=</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;__members__&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dir__</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span>
+
+    <span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tup</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span> <span class="o">=</span> <span class="n">tup</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;i&#39;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">text_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&lt;</span><span class="si">%s</span><span class="s1"> broken&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+
+
+<div class="viewcode-block" id="mygettext"><a class="viewcode-back" href="../../generated/sphinx.locale.mygettext.html#sphinx.domains.python.mygettext">[docs]</a><span class="k">def</span> <span class="nf">mygettext</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Used instead of _ when creating TranslationProxies, because _ is</span>
+<span class="sd">    not bound yet at that time.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_</span><span class="p">(</span><span class="n">string</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="lazy_gettext"><a class="viewcode-back" href="../../generated/sphinx.locale.lazy_gettext.html#sphinx.domains.python.lazy_gettext">[docs]</a><span class="k">def</span> <span class="nf">lazy_gettext</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A lazy version of `gettext`.&quot;&quot;&quot;</span>
+    <span class="c1"># if isinstance(string, _TranslationProxy):</span>
+    <span class="c1">#     return string</span>
+    <span class="k">return</span> <span class="n">_TranslationProxy</span><span class="p">(</span><span class="n">mygettext</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span></div>
+
+<span class="n">l_</span> <span class="o">=</span> <span class="n">lazy_gettext</span>
+
+
+<span class="n">admonitionlabels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;attention&#39;</span><span class="p">:</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Attention&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;caution&#39;</span><span class="p">:</span>   <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Caution&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;danger&#39;</span><span class="p">:</span>    <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Danger&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;error&#39;</span><span class="p">:</span>     <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;hint&#39;</span><span class="p">:</span>      <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Hint&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;important&#39;</span><span class="p">:</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Important&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;note&#39;</span><span class="p">:</span>      <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Note&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;seealso&#39;</span><span class="p">:</span>   <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;See also&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;tip&#39;</span><span class="p">:</span>       <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Tip&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;warning&#39;</span><span class="p">:</span>   <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Warning&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">versionlabels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;versionadded&#39;</span><span class="p">:</span>   <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;New in version </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;versionchanged&#39;</span><span class="p">:</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Changed in version </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;deprecated&#39;</span><span class="p">:</span>     <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;Deprecated since version </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="c1"># XXX Python specific</span>
+<span class="n">pairindextypes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;module&#39;</span><span class="p">:</span>    <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;keyword&#39;</span><span class="p">:</span>   <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;operator&#39;</span><span class="p">:</span>  <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;operator&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;object&#39;</span><span class="p">:</span>    <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;exception&#39;</span><span class="p">:</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;exception&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;statement&#39;</span><span class="p">:</span> <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;statement&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;builtin&#39;</span><span class="p">:</span>   <span class="n">l_</span><span class="p">(</span><span class="s1">&#39;built-in function&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">translators</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">translators</span><span class="p">[</span><span class="s1">&#39;sphinx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">gettext</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">translators</span><span class="p">[</span><span class="s1">&#39;sphinx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ugettext</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="init"><a class="viewcode-back" href="../../generated/sphinx.locale.init.html#sphinx.domains.python.init">[docs]</a><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">locale_dirs</span><span class="p">,</span> <span class="n">language</span><span class="p">,</span> <span class="n">catalog</span><span class="o">=</span><span class="s1">&#39;sphinx&#39;</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Look for message catalogs in `locale_dirs` and *ensure* that there is at</span>
+<span class="sd">    least a NullTranslations catalog set in `translators`.  If called multiple</span>
+<span class="sd">    times or if several ``.mo`` files are found, their contents are merged</span>
+<span class="sd">    together (thus making ``init`` reentrable).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">translators</span>
+    <span class="n">translator</span> <span class="o">=</span> <span class="n">translators</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">catalog</span><span class="p">)</span>
+    <span class="c1"># ignore previously failed attempts to find message catalogs</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">translator</span><span class="p">,</span> <span class="n">gettext</span><span class="o">.</span><span class="n">NullTranslations</span><span class="p">):</span>
+        <span class="n">translator</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="c1"># the None entry is the system&#39;s default locale path</span>
+    <span class="n">has_translation</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="c1"># compile mo files if po file is updated</span>
+    <span class="c1"># TODO: remove circular importing</span>
+    <span class="kn">from</span> <span class="nn">sphinx.util.i18n</span> <span class="kn">import</span> <span class="n">find_catalog_source_files</span>
+    <span class="k">for</span> <span class="n">catinfo</span> <span class="ow">in</span> <span class="n">find_catalog_source_files</span><span class="p">(</span><span class="n">locale_dirs</span><span class="p">,</span> <span class="n">language</span><span class="p">,</span> <span class="n">domains</span><span class="o">=</span><span class="p">[</span><span class="n">catalog</span><span class="p">],</span>
+                                             <span class="n">charset</span><span class="o">=</span><span class="n">charset</span><span class="p">):</span>
+        <span class="n">catinfo</span><span class="o">.</span><span class="n">write_mo</span><span class="p">(</span><span class="n">language</span><span class="p">)</span>
+
+    <span class="c1"># loading</span>
+    <span class="k">for</span> <span class="n">dir_</span> <span class="ow">in</span> <span class="n">locale_dirs</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">trans</span> <span class="o">=</span> <span class="n">gettext</span><span class="o">.</span><span class="n">translation</span><span class="p">(</span><span class="n">catalog</span><span class="p">,</span> <span class="n">localedir</span><span class="o">=</span><span class="n">dir_</span><span class="p">,</span>
+                                        <span class="n">languages</span><span class="o">=</span><span class="p">[</span><span class="n">language</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">translator</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">translator</span> <span class="o">=</span> <span class="n">trans</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">translator</span><span class="o">.</span><span class="n">_catalog</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_catalog</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># Language couldn&#39;t be found in the specified path</span>
+            <span class="k">pass</span>
+    <span class="c1"># guarantee translators[catalog] exists</span>
+    <span class="k">if</span> <span class="n">translator</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">translator</span> <span class="o">=</span> <span class="n">gettext</span><span class="o">.</span><span class="n">NullTranslations</span><span class="p">()</span>
+        <span class="n">has_translation</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">translators</span><span class="p">[</span><span class="n">catalog</span><span class="p">]</span> <span class="o">=</span> <span class="n">translator</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">translator</span><span class="p">,</span> <span class="s1">&#39;ugettext&#39;</span><span class="p">):</span>
+        <span class="n">translator</span><span class="o">.</span><span class="n">gettext</span> <span class="o">=</span> <span class="n">translator</span><span class="o">.</span><span class="n">ugettext</span>
+    <span class="k">return</span> <span class="n">translator</span><span class="p">,</span> <span class="n">has_translation</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

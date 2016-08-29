@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.get_signatures
+===============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPTypeObject.get_signatures

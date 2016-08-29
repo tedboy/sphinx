@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.indexer_format
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StandaloneHTMLBuilder.indexer_format

@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.hasattr
+=======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.hasattr

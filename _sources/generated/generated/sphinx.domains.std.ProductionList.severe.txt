@@ -1,0 +1,6 @@
+sphinx.domains.std.ProductionList.severe
+========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: ProductionList.severe

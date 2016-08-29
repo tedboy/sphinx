@@ -1,0 +1,6 @@
+sphinx.ext.doctest.Builder.prepare_writing
+==========================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: Builder.prepare_writing

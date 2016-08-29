@@ -1,0 +1,6 @@
+sphinx.builders.html.Builder.compile_catalogs
+=============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Builder.compile_catalogs

@@ -1,0 +1,6 @@
+sphinx.builders.gettext.timedelta.microseconds
+==============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: timedelta.microseconds

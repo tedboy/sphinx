@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.index_page
+=================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.index_page

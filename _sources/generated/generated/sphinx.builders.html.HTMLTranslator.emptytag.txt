@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.emptytag
+============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.emptytag

@@ -1,0 +1,6 @@
+sphinx.domains.PythonDomain.indices
+===================================
+
+.. currentmodule:: sphinx.domains
+
+.. autoattribute:: PythonDomain.indices

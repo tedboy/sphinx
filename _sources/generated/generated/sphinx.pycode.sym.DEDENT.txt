@@ -1,0 +1,6 @@
+sphinx.pycode.sym.DEDENT
+========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.DEDENT

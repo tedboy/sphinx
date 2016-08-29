@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.__init__
+==============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.__init__

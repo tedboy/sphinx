@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.match
+=========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.match

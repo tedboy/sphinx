@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.set_class
+===================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.set_class

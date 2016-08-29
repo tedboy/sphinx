@@ -1,0 +1,6 @@
+sphinx.builders.manpage.Builder.write
+=====================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: Builder.write

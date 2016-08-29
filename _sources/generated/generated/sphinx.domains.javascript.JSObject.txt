@@ -1,0 +1,49 @@
+sphinx.domains.javascript.JSObject
+==================================
+.. currentmodule:: sphinx.domains.javascript
+.. autoclass:: JSObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~JSObject.__init__
+   ~JSObject.add_name
+   ~JSObject.add_target_and_index
+   ~JSObject.after_content
+   ~JSObject.assert_has_content
+   ~JSObject.before_content
+   ~JSObject.debug
+   ~JSObject.directive_error
+   ~JSObject.error
+   ~JSObject.get_index_text
+   ~JSObject.get_signatures
+   ~JSObject.handle_signature
+   ~JSObject.info
+   ~JSObject.run
+   ~JSObject.severe
+   ~JSObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~JSObject.display_prefix
+   ~JSObject.doc_field_types
+   ~JSObject.final_argument_whitespace
+   ~JSObject.has_arguments
+   ~JSObject.has_content
+   ~JSObject.option_spec
+   ~JSObject.optional_arguments
+   ~JSObject.required_arguments
+

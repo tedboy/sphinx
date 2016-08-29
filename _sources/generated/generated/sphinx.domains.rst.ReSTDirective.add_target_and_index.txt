@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.add_target_and_index
+=====================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.add_target_and_index

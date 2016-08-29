@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.Builder.write_doc_serialized
+======================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: Builder.write_doc_serialized

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.line
+=================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. autoattribute:: ifconfig.line

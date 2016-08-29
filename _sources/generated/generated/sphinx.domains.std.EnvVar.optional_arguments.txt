@@ -1,0 +1,6 @@
+sphinx.domains.std.EnvVar.optional_arguments
+============================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: EnvVar.optional_arguments

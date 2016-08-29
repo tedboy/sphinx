@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.traverse
+==================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: eqref.traverse

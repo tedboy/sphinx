@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTypeWithInit.prefix_nested_name
+=====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTypeWithInit.prefix_nested_name

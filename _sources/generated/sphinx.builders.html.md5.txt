@@ -1,0 +1,6 @@
+sphinx.builders.html.md5
+========================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autofunction:: md5

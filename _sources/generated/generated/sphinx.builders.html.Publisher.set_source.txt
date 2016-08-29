@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.set_source
+=========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.set_source

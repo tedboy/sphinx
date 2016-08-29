@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.debugging_dumps
+==============================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.debugging_dumps

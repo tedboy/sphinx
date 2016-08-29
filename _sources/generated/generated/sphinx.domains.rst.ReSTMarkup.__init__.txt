@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.__init__
+======================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.__init__

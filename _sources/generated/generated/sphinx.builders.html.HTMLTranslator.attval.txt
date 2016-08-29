@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.attval
+==========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.attval

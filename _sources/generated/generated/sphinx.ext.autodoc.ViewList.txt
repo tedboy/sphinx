@@ -1,0 +1,36 @@
+sphinx.ext.autodoc.ViewList
+===========================
+.. currentmodule:: sphinx.ext.autodoc
+.. autoclass:: ViewList
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ViewList.__init__
+   ~ViewList.append
+   ~ViewList.count
+   ~ViewList.disconnect
+   ~ViewList.extend
+   ~ViewList.index
+   ~ViewList.info
+   ~ViewList.insert
+   ~ViewList.offset
+   ~ViewList.pop
+   ~ViewList.pprint
+   ~ViewList.remove
+   ~ViewList.reverse
+   ~ViewList.sort
+   ~ViewList.source
+   ~ViewList.trim_end
+   ~ViewList.trim_start
+   ~ViewList.xitems
+
+
+
+
+

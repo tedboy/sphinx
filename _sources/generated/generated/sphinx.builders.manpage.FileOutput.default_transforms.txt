@@ -1,0 +1,6 @@
+sphinx.builders.manpage.FileOutput.default_transforms
+=====================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. autoattribute:: FileOutput.default_transforms

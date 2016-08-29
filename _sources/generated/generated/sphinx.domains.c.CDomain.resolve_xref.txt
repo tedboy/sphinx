@@ -1,0 +1,6 @@
+sphinx.domains.c.CDomain.resolve_xref
+=====================================
+
+.. currentmodule:: sphinx.domains.c
+
+.. automethod:: CDomain.resolve_xref

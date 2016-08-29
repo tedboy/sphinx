@@ -1,0 +1,6 @@
+sphinx.ext.doctest.binary_type.isdigit
+======================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: binary_type.isdigit

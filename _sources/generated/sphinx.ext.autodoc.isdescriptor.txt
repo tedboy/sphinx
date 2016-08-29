@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.isdescriptor
+===============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autofunction:: isdescriptor

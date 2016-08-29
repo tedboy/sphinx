@@ -1,0 +1,6 @@
+sphinx.builders.manpage.Builder.get_outdated_docs
+=================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: Builder.get_outdated_docs

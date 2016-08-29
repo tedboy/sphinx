@@ -1,0 +1,6 @@
+sphinx.search.raw.endtag
+========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.endtag

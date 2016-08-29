@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.force_decode
+===========================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autofunction:: force_decode

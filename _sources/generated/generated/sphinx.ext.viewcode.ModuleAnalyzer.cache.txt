@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.ModuleAnalyzer.cache
+========================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. autoattribute:: ModuleAnalyzer.cache

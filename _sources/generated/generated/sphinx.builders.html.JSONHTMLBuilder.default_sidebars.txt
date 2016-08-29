@@ -1,0 +1,6 @@
+sphinx.builders.html.JSONHTMLBuilder.default_sidebars
+=====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: JSONHTMLBuilder.default_sidebars

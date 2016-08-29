@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.copy_extra_files
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.copy_extra_files

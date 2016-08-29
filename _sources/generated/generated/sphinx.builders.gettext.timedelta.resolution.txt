@@ -1,0 +1,6 @@
+sphinx.builders.gettext.timedelta.resolution
+============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: timedelta.resolution

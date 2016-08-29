@@ -1,0 +1,6 @@
+sphinx.builders.changes.iteritems
+=================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. autofunction:: iteritems

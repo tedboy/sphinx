@@ -1,0 +1,6 @@
+sphinx.locale.text_type.join
+============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.join

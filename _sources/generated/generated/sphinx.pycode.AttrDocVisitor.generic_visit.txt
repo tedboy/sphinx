@@ -1,0 +1,6 @@
+sphinx.pycode.AttrDocVisitor.generic_visit
+==========================================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: AttrDocVisitor.generic_visit

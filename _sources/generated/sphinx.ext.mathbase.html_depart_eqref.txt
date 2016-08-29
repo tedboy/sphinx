@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.html_depart_eqref
+=====================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autofunction:: html_depart_eqref

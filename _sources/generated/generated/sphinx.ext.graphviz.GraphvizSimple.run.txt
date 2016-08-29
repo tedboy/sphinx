@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.GraphvizSimple.run
+======================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: GraphvizSimple.run

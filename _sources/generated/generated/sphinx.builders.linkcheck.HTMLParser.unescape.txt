@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTMLParser.unescape
+=============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTMLParser.unescape

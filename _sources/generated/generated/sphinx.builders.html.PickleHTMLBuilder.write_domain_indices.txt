@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.write_domain_indices
+===========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.write_domain_indices

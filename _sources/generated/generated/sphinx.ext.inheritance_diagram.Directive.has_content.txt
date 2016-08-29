@@ -1,0 +1,6 @@
+sphinx.ext.inheritance_diagram.Directive.has_content
+====================================================
+
+.. currentmodule:: sphinx.ext.inheritance_diagram
+
+.. autoattribute:: Directive.has_content

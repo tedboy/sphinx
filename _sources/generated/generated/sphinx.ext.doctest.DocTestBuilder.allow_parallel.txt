@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.allow_parallel
+================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: DocTestBuilder.allow_parallel

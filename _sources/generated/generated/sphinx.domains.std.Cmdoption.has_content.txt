@@ -1,0 +1,6 @@
+sphinx.domains.std.Cmdoption.has_content
+========================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: Cmdoption.has_content

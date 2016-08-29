@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.comp_open
+=================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autofunction:: comp_open

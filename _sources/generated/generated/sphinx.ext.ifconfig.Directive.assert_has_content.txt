@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.Directive.assert_has_content
+================================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: Directive.assert_has_content

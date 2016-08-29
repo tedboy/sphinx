@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.text_type.find
+=================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. automethod:: text_type.find

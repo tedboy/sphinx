@@ -1,0 +1,6 @@
+sphinx.locale.text_type.rindex
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.rindex

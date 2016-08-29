@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.MathDirective.info
+======================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: MathDirective.info

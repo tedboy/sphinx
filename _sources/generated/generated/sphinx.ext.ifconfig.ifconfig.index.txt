@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.index
+==================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.index

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Options.viewvalues
+=====================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: Options.viewvalues

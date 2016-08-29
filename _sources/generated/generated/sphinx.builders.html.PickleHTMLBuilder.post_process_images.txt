@@ -1,0 +1,6 @@
+sphinx.builders.html.PickleHTMLBuilder.post_process_images
+==========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PickleHTMLBuilder.post_process_images

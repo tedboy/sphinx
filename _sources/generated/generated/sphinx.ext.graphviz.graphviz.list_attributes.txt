@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.list_attributes
+============================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. autoattribute:: graphviz.list_attributes

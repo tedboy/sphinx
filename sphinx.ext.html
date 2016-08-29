@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. sphinx.ext &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="index.html"/>
+        <link rel="next" title="3.1. sphinx.ext" href="generated/sphinx.ext.html"/>
+        <link rel="prev" title="2. sphinx/themes" href="sphinx.themes.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.html">3.1. sphinx.ext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.autodoc.html">3.2. sphinx.ext.autodoc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.coverage.html">3.3. sphinx.ext.coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.doctest.html">3.4. sphinx.ext.doctest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.extlinks.html">3.5. sphinx.ext.extlinks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.graphviz.html">3.6. sphinx.ext.graphviz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.ifconfig.html">3.7. sphinx.ext.ifconfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.inheritance_diagram.html">3.8. sphinx.ext.inheritance_diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.intersphinx.html">3.9. sphinx.ext.intersphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.jsmath.html">3.10. sphinx.ext.jsmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.linkcode.html">3.11. sphinx.ext.linkcode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.mathbase.html">3.12. sphinx.ext.mathbase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.mathjax.html">3.13. sphinx.ext.mathjax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.pngmath.html">3.14. sphinx.ext.pngmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.todo.html">3.15. sphinx.ext.todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinx.ext.viewcode.html">3.16. sphinx.ext.viewcode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sphinx.ext.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-ext">
+<h1>3. <a class="reference internal" href="generated/sphinx.ext.html#module-sphinx.ext" title="sphinx.ext"><code class="xref py py-mod docutils literal"><span class="pre">sphinx.ext</span></code></a><a class="headerlink" href="#sphinx-ext" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.html">3.1. sphinx.ext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.autodoc.html">3.2. sphinx.ext.autodoc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.coverage.html">3.3. sphinx.ext.coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.doctest.html">3.4. sphinx.ext.doctest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.extlinks.html">3.5. sphinx.ext.extlinks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.graphviz.html">3.6. sphinx.ext.graphviz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.ifconfig.html">3.7. sphinx.ext.ifconfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.inheritance_diagram.html">3.8. sphinx.ext.inheritance_diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.intersphinx.html">3.9. sphinx.ext.intersphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.jsmath.html">3.10. sphinx.ext.jsmath</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.linkcode.html">3.11. sphinx.ext.linkcode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.mathbase.html">3.12. sphinx.ext.mathbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.mathjax.html">3.13. sphinx.ext.mathjax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.pngmath.html">3.14. sphinx.ext.pngmath</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.todo.html">3.15. sphinx.ext.todo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/sphinx.ext.viewcode.html">3.16. sphinx.ext.viewcode</a></li>
+</ul>
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.html#module-sphinx.ext" title="sphinx.ext"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext</span></code></a></td>
+<td>sphinx.ext</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.autodoc.html#module-sphinx.ext.autodoc" title="sphinx.ext.autodoc"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.autodoc</span></code></a></td>
+<td>sphinx.ext.autodoc</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.coverage.html#module-sphinx.ext.coverage" title="sphinx.ext.coverage"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.coverage</span></code></a></td>
+<td>sphinx.ext.coverage</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.doctest.html#module-sphinx.ext.doctest" title="sphinx.ext.doctest"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.doctest</span></code></a></td>
+<td>sphinx.ext.doctest</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.extlinks.html#module-sphinx.ext.extlinks" title="sphinx.ext.extlinks"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.extlinks</span></code></a></td>
+<td>sphinx.ext.extlinks</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.graphviz.html#module-sphinx.ext.graphviz" title="sphinx.ext.graphviz"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.graphviz</span></code></a></td>
+<td>sphinx.ext.graphviz</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.ifconfig.html#module-sphinx.ext.ifconfig" title="sphinx.ext.ifconfig"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.ifconfig</span></code></a></td>
+<td>sphinx.ext.ifconfig</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.inheritance_diagram.html#module-sphinx.ext.inheritance_diagram" title="sphinx.ext.inheritance_diagram"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.inheritance_diagram</span></code></a></td>
+<td>sphinx.ext.inheritance_diagram</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.intersphinx.html#module-sphinx.ext.intersphinx" title="sphinx.ext.intersphinx"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.intersphinx</span></code></a></td>
+<td>sphinx.ext.intersphinx</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.jsmath.html#module-sphinx.ext.jsmath" title="sphinx.ext.jsmath"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.jsmath</span></code></a></td>
+<td>sphinx.ext.jsmath</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.linkcode.html#module-sphinx.ext.linkcode" title="sphinx.ext.linkcode"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.linkcode</span></code></a></td>
+<td>sphinx.ext.linkcode</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.mathbase.html#module-sphinx.ext.mathbase" title="sphinx.ext.mathbase"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.mathbase</span></code></a></td>
+<td>sphinx.ext.mathbase</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.mathjax.html#module-sphinx.ext.mathjax" title="sphinx.ext.mathjax"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.mathjax</span></code></a></td>
+<td>sphinx.ext.mathjax</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.pngmath.html#module-sphinx.ext.pngmath" title="sphinx.ext.pngmath"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.pngmath</span></code></a></td>
+<td>sphinx.ext.pngmath</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sphinx.ext.todo.html#module-sphinx.ext.todo" title="sphinx.ext.todo"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.todo</span></code></a></td>
+<td>sphinx.ext.todo</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sphinx.ext.viewcode.html#module-sphinx.ext.viewcode" title="sphinx.ext.viewcode"><code class="xref py py-obj docutils literal"><span class="pre">sphinx.ext.viewcode</span></code></a></td>
+<td>sphinx.ext.viewcode</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/sphinx.ext.html" class="btn btn-neutral float-right" title="3.1. sphinx.ext" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.themes.html" class="btn btn-neutral" title="2. sphinx/themes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

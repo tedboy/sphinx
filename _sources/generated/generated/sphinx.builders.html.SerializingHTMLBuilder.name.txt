@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.name
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.name

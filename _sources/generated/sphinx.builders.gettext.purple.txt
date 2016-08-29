@@ -1,0 +1,6 @@
+sphinx.builders.gettext.purple
+==============================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autofunction:: purple

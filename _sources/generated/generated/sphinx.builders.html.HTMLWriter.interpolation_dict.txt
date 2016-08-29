@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.interpolation_dict
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLWriter.interpolation_dict

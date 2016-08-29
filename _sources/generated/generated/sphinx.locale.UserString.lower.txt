@@ -1,0 +1,6 @@
+sphinx.locale.UserString.lower
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.lower

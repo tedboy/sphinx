@@ -1,0 +1,21 @@
+sphinx.builders.SerialTasks
+===========================
+.. currentmodule:: sphinx.builders
+.. autoclass:: SerialTasks
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~SerialTasks.__init__
+   ~SerialTasks.add_task
+   ~SerialTasks.join
+
+
+
+
+

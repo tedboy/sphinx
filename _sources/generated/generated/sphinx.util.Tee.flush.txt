@@ -1,0 +1,6 @@
+sphinx.util.Tee.flush
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: Tee.flush

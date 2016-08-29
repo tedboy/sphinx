@@ -1,0 +1,6 @@
+sphinx.ext.viewcode.text_type.swapcase
+======================================
+
+.. currentmodule:: sphinx.ext.viewcode
+
+.. automethod:: text_type.swapcase

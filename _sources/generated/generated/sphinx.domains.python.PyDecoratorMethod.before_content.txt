@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.before_content
+======================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorMethod.before_content

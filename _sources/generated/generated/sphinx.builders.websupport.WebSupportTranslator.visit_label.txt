@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_label
+===========================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_label

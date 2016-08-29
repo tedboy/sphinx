@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPNamespaceObject.add_name
+==============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPNamespaceObject.add_name

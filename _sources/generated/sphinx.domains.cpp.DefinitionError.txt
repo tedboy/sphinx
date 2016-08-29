@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionError
+==================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoexception:: DefinitionError

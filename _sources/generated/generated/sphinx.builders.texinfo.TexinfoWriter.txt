@@ -1,0 +1,46 @@
+sphinx.builders.texinfo.TexinfoWriter
+=====================================
+.. currentmodule:: sphinx.builders.texinfo
+.. autoclass:: TexinfoWriter
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~TexinfoWriter.__init__
+   ~TexinfoWriter.assemble_parts
+   ~TexinfoWriter.get_transforms
+   ~TexinfoWriter.supports
+   ~TexinfoWriter.translate
+   ~TexinfoWriter.write
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~TexinfoWriter.component_type
+   ~TexinfoWriter.config_section
+   ~TexinfoWriter.config_section_dependencies
+   ~TexinfoWriter.default_transforms
+   ~TexinfoWriter.destination
+   ~TexinfoWriter.document
+   ~TexinfoWriter.language
+   ~TexinfoWriter.output
+   ~TexinfoWriter.relative_path_settings
+   ~TexinfoWriter.settings_default_overrides
+   ~TexinfoWriter.settings_defaults
+   ~TexinfoWriter.settings_spec
+   ~TexinfoWriter.supported
+   ~TexinfoWriter.unknown_reference_resolvers
+   ~TexinfoWriter.visitor_attributes
+

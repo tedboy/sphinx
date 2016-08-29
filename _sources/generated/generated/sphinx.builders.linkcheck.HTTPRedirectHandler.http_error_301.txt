@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HTTPRedirectHandler.http_error_301
+============================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HTTPRedirectHandler.http_error_301

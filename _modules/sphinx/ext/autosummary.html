@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.ext.autosummary &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx" href="../../sphinx.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.ext.autosummary</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.ext.autosummary</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.ext.autosummary</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Sphinx extension that adds an autosummary:: directive, which can be</span>
+<span class="sd">    used to generate function/method/attribute/etc. summary lists, similar</span>
+<span class="sd">    to those output eg. by Epydoc and other API doc generation tools.</span>
+
+<span class="sd">    An :autolink: role is also provided.</span>
+
+<span class="sd">    autosummary directive</span>
+<span class="sd">    ---------------------</span>
+
+<span class="sd">    The autosummary directive has the form::</span>
+
+<span class="sd">        .. autosummary::</span>
+<span class="sd">           :nosignatures:</span>
+<span class="sd">           :toctree: generated/</span>
+
+<span class="sd">           module.function_1</span>
+<span class="sd">           module.function_2</span>
+<span class="sd">           ...</span>
+
+<span class="sd">    and it generates an output table (containing signatures, optionally)</span>
+
+<span class="sd">        ========================  =============================================</span>
+<span class="sd">        module.function_1(args)   Summary line from the docstring of function_1</span>
+<span class="sd">        module.function_2(args)   Summary line from the docstring</span>
+<span class="sd">        ...</span>
+<span class="sd">        ========================  =============================================</span>
+
+<span class="sd">    If the :toctree: option is specified, files matching the function names</span>
+<span class="sd">    are inserted to the toctree with the given prefix:</span>
+
+<span class="sd">        generated/module.function_1</span>
+<span class="sd">        generated/module.function_2</span>
+<span class="sd">        ...</span>
+
+<span class="sd">    Note: The file names contain the module:: or currentmodule:: prefixes.</span>
+
+<span class="sd">    .. seealso:: autosummary_generate.py</span>
+
+
+<span class="sd">    autolink role</span>
+<span class="sd">    -------------</span>
+
+<span class="sd">    The autolink role functions as ``:obj:`` when the name referred can be</span>
+<span class="sd">    resolved to a Python object, and otherwise it becomes simple emphasis.</span>
+<span class="sd">    This can be used as the default role to make links &#39;smart&#39;.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">posixpath</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">text_type</span>
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">directives</span>
+<span class="kn">from</span> <span class="nn">docutils.statemachine</span> <span class="kn">import</span> <span class="n">ViewList</span>
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+
+<span class="kn">import</span> <span class="nn">sphinx</span>
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.compat</span> <span class="kn">import</span> <span class="n">Directive</span>
+<span class="kn">from</span> <span class="nn">sphinx.pycode</span> <span class="kn">import</span> <span class="n">ModuleAnalyzer</span><span class="p">,</span> <span class="n">PycodeError</span>
+<span class="kn">from</span> <span class="nn">sphinx.ext.autodoc</span> <span class="kn">import</span> <span class="n">Options</span>
+
+
+<span class="c1"># -- autosummary_toc node ------------------------------------------------------</span>
+
+<span class="k">class</span> <span class="nc">autosummary_toc</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">comment</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">process_autosummary_toc</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Insert items described in autosummary:: to the TOC tree, but do</span>
+<span class="sd">    not generate the toctree:: list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+    <span class="n">crawled</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">crawl_toc</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">crawled</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">subnode</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">subnode</span><span class="p">,</span> <span class="n">autosummary_toc</span><span class="p">)</span> <span class="ow">and</span>
+                        <span class="nb">isinstance</span><span class="p">(</span><span class="n">subnode</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">toctree</span><span class="p">)):</span>
+                    <span class="n">env</span><span class="o">.</span><span class="n">note_toctree</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span> <span class="n">subnode</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="k">continue</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subnode</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">section</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">subnode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">crawled</span><span class="p">:</span>
+                <span class="n">crawl_toc</span><span class="p">(</span><span class="n">subnode</span><span class="p">,</span> <span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">crawl_toc</span><span class="p">(</span><span class="n">doctree</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">autosummary_toc_visit_html</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Hide autosummary toctree list in HTML output.&quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="n">nodes</span><span class="o">.</span><span class="n">SkipNode</span>
+
+
+<span class="k">def</span> <span class="nf">autosummary_noop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># -- autosummary_table node ----------------------------------------------------</span>
+
+<span class="k">class</span> <span class="nc">autosummary_table</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">comment</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">autosummary_table_visit_html</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make the first column of the table non-breaking.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tbody</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tbody</span><span class="p">:</span>
+            <span class="n">col1_entry</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">par</span> <span class="o">=</span> <span class="n">col1_entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">subnode</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">par</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subnode</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+                    <span class="n">new_text</span> <span class="o">=</span> <span class="n">text_type</span><span class="p">(</span><span class="n">subnode</span><span class="o">.</span><span class="n">astext</span><span class="p">())</span>
+                    <span class="n">new_text</span> <span class="o">=</span> <span class="n">new_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">u&quot; &quot;</span><span class="p">,</span> <span class="s2">u&quot;</span><span class="se">\u00a0</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="n">par</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">new_text</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="c1"># -- autodoc integration -------------------------------------------------------</span>
+
+<span class="k">class</span> <span class="nc">FakeDirective</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">genopt</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">get_documenter</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get an autodoc.Documenter class suitable for documenting the given</span>
+<span class="sd">    object.</span>
+
+<span class="sd">    *obj* is the Python object to be documented, and *parent* is an</span>
+<span class="sd">    another Python object (e.g. a module or a class) to which *obj*</span>
+<span class="sd">    belongs to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">sphinx.ext.autodoc</span> <span class="kn">import</span> <span class="n">AutoDirective</span><span class="p">,</span> <span class="n">DataDocumenter</span><span class="p">,</span> \
+        <span class="n">ModuleDocumenter</span>
+
+    <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismodule</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># ModuleDocumenter.can_document_member always returns False</span>
+        <span class="k">return</span> <span class="n">ModuleDocumenter</span>
+
+    <span class="c1"># Construct a fake documenter for *parent*</span>
+    <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">parent_doc_cls</span> <span class="o">=</span> <span class="n">get_documenter</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">parent_doc_cls</span> <span class="o">=</span> <span class="n">ModuleDocumenter</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">):</span>
+        <span class="n">parent_doc</span> <span class="o">=</span> <span class="n">parent_doc_cls</span><span class="p">(</span><span class="n">FakeDirective</span><span class="p">(),</span> <span class="n">parent</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">parent_doc</span> <span class="o">=</span> <span class="n">parent_doc_cls</span><span class="p">(</span><span class="n">FakeDirective</span><span class="p">(),</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get the corrent documenter class for *obj*</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">cls</span> <span class="k">for</span> <span class="n">cls</span> <span class="ow">in</span> <span class="n">AutoDirective</span><span class="o">.</span><span class="n">_registry</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+               <span class="k">if</span> <span class="n">cls</span><span class="o">.</span><span class="n">can_document_member</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">parent_doc</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">classes</span><span class="p">:</span>
+        <span class="n">classes</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">cls</span><span class="p">:</span> <span class="n">cls</span><span class="o">.</span><span class="n">priority</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">classes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">DataDocumenter</span>
+
+
+<span class="c1"># -- .. autosummary:: ----------------------------------------------------------</span>
+
+<span class="k">class</span> <span class="nc">Autosummary</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pretty table containing short signatures and summaries of functions etc.</span>
+
+<span class="sd">    autosummary can also optionally generate a hidden toctree:: node.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">has_content</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;toctree&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">unchanged</span><span class="p">,</span>
+        <span class="s1">&#39;nosignatures&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+        <span class="s1">&#39;template&#39;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">unchanged</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">warn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="n">msg</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">genopt</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">ViewList</span><span class="p">()</span>
+
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span>
+                 <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r&#39;^[~a-zA-Z_]&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">0</span><span class="p">])]</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_items</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;toctree&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+            <span class="n">dirname</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">)</span>
+
+            <span class="n">tree_prefix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;toctree&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">docnames</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">real_name</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+                <span class="n">docname</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tree_prefix</span><span class="p">,</span> <span class="n">real_name</span><span class="p">)</span>
+                <span class="n">docname</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">docname</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">docname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">found_docs</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;toctree references unknown document </span><span class="si">%r</span><span class="s1">&#39;</span>
+                              <span class="o">%</span> <span class="n">docname</span><span class="p">)</span>
+                <span class="n">docnames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">docname</span><span class="p">)</span>
+
+            <span class="n">tocnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">toctree</span><span class="p">()</span>
+            <span class="n">tocnode</span><span class="p">[</span><span class="s1">&#39;includefiles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">docnames</span>
+            <span class="n">tocnode</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="bp">None</span><span class="p">,</span> <span class="n">docn</span><span class="p">)</span> <span class="k">for</span> <span class="n">docn</span> <span class="ow">in</span> <span class="n">docnames</span><span class="p">]</span>
+            <span class="n">tocnode</span><span class="p">[</span><span class="s1">&#39;maxdepth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">tocnode</span><span class="p">[</span><span class="s1">&#39;glob&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+
+            <span class="n">tocnode</span> <span class="o">=</span> <span class="n">autosummary_toc</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tocnode</span><span class="p">)</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tocnode</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">warnings</span> <span class="o">+</span> <span class="n">nodes</span>
+
+    <span class="k">def</span> <span class="nf">get_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Try to import the given names, and return a list of</span>
+<span class="sd">        ``[(name, signature, summary_string, real_name), ...]``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+
+        <span class="n">prefixes</span> <span class="o">=</span> <span class="n">get_import_prefixes_from_env</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">max_item_chars</span> <span class="o">=</span> <span class="mi">50</span>
+
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="n">display_name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+                <span class="n">display_name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">real_name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">modname</span> <span class="o">=</span> <span class="n">import_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">prefixes</span><span class="o">=</span><span class="n">prefixes</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;failed to import </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                <span class="k">continue</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">ViewList</span><span class="p">()</span>  <span class="c1"># initialize for each documenter</span>
+            <span class="n">full_name</span> <span class="o">=</span> <span class="n">real_name</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ModuleType</span><span class="p">):</span>
+                <span class="c1"># give explicitly separated module name, so that members</span>
+                <span class="c1"># of inner classes can be documented</span>
+                <span class="n">full_name</span> <span class="o">=</span> <span class="n">modname</span> <span class="o">+</span> <span class="s1">&#39;::&#39;</span> <span class="o">+</span> <span class="n">full_name</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">modname</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="c1"># NB. using full_name here is important, since Documenters</span>
+            <span class="c1">#     handle module prefixes slightly differently</span>
+            <span class="n">documenter</span> <span class="o">=</span> <span class="n">get_documenter</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">parent</span><span class="p">)(</span><span class="bp">self</span><span class="p">,</span> <span class="n">full_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">documenter</span><span class="o">.</span><span class="n">parse_name</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;failed to parse name </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">real_name</span><span class="p">)</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">display_name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">real_name</span><span class="p">))</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">documenter</span><span class="o">.</span><span class="n">import_object</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;failed to import object </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">real_name</span><span class="p">)</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">display_name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">real_name</span><span class="p">))</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">documenter</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">members</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">documenter</span><span class="o">.</span><span class="n">check_module</span><span class="p">():</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># try to also get a source code analyzer for attribute docs</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">documenter</span><span class="o">.</span><span class="n">analyzer</span> <span class="o">=</span> <span class="n">ModuleAnalyzer</span><span class="o">.</span><span class="n">for_module</span><span class="p">(</span>
+                    <span class="n">documenter</span><span class="o">.</span><span class="n">get_real_modname</span><span class="p">())</span>
+                <span class="c1"># parse right now, to get PycodeErrors on parsing (results will</span>
+                <span class="c1"># be cached anyway)</span>
+                <span class="n">documenter</span><span class="o">.</span><span class="n">analyzer</span><span class="o">.</span><span class="n">find_attr_docs</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">PycodeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">documenter</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="s1">&#39;[autodoc] module analyzer failed: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+                <span class="c1"># no source file -- e.g. for builtin and C modules</span>
+                <span class="n">documenter</span><span class="o">.</span><span class="n">analyzer</span> <span class="o">=</span> <span class="bp">None</span>
+
+            <span class="c1"># -- Grab the signature</span>
+
+            <span class="n">sig</span> <span class="o">=</span> <span class="n">documenter</span><span class="o">.</span><span class="n">format_signature</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">sig</span><span class="p">:</span>
+                <span class="n">sig</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">max_chars</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_item_chars</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">display_name</span><span class="p">))</span>
+                <span class="n">sig</span> <span class="o">=</span> <span class="n">mangle_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="n">max_chars</span><span class="p">)</span>
+                <span class="n">sig</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">r&#39;\*&#39;</span><span class="p">)</span>
+
+            <span class="c1"># -- Grab the summary</span>
+
+            <span class="n">documenter</span><span class="o">.</span><span class="n">add_content</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">documenter</span><span class="o">.</span><span class="n">process_doc</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">]))</span>
+
+            <span class="k">while</span> <span class="n">doc</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">doc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                <span class="n">doc</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="c1"># If there&#39;s a blank line, then we can assume the first sentence /</span>
+            <span class="c1"># paragraph has ended, so anything after shouldn&#39;t be part of the</span>
+            <span class="c1"># summary</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">piece</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">piece</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="n">doc</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+                    <span class="k">break</span>
+
+            <span class="c1"># Try to find the &quot;first sentence&quot;, which may span multiple lines</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">r&quot;^([A-Z].*?\.)(?:\s|$)&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                <span class="n">summary</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">doc</span><span class="p">:</span>
+                <span class="n">summary</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">display_name</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">real_name</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">items</span>
+
+    <span class="k">def</span> <span class="nf">get_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate a proper list of table nodes for autosummary:: directive.</span>
+
+<span class="sd">        *items* is a list produced by :meth:`get_items`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">table_spec</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">tabular_col_spec</span><span class="p">()</span>
+        <span class="n">table_spec</span><span class="p">[</span><span class="s1">&#39;spec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ll&#39;</span>
+
+        <span class="n">table</span> <span class="o">=</span> <span class="n">autosummary_table</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">real_table</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;longtable&#39;</span><span class="p">])</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">real_table</span><span class="p">)</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">tgroup</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">real_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">colspec</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">colwidth</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">colspec</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">colwidth</span><span class="o">=</span><span class="mi">90</span><span class="p">))</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">tbody</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">append_row</span><span class="p">(</span><span class="o">*</span><span class="n">column_texts</span><span class="p">):</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">column_texts</span><span class="p">:</span>
+                <span class="n">node</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">vl</span> <span class="o">=</span> <span class="n">ViewList</span><span class="p">()</span>
+                <span class="n">vl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;&lt;autosummary&gt;&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">nested_parse</span><span class="p">(</span><span class="n">vl</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">):</span>
+                        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">entry</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
+            <span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">real_name</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="n">qualifier</span> <span class="o">=</span> <span class="s1">&#39;obj&#39;</span>
+            <span class="k">if</span> <span class="s1">&#39;nosignatures&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+                <span class="n">col1</span> <span class="o">=</span> <span class="s1">&#39;:</span><span class="si">%s</span><span class="s1">:`</span><span class="si">%s</span><span class="s1"> &lt;</span><span class="si">%s</span><span class="s1">&gt;`\ </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">qualifier</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">real_name</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">col1</span> <span class="o">=</span> <span class="s1">&#39;:</span><span class="si">%s</span><span class="s1">:`</span><span class="si">%s</span><span class="s1"> &lt;</span><span class="si">%s</span><span class="s1">&gt;`&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">qualifier</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">real_name</span><span class="p">)</span>
+            <span class="n">col2</span> <span class="o">=</span> <span class="n">summary</span>
+            <span class="n">append_row</span><span class="p">(</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">table_spec</span><span class="p">,</span> <span class="n">table</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">mangle_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reformat a function signature to a more compact form.&quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;^\((.*)\)$&quot;</span><span class="p">,</span> <span class="s2">r&quot;\1&quot;</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="c1"># Strip strings (which can contain things that confuse the code below)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;</span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;</span><span class="se">\\</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">r&quot;&#39;[^&#39;]*&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Parse the signature to arguments + options</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">opts</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">opt_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;^(.*, |)([a-zA-Z0-9_*]+)=&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">opt_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+            <span class="c1"># The rest are arguments</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="n">opts</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># Produce a more compact signature</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">limited_join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="n">max_chars</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">opts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sig</span><span class="p">:</span>
+            <span class="n">sig</span> <span class="o">=</span> <span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">limited_join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="n">max_chars</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">max_chars</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">sig</span> <span class="o">+=</span> <span class="s2">&quot;[, </span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">limited_join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span>
+                                           <span class="n">max_chars</span><span class="o">=</span><span class="n">max_chars</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">u&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">sig</span>
+
+
+<span class="k">def</span> <span class="nf">limited_join</span><span class="p">(</span><span class="n">sep</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">max_chars</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">overflow_marker</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Join a number of strings to one, limiting the length to *max_chars*.</span>
+
+<span class="sd">    If the string overflows this limit, replace the last fitting item by</span>
+<span class="sd">    *overflow_marker*.</span>
+
+<span class="sd">    Returns: joined_string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">full_str</span> <span class="o">=</span> <span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_str</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">max_chars</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">full_str</span>
+
+    <span class="n">n_chars</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n_items</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">n_chars</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">sep</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_chars</span> <span class="o">&lt;</span> <span class="n">max_chars</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">overflow_marker</span><span class="p">):</span>
+            <span class="n">n_items</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">items</span><span class="p">[:</span><span class="n">n_items</span><span class="p">])</span> <span class="o">+</span> <span class="p">[</span><span class="n">overflow_marker</span><span class="p">])</span>
+
+
+<span class="c1"># -- Importing items -----------------------------------------------------------</span>
+
+<span class="k">def</span> <span class="nf">get_import_prefixes_from_env</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtain current Python import prefixes (for `import_by_name`)</span>
+<span class="sd">    from ``document.env``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">prefixes</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span>
+
+    <span class="n">currmodule</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:module&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">currmodule</span><span class="p">:</span>
+        <span class="n">prefixes</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">currmodule</span><span class="p">)</span>
+
+    <span class="n">currclass</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ref_context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;py:class&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">currclass</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">currmodule</span><span class="p">:</span>
+            <span class="n">prefixes</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">currmodule</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">currclass</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prefixes</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">currclass</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">prefixes</span>
+
+
+<span class="k">def</span> <span class="nf">import_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">prefixes</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Import a Python object that has the given *name*, under one of the</span>
+<span class="sd">    *prefixes*.  The first name that succeeds is used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tried</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">prefixes</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prefix</span><span class="p">:</span>
+                <span class="n">prefixed_name</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">prefix</span><span class="p">,</span> <span class="n">name</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">prefixed_name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="n">obj</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">modname</span> <span class="o">=</span> <span class="n">_import_by_name</span><span class="p">(</span><span class="n">prefixed_name</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">prefixed_name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">modname</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="n">tried</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefixed_name</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;no module named </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="s1">&#39; or &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tried</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_import_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Import a Python object given its full name.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">name_parts</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+        <span class="c1"># try first interpret `name` as MODNAME.OBJ</span>
+        <span class="n">modname</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">name_parts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">modname</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">__import__</span><span class="p">(</span><span class="n">modname</span><span class="p">)</span>
+                <span class="n">mod</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">modname</span><span class="p">]</span>
+                <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">name_parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">mod</span><span class="p">,</span> <span class="n">modname</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+                <span class="k">pass</span>
+
+        <span class="c1"># ... then as MODNAME, MODNAME.OBJ1, MODNAME.OBJ1.OBJ2, ...</span>
+        <span class="n">last_j</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">modname</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_parts</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+            <span class="n">last_j</span> <span class="o">=</span> <span class="n">j</span>
+            <span class="n">modname</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">name_parts</span><span class="p">[:</span><span class="n">j</span><span class="p">])</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">__import__</span><span class="p">(</span><span class="n">modname</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">modname</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">last_j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_parts</span><span class="p">):</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">modname</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">obj_name</span> <span class="ow">in</span> <span class="n">name_parts</span><span class="p">[</span><span class="n">last_j</span><span class="p">:]:</span>
+                <span class="n">parent</span> <span class="o">=</span> <span class="n">obj</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">obj_name</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">modname</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">modname</span><span class="p">],</span> <span class="bp">None</span><span class="p">,</span> <span class="n">modname</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="o">*</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="c1"># -- :autolink: (smart default role) -------------------------------------------</span>
+
+<span class="k">def</span> <span class="nf">autolink_role</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">etext</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span>
+                  <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">content</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Smart linking role.</span>
+
+<span class="sd">    Expands to &#39;:obj:`text`&#39; if `text` is an object that can be imported;</span>
+<span class="sd">    otherwise expands to &#39;*text*&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">inliner</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">env</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_domain</span><span class="p">(</span><span class="s1">&#39;py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">role</span><span class="p">(</span><span class="s1">&#39;obj&#39;</span><span class="p">)(</span>
+        <span class="s1">&#39;obj&#39;</span><span class="p">,</span> <span class="n">rawtext</span><span class="p">,</span> <span class="n">etext</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">inliner</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+    <span class="n">pnode</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">prefixes</span> <span class="o">=</span> <span class="n">get_import_prefixes_from_env</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">modname</span> <span class="o">=</span> <span class="n">import_by_name</span><span class="p">(</span><span class="n">pnode</span><span class="p">[</span><span class="s1">&#39;reftarget&#39;</span><span class="p">],</span> <span class="n">prefixes</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">pnode</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">emphasis</span><span class="p">(</span><span class="n">rawtext</span><span class="p">,</span> <span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astext</span><span class="p">(),</span>
+                                 <span class="n">classes</span><span class="o">=</span><span class="n">content</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+
+<span class="k">def</span> <span class="nf">process_generate_options</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">genfiles</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">autosummary_generate</span>
+
+    <span class="k">if</span> <span class="n">genfiles</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">genfiles</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">genfiles</span> <span class="o">=</span> <span class="p">[</span><span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">found_docs</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">genfiles</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="kn">from</span> <span class="nn">sphinx.ext.autosummary.generate</span> <span class="kn">import</span> <span class="n">generate_autosummary_docs</span>
+
+    <span class="n">ext</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">source_suffix</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">genfiles</span> <span class="o">=</span> <span class="p">[</span><span class="n">genfile</span> <span class="o">+</span> <span class="p">(</span><span class="ow">not</span> <span class="n">genfile</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span> <span class="ow">and</span> <span class="n">ext</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">genfile</span> <span class="ow">in</span> <span class="n">genfiles</span><span class="p">]</span>
+
+    <span class="n">generate_autosummary_docs</span><span class="p">(</span><span class="n">genfiles</span><span class="p">,</span> <span class="n">builder</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span>
+                              <span class="n">warn</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">warn</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">info</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="n">ext</span><span class="p">,</span>
+                              <span class="n">base_path</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">srcdir</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="c1"># I need autodoc</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">setup_extension</span><span class="p">(</span><span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">autosummary_toc</span><span class="p">,</span>
+                 <span class="n">html</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_toc_visit_html</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">),</span>
+                 <span class="n">latex</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_noop</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">),</span>
+                 <span class="n">text</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_noop</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">),</span>
+                 <span class="n">man</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_noop</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">),</span>
+                 <span class="n">texinfo</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_noop</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">))</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">autosummary_table</span><span class="p">,</span>
+                 <span class="n">html</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_table_visit_html</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">),</span>
+                 <span class="n">latex</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_noop</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">),</span>
+                 <span class="n">text</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_noop</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">),</span>
+                 <span class="n">man</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_noop</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">),</span>
+                 <span class="n">texinfo</span><span class="o">=</span><span class="p">(</span><span class="n">autosummary_noop</span><span class="p">,</span> <span class="n">autosummary_noop</span><span class="p">))</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s1">&#39;autosummary&#39;</span><span class="p">,</span> <span class="n">Autosummary</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_role</span><span class="p">(</span><span class="s1">&#39;autolink&#39;</span><span class="p">,</span> <span class="n">autolink_role</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;doctree-read&#39;</span><span class="p">,</span> <span class="n">process_autosummary_toc</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;builder-inited&#39;</span><span class="p">,</span> <span class="n">process_generate_options</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;autosummary_generate&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">__display_version__</span><span class="p">,</span> <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

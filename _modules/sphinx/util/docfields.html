@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.util.docfields &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../../index.html"/>
+        <link rel="up" title="sphinx.util" href="../util.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.html">sphinx</a> &raquo;</li>
+        
+          <li><a href="../util.html">sphinx.util</a> &raquo;</li>
+        
+      <li>sphinx.util.docfields</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.util.docfields</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.util.docfields</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    &quot;Doc fields&quot; are reST field lists in object descriptions that will</span>
+<span class="sd">    be domain-specifically transformed to a more appealing presentation.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">addnodes</span>
+
+
+<span class="k">def</span> <span class="nf">_is_single_paragraph</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;True if the node only contains one paragraph (and system messages).&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">subnode</span> <span class="ow">in</span> <span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subnode</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">system_message</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+
+<div class="viewcode-block" id="Field"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.Field.html#sphinx.domains.c.Field">[docs]</a><span class="k">class</span> <span class="nc">Field</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A doc field that is never grouped.  It can have an argument or not, the</span>
+<span class="sd">    argument can be linked using a specified *rolename*.  Field should be used</span>
+<span class="sd">    for doc fields that usually don&#39;t occur more than once.</span>
+
+<span class="sd">    The body can be linked using a specified *bodyrolename* if the content is</span>
+<span class="sd">    just a single inline or text node.</span>
+
+<span class="sd">    Example::</span>
+
+<span class="sd">       :returns: description of the return value</span>
+<span class="sd">       :rtype: description of the return type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">is_grouped</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">is_typed</span> <span class="o">=</span> <span class="bp">False</span>
+
+<div class="viewcode-block" id="Field.__init__"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.Field.__init__.html#sphinx.domains.c.Field.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">has_arg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">rolename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">bodyrolename</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_arg</span> <span class="o">=</span> <span class="n">has_arg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rolename</span> <span class="o">=</span> <span class="n">rolename</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bodyrolename</span> <span class="o">=</span> <span class="n">bodyrolename</span></div>
+
+<div class="viewcode-block" id="Field.make_xref"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.Field.make_xref.html#sphinx.domains.c.Field.make_xref">[docs]</a>    <span class="k">def</span> <span class="nf">make_xref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rolename</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
+                  <span class="n">innernode</span><span class="o">=</span><span class="n">addnodes</span><span class="o">.</span><span class="n">literal_emphasis</span><span class="p">,</span> <span class="n">contnode</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rolename</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">contnode</span> <span class="ow">or</span> <span class="n">innernode</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="n">refnode</span> <span class="o">=</span> <span class="n">addnodes</span><span class="o">.</span><span class="n">pending_xref</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">refdomain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> <span class="n">refexplicit</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                        <span class="n">reftype</span><span class="o">=</span><span class="n">rolename</span><span class="p">,</span> <span class="n">reftarget</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">refnode</span> <span class="o">+=</span> <span class="n">contnode</span> <span class="ow">or</span> <span class="n">innernode</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">refnode</span></div>
+
+<div class="viewcode-block" id="Field.make_entry"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.Field.make_entry.html#sphinx.domains.c.Field.make_entry">[docs]</a>    <span class="k">def</span> <span class="nf">make_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Field.make_field"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.Field.make_field.html#sphinx.domains.c.Field.make_field">[docs]</a>    <span class="k">def</span> <span class="nf">make_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="n">fieldname</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_name</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fieldarg</span><span class="p">:</span>
+            <span class="n">fieldname</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">fieldname</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_xref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rolename</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span>
+                                        <span class="n">fieldarg</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">)</span> <span class="ow">or</span>
+                <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">inline</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span>
+                 <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">))):</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">make_xref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bodyrolename</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span>
+                                      <span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astext</span><span class="p">(),</span> <span class="n">contnode</span><span class="o">=</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+        <span class="n">fieldbody</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_body</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">content</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fieldname</span><span class="p">,</span> <span class="n">fieldbody</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="GroupedField"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.GroupedField.html#sphinx.domains.c.GroupedField">[docs]</a><span class="k">class</span> <span class="nc">GroupedField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A doc field that is grouped; i.e., all fields of that type will be</span>
+<span class="sd">    transformed into one field with its body being a bulleted list.  It always</span>
+<span class="sd">    has an argument.  The argument can be linked using the given *rolename*.</span>
+<span class="sd">    GroupedField should be used for doc fields that can occur more than once.</span>
+<span class="sd">    If *can_collapse* is true, this field will revert to a Field if only used</span>
+<span class="sd">    once.</span>
+
+<span class="sd">    Example::</span>
+
+<span class="sd">       :raises ErrorClass: description when it is raised</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">is_grouped</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">list_type</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">bullet_list</span>
+
+<div class="viewcode-block" id="GroupedField.__init__"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.GroupedField.__init__.html#sphinx.domains.c.GroupedField.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">rolename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">can_collapse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">Field</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="n">rolename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">can_collapse</span> <span class="o">=</span> <span class="n">can_collapse</span></div>
+
+<div class="viewcode-block" id="GroupedField.make_field"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.GroupedField.make_field.html#sphinx.domains.c.GroupedField.make_field">[docs]</a>    <span class="k">def</span> <span class="nf">make_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="n">fieldname</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_name</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">listnode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_type</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="n">par</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">()</span>
+            <span class="n">par</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_xref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rolename</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">fieldarg</span><span class="p">,</span>
+                                  <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_strong</span><span class="p">)</span>
+            <span class="n">par</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39; -- &#39;</span><span class="p">)</span>
+            <span class="n">par</span> <span class="o">+=</span> <span class="n">content</span>
+            <span class="n">listnode</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">list_item</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">par</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_collapse</span><span class="p">:</span>
+            <span class="n">fieldbody</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_body</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">listnode</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fieldname</span><span class="p">,</span> <span class="n">fieldbody</span><span class="p">)</span>
+        <span class="n">fieldbody</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_body</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">listnode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fieldname</span><span class="p">,</span> <span class="n">fieldbody</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="TypedField"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.TypedField.html#sphinx.domains.c.TypedField">[docs]</a><span class="k">class</span> <span class="nc">TypedField</span><span class="p">(</span><span class="n">GroupedField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A doc field that is grouped and has type information for the arguments.  It</span>
+<span class="sd">    always has an argument.  The argument can be linked using the given</span>
+<span class="sd">    *rolename*, the type using the given *typerolename*.</span>
+
+<span class="sd">    Two uses are possible: either parameter and type description are given</span>
+<span class="sd">    separately, using a field from *names* and one from *typenames*,</span>
+<span class="sd">    respectively, or both are given using a field from *names*, see the example.</span>
+
+<span class="sd">    Example::</span>
+
+<span class="sd">       :param foo: description of parameter foo</span>
+<span class="sd">       :type foo:  SomeClass</span>
+
+<span class="sd">       -- or --</span>
+
+<span class="sd">       :param SomeClass foo: description of parameter foo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">is_typed</span> <span class="o">=</span> <span class="bp">True</span>
+
+<div class="viewcode-block" id="TypedField.__init__"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.TypedField.__init__.html#sphinx.domains.c.TypedField.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">(),</span> <span class="n">typenames</span><span class="o">=</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">rolename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">typerolename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">can_collapse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">GroupedField</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">rolename</span><span class="p">,</span> <span class="n">can_collapse</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">typenames</span> <span class="o">=</span> <span class="n">typenames</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">typerolename</span> <span class="o">=</span> <span class="n">typerolename</span></div>
+
+<div class="viewcode-block" id="TypedField.make_field"><a class="viewcode-back" href="../../../generated/generated/sphinx.domains.python.TypedField.make_field.html#sphinx.domains.c.TypedField.make_field">[docs]</a>    <span class="k">def</span> <span class="nf">make_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">handle_item</span><span class="p">(</span><span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+            <span class="n">par</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">()</span>
+            <span class="n">par</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_xref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rolename</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">fieldarg</span><span class="p">,</span>
+                                  <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_strong</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fieldarg</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+                <span class="n">par</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39; (&#39;</span><span class="p">)</span>
+                <span class="c1"># NOTE: using .pop() here to prevent a single type node to be</span>
+                <span class="c1"># inserted twice into the doctree, which leads to</span>
+                <span class="c1"># inconsistencies later when references are resolved</span>
+                <span class="n">fieldtype</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">fieldarg</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fieldtype</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fieldtype</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+                    <span class="n">typename</span> <span class="o">=</span> <span class="s1">u&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">fieldtype</span><span class="p">)</span>
+                    <span class="n">par</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_xref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">typerolename</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">typename</span><span class="p">,</span>
+                                          <span class="n">addnodes</span><span class="o">.</span><span class="n">literal_emphasis</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">par</span> <span class="o">+=</span> <span class="n">fieldtype</span>
+                <span class="n">par</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+            <span class="n">par</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39; -- &#39;</span><span class="p">)</span>
+            <span class="n">par</span> <span class="o">+=</span> <span class="n">content</span>
+            <span class="k">return</span> <span class="n">par</span>
+
+        <span class="n">fieldname</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_name</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_collapse</span><span class="p">:</span>
+            <span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">bodynode</span> <span class="o">=</span> <span class="n">handle_item</span><span class="p">(</span><span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bodynode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_type</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+                <span class="n">bodynode</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">list_item</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">handle_item</span><span class="p">(</span><span class="n">fieldarg</span><span class="p">,</span> <span class="n">content</span><span class="p">))</span>
+        <span class="n">fieldbody</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_body</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">bodynode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fieldname</span><span class="p">,</span> <span class="n">fieldbody</span><span class="p">)</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">DocFieldTransformer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transforms field lists in &quot;doc field&quot; syntax into better-looking</span>
+<span class="sd">    equivalents, using the field type definitions given on a domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directive</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">directive</span><span class="o">.</span><span class="n">domain</span>
+        <span class="k">if</span> <span class="s1">&#39;_doc_field_type_map&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">directive</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+            <span class="n">directive</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">_doc_field_type_map</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">preprocess_fieldtypes</span><span class="p">(</span><span class="n">directive</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">doc_field_types</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">typemap</span> <span class="o">=</span> <span class="n">directive</span><span class="o">.</span><span class="n">_doc_field_type_map</span>
+
+    <span class="k">def</span> <span class="nf">preprocess_fieldtypes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">):</span>
+        <span class="n">typemap</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">fieldtype</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">fieldtype</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+                <span class="n">typemap</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">fieldtype</span><span class="p">,</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="n">fieldtype</span><span class="o">.</span><span class="n">is_typed</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">fieldtype</span><span class="o">.</span><span class="n">typenames</span><span class="p">:</span>
+                    <span class="n">typemap</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">fieldtype</span><span class="p">,</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="n">typemap</span>
+
+    <span class="k">def</span> <span class="nf">transform_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Transform all field list children of a node.&quot;&quot;&quot;</span>
+        <span class="c1"># don&#39;t traverse, only handle field lists that are immediate children</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_list</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Transform a single field list *node*.&quot;&quot;&quot;</span>
+        <span class="n">typemap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">typemap</span>
+
+        <span class="n">entries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">groupindices</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">types</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># step 1: traverse all fields and collect field types and content</span>
+        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">fieldname</span><span class="p">,</span> <span class="n">fieldbody</span> <span class="o">=</span> <span class="n">field</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># split into field type and argument</span>
+                <span class="n">fieldtype</span><span class="p">,</span> <span class="n">fieldarg</span> <span class="o">=</span> <span class="n">fieldname</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="c1"># maybe an argument-less field type?</span>
+                <span class="n">fieldtype</span><span class="p">,</span> <span class="n">fieldarg</span> <span class="o">=</span> <span class="n">fieldname</span><span class="o">.</span><span class="n">astext</span><span class="p">(),</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">typedesc</span><span class="p">,</span> <span class="n">is_typefield</span> <span class="o">=</span> <span class="n">typemap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fieldtype</span><span class="p">,</span> <span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
+
+            <span class="c1"># sort out unknown fields</span>
+            <span class="k">if</span> <span class="n">typedesc</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">typedesc</span><span class="o">.</span><span class="n">has_arg</span> <span class="o">!=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">fieldarg</span><span class="p">):</span>
+                <span class="c1"># either the field name is unknown, or the argument doesn&#39;t</span>
+                <span class="c1"># match the spec; capitalize field name and be done with it</span>
+                <span class="n">new_fieldname</span> <span class="o">=</span> <span class="n">fieldtype</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="n">fieldtype</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+                <span class="k">if</span> <span class="n">fieldarg</span><span class="p">:</span>
+                    <span class="n">new_fieldname</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">fieldarg</span>
+                <span class="n">fieldname</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">new_fieldname</span><span class="p">)</span>
+                <span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">typename</span> <span class="o">=</span> <span class="n">typedesc</span><span class="o">.</span><span class="n">name</span>
+
+            <span class="c1"># collect the content, trying not to keep unnecessary paragraphs</span>
+            <span class="k">if</span> <span class="n">_is_single_paragraph</span><span class="p">(</span><span class="n">fieldbody</span><span class="p">):</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">fieldbody</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">children</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">fieldbody</span><span class="o">.</span><span class="n">children</span>
+
+            <span class="c1"># if the field specifies a type, put it in the types collection</span>
+            <span class="k">if</span> <span class="n">is_typefield</span><span class="p">:</span>
+                <span class="c1"># filter out only inline nodes; others will result in invalid</span>
+                <span class="c1"># markup being written out</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">content</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Inline</span><span class="p">)</span> <span class="ow">or</span>
+                           <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">)]</span>
+                <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+                    <span class="n">types</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">typename</span><span class="p">,</span> <span class="p">{})[</span><span class="n">fieldarg</span><span class="p">]</span> <span class="o">=</span> <span class="n">content</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># also support syntax like ``:param type name:``</span>
+            <span class="k">if</span> <span class="n">typedesc</span><span class="o">.</span><span class="n">is_typed</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">argtype</span><span class="p">,</span> <span class="n">argname</span> <span class="o">=</span> <span class="n">fieldarg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">types</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">typename</span><span class="p">,</span> <span class="p">{})[</span><span class="n">argname</span><span class="p">]</span> <span class="o">=</span> \
+                        <span class="p">[</span><span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">argtype</span><span class="p">)]</span>
+                    <span class="n">fieldarg</span> <span class="o">=</span> <span class="n">argname</span>
+
+            <span class="n">translatable_content</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">inline</span><span class="p">(</span><span class="n">fieldbody</span><span class="o">.</span><span class="n">rawsource</span><span class="p">,</span>
+                                                <span class="n">translatable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">translatable_content</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">fieldbody</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">source</span>
+            <span class="n">translatable_content</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">fieldbody</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">line</span>
+            <span class="n">translatable_content</span> <span class="o">+=</span> <span class="n">content</span>
+
+            <span class="c1"># grouped entries need to be collected in one entry, while others</span>
+            <span class="c1"># get one entry per field</span>
+            <span class="k">if</span> <span class="n">typedesc</span><span class="o">.</span><span class="n">is_grouped</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">typename</span> <span class="ow">in</span> <span class="n">groupindices</span><span class="p">:</span>
+                    <span class="n">group</span> <span class="o">=</span> <span class="n">entries</span><span class="p">[</span><span class="n">groupindices</span><span class="p">[</span><span class="n">typename</span><span class="p">]]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">groupindices</span><span class="p">[</span><span class="n">typename</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">entries</span><span class="p">)</span>
+                    <span class="n">group</span> <span class="o">=</span> <span class="p">[</span><span class="n">typedesc</span><span class="p">,</span> <span class="p">[]]</span>
+                    <span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+                <span class="n">entry</span> <span class="o">=</span> <span class="n">typedesc</span><span class="o">.</span><span class="n">make_entry</span><span class="p">(</span><span class="n">fieldarg</span><span class="p">,</span> <span class="p">[</span><span class="n">translatable_content</span><span class="p">])</span>
+                <span class="n">group</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">entry</span> <span class="o">=</span> <span class="n">typedesc</span><span class="o">.</span><span class="n">make_entry</span><span class="p">(</span><span class="n">fieldarg</span><span class="p">,</span> <span class="p">[</span><span class="n">translatable_content</span><span class="p">])</span>
+                <span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">typedesc</span><span class="p">,</span> <span class="n">entry</span><span class="p">])</span>
+
+        <span class="c1"># step 2: all entries are collected, construct the new field list</span>
+        <span class="n">new_list</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field_list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">field</span><span class="p">):</span>
+                <span class="c1"># pass-through old field</span>
+                <span class="n">new_list</span> <span class="o">+=</span> <span class="n">entry</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fieldtype</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="n">entry</span>
+                <span class="n">fieldtypes</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fieldtype</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">{})</span>
+                <span class="n">new_list</span> <span class="o">+=</span> <span class="n">fieldtype</span><span class="o">.</span><span class="n">make_field</span><span class="p">(</span><span class="n">fieldtypes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span>
+                                                 <span class="n">content</span><span class="p">)</span>
+
+        <span class="n">node</span><span class="o">.</span><span class="n">replace_self</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

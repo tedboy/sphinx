@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.write_doc
+====================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.write_doc

@@ -1,0 +1,6 @@
+sphinx.builders.html.PygmentsBridge.get_formatter
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: PygmentsBridge.get_formatter

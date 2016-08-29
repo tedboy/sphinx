@@ -1,0 +1,6 @@
+sphinx.builders.websupport.StringOutput.unknown_reference_resolvers
+===================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: StringOutput.unknown_reference_resolvers

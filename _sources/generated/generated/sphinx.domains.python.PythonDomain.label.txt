@@ -1,0 +1,6 @@
+sphinx.domains.python.PythonDomain.label
+========================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PythonDomain.label

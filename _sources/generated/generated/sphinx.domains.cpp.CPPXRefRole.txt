@@ -1,0 +1,21 @@
+sphinx.domains.cpp.CPPXRefRole
+==============================
+.. currentmodule:: sphinx.domains.cpp
+.. autoclass:: CPPXRefRole
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CPPXRefRole.__init__
+   ~CPPXRefRole.process_link
+   ~CPPXRefRole.result_nodes
+
+
+
+
+

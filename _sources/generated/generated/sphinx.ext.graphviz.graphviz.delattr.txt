@@ -1,0 +1,6 @@
+sphinx.ext.graphviz.graphviz.delattr
+====================================
+
+.. currentmodule:: sphinx.ext.graphviz
+
+.. automethod:: graphviz.delattr

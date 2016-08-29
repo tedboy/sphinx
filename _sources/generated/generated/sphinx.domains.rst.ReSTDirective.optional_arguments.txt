@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.optional_arguments
+===================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. autoattribute:: ReSTDirective.optional_arguments

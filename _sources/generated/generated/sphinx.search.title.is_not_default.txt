@@ -1,0 +1,6 @@
+sphinx.search.title.is_not_default
+==================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.is_not_default

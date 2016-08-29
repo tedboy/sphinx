@@ -1,0 +1,6 @@
+sphinx.domains.std.make_termnodes_from_paragraph_node
+=====================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autofunction:: make_termnodes_from_paragraph_node

@@ -1,0 +1,6 @@
+sphinx.builders.epub.ensuredir
+==============================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. autofunction:: ensuredir

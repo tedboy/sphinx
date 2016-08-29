@@ -1,0 +1,6 @@
+sphinx.domains.std.GenericObject.required_arguments
+===================================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. autoattribute:: GenericObject.required_arguments

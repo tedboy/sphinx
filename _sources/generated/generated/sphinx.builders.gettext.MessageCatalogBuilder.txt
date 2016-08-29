@@ -1,0 +1,53 @@
+sphinx.builders.gettext.MessageCatalogBuilder
+=============================================
+.. currentmodule:: sphinx.builders.gettext
+.. autoclass:: MessageCatalogBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~MessageCatalogBuilder.__init__
+   ~MessageCatalogBuilder.build
+   ~MessageCatalogBuilder.build_all
+   ~MessageCatalogBuilder.build_specific
+   ~MessageCatalogBuilder.build_update
+   ~MessageCatalogBuilder.cleanup
+   ~MessageCatalogBuilder.compile_all_catalogs
+   ~MessageCatalogBuilder.compile_catalogs
+   ~MessageCatalogBuilder.compile_specific_catalogs
+   ~MessageCatalogBuilder.compile_update_catalogs
+   ~MessageCatalogBuilder.create_template_bridge
+   ~MessageCatalogBuilder.finish
+   ~MessageCatalogBuilder.get_builder_config
+   ~MessageCatalogBuilder.get_outdated_docs
+   ~MessageCatalogBuilder.get_relative_uri
+   ~MessageCatalogBuilder.get_target_uri
+   ~MessageCatalogBuilder.init
+   ~MessageCatalogBuilder.post_process_images
+   ~MessageCatalogBuilder.prepare_writing
+   ~MessageCatalogBuilder.write
+   ~MessageCatalogBuilder.write_doc
+   ~MessageCatalogBuilder.write_doc_serialized
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~MessageCatalogBuilder.allow_parallel
+   ~MessageCatalogBuilder.format
+   ~MessageCatalogBuilder.name
+   ~MessageCatalogBuilder.supported_image_types
+   ~MessageCatalogBuilder.versioning_compare
+   ~MessageCatalogBuilder.versioning_method
+

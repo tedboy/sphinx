@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.eqref.line
+==============================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: eqref.line

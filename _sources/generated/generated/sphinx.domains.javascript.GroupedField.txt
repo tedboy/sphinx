@@ -1,0 +1,31 @@
+sphinx.domains.javascript.GroupedField
+======================================
+.. currentmodule:: sphinx.domains.javascript
+.. autoclass:: GroupedField
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~GroupedField.__init__
+   ~GroupedField.make_entry
+   ~GroupedField.make_field
+   ~GroupedField.make_xref
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~GroupedField.is_grouped
+   ~GroupedField.is_typed
+

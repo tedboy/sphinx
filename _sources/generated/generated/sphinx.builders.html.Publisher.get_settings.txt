@@ -1,0 +1,6 @@
+sphinx.builders.html.Publisher.get_settings
+===========================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: Publisher.get_settings

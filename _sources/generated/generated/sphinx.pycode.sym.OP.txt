@@ -1,0 +1,6 @@
+sphinx.pycode.sym.OP
+====================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.OP

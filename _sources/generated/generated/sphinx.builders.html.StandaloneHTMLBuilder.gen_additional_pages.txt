@@ -1,0 +1,6 @@
+sphinx.builders.html.StandaloneHTMLBuilder.gen_additional_pages
+===============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: StandaloneHTMLBuilder.gen_additional_pages

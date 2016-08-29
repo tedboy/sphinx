@@ -1,0 +1,101 @@
+.. automodule:: sphinx.util
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      copy_static_entry
+      copyfile
+      copytimes
+      detect_encoding
+      docname_join
+      encode_uri
+      ensuredir
+      force_decode
+      format_exception_cut_frames
+      get_figtype
+      get_full_modname
+      get_matching_docs
+      get_matching_files
+      get_module_source
+      import_object
+      iteritems
+      make_filename
+      movefile
+      mtimes_of_files
+      nested_parse_with_titles
+      open
+      os_path
+      parse_qsl
+      parselinenos
+      patfilter
+      path_stabilize
+      quote_plus
+      relative_path
+      relative_uri
+      rpartition
+      save_traceback
+      split_explicit_title
+      split_index_msg
+      split_into
+      strip_colors
+      urlencode
+      urlsplit
+      urlunsplit
+      ustrftime
+      walk
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      FilenameUniqDict
+      PeekableIterator
+      Tee
+      attrdict
+      binary_type
+      deque
+      range
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.util.FilenameUniqDict
+       generated/sphinx.util.PeekableIterator
+       generated/sphinx.util.Tee
+       generated/sphinx.util.attrdict
+       generated/sphinx.util.binary_type
+       generated/sphinx.util.deque
+       generated/sphinx.util.range
+       generated/sphinx.util.text_type
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      ExtensionError
+      PycodeError
+      SphinxParallelError
+   
+   

@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.15.2.5. sphinx.builders.xml.XMLBuilder &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="4.15. sphinx.builders.xml" href="../sphinx.builders.xml.html"/>
+        <link rel="next" title="4.15.2.5.1.1. sphinx.builders.xml.XMLBuilder.__init__" href="sphinx.builders.xml.XMLBuilder.__init__.html"/>
+        <link rel="prev" title="4.15.2.4.2.4. sphinx.builders.xml.StringOutput.unknown_reference_resolvers" href="sphinx.builders.xml.StringOutput.unknown_reference_resolvers.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html">4.1. sphinx.builders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.changes.html">4.2. sphinx.builders.changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.devhelp.html">4.3. sphinx.builders.devhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.epub.html">4.4. sphinx.builders.epub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.gettext.html">4.5. sphinx.builders.gettext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.html.html">4.6. sphinx.builders.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.htmlhelp.html">4.7. sphinx.builders.htmlhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.latex.html">4.8. sphinx.builders.latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.linkcheck.html">4.9. sphinx.builders.linkcheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.manpage.html">4.10. sphinx.builders.manpage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.qthelp.html">4.11. sphinx.builders.qthelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.texinfo.html">4.12. sphinx.builders.texinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.text.html">4.13. sphinx.builders.text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx.builders.websupport.html">4.14. sphinx.builders.websupport</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sphinx.builders.xml.html">4.15. sphinx.builders.xml</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../sphinx.builders.xml.html#functions">4.15.1. Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sphinx.builders.xml.html#classes">4.15.2. Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.xml.Builder.html">4.15.2.1. sphinx.builders.xml.Builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.xml.PseudoXMLBuilder.html">4.15.2.2. sphinx.builders.xml.PseudoXMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.xml.PseudoXMLWriter.html">4.15.2.3. sphinx.builders.xml.PseudoXMLWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.xml.StringOutput.html">4.15.2.4. sphinx.builders.xml.StringOutput</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">4.15.2.5. sphinx.builders.xml.XMLBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.builders.xml.XMLWriter.html">4.15.2.6. sphinx.builders.xml.XMLWriter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a> &raquo;</li>
+        
+          <li><a href="../sphinx.builders.xml.html">4.15. sphinx.builders.xml</a> &raquo;</li>
+        
+      <li>4.15.2.5. sphinx.builders.xml.XMLBuilder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated/generated/sphinx.builders.xml.XMLBuilder.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-builders-xml-xmlbuilder">
+<h1>4.15.2.5. sphinx.builders.xml.XMLBuilder<a class="headerlink" href="#sphinx-builders-xml-xmlbuilder" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sphinx.builders.xml.XMLBuilder">
+<em class="property">class </em><code class="descclassname">sphinx.builders.xml.</code><code class="descname">XMLBuilder</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sphinx/builders/xml.html#XMLBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sphinx.builders.xml.XMLBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds Docutils-native XML.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>4.15.2.5.1. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.__init__.html#sphinx.builders.xml.XMLBuilder.__init__" title="sphinx.builders.xml.XMLBuilder.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(app)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.build.html#sphinx.builders.xml.XMLBuilder.build" title="sphinx.builders.xml.XMLBuilder.build"><code class="xref py py-obj docutils literal"><span class="pre">build</span></code></a>(docnames[,&nbsp;summary,&nbsp;method])</td>
+<td>Main build method.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.build_all.html#sphinx.builders.xml.XMLBuilder.build_all" title="sphinx.builders.xml.XMLBuilder.build_all"><code class="xref py py-obj docutils literal"><span class="pre">build_all</span></code></a>()</td>
+<td>Build all source files.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.build_specific.html#sphinx.builders.xml.XMLBuilder.build_specific" title="sphinx.builders.xml.XMLBuilder.build_specific"><code class="xref py py-obj docutils literal"><span class="pre">build_specific</span></code></a>(filenames)</td>
+<td>Only rebuild as much as needed for changes in the <em>filenames</em>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.build_update.html#sphinx.builders.xml.XMLBuilder.build_update" title="sphinx.builders.xml.XMLBuilder.build_update"><code class="xref py py-obj docutils literal"><span class="pre">build_update</span></code></a>()</td>
+<td>Only rebuild what was changed or added since last build.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.cleanup.html#sphinx.builders.xml.XMLBuilder.cleanup" title="sphinx.builders.xml.XMLBuilder.cleanup"><code class="xref py py-obj docutils literal"><span class="pre">cleanup</span></code></a>()</td>
+<td>Cleanup any resources.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.compile_all_catalogs.html#sphinx.builders.xml.XMLBuilder.compile_all_catalogs" title="sphinx.builders.xml.XMLBuilder.compile_all_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_all_catalogs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.compile_catalogs.html#sphinx.builders.xml.XMLBuilder.compile_catalogs" title="sphinx.builders.xml.XMLBuilder.compile_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_catalogs</span></code></a>(catalogs,&nbsp;message)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.compile_specific_catalogs.html#sphinx.builders.xml.XMLBuilder.compile_specific_catalogs" title="sphinx.builders.xml.XMLBuilder.compile_specific_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_specific_catalogs</span></code></a>(specified_files)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.compile_update_catalogs.html#sphinx.builders.xml.XMLBuilder.compile_update_catalogs" title="sphinx.builders.xml.XMLBuilder.compile_update_catalogs"><code class="xref py py-obj docutils literal"><span class="pre">compile_update_catalogs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.create_template_bridge.html#sphinx.builders.xml.XMLBuilder.create_template_bridge" title="sphinx.builders.xml.XMLBuilder.create_template_bridge"><code class="xref py py-obj docutils literal"><span class="pre">create_template_bridge</span></code></a>()</td>
+<td>Return the template bridge configured.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.finish.html#sphinx.builders.xml.XMLBuilder.finish" title="sphinx.builders.xml.XMLBuilder.finish"><code class="xref py py-obj docutils literal"><span class="pre">finish</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.get_builder_config.html#sphinx.builders.xml.XMLBuilder.get_builder_config" title="sphinx.builders.xml.XMLBuilder.get_builder_config"><code class="xref py py-obj docutils literal"><span class="pre">get_builder_config</span></code></a>(option,&nbsp;default)</td>
+<td>Return a builder specific option.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.get_outdated_docs.html#sphinx.builders.xml.XMLBuilder.get_outdated_docs" title="sphinx.builders.xml.XMLBuilder.get_outdated_docs"><code class="xref py py-obj docutils literal"><span class="pre">get_outdated_docs</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.get_relative_uri.html#sphinx.builders.xml.XMLBuilder.get_relative_uri" title="sphinx.builders.xml.XMLBuilder.get_relative_uri"><code class="xref py py-obj docutils literal"><span class="pre">get_relative_uri</span></code></a>(<a href="#id1"><span class="problematic" id="id2">from_</span></a>,&nbsp;to[,&nbsp;typ])</td>
+<td>Return a relative URI between two source filenames.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.get_target_uri.html#sphinx.builders.xml.XMLBuilder.get_target_uri" title="sphinx.builders.xml.XMLBuilder.get_target_uri"><code class="xref py py-obj docutils literal"><span class="pre">get_target_uri</span></code></a>(docname[,&nbsp;typ])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.init.html#sphinx.builders.xml.XMLBuilder.init" title="sphinx.builders.xml.XMLBuilder.init"><code class="xref py py-obj docutils literal"><span class="pre">init</span></code></a>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.post_process_images.html#sphinx.builders.xml.XMLBuilder.post_process_images" title="sphinx.builders.xml.XMLBuilder.post_process_images"><code class="xref py py-obj docutils literal"><span class="pre">post_process_images</span></code></a>(doctree)</td>
+<td>Pick the best candidate for all image URIs.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.prepare_writing.html#sphinx.builders.xml.XMLBuilder.prepare_writing" title="sphinx.builders.xml.XMLBuilder.prepare_writing"><code class="xref py py-obj docutils literal"><span class="pre">prepare_writing</span></code></a>(docnames)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.write.html#sphinx.builders.xml.XMLBuilder.write" title="sphinx.builders.xml.XMLBuilder.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>(build_docnames,&nbsp;updated_docnames[,&nbsp;method])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.write_doc.html#sphinx.builders.xml.XMLBuilder.write_doc" title="sphinx.builders.xml.XMLBuilder.write_doc"><code class="xref py py-obj docutils literal"><span class="pre">write_doc</span></code></a>(docname,&nbsp;doctree)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.write_doc_serialized.html#sphinx.builders.xml.XMLBuilder.write_doc_serialized" title="sphinx.builders.xml.XMLBuilder.write_doc_serialized"><code class="xref py py-obj docutils literal"><span class="pre">write_doc_serialized</span></code></a>(docname,&nbsp;doctree)</td>
+<td>Handle parts of write_doc that must be called in the main process if parallel build is active.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>4.15.2.5.2. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.allow_parallel.html#sphinx.builders.xml.XMLBuilder.allow_parallel" title="sphinx.builders.xml.XMLBuilder.allow_parallel"><code class="xref py py-obj docutils literal"><span class="pre">allow_parallel</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.format.html#sphinx.builders.xml.XMLBuilder.format" title="sphinx.builders.xml.XMLBuilder.format"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.name.html#sphinx.builders.xml.XMLBuilder.name" title="sphinx.builders.xml.XMLBuilder.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.out_suffix.html#sphinx.builders.xml.XMLBuilder.out_suffix" title="sphinx.builders.xml.XMLBuilder.out_suffix"><code class="xref py py-obj docutils literal"><span class="pre">out_suffix</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.supported_image_types.html#sphinx.builders.xml.XMLBuilder.supported_image_types" title="sphinx.builders.xml.XMLBuilder.supported_image_types"><code class="xref py py-obj docutils literal"><span class="pre">supported_image_types</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.versioning_compare.html#sphinx.builders.xml.XMLBuilder.versioning_compare" title="sphinx.builders.xml.XMLBuilder.versioning_compare"><code class="xref py py-obj docutils literal"><span class="pre">versioning_compare</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.builders.xml.XMLBuilder.versioning_method.html#sphinx.builders.xml.XMLBuilder.versioning_method" title="sphinx.builders.xml.XMLBuilder.versioning_method"><code class="xref py py-obj docutils literal"><span class="pre">versioning_method</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.builders.xml.XMLBuilder.__init__.html" class="btn btn-neutral float-right" title="4.15.2.5.1.1. sphinx.builders.xml.XMLBuilder.__init__" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sphinx.builders.xml.StringOutput.unknown_reference_resolvers.html" class="btn btn-neutral" title="4.15.2.4.2.4. sphinx.builders.xml.StringOutput.unknown_reference_resolvers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+sphinx.ext.todo.todolist.__init__
+=================================
+
+.. currentmodule:: sphinx.ext.todo
+
+.. automethod:: todolist.__init__

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassLevelDocumenter.member_order
+====================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. autoattribute:: ClassLevelDocumenter.member_order

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTEnum.prefix_nested_name
+=============================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTEnum.prefix_nested_name

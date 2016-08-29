@@ -1,0 +1,6 @@
+sphinx.search.comment.__init__
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.__init__

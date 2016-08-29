@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.add_permalink_ref
+=================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.add_permalink_ref

@@ -1,0 +1,6 @@
+sphinx.pycode.sym.RIGHTSHIFT
+============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.RIGHTSHIFT

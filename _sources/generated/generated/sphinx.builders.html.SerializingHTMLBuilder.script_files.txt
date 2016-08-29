@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.script_files
+========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: SerializingHTMLBuilder.script_files

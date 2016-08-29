@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.format
+===================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. autoattribute:: PickleHTMLBuilder.format

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AttributeDocumenter.get_attr
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AttributeDocumenter.get_attr

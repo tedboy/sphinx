@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.year
+=====================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. autoattribute:: datetime.year

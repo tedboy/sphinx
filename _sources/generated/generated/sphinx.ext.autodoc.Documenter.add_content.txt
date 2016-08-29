@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.Documenter.add_content
+=========================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: Documenter.add_content

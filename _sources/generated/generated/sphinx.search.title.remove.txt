@@ -1,0 +1,6 @@
+sphinx.search.title.remove
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.remove

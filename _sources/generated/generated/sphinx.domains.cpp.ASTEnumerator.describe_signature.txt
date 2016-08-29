@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTEnumerator.describe_signature
+===================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTEnumerator.describe_signature

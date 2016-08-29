@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoBuilder.allow_parallel
+=====================================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. autoattribute:: TexinfoBuilder.allow_parallel

@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.note_referenced_by
+===============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.note_referenced_by

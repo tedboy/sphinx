@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DefDict.pop
+==============================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DefDict.pop

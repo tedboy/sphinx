@@ -1,0 +1,6 @@
+sphinx.pycode.sym.RARROW
+========================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.RARROW

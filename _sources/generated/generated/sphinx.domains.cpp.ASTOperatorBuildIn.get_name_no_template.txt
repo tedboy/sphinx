@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTOperatorBuildIn.get_name_no_template
+==========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTOperatorBuildIn.get_name_no_template

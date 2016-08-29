@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.UTF8StreamReader.decode
+==============================================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. automethod:: UTF8StreamReader.decode

@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.add_permalinks
+=====================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.add_permalinks

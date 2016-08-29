@@ -1,0 +1,35 @@
+sphinx.builders.html.Publisher
+==============================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: Publisher
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~Publisher.__init__
+   ~Publisher.apply_transforms
+   ~Publisher.debugging_dumps
+   ~Publisher.get_settings
+   ~Publisher.process_command_line
+   ~Publisher.process_programmatic_settings
+   ~Publisher.publish
+   ~Publisher.report_Exception
+   ~Publisher.report_SystemMessage
+   ~Publisher.report_UnicodeError
+   ~Publisher.set_components
+   ~Publisher.set_destination
+   ~Publisher.set_io
+   ~Publisher.set_reader
+   ~Publisher.set_source
+   ~Publisher.set_writer
+   ~Publisher.setup_option_parser
+
+
+
+
+

@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.visit_literal_strong
+====================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.visit_literal_strong

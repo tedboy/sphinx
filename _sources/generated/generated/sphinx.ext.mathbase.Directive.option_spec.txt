@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.Directive.option_spec
+=========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: Directive.option_spec

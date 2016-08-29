@@ -1,0 +1,6 @@
+sphinx.builders.gettext.datetime.utctimetuple
+=============================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: datetime.utctimetuple

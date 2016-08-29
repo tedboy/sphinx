@@ -1,0 +1,6 @@
+sphinx.search.raw.is_not_default
+================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.is_not_default

@@ -1,0 +1,44 @@
+.. automodule:: sphinx.ext.coverage
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      compile_regex_list
+      iteritems
+      safe_getattr
+      setup
+      write_header
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      CoverageBuilder
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.coverage.Builder
+       generated/sphinx.ext.coverage.CoverageBuilder
+
+   
+   
+
+   
+   
+   

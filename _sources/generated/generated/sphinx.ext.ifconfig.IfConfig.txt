@@ -1,0 +1,40 @@
+sphinx.ext.ifconfig.IfConfig
+============================
+.. currentmodule:: sphinx.ext.ifconfig
+.. autoclass:: IfConfig
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~IfConfig.__init__
+   ~IfConfig.add_name
+   ~IfConfig.assert_has_content
+   ~IfConfig.debug
+   ~IfConfig.directive_error
+   ~IfConfig.error
+   ~IfConfig.info
+   ~IfConfig.run
+   ~IfConfig.severe
+   ~IfConfig.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~IfConfig.final_argument_whitespace
+   ~IfConfig.has_content
+   ~IfConfig.option_spec
+   ~IfConfig.optional_arguments
+   ~IfConfig.required_arguments
+

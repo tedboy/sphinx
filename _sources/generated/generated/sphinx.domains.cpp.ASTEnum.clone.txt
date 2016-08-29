@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTEnum.clone
+================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTEnum.clone

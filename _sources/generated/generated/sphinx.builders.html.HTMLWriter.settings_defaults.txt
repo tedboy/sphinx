@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLWriter.settings_defaults
+=================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: HTMLWriter.settings_defaults

@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.directive_error
+=================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.directive_error

@@ -1,0 +1,6 @@
+sphinx.domains.python.PyDecoratorMethod.__init__
+================================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyDecoratorMethod.__init__

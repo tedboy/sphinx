@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.delattr
+====================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.delattr

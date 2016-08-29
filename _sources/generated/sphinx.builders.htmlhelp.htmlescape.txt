@@ -1,0 +1,6 @@
+sphinx.builders.htmlhelp.htmlescape
+===================================
+
+.. currentmodule:: sphinx.builders.htmlhelp
+
+.. autofunction:: htmlescape

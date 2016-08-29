@@ -1,0 +1,6 @@
+sphinx.builders.epub.EpubBuilder.insert_subnav
+==============================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: EpubBuilder.insert_subnav

@@ -1,0 +1,6 @@
+sphinx.domains.python.PyModulelevel.has_content
+===============================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. autoattribute:: PyModulelevel.has_content

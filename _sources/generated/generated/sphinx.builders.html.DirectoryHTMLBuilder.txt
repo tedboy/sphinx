@@ -1,0 +1,88 @@
+sphinx.builders.html.DirectoryHTMLBuilder
+=========================================
+.. currentmodule:: sphinx.builders.html
+.. autoclass:: DirectoryHTMLBuilder
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~DirectoryHTMLBuilder.__init__
+   ~DirectoryHTMLBuilder.add_sidebars
+   ~DirectoryHTMLBuilder.build
+   ~DirectoryHTMLBuilder.build_all
+   ~DirectoryHTMLBuilder.build_specific
+   ~DirectoryHTMLBuilder.build_update
+   ~DirectoryHTMLBuilder.cleanup
+   ~DirectoryHTMLBuilder.compile_all_catalogs
+   ~DirectoryHTMLBuilder.compile_catalogs
+   ~DirectoryHTMLBuilder.compile_specific_catalogs
+   ~DirectoryHTMLBuilder.compile_update_catalogs
+   ~DirectoryHTMLBuilder.copy_download_files
+   ~DirectoryHTMLBuilder.copy_extra_files
+   ~DirectoryHTMLBuilder.copy_image_files
+   ~DirectoryHTMLBuilder.copy_static_files
+   ~DirectoryHTMLBuilder.create_template_bridge
+   ~DirectoryHTMLBuilder.dump_inventory
+   ~DirectoryHTMLBuilder.dump_search_index
+   ~DirectoryHTMLBuilder.finish
+   ~DirectoryHTMLBuilder.gen_additional_pages
+   ~DirectoryHTMLBuilder.gen_indices
+   ~DirectoryHTMLBuilder.get_builder_config
+   ~DirectoryHTMLBuilder.get_doc_context
+   ~DirectoryHTMLBuilder.get_outdated_docs
+   ~DirectoryHTMLBuilder.get_outfilename
+   ~DirectoryHTMLBuilder.get_relative_uri
+   ~DirectoryHTMLBuilder.get_target_uri
+   ~DirectoryHTMLBuilder.get_theme_config
+   ~DirectoryHTMLBuilder.handle_finish
+   ~DirectoryHTMLBuilder.handle_page
+   ~DirectoryHTMLBuilder.index_page
+   ~DirectoryHTMLBuilder.init
+   ~DirectoryHTMLBuilder.init_highlighter
+   ~DirectoryHTMLBuilder.init_templates
+   ~DirectoryHTMLBuilder.init_translator_class
+   ~DirectoryHTMLBuilder.load_indexer
+   ~DirectoryHTMLBuilder.post_process_images
+   ~DirectoryHTMLBuilder.prepare_writing
+   ~DirectoryHTMLBuilder.render_partial
+   ~DirectoryHTMLBuilder.write
+   ~DirectoryHTMLBuilder.write_buildinfo
+   ~DirectoryHTMLBuilder.write_doc
+   ~DirectoryHTMLBuilder.write_doc_serialized
+   ~DirectoryHTMLBuilder.write_domain_indices
+   ~DirectoryHTMLBuilder.write_genindex
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~DirectoryHTMLBuilder.add_permalinks
+   ~DirectoryHTMLBuilder.allow_parallel
+   ~DirectoryHTMLBuilder.copysource
+   ~DirectoryHTMLBuilder.css_files
+   ~DirectoryHTMLBuilder.default_sidebars
+   ~DirectoryHTMLBuilder.embedded
+   ~DirectoryHTMLBuilder.format
+   ~DirectoryHTMLBuilder.indexer_dumps_unicode
+   ~DirectoryHTMLBuilder.indexer_format
+   ~DirectoryHTMLBuilder.link_suffix
+   ~DirectoryHTMLBuilder.name
+   ~DirectoryHTMLBuilder.out_suffix
+   ~DirectoryHTMLBuilder.script_files
+   ~DirectoryHTMLBuilder.search
+   ~DirectoryHTMLBuilder.searchindex_filename
+   ~DirectoryHTMLBuilder.supported_image_types
+   ~DirectoryHTMLBuilder.versioning_compare
+   ~DirectoryHTMLBuilder.versioning_method
+

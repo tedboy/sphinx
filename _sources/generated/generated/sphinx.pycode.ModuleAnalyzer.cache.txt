@@ -1,0 +1,6 @@
+sphinx.pycode.ModuleAnalyzer.cache
+==================================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: ModuleAnalyzer.cache

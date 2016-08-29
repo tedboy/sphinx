@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.error
+=================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.error

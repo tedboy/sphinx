@@ -1,0 +1,6 @@
+sphinx.domains.StandardDomain.build_reference_node
+==================================================
+
+.. currentmodule:: sphinx.domains
+
+.. automethod:: StandardDomain.build_reference_node

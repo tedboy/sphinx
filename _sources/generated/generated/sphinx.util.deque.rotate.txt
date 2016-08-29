@@ -1,0 +1,6 @@
+sphinx.util.deque.rotate
+========================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: deque.rotate

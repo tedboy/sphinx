@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.create_template_bridge
+=============================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.create_template_bridge

@@ -1,0 +1,47 @@
+sphinx.domains.rst.ReSTMarkup
+=============================
+.. currentmodule:: sphinx.domains.rst
+.. autoclass:: ReSTMarkup
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ReSTMarkup.__init__
+   ~ReSTMarkup.add_name
+   ~ReSTMarkup.add_target_and_index
+   ~ReSTMarkup.after_content
+   ~ReSTMarkup.assert_has_content
+   ~ReSTMarkup.before_content
+   ~ReSTMarkup.debug
+   ~ReSTMarkup.directive_error
+   ~ReSTMarkup.error
+   ~ReSTMarkup.get_index_text
+   ~ReSTMarkup.get_signatures
+   ~ReSTMarkup.handle_signature
+   ~ReSTMarkup.info
+   ~ReSTMarkup.run
+   ~ReSTMarkup.severe
+   ~ReSTMarkup.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~ReSTMarkup.doc_field_types
+   ~ReSTMarkup.final_argument_whitespace
+   ~ReSTMarkup.has_content
+   ~ReSTMarkup.option_spec
+   ~ReSTMarkup.optional_arguments
+   ~ReSTMarkup.required_arguments
+

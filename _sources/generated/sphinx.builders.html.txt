@@ -1,0 +1,90 @@
+.. automodule:: sphinx.builders.html
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      bold
+      brown
+      compile_matchers
+      copy_static_entry
+      copyfile
+      darkgreen
+      ensuredir
+      get_stable_hash
+      inline_all_toctrees
+      iteritems
+      md5
+      movefile
+      new_document
+      os_path
+      patmatch
+      relative_uri
+      ustrftime
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Builder
+      DirectoryHTMLBuilder
+      DocTreeInput
+      DoctreeReader
+      HTMLTranslator
+      HTMLWriter
+      JSONHTMLBuilder
+      OptionParser
+      PickleHTMLBuilder
+      Publisher
+      PygmentsBridge
+      SerializingHTMLBuilder
+      SingleFileHTMLBuilder
+      SmartyPantsHTMLTranslator
+      StandaloneHTMLBuilder
+      StringOutput
+      Theme
+      WebHTMLBuilder
+      text_type
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.html.Builder
+       generated/sphinx.builders.html.DirectoryHTMLBuilder
+       generated/sphinx.builders.html.DocTreeInput
+       generated/sphinx.builders.html.DoctreeReader
+       generated/sphinx.builders.html.HTMLTranslator
+       generated/sphinx.builders.html.HTMLWriter
+       generated/sphinx.builders.html.JSONHTMLBuilder
+       generated/sphinx.builders.html.OptionParser
+       generated/sphinx.builders.html.PickleHTMLBuilder
+       generated/sphinx.builders.html.Publisher
+       generated/sphinx.builders.html.PygmentsBridge
+       generated/sphinx.builders.html.SerializingHTMLBuilder
+       generated/sphinx.builders.html.SingleFileHTMLBuilder
+       generated/sphinx.builders.html.SmartyPantsHTMLTranslator
+       generated/sphinx.builders.html.StandaloneHTMLBuilder
+       generated/sphinx.builders.html.StringOutput
+       generated/sphinx.builders.html.Theme
+       generated/sphinx.builders.html.WebHTMLBuilder
+       generated/sphinx.builders.html.text_type
+
+   
+   
+
+   
+   
+   

@@ -1,0 +1,21 @@
+sphinx.builders.ParallelTasks
+=============================
+.. currentmodule:: sphinx.builders
+.. autoclass:: ParallelTasks
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~ParallelTasks.__init__
+   ~ParallelTasks.add_task
+   ~ParallelTasks.join
+
+
+
+
+

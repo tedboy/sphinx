@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXWriter.unknown_reference_resolvers
+=============================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: LaTeXWriter.unknown_reference_resolvers

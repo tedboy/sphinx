@@ -1,0 +1,6 @@
+sphinx.search.comment.clear
+===========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: comment.clear

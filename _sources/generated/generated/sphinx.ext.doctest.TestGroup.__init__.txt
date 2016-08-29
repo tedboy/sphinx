@@ -1,0 +1,6 @@
+sphinx.ext.doctest.TestGroup.__init__
+=====================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: TestGroup.__init__

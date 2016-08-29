@@ -1,0 +1,6 @@
+sphinx.builders.epub.StandaloneHTMLBuilder.init_highlighter
+===========================================================
+
+.. currentmodule:: sphinx.builders.epub
+
+.. automethod:: StandaloneHTMLBuilder.init_highlighter

@@ -1,0 +1,6 @@
+sphinx.pycode.BytesIO.readlines
+===============================
+
+.. currentmodule:: sphinx.pycode
+
+.. automethod:: BytesIO.readlines

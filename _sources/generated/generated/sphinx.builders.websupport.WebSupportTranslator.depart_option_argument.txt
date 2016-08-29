@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.depart_option_argument
+======================================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.depart_option_argument

@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ClassDocumenter.add_content
+==============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ClassDocumenter.add_content

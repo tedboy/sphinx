@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPTypeObject.doc_field_types
+================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: CPPTypeObject.doc_field_types

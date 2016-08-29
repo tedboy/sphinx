@@ -1,0 +1,6 @@
+sphinx.builders.latex.LaTeXWriter.destination
+=============================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. autoattribute:: LaTeXWriter.destination

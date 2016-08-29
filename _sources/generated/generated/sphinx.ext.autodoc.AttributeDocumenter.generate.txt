@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.AttributeDocumenter.generate
+===============================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: AttributeDocumenter.generate

@@ -1,0 +1,6 @@
+sphinx.builders.manpage.OptionParser.get_option
+===============================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: OptionParser.get_option

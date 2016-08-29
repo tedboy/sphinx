@@ -1,0 +1,6 @@
+sphinx.domains.python.PyClasslike.error
+=======================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: PyClasslike.error

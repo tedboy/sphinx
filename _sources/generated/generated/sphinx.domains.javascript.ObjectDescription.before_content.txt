@@ -1,0 +1,6 @@
+sphinx.domains.javascript.ObjectDescription.before_content
+==========================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: ObjectDescription.before_content

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPFunctionObject.after_content
+==================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPFunctionObject.after_content

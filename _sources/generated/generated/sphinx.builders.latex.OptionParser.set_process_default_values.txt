@@ -1,0 +1,6 @@
+sphinx.builders.latex.OptionParser.set_process_default_values
+=============================================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: OptionParser.set_process_default_values

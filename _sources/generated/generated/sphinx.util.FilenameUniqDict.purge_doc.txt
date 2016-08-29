@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.purge_doc
+======================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.purge_doc

@@ -1,0 +1,6 @@
+sphinx.search.Text.rstrip
+=========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.rstrip

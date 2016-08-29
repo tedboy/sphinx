@@ -1,0 +1,6 @@
+sphinx.util.parse_qsl
+=====================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: parse_qsl

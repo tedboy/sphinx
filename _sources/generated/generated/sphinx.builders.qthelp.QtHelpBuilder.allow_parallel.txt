@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.allow_parallel
+===================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.allow_parallel

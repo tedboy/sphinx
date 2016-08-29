@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JavaScriptDomain.indices
+==================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. autoattribute:: JavaScriptDomain.indices

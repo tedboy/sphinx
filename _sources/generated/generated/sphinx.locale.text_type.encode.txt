@@ -1,0 +1,6 @@
+sphinx.locale.text_type.encode
+==============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: text_type.encode

@@ -1,0 +1,40 @@
+.. automodule:: sphinx.builders.devhelp
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      comp_open
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      DevhelpBuilder
+      StandaloneHTMLBuilder
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.builders.devhelp.DevhelpBuilder
+       generated/sphinx.builders.devhelp.StandaloneHTMLBuilder
+
+   
+   
+
+   
+   
+   

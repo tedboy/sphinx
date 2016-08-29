@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.get_target_uri
+=====================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. automethod:: DevhelpBuilder.get_target_uri

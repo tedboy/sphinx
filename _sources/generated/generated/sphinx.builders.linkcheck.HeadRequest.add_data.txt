@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.HeadRequest.add_data
+==============================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: HeadRequest.add_data

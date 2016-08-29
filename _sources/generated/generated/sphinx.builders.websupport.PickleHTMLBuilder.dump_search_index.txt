@@ -1,0 +1,6 @@
+sphinx.builders.websupport.PickleHTMLBuilder.dump_search_index
+==============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: PickleHTMLBuilder.dump_search_index

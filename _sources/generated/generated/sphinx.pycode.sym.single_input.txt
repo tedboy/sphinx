@@ -1,0 +1,6 @@
+sphinx.pycode.sym.single_input
+==============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.single_input

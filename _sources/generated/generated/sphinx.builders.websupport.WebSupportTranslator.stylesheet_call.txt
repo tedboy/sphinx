@@ -1,0 +1,6 @@
+sphinx.builders.websupport.WebSupportTranslator.stylesheet_call
+===============================================================
+
+.. currentmodule:: sphinx.builders.websupport
+
+.. automethod:: WebSupportTranslator.stylesheet_call

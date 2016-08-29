@@ -1,0 +1,6 @@
+sphinx.websupport.StorageBackend.delete_comment
+===============================================
+
+.. currentmodule:: sphinx.websupport
+
+.. automethod:: StorageBackend.delete_comment

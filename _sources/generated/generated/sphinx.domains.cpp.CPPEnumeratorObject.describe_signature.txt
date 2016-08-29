@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPEnumeratorObject.describe_signature
+=========================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPEnumeratorObject.describe_signature

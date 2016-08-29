@@ -1,0 +1,6 @@
+sphinx.domains.javascript.JSConstructor.directive_error
+=======================================================
+
+.. currentmodule:: sphinx.domains.javascript
+
+.. automethod:: JSConstructor.directive_error

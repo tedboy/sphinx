@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTypeWithInit.get_name
+===========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTTypeWithInit.get_name

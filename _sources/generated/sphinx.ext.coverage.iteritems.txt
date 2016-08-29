@@ -1,0 +1,6 @@
+sphinx.ext.coverage.iteritems
+=============================
+
+.. currentmodule:: sphinx.ext.coverage
+
+.. autofunction:: iteritems

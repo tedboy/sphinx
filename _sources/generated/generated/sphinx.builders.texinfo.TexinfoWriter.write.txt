@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.TexinfoWriter.write
+===========================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: TexinfoWriter.write

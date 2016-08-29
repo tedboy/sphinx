@@ -1,0 +1,6 @@
+sphinx.domains.cpp.DefinitionParser.parse_class_object
+======================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: DefinitionParser.parse_class_object

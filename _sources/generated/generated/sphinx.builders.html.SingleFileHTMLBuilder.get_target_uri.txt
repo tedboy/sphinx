@@ -1,0 +1,6 @@
+sphinx.builders.html.SingleFileHTMLBuilder.get_target_uri
+=========================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SingleFileHTMLBuilder.get_target_uri

@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTMarkup.assert_has_content
+================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTMarkup.assert_has_content

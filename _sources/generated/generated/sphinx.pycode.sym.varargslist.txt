@@ -1,0 +1,6 @@
+sphinx.pycode.sym.varargslist
+=============================
+
+.. currentmodule:: sphinx.pycode
+
+.. autoattribute:: sym.varargslist

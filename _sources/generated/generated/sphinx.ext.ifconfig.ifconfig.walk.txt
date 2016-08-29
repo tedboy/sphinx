@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.walk
+=================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.walk

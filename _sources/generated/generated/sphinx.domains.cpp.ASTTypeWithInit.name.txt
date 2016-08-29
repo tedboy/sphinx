@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTTypeWithInit.name
+=======================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. autoattribute:: ASTTypeWithInit.name

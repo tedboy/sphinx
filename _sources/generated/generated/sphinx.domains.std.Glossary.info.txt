@@ -1,0 +1,6 @@
+sphinx.domains.std.Glossary.info
+================================
+
+.. currentmodule:: sphinx.domains.std
+
+.. automethod:: Glossary.info

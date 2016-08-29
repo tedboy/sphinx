@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.get
+===================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.get

@@ -1,0 +1,6 @@
+sphinx.search.NodeVisitor.unknown_visit
+=======================================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: NodeVisitor.unknown_visit

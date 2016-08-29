@@ -1,0 +1,6 @@
+sphinx.builders.manpage.ManualPageBuilder.get_target_uri
+========================================================
+
+.. currentmodule:: sphinx.builders.manpage
+
+.. automethod:: ManualPageBuilder.get_target_uri

@@ -1,0 +1,6 @@
+sphinx.builders.html.SerializingHTMLBuilder.compile_catalogs
+============================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: SerializingHTMLBuilder.compile_catalogs

@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.stylesheet_call
+===================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.stylesheet_call

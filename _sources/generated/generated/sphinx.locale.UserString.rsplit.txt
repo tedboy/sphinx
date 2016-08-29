@@ -1,0 +1,6 @@
+sphinx.locale.UserString.rsplit
+===============================
+
+.. currentmodule:: sphinx.locale
+
+.. automethod:: UserString.rsplit

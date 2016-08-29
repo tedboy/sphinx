@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.AnchorCheckParser.unknown_decl
+========================================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. automethod:: AnchorCheckParser.unknown_decl

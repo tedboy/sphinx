@@ -1,0 +1,6 @@
+sphinx.builders.changes.ChangesBuilder.typemap
+==============================================
+
+.. currentmodule:: sphinx.builders.changes
+
+.. autoattribute:: ChangesBuilder.typemap

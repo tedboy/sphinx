@@ -1,0 +1,6 @@
+sphinx.builders.devhelp.DevhelpBuilder.default_sidebars
+=======================================================
+
+.. currentmodule:: sphinx.builders.devhelp
+
+.. autoattribute:: DevhelpBuilder.default_sidebars

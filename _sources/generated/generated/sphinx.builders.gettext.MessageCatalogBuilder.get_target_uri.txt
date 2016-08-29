@@ -1,0 +1,6 @@
+sphinx.builders.gettext.MessageCatalogBuilder.get_target_uri
+============================================================
+
+.. currentmodule:: sphinx.builders.gettext
+
+.. automethod:: MessageCatalogBuilder.get_target_uri

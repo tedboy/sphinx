@@ -1,0 +1,6 @@
+sphinx.domains.cpp.CPPClassObject.severe
+========================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: CPPClassObject.severe

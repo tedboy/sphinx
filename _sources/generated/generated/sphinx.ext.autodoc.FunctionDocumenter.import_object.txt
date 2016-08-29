@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.FunctionDocumenter.import_object
+===================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: FunctionDocumenter.import_object

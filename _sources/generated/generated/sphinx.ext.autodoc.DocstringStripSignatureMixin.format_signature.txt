@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.DocstringStripSignatureMixin.format_signature
+================================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: DocstringStripSignatureMixin.format_signature

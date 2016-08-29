@@ -1,0 +1,6 @@
+sphinx.websupport.search.text_type.zfill
+========================================
+
+.. currentmodule:: sphinx.websupport.search
+
+.. automethod:: text_type.zfill

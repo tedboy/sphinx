@@ -1,0 +1,6 @@
+sphinx.builders.html.HTMLTranslator.write_colspecs
+==================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. automethod:: HTMLTranslator.write_colspecs

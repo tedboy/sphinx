@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.displaymath.starttag
+========================================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. automethod:: displaymath.starttag

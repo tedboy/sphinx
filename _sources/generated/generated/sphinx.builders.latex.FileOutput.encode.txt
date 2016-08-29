@@ -1,0 +1,6 @@
+sphinx.builders.latex.FileOutput.encode
+=======================================
+
+.. currentmodule:: sphinx.builders.latex
+
+.. automethod:: FileOutput.encode

@@ -1,0 +1,6 @@
+sphinx.domains.cpp.ASTDeclaratorParen.get_type_id_v2
+====================================================
+
+.. currentmodule:: sphinx.domains.cpp
+
+.. automethod:: ASTDeclaratorParen.get_type_id_v2

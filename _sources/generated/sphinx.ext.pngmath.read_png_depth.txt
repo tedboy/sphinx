@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.read_png_depth
+=================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: read_png_depth

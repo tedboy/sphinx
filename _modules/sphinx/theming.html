@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx.theming &mdash; Sphinx Skeleton</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Sphinx Skeleton" href="../../index.html"/>
+        <link rel="up" title="sphinx" href="../sphinx.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Sphinx Skeleton
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.html">1. Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.themes.html">2. sphinx/themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.ext.html">3. <code class="docutils literal"><span class="pre">sphinx.ext</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.builders.html">4. <code class="docutils literal"><span class="pre">sphinx.builders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.domains.html">5. <code class="docutils literal"><span class="pre">sphinx.domains</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generated/sphinx.util.html">6. sphinx.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.websupport.html">7. sphinx.websupport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx.misc.html">8. misc modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Skeleton</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../sphinx.html">sphinx</a> &raquo;</li>
+        
+      <li>sphinx.theming</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sphinx.theming</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sphinx.theming</span>
+<span class="sd">    ~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Theming support for HTML builders.</span>
+
+<span class="sd">    :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.</span>
+<span class="sd">    :license: BSD, see LICENSE for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">string_types</span><span class="p">,</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">configparser</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pkg_resources</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">pkg_resources</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="kn">from</span> <span class="nn">sphinx</span> <span class="kn">import</span> <span class="n">package_dir</span>
+<span class="kn">from</span> <span class="nn">sphinx.errors</span> <span class="kn">import</span> <span class="n">ThemeError</span>
+
+<span class="n">NODEFAULT</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+<span class="n">THEMECONF</span> <span class="o">=</span> <span class="s1">&#39;theme.conf&#39;</span>
+
+
+<div class="viewcode-block" id="Theme"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Theme.html#sphinx.builders.changes.Theme">[docs]</a><span class="k">class</span> <span class="nc">Theme</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the theme chosen in the configuration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">themes</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Theme.init_themes"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Theme.init_themes.html#sphinx.builders.changes.Theme.init_themes">[docs]</a>    <span class="k">def</span> <span class="nf">init_themes</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">confdir</span><span class="p">,</span> <span class="n">theme_path</span><span class="p">,</span> <span class="n">warn</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search all theme paths for available themes.&quot;&quot;&quot;</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">themepath</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">theme_path</span><span class="p">)</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">themepath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">package_dir</span><span class="p">,</span> <span class="s1">&#39;themes&#39;</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">themedir</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">themepath</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">themedir</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">confdir</span><span class="p">,</span> <span class="n">themedir</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">themedir</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">themedir</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">theme</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.zip&#39;</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">zfile</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">themedir</span><span class="p">,</span> <span class="n">theme</span><span class="p">))</span>
+                        <span class="k">if</span> <span class="n">THEMECONF</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">zfile</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
+                            <span class="k">continue</span>
+                        <span class="n">tname</span> <span class="o">=</span> <span class="n">theme</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+                        <span class="n">tinfo</span> <span class="o">=</span> <span class="n">zfile</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">warn</span><span class="p">:</span>
+                            <span class="n">warn</span><span class="p">(</span><span class="s1">&#39;file </span><span class="si">%r</span><span class="s1"> on theme path is not a valid &#39;</span>
+                                 <span class="s1">&#39;zipfile or contains no theme&#39;</span> <span class="o">%</span> <span class="n">theme</span><span class="p">)</span>
+                        <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">themedir</span><span class="p">,</span> <span class="n">theme</span><span class="p">,</span> <span class="n">THEMECONF</span><span class="p">)):</span>
+                        <span class="k">continue</span>
+                    <span class="n">tname</span> <span class="o">=</span> <span class="n">theme</span>
+                    <span class="n">tinfo</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="n">cls</span><span class="o">.</span><span class="n">themes</span><span class="p">[</span><span class="n">tname</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">themedir</span><span class="p">,</span> <span class="n">theme</span><span class="p">),</span> <span class="n">tinfo</span><span class="p">)</span></div>
+
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Theme.load_extra_theme"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Theme.load_extra_theme.html#sphinx.builders.changes.Theme.load_extra_theme">[docs]</a>    <span class="k">def</span> <span class="nf">load_extra_theme</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;alabaster&#39;</span><span class="p">,</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;alabaster&#39;</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">alabaster</span>
+                <span class="n">themedir</span> <span class="o">=</span> <span class="n">alabaster</span><span class="o">.</span><span class="n">get_path</span><span class="p">()</span>
+                <span class="c1"># alabaster theme also requires &#39;alabaster&#39; extension, it will be loaded</span>
+                <span class="c1"># at sphinx.application module.</span>
+            <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">sphinx_rtd_theme</span>
+                <span class="n">themedir</span> <span class="o">=</span> <span class="n">sphinx_rtd_theme</span><span class="o">.</span><span class="n">get_html_theme_path</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Programming Error&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">themedir</span> <span class="ow">in</span> <span class="n">load_theme_plugins</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">themedir</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">THEMECONF</span><span class="p">)):</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># specified theme is not found</span>
+                <span class="k">return</span>
+
+        <span class="n">cls</span><span class="o">.</span><span class="n">themepath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">themedir</span><span class="p">)</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">themes</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">themedir</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="Theme.__init__"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Theme.__init__.html#sphinx.builders.changes.Theme.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">warn</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">themes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_extra_theme</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">themes</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ThemeError</span><span class="p">(</span><span class="s1">&#39;no theme named </span><span class="si">%r</span><span class="s1"> found &#39;</span>
+                                 <span class="s1">&#39;(missing theme.conf?)&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="c1"># Do not warn yet -- to be compatible with old Sphinxes, people *have*</span>
+        <span class="c1"># to use &quot;default&quot;.</span>
+        <span class="c1"># if name == &#39;default&#39; and warn:</span>
+        <span class="c1">#     warn(&quot;&#39;default&#39; html theme has been renamed to &#39;classic&#39;. &quot;</span>
+        <span class="c1">#          &quot;Please change your html_theme setting either to &quot;</span>
+        <span class="c1">#          &quot;the new &#39;alabaster&#39; default theme, or to &#39;classic&#39; &quot;</span>
+        <span class="c1">#          &quot;to keep using the old default.&quot;)</span>
+
+        <span class="n">tdir</span><span class="p">,</span> <span class="n">tinfo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">themes</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">tinfo</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c1"># already a directory, do nothing</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">themedir</span> <span class="o">=</span> <span class="n">tdir</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">themedir_created</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># extract the theme to a temp directory</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">themedir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">(</span><span class="s1">&#39;sxt&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">themedir_created</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">tinfo</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="n">dirname</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">themedir</span><span class="p">,</span> <span class="n">dirname</span><span class="p">)):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">themedir</span><span class="p">,</span> <span class="n">dirname</span><span class="p">))</span>
+                <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">themedir</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+                <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tinfo</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+                <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">themeconf</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">RawConfigParser</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">themeconf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">themedir</span><span class="p">,</span> <span class="n">THEMECONF</span><span class="p">))</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">inherit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">themeconf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">,</span> <span class="s1">&#39;inherit&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">configparser</span><span class="o">.</span><span class="n">NoOptionError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ThemeError</span><span class="p">(</span><span class="s1">&#39;theme </span><span class="si">%r</span><span class="s1"> doesn</span><span class="se">\&#39;</span><span class="s1">t have &quot;inherit&quot; setting&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="c1"># load inherited theme automatically #1794, #1884, #1885</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_extra_theme</span><span class="p">(</span><span class="n">inherit</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">inherit</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">elif</span> <span class="n">inherit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">themes</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ThemeError</span><span class="p">(</span><span class="s1">&#39;no theme named </span><span class="si">%r</span><span class="s1"> found, inherited by </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span>
+                             <span class="p">(</span><span class="n">inherit</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">Theme</span><span class="p">(</span><span class="n">inherit</span><span class="p">,</span> <span class="n">warn</span><span class="o">=</span><span class="n">warn</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Theme.get_confstr"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Theme.get_confstr.html#sphinx.builders.changes.Theme.get_confstr">[docs]</a>    <span class="k">def</span> <span class="nf">get_confstr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">NODEFAULT</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the value for a theme configuration setting, searching the</span>
+<span class="sd">        base theme chain.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">themeconf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">configparser</span><span class="o">.</span><span class="n">NoOptionError</span><span class="p">,</span> <span class="n">configparser</span><span class="o">.</span><span class="n">NoSectionError</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">get_confstr</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="n">NODEFAULT</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ThemeError</span><span class="p">(</span><span class="s1">&#39;setting </span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1"> occurs in none of the &#39;</span>
+                                 <span class="s1">&#39;searched theme configs&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">default</span></div>
+
+<div class="viewcode-block" id="Theme.get_options"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Theme.get_options.html#sphinx.builders.changes.Theme.get_options">[docs]</a>    <span class="k">def</span> <span class="nf">get_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overrides</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a dictionary of theme options and their values.&quot;&quot;&quot;</span>
+        <span class="n">chain</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">themeconf</span><span class="p">]</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span>
+        <span class="k">while</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">chain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">themeconf</span><span class="p">)</span>
+            <span class="n">base</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">base</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">conf</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">chain</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s1">&#39;options&#39;</span><span class="p">))</span>
+            <span class="k">except</span> <span class="n">configparser</span><span class="o">.</span><span class="n">NoSectionError</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">for</span> <span class="n">option</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">overrides</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">option</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ThemeError</span><span class="p">(</span><span class="s1">&#39;unsupported theme option </span><span class="si">%r</span><span class="s1"> given&#39;</span> <span class="o">%</span> <span class="n">option</span><span class="p">)</span>
+            <span class="n">options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">options</span></div>
+
+<div class="viewcode-block" id="Theme.get_dirchain"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Theme.get_dirchain.html#sphinx.builders.changes.Theme.get_dirchain">[docs]</a>    <span class="k">def</span> <span class="nf">get_dirchain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of theme directories, beginning with this theme&#39;s,</span>
+<span class="sd">        then the base theme&#39;s, then that one&#39;s base theme&#39;s, etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">chain</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">themedir</span><span class="p">]</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span>
+        <span class="k">while</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">chain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">themedir</span><span class="p">)</span>
+            <span class="n">base</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">base</span>
+        <span class="k">return</span> <span class="n">chain</span></div>
+
+<div class="viewcode-block" id="Theme.cleanup"><a class="viewcode-back" href="../../generated/generated/sphinx.builders.html.Theme.cleanup.html#sphinx.builders.changes.Theme.cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove temporary directories.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">themedir_created</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">themedir</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span></div></div>
+
+
+<span class="k">def</span> <span class="nf">load_theme_plugins</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;load plugins by using``sphinx_themes`` section in setuptools entry_points.</span>
+<span class="sd">    This API will return list of directory that contain some theme directory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pkg_resources</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">theme_paths</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">iter_entry_points</span><span class="p">(</span><span class="s1">&#39;sphinx_themes&#39;</span><span class="p">):</span>
+        <span class="n">func_or_path</span> <span class="o">=</span> <span class="n">plugin</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">func_or_path</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">func_or_path</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">theme_paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ThemeError</span><span class="p">(</span><span class="s1">&#39;Plugin </span><span class="si">%r</span><span class="s1"> does not response correctly.&#39;</span> <span class="o">%</span>
+                             <span class="n">plugin</span><span class="o">.</span><span class="n">module_name</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">theme_paths</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

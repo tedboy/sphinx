@@ -1,0 +1,6 @@
+sphinx.ext.intersphinx.UTF8StreamReader.readline
+================================================
+
+.. currentmodule:: sphinx.ext.intersphinx
+
+.. automethod:: UTF8StreamReader.readline

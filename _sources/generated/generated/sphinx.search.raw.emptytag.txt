@@ -1,0 +1,6 @@
+sphinx.search.raw.emptytag
+==========================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: raw.emptytag

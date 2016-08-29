@@ -1,0 +1,6 @@
+sphinx.search.Text.setup_child
+==============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: Text.setup_child

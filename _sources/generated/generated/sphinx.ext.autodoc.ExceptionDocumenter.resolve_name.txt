@@ -1,0 +1,6 @@
+sphinx.ext.autodoc.ExceptionDocumenter.resolve_name
+===================================================
+
+.. currentmodule:: sphinx.ext.autodoc
+
+.. automethod:: ExceptionDocumenter.resolve_name

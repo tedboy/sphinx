@@ -1,0 +1,6 @@
+sphinx.util.strip_colors
+========================
+
+.. currentmodule:: sphinx.util
+
+.. autofunction:: strip_colors

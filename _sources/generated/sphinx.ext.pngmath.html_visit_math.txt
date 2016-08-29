@@ -1,0 +1,6 @@
+sphinx.ext.pngmath.html_visit_math
+==================================
+
+.. currentmodule:: sphinx.ext.pngmath
+
+.. autofunction:: html_visit_math

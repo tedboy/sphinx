@@ -1,0 +1,49 @@
+sphinx.domains.python.PyObject
+==============================
+.. currentmodule:: sphinx.domains.python
+.. autoclass:: PyObject
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~PyObject.__init__
+   ~PyObject.add_name
+   ~PyObject.add_target_and_index
+   ~PyObject.after_content
+   ~PyObject.assert_has_content
+   ~PyObject.before_content
+   ~PyObject.debug
+   ~PyObject.directive_error
+   ~PyObject.error
+   ~PyObject.get_index_text
+   ~PyObject.get_signature_prefix
+   ~PyObject.get_signatures
+   ~PyObject.handle_signature
+   ~PyObject.info
+   ~PyObject.needs_arglist
+   ~PyObject.run
+   ~PyObject.severe
+   ~PyObject.warning
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~PyObject.doc_field_types
+   ~PyObject.final_argument_whitespace
+   ~PyObject.has_content
+   ~PyObject.option_spec
+   ~PyObject.optional_arguments
+   ~PyObject.required_arguments
+

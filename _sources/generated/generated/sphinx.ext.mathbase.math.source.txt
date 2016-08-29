@@ -1,0 +1,6 @@
+sphinx.ext.mathbase.math.source
+===============================
+
+.. currentmodule:: sphinx.ext.mathbase
+
+.. autoattribute:: math.source

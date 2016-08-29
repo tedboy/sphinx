@@ -1,0 +1,44 @@
+sphinx.domains.CDomain
+======================
+.. currentmodule:: sphinx.domains
+.. autoclass:: CDomain
+   :undoc-members:
+
+
+Methods
+-------
+.. autosummary::
+   :toctree:
+
+
+   ~CDomain.__init__
+   ~CDomain.clear_doc
+   ~CDomain.directive
+   ~CDomain.get_objects
+   ~CDomain.get_type_name
+   ~CDomain.merge_domaindata
+   ~CDomain.process_doc
+   ~CDomain.resolve_any_xref
+   ~CDomain.resolve_xref
+   ~CDomain.role
+
+
+
+
+
+Attributes
+----------
+.. autosummary::
+  :toctree:
+
+
+   ~CDomain.dangling_warnings
+   ~CDomain.data_version
+   ~CDomain.directives
+   ~CDomain.indices
+   ~CDomain.initial_data
+   ~CDomain.label
+   ~CDomain.name
+   ~CDomain.object_types
+   ~CDomain.roles
+

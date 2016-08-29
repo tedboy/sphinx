@@ -1,0 +1,6 @@
+sphinx.ext.ifconfig.ifconfig.update_basic_atts
+==============================================
+
+.. currentmodule:: sphinx.ext.ifconfig
+
+.. automethod:: ifconfig.update_basic_atts

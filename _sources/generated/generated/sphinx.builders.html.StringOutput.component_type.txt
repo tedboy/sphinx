@@ -1,0 +1,6 @@
+sphinx.builders.html.StringOutput.component_type
+================================================
+
+.. currentmodule:: sphinx.builders.html
+
+.. autoattribute:: StringOutput.component_type

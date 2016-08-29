@@ -1,0 +1,6 @@
+sphinx.ext.doctest.DocTestBuilder.versioning_compare
+====================================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. autoattribute:: DocTestBuilder.versioning_compare

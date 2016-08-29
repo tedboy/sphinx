@@ -1,0 +1,6 @@
+sphinx.builders.qthelp.QtHelpBuilder.add_permalinks
+===================================================
+
+.. currentmodule:: sphinx.builders.qthelp
+
+.. autoattribute:: QtHelpBuilder.add_permalinks

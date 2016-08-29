@@ -1,0 +1,6 @@
+sphinx.builders.linkcheck.turquoise
+===================================
+
+.. currentmodule:: sphinx.builders.linkcheck
+
+.. autofunction:: turquoise

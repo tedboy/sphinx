@@ -1,0 +1,6 @@
+sphinx.search.title.set_class
+=============================
+
+.. currentmodule:: sphinx.search
+
+.. automethod:: title.set_class

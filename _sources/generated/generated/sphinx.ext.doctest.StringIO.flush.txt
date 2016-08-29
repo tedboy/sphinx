@@ -1,0 +1,6 @@
+sphinx.ext.doctest.StringIO.flush
+=================================
+
+.. currentmodule:: sphinx.ext.doctest
+
+.. automethod:: StringIO.flush

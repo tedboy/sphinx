@@ -1,0 +1,6 @@
+sphinx.builders.texinfo.FileOutput.open
+=======================================
+
+.. currentmodule:: sphinx.builders.texinfo
+
+.. automethod:: FileOutput.open

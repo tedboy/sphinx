@@ -1,0 +1,6 @@
+sphinx.domains.rst.ReSTDirective.handle_signature
+=================================================
+
+.. currentmodule:: sphinx.domains.rst
+
+.. automethod:: ReSTDirective.handle_signature

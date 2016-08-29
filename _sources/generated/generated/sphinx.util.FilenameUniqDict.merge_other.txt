@@ -1,0 +1,6 @@
+sphinx.util.FilenameUniqDict.merge_other
+========================================
+
+.. currentmodule:: sphinx.util
+
+.. automethod:: FilenameUniqDict.merge_other

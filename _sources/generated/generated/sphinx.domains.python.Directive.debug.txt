@@ -1,0 +1,6 @@
+sphinx.domains.python.Directive.debug
+=====================================
+
+.. currentmodule:: sphinx.domains.python
+
+.. automethod:: Directive.debug

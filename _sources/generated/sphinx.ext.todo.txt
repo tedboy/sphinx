@@ -1,0 +1,62 @@
+.. automodule:: sphinx.ext.todo
+
+   
+   
+   Functions
+   ---------
+   .. autosummary::
+      :toctree:
+
+   
+      depart_todo_node
+      make_admonition
+      merge_info
+      process_todo_nodes
+      process_todos
+      purge_todos
+      set_source_info
+      setup
+      visit_todo_node
+   
+   
+
+   
+   
+   Classes
+   -------
+   .. autosummary::
+      :toctree:generated/
+      :template:class_custom.rst
+
+   
+      Directive
+      Todo
+      TodoList
+      todo_node
+      todolist
+
+   .. toctree::
+       :maxdepth: 1
+       :hidden:
+
+   
+       generated/sphinx.ext.todo.Directive
+       generated/sphinx.ext.todo.Todo
+       generated/sphinx.ext.todo.TodoList
+       generated/sphinx.ext.todo.todo_node
+       generated/sphinx.ext.todo.todolist
+
+   
+   
+
+   
+   
+   Exceptions
+   ----------
+   .. autosummary::
+      :toctree:
+
+   
+      NoUri
+   
+   
